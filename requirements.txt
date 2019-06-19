@@ -15,6 +15,7 @@ flask-classful==0.13.1
 flask-login==0.4.1
 flask-menu==0.7.0
 flask-session==0.3.1
+flask-sqlalchemy==2.1
 flask-wtf==0.14.2
 flask==1.0.2
 itsdangerous==0.24

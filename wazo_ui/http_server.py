@@ -16,6 +16,7 @@ from flask_babel import Babel
 from flask_menu import Menu
 from flask_session import Session
 from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
 from pkg_resources import iter_entry_points, resource_filename, resource_isdir
 from werkzeug.contrib.fixers import ProxyFix
 
@@ -28,6 +29,7 @@ from .user import UserUI
 
 TRANSLATION_DIRECTORY = 'translations'
 BABEL_DEFAULT_LOCALE = 'en'
+HOME = '/var/lib/wazo-ui'
 
 logger = logging.getLogger(__name__)
 app = Flask('wazo_ui')
@@ -152,7 +154,10 @@ class Server():
         return result
 
     def _configure_session(self, session_file_dir):
-        app.config['SESSION_FILE_DIR'] = session_file_dir
-        app.config['SESSION_TYPE'] = 'filesystem'
+        app.config['SESSION_TYPE'] = 'sqlalchemy'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{home}/sessions.db'.format(home=HOME)
+        db = SQLAlchemy(app)
+        app.config['SESSION_SQLALCHEMY'] = db
         flask_session = Session()
         flask_session.init_app(app)
+        db.create_all()

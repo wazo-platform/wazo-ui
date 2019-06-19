@@ -10,6 +10,7 @@ Package: wazo-ui
 Architecture: all
 Depends: ${python3:Depends},
          ${misc:Depends},
+         libsqlite3-0,
          wazo-call-logd-client-python3,
          wazo-confd-client-python3,
          wazo-confd-client-python3,
@@ -25,6 +26,7 @@ Depends: ${python3:Depends},
          python3-flask-login,
          python3-flask-menu,
          python3-flask-session,
+         python3-flask-sqlalchemy,
          python3-flask-wtf,
          python3-stevedore
 Description: Wazo UI
