@@ -64,7 +64,7 @@ class Server():
         self._configure_jinja()
         self._configure_login(app.config['auth'])
         self._configure_menu()
-        self._configure_session(global_config['session_file_dir'])
+        self._configure_session()
         self._configure_babel(global_config['enabled_plugins'])
 
     def get_app(self):
@@ -153,7 +153,7 @@ class Server():
                 result.append(resource_filename(ep.module_name, TRANSLATION_DIRECTORY))
         return result
 
-    def _configure_session(self, session_file_dir):
+    def _configure_session(self):
         app.config['SESSION_TYPE'] = 'sqlalchemy'
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{home}/sessions.db'.format(home=HOME)
         db = SQLAlchemy(app)
