@@ -1,0 +1,28 @@
+version: '3'
+services:
+  sync:
+    image: wazopbx/wait
+    environment:
+      TIMEOUT: "${INTEGRATION_TEST_TIMEOUT}"
+
+  wazo-ui:
+    image: wazo-ui-test
+    ports:
+      - "9296"
+    volumes:
+      - "../..:/usr/src/wazo-ui"
+      - "./etc/wazo-ui/conf.d/auth.yml:/etc/wazo-ui/conf.d/auth.yml"
+      - "./etc/wazo-ui/conf.d/https.yml:/etc/wazo-ui/conf.d/https.yml"
+      - "./ssl:/usr/local/share/ssl"
+      # - "${LOCAL_GIT_REPOS}/xivo-lib-python/xivo:/usr/local/lib/python3.5/site-packages/xivo"
+
+  auth:
+    image: wazopbx/wazo-auth-mock
+    ports:
+      - "9497"
+
+  browser:
+    image: selenium/standalone-firefox
+    ports:
+      - "4444"
+    shm_size: '2GB'

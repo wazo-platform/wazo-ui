@@ -1,0 +1,337 @@
+{% macro build_menu(current_user, current_menu) %}
+  {% if current_user.is_authenticated %}
+    {% for item in current_menu.children recursive %}
+      {% if item.visible %}
+        {% if item.name == 'ipbx' %}
+          {{ _build_ipbx_menu(item, current_user) }}
+        {% else %}
+          <ul class="sidebar-menu" data-widget="tree">
+            <li class="{{ 'active' if item.active }} {{ 'multi-tenant' if item.multi_tenant }}">
+              {% if item.children %}
+                {{ _build_menu_chidren(item, current_user) }}
+              {% else %}
+                {{ _build_menu_link(item, current_user) }}
+              {% endif %}
+            </li>
+          </ul>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endmacro %}
+
+
+{% macro _build_menu_link(item, current_user) %}
+  <a href="{{ item.url }}">
+    <i class="fa fa-{{ item.icon if item.icon else 'windows' }}"></i>
+    <span>{{ item.text }}</span>
+  </a>
+{% endmacro %}
+
+
+{% macro _build_menu_chidren(item, current_user) %}
+  {% if item.visible %}
+    <li class="treeview {% if item.active or item.active_item %}active{% endif %}">
+      <a href="">
+        <i class="fa fa-{{ item.icon if item.icon else 'windows' }}"></i>
+        <span>{{ item.text }}</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      {{ _build_chidren(item, false, current_user) }}
+    </li>
+  {% endif %}
+{% endmacro %}
+
+{% macro _build_ipbx_menu(item, current_user) %}
+  {% set instance_tenants = current_user.get_current_instance_tenants() %}
+  {% if instance_tenants|length > 0 %}
+    <form class="navbar-form navbar-left" id="working-instance-tenant" action="{{ url_for('index.WorkingTenantView:set_working_instance_tenant') }}">
+      <div class="form-group">
+        <select name="tenant_uuid" class="selectfield">
+          {% for tenant in instance_tenants %}
+            {% set selected = 'selected' if session['working_instance_tenant_uuid'] == tenant.uuid else '' %}
+            <option value="{{ tenant.uuid }}" {{ selected }}>{{ tenant.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </form>
+  {% endif %}
+
+  {{ _build_chidren(item, true, current_user) }}
+{% endmacro %}
+
+
+{% macro _build_chidren(item, root, current_user) %}
+  <ul class="{% if root %}sidebar-menu tree{% else %}treeview-menu{% endif %}"{% if root %}data-widget="tree"{% endif %}>
+    {% for i in item.children %}
+      {% if i.children and i.text %}
+        {{ _build_menu_chidren(i, current_user) }}
+      {% elif i.visible %}
+        <li class="{{ 'active' if i.active }} {{ 'multi-tenant' if i.multi_tenant }}">
+          <a href="{{ i.url }}">
+            <i class="fa fa-{{ i.icon if i.icon else 'circle-o' }}"></i>
+            {{ i.text }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+
+{% macro build_breadcrumb(name, description, icon, path) %}
+  <section class="content-header">
+    <h1>
+      <i class="fa fa-{{ icon }}"></i> {{ name }}
+      {% if description %}
+        <small>{{ description }}</small>
+      {% endif %}
+    </h1>
+
+    {% if path %}
+      <ol class="breadcrumb">
+        <li>
+          <i class="fa fa-{{ icon }}"></i> {{ name }}
+        </li>
+        {% for link in path %}
+          <li class="active">{{ link }}</li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+  </section>
+{% endmacro %}
+
+
+{% macro build_breadcrumbs(crumbs) %}
+  <section class="content-header">
+    <ol class="breadcrumb">
+      {%  for crumb in crumbs %}
+        <li>
+          {% if crumb.link %}<a href="{{ crumb.link }}">{% endif %}
+          {% if crumb.icon %}<i class="fa fa-{{ crumb.icon }}"></i> {% endif %}
+          &nbsp;{{ crumb.name }}
+          {% if crumb.link %}</a>{% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endmacro %}
+
+
+{% macro build_section_row() %}
+  <section class="content">
+    <div class="row">
+      {{ caller() }}
+    </div>
+  </section>
+{% endmacro %}
+
+
+{% macro build_form_tabs_box(box_class, without_tab=False, container_class='col-xs-12') %}
+  <div class="{{ container_class }}">
+    <div class="{{ box_class }}{{ ' box box-primary' if without_tab }}">
+      <div class="nav-tabs-custom">
+        {{ caller() }}
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+
+{% macro build_form_box(title, subtitle, icon, box_class, container_class='col-xs-12') %}
+  {% set caller_ = caller %}
+  {% call build_form_tabs_box(box_class, without_tab=True, container_class=container_class) %}
+    {% call build_tabs_navigation() %}
+      {{ add_tab_navigation_header(title, subtitle, icon) }}
+    {% endcall %}
+    {{ caller_() }}
+  {% endcall %}
+{% endmacro %}
+
+
+{% macro build_tabs_navigation() %}
+  <ul class="nav nav-tabs pull-right">
+    {{ caller() }}
+  </ul>
+{% endmacro %}
+
+
+{% macro add_tab_navigation_item(id, name, active=False) %}
+  <li class="{{ 'active' if active }}"><a href="#{{ id }}" data-toggle="tab">{{ name }}</a></li>
+{% endmacro %}
+
+
+{% macro add_tab_navigation_header(title, subtitle, icon) %}
+  <li class="pull-left header"><i class="fa fa-{{ icon }}"></i> {{ title }}</li>
+  <li class="pull-left header"><small>{{ subtitle }}</small></li>
+{% endmacro %}
+
+
+{% macro build_tabs_content() %}
+  <div class="tab-content">
+    {{ caller() }}
+  </div>
+{% endmacro %}
+
+
+{% macro build_tab_content_item(id, active=False) %}
+  <div class="{{ 'active' if active }} tab-pane" id="{{ id }}">
+    <div class="row">
+      <div class="col-md-12">
+        {{ caller() }}
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+
+{% macro add_add_entry_button() %}
+  <button class="btn btn-box-tool add-row-entry">
+    <i class="fa fa-plus"></i>
+  </button>
+{% endmacro %}
+
+
+{% macro add_delete_entry_button() %}
+  <button class="btn btn-xs btn-danger delete-row-entry">
+    <i class="fa fa-minus"></i>
+  </button>
+{% endmacro %}
+
+
+{% macro build_add_row_entry_header() %}
+  <div class="box-header">
+    <div class="box-tools">
+      {{ add_add_entry_button() }}
+    </div>
+  </div>
+{% endmacro %}
+
+
+{% macro build_form(method="post", action="", id="", class="", enctype="") %}
+  <form id="{{ id }}" class="form-horizontal {{ class }}" method="{{ method }}" action="{{ action }}" {{ 'enctype=' ~ enctype if enctype }} data-toggle="validator">
+    {{ caller() }}
+  </form>
+{% endmacro %}
+
+
+{% macro add_default_fields(form, submit_value) %}
+  {% from "macro_render_field.html" import render_field %}
+  <div class="box-body">
+    {{ form.csrf_token }}
+    {{ caller() }}
+  </div>
+  {% if submit_value %}
+    <div class="box-footer text-center">
+      {{ render_field(form.submit, class_="btn btn-primary", value=submit_value, with_label=False) }}
+    </div>
+  {% endif %}
+{% endmacro %}
+
+
+{% macro build_list_containers(title, icon, size='12') %}
+  <div class="col-xs-{{ size }}">
+    <div class="box box-primary">
+      <div class="box-body">
+        {{ caller() }}
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+
+{% macro build_table(id=None, data_list_url='', name=None, class_name='') %}
+  <table {{ 'id=' ~ id if id }} class="table table-condensed table-striped table-bordered {{ class_name }}" {{ 'data-list_url=' ~ data_list_url if data_list_url }} {{ 'data-name=' ~ name if name }}>
+    {{ caller() }}
+  </table>
+{% endmacro %}
+
+
+{% macro build_list_table(name=None, list='') %}
+  {% set caller_ = caller %}
+  {% set class_name = 'client-side' %}
+  {% set table_id = 'table-list' %}
+
+  {# Used by wazo-ui-plugins #}
+  {% if list %}
+    {% set table_id = "table-list-serverside" %}
+    {% set class_name = "server-side" %}
+  {% endif %}
+
+  {% call build_table(id=table_id, data_list_url=list, name=name, class_name=class_name) %}
+    {{ caller_() }}
+  {% endcall %}
+{% endmacro %}
+
+
+{% macro build_table_headers() %}
+  <thead>
+    <tr>
+      {{ caller() }}
+    </tr>
+  </thead>
+{% endmacro %}
+
+
+{% macro build_list_table_headers(get='', delete='', add='', actions_column=true,  import='', export='', update='') %}
+  <thead>
+  {% if actions_column %}
+    <tr
+      class="table-data-tooltip"
+      {{ 'data-add_url=' ~ add if add }}
+      {{ 'data-get_url=' ~ get if get }}
+      {{ 'data-import_url=' ~ import if import }}
+      {{ 'data-export_url=' ~ export if export }}
+      {{ 'data-update_url=' ~ update if update }}
+      {{ 'data-delete_url=' ~ delete if delete }}
+      data-add_tooltip={{ _('Add') }}
+      data-get_tooltip={{ _('Edit') }}
+      data-delete_tooltip={{ _('Delete') }}
+      data-import_tooltip={{ _('Import CSV') }}
+      data-export_tooltip={{ _('Export CSV') }}
+      data-update_tooltip={{ _('Update from CSV') }}
+    >
+  {%  else %}
+    <tr>
+  {% endif %}
+    {{ caller() }}
+    </tr>
+  </thead>
+{% endmacro %}
+
+
+{% macro build_table_body(class_='') %}
+  <tbody class="{{ class_ }}">
+    {{ caller() }}
+  </tbody>
+{% endmacro %}
+
+
+{% macro build_list_table_rows(items, non_unique_id=false) %}
+  {% set caller_ = caller %}
+  {% call build_table_body() %}
+    {% for item in items %}
+      {% set editable = false if item.editable == False else true %}
+      <tr{{ ' data-id=' ~ item.id if item.id }}{{ ' data-uuid=' ~ item.uuid if item.uuid }}{{ ' data-tenant-uuid=' ~ item.tenant_uuid if item.tenant_uuid }}{{ ' data-non-unique-id=' ~ non_unique_id if non_unique_id }} data-editable="{{ editable }}">
+        {{ caller_(item) }}
+      </tr>
+    {% endfor %}
+  {% endcall %}
+{% endmacro %}
+
+
+{% macro build_hidden_add_containers(title, name = 'view-add-form', class='') %}
+    <div class="modal fade {{ class }}" id="{{ name }}" role="dialog" aria-labelledby="{{ name }}" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+            <h4 class="modal-title">{{ title }}</h4>
+          </div>
+          <div class="modal-body clearfix">{{ caller() }}</div>
+        </div>
+      </div>
+    </div>
+{% endmacro %}

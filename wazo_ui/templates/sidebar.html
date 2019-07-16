@@ -1,0 +1,8 @@
+{% from "macro.html" import build_menu %}
+
+<aside class="main-sidebar">
+  <section class="sidebar">
+    {{ build_menu(current_user, current_menu) }}
+  </section>
+</aside>
+

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  sync:
+    depends_on:
+      - wazo-ui
+
+  wazo-ui:
+    volumes:
+      - "./etc/wazo-ui/conf.d/https.no_ssl_private_key.yml:/etc/wazo-ui/conf.d/https.no_ssl_private_key.yml"
+      - "./ssl/no_ssl_certificate:/etc/wazo-ui/https"

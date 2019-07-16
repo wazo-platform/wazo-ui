@@ -1,0 +1,4 @@
+recursive-include wazo_ui/templates *
+recursive-include wazo_ui/static *
+recursive-include wazo_ui/plugins/* *
+recursive-include wazo_ui/translations *

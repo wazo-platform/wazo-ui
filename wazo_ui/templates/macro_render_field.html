@@ -1,0 +1,257 @@
+{% macro render_field(field,
+                      with_label=True,
+                      with_icon=False,
+                      placeholder=False,
+                      inputclass=False,
+                      divclass=None,
+                      class_='') %}
+  {% set kwargs_  = kwargs %}
+
+  {% if field.type in ('HiddenField', 'DestinationHiddenField') %}
+    {% set with_label=False %}
+  {% endif %}
+
+  {% if with_label and not placeholder %}
+    {% set placeholder = field.label.text %}
+  {% endif %}
+
+  {% if not divclass %}
+    {% set divclass = 'col-sm-8' if with_label else 'col-sm-12' %}
+  {% endif %}
+
+  {%- if field.flags.required %}
+    {% set class_ = class_ + ' required' %}
+    {% do kwargs_.update(required='') %}
+  {% endif %}
+
+  {% for validator in field.validators %}
+    {% set validator_name = validator.__class__.__name__ %}
+    {% if validator_name == 'Length' %}
+      {% if validator.min != -1 %}
+        {% do kwargs_.update(data_minlength=validator.min) %}
+      {% endif %}
+      {% if validator.max != -1 %}
+        {% do kwargs_.update(maxlength=validator.max) %}
+      {% endif %}
+    {% elif validator_name == 'NumberRange' %}
+      {% if validator.min is not none %}
+        {% do kwargs_.update(min=validator.min) %}
+      {% endif %}
+      {% if validator.max is not none %}
+        {% do kwargs_.update(max=validator.max) %}
+      {% endif %}
+    {% elif validator_name == 'Regexp' %}
+      {% do kwargs_.update(pattern=validator.regex.pattern) %}
+    {% elif validator_name == 'EqualTo' %}
+      {% do kwargs_.update(data_match='#' + validator.fieldname) %}
+      {% do kwargs_.update({'data_match-error': validator.message}) %}
+    {% endif %}
+  {% endfor %}
+
+  {%- call _wrap_label_input_with_div(field, inputclass, with_label) %}
+
+    {%- call _wrap_input_with_div(field, divclass, with_icon) %}
+
+      {%- if field.type == 'BooleanField' %}
+        {{ render_field_boolean(field, class_, **kwargs_) }}
+      {% elif field.type == 'RadioField' %}
+        {{ render_field_radio(field) }}
+      {% elif field.type in ('EmailField',
+                             'FloatField',
+                             'IntegerField',
+                             'PasswordField',
+                             'StringField',
+                             'TextField',
+                             'TextAreaField') %}
+        {{ field(class_=class_+' form-control', placeholder=placeholder, **kwargs_) }}
+      {% elif field.type in ('SelectField',
+                             'SelectMultipleField') %}
+        {{ render_field_select(field, class_, **kwargs_) }}
+      {% elif field.type == 'FieldList' %}
+        {{ render_field_form_list(field, class_=class_) }}
+      {% elif field.type == 'FormField' %}
+        {{ render_field_form(field, class_=class_) }}
+      {% elif field.type == 'DestinationField' or field.type == 'FuncKeyDestinationField' or field.type == 'ApplicationDestinationField' %}
+        {{ render_field_destination(field, class_=class_) }}
+      {% else %}
+        {{ field(class_=class_, placeholder=placeholder, **kwargs_) }}
+      {% endif %}
+
+      {% if field.errors %}
+        <div class="help-block with-errors">
+          <i>{{ field.errors|join(', ') }}</i>
+        </div>
+      {% endif %}
+    {%- endcall %}
+
+    {%- if field.description %}
+      <p class="help-block">{{ field.description|safe }}</p>
+    {% endif %}
+
+  {%- endcall %}
+{% endmacro %}
+
+
+{% macro _wrap_label_input_with_div(field, inputclass, with_label) %}
+  {% if field.type in ('SubmitField', 'HiddenField', 'DestinationHiddenField') %}
+    {{ caller() }}
+
+  {%- else %}
+    <div class="{{ inputclass if inputclass else 'form-group' }}{{ ' has-error' if field.errors}}">
+    {% if with_label %}
+      {{ _generate_label_tag_from_field(field) }}
+    {% endif %}
+    {{ caller() }}
+    </div>
+  {% endif %}
+{% endmacro %}
+
+
+{% macro _wrap_input_with_div(field, divclass, with_icon) %}
+  {% if with_icon %}
+    <div class="form-group has-feedback" id="form-group-input-{{ field.name }}">
+      <span class="form-control-feedback glyphicon glyphicon-{{ with_icon }}"></span>
+      {{ caller() }}
+    </div>
+
+  {%- elif field.type in ('FieldList', 'HiddenField', 'DestinationHiddenField') %}
+    {{ caller() }}
+
+  {%- else %}
+    <div class="{{ divclass }}" id="form-group-input-{{ field.name }}">
+      {{ caller() }}
+    </div>
+  {% endif %}
+{% endmacro %}
+
+
+{% macro render_field_boolean(field, class_) %}
+  <div class="checkbox">
+    <label>
+      {{ field(class_ = class_, **kwargs) }}
+    </label>
+  </div>
+{% endmacro %}
+
+
+{% macro render_field_radio(field) %}
+  {% for value, label, _ in field.iter_choices() %}
+    <div class="radio-inline">
+      <label>
+        <input type="radio" name="{{ field.id }}" id="{{ field.id }}" value="{{ value }}">
+        {{ label }}
+      </label>
+    </div>
+  {% endfor %}
+{% endmacro %}
+
+
+{% macro render_field_select(field, class_) %}
+  {{ field(class_=class_+' selectfield form-control', **kwargs) }}
+{% endmacro %}
+
+
+{% macro render_field_form_list(form_list, class_='', divclass='col-sm-8') %}
+  <div class="{{ divclass }}">
+  {% for form in form_list %}
+    {{ form.csrf_token }}
+    {% for field in form %}
+      {% if field.type != 'CSRFTokenField' %}
+        {{ field(class_ = class_ + ' form-control', **kwargs) }}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  </div>
+{% endmacro %}
+
+
+{% macro render_field_form(field, class_) %}
+  <div class="">
+    {% for field in field.form %}
+      {% if field.type != 'CSRFTokenField' %}
+        {{ render_field(field, class_=class_, **kwargs) }}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+
+{% macro render_field_destination(field, class_) %}
+  <div class="destination-container">
+    {% call _append_dynamic_choice(field.form) %}
+      {{ render_field(field.form[field.form.select_field], class_= class_ ~ ' destination-select', **kwargs) }}
+    {% endcall %}
+
+    {% for destination in field.form %}
+      {% if destination.type == 'FormField' %}
+        <div class="destination-{{ destination.short_name }} hidden">
+          {{ _render_fields_destination(destination.form, destination.short_name, listing_urls=field.form.listing_urls, class_=class_, **kwargs) }}
+        </div>
+      {% elif destination.type == 'DestinationField' %}
+        <div class="destination-{{ destination.short_name }} hidden">
+          {{ render_field(destination, class_=class_, with_label=False, **kwargs) }}
+        </div>
+      {% elif destination.type == 'FuncKeyDestinationField' %}
+        <div class="destination-{{ destination.short_name }} hidden">
+          {{ _render_fields_destination(destination, class_=class_, **kwargs) }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+
+{% macro _append_dynamic_choice(form) %}
+  {% if form.added_dynamic_choice %}
+    {% do form[form.select_field].choices.insert(0, (form.added_dynamic_choice)) %}
+    {{ caller() }}
+    {% do form[form.select_field].choices.pop(0) %}
+  {% else %}
+    {{ caller() }}
+  {% endif %}
+{% endmacro %}
+
+
+{% macro _render_fields_destination(form, destination, listing_urls, class_) %}
+  {% for field in form %}
+    {% if field.type != 'CSRFTokenField' %}
+
+      {% if field.type == 'SelectField' %}
+
+        {% if not field.choices %}
+          {% set data_listing_href = url_for(listing_urls[destination]) if listing_urls[destination] %}
+        {% else %}
+          {% set data_listing_href = '' %}
+        {% endif %}
+
+        {% if field.description %}
+          {% set data_listing_href = url_for(listing_urls[field.description]) if listing_urls[field.description] %}
+        {% endif %}
+
+        {% if not field.choices and field.data and field.data != 'None' %}  {# issue github wtform #324 #}
+          {% set text = form.set_value_template.format(**form.data) if form.set_value_template else field.data%}
+          {% do field.choices.append((field.data, text)) %}
+
+          {{ render_field(field, class_=class_, data_listing_href=data_listing_href, **kwargs) }}
+          {% do field.choices.pop() %}
+        {% else %}
+          {{ render_field(field, class_=class_, data_listing_href=data_listing_href, **kwargs) }}
+        {% endif %}
+      {% else %}
+        {{ render_field(field, class_=class_, **kwargs) }}
+      {% endif %}
+
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+
+{% macro _generate_label_tag_from_field(field) %}
+  <label for="{{ field.id }}" class="col-sm-4 control-label">
+    {% if field.flags.required %}
+      <abbr title="Required">{{ field.label.text }}</abbr>
+    {% else %}
+      {{ field.label.text }}
+    {% endif %}
+  </label>
+{% endmacro %}

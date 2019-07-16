@@ -1,0 +1,13 @@
+[Unit]
+Description=wazo-ui-light
+After=network.target
+Before=monit.service
+
+[Service]
+Type=forking
+ExecStartPre=/usr/bin/install -d -o wazo-ui -g wazo-ui /var/run/wazo-ui
+ExecStart=/usr/bin/wazo-ui
+PIDFile=/var/run/wazo-ui/wazo-ui.pid
+
+[Install]
+WantedBy=multi-user.target

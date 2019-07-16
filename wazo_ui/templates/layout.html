@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'head.html' %}
+    {% block additional_css %}{% endblock %}
+  </head>
+  {% from "macro.html" import build_breadcrumb,
+                              build_breadcrumbs,
+                              build_section_row,
+                              build_form_box,
+                              build_form_tabs_box,
+                              build_tabs_content,
+                              build_tab_content_item,
+                              build_tabs_navigation,
+                              add_tab_navigation_item,
+                              add_tab_navigation_header,
+                              add_delete_entry_button,
+                              build_add_row_entry_header,
+                              build_form,
+                              add_default_fields,
+                              build_table,
+                              build_table_headers,
+                              build_table_body,
+                              build_list_containers,
+                              build_list_table,
+                              build_list_table_headers,
+                              build_list_table_rows,
+                              build_hidden_add_containers %}
+  {% from "macro_render_field.html" import render_field %}
+  {% if current_user.is_authenticated %}
+    <body class="skin-blue {% if current_user.get_instance() == None %}sidebar-mini sidebar-collapse{% endif %}">
+      <div class="wrapper">
+        {% include 'header.html' %}
+        {% include 'sidebar.html' %}
+        <div class="content-wrapper">
+          {% include 'flashed_messages.html' %}
+          {% include 'notifier.html' %}
+            {% block content_header %}
+            {% endblock %}
+          {% block content %}{% endblock %}
+        </div>
+        {% include 'footer.html' %}
+      </div>
+      {% include 'js.html' %}
+      {% block additional_js %}{% endblock %}
+    </body>
+  {% endif %}
+</html>

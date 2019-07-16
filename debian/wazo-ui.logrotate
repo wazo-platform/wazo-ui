@@ -1,0 +1,7 @@
+/var/log/wazo-ui.log {
+    daily
+    rotate 15
+    compress
+    copytruncate
+    missingok
+}

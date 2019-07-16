@@ -1,0 +1,7 @@
+git+https://github.com/wazo-pbx/xivo-test-helpers.git
+docker-compose
+nose
+pyhamcrest
+pyvirtualdisplay
+requests
+selenium

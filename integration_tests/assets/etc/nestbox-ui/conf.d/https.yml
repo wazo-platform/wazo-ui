@@ -1,0 +1,3 @@
+https:
+  certificate: /usr/local/share/ssl/wazo-ui/server.crt
+  private_key: /usr/local/share/ssl/wazo-ui/server.key

@@ -1,0 +1,140 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+  --webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input.form-control {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #333;
+}
+
+input.login, select.login, .select2-container--bootstrap .select2-selection--single {
+  margin-bottom: 15px;
+  background-color: transparent;
+}
+
+.select2-container--bootstrap .select2-selection--single .select2-selection__rendered {
+  color: #333;
+}
+.select2-selection {
+  padding-top: 10px !important;
+  text-transform: capitalize;
+}
+
+.input-group .input-group-addon {
+  background-color: white;
+  color: #333;
+  border: none;
+  position: absolute;
+  right: 5px;
+  top: 7px;
+  z-index: 10;
+}
+
+.input-append {
+  width: 100%;
+}
+
+.form-group.has-error .help-block, .form-group.has-error {
+  color: #ef3e42;
+  border-color: #ef3e42;
+}
+
+.btn-flat {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background: #282789;
+  border: 0;
+  height: 35px;
+  padding: 5px 16px !important;
+  border-radius: 20px !important;
+}
+
+.btn-flat:hover, .btn-flat:active, .btn-flat:focus {
+  background: rgb(28, 27, 95) !important;
+}
+
+.btn-flat.disabled, .btn-flat.disabled:hover, .btn-flat.disabled:active, .btn-flat.disabled:focus {
+  background: rgba(0, 0, 0, 0.12) !important;
+  color: rgba(0, 0, 0, 0.26);
+  cursor: default;
+}
+
+.center {
+  margin: auto;
+  width: 70%;
+  margin-top: 30%;
+}
+
+.auth form {
+  padding: 40px;
+}
+
+.one {
+  background: white;
+  z-index: 10;
+}
+
+.two {
+  height: 100%;
+  background: url(/wazo_ui.plugins.authentication.plugin/img/login_background.svg) center center / cover no-repeat fixed;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+.wazo-logo {
+  display: block;
+  margin:50px 0 25px;
+  width: 200px;
+}
+
+hr {
+  margin-top: 100px;
+}
+
+.alert {
+  margin-top: 20px;
+}
+
+.background {
+  width: auto;
+  height: 100vh;
+  margin-left: -120px;
+}
+
+.col {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+
+@media (max-width: 767px) {
+  .auth .one {
+    margin: 0 auto;
+    float: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .auth .one {
+    width: 300px;
+    float: left;
+  }
+
+  .auth .two {
+    width: calc(100% - 300px);
+  }
+}
+
+@media (max-width: 991px) {
+  .auth .two {
+    width: 100%;
+  }
+}

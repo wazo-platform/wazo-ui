@@ -1,0 +1,3 @@
+https:
+  certificate: /etc/wazo-ui/https/public-certificate.pem
+  private_key: /etc/wazo-ui/https/private-key.pem

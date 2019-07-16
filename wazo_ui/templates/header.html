@@ -1,0 +1,58 @@
+{% set rcl = current_user.get_rcl() %}
+{% set tenant_ns = namespace(name=None) %}
+
+{% if rcl %}
+  {% set tenant_ns.name = rcl.name %}
+  {% set tenants_children = rcl.get_children_uuid_tenants() %}
+
+  {% for tenant in tenants_children %}
+    {% if session['working_tenant_uuid'] == tenant[0] %}
+      {% set tenant_ns.name = tenant[1] %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<header class="main-header">
+  <a href="{{ current_user.get_user_index_url() }}" class="logo">
+    <span class="logo-lg">
+      <img class="logo-full-svg" src="{{ url_for('static', filename='img/wazo-text-bird-reverse.svg') }}" />
+    </span>
+    <span class="logo-mini">
+      <img class="logo-bird-svg" src="{{ url_for('static', filename='img/wazo-bird-reverse.svg') }}" />
+    </span>
+  </a>
+  <nav class="navbar navbar-static-top">
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
+    {% if rcl and tenants_children %}
+      <div class="pull-left tenant-form">
+        <form class="navbar-form navbar-left" id="working-tenant"
+              action="{{ url_for('index.WorkingTenantView:set_working_tenant') }}">
+          <div class="form-group">
+            <select name="tenant_uuid" class="selectfield">
+              <option value="">{{ rcl.name }}</option>
+              {% for tenant in tenants_children %}
+                {% set selected = 'selected' if session['working_tenant_uuid'] == tenant[0] else '' %}
+                <option value="{{ tenant[0] }}" {{ selected }}>{{ tenant[1] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </form>
+      </div>
+    {% endif %}
+
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li class="current">
+          <div class="no-link">
+            <i class="fa fa-cog"></i> {{ current_user.get_displayname() }}{% if tenant_ns.name %} ({{ tenant_ns.name }}) {% endif %}
+          </div>
+        </li>
+        <li class="logout">
+          <a href="{{ url_for('logout.Logout:get') }}" class="fa fa-sign-out" id="logout"></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

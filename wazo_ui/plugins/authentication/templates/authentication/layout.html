@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+      {% include 'head.html' %}
+      {% block additional_css %}{% endblock %}
+    {% endblock %}
+  </head>
+  {% block body %}
+    <body class="skin-blue">
+    {% block content %}{% endblock %}
+    {% block footer %}{% endblock %}
+    {% include 'js.html' %}
+    {% block additional_js %}{% endblock %}
+    </body>
+  {% endblock %}
+</html>

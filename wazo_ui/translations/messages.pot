@@ -1,0 +1,1168 @@
+# Translations template for wazo_ui.
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
+# This file is distributed under the same license as the
+# wazo_ui project.
+# Wazo Dev Team <dev@wazo.community>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: wazo_ui 0.1\n"
+"Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
+"POT-Creation-Date: 2018-04-04 13:38-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Wazo Authors <dev@wazo.community>\n"
+"Language-Team: en <dev@wazo.community>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: wazo_ui/helpers/classful.py:194 wazo_ui/plugins/customer/view.py:110
+#: wazo_ui/plugins/instance/view.py:125
+#: wazo_ui/plugins/location/view.py:65
+#: wazo_ui/plugins/location/view.py:186
+#: wazo_ui/plugins/provider/view.py:94
+#: wazo_ui/plugins/reseller/view.py:99
+#, python-format
+msgid "%(resource)s: Resource has been created"
+msgstr ""
+
+#: wazo_ui/helpers/classful.py:233 wazo_ui/plugins/provider/view.py:112
+#, python-format
+msgid "%(resource)s: Resource has been updated"
+msgstr ""
+
+#: wazo_ui/helpers/classful.py:243 wazo_ui/plugins/instance/view.py:136
+#, python-format
+msgid "%(resource)s: Resource %(id)s has been deleted"
+msgstr ""
+
+#: wazo_ui/helpers/destination.py:95 wazo_ui/helpers/funckey.py:27
+msgid "Destination"
+msgstr ""
+
+#: wazo_ui/helpers/destination.py:117
+#: wazo_ui/plugins/destination/form.py:31
+msgid "Busy"
+msgstr ""
+
+#: wazo_ui/helpers/destination.py:118
+#: wazo_ui/plugins/destination/form.py:32
+msgid "Congestion"
+msgstr ""
+
+#: wazo_ui/helpers/destination.py:119
+msgid "Fail"
+msgstr ""
+
+#: wazo_ui/helpers/destination.py:120
+msgid "No answer"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:16
+msgid "Resource not found"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:17
+msgid "Input error"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:51
+msgid "One or more of the choices you made was not acceptable"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:52 wazo_ui/helpers/error.py:71
+msgid "Invalid value"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:53
+msgid "cannot be formatted as a datetime"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:54
+msgid "cannot be formatted as date"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:55
+msgid "cannot be formatted as a timedelta"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:56
+msgid "Not a valid boolean"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:57
+msgid "Not a valid datetime"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:58
+msgid "Not a valid mapping type"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:59
+msgid "Not a valid email address"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:60
+msgid "Cannot format string with given data"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:61
+msgid "Not a valid integer"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:62
+msgid "Not a valid number"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:63
+msgid "Not a valid string"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:64
+msgid "Not a valid time"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:65
+msgid "Not a valid period of time"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:66
+msgid "Not a valid URL"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:67
+msgid "Not a valid UUID"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:68
+msgid "Field may not be null"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:69
+msgid "Missing data for required field"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:70
+msgid "Invalid input type"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:72
+msgid "Invalid input"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:73
+msgid "Invalid length"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:74
+msgid "Not a valid choice"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:75
+msgid "Invalid range"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:76
+msgid "String does not match expected pattern"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:102
+msgid "call permission"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:103
+msgid "conference"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:104
+msgid "context"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:105
+msgid "endpoint"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:106
+msgid "entity"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:107
+msgid "extension"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:108
+msgid "function keys"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:109
+msgid "group"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:110
+msgid "incall"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:111
+msgid "ivr"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:112
+msgid "line"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:113
+msgid "music on hold"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:114
+msgid "outcall"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:115
+msgid "paging"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:116
+msgid "parking lot"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:117
+msgid "switchboard"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:118
+msgid "trunk"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:119
+msgid "user"
+msgstr ""
+
+#: wazo_ui/helpers/error.py:120
+msgid "voicemail"
+msgstr ""
+
+#: wazo_ui/plugins/authentication/form.py:16
+msgid "Wrong username and/or password"
+msgstr ""
+
+#: wazo_ui/plugins/authentication/form.py:25
+#: wazo_ui/plugins/authentication/templates/authentication/login.html:18
+#: wazo_ui/plugins/customer/form.py:44
+#: wazo_ui/plugins/customer/templates/customer/edit.html:31
+#: wazo_ui/plugins/identity/form.py:59
+#: wazo_ui/plugins/identity/templates/identity/list.html:12
+#: wazo_ui/plugins/location/form.py:50
+#: wazo_ui/plugins/location/templates/location/edit.html:31
+#: wazo_ui/plugins/provider/form.py:45
+#: wazo_ui/plugins/reseller/form.py:28
+#: wazo_ui/plugins/reseller/templates/reseller/edit.html:29
+msgid "Username"
+msgstr ""
+
+#: wazo_ui/plugins/authentication/form.py:26
+#: wazo_ui/plugins/authentication/templates/authentication/login.html:19
+#: wazo_ui/plugins/customer/form.py:45
+#: wazo_ui/plugins/identity/form.py:60
+#: wazo_ui/plugins/instance/form.py:70
+#: wazo_ui/plugins/instance/form.py:86
+#: wazo_ui/plugins/location/form.py:51
+#: wazo_ui/plugins/provider/form.py:46
+#: wazo_ui/plugins/provider/form.py:94
+#: wazo_ui/plugins/provider/form.py:110
+#: wazo_ui/plugins/reseller/form.py:29
+msgid "Password"
+msgstr ""
+
+#: wazo_ui/plugins/authentication/form.py:27
+#: wazo_ui/plugins/authentication/templates/authentication/login.html:20
+msgid "Language"
+msgstr ""
+
+#: wazo_ui/plugins/authentication/form.py:28
+msgid "Login"
+msgstr ""
+
+#: wazo_ui/plugins/authentication/form.py:43
+#, python-format
+msgid "Error with Wazo authentication server: %(error)s"
+msgstr ""
+
+#: wazo_ui/plugins/authentication/form.py:45
+msgid "Wazo authentication server connection error"
+msgstr ""
+
+#: wazo_ui/plugins/authentication/templates/authentication/login.html:41
+#: wazo_ui/templates/footer.html:5
+msgid "All rights reserved."
+msgstr ""
+
+#: wazo_ui/plugins/customer/form.py:35
+#: wazo_ui/plugins/customer/templates/customer/list.html:12
+#: wazo_ui/plugins/identity/form.py:70
+#: wazo_ui/plugins/identity/form.py:76
+#: wazo_ui/plugins/identity/form.py:86
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:12
+#: wazo_ui/plugins/identity/templates/policy/list.html:12
+#: wazo_ui/plugins/identity/templates/tenant/list.html:12
+#: wazo_ui/plugins/instance/form.py:69
+#: wazo_ui/plugins/instance/form.py:85
+#: wazo_ui/plugins/instance/templates/instance/list.html:16
+#: wazo_ui/plugins/location/form.py:39
+#: wazo_ui/plugins/location/templates/location/list.html:14
+#: wazo_ui/plugins/provider/form.py:58
+#: wazo_ui/plugins/provider/form.py:93
+#: wazo_ui/plugins/provider/form.py:109
+#: wazo_ui/plugins/provider/templates/provider/list.html:12
+#: wazo_ui/plugins/reseller/form.py:18
+#: wazo_ui/plugins/reseller/templates/reseller/list.html:12
+msgid "Name"
+msgstr ""
+
+#: wazo_ui/plugins/customer/form.py:37
+#: wazo_ui/plugins/customer/templates/customer/list.html:13
+#: wazo_ui/plugins/reseller/templates/reseller/edit.html:9
+msgid "Reseller"
+msgstr ""
+
+#: wazo_ui/plugins/customer/form.py:38
+#: wazo_ui/plugins/index/templates/dashboard.html:77
+#: wazo_ui/plugins/location/templates/location/add.html:4
+#: wazo_ui/plugins/location/templates/location/edit.html:4
+#: wazo_ui/plugins/location/templates/location/list.html:4
+#: wazo_ui/plugins/location/templates/location/list.html:9
+#: wazo_ui/plugins/location/view.py:31
+msgid "Locations"
+msgstr ""
+
+#: wazo_ui/plugins/customer/form.py:46
+#: wazo_ui/plugins/customer/templates/customer/edit.html:32
+#: wazo_ui/plugins/identity/form.py:61
+#: wazo_ui/plugins/identity/templates/identity/list.html:13
+#: wazo_ui/plugins/location/form.py:52
+#: wazo_ui/plugins/location/templates/location/edit.html:32
+#: wazo_ui/plugins/reseller/form.py:30
+#: wazo_ui/plugins/reseller/templates/reseller/edit.html:30
+msgid "Firstname"
+msgstr ""
+
+#: wazo_ui/plugins/customer/form.py:47
+#: wazo_ui/plugins/customer/templates/customer/edit.html:33
+#: wazo_ui/plugins/identity/form.py:62
+#: wazo_ui/plugins/identity/templates/identity/list.html:14
+#: wazo_ui/plugins/location/form.py:53
+#: wazo_ui/plugins/location/templates/location/edit.html:33
+#: wazo_ui/plugins/reseller/form.py:31
+#: wazo_ui/plugins/reseller/templates/reseller/edit.html:31
+msgid "Lastname"
+msgstr ""
+
+#: wazo_ui/plugins/customer/form.py:48
+#: wazo_ui/plugins/customer/templates/customer/edit.html:34
+#: wazo_ui/plugins/destination/form.py:57
+#: wazo_ui/plugins/identity/form.py:63
+#: wazo_ui/plugins/identity/templates/identity/edit.html:38
+#: wazo_ui/plugins/identity/templates/identity/list.html:15
+#: wazo_ui/plugins/location/form.py:54
+#: wazo_ui/plugins/location/templates/location/edit.html:34
+#: wazo_ui/plugins/reseller/form.py:32
+#: wazo_ui/plugins/reseller/templates/reseller/edit.html:32
+msgid "Email"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/edit.html:4
+#: wazo_ui/plugins/customer/templates/customer/list.html:4
+#: wazo_ui/plugins/customer/templates/customer/list.html:9
+#: wazo_ui/plugins/customer/view.py:27
+#: wazo_ui/plugins/index/templates/dashboard.html:66
+msgid "Customers"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/credential.html:4
+#: wazo_ui/plugins/identity/templates/identity/edit.html:4
+#: wazo_ui/plugins/identity/templates/identity/list.html:4
+#: wazo_ui/plugins/identity/templates/identity/list.html:9
+#: wazo_ui/plugins/identity/view.py:28
+#: wazo_ui/plugins/location/templates/location/credential.html:4
+#: wazo_ui/plugins/reseller/templates/reseller/credential.html:4
+msgid "Identities"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/credential.html:4
+#: wazo_ui/plugins/location/templates/location/add.html:4
+#: wazo_ui/plugins/location/templates/location/credential.html:4
+#: wazo_ui/plugins/reseller/templates/reseller/credential.html:4
+msgid "add"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/credential.html:9
+msgid "Create credential for customer"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/credential.html:12
+#: wazo_ui/plugins/customer/templates/customer/list.html:38
+#: wazo_ui/plugins/identity/templates/identity/list.html:34
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:22
+#: wazo_ui/plugins/identity/templates/policy/list.html:22
+#: wazo_ui/plugins/identity/templates/tenant/list.html:22
+#: wazo_ui/plugins/instance/templates/instance/form/form_aws.html:7
+#: wazo_ui/plugins/instance/templates/instance/form/form_aws.html:8
+#: wazo_ui/plugins/instance/templates/instance/form/form_custom.html:7
+#: wazo_ui/plugins/instance/templates/instance/form/form_custom.html:8
+#: wazo_ui/plugins/instance/templates/instance/form/form_openstack.html:7
+#: wazo_ui/plugins/instance/templates/instance/form/form_openstack.html:8
+#: wazo_ui/plugins/location/templates/location/add.html:11
+#: wazo_ui/plugins/location/templates/location/credential.html:12
+#: wazo_ui/plugins/provider/templates/provider/form/form_aws.html:7
+#: wazo_ui/plugins/provider/templates/provider/form/form_aws.html:8
+#: wazo_ui/plugins/provider/templates/provider/form/form_google.html:7
+#: wazo_ui/plugins/provider/templates/provider/form/form_google.html:8
+#: wazo_ui/plugins/provider/templates/provider/form/form_openstack.html:7
+#: wazo_ui/plugins/provider/templates/provider/form/form_openstack.html:8
+#: wazo_ui/plugins/reseller/templates/reseller/credential.html:12
+#: wazo_ui/plugins/reseller/templates/reseller/list.html:38
+#: wazo_ui/templates/macro.html:230
+msgid "Add"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/edit.html:4
+#: wazo_ui/plugins/identity/templates/identity/edit.html:4
+#: wazo_ui/plugins/identity/templates/identity_group/edit.html:4
+#: wazo_ui/plugins/identity/templates/policy/edit.html:4
+#: wazo_ui/plugins/identity/templates/tenant/edit.html:4
+#: wazo_ui/plugins/location/templates/location/edit.html:4
+#: wazo_ui/plugins/reseller/templates/reseller/edit.html:4
+msgid "edit"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/edit.html:10
+#: wazo_ui/plugins/location/form.py:41
+#: wazo_ui/plugins/location/templates/location/list.html:15
+msgid "Customer"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/edit.html:12
+#: wazo_ui/plugins/identity/templates/identity/edit.html:24
+#: wazo_ui/plugins/identity/templates/identity/edit.html:34
+#: wazo_ui/plugins/identity/templates/identity/edit.html:57
+#: wazo_ui/plugins/identity/templates/identity/edit.html:64
+#: wazo_ui/plugins/identity/templates/identity/edit.html:71
+#: wazo_ui/plugins/identity/templates/identity/edit.html:78
+#: wazo_ui/plugins/identity/templates/identity_group/edit.html:11
+#: wazo_ui/plugins/identity/templates/policy/edit.html:20
+#: wazo_ui/plugins/identity/templates/policy/edit.html:27
+#: wazo_ui/plugins/identity/templates/tenant/edit.html:11
+#: wazo_ui/plugins/location/templates/location/edit.html:11
+#: wazo_ui/plugins/reseller/templates/reseller/edit.html:11
+msgid "Update"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/edit.html:20
+#: wazo_ui/plugins/customer/templates/customer/edit.html:23
+#: wazo_ui/plugins/identity/view.py:27
+#: wazo_ui/plugins/location/templates/location/edit.html:20
+#: wazo_ui/plugins/location/templates/location/edit.html:23
+#: wazo_ui/plugins/reseller/templates/reseller/edit.html:18
+#: wazo_ui/plugins/reseller/templates/reseller/edit.html:21
+msgid "Credentials"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/list.html:4
+#: wazo_ui/plugins/identity/templates/identity/list.html:4
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:4
+#: wazo_ui/plugins/identity/templates/policy/list.html:4
+#: wazo_ui/plugins/identity/templates/tenant/list.html:4
+#: wazo_ui/plugins/instance/templates/instance/list.html:4
+#: wazo_ui/plugins/location/templates/location/list.html:4
+#: wazo_ui/plugins/provider/templates/provider/list.html:4
+#: wazo_ui/plugins/reseller/templates/reseller/list.html:4
+msgid "List"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/list.html:27
+msgid "Create credential for this customer"
+msgstr ""
+
+#: wazo_ui/plugins/customer/templates/customer/list.html:36
+msgid "Add Customer"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:15
+#: wazo_ui/plugins/destination/form.py:20
+msgid "Timeout"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:30
+msgid "Cause"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:30
+msgid "Normal"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:40
+msgid "PIN"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:43
+#: wazo_ui/plugins/destination/form.py:52
+#: wazo_ui/plugins/destination/form.py:62
+msgid "Context"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:68
+#: wazo_ui/plugins/destination/plugin.py:18
+msgid "Application"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:68
+msgid "CallBack DISA"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:69
+msgid "Directory"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:70
+msgid "DISA"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:71
+msgid "Fax To Mail"
+msgstr ""
+
+#: wazo_ui/plugins/destination/form.py:72
+msgid "Voicemail"
+msgstr ""
+
+#: wazo_ui/plugins/destination/plugin.py:19
+msgid "Hangup"
+msgstr ""
+
+#: wazo_ui/plugins/destination/plugin.py:20
+#: wazo_ui/plugins/instance/form.py:24
+msgid "Custom"
+msgstr ""
+
+#: wazo_ui/plugins/destination/plugin.py:21
+msgid "None"
+msgstr ""
+
+#: wazo_ui/plugins/identity/form.py:40
+msgid "Members"
+msgstr ""
+
+#: wazo_ui/plugins/identity/form.py:42
+#: wazo_ui/plugins/identity/templates/identity/edit.html:14
+#: wazo_ui/plugins/identity/templates/identity_group/edit.html:4
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:4
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:9
+#: wazo_ui/plugins/identity/view.py:101
+msgid "Groups"
+msgstr ""
+
+#: wazo_ui/plugins/identity/form.py:44
+#: wazo_ui/plugins/identity/templates/identity/edit.html:15
+#: wazo_ui/plugins/identity/templates/tenant/edit.html:4
+#: wazo_ui/plugins/identity/templates/tenant/list.html:4
+#: wazo_ui/plugins/identity/templates/tenant/list.html:9
+#: wazo_ui/plugins/identity/view.py:148
+msgid "Tenants"
+msgstr ""
+
+#: wazo_ui/plugins/identity/form.py:49
+#: wazo_ui/plugins/identity/templates/identity/edit.html:16
+#: wazo_ui/plugins/identity/templates/policy/edit.html:4
+#: wazo_ui/plugins/identity/templates/policy/list.html:4
+#: wazo_ui/plugins/identity/templates/policy/list.html:9
+#: wazo_ui/plugins/identity/view.py:195
+msgid "Policies"
+msgstr ""
+
+#: wazo_ui/plugins/identity/form.py:54
+#: wazo_ui/plugins/identity/templates/identity/edit.html:39
+msgid "Main"
+msgstr ""
+
+#: wazo_ui/plugins/identity/form.py:55
+msgid "Address"
+msgstr ""
+
+#: wazo_ui/plugins/identity/form.py:87
+msgid "Description"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/identity/edit.html:11
+msgid "Identity"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/identity/edit.html:12
+msgid "User"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/identity/edit.html:13
+msgid "Emails"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/identity/edit.html:17
+msgid "Menu"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/identity/list.html:32
+msgid "Add Identity"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/identity_group/edit.html:9
+msgid "Group"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:20
+msgid "Add Group"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/policy/edit.html:11
+#: wazo_ui/plugins/identity/templates/policy/edit.html:12
+msgid "Policy"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/policy/edit.html:13
+msgid "ACL"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/policy/edit.html:31
+msgid "acl"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/policy/list.html:20
+msgid "Add Policy"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/tenant/edit.html:9
+msgid "Tenant"
+msgstr ""
+
+#: wazo_ui/plugins/identity/templates/tenant/list.html:20
+msgid "Add Tenant"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/dashboard.html:4
+#: wazo_ui/plugins/index/view.py:25
+msgid "Dashboard"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/dashboard.html:15
+msgid "Current Wazo"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/dashboard.html:19
+#: wazo_ui/plugins/instance/templates/instance/list.html:15
+msgid "UUID"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/dashboard.html:20
+msgid "Version"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/dashboard.html:21
+msgid "Is configured"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/dashboard.html:23
+msgid "Choose a Wazo"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/dashboard.html:33
+#: wazo_ui/plugins/instance/form.py:34
+#: wazo_ui/plugins/provider/templates/provider/form/form_aws.html:16
+#: wazo_ui/plugins/provider/templates/provider/form/form_google.html:16
+#: wazo_ui/plugins/provider/templates/provider/form/form_openstack.html:16
+#: wazo_ui/plugins/provider/templates/provider/list.html:4
+#: wazo_ui/plugins/provider/templates/provider/list.html:9
+#: wazo_ui/plugins/provider/view.py:34
+msgid "Providers"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/dashboard.html:44
+#: wazo_ui/plugins/instance/templates/instance/form/form_aws.html:16
+#: wazo_ui/plugins/instance/templates/instance/form/form_custom.html:16
+#: wazo_ui/plugins/instance/templates/instance/form/form_openstack.html:16
+#: wazo_ui/plugins/instance/templates/instance/list.html:4
+#: wazo_ui/plugins/instance/templates/instance/list.html:9
+#: wazo_ui/plugins/instance/view.py:39
+msgid "Instances"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/dashboard.html:55
+#: wazo_ui/plugins/reseller/templates/reseller/edit.html:4
+#: wazo_ui/plugins/reseller/templates/reseller/list.html:4
+#: wazo_ui/plugins/reseller/templates/reseller/list.html:9
+#: wazo_ui/plugins/reseller/view.py:27
+msgid "Resellers"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/dashboard.html:87
+msgid "Total Users"
+msgstr ""
+
+#: wazo_ui/plugins/index/templates/index.html:4
+msgid "Welcome"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:21
+#: wazo_ui/plugins/provider/templates/provider/list.html:24
+msgid "AWS"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:22
+#: wazo_ui/plugins/provider/templates/provider/list.html:26
+msgid "Google"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:23
+#: wazo_ui/plugins/provider/templates/provider/list.html:28
+msgid "Openstack"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:41
+#: wazo_ui/plugins/instance/form.py:57
+#: wazo_ui/plugins/provider/form.py:66
+#: wazo_ui/plugins/provider/form.py:82
+msgid "Region"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:42
+#: wazo_ui/plugins/provider/form.py:67
+msgid "Keypair Name"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:43
+#: wazo_ui/plugins/provider/form.py:68
+msgid "Size ID"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:44
+#: wazo_ui/plugins/provider/form.py:69
+msgid "AMI ID"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:45
+#: wazo_ui/plugins/provider/form.py:70
+msgid "Subnet ID"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:46
+#: wazo_ui/plugins/instance/form.py:53
+#: wazo_ui/plugins/instance/form.py:63
+#: wazo_ui/plugins/provider/form.py:71
+#: wazo_ui/plugins/provider/form.py:78
+#: wazo_ui/plugins/provider/form.py:87
+msgid "Userdata"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:50
+#: wazo_ui/plugins/provider/form.py:75
+msgid "Image name"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:51
+#: wazo_ui/plugins/provider/form.py:76
+msgid "Size name"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:52
+#: wazo_ui/plugins/provider/form.py:77
+msgid "Location name"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:58
+msgid "Availability zone"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:59
+#: wazo_ui/plugins/provider/form.py:83
+msgid "Image ID"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:60
+#: wazo_ui/plugins/provider/form.py:84
+msgid "Network ID"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:61
+#: wazo_ui/plugins/provider/form.py:85
+msgid "Flavor name"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:62
+#: wazo_ui/plugins/provider/form.py:86
+msgid "Keypair name"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:71
+#: wazo_ui/plugins/instance/form.py:87
+#: wazo_ui/plugins/provider/form.py:95
+#: wazo_ui/plugins/provider/form.py:111
+msgid "Interface IP"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:72
+#: wazo_ui/plugins/instance/form.py:88
+#: wazo_ui/plugins/provider/form.py:96
+#: wazo_ui/plugins/provider/form.py:112
+msgid "Remote Host"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:73
+#: wazo_ui/plugins/instance/form.py:89
+#: wazo_ui/plugins/provider/form.py:97
+#: wazo_ui/plugins/provider/form.py:113
+msgid "HTTPS Port"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:74
+#: wazo_ui/plugins/instance/form.py:90
+#: wazo_ui/plugins/instance/templates/instance/list.html:18
+#: wazo_ui/plugins/provider/form.py:98
+#: wazo_ui/plugins/provider/form.py:114
+msgid "Installed"
+msgstr ""
+
+#: wazo_ui/plugins/instance/form.py:75
+#: wazo_ui/plugins/instance/form.py:91
+#: wazo_ui/plugins/provider/form.py:99
+#: wazo_ui/plugins/provider/form.py:115
+msgid "Node ID"
+msgstr ""
+
+#: wazo_ui/plugins/instance/view.py:37
+msgid "Instance"
+msgstr ""
+
+#: wazo_ui/plugins/instance/view.py:180
+#, python-format
+msgid "Wizard has been passed: %(response)s"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/list.html:17
+msgid "Tenant UUID"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/list.html:19
+msgid "Status"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/list.html:32
+#: wazo_ui/plugins/location/templates/location/list.html:35
+msgid "Disconnect from Wazo"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/list.html:38
+#: wazo_ui/plugins/location/templates/location/list.html:41
+msgid "Connect to Wazo"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/list.html:47
+msgid "Execute Wazo wizard"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/list.html:53
+msgid "Create location for this instance"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/list.html:62
+#: wazo_ui/plugins/provider/templates/provider/list.html:22
+msgid "Choose your provider"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/list.html:64
+msgid "Add a instance to this provider"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/list.html:71
+msgid "Or"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/list.html:75
+msgid "Add a custom server"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/form/form_aws.html:11
+#: wazo_ui/plugins/instance/templates/instance/form/form_aws.html:12
+#: wazo_ui/plugins/instance/templates/instance/form/form_custom.html:11
+#: wazo_ui/plugins/instance/templates/instance/form/form_custom.html:12
+#: wazo_ui/plugins/instance/templates/instance/form/form_openstack.html:11
+#: wazo_ui/plugins/instance/templates/instance/form/form_openstack.html:12
+#: wazo_ui/plugins/provider/templates/provider/form/form_aws.html:11
+#: wazo_ui/plugins/provider/templates/provider/form/form_aws.html:12
+#: wazo_ui/plugins/provider/templates/provider/form/form_google.html:11
+#: wazo_ui/plugins/provider/templates/provider/form/form_google.html:12
+#: wazo_ui/plugins/provider/templates/provider/form/form_openstack.html:11
+#: wazo_ui/plugins/provider/templates/provider/form/form_openstack.html:12
+#: wazo_ui/templates/macro.html:230
+msgid "Edit"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/form/form_aws.html:22
+msgid "AWS Instance"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/form/form_custom.html:22
+msgid "Custom Instance"
+msgstr ""
+
+#: wazo_ui/plugins/instance/templates/instance/form/form_openstack.html:22
+msgid "Openstack Instance"
+msgstr ""
+
+#: wazo_ui/plugins/location/form.py:44
+msgid "Wazo tenant"
+msgstr ""
+
+#: wazo_ui/plugins/location/templates/location/add.html:9
+msgid "Create location for instance"
+msgstr ""
+
+#: wazo_ui/plugins/location/templates/location/credential.html:9
+msgid "Create credential for location"
+msgstr ""
+
+#: wazo_ui/plugins/location/templates/location/edit.html:9
+msgid "Location"
+msgstr ""
+
+#: wazo_ui/plugins/location/templates/location/list.html:48
+msgid "Create credential for this location"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:21
+msgid "Access ID"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:22
+msgid "Secret KEY"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:26
+msgid "Type"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:27
+msgid "Project ID"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:28
+msgid "Private Key ID"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:29
+msgid "Private Key"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:30
+msgid "Client Email"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:31
+msgid "Client ID"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:32
+msgid "Auth URI"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:33
+msgid "Token URI"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:35
+msgid "Auth provider x506 certificate URL"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:39
+msgid "Client x506 certificate URL"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:47
+msgid "Tenant name"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:48
+msgid "Auth service URL"
+msgstr ""
+
+#: wazo_ui/plugins/provider/form.py:50
+msgid "API version"
+msgstr ""
+
+#: wazo_ui/plugins/provider/view.py:31
+msgid "Provider"
+msgstr ""
+
+#: wazo_ui/plugins/provider/templates/provider/list.html:13
+msgid "Platform"
+msgstr ""
+
+#: wazo_ui/plugins/provider/templates/provider/form/form_aws.html:22
+msgid "AWS Provider"
+msgstr ""
+
+#: wazo_ui/plugins/provider/templates/provider/form/form_google.html:22
+msgid "Google Provider"
+msgstr ""
+
+#: wazo_ui/plugins/provider/templates/provider/form/form_openstack.html:22
+msgid "Openstack Provider"
+msgstr ""
+
+#: wazo_ui/plugins/reseller/templates/reseller/credential.html:9
+msgid "Create credential for reseller"
+msgstr ""
+
+#: wazo_ui/plugins/reseller/templates/reseller/list.html:13
+msgid "Parent"
+msgstr ""
+
+#: wazo_ui/plugins/reseller/templates/reseller/list.html:22
+msgid "Master Reseller"
+msgstr ""
+
+#: wazo_ui/plugins/reseller/templates/reseller/list.html:27
+msgid "Create credential for this reseller"
+msgstr ""
+
+#: wazo_ui/plugins/reseller/templates/reseller/list.html:36
+msgid "Add Reseller"
+msgstr ""
+
+#: wazo_ui/templates/footer.html:3
+msgid "Unified communications"
+msgstr ""
+
+#: wazo_ui/templates/head.html:2
+msgid "Nestbox administration"
+msgstr ""
+
+#: wazo_ui/templates/macro.html:230
+msgid "Delete"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:3
+msgid "No data available in table"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:4
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:5
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:6
+msgid "(filtered from _MAX_ total entries)"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:9
+msgid "Show _MENU_ entries"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:10
+msgid "Loading..."
+msgstr ""
+
+#: wazo_ui/templates/translations.html:11
+msgid "Processing..."
+msgstr ""
+
+#: wazo_ui/templates/translations.html:12
+msgid "Search:"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:13
+msgid "No matching records found"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:15
+msgid "Select all"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:16
+msgid "Deselect all"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:17
+msgid "Copy"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:18
+msgid "Copy to clipboard"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:20
+#, python-format
+msgid "Copied %%d rows to clipboard"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:21
+msgid "Copied 1 row to clipboard"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:23
+msgid "CSV"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:24
+msgid "Excel"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:25
+msgid "PDF"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:26
+msgid "Print"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:30
+#, python-format
+msgid "%%d rows selected"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:32
+#, python-format
+msgid "%%d row selected"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:36
+msgid "First"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:37
+msgid "Last"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:38
+msgid "Next"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:39
+msgid "Previous"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:42
+msgid ": activate to sort column ascending"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:43
+msgid ": activate to sort column descending"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:49
+msgid "Does not match"
+msgstr ""
+
+#: wazo_ui/templates/translations.html:50
+msgid "Not long enough"
+msgstr ""
+

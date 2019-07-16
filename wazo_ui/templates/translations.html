@@ -1,0 +1,52 @@
+{% macro datatable_language() %}
+  {
+    "emptyTable":     "{{ _("No data available in table") }}",
+    "info":           "{{ _("Showing _START_ to _END_ of _TOTAL_ entries") }}",
+    "infoEmpty":      "{{ _("Showing 0 to 0 of 0 entries") }}",
+    "infoFiltered":   "{{ _("(filtered from _MAX_ total entries)") }}",
+    "infoPostFix":    "",
+    "infoThousands":  ",",
+    "lengthMenu":     "{{ _("Show _MENU_ entries") }}",
+    "loadingRecords": "{{ _("Loading...") }}",
+    "processing":     "{{ _("Processing...") }}",
+    "search":         "{{ _("Search:") }}",
+    "zeroRecords":    "{{ _("No matching records found") }}",
+    "buttons": {
+      "selectAll":  "{{ _("Select all") }}",
+      "selectNone": "{{ _("Deselect all") }}",
+      "copy":       "{{ _("Copy") }}",
+      "copyTitle":  "{{ _("Copy to clipboard") }}",
+      "copySuccess": {
+        "_": "{{ _("Copied %%d rows to clipboard") }}",
+        "1": "{{ _("Copied 1 row to clipboard") }}"
+      },
+      "csv":        "{{ _("CSV") }}",
+      "excel":      "{{ _("Excel") }}",
+      "pdf":        "{{ _("PDF") }}",
+      "print":      "{{ _("Print") }}"
+    },
+    "select": {
+      "rows": {
+        "_":              "{{ _("%%d rows selected") }}",
+        "0":              "",
+        "1":              "{{ _("%%d row selected") }}"
+      }
+    },
+    "paginate": {
+      "first":    "{{ _("First") }}",
+      "last":     "{{ _("Last") }}",
+      "next":     "{{ _("Next") }}",
+      "previous": "{{ _("Previous") }}"
+    },
+    "aria": {
+      "sortAscending":  "{{ _(": activate to sort column ascending") }}",
+      "sortDescending": "{{ _(": activate to sort column descending") }}"
+    }
+  }
+{% endmacro %}
+{% macro bootstrap_validator_language() %}
+  {
+    "match": "{{ _("Does not match") }}",
+    "minlength": "{{ _("Not long enough") }}"
+  }
+{% endmacro %}
