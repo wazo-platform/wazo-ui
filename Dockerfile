@@ -1,5 +1,6 @@
-FROM python:3.5.3
-MAINTAINER Wazo Maintainers <dev@wazo.community>
+FROM python:3.5-stretch
+
+LABEL maintainer="Wazo Maintainers <dev@wazo.community>"
 
 ADD . /usr/src/wazo-ui
 WORKDIR /usr/src/wazo-ui
