@@ -1,0 +1,6 @@
+- project:
+    templates:
+      - wazo-tox-integration
+      - wazo-tox-py35
+      - wazo-tox-linters
+      - debian-packaging-template

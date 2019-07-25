@@ -2,7 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import abc
-import urllib.request, urllib.parse, urllib.error
+import urllib.error
+import urllib.parse
+import urllib.request
 
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.alert import Alert
@@ -265,5 +267,5 @@ class ListRow(object):
 
     def extract(self, column):
         index = self.headers.index(column)
-        box = self.row.find_element_by_css_selector('td:nth-child({})'.format(index+1))
+        box = self.row.find_element_by_css_selector('td:nth-child({})'.format(index + 1))
         return box.text

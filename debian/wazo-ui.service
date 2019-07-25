@@ -1,5 +1,5 @@
 [Unit]
-Description=wazo-ui-light
+Description=wazo-ui
 After=network.target
 Before=monit.service
 
