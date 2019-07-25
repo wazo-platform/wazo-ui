@@ -11,8 +11,7 @@ services:
       - "9296"
     volumes:
       - "../..:/usr/src/wazo-ui"
-      - "./etc/wazo-ui/conf.d/auth.yml:/etc/wazo-ui/conf.d/auth.yml"
-      - "./etc/wazo-ui/conf.d/https.yml:/etc/wazo-ui/conf.d/https.yml"
+      - "./etc/wazo-ui/conf.d/default.yml:/etc/wazo-ui/conf.d/50-default.yml"
       - "./ssl:/usr/local/share/ssl"
       # - "${LOCAL_GIT_REPOS}/xivo-lib-python/xivo:/usr/local/lib/python3.5/site-packages/xivo"
 

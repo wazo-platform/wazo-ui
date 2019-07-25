@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from hamcrest import assert_that
@@ -19,7 +19,7 @@ class TestHTTPSMissingCertificate(SSLIntegrationTest):
         until.true(_is_stopped, tries=10, message='wazo-ui did not stop while missing SSL certificate')
 
         log = self.service_logs()
-        assert_that(log, contains_string("No such file or directory: '/etc/wazo-ui/https/public-certificate.pem'"))
+        assert_that(log, contains_string("No such file or directory: '/usr/share/xivo-certs/unavailable.crt'"))
 
 
 class TestHTTPSMissingPrivateKey(SSLIntegrationTest):
@@ -33,4 +33,4 @@ class TestHTTPSMissingPrivateKey(SSLIntegrationTest):
         until.true(_is_stopped, tries=10, message='wazo-ui did not stop while missing SSL private key')
 
         log = self.service_logs()
-        assert_that(log, contains_string("No such file or directory: '/etc/wazo-ui/https/private-key.pem'"))
+        assert_that(log, contains_string("No such file or directory: '/usr/share/xivo-certs/unavailable.key'"))

@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import argparse
@@ -21,18 +21,18 @@ _DEFAULT_CONFIG = {
     'https': {
         'listen': '0.0.0.0',
         'port': 9296,
-        'certificate': '/etc/wazo-ui/https/public-certificate.pem',
-        'private_key': '/etc/wazo-ui/https/private-key.pem',
+        'certificate': '/usr/share/xivo-certs/server.crt',
+        'private_key': '/usr/share/xivo-certs/server.key',
     },
     'auth': {
         'host': '127.0.0.1',
         'port': 443,
-        'verify_certificate': '/etc/wazo-ui/https/public-certificate.pem'
+        'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
     'confd': {
         'host': 'localhost',
         'port': 9486,
-        'verify_certificate': '/etc/wazo-ui/https/public-certificate.pem'
+        'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
     'enabled_plugins': {
         'authentication': True,
