@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from distutils.cmd import Command as _Command
@@ -97,13 +97,6 @@ setup(
         'wazo_ui.plugins': [
             'authentication = wazo_ui.plugins.authentication.plugin:Plugin',
             'index = wazo_ui.plugins.index.plugin:Plugin',
-            'instance = wazo_ui.plugins.instance.plugin:Plugin',
-            'provider = wazo_ui.plugins.provider.plugin:Plugin',
-            'customer = wazo_ui.plugins.customer.plugin:Plugin',
-            'reseller = wazo_ui.plugins.reseller.plugin:Plugin',
-            'identity = wazo_ui.plugins.identity.plugin:Plugin',
-            'location = wazo_ui.plugins.location.plugin:Plugin',
-            'identity_swarm = wazo_ui.plugins.identity_swarm.plugin:Plugin',
         ],
         'wazo_ui.core_plugins': [
         ]

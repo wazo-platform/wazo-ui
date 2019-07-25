@@ -1,4 +1,4 @@
-# Nestbox UI Light
+# Wazo UI
 
 ## Translations
 

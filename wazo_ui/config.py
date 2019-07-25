@@ -18,11 +18,6 @@ _DEFAULT_CONFIG = {
     'pid_filename': '/var/run/wazo-ui/wazo-ui.pid',
     'session_file_dir': '/var/lib/wazo-ui/sessions',
     'session_lifetime': 3600,
-    'policies': {
-        'reseller': None,
-        'customer': None,
-        'location': None
-    },
     'https': {
         'listen': '0.0.0.0',
         'port': 9296,

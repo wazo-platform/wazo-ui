@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import session, url_for
@@ -30,9 +30,6 @@ class UserUI(UserMixin):
             return session['working_tenant_uuid']
 
         return session['user'].get('tenant_uuid')
-
-    def get_rcl(self):
-        return session.get('rcl', None)
 
     def get_user_index_url(self):
         return url_for('wazo_engine.user.UserView:index')
