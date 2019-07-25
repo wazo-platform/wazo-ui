@@ -38,48 +38,7 @@ _DEFAULT_CONFIG = {
         'authentication': True,
         'index': True
     },
-    'core_plugins': {
-        'engine': {
-            'enabled_plugins': {
-                'application': True,
-                'agent': True,
-                'asterisk_cli': True,
-                'call_filter': True,
-                'call_permission': True,
-                'call_pickup': True,
-                'cdr': True,
-                'conference': True,
-                'context': True,
-                'device': True,
-                'dhcp': True,
-                'extension': True,
-                'funckey': True,
-                'general_settings': True,
-                'group': True,
-                'ha': True,
-                'identity': True,
-                'incall': True,
-                'ivr': True,
-                'line': True,
-                'moh': True,
-                'outcall': True,
-                'paging': True,
-                'parking_lot': True,
-                'plugin': True,
-                'provisioning': True,
-                'queue': True,
-                'schedule': True,
-                'skill': True,
-                'skillrule': True,
-                'sound': True,
-                'switchboard': True,
-                'trunk': True,
-                'user': True,
-                'voicemail': True,
-                'webhook': True
-            }
-        }
-    }
+    'core_plugins': {}
 }
 
 
