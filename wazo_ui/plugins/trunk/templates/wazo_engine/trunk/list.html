@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Trunk'), 'link': url_for('.TrunkView:index'), 'icon': 'server' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Trunks'), 'server') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.TrunkView:get', id=''), delete=url_for('.TrunkView:delete', id='')) %}
+          <th width="75">{{ _('Protocol') }}</th>
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Relations') }}</th>
+        {% endcall %}
+        {% call(trunk) build_list_table_rows(resource_list['items']) %}
+          <td>
+            {% if trunk.endpoint_sip %}
+              SIP
+            {% elif trunk.endpoint_iax %}
+              IAX
+            {% elif trunk.endpoint_custom %}
+              CUSTOM
+            {% else %}
+              -
+            {% endif %}
+          </td>
+          <td>
+            {% if trunk.endpoint_sip %}
+              {{ trunk.endpoint_sip.username }}
+            {% elif trunk.endpoint_iax %}
+              {{ trunk.endpoint_iax.name }}
+            {% elif trunk.endpoint_custom %}
+              {{ trunk.endpoint_custom.interface }}
+            {% endif %}
+          </td>
+          <td>
+            {% for outcall in trunk.outcalls %}
+              <strong>{{ _('outcall') }}:</strong> <a href="{{ url_for('wazo_engine.outcall.OutcallView:get', id=outcall.id) }}">{{ outcall.name }}</a>
+            {% endfor %}
+            {{ '-' if not trunk.outcalls }}
+          </td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+
+    {% call build_hidden_add_containers(_('Choose your protocol')) %}
+      <button type="button" class="btn btn-block btn-default" onclick="location.href='{{ url_for('.TrunkView:new', protocol='sip') }}'">{{ _('SIP') }}</button>
+      <button type="button" class="btn btn-block btn-default" onclick="location.href='{{ url_for('.TrunkView:new', protocol='iax') }}'">{{ _('IAX') }}</button>
+      <button type="button" class="btn btn-block btn-default" onclick="location.href='{{ url_for('.TrunkView:new', protocol='custom') }}'">{{ _('CUSTOM') }}</button>
+    {% endcall %}
+
+  </section>
+{% endblock %}
+
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/trunk.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.CallFilterView:get', id=resource.id), 'icon': 'filter' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header('', resource.name, 'filter') }}
+        {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {{ add_tab_navigation_item('no_answer', _('No Answer')) }}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.CallFilterView:put', id=resource.id)) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.name) }}
+              {{ render_field(form.source) }}
+              {{ render_field(form.strategy) }}
+              {{ render_field(form.caller_id_mode) }}
+              {{ render_field(form.caller_id_name) }}
+              {{ render_field(form.recipients_user.uuid, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+              {{ render_field(form.recipients_user.timeout) }}
+              {{ render_field(form.surrogates_user.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+              {{ render_field(form.surrogates_timeout) }}
+              {{ render_field(form.description) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('no_answer') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.fallbacks, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+        {% endcall %}
+
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/callfilter.js') }}"></script>
+{% endblock %}

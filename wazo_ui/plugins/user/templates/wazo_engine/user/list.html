@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([{ 'name': _('Users'), 'icon': 'user', 'link': url_for('.UserView:index') }]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('User'), 'user') %}
+      {% call build_list_table(list=url_for('.UserView:list_json')) %}
+        {% call build_list_table_headers(get=url_for('.UserView:get', id=''), delete=url_for('.UserView:delete', id=''), import=url_for('.UserView:import_csv'), export=url_for('.UserView:export_csv'), update=url_for('.UserView:update_csv')) %}
+          <th>{{ _('Firstname') }}</th>
+          <th>{{ _('Lastname') }}</th>
+          <th>{{ _('Email') }}</th>
+          <th>{{ _('Extension') }}</th>
+          <th>{{ _('Code') }}</th>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add User')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.subscription_type) }}
+          {{ render_field(form.firstname) }}
+          {{ render_field(form.lastname) }}
+          {{ render_field(form.email) }}
+          {{ render_field(form.password, type='password', data_toggle='password', autocomplete="off") }}
+          {% do form.lines.append_entry() %}
+          {{ render_field(form.lines[0]['id']) }}
+          {{ render_field(form.lines[0].endpoint_sip_id) }}
+          {{ render_field(form.lines[0].endpoint_sccp_id) }}
+          {{ render_field(form.lines[0].endpoint_custom_id) }}
+          {{ render_field(form.lines[0].extensions[0]['id']) }}
+          {{ render_field(form.lines[0].context,
+                          label='Exten',
+                          divclass='col-sm-4',
+                          inputclass='ui-helper-clearfix',
+                          placeholder=_('Choose Context'),
+                          class_='line-context',
+                          data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
+          {{ render_field(form.lines[0].extensions[0].exten,
+                          with_label=False,
+                          divclass='col-sm-4',
+                          class_='line-extension',
+                          data_allow_custom_values=True,
+                          data_listing_href=url_for(listing_urls['available_extension_user'])) }}
+          {{ render_field(form.lines[0].protocol) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Import CSV'), 'users-import-csv') %}
+      {% call build_form(action=url_for('.UserView:import_csv'), enctype="multipart/form-data") %}
+        {% call add_default_fields(form=import_csv_form, submit_value=_('Import')) %}
+          {{ render_field(import_csv_form.file) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/user.js') }}"></script>
+{% endblock %}

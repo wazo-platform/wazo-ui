@@ -5,3 +5,4 @@
 .eggs
 .tox
 *~
+__pycache__

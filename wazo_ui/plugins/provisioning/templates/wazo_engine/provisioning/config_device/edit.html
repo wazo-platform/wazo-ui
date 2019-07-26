@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.label, 'link': url_for('.ConfigDeviceView:get', id=resource.id), 'icon': 'file-zip-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Provisioning / Config device'), '', 'file-zip-o') }}
+        {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {{ add_tab_navigation_item('advanced', _('Advanced')) }}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.ConfigDeviceView:put', id=resource.id)) %}
+        {% call build_tabs_content() %}
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.id) }}
+              {{ render_field(form.label) }}
+              {{ render_field(form.raw_config.form.locale) }}
+              {{ render_field(form.raw_config.form.timezone) }}
+              {{ render_field(form.raw_config.form.protocol) }}
+              {{ render_field(form.raw_config.form.config_encryption_enabled) }}
+              {{ render_field(form.raw_config.form.ntp_enabled) }}
+              {{ render_field(form.raw_config.form.ntp_ip) }}
+              {{ render_field(form.raw_config.form.sip_dtmf_mode) }}
+              {{ render_field(form.raw_config.form.user_username) }}
+              {{ render_field(form.raw_config.form.user_password) }}
+              {{ render_field(form.raw_config.form.admin_username) }}
+              {{ render_field(form.raw_config.form.admin_password) }}
+              {{ render_field(form.raw_config.form.sip_subscribe_mwi) }}
+            {% endcall %}
+          {% endcall %}
+          {% call build_tab_content_item('advanced') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.raw_config.form.vlan_enabled) }}
+              {{ render_field(form.raw_config.form.vlan_id) }}
+              {{ render_field(form.raw_config.form.vlan_priority) }}
+              {{ render_field(form.raw_config.form.vlan_pc_port_id) }}
+            {% endcall %}
+          {% endcall %}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

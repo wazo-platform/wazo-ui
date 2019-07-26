@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': _('Boss Secretaries Filters'), 'link': url_for('.CallFilterView:index'), 'icon': 'filter' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Boss Secretaries Filters'), 'filter') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.CallFilterView:get', id=''), delete=url_for('.CallFilterView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Ring Strategy') }}</th>
+          <th>{{ _('Boss') }}</th>
+          <th>{{ _('Secretaries') }}</th>
+        {% endcall %}
+        {% call(callfilter) build_list_table_rows(resource_list['items']) %}
+          <td>{{ callfilter.name }}</td>
+          <td>{{ bs_strategy_map[callfilter.strategy] }}</td>
+          {% if callfilter.recipients.users %}
+            <td>{{ callfilter.recipients.users[0]['firstname'] }} {{ callfilter.recipients.users[0]['lastname'] }}</td>
+          {% else %}
+            <td></td>
+          {% endif %}
+          <td>
+            {% for surrogate in callfilter.surrogates.users %}
+              ({{ surrogate.firstname }} {{ surrogate.lastname }})
+            {% endfor %}
+          </td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add BS Filter')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.source) }}
+          {{ render_field(form.strategy) }}
+          {{ render_field(form.caller_id_mode) }}
+          {{ render_field(form.caller_id_name) }}
+          {{ render_field(form.recipients_user.uuid, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.recipients_user.timeout) }}
+          {{ render_field(form.surrogates_user.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.surrogates_timeout) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/callfilter.js') }}"></script>
+{% endblock %}

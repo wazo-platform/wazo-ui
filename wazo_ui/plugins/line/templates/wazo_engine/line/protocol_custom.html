@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumb(_('Lines'), '', 'exchange', [_('List')]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+
+{% call build_form_box(_('Line'), '', 'exchange') %}
+  {% call build_form(action=url_for('.LineView:post')) %}
+     {% call add_default_fields(form=form, submit_value=_('Add')) %}
+      {{ render_field(form.endpoint_custom['interface']) }}
+      {{ render_field(form.endpoint_custom['interface_suffix']) }}
+      {{ render_field(form.context,
+                      data_allow_clear=True,
+                      class_='line-context',
+                      placeholder='Choose Context',
+                      data_listing_href=url_for(listing_urls['context'])) }}
+    {% endcall %}
+  {% endcall %}
+{% endcall %}
+
+  {% endcall %}
+{% endblock %}
+
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/line.js') }}"></script>
+{% endblock %}

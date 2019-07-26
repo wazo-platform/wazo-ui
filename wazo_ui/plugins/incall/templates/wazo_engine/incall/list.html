@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Incall'), 'link': url_for('.IncallView:index'), 'icon': 'long-arrow-right' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Incalls'), 'long-arrow-right') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.IncallView:get', id=''), delete=url_for('.IncallView:delete', id='')) %}
+          <th>{{ _('Did') }}</th>
+          <th>{{ _('Destination') }}</th>
+          <th>{{ _('Identity') }}</th>
+        {% endcall %}
+        {% call(incall) build_list_table_rows(resource_list['items']) %}
+          <td>
+            {% for extension in incall.extensions %}
+              {{ extension.exten }}
+            {% endfor %}
+          </td>
+          <td>{{ incall.destination.type }}</td>
+          <td>
+            {% if incall.destination.type == 'user' %}
+              {{ incall.destination.user_firstname }} {{ incall.destination.user_lastname }}
+            {% elif incall.destination.type == 'ivr' %}
+              {{ incall.destination.ivr_name }}
+            {% elif incall.destination.type == 'voicemail' %}
+              {{ incall.destination.voicemail_name }}
+            {% elif incall.destination.type == 'custom' %}
+              {{ incall.destination.command }}
+            {% elif incall.destination.type == 'group' %}
+              {{ incall.destination.group_name }}
+            {% elif incall.destination.type == 'conference' %}
+              {{ incall.destination.conference_name }}
+            {% elif incall.destination.type == 'switchboard' %}
+              {{ incall.destination.switchboard_name }}
+            {% elif incall.destination.type == 'queue' %}
+              {{ incall.destination.queue_label }}
+            {% else %}
+              -
+            {% endif %}
+          </td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Incall')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.extensions[0].context,
+                          label='Extension',
+                          inputclass='ui-helper-clearfix',
+                          divclass='col-sm-4',
+                          class_='incall-context',
+                          data_listing_href=url_for(listing_urls['context_by_type'], type_='incall')) }}
+          {{ render_field(form.extensions[0].exten,
+                          with_label=False,
+                          data_allow_custom_values=True,
+                          divclass='col-sm-4 clear',
+                          class_='incall-exten',
+                          data_listing_href=url_for(listing_urls['available_extension_incall'])) }}
+          {{ render_field(form.destination, with_label=False) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/incall.js') }}"></script>
+{% endblock %}

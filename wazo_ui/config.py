@@ -13,7 +13,6 @@ _DEFAULT_CONFIG = {
     'debug': False,
     'foreground': False,
     'log_level': 'info',
-    'user': 'wazo-ui',
     'log_filename': '/var/log/wazo-ui.log',
     'pid_filename': '/var/run/wazo-ui/wazo-ui.pid',
     'session_file_dir': '/var/lib/wazo-ui/sessions',

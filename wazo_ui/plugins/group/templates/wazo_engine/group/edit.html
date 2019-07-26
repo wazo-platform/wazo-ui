@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.GroupView:get', id=resource.id), 'icon': 'users' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+        {% call build_tabs_navigation() %}
+          {{ add_tab_navigation_header(_('Group'), resource.name, 'users') }}
+          {{ add_tab_navigation_item('general', _('General'), active=True) }}
+          {{ add_tab_navigation_item('members', _('Members')) }}
+          {{ add_tab_navigation_item('fallbacks', _('Fallbacks')) }}
+          {{ add_tab_navigation_item('schedule', _('Schedule')) }}
+          {{ add_tab_navigation_item('callpermissions', _('Call Permissions')) }}
+        {% endcall %}
+
+      {% call build_form(action=url_for('.GroupView:put', id=resource.id)) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.name) }}
+              {{ render_field(form.extensions[0].context,
+                              label='Exten',
+                              inputclass='ui-helper-clearfix',
+                              divclass='col-sm-4',
+                              class_='group-context',
+                              placeholder='Choose Context',
+                              data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
+              {{ render_field(form.extensions[0].exten,
+                              data_allow_custom_values=True,
+                              data_allow_clear=True,
+                              divclass='col-sm-2',
+                              with_label=False,
+                              class_='group-exten',
+                              data_listing_href=url_for(listing_urls['available_extension_group'])) }}
+              {{ render_field(form.caller_id_mode) }}
+              {{ render_field(form.caller_id_name) }}
+              {{ render_field(form.enabled) }}
+              {{ render_field(form.music_on_hold, data_listing_href=url_for(listing_urls['moh'])) }}
+              {{ render_field(form.preprocess_subroutine) }}
+              {{ render_field(form.retry_delay) }}
+              {{ render_field(form.ring_in_use) }}
+              {{ render_field(form.ring_strategy) }}
+              {{ render_field(form.timeout) }}
+              {{ render_field(form.user_timeout) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('members') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+              {{ render_field(form.members.users, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('fallbacks') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.fallbacks.noanswer_destination) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('schedule') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ render_field(form.schedules[0]['name']) }}
+                {{ render_field(form.schedules[0]['id'],
+                                data_listing_href=url_for(listing_urls['schedule']),
+                                data_allow_clear=True,
+                                data_placeholder='Choose Schedules') }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('callpermissions') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.call_permission_ids,
+                              data_listing_href=url_for(listing_urls['callpermission']),
+                              data_allow_clear=True,
+                              data_placeholder=_('Choose Call Permissions')) }}
+              {{ render_field(form.call_permissions, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/group.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% set backend = 'csv' %}
+
+{% if form_mode == 'add' %}
+  {% set url_action = url_for('.DirdSourceView:post') %}
+  {% set submit_value = _('Add') %}
+  {% set breadcrumb = { 'name': _('Add CSV source'), 'icon': 'address-book' } %}
+{% else %}
+  {% set url_action = url_for('.DirdSourceView:put', id=resource.uuid) %}
+  {% set submit_value = _('Edit') %}
+  {% set breadcrumb = { 'name': resource.name, 'link': url_for('.DirdSourceView:get', id=resource.uuid), 'icon': 'address-book' } %}
+{% endif %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [breadcrumb]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+      <!-- tabs -->
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_item('csv', _('CSV'), active=True) }}
+        {{ add_tab_navigation_item('first_matched_columns', _('First matched columns')) }}
+        {{ add_tab_navigation_item('format_columns', _('Format columns')) }}
+        {{ add_tab_navigation_item('searched_columns', _('Search columns')) }}
+      {% endcall %}
+
+      {% call build_form(action=url_action) %}
+        {% call build_tabs_content() %}
+          <!-- CSV -->
+          {% call build_tab_content_item('csv', active=True) %}
+            {% call add_default_fields(form=form, submit_value=submit_value) %}
+              {{ render_field(form.backend) }}
+              {{ render_field(form.name) }}
+              {{ render_field(form.csv_config.file) }}
+              {{ render_field(form.csv_config.delimiter) }}
+              {{ render_field(form.csv_config.unique_column) }}
+            {% endcall %}
+          {% endcall %}
+
+          <!-- first_matched_columns -->
+          {% call build_tab_content_item('first_matched_columns') %}
+            {% call add_default_fields(form=form, submit_value=submit_value) %}
+              {% call build_table() %}
+                {% call build_table_headers() %}
+                  <th>Value</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.csv_config.first_matched_columns.append_entry() %}
+                  {{ _build_column_entry(form.csv_config.first_matched_columns.pop_entry(), template=True) }}
+
+                  {% for column in form.csv_config.first_matched_columns %}
+                    {{ _build_column_entry(column) }}
+                  {% endfor %}
+                {% endcall %}
+              {% endcall %}
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          <!-- format_columns -->
+          {% call build_tab_content_item('format_columns') %}
+            {% call add_default_fields(form=form, submit_value=submit_value) %}
+              {% call build_table() %}
+                {% call build_table_headers() %}
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.csv_config.format_columns.append_entry() %}
+                  {{ _build_column_value_entry(form.csv_config.format_columns.pop_entry(), template=True) }}
+
+                  {% for column in form.csv_config.format_columns %}
+                    {{ _build_column_value_entry(column) }}
+                  {% endfor %}
+                {% endcall %}
+              {% endcall %}
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          <!-- Search columns -->
+          {% call build_tab_content_item('searched_columns') %}
+            {% call add_default_fields(form=form, submit_value=submit_value) %}
+              {% call build_table() %}
+                {% call build_table_headers() %}
+                  <th>Name</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.csv_config.searched_columns.append_entry() %}
+                  {{ _build_column_entry(form.csv_config.searched_columns.pop_entry(), template=True) }}
+
+                  {% for column in form.csv_config.searched_columns %}
+                    {{ _build_column_entry(column) }}
+                  {% endfor %}
+                {% endcall %}
+              {% endcall %}
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_column_value_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+     <td>{{ render_field(option.key, with_label=False) }}</td>
+     <td>{{ render_field(option.value, with_label=False) }}</td>
+     <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}
+
+{% macro _build_column_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(option.value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

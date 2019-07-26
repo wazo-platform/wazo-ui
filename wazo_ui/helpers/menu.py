@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import session
+from flask_login import current_user
 from flask_menu.classy import classy_menu_item
 from requests.exceptions import HTTPError
 
@@ -28,7 +29,7 @@ def extract_permission(path):
     return path.lstrip('.')
 
 
-def menu_item(path, text, **kwargs):
+def menu_item_aux(path, text, **kwargs):
     permission = extract_permission(path)
     kwargs.setdefault('visible_when', menu_filter(permission))
 
@@ -57,3 +58,22 @@ def _get_visualization(user_uuid):
         return confd_client.users.get(user_uuid)['visualization']
     except HTTPError:
         return None
+
+
+def _is_root_and_has_permission(permission):
+    filter_fallback = menu_filter(permission)
+
+    def wrap():
+        if current_user.get_instance().get('wazo_tenant'):
+            return False
+        return filter_fallback()
+    return wrap
+
+
+def menu_item(path, *args, **kwargs):
+    permission = extract_permission(path)
+    multi_tenant = kwargs.get('multi_tenant', False)
+    if not multi_tenant:
+        kwargs['visible_when'] = _is_root_and_has_permission(permission)
+
+    return menu_item_aux(path, *args, **kwargs)

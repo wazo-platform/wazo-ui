@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Sound Files'), 'link': url_for('.SoundView:index'), 'icon': 'file-sound-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Sound Files'), 'file-sound-o') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.SoundFileView:list_files', tenant_uuid='', category=''), delete=url_for('.SoundView:delete', tenant_uuid='', category='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Files') }}</th>
+          <th>{{ _('Tenant') }}</th>
+        {% endcall %}
+        {% call(sound) build_list_table_rows(resource_list['items'], non_unique_id=true) %}
+          <td>{{ sound.name }}</td>
+          <td>{{ sound.files|length }}</td>
+          <td>{{ sound.tenant_uuid }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Sound Directory')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

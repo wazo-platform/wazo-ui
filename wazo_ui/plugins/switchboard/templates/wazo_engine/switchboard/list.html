@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Switchboard'), 'link': url_for('.SwitchboardView:index'), 'icon': 'desktop' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Switchboards'), 'desktop') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.SwitchboardView:get', id=''), delete=url_for('.SwitchboardView:delete', id='')) %}
+          <th>Name</th>
+          <th>Extensions</th>
+        {% endcall %}
+        {% call(switchboard) build_list_table_rows(resource_list['items']) %}
+          <td>{{ switchboard.name }}</td>
+          <td>
+            {% for e in switchboard.extensions %}
+              <strong>internal:</strong> {{ e.exten }}
+            {% endfor %}
+            {% for extensions in switchboard.incalls %}
+              {% for e in extensions.extensions %}
+                <strong>incall:</strong> {{ e.exten }}
+              {% endfor %}
+            {% endfor %}
+            {% if not switchboard.extensions and not switchboard.incalls %}
+              -
+            {% endif %}
+          </td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Switchboard')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumb(_('Sound Files System'), '', 'file-sound-o', [_('List'), sound['name']]) }}
+{% endblock %}
+
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Sound Files System'), 'file-sound-o') %}
+
+      {% call build_table(id='table-list-sound-files-system') %}
+        {% call build_list_table_headers() %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Infos') }}</th>
+        {% endcall %}
+        {% call(file_) build_list_table_rows(sound['files']) %}
+          <td>
+            {{ file_.name }}</td>
+          <td>
+          {{ file_.format }}
+            {% for format in file_.formats %}
+              <div class="box">
+                <a href="{{ url_for('.SoundFileView:download_system_sound_filename',
+                                    filename=file_.name,
+                                    format=format['format'],
+                                    language=format['language']) }}"
+                        title="{{ _('Listen to the sound file') }}"
+                        class="btn btn-xs btn-default">
+                  <i class="fa fa-fw fa-volume-up"></i>
+                </a>
+                <strong>{{ _('Format') }}:</strong> {{ format['format'] if format['format'] else '-' }}
+                <strong>{{ _('Language') }}:</strong> {{ format['language'] if format['language'] else '-' }}<br>
+                <strong>{{ _('Text') }}:</strong> <small>{{ format['text'] if format['text'] else '-' }}</small>
+              </div>
+            {% endfor %}
+          </td>
+        {% endcall %}
+      {% endcall %}
+
+    {% endcall %}
+  </section>
+{% endblock %}
+
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/sound.js') }}"></script>
+{% endblock %}

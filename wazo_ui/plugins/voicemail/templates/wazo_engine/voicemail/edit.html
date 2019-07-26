@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.VoicemailView:get', id=resource.uuid), 'icon': 'envelope' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_box(_('Voicemail'), resource.name, 'envelope') %}
+      {% call build_form(action=url_for('.VoicemailView:put', id=resource.id)) %}
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.context,
+                          data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
+          {{ render_field(form.number) }}
+          {{ render_field(form.password) }}
+          {{ render_field(form.email) }}
+          {{ render_field(form.language) }}
+          {{ render_field(form.timezone) }}
+          {{ render_field(form.max_messages) }}
+          {{ render_field(form.ask_password) }}
+          {{ render_field(form.attach_audio) }}
+          {{ render_field(form.delete_messages) }}
+          {{ render_field(form.enabled) }}
+          {{ render_field(form.user_uuid, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.users, with_label=false) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

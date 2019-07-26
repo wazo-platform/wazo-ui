@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Schedule'), 'link': url_for('.ScheduleView:index'), 'icon': 'clock-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Schedules'), 'long-arrow-right') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.ScheduleView:get', id=''), delete=url_for('.ScheduleView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Timezone') }}</th>
+        {% endcall %}
+        {% call(schedule) build_list_table_rows(resource_list['items']) %}
+          <td>{{ schedule.name }}</td>
+          <td>{{ schedule.timezone }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Schedule')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.timezone) }}
+          {{ render_field(form.closed_destination, with_label=False) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

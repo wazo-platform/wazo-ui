@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.ContextView:get', id=resource.id), 'icon': 'random' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Context'), resource.name, 'random') }}
+        {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {% if resource.type == 'internal' %}
+          {{ add_tab_navigation_item('user', _('User')) }}
+          {{ add_tab_navigation_item('group', _('Group')) }}
+          {{ add_tab_navigation_item('queue', _('Queue')) }}
+          {{ add_tab_navigation_item('conference', _('Conference')) }}
+        {% elif resource.type == 'incall' %}
+          {{ add_tab_navigation_item('incall', _('Incall')) }}
+        {% endif %}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.ContextView:put', id=resource.id)) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.name, readonly='readonly') }}
+              {{ render_field(form.label) }}
+              {{ render_field(form.type, disabled=True) }}
+              {{ render_field(form.type, inputclass='hidden') }}
+              {{ render_field(form.description) }}
+              {{ render_field(form.context_ids, data_listing_href=url_for(listing_urls['context_with_id'])) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% if resource.type == 'internal' %}
+
+            {% call build_tab_content_item('user') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {% call _build_ranges_type(form.user_ranges, _('User')) %}{% endcall %}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('group') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {% call _build_ranges_type(form.group_ranges, _('Group')) %}{% endcall %}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('queue') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {% call _build_ranges_type(form.queue_ranges, _('Queue')) %}{% endcall %}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('conference') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {% call _build_ranges_type(form.conference_room_ranges, _('Conference')) %}{% endcall %}
+              {% endcall %}
+            {% endcall %}
+
+          {% elif resource.type == 'incall' %}
+
+            {% call build_tab_content_item('incall') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {% call _build_ranges_type(form.incall_ranges, _('Incall')) %}{% endcall %}
+              {% endcall %}
+            {% endcall %}
+
+          {% endif %}
+
+        {% endcall %}
+
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_ranges_type(ranges, range_type) %}
+  {% set caller_ = caller %}
+  {% call build_table() %}
+    {% call build_table_headers() %}
+      <th class="text-center">{{ _('Start') }}</th>
+      <th class="text-center">{{ _('End') }}</th>
+      {% if resource.type == 'incall' %}
+        <th class="text-center">{{ _('DID Length') }}</th>
+      {% endif %}
+    {% endcall %}
+
+    {% call build_table_body(class_='dynamic-table') %}
+      {% do ranges.append_entry() %}
+        {{ _build_ranges_entry(ranges.pop_entry(), template=True) }}
+      {% for range in ranges %}
+         {{ _build_ranges_entry(range) }}
+      {% endfor %}
+    {% endcall %}
+
+    {{ build_add_row_entry_header() }}
+
+  {% endcall %}
+{% endmacro %}
+
+{% macro _build_ranges_entry(range, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(range.start, with_label=False) }}</td>
+    <td>{{ render_field(range.end, with_label=False) }}</td>
+    {% if resource.type == 'incall' %}
+      <td>{{ render_field(range.did_length, with_label=False) }}</td>
+    {% endif %}
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

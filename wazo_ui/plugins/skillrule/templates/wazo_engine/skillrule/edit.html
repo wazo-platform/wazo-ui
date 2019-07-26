@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.SkillRuleView:get', id=resource.uuid), 'icon': 'sticky-note-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+        {% call build_tabs_navigation() %}
+          {{ add_tab_navigation_header(_('Skill Rules'), resource.name, 'sticky-note-o') }}
+          {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {% endcall %}
+
+      {% call build_form(action=url_for('.SkillRuleView:put', id=resource.id)) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.name) }}
+              {{ build_add_row_entry_header() }}
+
+              {% call build_table() %}
+                {% call build_table_headers() %}
+                  <th class="text-center">{{ _('Rules') }}</th>
+                  <th></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.rules.append_entry() %}
+                  {{ _build_skillrules_entry(form.rules.pop_entry(), template=True) }}
+
+                  {% for rule in form.rules %}
+                    {{ _build_skillrules_entry(rule) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_skillrules_entry(rule, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(rule.definition, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

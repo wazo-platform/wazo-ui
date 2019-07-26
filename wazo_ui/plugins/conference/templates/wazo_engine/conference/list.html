@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Conferences'), 'link': url_for('.ConferenceView:index'), 'icon': 'compress' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Conferences'), 'compress') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.ConferenceView:get', id=''), delete=url_for('.ConferenceView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Extension') }}</th>
+          <th>{{ _('PIN') }}</th>
+        {% endcall %}
+        {% call(conference) build_list_table_rows(resource_list['items']) %}
+          <td>{{ conference.name }}</td>
+          <td>
+            {% for extension in conference.extensions %}
+              <strong>{{ _('internal') }}:</strong> {{ extension.exten }}
+            {% endfor %}
+            {% for extensions in conference.incalls %}
+              {% for extension in extensions.extensions %}
+                <strong>{{ _('incall') }}:</strong> {{ extension.exten }}
+              {% endfor %}
+            {% endfor %}
+            {{ '-' if not conference.extensions and not conference.incalls }}
+          </td>
+          <td>{{ conference.pin or '-' }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Conference')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.extensions[0].context,
+                          label='Extension',
+                          divclass='col-sm-4',
+                          inputclass='ui-helper-clearfix',
+                          placeholder='Choose Context',
+                          class_='conference-context',
+                          data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
+          {{ render_field(form.extensions[0].exten,
+                          with_label=False,
+                          divclass='col-sm-4',
+                          class_='conference-exten',
+                          data_allow_clear=True,
+                          data_allow_custom_values=True,
+                          data_listing_href=url_for(listing_urls['available_extension_conference'])) }}
+          {{ render_field(form.pin) }}
+          {{ render_field(form.admin_pin) }}
+          {{ render_field(form.announce_join_leave) }}
+          {{ render_field(form.announce_user_count) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/conference.js') }}"></script>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': _('Directory profile'), 'link': url_for('.DirdProfileView:index'), 'icon': 'user' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Directory'), 'address-book') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.DirdProfileView:get', id='')) %}
+          <th>{{ _('Name') }}</th>
+        {% endcall %}
+        {% call(profile) build_list_table_rows(resource_list['items']) %}
+          <td>{{ profile.name }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

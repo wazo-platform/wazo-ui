@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% set type = 'google' %}
+
+{% if form_mode == 'add' %}
+  {% set url_action = url_for('.ExternalAuthView:post') %}
+  {% set submit_value = _('Add') %}
+  {% set breadcrumb = { 'name': _('Add Google external auth'), 'icon': 'external-link' } %}
+{% else %}
+  {% set url_action = url_for('.ExternalAuthView:put', id=resource.uuid) %}
+  {% set submit_value = _('Edit') %}
+  {% set breadcrumb = { 'name': resource.type, 'link': url_for('.ExternalAuthView:get', id=resource.uuid), 'icon': 'external-link' } %}
+{% endif %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [breadcrumb]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_box(_('External auth'), type, 'external-link') %}
+      {% call build_form(action=url_for('.ExternalAuthView:post')) %}
+        {% call add_default_fields(form=form, submit_value=submit_value) %}
+          {{ render_field(form.type) }}
+          {{ render_field(form.editing) }}
+          {{ render_field(form.google_config.client_id) }}
+          {{ render_field(form.google_config.client_secret) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

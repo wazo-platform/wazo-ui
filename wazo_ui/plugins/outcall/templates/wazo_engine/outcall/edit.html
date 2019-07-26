@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.OutcallView:get', id=resource.id), 'icon': 'long-arrow-left' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Outcall'), resource.name, 'long-arrow-left') }}
+        {{ add_tab_navigation_item('outcall', _('Outcall'), active=True) }}
+        {{ add_tab_navigation_item('extensions', _('Extensions')) }}
+        {{ add_tab_navigation_item('schedule', _('Schedule')) }}
+        {{ add_tab_navigation_item('callpermission', _('Call Permissions')) }}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.OutcallView:put', id=resource.id)) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('outcall', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.name) }}
+              {{ render_field(form.description) }}
+              {{ render_field(form.trunks_ids, data_listing_href=url_for(listing_urls['trunk'])) }}
+              {{ render_field(form.preprocess_subroutine) }}
+              {{ render_field(form.internal_caller_id) }}
+              {{ render_field(form.ring_time) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('extensions') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{ _('Context') }}</th>
+                  <th>{{ _('Extension') }}</th>
+                  <th>{{ _('Caller ID') }}</th>
+                  <th>{{ _('External prefix') }}</th>
+                  <th>{{ _('Prefix') }}</th>
+                  <th>{{ _('Strip digits') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.extensions.append_entry() %}
+                  {{ _build_extension_entry(form.extensions.pop_entry(), template=True) }}
+
+                  {% for extension in form.extensions %}
+                    {{ _build_extension_entry(extension) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('schedule') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ render_field(form.schedules[0]['name']) }}
+                {{ render_field(form.schedules[0]['id'],
+                                data_listing_href=url_for(listing_urls['schedule']),
+                                data_allow_clear=True,
+                                data_placeholder=_('Choose Schedules')) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('callpermission') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.call_permission_ids,
+                              data_listing_href=url_for(listing_urls['callpermission']),
+                              data_allow_clear=True,
+                              data_placeholder=_('Choose Call Permissions')) }}
+              {{ render_field(form.call_permissions, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+
+{% macro _build_extension_entry(extension, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    {{ render_field(extension['id']) }}
+    <td>{{ render_field(extension.context,
+                        with_label=False,
+                        class_='outcall-context',
+                        placeholder=_('Choose Context'),
+                        data_listing_href=url_for(listing_urls['context_by_type'], type_='outcall')) }}</td>
+    <td>{{ render_field(extension.exten, with_label=False) }}</td>
+    <td>{{ render_field(extension.caller_id, with_label=False) }}</td>
+    <td>{{ render_field(extension.external_prefix, with_label=False) }}</td>
+    <td>{{ render_field(extension.prefix_, with_label=False) }}</td>
+    <td>{{ render_field(extension.strip_digits, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

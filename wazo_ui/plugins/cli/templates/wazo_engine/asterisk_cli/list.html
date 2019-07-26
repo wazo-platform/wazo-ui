@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumb('Asterisk CLI', 'Execute an Asterisk command', 'terminal', ['exec command']) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers('Asterisk CLI', 'terminal', size=12) %}
+      <div class="col-md-4">
+        {% call build_form() %}
+          {% call add_default_fields(form=form, submit_value="Execute") %}
+            {{ render_field(form.command) }}
+          {% endcall %}
+        {% endcall %}
+      </div>
+      <div class="col-md-8">
+        <span>Terminal CLI</span>
+        <div id="terminal" style="height: 300px; width: 100%">
+          <div class="form-group">
+            <textarea class="form-control" style="background-color: black;color: white; width: 100%;" id="cliTextArea" rows="14">
+	      {% if results %}
+	        {% for result in results %}
+	          {{ result }}
+	        {% endfor %}
+	      {% else %}
+                Result of your command...
+	      {% endif %}
+	    </textarea>
+          </div>
+	</div>
+      </div>
+    {% endcall %}
+  </section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.WebhookView:get_logs', id=resource.uuid), 'icon': 'globe' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Webhooks logs'), 'globe') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers() %}
+          <th>{{ _('UUID') }}</th>
+          <th>{{ _('Attempts') }}</th>
+          <th>{{ _('Status') }}</th>
+          <th>{{ _('Started at') }}</th>
+          <th>{{ _('Ended at') }}</th>
+        {% endcall %}
+        {% call(log) build_list_table_rows(resource_list['items']) %}
+          <td>{{ log.uuid }}</td>
+          <td>{{ log.attempts }}/{{ log.max_attempts }}</td>
+          <td style="color: {% if log.status == 'success' %}green{% elif log.status == 'failure' %}orange{% else %}red{%endif %}">{{ log.status }}</td>
+          <td>{{ log.started_at }}</td>
+          <td>{{ log.ended_at }}</td>
+        </tr>
+        <tr>
+          <td colspan=5>
+            Event:
+            <pre>{{ log.event }}</pre>
+            Service output:
+            <pre>{{ log.detail }}</pre>
+          </td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/index.js') }}"></script>
+{% endblock %}

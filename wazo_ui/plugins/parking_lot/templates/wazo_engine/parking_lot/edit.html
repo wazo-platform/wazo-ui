@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.ParkingLotView:get', id=resource.id), 'icon': 'automobile' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_box(_('Parking Lot'), resource.name, 'automobile') %}
+      {% call build_form(action=url_for('.ParkingLotView:put', id=resource.id)) %}
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ form.csrf_token }}
+                {{ render_field(form.name) }}
+                {{ render_field(form.extensions[0].exten,
+                                data_allow_custom_values=True,
+                                divclass='col-sm-2',
+                                inputclass='ui-helper-clearfix',
+                                class_='parking-lot-exten') }}
+                {{ render_field(form.extensions[0].context,
+                                with_label=False,
+                                divclass='col-sm-4',
+                                class_='parking-lot-context',
+                                placeholder=_(_('Choose Context')),
+                                data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
+                {{ render_field(form.slots_start) }}
+                {{ render_field(form.slots_end) }}
+                {{ render_field(form.music_on_hold, data_listing_href=url_for(listing_urls['moh'])) }}
+                {{ render_field(form.timeout) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

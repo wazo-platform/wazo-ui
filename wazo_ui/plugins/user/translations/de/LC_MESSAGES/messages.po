@@ -1,0 +1,276 @@
+# Translations template for wazo_admin_ui_user.
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
+# This file is distributed under the same license as the
+# wazo_admin_ui_user project.
+# Wazo Dev Team <dev@wazo.community>, 2018.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: wazo_admin_ui_user 0.1\n"
+"Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
+"POT-Creation-Date: 2018-02-27 13:19-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: German (https://www.transifex.com/wazo/teams/69545/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.3\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: wazo_plugind_admin_ui_user_official/form.py:33
+msgid "SIP"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:34
+msgid "SCCP"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:35
+msgid "CUSTOM"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:36
+msgid "SIP (webrtc)"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:44
+msgid "Busy"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:45
+#: wazo_plugind_admin_ui_user_official/form.py:50
+#: wazo_plugind_admin_ui_user_official/form.py:55
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:119
+msgid "Destination"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:49
+msgid "No answer"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:54
+msgid "Unconditional"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:65
+msgid "Do not disturb"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:69
+msgid "Incall filtering"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:78
+msgid "CTI Profile"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:89
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:118
+msgid "Label"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:92
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:120
+msgid "BLF"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:97
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:20
+msgid "Schedule"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:102
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:21
+msgid "Voicemail"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:112
+#: wazo_plugind_admin_ui_user_official/templates/user/list.html:12
+msgid "Firstname"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:113
+#: wazo_plugind_admin_ui_user_official/templates/user/list.html:13
+msgid "Lastname"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:114
+msgid "Username"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:115
+msgid "Password"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:116
+msgid "Email"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:117
+msgid "Caller ID"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:118
+msgid "Phone mobile"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:119
+msgid "Ring seconds"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:120
+msgid "Music On Hold"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:121
+msgid "Subroutine"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:122
+msgid "Simultaneous calls"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:123
+msgid "Timezone"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:124
+msgid "User Field"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:125
+msgid "Description"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:131
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:18
+msgid "Groups"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:136
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:22
+msgid "Call Permissions"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:138
+msgid "Submit"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:144
+#: wazo_plugind_admin_ui_user_official/form.py:153
+#: wazo_plugind_admin_ui_user_official/plugin.py:30
+#: wazo_plugind_admin_ui_user_official/plugin.py:31
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:12
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:13
+#: wazo_plugind_admin_ui_user_official/templates/user/list.html:9
+msgid "User"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/form.py:145
+msgid "Ring time"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:5
+#: wazo_plugind_admin_ui_user_official/templates/user/list.html:4
+#: wazo_plugind_admin_ui_user_official/view.py:20
+msgid "Users"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:5
+msgid "Edit"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:14
+msgid "General"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:15
+msgid "Fallbacks"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:16
+msgid "Services"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:17
+msgid "Lines"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:19
+msgid "FuncKeys"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:28
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:43
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:56
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:65
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:79
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:106
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:113
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:137
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:147
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:156
+msgid "Update"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:36
+msgid "Choose your CTI profile"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:83
+msgid "Protocol"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:84
+msgid "Name"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:85
+msgid "Context"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:86
+#: wazo_plugind_admin_ui_user_official/templates/user/list.html:14
+msgid "Extension"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:87
+msgid "Device"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:88
+msgid "Line (N°)"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:117
+msgid "Position"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:142
+msgid "Choose Schedules"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:151
+msgid "Choose Voicemail"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/edit.html:160
+msgid "Choose Call Permissions"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/list.html:15
+msgid "Code"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/list.html:20
+msgid "Add User"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/list.html:22
+msgid "Add"
+msgstr ""
+
+#: wazo_plugind_admin_ui_user_official/templates/user/list.html:42
+msgid "Choose Context"
+msgstr ""

@@ -3,7 +3,7 @@
 
 from flask_menu.classy import register_flaskview
 
-from wazo_ui.helpers.plugin import create_blueprint
+from wazo_ui.helpers.plugin import create_blueprint_core as create_blueprint
 from .view import IndexView, WorkingTenantView
 
 index = create_blueprint('index', __name__)

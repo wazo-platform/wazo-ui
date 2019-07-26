@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Line'), 'link': url_for('.LineView:index'), 'icon': 'exchange' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Lines'), 'exchange') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.LineView:get', id=''), delete=url_for('.LineView:delete', id='')) %}
+          <th width="75">{{ _('Protocol') }}</th>
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Provisioning Extension') }}</th>
+          <th>{{ _('Caller Id Name') }}</th>
+          <th>{{ _('Caller Id Number') }}</th>
+        {% endcall %}
+        {% call(line) build_list_table_rows(resource_list['items']) %}
+          <td>
+            {% if line.endpoint_sip %}
+              {{ _('SIP') }}
+            {% elif line.endpoint_custom %}
+              {{ _('CUSTOM') }}
+            {% else %}
+              -
+            {% endif %}
+          </td>
+          <td>
+            {% if line.endpoint_sip %}
+              {{ line.endpoint_sip.username }}
+            {% elif line.endpoint_custom %}
+              {{ line.endpoint_custom.interface }}
+            {% endif %}
+          </td>
+          <td>{{ line.provisioning_extension }}</td>
+          <td>{{ line.caller_id_name }}</td>
+          <td>{{ line.caller_id_num }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+
+    {% call build_hidden_add_containers(_('Choose your protocol')) %}
+      <button type="button" class="btn btn-block btn-default"
+              onclick="location.href='{{ url_for('.LineView:new', protocol='sip') }}'">{{ _('SIP') }}</button>
+      <button type="button" class="btn btn-block btn-default" onclick="location.href='{{ url_for('.LineView:new',
+              protocol='custom') }}'">{{ _('CUSTOM') }}</button>
+    {% endcall %}
+
+  </section>
+{% endblock %}
+
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/line.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.displayname, 'link': url_for('.ConfigRegistrarView:get', id=resource.id), 'icon': 'file-code-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_box(_('Template line'), resource.name, 'file-code-o') %}
+      {% call build_form(action=url_for('.ConfigRegistrarView:put', id=resource.id)) %}
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+          {{ render_field(form.id) }}
+          {{ render_field(form.displayname) }}
+          {{ render_field(form.registrar_main) }}
+          {{ render_field(form.registrar_backup) }}
+          {{ render_field(form.proxy_main) }}
+          {{ render_field(form.proxy_backup) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Rtp'), 'link': url_for('.RtpView:index'), 'icon': 'volume-off' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Rtp'), '', 'volume-off') }}
+        {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {{ add_tab_navigation_item('ice_host_candidates', _('Ice Host Candidates')) }}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.RtpView:post')) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.rtpstart) }}
+              {{ render_field(form.rtpend) }}
+              {{ render_field(form.rtpchecksums) }}
+              {{ render_field(form.dtmftimeout) }}
+              {{ render_field(form.rtcpinterval) }}
+              {{ render_field(form.strictrtp) }}
+              {{ render_field(form.probation) }}
+              {{ render_field(form.icesupport) }}
+              {{ render_field(form.stunaddr) }}
+              {{ render_field(form.stun_blacklist) }}
+              {{ render_field(form.turnaddr) }}
+              {{ render_field(form.turnusername) }}
+              {{ render_field(form.turnpassword) }}
+              {{ render_field(form.ice_blacklist) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('ice_host_candidates') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Local Address') }}</th>
+                  <th>{{  _('Advertised Address') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.ice_host_candidates.append_entry() %}
+                  {{ _build_option_entry(form.ice_host_candidates.pop_entry(), template=True) }}
+
+                  {% for option in form.ice_host_candidates %}
+                    {{ _build_option_entry(option) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+  {% endcall %}
+{% endblock %}
+
+
+{% macro _build_option_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(option.option_key, with_label=False) }}</td>
+    <td>{{ render_field(option.option_value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

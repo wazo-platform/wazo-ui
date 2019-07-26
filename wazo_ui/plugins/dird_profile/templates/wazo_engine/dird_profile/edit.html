@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.DirdProfileView:index'), 'icon': 'user' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form(action=url_for('.DirdProfileView:put', id=resource.uuid)) %}
+      {{ render_field(form.uuid) }}
+
+      {% call add_default_fields(form=form, submit_value='Update') %}
+        {% call build_table() %}
+          {% call build_table_headers() %}
+            <th>Source</th>
+            <th>Favorite</th>
+            <th>Reverse</th>
+            <th>Lookup</th>
+            <th style="width: 21px"></th>
+          {% endcall %}
+          {% call build_table_body(class_='dynamic-table') %}
+            {% do form.services.append_entry() %}
+            {{ _build_row_entry(form.services.pop_entry(), template=True) }}
+
+            {% for row in form.services %}
+              {{ _build_row_entry(row) }}
+            {% endfor %}
+          {% endcall %}
+        {% endcall %}
+        {{ build_add_row_entry_header() }}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_row_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(option.uuid, with_label=False, data_listing_href=url_for(listing_urls['dird_source'])) }}</td>
+    <td>{{ render_field(option.favorites, with_label=False) }}</td>
+    <td>{{ render_field(option.reverse, with_label=False) }}</td>
+    <td>{{ render_field(option.lookup, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

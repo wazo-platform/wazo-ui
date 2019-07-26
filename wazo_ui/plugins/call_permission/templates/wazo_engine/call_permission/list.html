@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': _('Call Permissions'), 'link': url_for('.CallPermissionView:index'), 'icon': 'ban' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Call Permissions'), 'ban') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(
+            add=url_for('.CallPermissionView:new'),
+            get=url_for('.CallPermissionView:get', id=''),
+            delete=url_for('.CallPermissionView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Password') }}</th>
+          <th>{{ _('Mode') }}</th>
+        {% endcall %}
+        {% call(callpermission) build_list_table_rows(resource_list['items']) %}
+          <td>{{ callpermission.name }}</td>
+          <td>{{ callpermission.password if callpermission.password else '-' }}</td>
+          <td>{{ mode_map[callpermission.mode] }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

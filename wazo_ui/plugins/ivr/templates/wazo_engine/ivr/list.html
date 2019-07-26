@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('IVR'), 'link': url_for('.IvrView:index'), 'icon': 'navicon' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('IVR'), 'navicon') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.IvrView:get', id=''), delete=url_for('.IvrView:delete', id=''), add=url_for('.IvrView:new')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Extensions') }}</th>
+          <th>{{ _('Menu sound') }}</th>
+        {% endcall %}
+        {% call(ivr) build_list_table_rows(resource_list['items']) %}
+          <td>{{ ivr.name }}</td>
+          <td>
+            {% if not ivr.incalls %}
+              -
+            {% else %}
+              <strong>{{ _('incall') }}:</strong>
+              <ul>
+              {% for extensions in ivr.incalls %}
+                {% for e in extensions.extensions %}
+                  <li>{{ e.exten }}</li>
+                {% endfor %}
+              {% endfor %}
+              </ul>
+            {% endif %}
+          </td>
+          <td>{{ ivr.menu_sound }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

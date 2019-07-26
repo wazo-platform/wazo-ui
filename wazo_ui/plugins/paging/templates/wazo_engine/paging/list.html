@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Paging'), 'link': url_for('.PagingView:index'), 'icon': 'bullhorn' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+
+  <section class="content">
+    {% call build_list_containers(_('Paging'), 'bullhorn') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.PagingView:get', id=''), delete=url_for('.PagingView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Number') }}</th>
+        {% endcall %}
+        {% call(paging) build_list_table_rows(resource_list['items']) %}
+          <td>{{ paging.name }}</td>
+          <td>{{ paging.number }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Paging')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.number) }}
+          {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.callers.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

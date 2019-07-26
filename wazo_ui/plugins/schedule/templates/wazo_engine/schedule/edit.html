@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.ScheduleView:get', id=resource.uuid), 'icon': 'clock-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Schedule'), resource.name, 'clock-o') }}
+        {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {{ add_tab_navigation_item('exceptional_periods', _('Exceptional periods')) }}
+        {{ add_tab_navigation_item('open_periods', _('Open periods')) }}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.ScheduleView:put', id=resource.id)) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.name) }}
+              {{ render_field(form.timezone) }}
+              {{ render_field(form.closed_destination, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('exceptional_periods') %}
+            {{ build_add_row_entry_header() }}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th class="text-center">{{ _('Periods') }}</th>
+                  <th class="text-center">{{ _('Destination') }}</th>
+                  <th></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.exceptional_periods.append_entry() %}
+                  {{ _build_exceptional_periods_entry(form.exceptional_periods.pop_entry(), template=True) }}
+
+                  {% for exceptional_period in form.exceptional_periods %}
+                    {{ _build_exceptional_periods_entry(exceptional_period) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+            {% endcall %}
+          {% endcall %}
+
+
+          {% call build_tab_content_item('open_periods') %}
+            {{ build_add_row_entry_header() }}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th class="text-center">{{ _('Periods') }}</th>
+                  <th></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.open_periods.append_entry() %}
+                  {{ _build_open_periods_entry(form.open_periods.pop_entry(), template=True) }}
+
+                  {% for open_period in form.open_periods %}
+                    {{ _build_open_periods_entry(open_period) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+            {% endcall %}
+
+            {{ build_add_row_entry_header() }}
+          {% endcall %}
+        {% endcall %}
+
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_exceptional_periods_entry(exceptional_period, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td class="col-sm-7">
+      {{ render_field(exceptional_period.hours_start, class_='schedule_date_hours_start', placeholder=_('Hour Start')) }}
+      {{ render_field(exceptional_period.hours_end, class_='schedule_date_hours_end', placeholder=_('Hour End')) }}
+      {{ render_field(exceptional_period.week_days, data_select_unselect_all=True, data_disable_sort=True) }}
+      {{ render_field(exceptional_period.month_days, data_select_unselect_all=True, data_disable_sort=True) }}
+      {{ render_field(exceptional_period.months, data_select_unselect_all=True, data_disable_sort=True) }}
+    </td>
+    <td class="col-sm-5">
+      {{ render_field(exceptional_period.destination, with_label=False) }}
+    </td>
+    <td class="text-center">
+      {{ add_delete_entry_button() }}
+    </td>
+  </tr>
+{% endmacro %}
+
+{% macro _build_open_periods_entry(open_period, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td class="col-sm-12">
+      {{ render_field(open_period.hours_start, class_='schedule_date_hours_start', placeholder=_('Hour Start')) }}
+      {{ render_field(open_period.hours_end, class_='schedule_date_hours_end', placeholder=_('Hour End')) }}
+      {{ render_field(open_period.week_days, data_select_unselect_all=True, data_disable_sort=True) }}
+      {{ render_field(open_period.month_days, data_select_unselect_all=True, data_disable_sort=True) }}
+      {{ render_field(open_period.months, data_select_unselect_all=True, data_disable_sort=True) }}
+    </td>
+    <td class="text-center">
+      {{ add_delete_entry_button() }}
+    </td>
+  </tr>
+{% endmacro %}
+
+{% block additional_css %}
+  <link rel="stylesheet" href="{{ url_for('.static', filename='css/jquery.timepicker.min.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/jquery.timepicker.min.js') }}"></script>
+  <script src="{{ url_for('.static', filename='js/schedule.js') }}"></script>
+{% endblock %}

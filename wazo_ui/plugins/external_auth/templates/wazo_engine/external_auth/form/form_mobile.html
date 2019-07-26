@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% set type = 'mobile' %}
+
+{% if form_mode == 'add' %}
+  {% set url_action = url_for('.ExternalAuthView:post') %}
+  {% set submit_value = _('Add') %}
+  {% set breadcrumb = { 'name': _('Add Mobile external auth'), 'icon': 'external-link' } %}
+{% else %}
+  {% set url_action = url_for('.ExternalAuthView:put', id=resource.uuid) %}
+  {% set submit_value = _('Edit') %}
+  {% set breadcrumb = { 'name': 'mobile', 'link': url_for('.ExternalAuthView:get', id=resource.uuid), 'icon': 'external-link' } %}
+{% endif %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [breadcrumb]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_box(_('External auth'), type, 'external-link') %}
+      {% call build_form(action=url_for('.ExternalAuthView:post'), enctype="multipart/form-data") %}
+        {% call add_default_fields(form=form, submit_value=submit_value) %}
+          {{ render_field(form.type) }}
+          {{ render_field(form.editing) }}
+
+          <fieldset>
+            <legend>Android</legend>
+            {{ render_field(form.mobile_config.fcm_api_key) }}
+            {{ render_field(form.mobile_config.fcm_sender_id) }}
+          </fieldset>
+
+          <fieldset>
+            <legend>iOS</legend>
+            {{ render_field(form.mobile_config.ios_apn_certificate) }}
+            {{ render_field(form.mobile_config.ios_apn_private) }}
+            {{ render_field(form.mobile_config.is_sandbox) }}
+          </fieldset>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

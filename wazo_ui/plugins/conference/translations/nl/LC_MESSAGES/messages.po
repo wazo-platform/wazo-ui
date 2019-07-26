@@ -1,0 +1,104 @@
+# Translations template for wazo_admin_ui_conference.
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
+# This file is distributed under the same license as the
+# wazo_admin_ui_conference project.
+# Wazo Dev Team <dev@wazo.community>, 2018.
+# 
+# Translators:
+# Wimdv <wimdv@eyepea.eu>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: wazo_admin_ui_conference 0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-02-27 12:59-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Wimdv <wimdv@eyepea.eu>, 2017\n"
+"Language-Team: Dutch (https://www.transifex.com/wazo/teams/69545/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.3\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:18
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:13
+msgid "Extension"
+msgstr "Extentie"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:19
+msgid "Context"
+msgstr ""
+
+#: wazo_plugind_admin_ui_conference_official/form.py:23
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:12
+msgid "Name"
+msgstr "Naam"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:25
+msgid "Announce join leave"
+msgstr "Meld aankomst vertrek"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:26
+msgid "Announce only user"
+msgstr "Meld enige gebruiker"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:27
+msgid "Announce user count"
+msgstr "Meld aantal gebruikers"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:28
+msgid "Music On Hold"
+msgstr "Wacht Muziek"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:29
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:14
+msgid "PIN"
+msgstr "PIN"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:32
+msgid "Admin PIN"
+msgstr "Beheerder PIN"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:35
+msgid "Subroutine"
+msgstr "Subroutine"
+
+#: wazo_plugind_admin_ui_conference_official/form.py:36
+msgid "Quiet join/leave"
+msgstr "Stil aankomst/vertrek"
+
+#: wazo_plugind_admin_ui_conference_official/view.py:18
+msgid "conference"
+msgstr "conferentie"
+
+#: wazo_plugind_admin_ui_conference_official/templates/conference/edit.html:4
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:4
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:9
+#: wazo_plugind_admin_ui_conference_official/view.py:20
+msgid "Conferences"
+msgstr "conferenties"
+
+#: wazo_plugind_admin_ui_conference_official/templates/conference/edit.html:9
+msgid "Conference"
+msgstr "Conferentie"
+
+#: wazo_plugind_admin_ui_conference_official/templates/conference/edit.html:11
+msgid "Update"
+msgstr "Update"
+
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:20
+msgid "internal"
+msgstr "intern"
+
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:24
+msgid "incall"
+msgstr ""
+
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:34
+msgid "Add Conference"
+msgstr "Conferentie toevoegen"
+
+#: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:36
+msgid "Add"
+msgstr "Toevoegen"
