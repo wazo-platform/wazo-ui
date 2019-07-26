@@ -22,6 +22,7 @@ class OptionsForm(BaseForm):
     option_key = StringField(validators=[InputRequired()])
     option_value = StringField()
 
+
 class OrderedOptionsForm(BaseForm):
 
     def to_dict(self):

@@ -19,6 +19,6 @@ class HepForm(BaseForm):
     capture_password = StringField(l_('Capture Password'), widget=PasswordInput(hide_value=False))
     capture_id = StringField(l_('Capture ID'))
     uuid_type = SelectField(l_('UUID Type'),
-        choices=[('call-id', l_('Call ID')),
-                 ('channel', l_('Channel'))])
+                            choices=[('call-id', l_('Call ID')),
+                                     ('channel', l_('Channel'))])
     submit = SubmitField(l_('Submit'))

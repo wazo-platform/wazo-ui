@@ -128,6 +128,7 @@ class ErrorExtractor():
             resource = response['resource']
         return ErrorTranslator.resources.get(resource, resource)
 
+
 GENERIC_PATTERN_ERRORS = {
     'resource-not-found': r'^Resource Not Found',
     'invalid-data': r'^Input Error',

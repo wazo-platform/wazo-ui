@@ -6,7 +6,6 @@ from flask import (
     render_template,
     jsonify,
     url_for,
-    request,
     flash,
     request
 )

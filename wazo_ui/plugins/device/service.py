@@ -14,11 +14,11 @@ class DeviceService(BaseConfdService):
 
     def list_unallocated(self, limit=None, order=None, direction=None, offset=None, search=None, **kwargs):
         return self._confd.unallocated_devices.list(search=search,
-                                    order=order,
-                                    limit=limit,
-                                    direction=direction,
-                                    offset=offset,
-                                    **kwargs)
+                                                    order=order,
+                                                    limit=limit,
+                                                    direction=direction,
+                                                    offset=offset,
+                                                    **kwargs)
 
     def autoprov(self, device_id):
         self._confd.devices.autoprov(device_id)

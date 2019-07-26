@@ -302,8 +302,8 @@ class UserService(BaseConfdService):
             if self._is_extension_has_changed(form_extension, old_extension):
                 new_extension = self._get_first_existing_extension(extensions[0])
                 if (
-                        not self._is_extension_associated_with_other_lines(old_extension) and
-                        not new_extension
+                        not self._is_extension_associated_with_other_lines(old_extension)
+                        and not new_extension
                 ):
                     self._confd.extensions.update(form_extension)
                 else:

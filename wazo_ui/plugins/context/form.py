@@ -9,8 +9,7 @@ from wtforms.fields import (SubmitField,
                             SelectMultipleField,
                             FormField,
                             FieldList,
-                            HiddenField,
-                            BooleanField)
+                            HiddenField)
 from wtforms.validators import InputRequired, Length
 
 from wazo_ui.helpers.form import BaseForm

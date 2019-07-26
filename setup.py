@@ -99,7 +99,7 @@ setup(
             'index = wazo_ui.plugins.index.plugin:Plugin',
             'application = wazo_ui.plugins.application.plugin:Plugin',
             'agent = wazo_ui.plugins.agent.plugin:Plugin',
-#            'asterisk_cli = wazo_ui.plugins.asterisk_cli.plugin:Plugin',
+            # 'asterisk_cli = wazo_ui.plugins.asterisk_cli.plugin:Plugin',
             'call_filter = wazo_ui.plugins.call_filter.plugin:Plugin',
             'call_permission = wazo_ui.plugins.call_permission.plugin:Plugin',
             'call_pickup = wazo_ui.plugins.call_pickup.plugin:Plugin',

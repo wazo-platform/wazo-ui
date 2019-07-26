@@ -16,7 +16,7 @@ class ExternalAuthService:
 
         for service in service_list['items']:
             try:
-                detail = self.get(service['type'])
+                self.get(service['type'])
 
                 items.append(service)
             except HTTPError:

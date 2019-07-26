@@ -17,7 +17,6 @@ from wtforms.fields.html5 import IntegerField
 from wtforms.validators import InputRequired, Length, NumberRange
 
 from wazo_ui.helpers.form import BaseForm
-from wazo_ui.core.client import get_wazo_confd_client
 from wazo_ui.helpers.destination import (
     DestinationField,
     DestinationHiddenField,
@@ -35,17 +34,6 @@ class ExtensionForm(BaseForm):
     context = SelectField(l_('Context'), choices=[])
 
 
-class UserForm(BaseForm):
-    uuid = HiddenField()
-    firstname = HiddenField()
-    lastname = HiddenField()
-
-
-class MembersForm(BaseForm):
-    user_uuids = SelectMultipleField(l_('Members'), choices=[])
-    users = FieldList(FormField(UserForm))
-
-
 class ScheduleForm(BaseForm):
     id = SelectField(l_('Schedule'), choices=[])
     name = HiddenField()
@@ -55,20 +43,24 @@ class CallPermissionForm(BaseForm):
     id = HiddenField()
     name = HiddenField()
 
+
 class AgentForm(BaseForm):
     id = HiddenField()
     number = HiddenField()
+
 
 class UserForm(BaseForm):
     uuid = HiddenField()
     firstname = HiddenField()
     lastname = HiddenField()
 
+
 class MembersForm(BaseForm):
     agent_ids = SelectMultipleField(l_('Agents'), choices=[], default=[])
     agents = FieldList(FormField(AgentForm))
     user_ids = SelectMultipleField(l_('Users'), choices=[], default=[])
     users = FieldList(FormField(UserForm))
+
 
 class QueueForm(BaseForm):
     name = StringField(l_('Name'), [InputRequired(), Length(max=128)])

@@ -1,12 +1,10 @@
 # Copyright 2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-from flask_babel import lazy_gettext as l_
 from flask_menu.classy import register_flaskview
 
 from wazo_ui.helpers.plugin import create_blueprint
 
-from .form import DhcpForm
 from .service import DhcpService
 from .view import DhcpView
 

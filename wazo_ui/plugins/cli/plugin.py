@@ -2,10 +2,8 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 
-from flask import g, render_template
-from flask_login import current_user
+from flask import render_template
 from flask_menu.classy import register_flaskview
-from werkzeug.local import LocalProxy
 from wtforms.fields import SubmitField, StringField
 from wtforms.validators import InputRequired, Length
 

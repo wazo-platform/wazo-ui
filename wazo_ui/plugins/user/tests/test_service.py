@@ -198,15 +198,6 @@ class TestUserServiceUpdateUserLines(unittest.TestCase):
                 ('avpf', 'yes')
             ]
         }
-        expected_endpoint_sip = {
-            'id': 1,
-            'options': [
-                ('toto', 'titi'),
-                ('allow', 'no'),
-                ('avpf', 'yes'),
-                ('transport', 'wss')
-            ]
-        }
         line = {'id': 1, 'endpoint_sip': endpoint_sip}
         self.confd.endpoints_sip.get.return_value = existing_endpoint_sip
 

@@ -1,8 +1,6 @@
 # Copyright 2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-from wazo_ui.helpers.service import BaseConfdService
-
 
 class RtpService(object):
 
@@ -12,12 +10,12 @@ class RtpService(object):
     def get(self):
         rtp_general = self._confd.rtp_general.get()
         rtp_general['options']['ice_host_candidates'] = self._build_ice_host_candidates(self._confd.rtp_ice_host_candidates.get()['options'])
-        return rtp_general 
+        return rtp_general
 
     def update(self, resource):
         self.update_ice_host_candidates(resource['ice_host_candidates'])
         resource.pop('ice_host_candidates')
-        options = {'options': { k: v for k, v in resource.items() if v is not None }}
+        options = {'options': {k: v for k, v in resource.items() if v is not None}}
         return self._confd.rtp_general.update(options)
 
     def update_ice_host_candidates(self, resource):
@@ -28,7 +26,7 @@ class RtpService(object):
 
     def _build_ice_host_candidates(self, options):
         result = []
-        for k,v in options.items():
+        for k, v in options.items():
             result.append({'option_key': k,
                            'option_value': v})
 
