@@ -143,50 +143,6 @@ $(document).ready(function() {
       tableInstances[rowId].columns.adjust().responsive.recalc();
     });
   });
-
-  // Add instance tenant in add-customer form or add-location form
-  $('.form-with-tenant').on('show.bs.modal', function() {
-    var $username = $('.form-with-tenant .tenant-username').parent().parent().hide();
-    var $password = $('.form-with-tenant .tenant-password').parent().parent().hide();
-    var $instances = $('.form-with-tenant .instance-select');
-    var $tenants = $('.form-with-tenant .tenant-select');
-    var $tenantParent = $tenants.parent().parent().hide();
-
-    $tenants.on("select2:select", function () {
-      $username.show();
-      $password.show();
-    });
-
-    $tenants.on("select2:unselect", function () {
-      $username.hide();
-      $password.hide();
-    });
-
-    $instances.on("select2:select", function () {
-      $tenantParent.show();
-      var ajaxUrl = $tenants.attr('data-listing-href') || $tenants.attr('data-listing_href');
-
-      $tenants.select2({
-        allowClear: true,
-        theme: 'bootstrap',
-        placeholder: 'Select...',
-        tags: true,
-        ajax: {
-          url: ajaxUrl,
-          data: function (params) {
-            return {
-              term: params.term,
-              instance_uuid: $instances.val()
-            }
-          }
-        }
-      });
-    });
-
-    $instances.on("select2:unselect", function () {
-      $tenantParent.show();
-    });
-  });
 });
 
 

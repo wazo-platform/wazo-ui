@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -12,7 +12,6 @@ from flask_login import login_user, logout_user, current_user
 from wazo_ui.helpers.client import auth_client
 from wazo_ui.helpers.menu import init_visualization
 from wazo_ui.helpers import instance as instance_helper
-from wazo_ui.helpers.rcl import refresh_instance_tenants
 from wazo_ui.http_server import app
 
 from .form import LoginForm
@@ -32,7 +31,6 @@ class Login(FlaskView):
     def _login(self):
         if current_user.is_authenticated:
             self._connect_to_instance(current_user)
-            refresh_instance_tenants()
             return redirect(current_user.get_user_index_url())
 
         form = LoginForm()
@@ -46,8 +44,6 @@ class Login(FlaskView):
             init_visualization()
 
             self._connect_to_instance(form.user)
-
-            refresh_instance_tenants()
 
             return redirect(current_user.get_user_index_url())
 

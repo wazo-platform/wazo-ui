@@ -84,6 +84,7 @@ def get_confd_client():
 
 confd_client = LocalProxy(get_confd_client)
 
+
 def add_tenant_to(client):
     if 'working_instance_tenant_uuid' in session and session['working_instance_tenant_uuid']:
         client.set_tenant(session['working_instance_tenant_uuid'])

@@ -30,9 +30,3 @@ confd:
   host: localhost
   port: 9486
   verify_certificate: /usr/share/xivo-certs/server.crt
-
-policies:
-  # You must set a valid UUID policy
-  reseller:
-  customer:
-  location:

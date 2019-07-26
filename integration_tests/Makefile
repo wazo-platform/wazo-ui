@@ -12,7 +12,7 @@ build-ui:
 	docker build --no-cache -t wazo-ui-test -f Dockerfile ..
 
 egg-info:
-	cd .. && python3 setup.py egg_info
+	cd .. && python setup.py egg_info
 
 test:
-	nosetests-3
+	nosetests

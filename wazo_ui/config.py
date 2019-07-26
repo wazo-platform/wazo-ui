@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import argparse
@@ -18,73 +18,27 @@ _DEFAULT_CONFIG = {
     'pid_filename': '/var/run/wazo-ui/wazo-ui.pid',
     'session_file_dir': '/var/lib/wazo-ui/sessions',
     'session_lifetime': 3600,
-    'policies': {
-        'reseller': None,
-        'customer': None,
-        'location': None
-    },
     'https': {
         'listen': '0.0.0.0',
         'port': 9296,
-        'certificate': '/etc/wazo-ui/https/public-certificate.pem',
-        'private_key': '/etc/wazo-ui/https/private-key.pem',
+        'certificate': '/usr/share/xivo-certs/server.crt',
+        'private_key': '/usr/share/xivo-certs/server.key',
     },
     'auth': {
         'host': '127.0.0.1',
         'port': 443,
-        'verify_certificate': '/etc/wazo-ui/https/public-certificate.pem'
+        'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
     'confd': {
         'host': 'localhost',
         'port': 9486,
-        'verify_certificate': '/etc/wazo-ui/https/public-certificate.pem'
+        'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
     'enabled_plugins': {
         'authentication': True,
         'index': True
     },
-    'core_plugins': {
-        'engine': {
-            'enabled_plugins': {
-                  'application': True,
-                  'agent': True,
-                  'asterisk_cli': True,
-                  'call_filter': True,
-                  'call_permission': True,
-                  'call_pickup': True,
-                  'cdr': True,
-                  'conference': True,
-                  'context': True,
-                  'device': True,
-                  'dhcp': True,
-                  'extension': True,
-                  'funckey': True,
-                  'general_settings': True,
-                  'group': True,
-                  'ha': True,
-                  'identity': True,
-                  'incall': True,
-                  'ivr': True,
-                  'line': True,
-                  'moh': True,
-                  'outcall': True,
-                  'paging': True,
-                  'parking_lot': True,
-                  'plugin': True,
-                  'provisioning': True,
-                  'queue': True,
-                  'schedule': True,
-                  'skill': True,
-                  'skillrule': True,
-                  'sound': True,
-                  'switchboard': True,
-                  'trunk': True,
-                  'user': True,
-                  'voicemail': True,
-                  'webhook': True
-            }
-        }
-    }
+    'core_plugins': {}
 }
 
 

@@ -1,7 +1,7 @@
 Format: http://dep.debian.net/deps/dep5
-Upstream-Name: wazo-ui-light
-Source: https://github.com/wazo-pbx/wazo-ui-light.git
+Upstream-Name: wazo-ui
+Source: https://github.com/wazo-pbx/wazo-ui.git
 
 Files: *
-Copyright: 2018 The Wazo Authors
+Copyright: 2019 The Wazo Authors
 License: GPL-3.0

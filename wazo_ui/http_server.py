@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -45,7 +45,6 @@ class Server():
         app.permanent_session_lifetime = timedelta(seconds=global_config['session_lifetime'])
         app.config['auth'] = global_config.get('auth', {})
         app.config['confd'] = global_config.get('confd', {})
-        app.config['policies'] = global_config.get('policies', {})
         app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 megabytes
 
         if global_config['debug']:
