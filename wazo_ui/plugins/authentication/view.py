@@ -10,7 +10,6 @@ from flask_classful import FlaskView
 from flask_login import login_user, logout_user, current_user
 
 from wazo_ui.core.client import auth_client
-from wazo_ui.helpers.menu import init_visualization
 
 from .form import LoginForm
 
@@ -38,7 +37,6 @@ class Login(FlaskView):
 
             session['language'] = form.language.data
             login_user(form.user)
-            init_visualization()
 
             return redirect(current_user.get_user_index_url())
 
