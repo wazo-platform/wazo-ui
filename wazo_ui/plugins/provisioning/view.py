@@ -145,13 +145,13 @@ class ConfigRegistrarView(ProvisioningBaseView):
     form = ConfigRegistrarForm
     resource = 'config_registrar'
 
-    @menu_item('.ipbx.provisionings.configs', l_('Config registrar'), order=2, icon="file-o")
+    @menu_item('.ipbx.provisionings.configs', l_('Registrars'), order=2, icon="file-o")
     def index(self):
         return super().index()
 
     def _index(self, form=None):
         try:
-            resource_list = self.service.list_registrar()
+            resource_list = self.service.list()
         except HTTPError as error:
             self._flash_http_error(error)
             return redirect(url_for('index.IndexView:get'))
