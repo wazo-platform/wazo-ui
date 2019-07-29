@@ -9,8 +9,6 @@ from flask_babel import Locale, get_locale
 from flask_classful import FlaskView
 from flask_login import login_user, logout_user, current_user
 
-from wazo_ui.core.client import auth_client
-
 from .form import LoginForm
 
 logger = logging.getLogger(__name__)
@@ -61,7 +59,7 @@ class Logout(FlaskView):
         token = current_user.get_id()
         current_user.reset_instance()
         try:
-            auth_client.token.revoke(token)
+            self.auth_client.token.revoke(token)
         except requests.HTTPError as e:
             logger.warning('Error with Wazo authentication server: %(error)s', error=e.message)
         except requests.ConnectionError:

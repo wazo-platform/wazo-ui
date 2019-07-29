@@ -1,7 +1,7 @@
 # Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-from flask import g, session, app
+from flask import g, session
 from flask_login import current_user
 from werkzeug.local import LocalProxy
 
@@ -13,6 +13,8 @@ from wazo_plugind_client import Client as PlugindClient
 from wazo_provd_client import Client as ProvdClient
 from wazo_webhookd_client import Client as WebhookdClient
 from xivo_amid_client import Client as AmidClient
+
+from wazo_ui.http_server import app
 
 
 def get_provd_client():

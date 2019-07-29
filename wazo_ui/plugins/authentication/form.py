@@ -6,13 +6,14 @@ import logging
 
 from requests.exceptions import HTTPError
 
-from flask import session, app
+from flask import session
 from flask_babel import lazy_gettext as l_
 from flask_wtf import FlaskForm
 from wtforms.fields import PasswordField, StringField, SubmitField, SelectField
 from wtforms.validators import InputRequired, ValidationError
 
-from wazo_auth_client import AuthClient
+from wazo_auth_client import Client as AuthClient
+from wazo_ui.http_server import app
 from wazo_ui.user import UserUI
 
 USERNAME_PASSWORD_ERROR = l_('Wrong username and/or password')
