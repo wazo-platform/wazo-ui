@@ -117,7 +117,7 @@ setup(
             'group = wazo_ui.plugins.group.plugin:Plugin',
             'ha = wazo_ui.plugins.ha.plugin:Plugin',
             'hep = wazo_ui.plugins.hep.plugin:Plugin',
-            # 'identity = wazo_ui.plugins.identity.plugin:Plugin',
+            'identity = wazo_ui.plugins.identity.plugin:Plugin',
             'incall = wazo_ui.plugins.incall.plugin:Plugin',
             'ivr = wazo_ui.plugins.ivr.plugin:Plugin',
             'line = wazo_ui.plugins.line.plugin:Plugin',
