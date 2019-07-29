@@ -56,5 +56,6 @@ class LoginForm(FlaskForm):
             raise ValidationError(l_('Wazo authentication server connection error'))
 
         self.user = UserUI(response['token'], response['auth_id'])
+        self.user.set_tenant(response['metadata']['tenant_uuid'])
 
         return True

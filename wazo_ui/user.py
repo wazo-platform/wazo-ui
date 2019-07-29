@@ -45,10 +45,10 @@ class UserUI(UserMixin):
         session['instance'] = None
         session['instance_tenants'] = []
 
-    def set_instance(self, instance, wazo_tenant=None):
+    def set_tenant(self, tenant=None):
         session['instance'] = {}
-        session['instance'] = instance
-        session['instance']['wazo_tenant'] = wazo_tenant
+        session['instance'] = {'remote_host': 'localhost'}
+        session['instance']['wazo_tenant'] = tenant
 
     def get_instance(self):
         return session['instance']
