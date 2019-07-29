@@ -10,6 +10,8 @@ USER_HOME="/var/lib/${USER}"
 
 case "$1" in
 	configure)
+		previous_version="$2"
+
 		# add user
 		if ! getent passwd $USER > /dev/null ; then
 			echo "Adding system user for ${USER}" 1>&2
@@ -26,7 +28,7 @@ case "$1" in
 		fi
 		chown $USER:$GROUP "$LOG_FILENAME"
 
-		if dpkg --compare-versions "$2" lt '18.04'; then
+		if [[ -z "${previous_version}" ]]; then
 			ln -sf \
 				/etc/nginx/locations/https-available/$DAEMONNAME \
 				/etc/nginx/locations/https-enabled/$DAEMONNAME
