@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.MohView:get', id=resource.id), 'icon': 'music' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    <div class="col-md-6">
+    {% call build_form_box(_('Music'), resource.name, 'music', container_class='col-md-12') %}
+      {% call build_form(action=url_for('.MohView:put', id=resource.uuid)) %}
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+          {{ render_field(form.name, disabled=True) }}
+          {{ render_field(form.mode) }}
+          {{ render_field(form.sort) }}
+          {{ render_field(form.application) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+      {% call build_form_box(_('Upload File'), box_class='box-body', container_class='col-md-12') %}
+        <form class="form-horizontal" method="POST" action="{{ url_for('.MohView:upload_filename', uuid=resource['uuid']) }}" data-toggle="validator" enctype="multipart/form-data">
+          {% call add_default_fields(form=form, submit_value=_('Upload')) %}
+            <input type="file" name="moh_filename">
+          {% endcall %}
+        </form>
+      {% endcall %}
+    </div>
+
+    {% call build_form_box(_('Files'), box_class='box-header', container_class='col-md-6') %}
+          <table class="table table-hover table-responsive table-condensed">
+              <tr>
+                <th>{{ _('Name') }}</th>
+                <th style="width: 40px" class="text-center">{{ _('Actions') }}</th>
+              </tr>
+            <tbody>
+            {% for file in resource.files %}
+              <tr>
+                <td>
+                  <a href="{{ url_for('.MohView:download_filename', uuid=resource['uuid'], moh_filename=file.name) }}"
+                     title="{{ _('Download the moh file') }}"
+                     class="btn btn-xs btn-default">
+                    {{ file['name'] }}
+                  </a>
+                </td>
+                <td class="text-center">
+                  <a href="{{ url_for('.MohView:delete_filename', uuid=resource['uuid'], moh_filename=file.name) }}"
+                     title="{{ _('Delete the moh file') }}"
+                     class="btn btn-xs btn-default"
+                     onclick="return confirm(_('Are you sure you want to delete this item?'));">
+                    <i class="fa fa-fw fa-remove"></i>
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/moh.js') }}"></script>
+{% endblock %}

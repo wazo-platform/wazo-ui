@@ -1,0 +1,282 @@
+# Translations template for wazo_admin_ui_trunk.
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
+# This file is distributed under the same license as the
+# wazo_admin_ui_trunk project.
+# Wazo Dev Team <dev@wazo.community>, 2018.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: wazo_admin_ui_trunk 0.1\n"
+"Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
+"POT-Creation-Date: 2018-02-27 13:43-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: Japanese (https://www.transifex.com/wazo/teams/69545/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.3\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:22
+msgid "Interface"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:23
+msgid "Interface Suffix"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:33
+msgid "Username"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:34
+msgid "Secret"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:35
+#: wazo_plugind_admin_ui_trunk_official/form.py:45
+msgid "Type"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:35
+#: wazo_plugind_admin_ui_trunk_official/form.py:45
+msgid "User"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:35
+#: wazo_plugind_admin_ui_trunk_official/form.py:45
+msgid "Peer"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:35
+#: wazo_plugind_admin_ui_trunk_official/form.py:45
+msgid "Friend"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:36
+#: wazo_plugind_admin_ui_trunk_official/form.py:46
+msgid "Host"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:37
+#: wazo_plugind_admin_ui_trunk_official/form.py:47
+msgid "Dynamic"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:37
+#: wazo_plugind_admin_ui_trunk_official/form.py:47
+msgid "Static"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:44
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:13
+msgid "Name"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:54
+#: wazo_plugind_admin_ui_trunk_official/form.py:74
+msgid "Enabled"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:55
+msgid "SIP Username"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:56
+#: wazo_plugind_admin_ui_trunk_official/form.py:75
+msgid "Authentication Username"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:57
+#: wazo_plugind_admin_ui_trunk_official/form.py:76
+msgid "Authentication Password"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:58
+#: wazo_plugind_admin_ui_trunk_official/form.py:79
+msgid "Remote Host"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:59
+#: wazo_plugind_admin_ui_trunk_official/form.py:80
+msgid "Remote port"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:60
+msgid "Transport"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:61
+msgid "None"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:62
+msgid "TCP"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:63
+msgid "TLS"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:64
+msgid "UDP"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:65
+msgid "WS"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:66
+msgid "WSS"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:68
+#: wazo_plugind_admin_ui_trunk_official/form.py:78
+msgid "Callback Extension"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:69
+msgid "Expiration"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:77
+msgid "Callback Context"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:84
+msgid "Context"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:85
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:49
+msgid "SIP"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:85
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:50
+msgid "IAX"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:85
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:51
+msgid "CUSTOM"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/form.py:91
+msgid "Submit"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:4
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:9
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_custom.html:4
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:4
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:4
+#: wazo_plugind_admin_ui_trunk_official/view.py:23
+msgid "Trunks"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:4
+msgid "Edit"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:14
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:15
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:86
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:87
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:153
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:4
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_custom.html:10
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:12
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:13
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:12
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:13
+msgid "Trunk"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:16
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:88
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:14
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:14
+msgid "Register"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:17
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:89
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:15
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:15
+msgid "Options"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:24
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:40
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:55
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:96
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:111
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:124
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:155
+msgid "Update"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:29
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:100
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:24
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:25
+msgid "Set host value"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:34
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:105
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:162
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_custom.html:18
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:29
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:30
+msgid "Choose Context"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:60
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:129
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:53
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:55
+msgid "Option Key"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:61
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/edit.html:130
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:54
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:56
+msgid "Option Value"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:4
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_custom.html:4
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:4
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:4
+msgid "List"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:12
+msgid "Protocol"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:14
+msgid "Relations"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:39
+msgid "outcall"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/list.html:48
+msgid "Choose your protocol"
+msgstr ""
+
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_custom.html:12
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:21
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:35
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_iax.html:48
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:21
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:36
+#: wazo_plugind_admin_ui_trunk_official/templates/trunk/protocol_sip.html:50
+msgid "Add"
+msgstr ""

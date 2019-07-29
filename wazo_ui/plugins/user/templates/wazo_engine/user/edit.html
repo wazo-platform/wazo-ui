@@ -1,0 +1,256 @@
+{% extends "layout.html" %}
+{% set name = resource.firstname ~ (' ' ~ resource.lastname if resource.lastname else '') %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': name, 'link': url_for('.UserView:get', id=resource.uuid), 'icon': 'user' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+    {% call build_section_row() %}
+      {% call build_form_tabs_box() %}
+        {% call build_tabs_navigation() %}
+          {{ add_tab_navigation_header(_('User'), name, 'user') }}
+          {{ add_tab_navigation_item('user', _('User'), active=True) }}
+          {{ add_tab_navigation_item('general', _('General')) }}
+          {{ add_tab_navigation_item('fallbacks', _('Fallbacks')) }}
+          {{ add_tab_navigation_item('services', _('Services')) }}
+          {{ add_tab_navigation_item('lines', _('Lines')) }}
+          {{ add_tab_navigation_item('groups', _('Groups')) }}
+          {{ add_tab_navigation_item('funckeys', _('FuncKeys')) }}
+          {{ add_tab_navigation_item('schedule', _('Schedule')) }}
+          {{ add_tab_navigation_item('voicemail', _('Voicemail')) }}
+          {{ add_tab_navigation_item('callpermissions', _('Call Permissions')) }}
+        {% endcall %}
+        {% call build_form(action=url_for('.UserView:put', id=resource.uuid)) %}
+          {% call build_tabs_content() %}
+
+            {% call build_tab_content_item('user', active=True) %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ render_field(form.subscription_type) }}
+                {{ render_field(form.firstname) }}
+                {{ render_field(form.lastname) }}
+                {{ render_field(form.caller_id) }}
+                {{ render_field(form.outgoing_caller_id,
+                                data_allow_custom_values=True) }}
+                {{ render_field(form.email) }}
+
+                <fieldset>
+                  <legend>{{ _('Authentication') }}</legend>
+                  {{ render_field(form.auth_enabled) }}
+                  {{ render_field(form.username) }}
+                  {{ render_field(form.password, type='password', data_toggle='password') }}
+                </fieldset>
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('general') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ render_field(form.mobile_phone_number) }}
+                {{ render_field(form.ring_seconds) }}
+                {{ render_field(form.music_on_hold, data_listing_href=url_for(listing_urls['moh'])) }}
+                {{ render_field(form.preprocess_subroutine) }}
+                {{ render_field(form.simultaneous_calls) }}
+                {{ render_field(form.timezone) }}
+                {{ render_field(form.userfield) }}
+                {{ render_field(form.description) }}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('fallbacks') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ render_field(form.fallbacks.busy_destination) }}
+                {{ render_field(form.fallbacks.congestion_destination) }}
+                {{ render_field(form.fallbacks.fail_destination) }}
+                {{ render_field(form.fallbacks.noanswer_destination) }}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('services') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ render_field(form.services.dnd.enabled) }}
+                {{ render_field(form.services.incallfilter.enabled) }}
+                {{ render_field(form.forwards.busy.enabled) }}
+                {{ render_field(form.forwards.busy.destination) }}
+                {{ render_field(form.forwards.unconditional.enabled) }}
+                {{ render_field(form.forwards.unconditional.destination) }}
+                {{ render_field(form.forwards.noanswer.enabled) }}
+                {{ render_field(form.forwards.noanswer.destination) }}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('lines') %}
+              {{ build_add_row_entry_header() }}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {% call build_table(class_name='user-lines') %}
+
+                  {% call build_table_headers() %}
+                    <th>{{ _('Protocol') }}</th>
+                    <th>{{ _('Name') }}</th>
+                    <th>{{ _('Context') }}</th>
+                    <th>{{ _('Extension') }}</th>
+                    <th style="min-width: 175px">{{ _('Device') }}</th>
+                    <th>{{ _('Line (N°)') }}</th>
+                    <th>{{ _('Application') }}</th>
+                    <th style="width: 21px"></th>
+                  {% endcall %}
+
+                  {% call build_table_body(class_='dynamic-table') %}
+                    {% do form.lines.append_entry() %}
+                    {{ _build_line_entry(form.lines.pop_entry(), template=True) }}
+
+                    {% for line in form.lines %}
+                      {{ _build_line_entry(line) }}
+                    {% endfor %}
+                  {% endcall %}
+
+                {% endcall %}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('groups') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.group_ids, data_listing_href=url_for(listing_urls['group'])) }}
+              {{ render_field(form.groups, with_label=False) }}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('funckeys') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ build_add_row_entry_header() }}
+                {% call build_table() %}
+                  {% call build_table_headers() %}
+                    <th class="text-center col-sm-1">{{ _('Position') }}</th>
+                    <th class="text-center col-sm-2">{{ _('Label') }}</th>
+                    <th class="text-center">{{ _('Destination') }}</th>
+                    <th class="text-center" style="width: 22px">{{ _('BLF') }}</th>
+                    <th class="text-center" style="width: 22px"></th>
+                  {% endcall %}
+
+                  {% call build_table_body(class_='dynamic-table') %}
+                    {% do form.funckeys.append_entry() %}
+                    {{ _build_funckey_entry(form.funckeys.pop_entry(), template=True) }}
+
+                    {% for funckey in form.funckeys %}
+                       {{ _build_funckey_entry(funckey) }}
+                    {% endfor %}
+                  {% endcall %}
+                {% endcall %}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('schedule') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ render_field(form.schedules[0]['name']) }}
+                {{ render_field(form.schedules[0]['id'],
+                                data_listing_href=url_for(listing_urls['schedule']),
+                                data_allow_clear=True,
+                                data_placeholder=_('Choose Schedules')) }}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('voicemail') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.voicemail['id'],
+                              data_listing_href=url_for(listing_urls['voicemail']),
+                              data_allow_clear=True,
+                              data_placeholder=_('Choose Voicemail')) }}
+              {% endcall %}
+            {% endcall %}
+
+          {% call build_tab_content_item('callpermissions') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.call_permission_ids,
+                              data_listing_href=url_for(listing_urls['callpermission']),
+                              data_allow_clear=True,
+                              data_placeholder=_('Choose Call Permissions')) }}
+              {{ render_field(form.call_permissions, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% endcall %}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+{% endblock %}
+
+
+{% macro _build_line_entry(line, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    {{ render_field(line['id']) }}
+    {{ render_field(line.endpoint_sip_id) }}
+    {{ render_field(line.endpoint_sccp_id) }}
+    {{ render_field(line.endpoint_custom_id) }}
+    {{ render_field(line.extensions[0]['id']) }}
+    <td>
+      {{ render_field(line.protocol, with_label=False) }}
+    </td>
+    <td>
+      {{ render_field(line['name'], with_label=False, disabled=True) }}
+    </td>
+    <td>
+      {{ render_field(line.context,
+                      with_label=False,
+                      class_='line-context',
+                      required=True,
+                      data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
+    </td>
+    <td>
+      {{ render_field(line.extensions[0].exten,
+                      with_label=False,
+                      class_='line-extension',
+                      data_allow_clear=True,
+                      data_allow_custom_values=True,
+                      data_listing_href=url_for(listing_urls['available_extension_user'])) }}
+    </td>
+    <td>
+      {{ render_field(line.device,
+                      with_label=False,
+                      class_='line-device',
+                      data_allow_clear=True,
+                      data_listing_href=url_for(listing_urls['device'])) }}
+    </td>
+    <td>
+      {{ render_field(line.position, with_label=False) }}
+    </td>
+    <td>
+      {{ render_field(line.application.uuid,
+                      with_label=False,
+                      class_='line-application',
+                      data_allow_clear=True,
+                      data_listing_href=url_for(listing_urls['custom'])) }}
+    </td>
+    <td>
+      {{ add_delete_entry_button() }}
+    </td>
+  </tr>
+{% endmacro %}
+
+{% macro _build_funckey_entry(funckey, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    {{ render_field(funckey['id']) }}
+    <td>{{ render_field(funckey.digit, with_label=False) }}</td>
+    <td>{{ render_field(funckey['label'], with_label=False) }}</td>
+    <td>{{ render_field(funckey.destination, with_label=False) }}</td>
+    <td class="text-center">{{ render_field(funckey.blf, with_label=False, inputclass='text-center') }}</td>
+    <td class="text-center">{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}
+
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/user.js') }}"></script>
+{% endblock %}
+
+{% block additional_css %}
+  <link rel="stylesheet" href="{{ url_for('.static', filename='css/user.css') }}" />
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.IvrView:get', id=resource.id), 'icon': 'navicon' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+
+  {% call build_section_row() %}
+    {% call build_form(action=url_for('.IvrView:put', id=resource.id)) %}
+      {% call build_form_box(_('IVR'), resource.name, 'navicon', container_class='col-md-6') %}
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.description) }}
+          {{ render_field(form.menu_sound) }}
+          {{ render_field(form.greeting_sound) }}
+          {{ render_field(form.max_tries) }}
+          {{ render_field(form.invalid_destination, with_label=False) }}
+          {{ render_field(form.invalid_sound) }}
+          {{ render_field(form.timeout) }}
+          {{ render_field(form.timeout_destination, with_label=False) }}
+          {{ render_field(form.abort_destination, with_label=False) }}
+          {{ render_field(form.abort_sound) }}
+        {% endcall %}
+      {% endcall %}
+
+      {% call build_form_box(_('Add choices'), box_class='box-info', container_class='col-md-6') %}
+        {{ build_add_row_entry_header() }}
+
+        {% call build_table() %}
+
+          {% call build_table_headers() %}
+            <th class="text-center">{{ _('Digit') }}</th>
+            <th class="text-center">{{ _('Destination') }}</th>
+            <th></th>
+          {% endcall %}
+
+          {% call build_table_body(class_='dynamic-table') %}
+            {% do form.choices.append_entry() %}
+            {{ _build_choice_entry(form.choices.pop_entry(), template=True) }}
+
+            {% for choice in form.choices %}
+               {{ _build_choice_entry(choice) }}
+            {% endfor %}
+          {% endcall %}
+
+        {% endcall %}
+
+        {{ build_add_row_entry_header() }}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_choice_entry(choice, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td class="col-sm-1">
+      {{ render_field(choice.exten, with_label=False) }}
+    </td>
+    <td class="col-sm-10">
+      {{ render_field(choice.destination, with_label=False) }}
+    </td>
+    <td class="text-center">
+      {{ add_delete_entry_button() }}
+    </td>
+  </tr>
+{% endmacro %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/ivr.js') }}"></script>
+{% endblock %}
+

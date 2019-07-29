@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.PagingView:get', id=resource.id), 'icon': 'bullhorn' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_box(_('Pagings'), resource.name, 'bullhorn') %}
+      {% call build_form(action=url_for('.PagingView:put', id=resource.id)) %}
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.number) }}
+          {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.callers.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.announce_caller) }}
+          {{ render_field(form.announce_sound) }}
+          {{ render_field(form.caller_notification) }}
+          {{ render_field(form.duplex) }}
+          {{ render_field(form.enabled) }}
+          {{ render_field(form.ignore_forward) }}
+          {{ render_field(form.record) }}
+          {{ render_field(form.members.users, with_label=false) }}
+          {{ render_field(form.callers.users, with_label=false) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

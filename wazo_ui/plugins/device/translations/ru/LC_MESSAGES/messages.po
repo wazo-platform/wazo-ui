@@ -1,0 +1,134 @@
+# Translations template for wazo_admin_ui_device.
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
+# This file is distributed under the same license as the
+# wazo_admin_ui_device project.
+# Wazo Dev Team <dev@wazo.community>, 2018.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: wazo_admin_ui_device 0.1\n"
+"Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
+"POT-Creation-Date: 2018-02-27 13:42-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: Russian (https://www.transifex.com/wazo/teams/69545/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.3\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: wazo_plugind_admin_ui_device_official/form.py:18
+msgid "Switchboard"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:23
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:13
+msgid "IP"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:24
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:14
+msgid "MAC"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:25
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:15
+msgid "Model"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:26
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:16
+msgid "Plugin"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:27
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:17
+msgid "Vendor"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:28
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:18
+msgid "Version"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:29
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:59
+msgid "Status"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:30
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:61
+msgid "Autoprov"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:31
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:60
+msgid "Configured"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:32
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:62
+msgid "Not configured"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/form.py:35
+msgid "Description"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/edit.html:4
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:4
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:9
+#: wazo_plugind_admin_ui_device_official/view.py:24
+msgid "Devices"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/view.py:35
+#, python-format
+msgid "%(resource)s: Resource has been reset to autoprov"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/view.py:45
+#, python-format
+msgid "%(resource)s: Resource has been synchronized"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/edit.html:4
+msgid "edit"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/edit.html:9
+msgid "Device"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/edit.html:11
+msgid "Update"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:4
+msgid "List"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:42
+msgid "Synchronize device"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:44
+msgid "Are you sure you want to synchronize this device ?"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:50
+msgid "Reset device to autoprov mode"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:52
+msgid "Are you sure you want to reset this device ?"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:65
+msgid "Add Device"
+msgstr ""
+
+#: wazo_plugind_admin_ui_device_official/templates/device/list.html:67
+msgid "Add"
+msgstr ""

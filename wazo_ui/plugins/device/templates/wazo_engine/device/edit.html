@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.ip, 'link': url_for('.DeviceView:get', id=resource.id), 'icon': 'phone-square' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_box(_('Device'), resource.mac, 'phone-square') %}
+      {% call build_form(action=url_for('.DeviceView:put', id=resource.id)) %}
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+          {{ render_field(form.template_id, data_listing_href=url_for(listing_urls['config_device'])) }}
+          {{ render_field(form.ip) }}
+          {{ render_field(form.mac, readonly='readonly') }}
+          {{ render_field(form.plugin, data_listing_href=url_for(listing_urls['plugin'])) }}
+          {{ render_field(form.model, readonly='readonly') }}
+          {{ render_field(form.vendor, readonly='readonly') }}
+          {{ render_field(form.version, readonly='readonly') }}
+          {{ render_field(form.options.switchboard) }}
+          {{ render_field(form.description) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

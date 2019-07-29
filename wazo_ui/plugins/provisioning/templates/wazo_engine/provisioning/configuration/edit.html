@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': 'Provisioning', 'link': url_for('.ConfigurationView:index'), 'icon': 'gears' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {{ add_tab_navigation_item('advanced', _('Advanced')) }}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.ConfigurationView:put')) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.general_config.plugin_server) }}
+              {{ render_field(form.general_config.http_proxy) }}
+              {{ render_field(form.general_config.https_proxy) }}
+              {{ render_field(form.general_config.ftp_proxy) }}
+              {{ render_field(form.general_config.locale) }}
+              {{ render_field(form.general_config.NAT) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('advanced') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.network_config.provision_host) }}
+              {{ render_field(form.network_config.provision_http_port) }}
+              {{ render_field(form.network_config.rest_host) }}
+              {{ render_field(form.network_config.rest_https_port) }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.endpoint_sip['username'], 'link': url_for('.TrunkView:get', id=resource.id), 'icon': 'server' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+
+    {% if form.protocol.data == 'sip' %}
+
+      {% call build_form_tabs_box() %}
+        {% call build_tabs_navigation() %}
+          {{ add_tab_navigation_header(_('Trunk'), form.endpoint_sip.username.data, 'server') }}
+          {{ add_tab_navigation_item('trunk', _('Trunk'), active=True) }}
+          {{ add_tab_navigation_item('register', _('Register')) }}
+          {{ add_tab_navigation_item('options', _('Options')) }}
+        {% endcall %}
+
+        {% call build_form(action=url_for('.TrunkView:put', id=resource.id)) %}
+          {% call build_tabs_content() %}
+
+            {% call build_tab_content_item('trunk', active=True) %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ render_field(form.endpoint_sip['id']) }}
+                {{ render_field(form.endpoint_sip['username']) }}
+                {{ render_field(form.endpoint_sip['secret']) }}
+                {{ render_field(form.endpoint_sip['host']) }}
+                {{ render_field(form.endpoint_sip['host_value'], placeholder=_('Set host value')) }}
+                {{ render_field(form.endpoint_sip['type']) }}
+                {{ render_field(form.context,
+                                data_allow_clear=True,
+                                class_='trunk-context',
+                                placeholder=_('Choose Context'),
+                                data_listing_href=url_for(listing_urls['context'])) }}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('register') %}
+             {% call add_default_fields(form=form, submit_value=_('Update')) %}
+               {{ render_field(form.register_sip['id']) }}
+               {{ render_field(form.register_sip['enabled']) }}
+               {{ render_field(form.register_sip['sip_username']) }}
+               {{ render_field(form.register_sip['auth_username']) }}
+               {{ render_field(form.register_sip['auth_password']) }}
+               {{ render_field(form.register_sip['remote_host']) }}
+               {{ render_field(form.register_sip['remote_port']) }}
+               {{ render_field(form.register_sip['transport']) }}
+               {{ render_field(form.register_sip['callback_extension']) }}
+               {{ render_field(form.register_sip['expiration']) }}
+             {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('options') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ build_add_row_entry_header() }}
+                {% call build_table() %}
+
+                  {% call build_table_headers() %}
+                    <th>{{  _('Option Key') }}</th>
+                    <th>{{  _('Option Value') }}</th>
+                    <th style="width: 21px"></th>
+                  {% endcall %}
+
+                  {% call build_table_body(class_='dynamic-table') %}
+                    {% do form.endpoint_sip.options.append_entry() %}
+                    {{ _build_option_entry(form.endpoint_sip.options.pop_entry(), template=True) }}
+
+                    {% for option in form.endpoint_sip.options %}
+                      {{ _build_option_entry(option) }}
+                    {% endfor %}
+                  {% endcall %}
+
+                {% endcall %}
+              {% endcall %}
+            {% endcall %}
+
+          {% endcall %}
+        {% endcall %}
+      {% endcall %}
+
+    {% elif form.protocol.data == 'iax' %}
+
+      {% call build_form_tabs_box() %}
+        {% call build_tabs_navigation() %}
+          {{ add_tab_navigation_header(_('Trunk'), form.endpoint_iax.name.data, 'server') }}
+          {{ add_tab_navigation_item('trunk', _('Trunk'), active=True) }}
+          {{ add_tab_navigation_item('register', _('Register')) }}
+          {{ add_tab_navigation_item('options', _('Options')) }}
+        {% endcall %}
+
+        {% call build_form(action=url_for('.TrunkView:put', id=resource.id)) %}
+          {% call build_tabs_content() %}
+
+            {% call build_tab_content_item('trunk', active=True) %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ render_field(form.endpoint_iax['id']) }}
+                {{ render_field(form.endpoint_iax['name']) }}
+                {{ render_field(form.endpoint_iax['host']) }}
+                {{ render_field(form.endpoint_iax['host_value'], placeholder=_('Set host value')) }}
+                {{ render_field(form.endpoint_iax['type']) }}
+                {{ render_field(form.context,
+                                data_allow_clear=True,
+                                class_='trunk-context',
+                                placeholder=_('Choose Context'),
+                                data_listing_href=url_for(listing_urls['context'])) }}
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('register') %}
+             {% call add_default_fields(form=form, submit_value=_('Update')) %}
+               {{ render_field(form.register_iax['id']) }}
+               {{ render_field(form.register_iax['enabled']) }}
+               {{ render_field(form.register_iax['auth_username']) }}
+               {{ render_field(form.register_iax['auth_password']) }}
+               {{ render_field(form.register_iax['callback_context']) }}
+               {{ render_field(form.register_iax['callback_extension']) }}
+               {{ render_field(form.register_iax['remote_host']) }}
+               {{ render_field(form.register_iax['remote_port']) }}
+             {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('options') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ build_add_row_entry_header() }}
+                {% call build_table() %}
+
+                  {% call build_table_headers() %}
+                    <th>{{  _('Option Key') }}</th>
+                    <th>{{  _('Option Value') }}</th>
+                    <th style="width: 21px"></th>
+                  {% endcall %}
+
+                  {% call build_table_body(class_='dynamic-table') %}
+                    {% do form.endpoint_iax.options.append_entry() %}
+                    {{ _build_option_entry(form.endpoint_iax.options.pop_entry(), template=True) }}
+
+                    {% for option in form.endpoint_iax.options %}
+                      {{ _build_option_entry(option) }}
+                    {% endfor %}
+                  {% endcall %}
+
+                {% endcall %}
+              {% endcall %}
+            {% endcall %}
+
+          {% endcall %}
+        {% endcall %}
+      {% endcall %}
+
+    {% elif form.protocol.data == 'custom' %}
+
+      {% call build_form_box(_('Trunk'), form.endpoint_custom.interface.data, 'server') %}
+        {% call build_form(action=url_for('.TrunkView:put', id=resource.id)) %}
+          {% call add_default_fields(form=form, submit_value=_('Update')) %}
+            {{ render_field(form.endpoint_custom['id']) }}
+            {{ render_field(form.endpoint_custom['interface']) }}
+            {{ render_field(form.endpoint_custom['interface_suffix']) }}
+            {{ render_field(form.context,
+                            data_allow_clear=True,
+                            class_='trunk-context',
+                            placeholder=_('Choose Context'),
+                            data_listing_href=url_for(listing_urls['context'])) }}
+          {% endcall %}
+        {% endcall %}
+      {% endcall %}
+
+    {% endif %}
+
+  {% endcall %}
+{% endblock %}
+
+
+{% macro _build_option_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(option.option_key, with_label=False) }}</td>
+    <td>{{ render_field(option.option_value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}
+
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/trunk.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Identities'), 'link': url_for('.IdentityView:index'), 'icon': 'user' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Identities'), 'user') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.IdentityView:get', id=''), delete=url_for('.IdentityView:delete', id='')) %}
+          <th>{{ _('Username') }}</th>
+          <th>{{ _('Firstname') }}</th>
+          <th>{{ _('Lastname') }}</th>
+          <th>{{ _('Email') }}</th>
+          <th>{{ _('Purpose') }}</th>
+        {% endcall %}
+        {% call(identity) build_list_table_rows(resource_list['items']) %}
+          <td>{{ identity.username }}</td>
+          <td>{{ identity.firstname or '-' }}</td>
+          <td>{{ identity.lastname or '-' }}</td>
+          <td>
+            {% for email in identity.emails %}
+              {% if email['main'] == True %}
+                {{ email['address']  }}
+              {% endif %}
+            {%  endfor %}
+          </td>
+          <td>{{ identity.purpose or '-' }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Identity')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.username) }}
+          {{ render_field(form.password, autocomplete="off") }}
+          {{ render_field(form.firstname) }}
+          {{ render_field(form.lastname) }}
+          {{ render_field(form.email_address) }}
+          {{ render_field(form.purpose) }}
+          {{ render_field(form.tenant_uuid, data_listing_href=url_for(listing_urls['tenant'])) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

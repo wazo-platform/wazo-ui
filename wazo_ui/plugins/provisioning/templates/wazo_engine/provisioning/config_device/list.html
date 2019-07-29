@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Provisioning / Config device'), 'link': url_for('.ConfigDeviceView:index'), 'icon': 'file-zip-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Config device'), 'file-zip-o') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(
+          get=url_for('.ConfigDeviceView:get', id=''),
+          delete=url_for('.ConfigDeviceView:delete', id='')
+        ) %}
+          <th>{{ _('Label') }}</th>
+        {% endcall %}
+        {% call(config_device) build_list_table_rows(resource_list['items']) %}
+          <td>{{ config_device.label }} ( {{ config_device.id }} )</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add config device')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.label) }}
+          {{ render_field(form.raw_config.form.locale) }}
+          {{ render_field(form.raw_config.form.timezone) }}
+          {{ render_field(form.raw_config.form.protocol) }}
+          {{ render_field(form.raw_config.form.config_encryption_enabled) }}
+          {{ render_field(form.raw_config.form.ntp_enabled) }}
+          {{ render_field(form.raw_config.form.ntp_ip) }}
+          {{ render_field(form.raw_config.form.sip_dtmf_mode) }}
+          {{ render_field(form.raw_config.form.user_username) }}
+          {{ render_field(form.raw_config.form.user_password) }}
+          {{ render_field(form.raw_config.form.admin_username) }}
+          {{ render_field(form.raw_config.form.admin_password) }}
+          {{ render_field(form.raw_config.form.sip_subscribe_mwi) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

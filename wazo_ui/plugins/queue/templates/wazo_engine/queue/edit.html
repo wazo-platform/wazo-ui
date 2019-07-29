@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.QueueView:get', id=resource.uuid), 'icon': 'cubes' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Queue'), resource.name, 'cubes') }}
+        {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {{ add_tab_navigation_item('advanced', _('Advanced')) }}
+        {{ add_tab_navigation_item('diversions', _('Diversions')) }}
+        {{ add_tab_navigation_item('fallbacks', _('Fallbacks')) }}
+        {{ add_tab_navigation_item('schedule', _('Schedule')) }}
+        {{ add_tab_navigation_item('options', _('Options')) }}
+        {{ add_tab_navigation_item('agents', _('Agents')) }}
+        {{ add_tab_navigation_item('users', _('Users')) }}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.QueueView:put', id=resource.id)) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.name) }}
+              {{ render_field(form.extensions[0].context,
+                              label='Exten',
+                              inputclass='ui-helper-clearfix',
+                              divclass='col-sm-4',
+                              class_='queue-context',
+                              placeholder='Choose Context',
+                              data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
+              {{ render_field(form.extensions[0].exten,
+                              data_allow_custom_values=True,
+                              with_label=False,
+                              data_allow_clear=True,
+                              divclass='col-sm-2',
+                              class_='queue-exten',
+                              data_listing_href=url_for(listing_urls['available_extension_queue'])) }}
+              {{ render_field(form.music_on_hold, data_listing_href=url_for(listing_urls['moh'])) }}
+              {{ render_field(form.caller_id_mode) }}
+              {{ render_field(form.caller_id_name) }}
+              {{ render_field(form.preprocess_subroutine) }}
+              {{ render_field(form.enabled) }}
+
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('advanced') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.announce_hold_time_on_entry) }}
+              {{ render_field(form.data_quality) }}
+              {{ render_field(form.dtmf_hangup_callee_enabled) }}
+              {{ render_field(form.dtmf_hangup_caller_enabled) }}
+              {{ render_field(form.dtmf_record_callee_enabled) }}
+              {{ render_field(form.dtmf_record_caller_enabled) }}
+              {{ render_field(form.dtmf_transfer_callee_enabled) }}
+              {{ render_field(form.dtmf_transfer_caller_enabled) }}
+              {{ render_field(form.ignore_forward) }}
+              {{ render_field(form.timeout) }}
+              {{ render_field(form.retry_on_timeout) }}
+              {{ render_field(form.ring_on_hold) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('diversions') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.wait_time_destination, with_label=False) }}
+              {{ render_field(form.wait_time_threshold) }}
+              {{ render_field(form.wait_ratio_destination, with_label=False) }}
+              {{ render_field(form.wait_ratio_threshold) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('fallbacks') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.fallbacks.busy_destination) }}
+              {{ render_field(form.fallbacks.congestion_destination) }}
+              {{ render_field(form.fallbacks.fail_destination) }}
+              {{ render_field(form.fallbacks.noanswer_destination) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('schedule') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                {{ render_field(form.schedules[0]['name']) }}
+                {{ render_field(form.schedules[0]['id'],
+                                data_listing_href=url_for(listing_urls['schedule']),
+                                data_allow_clear=True,
+                                data_placeholder='Choose Schedules') }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('options') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Option Key') }}</th>
+                  <th>{{  _('Option Value') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.options.append_entry() %}
+                  {{ _build_option_entry(form.options.pop_entry(), template=True) }}
+
+                  {% for option in form.options %}
+                    {{ _build_option_entry(option) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('agents') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.members.agent_ids, data_listing_href=url_for(listing_urls['agent'])) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('users') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.members.user_ids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_option_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(option.option_key, with_label=False) }}</td>
+    <td>{{ render_field(option.option_value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/queue.js') }}"></script>
+{% endblock %}

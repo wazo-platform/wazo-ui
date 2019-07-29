@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Extensions'), 'link': url_for('.ExtensionView:index'), 'icon': 'tty' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Extension'), 'tty') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.ExtensionView:get', id=''), delete=url_for('.ExtensionView:delete', id='')) %}
+          <th>{{ _('Extension') }}</th>
+          <th>{{ _('Context') }}</th>
+          <th>{{ _('Conference ID') }}</th>
+          <th>{{ _('Parking Lot ID') }}</th>
+          <th>{{ _('Group ID') }}</th>
+          <th>{{ _('Incall ID') }}</th>
+          <th>{{ _('Lines ID') }}</th>
+          <th>{{ _('Outcall ID') }}</th>
+        {% endcall %}
+        {% call(extension) build_list_table_rows(resource_list['items']) %}
+          <td>{{ extension.exten }}</td>
+          <td>{{ extension.context }}</td>
+          <td>
+            {{ extension.parking_lot.id  if extension.parking_lot else '-' }}
+          </td>
+          <td>
+            {{ extension.conference.id  if extension.conference else '-' }}
+          </td>
+          <td>
+            {{ extension.group.id  if extension.group else '-' }}
+          </td>
+          <td>
+            {{ extension.incall.id  if extension.incall else '-' }}
+          </td>
+          <td>
+            {% for line in extension.lines %}
+              {{ line.id }} <br>
+            {% endfor %}
+            {{ '-' if not extension.lines }}
+          </td>
+          <td>
+            {{ extension.outcall.id  if extension.outcall else '-' }}
+          </td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Extension')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+            {{ render_field(form.exten) }}
+            {{ render_field(form.context,
+                            data_listing_href=url_for(listing_urls['context'])) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

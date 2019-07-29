@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Webhook'), 'link': url_for('.WebhookView:index'), 'icon': 'globe' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Webhooks'), 'globe') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.WebhookView:get', id=''), delete=url_for('.WebhookView:delete', id='')) %}
+          <th>{{ _('Display Name') }}</th>
+          <th>{{ _('Events Name') }}</th>
+          <th>{{ _('Service') }}</th>
+          <th>{{ _('Logs') }}</th>
+        {% endcall %}
+        {% call(webhook) build_list_table_rows(resource_list['items']) %}
+          <td>{{ webhook.name }}</td>
+	  <td>
+            <ul>
+            {% for event in webhook.events %}
+	    <li>{{ event }}</li>
+            {% endfor %}
+            </ul>
+	  </td>
+          <td>{{ webhook.service }}</td>
+          <td>
+              <a href="{{ url_for('.WebhookView:get_logs', id=webhook.uuid) }}"
+                 title="{{ _('See logs') }}"
+                 class="btn btn-xs btn-default">
+                  <i class="fa fa-fw fa-archive text-success"></i>
+              </a>
+          </td>
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Webhook')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.events, data_allow_custom_values=True, data_listing_href='') }}
+          {{ render_field(form.user_uuid, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.services) }}
+          <div id="http" class="hidden">
+            {{ render_field(form.url) }}
+            {{ render_field(form.method) }}
+            {{ render_field(form.content_type) }}
+            {{ render_field(form.verify_certificate) }}
+            {{ render_field(form.body) }}
+          </div>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/index.js') }}"></script>
+{% endblock %}

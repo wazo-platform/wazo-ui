@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': _('Call Pickups'), 'link': url_for('.CallPickupView:index'), 'icon': 'rotate-left' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Call Pickups'), 'rotate-left') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(
+            get=url_for('.CallPickupView:get', id=''),
+            delete=url_for('.CallPickupView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Description') }}</th>
+        {% endcall %}
+        {% call(callpickup) build_list_table_rows(resource_list['items']) %}
+          <td>{{ callpickup.name }}</td>
+          <td>{{ callpickup.description }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+
+  {% call build_hidden_add_containers(_('Add Call Pickup')) %}
+    {% call build_form() %}
+      {% call add_default_fields(form=form, submit_value=_('Add')) %}
+        {{ render_field(form.name) }}
+        {{ render_field(form.interceptors.form.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+        {{ render_field(form.interceptors.form.group_ids, data_listing_href=url_for(listing_urls['group'])) }}
+        {{ render_field(form.targets.form.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+        {{ render_field(form.targets.form.group_ids, data_listing_href=url_for(listing_urls['group'])) }}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Policies'), 'link': url_for('.PolicyView:index'), 'icon': 'lock' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Policies'), 'lock') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.PolicyView:get', id=''), delete=url_for('.PolicyView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+        {% endcall %}
+        {% call(policy) build_list_table_rows(resource_list['items']) %}
+          <td>{{ policy.name }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Policy')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

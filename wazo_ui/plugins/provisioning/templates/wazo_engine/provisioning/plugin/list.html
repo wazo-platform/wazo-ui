@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Provisioning / Plugins'), 'link': url_for('.PluginView:index'), 'icon': 'file-code-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Plugins'), 'file-code-o', size='12') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.PluginView:get', id='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Description') }}</th>
+          <th>{{ _('Version') }}</th>
+          <th>{{ _('Size') }}</th>
+          <th class="no-sort"></th>
+        {% endcall %}
+        {% call(plugin) build_list_table_rows(resource_list['items']) %}
+          <td>{{ plugin.name }}</td>
+          <td>{{ plugin.description }}</td>
+          <td>{{ plugin.version }}</td>
+          <td>{{ plugin.dsize }}</td>
+          <td id="data-column-actions">
+            {% if not plugin['editable'] %}
+              <a href="{{ url_for('.PluginView:install', plugin_name=plugin['id']) }}"
+                 title="{{ _('Install this plugin') }}"
+                 data-toggle="confirmation"
+                 data-title="{{ _('Are you sure you want to install this plugin ?') }}"
+                 class="btn btn-xs btn-default link-install-plugin">
+                <i class="fa fa-fw fa-download"></i>
+              </a>
+            {% else %}
+              <a href="{{ url_for('.PluginView:uninstall', plugin_name=plugin['id']) }}"
+                 title="{{ _('Uninstall this plugin') }}"
+                 data-toggle="confirmation"
+                 data-title="{{ _('Are you sure you want to uninstall this plugin ?') }}"
+                 class="btn btn-xs btn-default link-uninstall-plugin">
+                <i class="fa fa-fw fa-remove"></i>
+              </a>
+            {% endif %}
+          </td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    <div class="modal fade" id="download-status-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Processing</h4>
+          </div>
+
+          <div class="modal-body">
+            Processing your plugin, please wait ...
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/plugins.js') }}"></script>
+{% endblock %}

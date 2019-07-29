@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.username, 'link': url_for('.IdentityView:get', id=resource.id), 'icon': 'user' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Identity'), resource.username, 'user') }}
+        {{ add_tab_navigation_item('user', _('User'), active=True) }}
+        {{ add_tab_navigation_item('emails', _('Emails')) }}
+        {{ add_tab_navigation_item('groups', _('Groups')) }}
+        {{ add_tab_navigation_item('tenant', _('Tenant')) }}
+        {{ add_tab_navigation_item('policies', _('Policies')) }}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.IdentityView:put', id=resource.uuid)) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('user', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.username, readonly='readonly') }}
+              {{ render_field(form.password) }}
+              {{ render_field(form.firstname) }}
+              {{ render_field(form.lastname) }}
+              {{ render_field(form.purpose) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('emails') %}
+            {{ build_add_row_entry_header() }}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Email') }}</th>
+                  <th>{{  _('Main') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.emails.append_entry() %}
+                  {{ _build_email_entry(form.emails.pop_entry(), template=True) }}
+
+                  {% for option in form.emails %}
+                    {{ _build_email_entry(option) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+            {% endcall %}
+
+            {{ build_add_row_entry_header() }}
+          {% endcall %}
+
+          {% call build_tab_content_item('groups') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.members.group_uuids, data_listing_href=url_for(listing_urls['identity_group'])) }}
+              {{ render_field(form.members.groups, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('tenant') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.tenant['name'], readonly=True) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('policies') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.members.policy_uuids, data_listing_href=url_for(listing_urls['policy'])) }}
+              {{ render_field(form.members.policies, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_email_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(option.address, with_label=False) }}</td>
+    <td>{{ render_field(option.main, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

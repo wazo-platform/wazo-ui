@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': resource.number, 'link': url_for('.AgentView:get', id=resource.uuid), 'icon': 'users' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+        {% call build_tabs_navigation() %}
+          {{ add_tab_navigation_header(_('Agent'), resource.name, 'users') }}
+          {{ add_tab_navigation_item('general', _('General'), active=True) }}
+          {{ add_tab_navigation_item('advanced', _('Advanced')) }}
+          {{ add_tab_navigation_item('skills', _('Skills')) }}
+        {% endcall %}
+
+      {% call build_form(action=url_for('.AgentView:put', id=resource.id)) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.number) }}
+              {{ render_field(form.firstname) }}
+              {{ render_field(form.lastname) }}
+              {{ render_field(form.password) }}
+
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('advanced') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.language) }}
+              {{ render_field(form.preprocess_subroutine) }}
+              {{ render_field(form.description) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('skills') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ build_add_row_entry_header() }}
+
+              {% call build_table() %}
+                {% call build_table_headers() %}
+                  <th>{{  _('Skill') }}</th>
+                  <th>{{  _('Weight') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.skills.append_entry() %}
+                  {{ _build_skill_entry(form.skills.pop_entry(), template=True) }}
+
+                  {% for skill in form.skills %}
+                    {{ _build_skill_entry(skill) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+
+{% macro _build_skill_entry(skill, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(skill.skill_id, with_label=False, data_listing_href=url_for(listing_urls['skill'])) }}</td>
+    <td>{{ render_field(skill.skill_weight, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

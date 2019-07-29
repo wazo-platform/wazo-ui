@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Cdr'), 'link': url_for('.CdrView:index'), 'icon': 'newspaper-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Cdr'), 'newspaper-o', size='12') %}
+      {% call build_list_table(list=url_for('.CdrView:list_json')) %}
+        {% call build_list_table_headers(actions_column=false) %}
+          <th>{{ _('Date') }}</th>
+          <th>{{ _('Source') }}</th>
+          <th>{{ _('Source name') }}</th>
+          <th>{{ _('Destination') }}</th>
+          <th>{{ _('Destination name') }}</th>
+          <th>{{ _('Duration') }}</th>
+          <th>{{ _('Answered') }}</th>
+        {% endcall %}
+        {% call(cdr) build_list_table_rows(resource_list['items']) %}
+          <td>{{ cdr.start }}</td>
+          <td>{{ cdr.source_extension }}</td>
+          <td>{{ cdr.source_name }}</td>
+          <td>{{ cdr.destination_extension }}</td>
+          <td>{{ cdr.destination_name }}</td>
+          <td>{{ cdr.duration }}</td>
+          <td>{{ cdr.answered }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/cdr.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': _('Devices'), 'link': url_for('.DeviceView:index'), 'icon': 'phone-square' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Devices'), 'phone-square') %}
+      {% call build_form_tabs_box() %}
+        {% call build_tabs_navigation() %}
+          {{ add_tab_navigation_item('all', _('All'), active=True) }}
+          {{ add_tab_navigation_item('unallocated', _('Unallocated')) }}
+        {% endcall %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('all', active=True) %}
+            {% call build_list_table('all', id='all') %}
+              {% call build_list_table_headers(get=url_for('.DeviceView:get', id=''), delete=url_for('.DeviceView:delete', id='')) %}
+                <th style="width: 10px" class="no-sort"></th>
+                <th>{{ _('IP') }}</th>
+                <th>{{ _('MAC') }}</th>
+                <th>{{ _('Model') }}</th>
+                <th>{{ _('Plugin') }}</th>
+                <th>{{ _('Vendor') }}</th>
+                <th>{{ _('Version') }}</th>
+                <th style="width: 50px" class="no-sort"></th>
+              {% endcall %}
+              {% call(device) build_list_table_rows(resource_list['all']['items']) %}
+                <td>
+                  {% if device.status == 'configured' %}
+                    <i class="fa fa-fw bg-green-gradient fa-check-circle-o"></i>
+                  {% elif device.status == 'autoprov' %}
+                    <i class="fa fa-fw bg-yellow-gradient fa-circle-thin"></i>
+                  {% elif device.status == 'not_configured' %}
+                    <i class="fa fa-fw bg-red-gradient fa-circle-thin"></i>
+                  {% else %}
+                  -
+                  {% endif %}
+                </td>
+                <td>{{ device.ip or '-' }}</td>
+                <td>{{ device.mac or '-' }}</td>
+                <td>{{ device.model or '-' }}</td>
+                <td>{{ device.plugin or '-' }}</td>
+                <td>{{ device.vendor or '-' }}</td>
+                <td>{{ device.version or '-' }}</td>
+                <td id="data-column-actions">
+                  <a href="{{ url_for('.DeviceView:synchronize', device_id=device['id']) }}"
+                          id="link-synchronize-device"
+                          title="{{ _('Synchronize device') }}"
+                          data-toggle="confirmation"
+                          data-title="{{ _('Are you sure you want to synchronize this device ?') }}"
+                          class="btn btn-xs btn-default">
+                    <i class="fa fa-fw fa-arrows-h"></i>
+                  </a>
+                  <a href="{{ url_for('.DeviceView:autoprov', device_id=device['id']) }}"
+                          id="link-reset-device"
+                          title="{{ _('Reset device to autoprov mode') }}"
+                          data-toggle="confirmation"
+                          data-title="{{ _('Are you sure you want to reset this device ?') }}"
+                          class="btn btn-xs btn-default">
+                    <i class="fa fa-fw fa-random"></i>
+                  </a>
+                </td>
+              {% endcall %}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('unallocated') %}
+            {% call build_list_table('unallocated', id='unallocated') %}
+              {% call build_list_table_headers(actions_column=false) %}
+                <th style="width: 10px" class="no-sort"></th>
+                <th>{{ _('IP') }}</th>
+                <th>{{ _('MAC') }}</th>
+                <th>{{ _('Model') }}</th>
+                <th>{{ _('Plugin') }}</th>
+                <th>{{ _('Vendor') }}</th>
+                <th>{{ _('Version') }}</th>
+                <th style="width: 50px" class="no-sort"></th>
+              {% endcall %}
+              {% call(device) build_list_table_rows(resource_list['unallocated']['items']) %}
+                <td>
+                  {% if device.status == 'configured' %}
+                    <i class="fa fa-fw bg-green-gradient fa-check-circle-o"></i>
+                  {% elif device.status == 'autoprov' %}
+                    <i class="fa fa-fw bg-yellow-gradient fa-circle-thin"></i>
+                  {% elif device.status == 'not_configured' %}
+                    <i class="fa fa-fw bg-red-gradient fa-circle-thin"></i>
+                  {% else %}
+                  -
+                  {% endif %}
+                </td>
+                <td>{{ device.ip or '-' }}</td>
+                <td>{{ device.mac or '-' }}</td>
+                <td>{{ device.model or '-' }}</td>
+                <td>{{ device.plugin or '-' }}</td>
+                <td>{{ device.vendor or '-' }}</td>
+                <td>{{ device.version or '-' }}</td>
+                <td id="data-column-actions">
+                  <a href="{{ url_for('.DeviceView:assign_tenant', device_id=device['id']) }}"
+                          id="link-assign-device"
+                          title="{{ _('Assign device to current tenant') }}"
+                          data-toggle="confirmation"
+                          data-title="{{ _('Are you sure you want to assign this device to the current tenant?') }}"
+                          class="btn btn-xs btn-default">
+                    {{ _('Take') }}
+                  </a>
+                </td>
+              {% endcall %}
+            {% endcall %}
+          {% endcall %}
+        {% endcall %}
+        {{ _('Status') }}:
+        (<i class="fa fa-fw bg-green-gradient fa-check-circle-o"></i> {{ _('Configured') }})
+        (<i class="fa fa-fw bg-yellow-gradient fa-circle-thin"></i> {{ _('Autoprov') }})
+        (<i class="fa fa-fw bg-red-gradient fa-circle-thin"></i> {{ _('Not configured') }})
+
+      {% endcall %}
+
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Device'), 'all-add-form') %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.ip) }}
+          {{ render_field(form.mac) }}
+          {{ render_field(form.options.switchboard) }}
+          {{ render_field(form.description) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
+
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/device.js') }}"></script>
+{% endblock %}

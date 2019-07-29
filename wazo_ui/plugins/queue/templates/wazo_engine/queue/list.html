@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Queues'), 'link': url_for('.QueueView:index'), 'icon': 'cubes' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Queue'), 'cubes') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.QueueView:get', id=''), delete=url_for('.QueueView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Extension') }}</th>
+        {% endcall %}
+        {% call(queue) build_list_table_rows(resource_list['items']) %}
+          <td>{{ queue.name }}</td>
+          <td>
+            {% for extension in queue.extensions %}
+              <strong>{{ _('internal') }}:</strong> {{ extension.exten }}
+            {% endfor %}
+            {% for extensions in queue.incalls %}
+              {% for extension in extensions.extensions %}
+                <strong>{{ _('incall') }}:</strong> {{ extension.exten }}
+              {% endfor %}
+            {% endfor %}
+            {{ '-' if not queue.extensions and not queue.incalls }}
+          </td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Queue')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.extensions[0].context,
+                          inputclass='ui-helper-clearfix',
+                          divclass='col-sm-4',
+                          class_='queue-context',
+                          placeholder=_('Choose Context'),
+                          data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
+          {{ render_field(form.extensions[0].exten,
+                          with_label=False,
+                          data_allow_custom_values=True,
+                          data_allow_clear=True,
+                          divclass='col-sm-4',
+                          class_='queue-exten',
+                          data_listing_href=url_for(listing_urls['available_extension_queue'])) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/queue.js') }}"></script>
+{% endblock %}

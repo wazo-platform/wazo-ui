@@ -1,0 +1,119 @@
+# Translations template for wazo_admin_ui_call_permission.
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
+# This file is distributed under the same license as the
+# wazo_admin_ui_call_permission project.
+# Wazo Dev Team <dev@wazo.community>, 2018.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: wazo_admin_ui_call_permission 0.1\n"
+"Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
+"POT-Creation-Date: 2018-02-27 14:50-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: Spanish (Chile) (https://www.transifex.com/wazo/teams/69545/es_CL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.3\n"
+"Language: es_CL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:19
+msgid "Allow"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:20
+msgid "Deny"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:45
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/list.html:15
+msgid "Name"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:46
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/list.html:16
+msgid "Password"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:48
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/list.html:17
+msgid "Mode"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:49
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:15
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:15
+msgid "Users"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:51
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:16
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:16
+msgid "Groups"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:53
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:17
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:17
+msgid "Outcalls"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:55
+msgid "Description"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:56
+msgid "Enabled"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/form.py:57
+msgid "Submit"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:4
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:12
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:4
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:12
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/list.html:4
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/list.html:9
+#: wazo_plugind_admin_ui_call_permission_official/view.py:26
+msgid "Call Permissions"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:4
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:24
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:33
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:58
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:64
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:70
+msgid "Add"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:13
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:13
+msgid "General"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:14
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/add.html:39
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:14
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:39
+msgid "Extensions"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:4
+msgid "Edit"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:24
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:33
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:58
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:64
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/edit.html:70
+msgid "Update"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/list.html:4
+msgid "List"
+msgstr ""

@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': plugin['description'], 'link': url_for('.PluginView:get', id=plugin.uuid), 'icon': 'file-code-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    <div class="box-body">
+      <div class="box-group">
+        <div class="panel box box-primary">
+          <div class="box-header with-border">
+            <h4 class="box-title">{{ _('Description') }}:</h4>
+          </div>
+          <div class="box-body">{{ plugin['description'] }}</div>
+        </div>
+      </div>
+    </div>
+    {% call build_list_containers(_('Plugins'), 'file-code-o', size='12') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(actions_column=false) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Description') }}</th>
+          <th>{{ _('Version') }}</th>
+          <th>{{ _('Size') }}</th>
+          <th class="no-sort"></th>
+        {% endcall %}
+        {% call(package) build_list_table_rows(resource_list['items']) %}
+          <td>{{ package.name }}</td>
+          <td>{{ package.description }}</td>
+          <td>{{ package.version }}</td>
+          <td>{{ package.dsize }}</td>
+          <td id="data-column-actions">
+            {% if package['id'] not in package_ids_installed %}
+              <a href="{{ url_for('.PluginView:install_package_ajax', plugin_name=plugin_name, package_name=package['id']) }}"
+                 title="{{ _('Install this package') }}"
+                 data-toggle="confirmation"
+                 data-title="{{ _('Are you sure you want to install this package ?') }}"
+                 data-poll-url="{{ url_for('.PluginView:get_operation_status') }}"
+                 class="btn btn-xs btn-default link-install-plugin ajax">
+                <i class="fa fa-fw fa-download"></i>
+              </a>
+            {% else %}
+              <a href="{{ url_for('.PluginView:uninstall_package_ajax', plugin_name=plugin_name, package_name=package['id']) }}"
+                 title="{{ _('Uninstall this package') }}"
+                 data-toggle="confirmation"
+                 data-title="{{ _('Are you sure you want to uninstall this package ?') }}"
+                 data-poll-url="{{ url_for('.PluginView:get_operation_status') }}"
+                 class="btn btn-xs btn-default link-install-plugin ajax">
+                <i class="fa fa-fw fa-remove"></i>
+              </a>
+            {% endif %}
+          </td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+
+  <div class="modal fade" id="download-status-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Processing</h4>
+        </div>
+
+        <div class="modal-body">
+          Processing your plugin, please wait ...
+
+          <div class="progress" style="position: relative; margin-top: 30px">
+            <div class="progress-bar progress-bar-striped indeterminate">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/plugins.js') }}"></script>
+{% endblock %}

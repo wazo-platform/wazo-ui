@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Groups'), 'link': url_for('.GroupView:index'), 'icon': 'users' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Groups'), 'users') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.GroupView:get', id=''), delete=url_for('.GroupView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+        {% endcall %}
+        {% call(group) build_list_table_rows(resource_list['items']) %}
+          <td>{{ group.name }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Group')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

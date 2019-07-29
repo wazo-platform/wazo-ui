@@ -1,0 +1,70 @@
+# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0+
+
+from flask import flash, request
+
+import logging
+
+from wazo_ui.helpers.classful import BaseView, IndexAjaxViewMixin, NewViewMixin, DEFAULT_TEMPLATE
+
+from .error import ConfdErrorExtractor as e_extractor
+from .error import ConfdErrorTranslator as e_translator
+
+logger = logging.getLogger(__name__)
+listing_urls = {}
+
+
+def register_listing_url(type_id, endpoint):
+    listing_urls[type_id] = 'wazo_engine.{}'.format(endpoint)
+
+
+class BaseEngineView:
+    listing_urls = listing_urls
+
+    def _get_template(self, type_):
+        blueprint = request.blueprint.replace('.', '/')
+        return self.templates.get(type_, DEFAULT_TEMPLATE.format(blueprint=blueprint,
+                                                                 type_=type_))
+
+
+class IndexAjaxHelperViewMixin(BaseEngineView, IndexAjaxViewMixin):
+    pass
+
+
+class BaseIPBXHelperView(BaseEngineView, BaseView):
+
+    def _fill_form_error(self, form, error):
+        response = error.response.json()
+        error_id = e_extractor.extract_generic_error_id(response)
+        if error_id == 'invalid-data':
+            error_fields = e_extractor.extract_fields(response)
+            error_field_ids = e_extractor.extract_specific_error_id_from_fields(error_fields)
+            error_field_messages = e_translator.translate_specific_error_id_from_fields(error_field_ids)
+
+            resource = e_extractor.extract_resource(error.request)
+            form = self._map_resources_to_form_errors(form, {resource: error_field_messages})
+        return form
+
+    def _flash_http_error(self, error):
+        try:
+            response = error.response.json()
+            resource = e_extractor.extract_resource(error.request)
+            error_id = e_extractor.extract_generic_error_id(response)
+
+            translated_resource = e_translator.resources.get(resource, '')
+            flash('{resource}{delimiter}{generic_error}'.format(
+                resource=translated_resource,
+                delimiter=': ' if translated_resource else '',
+                generic_error=e_translator.generic_messages.get(error_id, ''),
+            ), 'error')
+            flash('{method} {url}: {response}'.format(
+                method=error.request.method,
+                url=error.request.url,
+                response=response,
+            ), 'error_details')
+        except Exception:
+            flash(error, 'error')
+
+
+class NewHelperViewMixin(BaseEngineView, NewViewMixin):
+    pass

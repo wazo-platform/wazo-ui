@@ -1,0 +1,174 @@
+# Translations template for wazo-admin-ui-call-filter.
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
+# This file is distributed under the same license as the
+# wazo-admin-ui-call-filter project.
+# Wazo Dev Team <dev@wazo.community>, 2018.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: wazo-admin-ui-call-filter 0.1\n"
+"Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
+"POT-Creation-Date: 2018-02-23 14:54-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: Japanese (https://www.transifex.com/wazo/teams/69545/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.3\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:21
+msgid "All secretaries, then boss"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:22
+msgid "Secretaries sequentially, then boss"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:23
+msgid "Boss, then secretaries sequentially"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:24
+msgid "Boss, then all secretaries"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:25
+msgid "Boss and all secretaries"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:35
+msgid "Firstname"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:36
+msgid "Lastname"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:40
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:14
+msgid "Boss"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:41
+msgid "Boss Timeout"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:46
+msgid "Extension"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:50
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:15
+msgid "Secretaries"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:55
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:12
+msgid "Name"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:56
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:13
+msgid "Ring Strategy"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:57
+msgid "Caller ID mode"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:58
+#: wazo_plugind_admin_ui_call_filter_official/view.py:147
+msgid "None"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:59
+msgid "Prepend"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:60
+msgid "Overwrite"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:61
+msgid "Append"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:63
+msgid "Caller ID name"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:64
+msgid "Call From"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:65
+msgid "Internal"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:66
+msgid "External"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:67
+msgid "All"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:70
+msgid "Secretaries ringing time"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:73
+msgid "Description"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:74
+msgid "Enabled"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/form.py:75
+msgid "Submit"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/view.py:26
+msgid "BS Filters"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/edit.html:4
+msgid "Boss Secretaries Filter"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/edit.html:4
+msgid "Edit"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/edit.html:13
+msgid "General"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/edit.html:14
+msgid "No Answer"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/edit.html:21
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/edit.html:37
+msgid "Update"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:4
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:9
+msgid "Boss Secretaries Filters"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:4
+msgid "List"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:30
+msgid "Add BS Filter"
+msgstr ""
+
+#: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:32
+msgid "Add"
+msgstr ""

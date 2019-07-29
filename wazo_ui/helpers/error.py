@@ -1,6 +1,7 @@
 # Copyright 2018 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import ast
 import re
 import logging
 
@@ -126,3 +127,174 @@ class ErrorExtractor():
         else:
             resource = response['resource']
         return ErrorTranslator.resources.get(resource, resource)
+
+
+GENERIC_PATTERN_ERRORS = {
+    'resource-not-found': r'^Resource Not Found',
+    'invalid-data': r'^Input Error',
+}
+
+SPECIFIC_PATTERN_ERRORS = {
+    'contains-only': r'One or more of the choices you made was not acceptable',
+    'equal': r'Must be equal to',
+    'field-format-datetime': r'cannot be formatted as a datetime',
+    'field-format-time': r'cannot be formatted as date',
+    'field-format-timedelta': r'cannot be formatted as a timedelta',
+    'field-invalid-boolean': r'Not a valid boolean',
+    'field-invalid-datetime': r'Not a valid datetime',
+    'field-invalid-dict': r'Not a valid mapping type',
+    'field-invalid-email': r'Not a valid email address',
+    'field-invalid-formatted-string': r'Cannot format string with given data',
+    'field-invalid-integer': r'Not a valid integer',
+    'field-invalid-number': r'Not a valid number',
+    'field-invalid-string': r'Not a valid string',
+    'field-invalid-time': r'Not a valid time',
+    'field-invalid-timedelta': r'Not a valid period of time',
+    'field-invalid-url': r'Not a valid URL',
+    'field-invalid-uuid': r'Not a valid UUID',
+    'field-null': r'Field may not be null',
+    'field-required': r'Missing data for required field',
+    'field-type': r'Invalid input type',
+    'field-validator-failed': r'Invalid value',
+    'input': r'Invalid input',
+    'length': r'(Shorter than minimum length|Longer than maximum length|Length must be between| Length must be)',
+    'oneof': r'Not a valid choice',
+    'range': r'(Must be at least|Must be at most|Must be between)',
+    'regexp': r'String does not match expected pattern',
+}
+
+URL_TO_NAME_RESOURCES = {
+    'callpermissions': 'call_permission',
+    'conferences': 'conference',
+    'contexts': 'context',
+    'endpoints': 'endpoint',
+    'entities': 'entity',
+    'extensions': 'extension',
+    'funckeys': 'funckeys',
+    'groups': 'group',
+    'incalls': 'incall',
+    'ivr': 'ivr',
+    'lines': 'line',
+    'moh': 'moh',
+    'outcalls': 'outcall',
+    'pagings': 'paging',
+    'parkinglots': 'parking_lot',
+    'switchboards': 'switchboard',
+    'trunks': 'trunk',
+    'users': 'user',
+    'voicemails': 'voicemail',
+}
+
+RESOURCES = {
+    'call_permission': l_('call permission'),
+    'conference': l_('conference'),
+    'context': l_('context'),
+    'endpoint': l_('endpoint'),
+    'entity': l_('entity'),
+    'extension': l_('extension'),
+    'funckeys': l_('function keys'),
+    'group': l_('group'),
+    'incall': l_('incall'),
+    'ivr': l_('ivr'),
+    'line': l_('line'),
+    'moh': l_('music on hold'),
+    'outcall': l_('outcall'),
+    'paging': l_('paging'),
+    'parking_lot': l_('parking lot'),
+    'switchboard': l_('switchboard'),
+    'trunk': l_('trunk'),
+    'user': l_('user'),
+    'voicemail': l_('voicemail'),
+}
+
+
+class ConfdErrorTranslator(ErrorTranslator):
+
+    # Maybe should be in a manager?
+    @classmethod
+    def translate_specific_error_id_from_fields(cls, fields):
+        result = {}
+        for field, value in fields.items():
+            if isinstance(value, dict):
+                result[field] = cls.translate_specific_error_id_from_fields(value)
+                continue
+            result[field] = cls.specific_messages.get(value)
+        return result
+
+
+class ConfdErrorExtractor(ErrorExtractor):
+    specific_field_regex = r'^.* - ([^:]*): (.*)$'
+    specific_patterns = {}
+    generic_patterns = {}
+
+    @classmethod
+    def register_generic_patterns(cls, patterns):
+        cls.generic_patterns.update(patterns)
+
+    @classmethod
+    def register_specific_patterns(cls, patterns):
+        cls.specific_patterns.update(patterns)
+
+    @classmethod
+    def extract_specific_error_id_from_fields(cls, fields):
+        # Allow only 1 error_id by field
+        result = {}
+        for field, value in fields.items():
+            if isinstance(value, dict):
+                result[field] = cls.extract_specific_error_id_from_fields(value)
+                continue
+            if isinstance(value, list):
+                try:
+                    value = ', '.join(value)
+                except TypeError:
+                    pass
+
+            if not isinstance(value, str):
+                value = str(value)
+
+            for error_id, pattern in cls.specific_patterns.items():
+                regex = re.compile(pattern)
+                if regex.search(value):
+                    result[field] = error_id
+                    break
+            else:
+                logger.debug('Unable to extract specific error id from: %s', value)
+
+        return result
+
+    @classmethod
+    def extract_generic_error_id(cls, response):
+        if not isinstance(response, list):
+            return None
+
+        for error_id, pattern in cls.generic_patterns.items():
+            regex = re.compile(pattern)
+            for message in response:
+                if regex.search(message):
+                    return error_id
+        logger.debug('Unable to extract generic error id from: %s', response)
+        return None
+
+    @classmethod
+    def extract_fields(cls, response):
+        result = {}
+        for message in response:
+            field = cls.extract_field(message)
+            result.update(field)
+        return result
+
+    @classmethod
+    def extract_field(cls, message):
+        regex = re.compile(cls.specific_field_regex)
+        match = regex.match(message)
+        if not match:
+            logger.debug('Unable to extract field from: %s', message)
+            return {}
+        key = match.group(1)
+        value_str = match.group(2)
+        try:
+            value = ast.literal_eval(value_str)
+        except (ValueError, SyntaxError):
+            value = value_str
+
+        return {key: value}

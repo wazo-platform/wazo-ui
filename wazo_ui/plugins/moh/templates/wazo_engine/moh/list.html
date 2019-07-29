@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Musics'), 'link': url_for('.MohView:index'), 'icon': 'music' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Musics'), 'music') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.MohView:get', id=''), delete=url_for('.MohView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Mode') }}</th>
+          <th>{{ _('Parameters') }}</th>
+        {% endcall %}
+        {% call(moh) build_list_table_rows(resource_list['items']) %}
+          <td>{{ moh.name }}</td>
+          <td>{{ mode_map[moh.mode] }}</td>
+          <td>
+            {% if moh.mode == 'custom' %}
+              {{ _('Application') }}: {{ moh.application }}
+            {% elif moh.mode == 'files' %}
+              {{ _('Sort') }}: {{ sort_map[moh.sort] }}
+            {% else %}
+              -
+            {% endif %}
+          </td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Moh')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.mode) }}
+          {{ render_field(form.sort) }}
+          {{ render_field(form.application) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
+
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/moh.js') }}"></script>
+{% endblock %}
+

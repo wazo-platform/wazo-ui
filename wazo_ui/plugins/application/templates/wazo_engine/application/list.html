@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': _('Application'), 'link': url_for('.ApplicationView:index'), 'icon': 'cubes' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Applications'), 'cubes') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.ApplicationView:get', id=''), delete=url_for('.ApplicationView:delete', id='')) %}
+          <th>{{ _('UUID') }}</th>
+          <th>{{ _('Name') }}</th>
+        {% endcall %}
+        {% call(application) build_list_table_rows(resource_list['items']) %}
+          <td>{{ application.uuid }}</td>
+          <td>{{ application.name }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Application')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.destination, with_label=False) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

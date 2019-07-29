@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Skill Rules'), 'link': url_for('.SkillRuleView:index'), 'icon': 'sticky-note-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Skill Rules'), 'sticky-note-o') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.SkillRuleView:get', id=''), delete=url_for('.SkillRuleView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+        {% endcall %}
+        {% call(skillrule) build_list_table_rows(resource_list['items']) %}
+          <td>{{ skillrule.name }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Skill Rules')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

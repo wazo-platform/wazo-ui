@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': _('Contexts'), 'link': url_for('.ContextView:index'), 'icon': 'random' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Contexts'), 'random') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.ContextView:get', id=''), delete=url_for('.ContextView:delete', id='')) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Label') }}</th>
+          <th>{{ _('Type') }}</th>
+        {% endcall %}
+        {% call(context) build_list_table_rows(resource_list['items']) %}
+          <td>{{ context.name }}</td>
+          <td>{{ context.label }}</td>
+          <td>{{ context.type }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Context')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.label) }}
+          {{ render_field(form.type) }}
+          {{ render_field(form.description) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

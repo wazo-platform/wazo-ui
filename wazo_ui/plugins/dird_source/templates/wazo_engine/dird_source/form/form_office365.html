@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+
+{% set backend = 'office365' %}
+
+{% if form_mode == 'add' %}
+  {% set url_action = url_for('.DirdSourceView:post') %}
+  {% set submit_value = _('Add') %}
+  {% set breadcrumb = { 'name': _('Add Office 365 source'), 'icon': 'address-book' } %}
+{% else %}
+  {% set url_action = url_for('.DirdSourceView:put', id=resource.uuid) %}
+  {% set submit_value = _('Edit') %}
+  {% set breadcrumb = { 'name': resource.name, 'link': url_for('.DirdSourceView:get', id=resource.uuid), 'icon': 'address-book' } %}
+{% endif %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [breadcrumb]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+      <!-- tabs -->
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_item('office365', _('Office 365'), active=True) }}
+        {{ add_tab_navigation_item('first_matched_columns', _('First matched columns')) }}
+        {{ add_tab_navigation_item('format_columns', _('Format columns')) }}
+        {{ add_tab_navigation_item('searched_columns', _('Search columns')) }}
+      {% endcall %}
+
+      {% call build_form(action=url_action) %}
+        {% call build_tabs_content() %}
+          <!-- office 365 -->
+          {% call build_tab_content_item('office365', active=True) %}
+            {% call add_default_fields(form=form, submit_value=submit_value) %}
+              {{ render_field(form.backend) }}
+              {{ render_field(form.name) }}
+              {{ render_field(form.office365_config.endpoint) }}
+
+              <h4>Authentication</h4>
+              {{ render_field(form.office365_config.auth.host) }}
+              {{ render_field(form.office365_config.auth.port) }}
+              {{ render_field(form.office365_config.auth.verify_certificate, class_="verify_certificate") }}
+              {{ render_field(form.office365_config.auth.certificate_path, class_="certificate_path") }}
+              {{ render_field(form.office365_config.auth.version) }}
+
+            {% endcall %}
+          {% endcall %}
+
+          <!-- first_matched_columns -->
+          {% call build_tab_content_item('first_matched_columns') %}
+            {% call add_default_fields(form=form, submit_value=submit_value) %}
+              {% call build_table() %}
+                {% call build_table_headers() %}
+                  <th>Value</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.office365_config.first_matched_columns.append_entry() %}
+                  {{ _build_column_entry(form.office365_config.first_matched_columns.pop_entry(), template=True) }}
+
+                  {% for column in form.office365_config.first_matched_columns %}
+                    {{ _build_column_entry(column) }}
+                  {% endfor %}
+                {% endcall %}
+              {% endcall %}
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          <!-- format_columns -->
+          {% call build_tab_content_item('format_columns') %}
+            {% call add_default_fields(form=form, submit_value=submit_value) %}
+              {% call build_table() %}
+                {% call build_table_headers() %}
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.office365_config.format_columns.append_entry() %}
+                  {{ _build_column_value_entry(form.office365_config.format_columns.pop_entry(), template=True) }}
+
+                  {% for column in form.office365_config.format_columns %}
+                    {{ _build_column_value_entry(column) }}
+                  {% endfor %}
+                {% endcall %}
+              {% endcall %}
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          <!-- Search columns -->
+          {% call build_tab_content_item('searched_columns') %}
+            {% call add_default_fields(form=form, submit_value=submit_value) %}
+              {% call build_table() %}
+                {% call build_table_headers() %}
+                  <th>Name</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.office365_config.searched_columns.append_entry() %}
+                  {{ _build_column_entry(form.office365_config.searched_columns.pop_entry(), template=True) }}
+
+                  {% for column in form.office365_config.searched_columns %}
+                    {{ _build_column_entry(column) }}
+                  {% endfor %}
+                {% endcall %}
+              {% endcall %}
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_column_value_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+     <td>{{ render_field(option.key, with_label=False) }}</td>
+     <td>{{ render_field(option.value, with_label=False) }}</td>
+     <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}
+
+{% macro _build_column_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(option.value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}
+
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/dird_source.js') }}"></script>
+{% endblock %}

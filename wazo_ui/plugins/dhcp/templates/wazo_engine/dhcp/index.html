@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumb(_('Dhcp'), '', 'gear', [_('Edit')]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_box('', '', '') %}
+      {% call build_form(action=url_for('.DhcpView:post')) %}
+
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+          {{ render_field(form.active) }}
+          {{ render_field(form.pool_start) }}
+          {{ render_field(form.pool_end) }}
+          {{ render_field(form.network_interfaces) }}
+        {% endcall %}
+
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

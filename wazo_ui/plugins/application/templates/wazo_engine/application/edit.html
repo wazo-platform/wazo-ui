@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.ApplicationView:get', id=resource.uuid), 'icon': 'cubes' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Application'), '', 'cubes') }}
+        {{ add_tab_navigation_item('application', _('Application'), active=True) }}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.ApplicationView:put', id=resource.uuid)) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('application', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.name) }}
+              {{ render_field(form.destination, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+
+    {% endcall %}
+
+  {% endcall %}
+{% endblock %}

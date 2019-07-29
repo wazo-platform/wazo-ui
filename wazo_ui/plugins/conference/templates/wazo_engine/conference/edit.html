@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': resource.name, 'link': url_for('.ConferenceView:get', id=resource.id), 'icon': 'compress' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_box(_('Conference'), resource.name, 'compress') %}
+      {% call build_form(action=url_for('.ConferenceView:put', id=resource.id)) %}
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.extensions[0].exten,
+                          divclass='col-sm-2',
+                          inputclass='ui-helper-clearfix',
+                          class_='conference-exten',
+                          data_allow_clear=True,
+                          data_allow_custom_values=True,
+                          data_listing_href=url_for(listing_urls['available_extension_conference'])) }}
+          {{ render_field(form.extensions[0].context,
+                          with_label=False,
+                          divclass='col-sm-4',
+                          class_='conference-context',
+                          data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
+          {{ render_field(form.pin) }}
+          {{ render_field(form.admin_pin) }}
+          {{ render_field(form.announce_join_leave) }}
+          {{ render_field(form.announce_user_count) }}
+          {{ render_field(form.announce_only_user) }}
+          {{ render_field(form.music_on_hold, data_listing_href=url_for(listing_urls['moh'])) }}
+          {{ render_field(form.preprocess_subroutine) }}
+          {{ render_field(form.quiet_join_leave) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/conference.js') }}"></script>
+{% endblock %}
+

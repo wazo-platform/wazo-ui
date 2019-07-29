@@ -43,8 +43,14 @@ class Server():
 
         app.secret_key = os.urandom(24)
         app.permanent_session_lifetime = timedelta(seconds=global_config['session_lifetime'])
+        app.config['amid'] = global_config.get('amid', {})
         app.config['auth'] = global_config.get('auth', {})
+        app.config['call-logd'] = global_config.get('call-logd', {})
         app.config['confd'] = global_config.get('confd', {})
+        app.config['dird'] = global_config.get('dird', {})
+        app.config['plugind'] = global_config.get('plugind', {})
+        app.config['provd'] = global_config.get('provd', {})
+        app.config['webhookd'] = global_config.get('webhookd', {})
         app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 megabytes
 
         if global_config['debug']:

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Provisioning / Config registrar'), 'link': url_for('.ConfigRegistrarView:index'), 'icon': 'file-o' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Config registrar'), 'file-o') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(
+          get=url_for('.ConfigRegistrarView:get', id=''),
+          delete=url_for('.ConfigRegistrarView:delete', id='')
+        ) %}
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Registrar main') }}</th>
+          <th>{{ _('Proxy main') }}</th>
+        {% endcall %}
+        {% call(config_registrar) build_list_table_rows(resource_list['items']) %}
+          <td>{{ config_registrar.displayname }} ( {{ config_registrar.id }} )</td>
+          <td>{{ config_registrar.registrar_main }}</td>
+          <td>{{ config_registrar.proxy_main }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add config registrar')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.displayname) }}
+          {{ render_field(form.registrar_main) }}
+          {{ render_field(form.registrar_backup) }}
+          {{ render_field(form.proxy_main) }}
+          {{ render_field(form.proxy_backup) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

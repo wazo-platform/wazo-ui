@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumb(_('ConfBridge General Settings'), '', 'asterisk', [_('Edit')]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+
+      {% call build_form_tabs_box() %}
+        {% call build_tabs_navigation() %}
+          {{ add_tab_navigation_item('wazo_default_bridge', _('Default Bridge'), active=True) }}
+          {{ add_tab_navigation_item('wazo_default_user', _('Default User')) }}
+        {% endcall %}
+
+        {% call build_form(action=url_for('.ConfBridgeGeneralSettingsView:put')) %}
+          {% call build_tabs_content() %}
+
+            {% call build_tab_content_item('wazo_default_bridge', active=True) %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+                {{ build_add_row_entry_header() }}
+                {% call build_table() %}
+
+                  {% call build_table_headers() %}
+                    <th>{{  _('Option Key') }}</th>
+                    <th>{{  _('Option Value') }}</th>
+                    <th style="width: 21px"></th>
+                  {% endcall %}
+
+                  {% call build_table_body(class_='dynamic-table') %}
+                    {% do form.wazo_default_bridge.options.append_entry() %}
+                    {{ _build_option_entry(form.wazo_default_bridge.options.pop_entry(), template=True) }}
+
+                    {% for option in form.wazo_default_bridge.options %}
+                      {{ _build_option_entry(option) }}
+                    {% endfor %}
+                  {% endcall %}
+
+                {% endcall %}
+
+              {% endcall %}
+            {% endcall %}
+
+            {% call build_tab_content_item('wazo_default_user') %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+                {{ build_add_row_entry_header() }}
+                {% call build_table() %}
+
+                  {% call build_table_headers() %}
+                    <th>{{  _('Option Key') }}</th>
+                    <th>{{  _('Option Value') }}</th>
+                    <th style="width: 21px"></th>
+                  {% endcall %}
+
+                  {% call build_table_body(class_='dynamic-table') %}
+                    {% do form.wazo_default_user.options.append_entry() %}
+                    {{ _build_option_entry(form.wazo_default_user.options.pop_entry(), template=True) }}
+
+                    {% for option in form.wazo_default_user.options %}
+                      {{ _build_option_entry(option) }}
+                    {% endfor %}
+                  {% endcall %}
+
+                {% endcall %}
+
+              {% endcall %}
+            {% endcall %}
+
+          {% endcall %}
+        {% endcall %}
+
+      {% endcall %}
+
+  {% endcall %}
+{% endblock %}
+
+
+{% macro _build_option_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(option.option_key, with_label=False) }}</td>
+    <td>{{ render_field(option.option_value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

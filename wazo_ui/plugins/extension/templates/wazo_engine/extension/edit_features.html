@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': 'Extensions Features', 'link': url_for('.ExtensionFeaturesView:index'), 'icon': 'fax' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_box('', '', '') %}
+      {% call build_form(action=url_for('.ExtensionFeaturesView:put')) %}
+
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+          {% call build_table() %}
+
+            {% call build_table_headers() %}
+              <th>{{ _('Enabled') }}</th>
+              <th>{{ _('Feature') }}</th>
+              <th>{{ _('Extension') }}</th>
+            {% endcall %}
+
+            {% call build_table_body(class_='dynamic-table') %}
+              {% for extension in form.extensions %}
+                {{ render_field(extension['id']) }}
+                <tr class="row-line">
+                  <td>{{ render_field(extension.enabled, with_label=False) }}</td>
+                  <td>{{ render_field(extension.feature, with_label=False, readonly=True) }}</td>
+                  <td>{{ render_field(extension.exten, with_label=False) }}</td>
+                </tr>
+              {% endfor %}
+            {% endcall %}
+
+          {% endcall %}
+
+        {% endcall %}
+
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Plugins'), 'link': url_for('.PluginView:index'), 'icon': 'cubes' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#market" data-toggle="tab">{{ _('Installed') }}</a></li>
+            <li><a href="#git" data-toggle="tab">{{ _('Git') }}</a></li>
+          </ul>
+          <div class="tab-content">
+
+            <div class="tab-pane active" id="market">
+              <div class="row">
+                <div class="col-md-2 pull-right">
+                  <div class="input-group">
+                    <input class="form-control" placeholder="{{ _('Search plugin') }}" type="text" id="search_plugin"
+                      data-search-url="{{ url_for('wazo_engine.plugin.PluginView:search_plugin') }}">
+                    <span class="input-group-addon">
+                      <i class="fa fa-search"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-2 pull-right">
+                  <div class="checkbox">
+                    <label>
+                      <input id="show_only_official" type="checkbox"></input>
+                      {{ _('Show only official') }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div id="plugins"></div>
+            </div>
+
+            <div class="tab-pane" id="git">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4>{{ _('Give your GIT url to install a plugin!') }}</h4>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-download"></i>
+                    </span>
+                    <input style="width:65%" id="git-url-to-install" class="form-control" placeholder="{{ _('GIT url') }}" type="text"></input>
+                    <input style="width:35%" id="git-branch-tag" class="form-control" placeholder="{{ _('Branch or tag (optional)') }}" type="text"></input>
+                      <span class="input-group-btn">
+                        <button type="button"
+                          class="ladda-button btn btn-primary btn-flat btn-git-install-plugin"
+                          data-install-url="{{ url_for('wazo_engine.plugin.PluginView:install_plugin') }}"
+                          data-style="slide-left"
+                        >
+                          <span class="ladda-label">{{ _('Install') }}</span>
+                        </button>
+                      </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/spin.min.js') }}"></script>
+  <script src="{{ url_for('.static', filename='js/ladda.min.js') }}"></script>
+  <script src="{{ url_for('.static', filename='js/plugin.js') }}"></script>
+  <script>
+    connect("{{ current_user.get_instance_config().host }}",
+            "{{ current_user.get_instance_config().port }}",
+	    "{{ current_user.get_instance_config().token }}");
+  </script>
+{% endblock %}
+
+{% block additional_css %}
+  <link href="{{ url_for('.static', filename='css/ladda-themeless.min.css') }}" rel="stylesheet" media="screen" type="text/css">
+{% endblock %}
