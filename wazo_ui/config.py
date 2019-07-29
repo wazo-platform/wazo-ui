@@ -10,6 +10,7 @@ from xivo.xivo_logging import get_log_level_by_name
 _DEFAULT_CONFIG = {
     'config_file': '/etc/wazo-ui/config.yml',
     'extra_config_files': '/etc/wazo-ui/conf.d',
+    'user': 'wazo-ui',
     'debug': False,
     'foreground': False,
     'log_level': 'info',
@@ -23,14 +24,44 @@ _DEFAULT_CONFIG = {
         'certificate': '/usr/share/xivo-certs/server.crt',
         'private_key': '/usr/share/xivo-certs/server.key',
     },
+    'amid': {
+        'host': 'localhost',
+        'port': 9491,
+        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+    },
     'auth': {
         'host': '127.0.0.1',
         'port': 443,
         'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
+    'call-logd': {
+        'host': 'localhost',
+        'port': 9298,
+        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+    },
     'confd': {
         'host': 'localhost',
         'port': 9486,
+        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+    },
+    'dird': {
+        'host': 'localhost',
+        'port': 9489,
+        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+    },
+    'plugind': {
+        'host': 'localhost',
+        'port': 9503,
+        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+    },
+    'provd': {
+        'host': 'localhost',
+        'port': 8666,
+        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+    },
+    'webhookd': {
+        'host': 'localhost',
+        'port': 9300,
         'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
     'enabled_plugins': {

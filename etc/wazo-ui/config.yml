@@ -21,9 +21,19 @@ https:
   certificate: /usr/share/xivo-certs/server.crt
   private_key: /usr/share/xivo-certs/server.key
 
+amid:
+  host: localhost
+  port: 9491
+  verify_certificate: /usr/share/xivo-certs/server.crt
+
 auth:
   host: localhost
   port: 9497
+  verify_certificate: /usr/share/xivo-certs/server.crt
+
+call-logd:
+  host: localhost
+  port: 9298
   verify_certificate: /usr/share/xivo-certs/server.crt
 
 confd:
@@ -31,7 +41,25 @@ confd:
   port: 9486
   verify_certificate: /usr/share/xivo-certs/server.crt
 
-user: wazo-ui
+dird:
+  host: localhost
+  port: 9489
+  verify_certificate: /usr/share/xivo-certs/server.crt
+
+plugind:
+  host: localhost
+  port: 9503
+  verify_certificate: /usr/share/xivo-certs/server.crt
+
+provd:
+  host: localhost
+  port: 8666
+  verify_certificate: /usr/share/xivo-certs/server.crt
+
+webhookd:
+  host: localhost
+  port: 9300
+  verify_certificate: /usr/share/xivo-certs/server.crt
 
 enabled_plugins:
   authentication: true

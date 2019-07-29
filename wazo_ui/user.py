@@ -53,23 +53,6 @@ class UserUI(UserMixin):
     def get_instance(self):
         return session['instance']
 
-    def get_instance_config(self):
-        if not('instance' in session) or not session['instance']:
-            return {}
-
-        try:
-            wazo_config = {
-                'host': session['instance']['host'],
-                'port': session['instance']['port'],
-                'token': session['instance']['token']
-            }
-            if session['instance']['wazo_tenant']:
-                wazo_config['tenant'] = session['instance']['wazo_tenant']['uuid']
-        except KeyError:
-            return {}
-
-        return wazo_config
-
     @property
     def is_active(self):
         return True

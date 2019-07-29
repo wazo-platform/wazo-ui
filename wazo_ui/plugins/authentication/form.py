@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import requests
@@ -6,13 +6,13 @@ import logging
 
 from requests.exceptions import HTTPError
 
-from flask import session
+from flask import session, app
 from flask_babel import lazy_gettext as l_
 from flask_wtf import FlaskForm
 from wtforms.fields import PasswordField, StringField, SubmitField, SelectField
 from wtforms.validators import InputRequired, ValidationError
 
-from wazo_ui.helpers.client import get_auth_client_for_authentication
+from wazo_auth_client import AuthClient
 from wazo_ui.user import UserUI
 
 USERNAME_PASSWORD_ERROR = l_('Wrong username and/or password')
@@ -34,7 +34,11 @@ class LoginForm(FlaskForm):
     def validate(self):
         super().validate()
         try:
-            auth_client = get_auth_client_for_authentication(self.username.data, self.password.data)
+            auth_client = AuthClient(
+                username=self.username.data,
+                password=self.password.data,
+                **app.config['auth'],
+            )
             response = auth_client.token.new('wazo_user', expiration=60 * 60 * 12)
             auth_client.set_token(response['token'])
             user = auth_client.users.get(response['metadata']['uuid'])

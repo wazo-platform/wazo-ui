@@ -3,10 +3,10 @@
 
 from flask import session
 
-from .client import wazo_global_auth_client
+from .client import auth_client
 
 
 def refresh_instance_tenants():
-    tenants = wazo_global_auth_client.tenants.list()['items']
+    tenants = auth_client.tenants.list()['items']
     session['instance_tenants'] = tenants
     session['working_instance_tenant_uuid'] = tenants[0]['uuid'] if len(tenants) else None

@@ -1,7 +1,7 @@
 # Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-from flask import g, session
+from flask import g, session, app
 from flask_login import current_user
 from werkzeug.local import LocalProxy
 
@@ -15,19 +15,12 @@ from wazo_webhookd_client import Client as WebhookdClient
 from xivo_amid_client import Client as AmidClient
 
 
-def wazo_engine_config_client():
-    base_config = current_user.get_instance_config()
-    base_config['verify_certificate'] = False
-    return base_config
-
-
 def get_provd_client():
     client = g.get('wazo_provd_client')
     if not client:
-        client = g.wazo_provd_client = ProvdClient(
-            prefix='/api/provd',
-            **wazo_engine_config_client()
-        )
+        client = g.wazo_provd_client = ProvdClient(**app.config['provd'])
+        client.set_token(current_user.get_id())
+        client.set_tenant(current_user.get_tenant_uuid())
     add_tenant_to(client)
     return client
 
@@ -35,10 +28,9 @@ def get_provd_client():
 def get_auth_client():
     client = g.get('wazo_auth_client')
     if not client:
-        client = g.wazo_auth_client = AuthClient(
-            prefix='/api/auth',
-            **wazo_engine_config_client()
-        )
+        client = g.wazo_auth_client = AuthClient(**app.config['auth'])
+        client.set_token(current_user.get_id())
+        client.set_tenant(current_user.get_tenant_uuid())
     add_tenant_to(client)
     return client
 
@@ -46,11 +38,9 @@ def get_auth_client():
 def get_amid_client():
     client = g.get('wazo_amid_client')
     if not client:
-        client = g.wazo_amid_client = AmidClient(
-            prefix='/api/amid',
-            version='1.0',
-            **wazo_engine_config_client()
-        )
+        client = g.wazo_amid_client = AmidClient(**app.config['amid'])
+        client.set_token(current_user.get_id())
+        client.set_tenant(current_user.get_tenant_uuid())
     add_tenant_to(client)
     return client
 
@@ -58,10 +48,9 @@ def get_amid_client():
 def get_call_logd_client():
     client = g.get('wazo_call_logd_client')
     if not client:
-        client = g.wazo_call_logd_client = CallLogdClient(
-            prefix='/api/call-logd',
-            **wazo_engine_config_client()
-        )
+        client = g.wazo_call_logd_client = CallLogdClient(**app.config['call-logd'])
+        client.set_token(current_user.get_id())
+        client.set_tenant(current_user.get_tenant_uuid())
     add_tenant_to(client)
     return client
 
@@ -69,10 +58,9 @@ def get_call_logd_client():
 def get_webhookd_client():
     client = g.get('wazo_webhookd_client')
     if not client:
-        client = g.wazo_webhookd_client = WebhookdClient(
-            prefix='/api/webhookd',
-            **wazo_engine_config_client()
-        )
+        client = g.wazo_webhookd_client = WebhookdClient(**app.config['webhookd'])
+        client.set_token(current_user.get_id())
+        client.set_tenant(current_user.get_tenant_uuid())
     add_tenant_to(client)
     return client
 
@@ -80,10 +68,9 @@ def get_webhookd_client():
 def get_plugind_client():
     client = g.get('wazo_plugind_client')
     if not client:
-        client = g.wazo_plugind_client = PlugindClient(
-            prefix='/api/plugind',
-            **wazo_engine_config_client()
-        )
+        client = g.wazo_plugind_client = PlugindClient(**app.config['plugind'])
+        client.set_token(current_user.get_id())
+        client.set_tenant(current_user.get_tenant_uuid())
     add_tenant_to(client)
     return client
 
@@ -91,10 +78,9 @@ def get_plugind_client():
 def get_wazo_confd_client():
     client = g.get('wazo_confd_client')
     if not client:
-        client = g.wazo_confd_client = ConfdClient(
-            prefix='/api/confd',
-            **wazo_engine_config_client()
-        )
+        client = g.wazo_confd_client = ConfdClient(**app.config['confd'])
+        client.set_token(current_user.get_id())
+        client.set_tenant(current_user.get_tenant_uuid())
     add_tenant_to(client)
     return client
 
@@ -102,10 +88,9 @@ def get_wazo_confd_client():
 def get_wazo_dird_client():
     client = g.get('wazo_dird_client')
     if not client:
-        client = g.wazo_confd_client = DirdClient(
-            prefix='/api/dird',
-            **wazo_engine_config_client()
-        )
+        client = g.wazo_confd_client = DirdClient(**app.config['dird'])
+        client.set_token(current_user.get_id())
+        client.set_tenant(current_user.get_tenant_uuid())
     add_tenant_to(client)
     return client
 
