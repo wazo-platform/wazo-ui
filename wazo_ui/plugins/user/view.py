@@ -60,7 +60,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         form = self.import_csv_form()
         self.service.import_csv(form)
 
-        flash('Resources has been imported', 'success')
+        flash('Resources have been imported', 'success')
         return self._redirect_for('index')
 
     def export_csv(self):
@@ -75,7 +75,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         form = self.import_csv_form()
         self.service.update_csv(form)
 
-        flash('Resources has been updated', 'success')
+        flash('Resources have been updated', 'success')
         return self._redirect_for('index')
 
     @route('/put/<id>', methods=['POST'])

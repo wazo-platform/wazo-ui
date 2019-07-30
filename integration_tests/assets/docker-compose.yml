@@ -9,6 +9,8 @@ services:
     image: wazo-ui-test
     ports:
       - "9296"
+    expose:
+      - "9296"
     volumes:
       - "../..:/usr/src/wazo-ui"
       - "./etc/wazo-ui/conf.d/default.yml:/etc/wazo-ui/conf.d/50-default.yml"
