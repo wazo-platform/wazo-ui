@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wazo_ui 0.1\n"
 "Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
 "POT-Creation-Date: 2019-07-29 22:07+0200\n"
-"PO-Revision-Date: 2019-07-30 10:18+0200\n"
+"PO-Revision-Date: 2019-07-30 14:32+0200\n"
 "Last-Translator: Wazo Authors <dev@wazo.community>\n"
 "Language: fr_FR\n"
 "Language-Team: en <dev@wazo.community>\n"
@@ -327,7 +327,7 @@ msgstr "appel entrant"
 
 #: wazo_ui/helpers/error.py:198
 msgid "ivr"
-msgstr ""
+msgstr "svi"
 
 #: wazo_ui/helpers/error.py:199
 msgid "line"
@@ -2127,7 +2127,7 @@ msgstr ""
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/list.html:11
 #: wazo_ui/plugins/identity/view.py:187
 msgid "Policies"
-msgstr ""
+msgstr "Politiques"
 
 #: wazo_ui/plugins/identity/form.py:50
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:41
@@ -2326,7 +2326,7 @@ msgstr ""
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:11
 #: wazo_ui/plugins/ivr/view.py:22
 msgid "IVR"
-msgstr ""
+msgstr "SVI"
 
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:4
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_custom.html:4
@@ -2340,7 +2340,7 @@ msgstr ""
 
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:11
 msgid "Add IVR"
-msgstr ""
+msgstr "Ajout SVI"
 
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:27
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/edit.html:29
