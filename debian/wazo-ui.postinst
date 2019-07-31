@@ -1,6 +1,7 @@
-#! /bin/sh
-
-set -e
+#! /bin/bash
+# postinst script for wazo-ui
+#
+# see: dh_installdeb(1)
 
 DAEMONNAME='wazo-ui'
 LOG_FILENAME="/var/log/${DAEMONNAME}.log"
@@ -21,14 +22,14 @@ case "$1" in
 				$USER
 		fi
 
-        adduser --quiet $USER www-data
+                adduser --quiet $USER www-data
 
 		if [ ! -e "$LOG_FILENAME" ]; then
 			touch "$LOG_FILENAME"
 		fi
 		chown $USER:$GROUP "$LOG_FILENAME"
 
-		if [ -z "${previous_version}" ]; then
+		if [[ -z "${previous_version}" ]]; then
 			ln -sf \
 				/etc/nginx/locations/https-available/$DAEMONNAME \
 				/etc/nginx/locations/https-enabled/$DAEMONNAME
