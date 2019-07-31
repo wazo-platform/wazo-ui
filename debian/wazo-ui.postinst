@@ -28,7 +28,7 @@ case "$1" in
 		fi
 		chown $USER:$GROUP "$LOG_FILENAME"
 
-		if [[ -z "${previous_version}" ]]; then
+		if [ -z "${previous_version}" ]; then
 			ln -sf \
 				/etc/nginx/locations/https-available/$DAEMONNAME \
 				/etc/nginx/locations/https-enabled/$DAEMONNAME
