@@ -28,14 +28,15 @@ def list_timezones():
 
 class ConfigRegistrarForm(BaseForm):
     id = HiddenField()
-    X_type = StringField(default='registrar')
-    parent_ids = SelectMultipleField(l_('Parent'), choices=[], default=[])
-    raw_config = StringField(default={'X_key': 'xivo'})
-    displayname = StringField(l_('Name'), validators=[InputRequired(), Length(max=128)])
-    registrar_main = StringField(l_('Registrar main'), validators=[InputRequired(), Length(max=128)])
-    registrar_backup = StringField(l_('Registrar backup'), validators=[Length(max=128)])
-    proxy_main = StringField(l_('Proxy main'), validators=[InputRequired(), Length(max=128)])
-    proxy_backup = StringField(l_('Proxy Backup'), validators=[Length(max=128)])
+    name = StringField(l_('Name'), validators=[InputRequired(), Length(max=128)])
+    main_host = StringField(l_('Main registrar host'), validators=[InputRequired(), Length(max=128)])
+    main_port = IntegerField(l_('Main registrar port'))
+    backup_host = StringField(l_('Backup registrar host'), validators=[Length(max=128)])
+    backup_port = IntegerField(l_('Backup registrar port'))
+    proxy_main_host = StringField(l_('Main proxy host'), validators=[InputRequired(), Length(max=128)])
+    proxy_main_port = IntegerField(l_('Main proxy port'))
+    proxy_backup_host = StringField(l_('Backup proxy host'), validators=[Length(max=128)])
+    proxy_backup_port = IntegerField(l_('Backup proxy port'))
     submit = SubmitField(l_('Submit'))
 
 

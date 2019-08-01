@@ -1,6 +1,7 @@
 # Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
+from wazo_ui.helpers.service import BaseConfdService
 from wazo_provd_client.operation import OperationInProgress
 
 
@@ -96,10 +97,6 @@ class ConfigService:
     def autocreate(self):
         self._provd.configs.autocreate()
 
-    def list_registrar(self, **kwargs):
-        configs_registrar = self._provd.configs.list_registrar(**kwargs)
-        return self._prepare_resource_list_for_view(configs_registrar['configs'])
-
     def list_device(self, **kwargs):
         configs_device = self._provd.configs.list_device(**kwargs)
         return self._prepare_resource_list_for_view(configs_device['configs'])
@@ -110,6 +107,14 @@ class ConfigService:
             'total': len(resource_list)
         }
         return result
+
+
+class RegistrarService(BaseConfdService):
+
+    resource_confd = 'registrars'
+
+    def __init__(self, confd_client):
+        self._confd = confd_client
 
 
 class ConfigurationService(object):

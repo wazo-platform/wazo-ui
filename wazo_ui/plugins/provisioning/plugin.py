@@ -6,7 +6,7 @@ from flask_menu.classy import register_flaskview
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
-from .service import PluginService, ConfigService, ConfigurationService
+from .service import PluginService, ConfigService, ConfigurationService, RegistrarService
 from .view import PluginView, PluginListingView, ConfigRegistrarView, ConfigDeviceView, ConfigurationView, ConfigDeviceListingView
 
 provisioning = create_blueprint('provisioning', __name__)
@@ -22,7 +22,7 @@ class Plugin(object):
         PluginView.register(provisioning, route_base='/provisioning/plugins')
         register_flaskview(provisioning, PluginView)
 
-        ConfigRegistrarView.service = ConfigService(clients['wazo_provd'])
+        ConfigRegistrarView.service = RegistrarService(clients['wazo_confd'])
         ConfigRegistrarView.register(provisioning, route_base='/provisioning/configs/registrar')
         register_flaskview(provisioning, ConfigRegistrarView)
 
