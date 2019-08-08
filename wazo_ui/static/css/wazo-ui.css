@@ -56,6 +56,9 @@ div.no-link {
 
 .skin-blue .wrapper {
   background-color: white !important;
+  position: initial;
+  overflow-x: inherit;
+  overflow-y: inherit;
 }
 
 .pagination>.active>a {
@@ -224,6 +227,10 @@ table.dataTable tbody td.selected a {
 .table .box {
   margin-bottom: 0;
   color: #000;
+}
+
+div.alert h4 {
+  display: none;
 }
 
 div.alert-success {

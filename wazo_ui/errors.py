@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -27,7 +27,7 @@ def configure_error_handlers(app):
 
     @app.errorhandler(401)
     def page_unauthorized(error):
-        flash(str(error), 'error')
+        flash('Session expired, please login again.')
         return redirect(url_for('login.Login:get'))
 
     @app.errorhandler(403)

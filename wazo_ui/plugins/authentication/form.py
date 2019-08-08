@@ -40,7 +40,7 @@ class LoginForm(FlaskForm):
                 password=self.password.data,
                 **app.config['auth'],
             )
-            response = auth_client.token.new('wazo_user', expiration=60 * 60 * 12)
+            response = auth_client.token.new(expiration=60 * 60 * 12)
             auth_client.set_token(response['token'])
             user = auth_client.users.get(response['metadata']['uuid'])
             user['password'] = self.password.data

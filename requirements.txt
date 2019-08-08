@@ -1,11 +1,11 @@
-git+https://github.com/wazo-pbx/wazo-provd-client.git
-git+https://github.com/wazo-pbx/wazo-plugind-client.git
-git+https://github.com/wazo-pbx/wazo-dird-client.git
+git+https://github.com/wazo-pbx/wazo-auth-client.git
 git+https://github.com/wazo-pbx/wazo-call-logd-client.git
 git+https://github.com/wazo-pbx/wazo-confd-client.git
+git+https://github.com/wazo-pbx/wazo-dird-client.git
+git+https://github.com/wazo-pbx/wazo-plugind-client.git
+git+https://github.com/wazo-pbx/wazo-provd-client.git
 git+https://github.com/wazo-pbx/wazo-webhookd-client.git
 git+https://github.com/wazo-pbx/xivo-amid-client.git
-git+https://github.com/wazo-pbx/wazo-auth-client.git
 git+https://github.com/wazo-pbx/xivo-lib-python.git
 git+https://github.com/wazo-pbx/xivo-lib-rest-client.git  # from xivo-*-client
 babel==2.3.4
