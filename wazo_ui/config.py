@@ -108,7 +108,6 @@ _DEFAULT_CONFIG = {
         'voicemail': True,
         'webhook': True,
     },
-    'core_plugins': {}
 }
 
 
