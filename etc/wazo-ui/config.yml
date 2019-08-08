@@ -4,10 +4,10 @@
 
 # Extra configuration directory where the config files overriding this file
 # should be.
-extra_config_files: /etc/wazo-ui/conf.d/
+# extra_config_files: /etc/wazo-ui/conf.d/
 
 # Change the log level to debug level.
-debug: false
+# debug: false
 
 # # Log file.
 # log_filename: /var/log/wazo-ui.log
