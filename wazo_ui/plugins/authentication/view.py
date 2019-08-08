@@ -9,6 +9,7 @@ from flask_babel import Locale, get_locale
 from flask_classful import FlaskView
 from flask_login import login_user, logout_user, current_user
 
+from wazo_ui.helpers.tenant import refresh_instance_tenants
 from .form import LoginForm
 
 logger = logging.getLogger(__name__)
@@ -35,6 +36,7 @@ class Login(FlaskView):
 
             session['language'] = form.language.data
             login_user(form.user)
+            refresh_instance_tenants()
 
             return redirect(current_user.get_user_index_url())
 
