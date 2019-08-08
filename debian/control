@@ -11,14 +11,6 @@ Architecture: all
 Depends: ${python3:Depends},
          ${misc:Depends},
          libsqlite3-0,
-         wazo-call-logd-client-python3,
-         wazo-confd-client-python3,
-         wazo-confd-client-python3,
-         wazo-dird-client-python3,
-         wazo-webhookd-client-python3,
-         xivo-amid-client-python3,
-         xivo-auth-client-python3,
-         xivo-lib-python-python3,
          python3-cheroot,
          python3-flask,
          python3-flask-babel,
@@ -28,7 +20,15 @@ Depends: ${python3:Depends},
          python3-flask-session,
          python3-flask-sqlalchemy,
          python3-flask-wtf,
-         python3-stevedore
+         python3-stevedore,
+         wazo-auth-client-python3,
+         wazo-call-logd-client-python3,
+         wazo-confd-client-python3,
+         wazo-confd-client-python3,
+         wazo-dird-client-python3,
+         wazo-webhookd-client-python3,
+         xivo-amid-client-python3,
+         xivo-lib-python-python3
 Description: Wazo UI
  Wazo is a system based on a powerful IPBX, to bring an easy to
  install solution for telephony and related services.
