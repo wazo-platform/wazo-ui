@@ -402,7 +402,7 @@ function init_datatable_buttons(datatable) {
       className: 'btn',
       text: '<i class="fa fa-' + button.icon + '"></i> ' + action + ' CSV',
       titleAttr: dataInfos.tooltips[action],
-      enabled: false,
+      enabled: action !== 'update',
       data: {
         actionName: action,
       },
@@ -516,6 +516,10 @@ function get_data_infos(table) {
 }
 
 function addIdToURL(url, id) {
+  if (!url) {
+    return '';
+  }
+
   const idx = url.indexOf('?');
   if (idx !== -1) {
     return url.substr(0, idx) + id + url.substr(idx, url.length);
@@ -563,8 +567,8 @@ function addCurrentBreadcrumbs(link) {
   let hasParams = link.indexOf('?') !== -1;
 
   $('.breadcrumb li a').each(function(idx, crumb) {
-    link += (!hasParams ? '?' : '&') + 'bc_names[]=' + crumb.innerText.trim();
-    link += '&bc_urls[]=' + crumb.attributes.href.value.split('?')[0];
+    link += (!hasParams ? '?' : '&') + 'bc_names[]=' + encodeURIComponent(crumb.innerText.trim());
+    link += '&bc_urls[]=' + encodeURIComponent(crumb.attributes.href.value.split('?')[0]);
     link += '&bc_icons[]=' + ($('i', $(crumb)).attr('class') || '-').split('-')[1];
 
     hasParams = true;

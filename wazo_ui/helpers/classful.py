@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -80,8 +80,7 @@ class NewViewMixin():
                                listing_urls=self.listing_urls)
 
 
-# TODO implement this in all views that do not require all methods (CRUD)
-class BaseHelperView(LoginRequiredView):
+class BaseHelperViewWithoutLogin(FlaskView):
     form = None
     resource = None
     service = None
@@ -218,6 +217,11 @@ class BaseHelperView(LoginRequiredView):
             url=error.request.url,
             response=response,
         )
+
+
+# TODO implement this in all views that do not require all methods (CRUD)
+class BaseHelperView(BaseHelperViewWithoutLogin, LoginRequiredView):
+    pass
 
 
 class BaseView(BaseHelperView):

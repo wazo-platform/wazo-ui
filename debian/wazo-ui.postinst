@@ -34,6 +34,9 @@ case "$1" in
 				/etc/nginx/locations/https-available/$DAEMONNAME \
 				/etc/nginx/locations/https-enabled/$DAEMONNAME
 		fi
+
+		# Remove old usage of flask-session artifact
+		rm -rf /var/lib/nestbox-ui/sessions
 	;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)

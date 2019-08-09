@@ -16,6 +16,7 @@ from flask_babel import Babel
 from flask_menu import Menu
 from flask_session import Session
 from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
 from pkg_resources import iter_entry_points, resource_filename, resource_isdir
 from werkzeug.contrib.fixers import ProxyFix
 
@@ -28,6 +29,7 @@ from .user import UserUI
 
 TRANSLATION_DIRECTORY = 'translations'
 BABEL_DEFAULT_LOCALE = 'en'
+HOME = '/var/lib/wazo-ui'
 
 logger = logging.getLogger(__name__)
 app = Flask('wazo_ui')
@@ -62,7 +64,7 @@ class Server():
         self._configure_jinja()
         self._configure_login(app.config['auth'])
         self._configure_menu()
-        self._configure_session(global_config['session_file_dir'])
+        self._configure_session()
         self._configure_babel(global_config['enabled_plugins'])
 
     def get_app(self):
@@ -151,8 +153,11 @@ class Server():
                 result.append(resource_filename(ep.module_name, TRANSLATION_DIRECTORY))
         return result
 
-    def _configure_session(self, session_file_dir):
-        app.config['SESSION_FILE_DIR'] = session_file_dir
-        app.config['SESSION_TYPE'] = 'filesystem'
+    def _configure_session(self):
+        app.config['SESSION_TYPE'] = 'sqlalchemy'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{home}/sessions.db'.format(home=HOME)
+        db = SQLAlchemy(app)
+        app.config['SESSION_SQLALCHEMY'] = db
         flask_session = Session()
         flask_session.init_app(app)
+        db.create_all()

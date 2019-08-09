@@ -249,10 +249,10 @@
 {% endmacro %}
 
 
-{% macro build_list_table(name=None, list='') %}
+{% macro build_list_table(name=None, list='', id=None) %}
   {% set caller_ = caller %}
   {% set class_name = 'client-side' %}
-  {% set table_id = 'table-list' %}
+  {% set table_id = id or 'table-list' %}
 
   {# Used by wazo-ui-plugins #}
   {% if list %}
