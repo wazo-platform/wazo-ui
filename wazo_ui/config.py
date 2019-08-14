@@ -28,7 +28,7 @@ _DEFAULT_CONFIG = {
         'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
     'auth': {
-        'host': '127.0.0.1',
+        'host': 'localhost',
         'port': 9497,
         'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
