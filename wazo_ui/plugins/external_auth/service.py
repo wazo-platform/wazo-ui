@@ -11,7 +11,7 @@ class ExternalAuthService:
         self._auth = auth_client
 
     def list(self):
-        service_list = self._auth.external.list_(session['instance']['uuid'])
+        service_list = self._auth.external.list_(session['working_instance_tenant_uuid'])
         items = []
 
         for service in service_list['items']:
