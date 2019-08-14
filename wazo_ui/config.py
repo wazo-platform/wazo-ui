@@ -29,7 +29,7 @@ _DEFAULT_CONFIG = {
     },
     'auth': {
         'host': '127.0.0.1',
-        'port': 443,
+        'port': 9497,
         'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
     'call-logd': {
@@ -67,7 +67,7 @@ _DEFAULT_CONFIG = {
         'index': True,
         'application': True,
         'agent': True,
-        'asterisk_cli': True,
+        'cli': True,
         'call_filter': True,
         'call_permission': True,
         'call_pickup': True,
