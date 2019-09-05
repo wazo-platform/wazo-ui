@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs(current_breadcrumbs + [
+    { 'name': _('Features Access'), 'link': url_for('.AccessFeatureView:index'), 'icon': 'lock' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Features Access'), 'random') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.AccessFeatureView:get', id=''), delete=url_for('.AccessFeatureView:delete', id='')) %}
+          <th>{{ _('Host') }}</th>
+          <th>{{ _('Feature') }}</th>
+        {% endcall %}
+        {% call(context) build_list_table_rows(resource_list['items']) %}
+          <td>{{ context.host }}</td>
+          <td>{{ context.feature }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add feature access')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.host) }}
+          {{ render_field(form.feature) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}

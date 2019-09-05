@@ -63,6 +63,7 @@ _DEFAULT_CONFIG = {
         'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
     'enabled_plugins': {
+        'access_feature': True,
         'authentication': True,
         'index': True,
         'application': True,
