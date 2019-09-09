@@ -1,7 +1,24 @@
 /* Header */
 .skin-blue .main-header .navbar, .skin-blue .main-header .logo, .skin-blue .main-header .logo:hover {
-  background: #282789;
-  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12);
+  background: #98c451;
+}
+
+.auth{
+  background: linear-gradient(to bottom, #98c451, #509400);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth > .login{
+  background: #fff;
+  padding-bottom: 40px;
+  border-radius: 12px;
+}
+
+.auth .login .wazo-logo{
+  margin: 0 auto;
 }
 
 .sidebar-toggle {
@@ -9,8 +26,9 @@
 }
 
 img.logo-full-svg {
-  padding-top: 8px;
-  height: 37px;
+  padding-top: 4px;
+  height: 42px;
+  width: auto;
   vertical-align: top;
 }
 
@@ -21,6 +39,10 @@ img.logo-full-svg {
 
 .navbar-form {
   margin-top: 13px;
+}
+
+.main-header{
+  box-shadow: 0 4px 6px rgba(0,0,0,.1);
 }
 
 .main-header .navbar a:active, .main-header .navbar a:hover {
@@ -51,7 +73,7 @@ div.no-link {
 
 /* Theme color */
 .box.box-primary, .nav-tabs-custom>.nav-tabs>li.active {
-  border-top-color: #282789!important;
+  border-top-color: #98c451!important;
 }
 
 .skin-blue .wrapper {
@@ -62,17 +84,17 @@ div.no-link {
 }
 
 .pagination>.active>a {
-  background-color: #282789!important;
-  border-color: #282789!important;
+  background-color: #98c451!important;
+  border-color: #98c451!important;
 }
 
 .btn-primary {
-  background-color: #282789!important;
-  border-color: #282789!important;
+  background-color: #98c451!important;
+  border-color: #98c451!important;
 }
 
 .select2-container--bootstrap .select2-results__option--highlighted {
-  background-color: #282789!important;
+  background-color: #98c451!important;
 }
 
 .dynamic-table td .form-group {
@@ -117,13 +139,13 @@ div.box-header {
 }
 
 .main-sidebar li a:hover, .main-sidebar li.active a, .sidebar-menu>li>.treeview-menu a, .sidebar-menu>li>.treeview-menu a:hover {
-  background-color: rgb(232, 234, 246) !important;
+  background-color: #e8e8e8 !important;
   padding-left: 18px;
   border-left: none !important;
 }
 
 .skin-blue .sidebar-menu>li>.treeview-menu, li.menu-open:hover, .skin-blue .sidebar-menu>li:hover>a {
-  background-color: rgb(232, 234, 246) !important;
+  background-color: #e8e8e8 !important;
   border-left-color: transparent;
 }
 
