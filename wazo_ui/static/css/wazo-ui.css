@@ -13,12 +13,16 @@
 
 .auth > .login{
   background: #fff;
-  padding-bottom: 40px;
+  padding: 20px 5vw 70px !important;
   border-radius: 12px;
+  box-shadow: 0px 10px 25px rgba(0,0,0, .3);
 }
 
 .auth .login .wazo-logo{
   margin: 0 auto;
+}
+.auth .login #form-group-input-language {
+  padding: 20px 0 0;
 }
 
 .sidebar-toggle {
