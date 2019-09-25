@@ -95,6 +95,7 @@ setup(
             'wazo-ui=wazo_ui.bin.daemon:main',
         ],
         'wazo_ui.plugins': [
+            'access_feature = wazo_ui.plugins.access_feature.plugin:Plugin',
             'authentication = wazo_ui.plugins.authentication.plugin:Plugin',
             'index = wazo_ui.plugins.index.plugin:Plugin',
             'application = wazo_ui.plugins.application.plugin:Plugin',
