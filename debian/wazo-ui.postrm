@@ -1,0 +1,9 @@
+#! /bin/sh
+# Copyright 2019 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+DAEMONNAME='wazo-ui'
+
+if [ "$1" = remove ]; then
+    rm -f "/etc/nginx/locations/https-enabled/$DAEMONNAME"
+fi
