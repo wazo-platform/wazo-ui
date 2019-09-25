@@ -16,12 +16,13 @@ class Plugin(object):
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
+        service = AccessFeaturesService(clients['wazo_confd'])
 
-        AccessFeatureView.service = AccessFeaturesService(clients['wazo_confd'])
+        AccessFeatureView.service = service
         AccessFeatureView.register(access_features, route_base='/access_features')
         register_flaskview(access_features, AccessFeatureView)
 
-        AccessFeaturesListingView.service = AccessFeaturesService(clients['wazo_confd'])
+        AccessFeaturesListingView.service = service
         AccessFeaturesListingView.register(
             access_features, route_base='/access_features_listing'
         )
