@@ -75,7 +75,7 @@ setup(
     description='Wazo UI',
     author='Wazo Authors',
     author_email='dev@wazo.community',
-    url='https://github.com/wazo-pbx/wazo-ui',
+    url='https://github.com/wazo-platform/wazo-ui',
     packages=find_packages(),
     include_package_data=True,
     setup_requires=['babel'],

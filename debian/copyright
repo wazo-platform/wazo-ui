@@ -1,6 +1,6 @@
 Format: http://dep.debian.net/deps/dep5
 Upstream-Name: wazo-ui
-Source: https://github.com/wazo-pbx/wazo-ui.git
+Source: https://github.com/wazo-platform/wazo-ui.git
 
 Files: *
 Copyright: 2019 The Wazo Authors
