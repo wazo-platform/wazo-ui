@@ -2,6 +2,30 @@
 
 Wazo-ui is an open source project for helping people to use easily the API of wazo-platform. This project is not up to date with all API in the engine, but you can do lot of features.
 
+# How to install
+
+In the wazo platform installed.
+
+    apt install wazo-ui
+
+With docker.
+
+    docker build -t wazo-ui .
+    docker run -p 9286:9286 -v my_config_directory:/etc/wazo-ui/conf.d wazo-ui
+
+On a fresh debian buster installed.
+
+Add the wazo-platform repository and
+
+    apt install wazo-ui
+
+From the source
+
+    # in a virtualenv
+    pip3 install -r requirements.txt
+    python3 setup.py install
+
+
 # How to configure to use the engine remotely
 
 If you want to use the UI in another VM or in a container.
@@ -77,5 +101,3 @@ To enable live-edit of bootstrap.min.css, you will need to add the following lin
 bootstrap.min.css file:
 
     /*# sourceMappingURL=bootstrap.min.css.map */
-
-
