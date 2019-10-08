@@ -67,6 +67,7 @@ class RawConfigDeviceForm(BaseForm):
         ('RTP-out-of-band', 'RTP-out-of-band'),
         ('SIP-INFO', 'SIP-INFO')
     ])
+    X_xivo_phonebook_ip = StringField(l_('Phonebook server'), validators=[IPAddress()])
     user_username = StringField(l_('User username'), validators=[InputRequired(), Length(max=128)])
     user_password = StringField(l_('User password'), validators=[InputRequired(), Length(max=128)])
     admin_username = StringField(l_('Admin username'), validators=[InputRequired(), Length(max=128)])
