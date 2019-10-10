@@ -53,6 +53,7 @@ class Server():
         app.config['plugind'] = global_config.get('plugind', {})
         app.config['provd'] = global_config.get('provd', {})
         app.config['webhookd'] = global_config.get('webhookd', {})
+        app.config['websocketd'] = global_config.get('websocketd', {})
         app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 megabytes
 
         if global_config['debug']:
