@@ -8,8 +8,8 @@ RUN true \
     && mkdir -p /etc/wazo-ui/conf.d \
     && touch /var/log/wazo-ui.log \
     && chown wazo-ui /var/log/wazo-ui.log \
-    && mkdir /var/run/wazo-ui/ \
-    && chown wazo-ui /var/run/wazo-ui/ \
+    && mkdir /run/wazo-ui/ \
+    && chown wazo-ui /run/wazo-ui/ \
     && mkdir /var/lib/wazo-ui/ \
     && chown wazo-ui /var/lib/wazo-ui/ \
     && true
