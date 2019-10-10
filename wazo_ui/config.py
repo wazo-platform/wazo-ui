@@ -14,7 +14,7 @@ _DEFAULT_CONFIG = {
     'foreground': False,
     'log_level': 'info',
     'log_filename': '/var/log/wazo-ui.log',
-    'pid_filename': '/var/run/wazo-ui/wazo-ui.pid',
+    'pid_filename': '/run/wazo-ui/wazo-ui.pid',
     'session_lifetime': 60 * 60 * 8,
     'https': {
         'listen': '0.0.0.0',
