@@ -1,3 +1,4 @@
+https://github.com/wazo-platform/wazo-lib-rest-client/archive/master.zip  # from wazo-*-client
 https://github.com/wazo-platform/wazo-auth-client/archive/master.zip
 https://github.com/wazo-platform/wazo-call-logd-client/archive/master.zip
 https://github.com/wazo-platform/wazo-confd-client/archive/master.zip
@@ -7,7 +8,6 @@ https://github.com/wazo-platform/wazo-provd-client/archive/master.zip
 https://github.com/wazo-platform/wazo-webhookd-client/archive/master.zip
 https://github.com/wazo-platform/xivo-amid-client/archive/master.zip
 https://github.com/wazo-platform/xivo-lib-python/archive/master.zip
-https://github.com/wazo-platform/xivo-lib-rest-client/archive/master.zip  # from xivo-*-client
 babel==2.6.0
 cheroot==6.5.4
 flask-babel==0.11.2
