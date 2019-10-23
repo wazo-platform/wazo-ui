@@ -25,6 +25,7 @@
             {% call build_tab_content_item('trunk', active=True) %}
               {% call add_default_fields(form=form, submit_value=_('Update')) %}
                 {{ render_field(form.endpoint_sip['id']) }}
+                {{ render_field(form.endpoint_sip['name']) }}
                 {{ render_field(form.endpoint_sip['username']) }}
                 {{ render_field(form.endpoint_sip['secret']) }}
                 {{ render_field(form.endpoint_sip['host']) }}

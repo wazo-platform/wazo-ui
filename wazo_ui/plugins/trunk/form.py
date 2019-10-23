@@ -31,6 +31,7 @@ class OptionsForm(BaseForm):
 
 class EnpointSipForm(BaseForm):
     id = HiddenField()
+    name = StringField(l_('Name'), validators=[InputRequired(), Length(max=40)])
     username = StringField(l_('Username'), validators=[InputRequired(), Length(max=40)])
     secret = StringField(l_('Password'), validators=[Length(max=80)], widget=PasswordInput(hide_value=False))
     type = SelectField(l_('Type'), choices=[('user', l_('User')), ('peer', l_('Peer')), ('friend', l_('Friend'))])
