@@ -408,8 +408,8 @@ function init_datatable_buttons(datatable) {
       },
       action: function () {
         // Export
-        if (this.node()[0].attributes.title.value === 'Export') {
-          window.location.href = dataInfos[this.node()[0].attributes.title.value.toLowerCase() +'_url'];
+        if (this.node()[0].attributes.title.value.toLowerCase().startsWith('export')) {
+          window.location.href = dataInfos['export_url'];
           return;
         }
 
@@ -497,20 +497,19 @@ function get_data_infos(table) {
   var tooltip = $('.table-data-tooltip', $(table));
 
   return {
-    add_url: tooltip.attr('data-add_url'),
-    get_url: tooltip.attr('data-get_url'),
-    import_url: tooltip.attr('data-import_url'),
-    export_url: tooltip.attr('data-export_url'),
-    update_url: tooltip.attr('data-update_url'),
-    delete_url: tooltip.attr('data-delete_url'),
-    tooltips: {
-      add: tooltip.attr('data-add_tooltip'),
-      get: tooltip.attr('data-get_tooltip'),
-      'delete': tooltip.attr('data-delete_tooltip'),
-      'delete': tooltip.attr('data-delete_tooltip'),
-      'import': tooltip.attr('data-import_tooltip'),
-      'export': tooltip.attr('data-export_tooltip'),
-      'update': tooltip.attr('data-update_tooltip'),
+    'add_url': tooltip.attr('data-add-url'),
+    'get_url': tooltip.attr('data-get-url'),
+    'import_url': tooltip.attr('data-import-url'),
+    'export_url': tooltip.attr('data-export-url'),
+    'update_url': tooltip.attr('data-update-url'),
+    'delete_url': tooltip.attr('data-delete-url'),
+    'tooltips': {
+      'add': tooltip.attr('data-add-tooltip'),
+      'get': tooltip.attr('data-get-tooltip'),
+      'delete': tooltip.attr('data-delete-tooltip'),
+      'import': tooltip.attr('data-import-tooltip'),
+      'export': tooltip.attr('data-export-tooltip'),
+      'update': tooltip.attr('data-update-tooltip'),
     }
   };
 }

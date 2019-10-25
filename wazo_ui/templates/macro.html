@@ -280,18 +280,30 @@
   {% if actions_column %}
     <tr
       class="table-data-tooltip"
-      {{ 'data-add_url=' ~ add if add }}
-      {{ 'data-get_url=' ~ get if get }}
-      {{ 'data-import_url=' ~ import if import }}
-      {{ 'data-export_url=' ~ export if export }}
-      {{ 'data-update_url=' ~ update if update }}
-      {{ 'data-delete_url=' ~ delete if delete }}
-      data-add_tooltip={{ _('Add') }}
-      data-get_tooltip={{ _('Edit') }}
-      data-delete_tooltip={{ _('Delete') }}
-      data-import_tooltip={{ _('Import CSV') }}
-      data-export_tooltip={{ _('Export CSV') }}
-      data-update_tooltip={{ _('Update from CSV') }}
+      {% if add %}
+      data-add-url="{{ add }}"
+      data-add-tooltip="{{ _('Add') }}"
+      {% endif %}
+      {% if get %}
+      data-get-url="{{ get }}"
+      data-get-tooltip="{{ _('Edit') }}"
+      {% endif %}
+      {% if import %}
+      data-import-url="{{ import }}"
+      data-import-tooltip="{{ _('Import CSV') }}"
+      {% endif %}
+      {% if export %}
+      data-export-url="{{ export }}"
+      data-export-tooltip="{{ _('Export CSV') }}"
+      {% endif %}
+      {% if update %}
+      data-update-url="{{ update }}"
+      data-update-tooltip="{{ _('Update from CSV') }}"
+      {% endif %}
+      {% if delete %}
+      data-delete-url="{{ delete }}"
+      data-delete-tooltip="{{ _('Delete') }}"
+      {% endif %}
     >
   {%  else %}
     <tr>
