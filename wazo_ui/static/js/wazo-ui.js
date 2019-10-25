@@ -274,7 +274,7 @@ function init_select2() {
     };
 
     var ajax_url = select.attr('data-listing_href') || select.attr('data-listing-href');
-    var allow_custom_values = this.hasAttribute('data-allow_custom_values');
+    var allow_custom_values = this.hasAttribute('data-allow-custom-values');
     if (allow_custom_values || ajax_url === ""){
       config['tags'] = true;
     }
@@ -285,7 +285,7 @@ function init_select2() {
           url: ajax_url,
           delay: 450,
       };
-      var ajax_data = select.attr('data-ajax_data');
+      var ajax_data = select.attr('data-ajax-data');
       if (ajax_data) {
         config['ajax']['data'] = new Function("term", ajax_data);
       }
@@ -296,19 +296,19 @@ function init_select2() {
       }
     }
 
-    var has_buttons_select_unselect_all = this.hasAttribute('data-select_unselect_all');
+    var has_buttons_select_unselect_all = this.hasAttribute('data-select-unselect-all');
     if (has_buttons_select_unselect_all) {
       config['dropdownAdapter'] = $.fn.select2.amd.require('select2/selectAllAdapter')
     }
 
-    var allow_clear = this.hasAttribute('data-allow_clear');
+    var allow_clear = this.hasAttribute('data-allow-clear');
     if(select.attr('multiple') || allow_clear) {
       config['allowClear'] = true;
     }
 
     select.select2(config);
 
-    var disable_sort = this.hasAttribute('data-disable_sort');
+    var disable_sort = this.hasAttribute('data-disable-sort');
     if(select.attr('multiple') && ! disable_sort) {
       select2_sortable($(this));
     }
