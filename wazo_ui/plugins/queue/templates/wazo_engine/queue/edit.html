@@ -37,7 +37,7 @@
               {{ render_field(form.extensions[0].exten,
                               data_allow_custom_values=True,
                               with_label=False,
-                              data_allow_clear=True,
+                              data_allow_clear='true',
                               divclass='col-sm-2',
                               class_='queue-exten',
                               data_listing_href=url_for(listing_urls['available_extension_queue'])) }}
@@ -90,7 +90,7 @@
                 {{ render_field(form.schedules[0]['name']) }}
                 {{ render_field(form.schedules[0]['id'],
                                 data_listing_href=url_for(listing_urls['schedule']),
-                                data_allow_clear=True,
+                                data_allow_clear='true',
                                 data_placeholder='Choose Schedules') }}
             {% endcall %}
           {% endcall %}

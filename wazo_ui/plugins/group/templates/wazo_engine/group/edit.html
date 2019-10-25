@@ -33,7 +33,7 @@
                               data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
               {{ render_field(form.extensions[0].exten,
                               data_allow_custom_values=True,
-                              data_allow_clear=True,
+                              data_allow_clear='true',
                               divclass='col-sm-2',
                               with_label=False,
                               class_='group-exten',
@@ -69,7 +69,7 @@
                 {{ render_field(form.schedules[0]['name']) }}
                 {{ render_field(form.schedules[0]['id'],
                                 data_listing_href=url_for(listing_urls['schedule']),
-                                data_allow_clear=True,
+                                data_allow_clear='true',
                                 data_placeholder='Choose Schedules') }}
             {% endcall %}
           {% endcall %}
@@ -78,7 +78,7 @@
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
               {{ render_field(form.call_permission_ids,
                               data_listing_href=url_for(listing_urls['callpermission']),
-                              data_allow_clear=True,
+                              data_allow_clear='true',
                               data_placeholder=_('Choose Call Permissions')) }}
               {{ render_field(form.call_permissions, with_label=False) }}
             {% endcall %}
