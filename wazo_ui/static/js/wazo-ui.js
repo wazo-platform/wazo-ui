@@ -273,7 +273,7 @@ function init_select2() {
       width: null,
     };
 
-    var ajax_url = select.attr('data-listing_href') || select.attr('data-listing-href');
+    var ajax_url = select.attr('data-listing-href');
     var allow_custom_values = this.hasAttribute('data-allow-custom-values');
     if (allow_custom_values || ajax_url === ""){
       config['tags'] = true;
