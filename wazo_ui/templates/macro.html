@@ -243,7 +243,7 @@
 
 
 {% macro build_table(id=None, data_list_url='', name=None, class_name='') %}
-  <table {{ 'id=' ~ id if id }} class="table table-condensed table-striped table-bordered {{ class_name }}" {{ 'data-list_url=' ~ data_list_url if data_list_url }} {{ 'data-name=' ~ name if name }}>
+  <table {{ 'id=' ~ id if id }} class="table table-condensed table-striped table-bordered {{ class_name }}" {{ 'data-list-url=' ~ data_list_url if data_list_url }} {{ 'data-name=' ~ name if name }}>
     {{ caller() }}
   </table>
 {% endmacro %}

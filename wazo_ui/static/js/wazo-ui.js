@@ -454,7 +454,7 @@ function build_column_actions(datatable) {
 
 // Used by wazo-ui-plugins
 function create_table_serverside(config, actions_column=true, init_buttons=true, init_events=true) {
-  let list_url = $('#table-list-serverside').attr('data-list_url');
+  let list_url = $('#table-list-serverside').attr('data-list-url');
 
   config.serverSide = true;
   config.processing = true;
