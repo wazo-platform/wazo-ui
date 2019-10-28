@@ -273,8 +273,8 @@ function init_select2() {
       width: null,
     };
 
-    var ajax_url = select.attr('data-listing_href') || select.attr('data-listing-href');
-    var allow_custom_values = this.hasAttribute('data-allow_custom_values');
+    var ajax_url = select.attr('data-listing-href');
+    var allow_custom_values = this.hasAttribute('data-allow-custom-values');
     if (allow_custom_values || ajax_url === ""){
       config['tags'] = true;
     }
@@ -285,7 +285,7 @@ function init_select2() {
           url: ajax_url,
           delay: 450,
       };
-      var ajax_data = select.attr('data-ajax_data');
+      var ajax_data = select.attr('data-ajax-data');
       if (ajax_data) {
         config['ajax']['data'] = new Function("term", ajax_data);
       }
@@ -296,19 +296,19 @@ function init_select2() {
       }
     }
 
-    var has_buttons_select_unselect_all = this.hasAttribute('data-select_unselect_all');
+    var has_buttons_select_unselect_all = this.hasAttribute('data-select-unselect-all');
     if (has_buttons_select_unselect_all) {
       config['dropdownAdapter'] = $.fn.select2.amd.require('select2/selectAllAdapter')
     }
 
-    var allow_clear = this.hasAttribute('data-allow_clear');
+    var allow_clear = this.hasAttribute('data-allow-clear');
     if(select.attr('multiple') || allow_clear) {
       config['allowClear'] = true;
     }
 
     select.select2(config);
 
-    var disable_sort = this.hasAttribute('data-disable_sort');
+    var disable_sort = this.hasAttribute('data-disable-sort');
     if(select.attr('multiple') && ! disable_sort) {
       select2_sortable($(this));
     }
@@ -408,8 +408,8 @@ function init_datatable_buttons(datatable) {
       },
       action: function () {
         // Export
-        if (this.node()[0].attributes.title.value === 'Export') {
-          window.location.href = dataInfos[this.node()[0].attributes.title.value.toLowerCase() +'_url'];
+        if (this.node()[0].attributes.title.value.toLowerCase().startsWith('export')) {
+          window.location.href = dataInfos['export_url'];
           return;
         }
 
@@ -454,7 +454,7 @@ function build_column_actions(datatable) {
 
 // Used by wazo-ui-plugins
 function create_table_serverside(config, actions_column=true, init_buttons=true, init_events=true) {
-  let list_url = $('#table-list-serverside').attr('data-list_url');
+  let list_url = $('#table-list-serverside').attr('data-list-url');
 
   config.serverSide = true;
   config.processing = true;
@@ -497,20 +497,19 @@ function get_data_infos(table) {
   var tooltip = $('.table-data-tooltip', $(table));
 
   return {
-    add_url: tooltip.attr('data-add_url'),
-    get_url: tooltip.attr('data-get_url'),
-    import_url: tooltip.attr('data-import_url'),
-    export_url: tooltip.attr('data-export_url'),
-    update_url: tooltip.attr('data-update_url'),
-    delete_url: tooltip.attr('data-delete_url'),
-    tooltips: {
-      add: tooltip.attr('data-add_tooltip'),
-      get: tooltip.attr('data-get_tooltip'),
-      'delete': tooltip.attr('data-delete_tooltip'),
-      'delete': tooltip.attr('data-delete_tooltip'),
-      'import': tooltip.attr('data-import_tooltip'),
-      'export': tooltip.attr('data-export_tooltip'),
-      'update': tooltip.attr('data-update_tooltip'),
+    'add_url': tooltip.attr('data-add-url'),
+    'get_url': tooltip.attr('data-get-url'),
+    'import_url': tooltip.attr('data-import-url'),
+    'export_url': tooltip.attr('data-export-url'),
+    'update_url': tooltip.attr('data-update-url'),
+    'delete_url': tooltip.attr('data-delete-url'),
+    'tooltips': {
+      'add': tooltip.attr('data-add-tooltip'),
+      'get': tooltip.attr('data-get-tooltip'),
+      'delete': tooltip.attr('data-delete-tooltip'),
+      'import': tooltip.attr('data-import-tooltip'),
+      'export': tooltip.attr('data-export-tooltip'),
+      'update': tooltip.attr('data-update-tooltip'),
     }
   };
 }

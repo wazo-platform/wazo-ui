@@ -33,7 +33,7 @@ $(document).ready(function() {
   var ids = {};
   for (var i = 0; i < selects.length; i++) {
     var $select = $(selects[i]);
-    var listingUrl = $select.data('listing_href') || $select.data('listing-href');
+    var listingUrl = $select.data('listing-href');
     var id = $select.val();
     $selects[i] = $select;
     ids[i] = id;
@@ -126,7 +126,7 @@ function add_available_extensions() {
     }
   }
 
-  let ajax_url = $(extension_select).attr('data-listing-href') || $(extension_select).attr('data-listing_href');
+  let ajax_url = $(extension_select).attr('data-listing-href');
   if (! ajax_url || ! context_select) {
     return;
   }

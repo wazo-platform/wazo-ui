@@ -24,7 +24,7 @@
             {{ render_field(form.endpoint_iax['host_value'], placeholder=_('Set host value')) }}
             {{ render_field(form.endpoint_iax['type']) }}
             {{ render_field(form.context,
-                            data_allow_clear=True,
+                            data_allow_clear='true',
                             class_='trunk-context',
                             placeholder=_('Choose Context'),
                             data_listing_href=url_for(listing_urls['context'])) }}

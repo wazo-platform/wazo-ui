@@ -22,7 +22,7 @@ function toggle_callerid_mode() {
 function add_available_extensions() {
   let extension_select = $(".queue-exten");
   let context_select = $(".queue-context");
-  let ajax_url = $(extension_select).attr('data-listing-href') || $(extension_select).attr('data-listing_href');
+  let ajax_url = $(extension_select).attr('data-listing-href');
   if (!ajax_url) {
     return;
   }

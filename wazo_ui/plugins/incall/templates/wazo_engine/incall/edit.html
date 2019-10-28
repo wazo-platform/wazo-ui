@@ -36,7 +36,7 @@
                               data_listing_href=url_for(listing_urls['available_extension_incall'])) }}
               {{ render_field(form.destination, with_label=False) }}
               {{ render_field(form.preprocess_subroutine) }}
-              {{ render_field(form.caller_id_mode, data_allow_clear=True) }}
+              {{ render_field(form.caller_id_mode, data_allow_clear='true') }}
               {{ render_field(form.caller_id_name) }}
             {% endcall %}
           {% endcall %}
@@ -46,7 +46,7 @@
                 {{ render_field(form.schedules[0]['name']) }}
                 {{ render_field(form.schedules[0]['id'],
                                 data_listing_href=url_for(listing_urls['schedule']),
-                                data_allow_clear=True,
+                                data_allow_clear='true',
                                 data_placeholder=_('Choose Schedules')) }}
             {% endcall %}
           {% endcall %}

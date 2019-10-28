@@ -145,7 +145,7 @@
                 {{ render_field(form.schedules[0]['name']) }}
                 {{ render_field(form.schedules[0]['id'],
                                 data_listing_href=url_for(listing_urls['schedule']),
-                                data_allow_clear=True,
+                                data_allow_clear='true',
                                 data_placeholder=_('Choose Schedules')) }}
               {% endcall %}
             {% endcall %}
@@ -154,7 +154,7 @@
               {% call add_default_fields(form=form, submit_value=_('Update')) %}
               {{ render_field(form.voicemail['id'],
                               data_listing_href=url_for(listing_urls['voicemail']),
-                              data_allow_clear=True,
+                              data_allow_clear='true',
                               data_placeholder=_('Choose Voicemail')) }}
               {% endcall %}
             {% endcall %}
@@ -163,7 +163,7 @@
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
               {{ render_field(form.call_permission_ids,
                               data_listing_href=url_for(listing_urls['callpermission']),
-                              data_allow_clear=True,
+                              data_allow_clear='true',
                               data_placeholder=_('Choose Call Permissions')) }}
               {{ render_field(form.call_permissions, with_label=False) }}
             {% endcall %}
@@ -205,7 +205,7 @@
       {{ render_field(line.extensions[0].exten,
                       with_label=False,
                       class_='line-extension',
-                      data_allow_clear=True,
+                      data_allow_clear='true',
                       data_allow_custom_values=True,
                       data_listing_href=url_for(listing_urls['available_extension_user'])) }}
     </td>
@@ -213,7 +213,7 @@
       {{ render_field(line.device,
                       with_label=False,
                       class_='line-device',
-                      data_allow_clear=True,
+                      data_allow_clear='true',
                       data_listing_href=url_for(listing_urls['device'])) }}
     </td>
     <td>
@@ -223,7 +223,7 @@
       {{ render_field(line.application.uuid,
                       with_label=False,
                       class_='line-application',
-                      data_allow_clear=True,
+                      data_allow_clear='true',
                       data_listing_href=url_for(listing_urls['custom'])) }}
     </td>
     <td>

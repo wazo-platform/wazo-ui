@@ -67,7 +67,7 @@
                 {{ render_field(form.schedules[0]['name']) }}
                 {{ render_field(form.schedules[0]['id'],
                                 data_listing_href=url_for(listing_urls['schedule']),
-                                data_allow_clear=True,
+                                data_allow_clear='true',
                                 data_placeholder=_('Choose Schedules')) }}
             {% endcall %}
           {% endcall %}
@@ -76,7 +76,7 @@
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
               {{ render_field(form.call_permission_ids,
                               data_listing_href=url_for(listing_urls['callpermission']),
-                              data_allow_clear=True,
+                              data_allow_clear='true',
                               data_placeholder=_('Choose Call Permissions')) }}
               {{ render_field(form.call_permissions, with_label=False) }}
             {% endcall %}
