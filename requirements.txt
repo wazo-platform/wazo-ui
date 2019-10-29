@@ -19,6 +19,6 @@ flask-sqlalchemy==2.1
 flask-wtf==0.14.2
 flask==1.0.2
 itsdangerous==0.24
-pyyaml==3.13  # from xivo-lib-python
+pyyaml==5.1  # from xivo-lib-python
 requests==2.21.0
 stevedore==1.29.0
