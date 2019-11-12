@@ -31,7 +31,7 @@ Depends: ${python3:Depends},
          wazo-provd-client-python3,
          wazo-plugind-client-python3,
          xivo-certs
-Description: Wazo UI
+Description: Wazo UI is a configuration interface for the Wazo UC engine
  Wazo is a system based on a powerful IPBX, to bring an easy to
  install solution for telephony and related services.
  .
