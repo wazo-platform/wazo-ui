@@ -29,7 +29,7 @@
           </td>
           <td>
             {% if trunk.endpoint_sip %}
-              {{ trunk.endpoint_sip.username }}
+              {{ trunk.endpoint_sip.name }}
             {% elif trunk.endpoint_iax %}
               {{ trunk.endpoint_iax.name }}
             {% elif trunk.endpoint_custom %}
