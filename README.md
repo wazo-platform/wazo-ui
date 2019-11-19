@@ -2,6 +2,9 @@
 
 Wazo-ui is an open source project for helping people to use easily the API of wazo-platform. This project is not up to date with all API in the engine, but you can do lot of features.
 
+![Login screenshot](/contribs/screenshots/login.png?raw=true "Login")
+![Main screenshot](/contribs/screenshots/main.png?raw=true "Main")
+
 # How to install
 
 In the wazo platform installed.
