@@ -68,6 +68,12 @@ class VoicemailDestinationForm(BaseForm):
     set_value_template = '{voicemail_name}'
 
     voicemail_id = SelectField(l_('Voicemail'), [InputRequired()], choices=[])
-    greeting = SelectField(l_('Greeting'), choices=[('busy', l_('Busy')), ('unavailable', l_('Unavailable'))])
+    greeting = SelectField(
+        l_('Greeting'), choices=[
+            ('', l_('None')),
+            ('busy', l_('Busy')),
+            ('unavailable', l_('Unavailable')),
+        ]
+    )
     skip_instructions = BooleanField(l_('Skip instructions'))
     voicemail_name = DestinationHiddenField()
