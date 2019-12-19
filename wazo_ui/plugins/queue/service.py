@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from wazo_ui.helpers.extension import BaseConfdExtensionService
@@ -70,3 +70,6 @@ class QueueService(BaseConfdExtensionService):
         result = self._confd.contexts.list(name=context)
         for context in result['items']:
             return context
+
+    def get_fallbacks(self, queue_id):
+        return self._confd.queues(queue_id).list_fallbacks()
