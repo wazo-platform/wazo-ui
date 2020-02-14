@@ -1,5 +1,17 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
+
+
+class PJSIPGlobalSettingsService(object):
+
+    def __init__(self, confd_client):
+        self._confd = confd_client
+
+    def get(self):
+        return self._confd.pjsip_global.get()
+
+    def update(self, pjsip_global):
+        self._confd.pjsip_global.update(pjsip_global)
 
 
 class SipGeneralSettingsService(object):

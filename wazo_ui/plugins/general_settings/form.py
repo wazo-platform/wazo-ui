@@ -41,6 +41,10 @@ class SipGeneralSettingsForm(GeneralSettingsOptionsForm):
     submit = SubmitField(l_('Submit'))
 
 
+class PJSIPGlobalSettingsForm(GeneralSettingsOptionsForm):
+    submit = SubmitField(l_('Submit'))
+
+
 class IaxCallnumberlimitsForm(BaseForm):
     ip_address = StringField(l_('IP Address'), validators=[IPAddress()])
     netmask = StringField(l_('Netmask'))

@@ -20,6 +20,7 @@ from .form import (
     FeaturesGeneralSettingsForm,
     IaxGeneralSettingsForm,
     SccpGeneralSettingsForm,
+    PJSIPGlobalSettingsForm,
     SipGeneralSettingsForm,
     VoicemailGeneralSettingsForm,
 )
@@ -75,6 +76,26 @@ class BaseGeneralSettingsView(BaseIPBXHelperView):
 
     def _map_options_to_resource(self, options):
         return {option['option_key']: option['option_value'] for option in options}
+
+
+class PJSIPGlobalSettingsView(BaseGeneralSettingsView):
+    form = PJSIPGlobalSettingsForm
+    resource = 'pjsip_global_settings'
+    settings = 'pjsip_global'
+
+    @menu_item(
+        '.ipbx.advanced.pjsip_global_settings',
+        l_('PJSIP Global Settings'),
+        icon='asterisk',
+    )
+    def index(self, form=None):
+        return super().index(form)
+
+    def _map_form_to_resources(self, form, form_id=None):
+        raw = form.to_dict()['options']
+        return {
+            'options': {option['option_key']: option['option_value'] for option in raw},
+        }
 
 
 class SipGeneralSettingsView(BaseGeneralSettingsView):
