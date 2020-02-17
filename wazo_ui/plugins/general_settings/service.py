@@ -6,9 +6,13 @@ class PJSIPDocService(object):
 
     def __init__(self, confd_client):
         self._confd = confd_client
+        self._cached_doc = None
 
     def get(self):
-        return self._confd.pjsip_doc.get()
+        if self._cached_doc is None:
+            self._cached_doc = self._confd.pjsip_doc.get()
+
+        return self._cached_doc
 
 
 class PJSIPGlobalSettingsService(object):
