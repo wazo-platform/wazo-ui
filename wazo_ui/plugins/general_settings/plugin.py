@@ -4,8 +4,10 @@
 from flask_menu.classy import register_flaskview
 
 from wazo_ui.helpers.plugin import create_blueprint
+from wazo_ui.helpers.view import register_listing_url
 
 from .service import (
+    PJSIPDocService,
     PJSIPGlobalSettingsService,
     SipGeneralSettingsService,
     IaxGeneralSettingsService,
@@ -15,6 +17,7 @@ from .service import (
     ConfBridgeGeneralSettingsService
 )
 from .view import (
+    PJSIPDocListingView,
     PJSIPGlobalSettingsView,
     SipGeneralSettingsView,
     IaxGeneralSettingsView,
@@ -32,6 +35,9 @@ class Plugin(object):
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
+
+        PJSIPDocListingView.service = PJSIPDocService(clients['wazo_confd'])
+        PJSIPDocListingView.register(general_settings, route_base='/list_json_by_section')
 
         PJSIPGlobalSettingsView.service = PJSIPGlobalSettingsService(clients['wazo_confd'])
         PJSIPGlobalSettingsView.register(general_settings, route_base='/pjsip_global_settings')
@@ -60,5 +66,7 @@ class Plugin(object):
         ConfBridgeGeneralSettingsView.service = ConfBridgeGeneralSettingsService(clients['wazo_confd'])
         ConfBridgeGeneralSettingsView.register(general_settings, route_base='/confbridge_general_settings')
         register_flaskview(general_settings, ConfBridgeGeneralSettingsView)
+
+        register_listing_url('pjsip_doc', 'general_settings.PJSIPDocListingView:list_json_by_section')
 
         core.register_blueprint(general_settings)

@@ -2,6 +2,15 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 
+class PJSIPDocService(object):
+
+    def __init__(self, confd_client):
+        self._confd = confd_client
+
+    def get(self):
+        return self._confd.pjsip_doc.get()
+
+
 class PJSIPGlobalSettingsService(object):
 
     def __init__(self, confd_client):

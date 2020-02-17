@@ -35,9 +35,6 @@
                       {{ _build_option_entry(option) }}
                     {% endfor %}
 
-                    {% for option in form.ordered_options %}
-                      {{ _build_option_entry(option) }}
-                    {% endfor %}
                   {% endcall %}
 
                 {% endcall %}
@@ -63,7 +60,11 @@
     {% set tr_class = "row-line" %}
   {% endif %}
   <tr class="{{ tr_class }}">
-    <td>{{ render_field(option.option_key, with_label=False) }}</td>
+      <td>{{ render_field(
+          option.option_key,
+          with_label=False,
+          inputclass='ui-helper-clearfix',
+          data_listing_href=url_for(listing_urls['pjsip_doc'], section='global')) }}</td>
     <td>{{ render_field(option.option_value, with_label=False) }}</td>
     <td>{{ add_delete_entry_button() }}</td>
   </tr>
