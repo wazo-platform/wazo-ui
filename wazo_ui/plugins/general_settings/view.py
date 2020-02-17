@@ -111,10 +111,15 @@ class PJSIPGlobalSettingsView(BaseGeneralSettingsView):
         }
 
     def _map_resources_to_form(self, resource):
-        logger.critical('resource: %s', resource)
-        result = super()._map_resources_to_form(resource)
-        logger.critical('result: %s', resource)
-        return result
+        options = [{'option_key': key, 'option_value': value} for key, value in resource['options'].items()]
+        choices = [(key, key) for key in list(resource['options'].keys())]
+        form = self.form(data={'options': options})
+
+        # Use all the current options for the choices, the complete list will be pulled on edit
+        for option in form.options:
+            option.option_key.choices = choices
+
+        return form
 
 
 class SipGeneralSettingsView(BaseGeneralSettingsView):
