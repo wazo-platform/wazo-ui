@@ -11,7 +11,7 @@ from .pages.index import IndexPage
 class SSLIntegrationTest(AssetLaunchingTestCase):
 
     assets_root = ASSET_ROOT
-    service = 'wazo-ui'
+    service = 'ui'
 
 
 class IntegrationTest(AdminUIAssetLaunchingTestCase):

@@ -5,7 +5,7 @@ services:
     environment:
       TIMEOUT: "${INTEGRATION_TEST_TIMEOUT}"
 
-  wazo-ui:
+  ui:
     image: wazo-ui-test
     ports:
       - "9296"
