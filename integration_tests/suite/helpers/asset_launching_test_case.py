@@ -30,7 +30,7 @@ class AdminUIAssetLaunchingTestCase(AssetLaunchingTestCase):
     def setup_browser(cls):
         username = 'wazo-auth-mock-doesnt-care-about-username'
         password = 'wazo-auth-mock-doesnt-care-about-password'
-        Page.CONFIG['base_url'] = 'https://wazo-ui:9296'
+        Page.CONFIG['base_url'] = 'https://ui:9296'
 
         browser_port = cls.service_port(4444, 'browser')
         remote_url = 'http://localhost:{port}/wd/hub'.format(port=browser_port)
