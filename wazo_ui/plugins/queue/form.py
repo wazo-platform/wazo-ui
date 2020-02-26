@@ -102,6 +102,7 @@ class QueueForm(BaseForm):
 
     enabled = BooleanField(l_('Enabled'), default=False)
     members = FormField(MembersForm)
+    mark_answered_elsewhere = BooleanField(l_('Mark all calls as answered elsewhere when cancelled'), default=False)
 
     submit = SubmitField(l_('Submit'))
 
