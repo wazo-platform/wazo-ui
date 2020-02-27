@@ -112,7 +112,7 @@ class PJSIPGlobalSettingsView(BaseGeneralSettingsView):
 
     def _map_resources_to_form(self, resource):
         options = [{'option_key': key, 'option_value': value} for key, value in resource['options'].items()]
-        choices = [(key, key) for key in list(resource['options'].keys())]
+        choices = [(key, key) for key in resource['options'].keys()]
         form = self.form(data={'options': options})
 
         # Use all the current options for the choices, the complete list will be pulled on edit
@@ -271,6 +271,6 @@ class PJSIPDocListingView(LoginRequiredView):
 
     def list_json_by_section(self, section):
         params = extract_select2_params(request.args)
-        doc = list(self.service.get().get(section, {}).keys())
+        doc = self.service.get().get(section, {}).keys()
         with_id = [{'id': key, 'text': key} for key in doc]
         return jsonify(build_select2_response(with_id, len(doc), params))
