@@ -27,6 +27,18 @@ class PJSIPGlobalSettingsService(object):
         self._confd.pjsip_global.update(pjsip_global)
 
 
+class PJSIPSystemSettingsService(object):
+
+    def __init__(self, confd_client):
+        self._confd = confd_client
+
+    def get(self):
+        return self._confd.pjsip_system.get()
+
+    def update(self, pjsip_system):
+        self._confd.pjsip_system.update(pjsip_system)
+
+
 class SipGeneralSettingsService(object):
 
     def __init__(self, confd_client):
