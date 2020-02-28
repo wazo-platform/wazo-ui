@@ -1,28 +1,40 @@
 # Copyright 2018 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
+import logging
+
 from flask_babel import gettext as _
 from flask_babel import lazy_gettext as l_
 from flask import (
     flash,
     redirect,
+    request,
     render_template,
     url_for,
+    jsonify,
 )
 from flask_classful import route
 from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
+from wazo_ui.helpers.classful import (
+    LoginRequiredView,
+    build_select2_response,
+    extract_select2_params,
+)
 
 from .form import (
     ConfBridgeGeneralSettingsForm,
     FeaturesGeneralSettingsForm,
     IaxGeneralSettingsForm,
     SccpGeneralSettingsForm,
+    PJSIPGlobalSettingsForm,
     SipGeneralSettingsForm,
     VoicemailGeneralSettingsForm,
 )
+
+logger = logging.getLogger(__name__)
 
 
 class BaseGeneralSettingsView(BaseIPBXHelperView):
@@ -38,8 +50,10 @@ class BaseGeneralSettingsView(BaseIPBXHelperView):
         form = form or self._map_resources_to_form(resource)
         form = self._populate_form(form)
 
-        return render_template(self._get_template(self.settings),
-                               form=form)
+        kwargs = {'form': form}
+        if self.listing_urls:
+            kwargs['listing_urls'] = self.listing_urls
+        return render_template(self._get_template(self.settings), **kwargs)
 
     @route('/put', methods=['POST'])
     def put(self):
@@ -75,6 +89,37 @@ class BaseGeneralSettingsView(BaseIPBXHelperView):
 
     def _map_options_to_resource(self, options):
         return {option['option_key']: option['option_value'] for option in options}
+
+
+class PJSIPGlobalSettingsView(BaseGeneralSettingsView):
+    form = PJSIPGlobalSettingsForm
+    resource = 'pjsip_global_settings'
+    settings = 'pjsip_global'
+
+    @menu_item(
+        '.ipbx.advanced.pjsip_global_settings',
+        l_('PJSIP Global Settings'),
+        icon='asterisk',
+    )
+    def index(self, form=None):
+        return super().index(form)
+
+    def _map_form_to_resources(self, form, form_id=None):
+        raw = form.to_dict()['options']
+        return {
+            'options': {option['option_key']: option['option_value'] for option in raw},
+        }
+
+    def _map_resources_to_form(self, resource):
+        options = [{'option_key': key, 'option_value': value} for key, value in resource['options'].items()]
+        choices = [(key, key) for key in resource['options'].keys()]
+        form = self.form(data={'options': options})
+
+        # Use all the current options for the choices, the complete list will be pulled on edit
+        for option in form.options:
+            option.option_key.choices = choices
+
+        return form
 
 
 class SipGeneralSettingsView(BaseGeneralSettingsView):
@@ -220,3 +265,12 @@ class ConfBridgeGeneralSettingsView(BaseGeneralSettingsView):
         data['wazo_default_user']['options'] = self._map_options_to_resource(data['wazo_default_user']['options'])
         data['wazo_default_bridge']['options'] = self._map_options_to_resource(data['wazo_default_bridge']['options'])
         return data
+
+
+class PJSIPDocListingView(LoginRequiredView):
+
+    def list_json_by_section(self, section):
+        params = extract_select2_params(request.args)
+        doc = self.service.get().get(section, {}).keys()
+        with_id = [{'id': key, 'text': key} for key in doc]
+        return jsonify(build_select2_response(with_id, len(doc), params))

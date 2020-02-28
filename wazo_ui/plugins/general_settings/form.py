@@ -14,6 +14,18 @@ from wtforms.validators import InputRequired, IPAddress
 from wazo_ui.helpers.form import BaseForm
 
 
+class PJSIPGlobalOptionsForm(BaseForm):
+
+    def to_dict(self):
+        return super().to_dict(empty_string=True)
+
+    option_key = SelectField(
+        choices=[],
+        validators=[InputRequired()],
+    )
+    option_value = StringField()
+
+
 class OptionsForm(BaseForm):
 
     def to_dict(self):
@@ -38,6 +50,11 @@ class GeneralSettingsOptionsForm(BaseForm):
 
 
 class SipGeneralSettingsForm(GeneralSettingsOptionsForm):
+    submit = SubmitField(l_('Submit'))
+
+
+class PJSIPGlobalSettingsForm(BaseForm):
+    options = FieldList(FormField(PJSIPGlobalOptionsForm))
     submit = SubmitField(l_('Submit'))
 
 
