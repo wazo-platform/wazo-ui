@@ -9,6 +9,7 @@ from wazo_ui.helpers.view import register_listing_url
 from .service import (
     PJSIPDocService,
     PJSIPGlobalSettingsService,
+    PJSIPSystemSettingsService,
     SipGeneralSettingsService,
     IaxGeneralSettingsService,
     SccpGeneralSettingsService,
@@ -19,6 +20,7 @@ from .service import (
 from .view import (
     PJSIPDocListingView,
     PJSIPGlobalSettingsView,
+    PJSIPSystemSettingsView,
     SipGeneralSettingsView,
     IaxGeneralSettingsView,
     SccpGeneralSettingsView,
@@ -42,6 +44,10 @@ class Plugin(object):
         PJSIPGlobalSettingsView.service = PJSIPGlobalSettingsService(clients['wazo_confd'])
         PJSIPGlobalSettingsView.register(general_settings, route_base='/pjsip_global_settings')
         register_flaskview(general_settings, PJSIPGlobalSettingsView)
+
+        PJSIPSystemSettingsView.service = PJSIPSystemSettingsService(clients['wazo_confd'])
+        PJSIPSystemSettingsView.register(general_settings, route_base='/pjsip_system_settings')
+        register_flaskview(general_settings, PJSIPSystemSettingsView)
 
         SipGeneralSettingsView.service = SipGeneralSettingsService(clients['wazo_confd'])
         SipGeneralSettingsView.register(general_settings, route_base='/sip_general_settings')

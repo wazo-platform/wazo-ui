@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
@@ -14,8 +14,7 @@ from wtforms.validators import InputRequired, IPAddress
 from wazo_ui.helpers.form import BaseForm
 
 
-class PJSIPGlobalOptionsForm(BaseForm):
-
+class BasePJSIPOptionsForm(BaseForm):
     def to_dict(self):
         return super().to_dict(empty_string=True)
 
@@ -24,6 +23,14 @@ class PJSIPGlobalOptionsForm(BaseForm):
         validators=[InputRequired()],
     )
     option_value = StringField()
+
+
+class PJSIPGlobalOptionsForm(BasePJSIPOptionsForm):
+    pass
+
+
+class PJSIPSystemOptionsForm(BasePJSIPOptionsForm):
+    pass
 
 
 class OptionsForm(BaseForm):
@@ -55,6 +62,11 @@ class SipGeneralSettingsForm(GeneralSettingsOptionsForm):
 
 class PJSIPGlobalSettingsForm(BaseForm):
     options = FieldList(FormField(PJSIPGlobalOptionsForm))
+    submit = SubmitField(l_('Submit'))
+
+
+class PJSIPSystemSettingsForm(BaseForm):
+    options = FieldList(FormField(PJSIPSystemOptionsForm))
     submit = SubmitField(l_('Submit'))
 
 
