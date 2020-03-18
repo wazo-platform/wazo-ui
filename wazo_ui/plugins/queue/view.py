@@ -93,6 +93,7 @@ class QueueView(BaseIPBXHelperView):
         resource['options'] = self._map_form_to_resource_options(form, resource)
         resource['agents'] = [{'id': agent_id} for agent_id in resource['members']['agent_ids']]
         resource['users'] = [{'id': user_id} for user_id in resource['members']['user_ids']]
+        resource['music_on_hold'] = form.music_on_hold.data or None
 
         return resource
 
