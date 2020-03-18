@@ -229,6 +229,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         resource['funckeys'] = self._map_form_to_resource_funckey(form)
         resource['call_permissions'] = [{'id': call_permission_id} for call_permission_id in
                                         form.call_permission_ids.data]
+        resource['music_on_hold'] = form.music_on_hold.data or None
 
         return resource
 

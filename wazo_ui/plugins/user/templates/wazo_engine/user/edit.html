@@ -49,7 +49,10 @@
               {% call add_default_fields(form=form, submit_value=_('Update')) %}
                 {{ render_field(form.mobile_phone_number) }}
                 {{ render_field(form.ring_seconds) }}
-                {{ render_field(form.music_on_hold, data_listing_href=url_for(listing_urls['moh'])) }}
+                {{ render_field(form.music_on_hold,
+                                data_listing_href=url_for(listing_urls['moh']),
+                                data_allow_clear='true',
+                                data_placeholder='Choose Music on Hold') }}
                 {{ render_field(form.preprocess_subroutine) }}
                 {{ render_field(form.simultaneous_calls) }}
                 {{ render_field(form.timezone) }}
