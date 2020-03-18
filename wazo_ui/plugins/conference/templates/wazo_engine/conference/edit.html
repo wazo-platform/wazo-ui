@@ -29,7 +29,10 @@
           {{ render_field(form.announce_join_leave) }}
           {{ render_field(form.announce_user_count) }}
           {{ render_field(form.announce_only_user) }}
-          {{ render_field(form.music_on_hold, data_listing_href=url_for(listing_urls['moh'])) }}
+          {{ render_field(form.music_on_hold,
+                          data_listing_href=url_for(listing_urls['moh']),
+                          data_allow_clear='true',
+                          data_placeholder='Choose Music on Hold') }}
           {{ render_field(form.preprocess_subroutine) }}
           {{ render_field(form.quiet_join_leave) }}
         {% endcall %}
@@ -41,4 +44,3 @@
 {% block additional_js %}
   <script src="{{ url_for('.static', filename='js/conference.js') }}"></script>
 {% endblock %}
-
