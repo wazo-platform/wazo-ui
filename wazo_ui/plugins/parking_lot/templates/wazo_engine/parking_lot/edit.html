@@ -26,7 +26,10 @@
                                 data_listing_href=url_for(listing_urls['context_by_type'], type_='internal')) }}
                 {{ render_field(form.slots_start) }}
                 {{ render_field(form.slots_end) }}
-                {{ render_field(form.music_on_hold, data_listing_href=url_for(listing_urls['moh'])) }}
+                {{ render_field(form.music_on_hold,
+                                data_listing_href=url_for(listing_urls['moh']),
+                                data_allow_clear='true',
+                                data_placeholder='Choose Music on Hold') }}
                 {{ render_field(form.timeout) }}
         {% endcall %}
       {% endcall %}

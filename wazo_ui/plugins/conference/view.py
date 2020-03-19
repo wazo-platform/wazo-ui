@@ -52,6 +52,15 @@ class ConferenceView(BaseIPBXHelperView):
             return []
         return [(moh.data, moh.data)]
 
+    def _map_form_to_resources(self, form, form_id=None):
+        resource = form.to_dict()
+        if form_id:
+            resource['uuid'] = form_id
+
+        resource['music_on_hold'] = form.music_on_hold.data or None
+
+        return resource
+
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('conference', {}))
         form.extensions[0].populate_errors(resources.get('extension', {}))
