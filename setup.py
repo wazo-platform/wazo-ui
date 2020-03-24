@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from distutils.cmd import Command as _Command
@@ -135,6 +135,7 @@ setup(
             'skillrule = wazo_ui.plugins.skillrule.plugin:Plugin',
             'sound = wazo_ui.plugins.sound.plugin:Plugin',
             'switchboard = wazo_ui.plugins.switchboard.plugin:Plugin',
+            'transport = wazo_ui.plugins.transport.plugin:Plugin',
             'trunk = wazo_ui.plugins.trunk.plugin:Plugin',
             'user = wazo_ui.plugins.user.plugin:Plugin',
             'voicemail = wazo_ui.plugins.voicemail.plugin:Plugin',
