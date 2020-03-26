@@ -1,4 +1,4 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import logging
@@ -70,7 +70,7 @@ class UserService(BaseConfdService):
 
     def is_webrtc(self, endpoint_id):
         endpoint_sip = self._confd.endpoints_sip.get(endpoint_id)
-        if ['transport', 'wss'] in endpoint_sip['options']:
+        if ['webrtc', 'yes'] in endpoint_sip['options']:
             return True
         return False
 
