@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import argparse
@@ -25,7 +25,8 @@ _DEFAULT_CONFIG = {
     'amid': {
         'host': 'localhost',
         'port': 9491,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'auth': {
         'host': 'localhost',
