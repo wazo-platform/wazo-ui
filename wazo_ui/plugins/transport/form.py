@@ -1,3 +1,6 @@
+# Copyright 2020 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0+
+
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
     FieldList,
