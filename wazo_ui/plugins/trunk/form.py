@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
@@ -59,14 +59,7 @@ class RegisterSIPForm(BaseForm):
     auth_password = StringField(l_('Authentication Password'), widget=PasswordInput(hide_value=False))
     remote_host = StringField(l_('Remote Host'), validators=[InputRequired()])
     remote_port = IntegerField(l_('Remote port'))
-    transport = SelectField(l_('Transport'), choices=[
-        ('', l_('None')),
-        ('tcp', l_('TCP')),
-        ('tls', l_('TLS')),
-        ('udp', l_('UDP')),
-        ('ws', l_('WS')),
-        ('wss', l_('WSS'))
-    ])
+    transport = StringField(l_('Transport'))  # TODO(pc-m): Should be a valid transport
     callback_extension = StringField(l_('Callback Extension'))
     expiration = IntegerField(l_('Expiration'))
 

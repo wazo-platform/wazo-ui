@@ -104,6 +104,7 @@ _DEFAULT_CONFIG = {
         'skillrule': True,
         'sound': True,
         'switchboard': True,
+        'transport': True,
         'trunk': True,
         'user': True,
         'voicemail': True,
