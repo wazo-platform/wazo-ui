@@ -17,7 +17,7 @@ class TransportView(NewHelperViewMixin, BaseIPBXHelperView):
     form = TransportForm
     resource = 'transport'
 
-    @menu_item('.ipbx.transports', l_('Transports'), icon="asterisk", multi_tenant=False)
+    @menu_item('.ipbx.advanced.transports', l_('PJSIP Transports'), icon="asterisk", multi_tenant=False)
     def index(self):
         return super().index()
 
