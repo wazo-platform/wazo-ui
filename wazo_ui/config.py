@@ -31,7 +31,8 @@ _DEFAULT_CONFIG = {
     'auth': {
         'host': 'localhost',
         'port': 9497,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'call-logd': {
         'host': 'localhost',
