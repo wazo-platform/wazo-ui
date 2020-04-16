@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -67,6 +67,8 @@ class LdapForm(BaseForm):
 class Office365AuthForm(BaseForm):
     host = StringField(l_('Host'))
     port = StringField(l_('Port'))
+    prefix_ = StringField(l_('Prefix'))
+    https = BooleanField(l_('SSL/TLS'), default=False)
     verify_certificate = BooleanField(l_('Verify certificate'))
     certificate_path = StringField(l_('Certificate path'))
     version = StringField(l_('Version'))
@@ -83,6 +85,8 @@ class Office365Form(BaseForm):
 class GoogleAuthForm(BaseForm):
     host = StringField(l_('Host'))
     port = StringField(l_('Port'))
+    prefix_ = StringField(l_('Prefix'))
+    https = BooleanField(l_('SSL/TLS'), default=False)
     verify_certificate = BooleanField(l_('Verify certificate'))
     certificate_path = StringField(l_('Certificate path'))
     version = StringField(l_('Version'))
@@ -111,6 +115,8 @@ class PhonebookForm(BaseForm):
 class WazoAuthForm(BaseForm):
     host = StringField(l_('Host'))
     port = StringField(l_('Port'))
+    prefix_ = StringField(l_('Prefix'))
+    https = BooleanField(l_('SSL/TLS'), default=False)
     verify_certificate = BooleanField(l_('Verify certificate'))
     certificate_path = StringField(l_('Certificate path'))
     timeout = FloatField(l_('Timeout'))

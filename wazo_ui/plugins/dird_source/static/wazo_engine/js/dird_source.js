@@ -14,18 +14,31 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    var checkbox = $('input[type="checkbox"].auth_verify_certificate');
+    var verify_certificate = $('input[type="checkbox"].auth_verify_certificate');
+    var https = $('input[type="checkbox"].auth_https');
 
-    function disableField() {
-        if(checkbox.is(':checked')){
+    function disablePathField() {
+        if(verify_certificate.is(':checked')){
             $('input.auth_certificate_path').removeAttr('disabled');
         } else {
             $('input.auth_certificate_path').attr('disabled', 'disabled');
         }
     }
 
-    checkbox.click(disableField);
-    disableField();
+    function disableCertificateField() {
+        if(https.is(':checked')){
+            $('input.auth_verify_certificate').removeAttr('disabled');
+            $('input.auth_certificate_path').removeAttr('disabled');
+        } else {
+            $('input.auth_verify_certificate').attr('disabled', 'disabled');
+            $('input.auth_certificate_path').attr('disabled', 'disabled');
+        }
+    }
+
+    verify_certificate.click(disablePathField);
+    https.click(disableCertificateField);
+    disableCertificateField();
+    disablePathField();
 });
 
 $(document).ready(function() {
