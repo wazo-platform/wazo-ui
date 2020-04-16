@@ -69,7 +69,7 @@ class Office365AuthForm(BaseForm):
     port = StringField(l_('Port'))
     prefix_ = StringField(l_('Prefix'))
     https = BooleanField(l_('SSL/TLS'), default=False)
-    verify_certificate = BooleanField(l_('Verify certificate'))
+    verify_certificate = BooleanField(l_('Verify certificate'), default=False)
     certificate_path = StringField(l_('Certificate path'))
     version = StringField(l_('Version'))
 
@@ -87,7 +87,7 @@ class GoogleAuthForm(BaseForm):
     port = StringField(l_('Port'))
     prefix_ = StringField(l_('Prefix'))
     https = BooleanField(l_('SSL/TLS'), default=False)
-    verify_certificate = BooleanField(l_('Verify certificate'))
+    verify_certificate = BooleanField(l_('Verify certificate'), default=False)
     certificate_path = StringField(l_('Certificate path'))
     version = StringField(l_('Version'))
 
@@ -117,7 +117,7 @@ class WazoAuthForm(BaseForm):
     port = StringField(l_('Port'))
     prefix_ = StringField(l_('Prefix'))
     https = BooleanField(l_('SSL/TLS'), default=False)
-    verify_certificate = BooleanField(l_('Verify certificate'))
+    verify_certificate = BooleanField(l_('Verify certificate'), default=False)
     certificate_path = StringField(l_('Certificate path'))
     timeout = FloatField(l_('Timeout'))
     key_file = StringField(l_('Key file'))
@@ -129,10 +129,10 @@ class WazoAuthForm(BaseForm):
 class WazoConfdForm(BaseForm):
     host = StringField(l_('Host'))
     port = StringField(l_('Port'))
-    verify_certificate = BooleanField(l_('Verify certificate'))
+    verify_certificate = BooleanField(l_('Verify certificate'), default=False)
     certificate_path = StringField(l_('Certificate path'))
     timeout = FloatField(l_('Timeout'))
-    https = BooleanField(l_('Https'))
+    https = BooleanField(l_('Https'), default=False)
     version = StringField(l_('Version'))
 
 

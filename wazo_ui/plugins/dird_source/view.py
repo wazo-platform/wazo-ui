@@ -181,15 +181,11 @@ class DirdSourceView(BaseIPBXHelperView):
         backend = resource['backend']
         config_name = backend + '_config'
 
-        # Boolean field aren't False when no checked
         if 'confd' in resource[config_name]:
-            resource[config_name]['confd']['https'] = 'https' in resource[config_name]['confd']
-            resource[config_name]['confd']['verify_certificate'] = 'verify_certificate' in resource[config_name]['confd']
             if not resource[config_name]['confd']['timeout']:
                 del resource[config_name]['confd']['timeout']
 
         if 'auth' in resource[config_name] and backend != 'office365' and backend != 'google':
-            resource[config_name]['auth']['verify_certificate'] = 'verify_certificate' in resource[config_name]['auth']
             if not resource[config_name]['auth']['timeout']:
                 del resource[config_name]['auth']['timeout']
 
