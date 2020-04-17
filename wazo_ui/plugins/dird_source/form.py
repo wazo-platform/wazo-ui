@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -67,7 +67,9 @@ class LdapForm(BaseForm):
 class Office365AuthForm(BaseForm):
     host = StringField(l_('Host'))
     port = StringField(l_('Port'))
-    verify_certificate = BooleanField(l_('Verify certificate'))
+    prefix_ = StringField(l_('Prefix'))
+    https = BooleanField(l_('SSL/TLS'), default=False)
+    verify_certificate = BooleanField(l_('Verify certificate'), default=False)
     certificate_path = StringField(l_('Certificate path'))
     version = StringField(l_('Version'))
 
@@ -83,7 +85,9 @@ class Office365Form(BaseForm):
 class GoogleAuthForm(BaseForm):
     host = StringField(l_('Host'))
     port = StringField(l_('Port'))
-    verify_certificate = BooleanField(l_('Verify certificate'))
+    prefix_ = StringField(l_('Prefix'))
+    https = BooleanField(l_('SSL/TLS'), default=False)
+    verify_certificate = BooleanField(l_('Verify certificate'), default=False)
     certificate_path = StringField(l_('Certificate path'))
     version = StringField(l_('Version'))
 
@@ -111,7 +115,9 @@ class PhonebookForm(BaseForm):
 class WazoAuthForm(BaseForm):
     host = StringField(l_('Host'))
     port = StringField(l_('Port'))
-    verify_certificate = BooleanField(l_('Verify certificate'))
+    prefix_ = StringField(l_('Prefix'))
+    https = BooleanField(l_('SSL/TLS'), default=False)
+    verify_certificate = BooleanField(l_('Verify certificate'), default=False)
     certificate_path = StringField(l_('Certificate path'))
     timeout = FloatField(l_('Timeout'))
     key_file = StringField(l_('Key file'))
@@ -123,10 +129,10 @@ class WazoAuthForm(BaseForm):
 class WazoConfdForm(BaseForm):
     host = StringField(l_('Host'))
     port = StringField(l_('Port'))
-    verify_certificate = BooleanField(l_('Verify certificate'))
+    verify_certificate = BooleanField(l_('Verify certificate'), default=False)
     certificate_path = StringField(l_('Certificate path'))
     timeout = FloatField(l_('Timeout'))
-    https = BooleanField(l_('Https'))
+    https = BooleanField(l_('Https'), default=False)
     version = StringField(l_('Version'))
 
 

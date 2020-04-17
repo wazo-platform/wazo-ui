@@ -39,6 +39,8 @@
               <h4>Authentication</h4>
               {{ render_field(form.office365_config.auth.host) }}
               {{ render_field(form.office365_config.auth.port) }}
+              {{ render_field(form.office365_config.auth.prefix_) }}
+              {{ render_field(form.office365_config.auth.https, class_="auth_https") }}
               {{ render_field(form.office365_config.auth.verify_certificate, class_="verify_certificate") }}
               {{ render_field(form.office365_config.auth.certificate_path, class_="certificate_path") }}
               {{ render_field(form.office365_config.auth.version) }}

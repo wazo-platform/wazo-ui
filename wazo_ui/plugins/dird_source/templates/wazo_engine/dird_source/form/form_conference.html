@@ -38,6 +38,8 @@
               <h4>Authentication</h4>
               {{ render_field(form.conference_config.auth.host) }}
               {{ render_field(form.conference_config.auth.port) }}
+              {{ render_field(form.conference_config.auth.prefix_) }}
+              {{ render_field(form.conference_config.auth.https, class_="auth_https") }}
               {{ render_field(form.conference_config.auth.verify_certificate, class_="auth_verify_certificate") }}
               {{ render_field(form.conference_config.auth.certificate_path, class_="auth_certificate_path") }}
               {{ render_field(form.conference_config.auth.timeout) }}

@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask import request, jsonify, redirect, url_for, render_template, flash
@@ -48,8 +48,10 @@ class DirdSourceView(BaseIPBXHelperView):
             'host': 'localhost',
             'port': 9497,
             'timeout': '',
-            'verify_certificate': True,
-            'certificate_path': '/usr/share/xivo-certs/server.crt',
+            'prefix_': None,
+            'https': False,
+            'verify_certificate': False,
+            'certificate_path': '',
             'version': '0.1',
         }
         default_confd_config = {
@@ -179,15 +181,11 @@ class DirdSourceView(BaseIPBXHelperView):
         backend = resource['backend']
         config_name = backend + '_config'
 
-        # Boolean field aren't False when no checked
         if 'confd' in resource[config_name]:
-            resource[config_name]['confd']['https'] = 'https' in resource[config_name]['confd']
-            resource[config_name]['confd']['verify_certificate'] = 'verify_certificate' in resource[config_name]['confd']
             if not resource[config_name]['confd']['timeout']:
                 del resource[config_name]['confd']['timeout']
 
         if 'auth' in resource[config_name] and backend != 'office365' and backend != 'google':
-            resource[config_name]['auth']['verify_certificate'] = 'verify_certificate' in resource[config_name]['auth']
             if not resource[config_name]['auth']['timeout']:
                 del resource[config_name]['auth']['timeout']
 
@@ -203,8 +201,11 @@ class DirdSourceView(BaseIPBXHelperView):
             resource[config_name]['first_matched_columns'] = [option['value'] for option in
                                                               resource[config_name]['first_matched_columns']]
 
-        if 'delimiter' in resource[backend + '_config']:
+        if 'delimiter' in resource[config_name]:
             resource[config_name]['separator'] = resource[config_name]['delimiter']
+
+        if 'prefix_' in resource[config_name].get('auth', {}):
+            resource[config_name]['auth']['prefix'] = resource[config_name]['auth'].pop('prefix_')
 
         # Handle `verify_certificate` for office 365 or google that can be True, False or the value of certificate_path
         if backend in ('office365', 'google', 'conference', 'wazo'):
@@ -252,6 +253,9 @@ class DirdSourceView(BaseIPBXHelperView):
         if 'first_matched_columns' in resource[config_name]:
             resource[config_name]['first_matched_columns'] = [{'value': option} for option in
                                                               resource[config_name]['first_matched_columns']]
+
+        if 'prefix' in resource[config_name].get('auth', {}):
+            resource[config_name]['auth']['prefix_'] = resource[config_name]['auth'].pop('prefix')
 
         # Handle `verify_certificate` for office 365 or google that can be True, False or the value of certificate_path
         if backend in ('office365', 'google', 'conference', 'wazo'):
