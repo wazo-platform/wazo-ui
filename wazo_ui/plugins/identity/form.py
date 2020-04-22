@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
@@ -48,11 +48,11 @@ class MembersForm(BaseForm):
 
 class EmailForm(BaseForm):
     main = BooleanField(l_('Main'), default=False)
-    address = StringField(l_('Address'), validators=[Email])
+    address = StringField(l_('Address'), validators=[Email()])
 
 
 class IdentityForm(BaseForm):
-    username = StringField(l_('Username'), validators=[InputRequired])
+    username = StringField(l_('Username'), validators=[InputRequired()])
     password = StringField(l_('Password'))
     firstname = StringField(l_('Firstname'))
     lastname = StringField(l_('Lastname'))
@@ -72,7 +72,7 @@ class IdentityForm(BaseForm):
 
 
 class GroupForm(BaseForm):
-    name = StringField(l_('Name'), validators=[InputRequired])
+    name = StringField(l_('Name'), validators=[InputRequired()])
     members = FormField(MembersForm)
     tenant_uuid = SelectField(l_('Tenant'), choices=[])
     tenant = FormField(TenantUuidForm)
@@ -80,7 +80,7 @@ class GroupForm(BaseForm):
 
 
 class TenantForm(BaseForm):
-    name = StringField(l_('Name'), validators=[InputRequired])
+    name = StringField(l_('Name'), validators=[InputRequired()])
     members = FormField(MembersForm)
     submit = SubmitField()
 
@@ -90,7 +90,7 @@ class AclTemplatesForm(BaseForm):
 
 
 class PolicyForm(BaseForm):
-    name = StringField(l_('Name'), validators=[InputRequired])
+    name = StringField(l_('Name'), validators=[InputRequired()])
     description = StringField(l_('Description'))
     acl_templates = FieldList(FormField(AclTemplatesForm))
     tenant_uuid = SelectField(l_('Tenant'), choices=[])
