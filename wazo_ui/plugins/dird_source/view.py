@@ -259,7 +259,7 @@ class DirdSourceView(BaseIPBXHelperView):
 
         # Handle `verify_certificate` for office 365 or google that can be True, False or the value of certificate_path
         if backend in ('office365', 'google', 'conference', 'wazo'):
-            verify_certificate = resource[config_name]['auth']['verify_certificate']
+            verify_certificate = resource[config_name]['auth'].get('verify_certificate')
             if verify_certificate in (True, False):
                 verify = verify_certificate
             else:
@@ -269,7 +269,7 @@ class DirdSourceView(BaseIPBXHelperView):
             resource[config_name]['auth']['verify_certificate'] = verify
 
         if backend in ('conference', 'wazo'):
-            verify_certificate = resource[config_name]['confd']['verify_certificate']
+            verify_certificate = resource[config_name]['confd'].get('verify_certificate')
             if verify_certificate in (True, False):
                 verify = verify_certificate
             else:
