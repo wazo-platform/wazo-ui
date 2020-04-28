@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
@@ -24,6 +24,7 @@ class IncallForm(BaseForm):
     extensions = FieldList(FormField(ExtensionForm), min_entries=1)
     destination = DestinationField()
     preprocess_subroutine = StringField(l_('Preprocess Subroutine'), [Length(max=39)])
+    greeting_sound = SelectField(l_('Greeting sound'), choices=[], validators=[Length(max=255)])
     caller_id_mode = SelectField(l_('Caller ID mode'), choices=[
         ('', l_('None')),
         ('prepend', l_('Prepend')),
