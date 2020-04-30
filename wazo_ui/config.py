@@ -42,7 +42,8 @@ _DEFAULT_CONFIG = {
     'confd': {
         'host': 'localhost',
         'port': 9486,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'dird': {
         'host': 'localhost',
