@@ -2,7 +2,7 @@
   <div class="col-md-3 col-sm-6 col-xs-12 plugin-container">
     <div class="small-box bg-{{ entry.color|default('green') }} box box-solid">
       <div class="inner">
-	<h4>{{ entry.display_name }} ({{ entry.installed_version or (entry.versions[0]['version'] if entry.versions) }})</h4>
+	<h4 style="font-size:14px">{{ entry.display_name }} ({{ entry.installed_version or (entry.versions[0]['version'] if entry.versions) }})</h4>
 	<p><i>{{ _('By') }} {{ entry.author }}</i></p>
         {{ _render_tags(entry.tags) }}
         {% if entry.installed_version %}
