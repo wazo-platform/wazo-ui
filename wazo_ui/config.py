@@ -64,6 +64,13 @@ _DEFAULT_CONFIG = {
         'port': 9300,
         'verify_certificate': '/usr/share/xivo-certs/server.crt',
     },
+    # Information for websocketd are used by the client browser
+    'websocketd': {
+        'host': None,
+        'port': 443,
+        'prefix_url': '/api/websocketd',
+        'verify_certificate': False,
+    },
     'enabled_plugins': {
         'access_feature': True,
         'authentication': True,

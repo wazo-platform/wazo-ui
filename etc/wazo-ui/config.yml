@@ -62,3 +62,9 @@
 #   host: localhost
 #   port: 9300
 #   verify_certificate: /usr/share/xivo-certs/server.crt
+#
+# websocketd:
+#   host: null  # populated with browser url
+#   port: 443
+#   prefix: /api/websocketd
+#   verify_certificate: False

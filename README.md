@@ -76,6 +76,11 @@ webhookd:
   port: 443
   prefix: /api/webhookd
   verify_certificate: false
+websocketd:
+  host: <your_engine_ip_or_dns>
+  port: 443
+  prefix: /api/websocketd
+  verify_certificate: false
 ```
 
 # Translations

@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import session, url_for
@@ -8,13 +8,13 @@ from flask_login.mixins import UserMixin
 class UserUI(UserMixin):
 
     def __init__(self, token, uuid=None):
-        self._token = token
+        self.token = token
         self.uuid = uuid
         if 'instance' not in session:
             session['instance'] = None
 
     def get_id(self):
-        return self._token
+        return self.token
 
     def get_user(self):
         return session.get('user')
@@ -47,8 +47,13 @@ class UserUI(UserMixin):
 
     def set_tenant(self, tenant=None):
         session['instance'] = {}
-        session['instance'] = {'remote_host': 'localhost'}
         session['instance']['wazo_tenant'] = tenant
+
+    def set_instance_config(self, config):
+        if not session['instance']:
+            session['instance'] = {}
+
+        session['instance']['config'] = {'websocketd': config['websocketd']}
 
     def get_instance(self):
         return session['instance']
