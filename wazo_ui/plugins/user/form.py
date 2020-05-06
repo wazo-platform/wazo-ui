@@ -47,6 +47,7 @@ class LineForm(BaseForm):
                                     ('webrtc', l_('Webrtc'))])
     extensions = FieldList(FormField(ExtensionForm), min_entries=1)
     application = FormField(ApplicationForm)
+    registrar = SelectField(choices=[])
     name = StringField()
     device = SelectField(choices=[])
     position = IntegerField(default=1, validators=[NumberRange(min=1), InputRequired()])

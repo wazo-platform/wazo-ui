@@ -7,8 +7,15 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import PluginService, ConfigService, ConfigurationService, RegistrarService
-from .view import PluginView, PluginListingView, ConfigRegistrarView, ConfigDeviceView, ConfigurationView, ConfigDeviceListingView
-
+from .view import (
+    PluginView,
+    PluginListingView,
+    ConfigRegistrarView,
+    ConfigDeviceView,
+    ConfigurationView,
+    ConfigDeviceListingView,
+    ConfigRegistrarListingView
+)
 provisioning = create_blueprint('provisioning', __name__)
 
 
@@ -26,6 +33,10 @@ class Plugin(object):
         ConfigRegistrarView.register(provisioning, route_base='/provisioning/configs/registrar')
         register_flaskview(provisioning, ConfigRegistrarView)
 
+        ConfigRegistrarListingView.service = RegistrarService(clients['wazo_confd'])
+        ConfigRegistrarListingView.register(provisioning, route_base='/config_registrar_listing')
+        register_flaskview(provisioning, ConfigRegistrarListingView)
+
         ConfigDeviceView.service = ConfigService(clients['wazo_provd'])
         ConfigDeviceView.register(provisioning, route_base='/provisioning/configs/device')
         register_flaskview(provisioning, ConfigDeviceView)
@@ -39,6 +50,7 @@ class Plugin(object):
 
         register_listing_url('plugin', 'provisioning.PluginListingView:list_json')
         register_listing_url('config_device', 'provisioning.ConfigDeviceListingView:list_json')
+        register_listing_url('registrar', 'provisioning.ConfigRegistrarListingView:list_json')
 
         ConfigurationView.service = ConfigurationService(clients['wazo_provd'], clients['wazo_confd'])
         ConfigurationView.register(provisioning, route_base='/provisioning/configuration')

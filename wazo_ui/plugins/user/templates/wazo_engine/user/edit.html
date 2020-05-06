@@ -95,6 +95,7 @@
                     <th>{{ _('Extension') }}</th>
                     <th style="min-width: 175px">{{ _('Device') }}</th>
                     <th>{{ _('Line (N°)') }}</th>
+                    <th>{{ _('Registrar') }}</th>
                     <th>{{ _('Application') }}</th>
                     <th style="width: 21px"></th>
                   {% endcall %}
@@ -221,6 +222,13 @@
     </td>
     <td>
       {{ render_field(line.position, with_label=False) }}
+    </td>
+    <td>
+      {{ render_field(line.registrar,
+                      with_label=False,
+                      class_='line-registrar',
+                      data_allow_clear='true',
+                      data_listing_href=url_for(listing_urls['registrar'])) }}
     </td>
     <td>
       {{ render_field(line.application.uuid,
