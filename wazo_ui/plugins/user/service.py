@@ -65,6 +65,9 @@ class UserService(BaseConfdService):
     def get_device(self, device_id):
         return self._confd.devices.get(device_id)
 
+    def get_registrar(self, registrar_id):
+        return self._confd.registrars.get(registrar_id)
+
     def list_funckeys(self, user_uuid):
         return self._confd.users(user_uuid).list_funckeys()
 

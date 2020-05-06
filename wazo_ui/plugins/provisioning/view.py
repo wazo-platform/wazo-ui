@@ -256,3 +256,15 @@ class ConfigDeviceListingView(LoginRequiredView):
         configs = self.service.list_device(**params)
         results = [{'id': config['id'], 'text': config['label']} for config in configs['items']]
         return jsonify(build_select2_response(results, configs['total'], params))
+
+
+class ConfigRegistrarListingView(LoginRequiredView):
+
+    def list_json(self):
+        params = extract_select2_params(request.args)
+        registrars = self.service.list()
+        results = []
+        for registrar in registrars['items']:
+            results.append({'id': registrar['id'], 'text': registrar['name']})
+
+        return jsonify(build_select2_response(results, registrars['total'], params))

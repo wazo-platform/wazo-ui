@@ -103,6 +103,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         form.outgoing_caller_id.choices = self._build_set_choices_outgoing_caller_id(form)
         for form_line in form.lines:
             form_line.application.form.uuid.choices = self._build_set_choices_application(form_line)
+            form_line.registrar.choices = self._build_set_choices_registrar(form_line)
             form_line.device.choices = self._build_set_choices_device(form_line)
             form_line.context.choices = self._build_set_choices_context(form_line)
             for form_extension in form_line.extensions:
@@ -118,6 +119,13 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         if not application.uuid.data or application.uuid.data == 'None':
             return []
         return [(application.uuid.data, application.name.data)]
+
+    def _build_set_choices_registrar(self, line):
+        if not line.registrar.data or line.registrar.data == 'None':
+            return []
+        registrar_name = self.service.get_registrar(line.registrar.data)['name']
+        text = registrar_name if registrar_name else line.registrar.data
+        return [(line.registrar.data, text)]
 
     def _build_set_choices_device(self, line):
         if not line.device.data or line.device.data == 'None':
@@ -209,6 +217,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
                             'context': line['context'],
                             'id': line['id'],
                             'application': line.get('application'),
+                            'registrar': line.get('registrar'),
                             'extensions': line['extensions'],
                             'endpoint_sip_id': endpoint_sip_id,
                             'endpoint_sccp_id': endpoint_sccp_id,
@@ -286,6 +295,9 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
 
             if line['application'].get('uuid'):
                 result['application'] = line['application']
+
+            if line['registrar']:
+                result['registrar'] = line['registrar']
 
             lines.append(result)
 
