@@ -11,7 +11,6 @@ _DEFAULT_CONFIG = {
     'config_file': '/etc/wazo-ui/config.yml',
     'extra_config_files': '/etc/wazo-ui/conf.d',
     'debug': False,
-    'foreground': False,
     'log_level': 'info',
     'log_filename': '/var/log/wazo-ui.log',
     'pid_filename': '/run/wazo-ui/wazo-ui.pid',
@@ -132,10 +131,6 @@ def _parse_cli_args(argv):
                         '--debug',
                         action='store_true',
                         help='Log debug messages. Default %(default)s')
-    parser.add_argument('-f',
-                        '--foreground',
-                        action='store_true',
-                        help="Foreground, don't daemonize. Default %(default)s")
     parser.add_argument('-l',
                         '--log-level',
                         action='store',
@@ -152,8 +147,6 @@ def _parse_cli_args(argv):
         result['config_file'] = parsed_args.config_file
     if parsed_args.debug:
         result['debug'] = parsed_args.debug
-    if parsed_args.foreground:
-        result['foreground'] = parsed_args.foreground
     if parsed_args.log_level:
         result['log_level'] = parsed_args.log_level
     if parsed_args.user:

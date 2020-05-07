@@ -31,4 +31,4 @@ RUN true \
 
 EXPOSE 9296
 
-CMD ["wazo-ui", "-fd"]
+CMD ["wazo-ui", "-d"]
