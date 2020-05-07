@@ -19,11 +19,10 @@ class UserService(BaseConfdService):
 
     def get(self, resource_id):
         resource = super().get(resource_id)
-        call_permissions = self._confd.users(resource_id).list_call_permissions()
         wazo_user = self._auth.users.get(resource_id)
         resource['username'] = wazo_user['username']
         resource['auth_enabled'] = wazo_user['enabled']
-        resource['call_permissions'] = self._build_call_permissions_list(call_permissions['items'])
+        resource['call_permissions'] = self._build_call_permissions_list(resource['call_permissions'])
         return resource
 
     def import_csv(self, form):
@@ -42,11 +41,7 @@ class UserService(BaseConfdService):
     def _build_call_permissions_list(self, call_permissions):
         result = []
         for call_permission in call_permissions:
-            call_permission_data = self.get_call_permission(call_permission['call_permission_id'])
-            result.append({
-                'id': call_permission['call_permission_id'],
-                'name': call_permission_data['name']
-            })
+            result.append({'id': call_permission['id'], 'name': call_permission['name']})
         return result
 
     def list(self, limit=None, order=None, direction=None, offset=None, search=None):

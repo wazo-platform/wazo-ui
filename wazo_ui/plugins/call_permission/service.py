@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from wazo_ui.helpers.service import BaseConfdService
@@ -16,39 +16,37 @@ class CallPermissionService(BaseConfdService):
 
     def get(self, resource_id):
         resource = super().get(resource_id)
-        users = self._confd.call_permissions(resource_id).list_users()
-        resource['users'] = self._build_user_list(users['items'])
+        resource['users'] = self._build_user_list(resource['users'])
         return resource
 
     def _build_user_list(self, users):
         result = []
         for user in users:
-            user_data = self._confd.users.get(user['user_id'])
             result.append({
-                'id': user['user_id'],
-                'firstname': user_data['firstname'],
-                'lastname': user_data['lastname']
+                'uuid': user['uuid'],
+                'firstname': user['firstname'],
+                'lastname': user['lastname']
             })
         return result
 
     def create(self, resource):
         resource_id = super().create(resource)
-        self.update_users(resource_id, resource['user_ids'], [])
+        self.update_users(resource_id, resource['user_uuids'], [])
         self.update_groups(resource_id, resource['group_ids'], [])
         self.update_outcalls(resource_id, resource['outcall_ids'], [])
 
     def update(self, resource):
         super().update(resource)
         existing_resource = self.get(resource['id'])
-        self.update_users(resource['id'], resource['user_ids'], existing_resource['users'])
+        self.update_users(resource['id'], resource['user_uuids'], existing_resource['users'])
         self.update_groups(resource['id'], resource['group_ids'], existing_resource['groups'])
         self.update_outcalls(resource['id'], resource['outcall_ids'], existing_resource['outcalls'])
 
-    def update_users(self, callpermission_id, user_ids, existing_user_ids):
-        for existing_user_id in existing_user_ids:
-            self._confd.users(existing_user_id).remove_call_permission(callpermission_id)
-        for user_id in user_ids:
-            self._confd.users(user_id).add_call_permission(callpermission_id)
+    def update_users(self, callpermission_id, user_uuids, existing_user_uuids):
+        for existing_user_uuid in existing_user_uuids:
+            self._confd.users(existing_user_uuid).remove_call_permission(callpermission_id)
+        for user_uuid in user_uuids:
+            self._confd.users(user_uuid).add_call_permission(callpermission_id)
 
     def update_groups(self, callpermission_id, groups_ids, existing_groups_ids):
         for existing_group_id in existing_groups_ids:
