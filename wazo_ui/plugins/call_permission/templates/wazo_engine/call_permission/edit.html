@@ -59,7 +59,7 @@
 
           {% call build_tab_content_item('users') %}
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
-              {{ render_field(form.user_ids, data_listing_href=url_for(listing_urls['user'])) }}
+              {{ render_field(form.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
             {% endcall %}
           {% endcall %}
 
