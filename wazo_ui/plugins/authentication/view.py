@@ -47,7 +47,7 @@ class Login(FlaskView):
         session_locale = get_locale()
         first_choice = (session_locale.language, session_locale.language_name)
 
-        choices = set(((l.language, l.language_name) for l in self.babel.list_translations()))
+        choices = set(((translation.language, translation.language_name) for translation in self.babel.list_translations()))
         choices.add(first_choice)
         choices.add((default_locale.language, default_locale.language_name))
         choices.remove(first_choice)

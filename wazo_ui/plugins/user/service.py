@@ -172,9 +172,9 @@ class UserService(BaseConfdService):
 
     def _update_callpermissions(self, existing_user, user):
         if existing_user:
-            existing_call_permissions = self._confd.users(existing_user).list_call_permissions()
-            for existing_call_permission in existing_call_permissions['items']:
-                self._confd.users(existing_user).remove_call_permission(existing_call_permission['call_permission_id'])
+            existing_call_permissions = self._confd.users.get(existing_user)['call_permissions']
+            for existing_call_permission in existing_call_permissions:
+                self._confd.users(existing_user).remove_call_permission(existing_call_permission['id'])
 
         for call_permission in user['call_permissions']:
             self._confd.users(user).add_call_permission(call_permission['id'])
@@ -194,9 +194,9 @@ class UserService(BaseConfdService):
 
     def _update_user_lines(self, existing_user, user):
         lines = user.get('lines', [])
-        line_ids = set([l.get('id') for l in lines])
+        line_ids = set([line.get('id') for line in lines])
         existing_lines = existing_user['lines']
-        existing_line_ids = set([l['id'] for l in existing_lines])
+        existing_line_ids = set([line['id'] for line in existing_lines])
         extensions_to_remove = []
 
         line_ids_to_remove = existing_line_ids - line_ids
