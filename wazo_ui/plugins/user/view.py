@@ -296,7 +296,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
             if line['application'].get('uuid'):
                 result['application'] = line['application']
 
-            if line['registrar']:
+            if line.get('registrar'):
                 result['registrar'] = line['registrar']
 
             lines.append(result)
