@@ -36,7 +36,8 @@ _DEFAULT_CONFIG = {
     'call-logd': {
         'host': 'localhost',
         'port': 9298,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'confd': {
         'host': 'localhost',
