@@ -28,7 +28,7 @@ $(document).ready(function() {
     function disableCertificateField() {
         if(https.is(':checked')){
             $('input.auth_verify_certificate').removeAttr('disabled');
-            $('input.auth_certificate_path').removeAttr('disabled');
+            disablePathField();
         } else {
             $('input.auth_verify_certificate').attr('disabled', 'disabled');
             $('input.auth_certificate_path').attr('disabled', 'disabled');
@@ -37,21 +37,35 @@ $(document).ready(function() {
 
     verify_certificate.click(disablePathField);
     https.click(disableCertificateField);
+
     disableCertificateField();
     disablePathField();
 });
 
 $(document).ready(function() {
-    var checkbox = $('input[type="checkbox"].confd_verify_certificate');
+    var verify_certificate = $('input[type="checkbox"].confd_verify_certificate');
+    var https = $('input[type="checkbox"].confd_https');
 
-    function disableField() {
-        if(checkbox.is(':checked')){
+    function disablePathField() {
+        if(verify_certificate.is(':checked')){
             $('input.confd_certificate_path').removeAttr('disabled');
         } else {
             $('input.confd_certificate_path').attr('disabled', 'disabled');
         }
     }
 
-    checkbox.click(disableField);
-    disableField();
+    function disableCertificateField() {
+        if(https.is(':checked')){
+            $('input.confd_verify_certificate').removeAttr('disabled');
+            disablePathField();
+        } else {
+            $('input.confd_verify_certificate').attr('disabled', 'disabled');
+            $('input.confd_certificate_path').attr('disabled', 'disabled');
+        }
+    }
+
+    verify_certificate.click(disablePathField);
+    https.click(disableCertificateField);
+    disableCertificateField();
+    disablePathField();
 });
