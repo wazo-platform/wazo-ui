@@ -129,6 +129,7 @@ class WazoAuthForm(BaseForm):
 class WazoConfdForm(BaseForm):
     host = StringField(l_('Host'))
     port = StringField(l_('Port'))
+    prefix_ = StringField(l_('Prefix'))
     verify_certificate = BooleanField(l_('Verify certificate'), default=False)
     certificate_path = StringField(l_('Certificate path'))
     timeout = FloatField(l_('Timeout'))

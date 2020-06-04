@@ -51,9 +51,10 @@
               <h4>Confd</h4>
               {{ render_field(form.wazo_config.confd.host) }}
               {{ render_field(form.wazo_config.confd.port) }}
+              {{ render_field(form.wazo_config.confd.prefix_) }}
+              {{ render_field(form.wazo_config.confd.https, class_="confd_https") }}
               {{ render_field(form.wazo_config.confd.verify_certificate, class_="confd_verify_certificate") }}
               {{ render_field(form.wazo_config.confd.certificate_path, class_="confd_certificate_path") }}
-              {{ render_field(form.wazo_config.confd.https) }}
               {{ render_field(form.wazo_config.confd.timeout) }}
               {{ render_field(form.wazo_config.confd.version) }}
             {% endcall %}
