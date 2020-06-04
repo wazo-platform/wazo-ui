@@ -58,10 +58,11 @@ class DirdSourceView(BaseIPBXHelperView):
             'host': 'localhost',
             'port': 9486,
             'timeout': '',
-            'verify_certificate': True,
-            'certificate_path': '/usr/share/xivo-certs/server.crt',
+            'prefix_': None,
+            'https': False,
+            'verify_certificate': False,
+            'certificate_path': '',
             'version': '1.1',
-            'https': True,
         }
         default = {
             'conference_config': {
