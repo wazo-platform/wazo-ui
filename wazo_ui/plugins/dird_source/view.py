@@ -212,6 +212,9 @@ class DirdSourceView(BaseIPBXHelperView):
         if 'prefix_' in resource[config_name].get('auth', {}):
             resource[config_name]['auth']['prefix'] = resource[config_name]['auth'].pop('prefix_')
 
+        if 'prefix_' in resource[config_name].get('confd', {}):
+            resource[config_name]['confd']['prefix'] = resource[config_name]['confd'].pop('prefix_')
+
         # Handle `verify_certificate` for office 365 or google that can be True, False or the value of certificate_path
         if backend in ('office365', 'google', 'conference', 'wazo'):
             path = resource[config_name]['auth'].get('certificate_path')
