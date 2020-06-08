@@ -54,7 +54,8 @@ _DEFAULT_CONFIG = {
     'plugind': {
         'host': 'localhost',
         'port': 9503,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'provd': {
         'host': 'localhost',

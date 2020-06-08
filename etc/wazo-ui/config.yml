@@ -54,7 +54,8 @@
 # plugind:
 #   host: localhost
 #   port: 9503
-#   verify_certificate: /usr/share/xivo-certs/server.crt
+#   prefix: None
+#   https: false
 # 
 # provd:
 #   host: localhost
