@@ -54,7 +54,8 @@ _DEFAULT_CONFIG = {
     'plugind': {
         'host': 'localhost',
         'port': 9503,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'provd': {
         'host': 'localhost',
@@ -64,7 +65,8 @@ _DEFAULT_CONFIG = {
     'webhookd': {
         'host': 'localhost',
         'port': 9300,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     # Information for websocketd are used by the client browser
     'websocketd': {
