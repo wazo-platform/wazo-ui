@@ -60,7 +60,8 @@ _DEFAULT_CONFIG = {
     'provd': {
         'host': 'localhost',
         'port': 8666,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'webhookd': {
         'host': 'localhost',
