@@ -73,7 +73,7 @@ _DEFAULT_CONFIG = {
     'websocketd': {
         'host': None,
         'port': 443,
-        'prefix_url': '/api/websocketd',
+        'prefix': '/api/websocketd',
         'verify_certificate': False,
     },
     'enabled_plugins': {
