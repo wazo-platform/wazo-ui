@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import pytz
@@ -100,8 +100,6 @@ class GeneralConfigurationForm(BaseForm):
 class NetworkConfigurationForm(BaseForm):
     provision_host = StringField(l_('Provisioning host'))
     provision_http_port = IntegerField(l_('Provisioning port'), validators=[Regexp('^[0-9]+$')])
-    rest_host = StringField(l_('REST API host'))
-    rest_https_port = IntegerField(l_('REST API HTTPS port'), validators=[Regexp('^[0-9]+$')])
 
 
 class ConfigurationForm(BaseForm):

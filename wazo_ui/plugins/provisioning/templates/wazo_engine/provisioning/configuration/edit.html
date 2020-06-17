@@ -32,8 +32,6 @@
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
               {{ render_field(form.network_config.provision_host) }}
               {{ render_field(form.network_config.provision_http_port) }}
-              {{ render_field(form.network_config.rest_host) }}
-              {{ render_field(form.network_config.rest_https_port) }}
             {% endcall %}
           {% endcall %}
 
