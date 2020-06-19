@@ -60,7 +60,8 @@ _DEFAULT_CONFIG = {
     'provd': {
         'host': 'localhost',
         'port': 8666,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'webhookd': {
         'host': 'localhost',
@@ -72,7 +73,7 @@ _DEFAULT_CONFIG = {
     'websocketd': {
         'host': None,
         'port': 443,
-        'prefix_url': '/api/websocketd',
+        'prefix': '/api/websocketd',
         'verify_certificate': False,
     },
     'enabled_plugins': {

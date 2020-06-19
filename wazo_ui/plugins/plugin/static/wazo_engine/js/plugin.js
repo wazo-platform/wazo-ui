@@ -7,7 +7,7 @@ $(document).ready(function() {
     search_plugins();
 });
 
-function connect(host, port, prefix_url, token) {
+function connect(host, port, prefix, token) {
     if (socket != null) {
         console.log("socket already connected");
         return;
@@ -17,7 +17,7 @@ function connect(host, port, prefix_url, token) {
         host = window.location.host;
     }
 
-    var ws_url = "wss://" + host + ":" + port + prefix_url + "/?token=" + token;
+    var ws_url = "wss://" + host + ":" + port + prefix + "/?token=" + token;
     socket = new WebSocket(ws_url);
     socket.onclose = function(event) {
         socket = null;

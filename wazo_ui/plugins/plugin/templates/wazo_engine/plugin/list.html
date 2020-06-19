@@ -80,7 +80,7 @@
     connect(
       "{{ config.websocketd.host or '' }}",
       "{{ config.websocketd.port }}",
-      "{{ config.websocketd.prefix_url }}",
+      "{{ config.websocketd.prefix }}",
       "{{ current_user.token }}"
     );
   </script>
