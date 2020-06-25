@@ -15,11 +15,11 @@ _DEFAULT_CONFIG = {
     'log_filename': '/var/log/wazo-ui.log',
     'pid_filename': '/run/wazo-ui/wazo-ui.pid',
     'session_lifetime': 60 * 60 * 8,
-    'https': {
-        'listen': '0.0.0.0',
+    'http': {
+        'listen': '127.0.0.1',
         'port': 9296,
-        'certificate': '/usr/share/xivo-certs/server.crt',
-        'private_key': '/usr/share/xivo-certs/server.key',
+        'certificate': None,
+        'private_key': None,
     },
     'amid': {
         'host': 'localhost',

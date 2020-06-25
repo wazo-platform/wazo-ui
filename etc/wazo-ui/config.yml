@@ -15,11 +15,9 @@
 # # PID file.
 # pid_filename: /run/wazo-ui/wazo-ui.pid
 # 
-# https:
-#   listen: 0.0.0.0
+# http:
+#   listen: 127.0.0.1
 #   port: 9296
-#   certificate: /usr/share/xivo-certs/server.crt
-#   private_key: /usr/share/xivo-certs/server.key
 # 
 # amid:
 #   host: localhost

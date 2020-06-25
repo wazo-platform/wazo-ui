@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -38,7 +38,7 @@ app = Flask('wazo_ui')
 class Server():
 
     def __init__(self, global_config):
-        self.config = global_config['https']
+        self.config = global_config['http']
         http_helpers.add_logger(app, logger)
 
         app.after_request(http_helpers.log_request_hide_token)
@@ -77,9 +77,19 @@ class Server():
         wsgi_app = ReverseProxied(ProxyFix(wsgi.WSGIPathInfoDispatcher({'/': app})))
         self.server = wsgi.WSGIServer(bind_addr=bind_addr,
                                       wsgi_app=wsgi_app)
-        self.server.ssl_adapter = http_helpers.ssl_adapter(self.config['certificate'],
-                                                           self.config['private_key'])
-        logger.debug('WSGIServer starting... uid: %s, listen: %s:%s', os.getuid(), bind_addr[0], bind_addr[1])
+        if self.config['certificate'] and self.config['private_key']:
+            logger.warning(
+                'Using service SSL configuration is deprecated. Please use NGINX instead.'
+            )
+            self.server.ssl_adapter = http_helpers.ssl_adapter(
+                self.config['certificate'], self.config['private_key']
+            )
+        logger.debug(
+            'WSGIServer starting... uid: %s, listen: %s:%s',
+            os.getuid(),
+            bind_addr[0],
+            bind_addr[1]
+        )
         for route in http_helpers.list_routes(app):
             logger.debug(route)
 
