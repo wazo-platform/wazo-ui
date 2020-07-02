@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import abc
@@ -24,7 +24,7 @@ class Page(object):
 
     TIMEOUT = 4
     POLL_FREQUENCY = 0.2
-    CONFIG = {'base_url': 'https://localhost:9296'}
+    CONFIG = {'base_url': 'http://localhost:9296'}
 
     def __init__(self, driver):
         self.driver = driver
