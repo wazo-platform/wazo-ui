@@ -25,7 +25,7 @@ class DirdSourceService:
         source = results[0] if len(results) else None
         backend = source['backend']
 
-        if backend == 'office365' or backend == 'google':
+        if backend not in endpoints.keys():
             result = self._dird.backends.get_source(backend, source_uuid)
         else:
             result = getattr(self._dird, endpoints[backend]).get(source_uuid)
@@ -37,7 +37,7 @@ class DirdSourceService:
         backend = source_data['backend']
         source_data[backend + '_config']['name'] = source_data['name']
 
-        if backend == 'office365' or backend == 'google':
+        if backend not in endpoints.keys():
             return self._dird.backends.create_source(backend, source_data[backend + '_config'])
 
         getattr(self._dird, endpoints[backend]).create(source_data[backend + '_config'])
@@ -46,7 +46,7 @@ class DirdSourceService:
         backend = source_data['backend']
         source_data[backend + '_config']['name'] = source_data['name']
 
-        if backend == 'office365' or backend == 'google':
+        if backend not in endpoints.keys():
             return self._dird.backends.edit_source(backend, source_data['uuid'], source_data[backend + '_config'])
 
         return getattr(self._dird, endpoints[backend]).edit(source_data['uuid'], source_data[backend + '_config'])
@@ -55,10 +55,10 @@ class DirdSourceService:
         source = self.get(source_uuid)
         backend = source['backend']
 
-        if backend == 'office365' or backend == 'google':
+        if backend not in endpoints.keys():
             return self._dird.backends.delete_source(backend, source_uuid)
 
-        getattr(self._dird, endpoints[source['backend']]).delete(source_uuid)
+        getattr(self._dird, endpoints[backend]).delete(source_uuid)
 
     def list_backends(self):
         return self._dird.backends.list()
