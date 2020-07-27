@@ -113,6 +113,7 @@ _DEFAULT_CONFIG = {
         'queue': True,
         'rtp': True,
         'schedule': True,
+        'sip_template': True,
         'skill': True,
         'skillrule': True,
         'sound': True,
