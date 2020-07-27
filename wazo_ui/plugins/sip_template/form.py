@@ -48,7 +48,6 @@ class RegistrationPJSIPOptionsForm(BasePJSIPOptionsForm):
 
 class EndpointSIPTemplateForm(BaseForm):
     label = StringField(l_('Label'), [Length(max=128)])
-    name = StringField(l_('Name'), [Length(max=79)])
     aor_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     endpoint_section_options = FieldList(FormField(BasePJSIPOptionsForm))

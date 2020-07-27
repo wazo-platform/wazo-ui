@@ -12,11 +12,9 @@
       {% call build_list_table() %}
         {% call build_list_table_headers(get=url_for('.EndpointSIPTemplateView:get', id=''), delete=url_for('.EndpointSIPTemplateView:delete', id=''), add=url_for('.EndpointSIPTemplateView:new')) %}
           <th>{{ _('Label') }}</th>
-          <th>{{ _('Name') }}</th>
         {% endcall %}
         {% call(template) build_list_table_rows(resource_list['items']) %}
           <td>{{ template.label }}</td>
-          <td>{{ template.name }}</td>
         {% endcall %}
       {% endcall %}
     {% endcall %}
