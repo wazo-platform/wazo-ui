@@ -7,6 +7,7 @@ from wtforms.fields import (
     FormField,
     HiddenField,
     SelectField,
+    SelectMultipleField,
     StringField,
     SubmitField,
 )
@@ -18,6 +19,10 @@ from wazo_ui.helpers.form import BaseForm
 class TransportForm(BaseForm):
     uuid = SelectField(l_('Transport'), choices=[])
     name = HiddenField()
+
+
+class TemplateForm(BaseForm):
+    uuid = HiddenField()
 
 
 class BasePJSIPOptionsForm(BaseForm):
@@ -62,5 +67,6 @@ class EndpointSIPTemplateForm(BaseForm):
     registration_outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     transport = FormField(TransportForm)
-    # templates = BooleanField(l_('Templates'), choices=[])
+    template_uuids = SelectMultipleField(l_('Templates'), choices=[])
+    templates = FieldList(FormField(TemplateForm))
     submit = SubmitField()

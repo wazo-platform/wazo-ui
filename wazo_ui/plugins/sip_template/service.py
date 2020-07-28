@@ -13,3 +13,6 @@ class EndpointSIPTemplateService(BaseConfdService):
 
     def get_transport(self, uuid):
         return self._confd.sip_transports.get(uuid)
+
+    def get_sip_template(self, uuid):
+        return self._confd.endpoints_sip_templates.get(uuid)
