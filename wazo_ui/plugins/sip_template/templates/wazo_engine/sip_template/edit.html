@@ -29,6 +29,11 @@
                               data_listing_href=url_for(listing_urls['transport']),
                               data_allow_clear='true',
                               data_placeholder=_('Choose Transport')) }}
+              {{ render_field(form.template_uuids,
+                              data_listing_href=url_for(listing_urls['sip_template']),
+                              data_allow_clear='true',
+                              data_placeholder=_('Choose Templates')) }}
+              {{ render_field(form.templates, with_label=False) }}
             {% endcall %}
           {% endcall %}
 
