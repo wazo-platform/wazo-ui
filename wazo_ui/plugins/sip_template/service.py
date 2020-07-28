@@ -10,3 +10,6 @@ class EndpointSIPTemplateService(BaseConfdService):
 
     def __init__(self, confd_client):
         self._confd = confd_client
+
+    def get_transport(self, uuid):
+        return self._confd.sip_transports.get(uuid)

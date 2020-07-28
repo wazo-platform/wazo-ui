@@ -3,15 +3,21 @@
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
-    SubmitField,
-    StringField,
-    SelectField,
-    FormField,
     FieldList,
+    FormField,
+    HiddenField,
+    SelectField,
+    StringField,
+    SubmitField,
 )
 from wtforms.validators import InputRequired, Length
 
 from wazo_ui.helpers.form import BaseForm
+
+
+class TransportForm(BaseForm):
+    uuid = SelectField(l_('Transport'), choices=[])
+    name = HiddenField()
 
 
 class BasePJSIPOptionsForm(BaseForm):
@@ -55,6 +61,6 @@ class EndpointSIPTemplateForm(BaseForm):
     registration_section_options = FieldList(FormField(RegistrationPJSIPOptionsForm))
     registration_outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
-    # transport = BooleanField(l_('Transport'))
+    transport = FormField(TransportForm)
     # templates = BooleanField(l_('Templates'), choices=[])
     submit = SubmitField()

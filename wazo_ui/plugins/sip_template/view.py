@@ -34,8 +34,15 @@ class EndpointSIPTemplateView(NewHelperViewMixin, BaseIPBXHelperView):
         return super().index()
 
     def _populate_form(self, form):
-        # FIXME populate templates and transport
+        form.transport.form.uuid.choices = self._build_set_choices_transport(form)
         return form
+
+    def _build_set_choices_transport(self, template):
+        transport_uuid = template.transport.form.uuid.data
+        if not transport_uuid or transport_uuid == 'None':
+            return []
+        transport = self.service.get_transport(transport_uuid)
+        return [(transport['uuid'], transport['name'])]
 
     def _map_resources_to_form(self, resource):
         choices = []
@@ -69,6 +76,10 @@ class EndpointSIPTemplateView(NewHelperViewMixin, BaseIPBXHelperView):
 
         for section in SECTIONS:
             data[section] = self._map_options_to_resource(data[section])
+
+        if not data['transport'].get('uuid'):
+            data['transport'] = None
+
         return data
 
     def _map_options_to_resource(self, options):
