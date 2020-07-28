@@ -132,6 +132,7 @@ class DirdSourceView(BaseIPBXHelperView):
                 ],
                 'first_matched_columns': [
                     {'value': 'mobile_phone_number'},
+                    {'value': 'exten'},
                 ],
                 'format_columns': [
                     {'key': 'name', 'value': '{firstname} {lastname}'},
