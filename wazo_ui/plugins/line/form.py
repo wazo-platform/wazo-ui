@@ -15,7 +15,7 @@ from wazo_ui.helpers.form import BaseForm
 from wazo_ui.plugins.sip_template.form import EndpointSIPForm
 
 
-class EnpointCustomForm(BaseForm):
+class EndpointCustomForm(BaseForm):
     id = HiddenField()
     interface = StringField(l_('Interface'), validators=[InputRequired()])
     interface_suffix = StringField(l_('Interface Suffix'), validators=[Length(max=32)])
@@ -25,5 +25,5 @@ class LineForm(BaseForm):
     context = SelectField(l_('Context'), validators=[InputRequired()], choices=[])
     protocol = SelectField(choices=[('sip', l_('SIP')), ('custom', l_('CUSTOM'))])
     endpoint_sip = FormField(EndpointSIPForm)
-    endpoint_custom = FormField(EnpointCustomForm)
+    endpoint_custom = FormField(EndpointCustomForm)
     submit = SubmitField(l_('Submit'))

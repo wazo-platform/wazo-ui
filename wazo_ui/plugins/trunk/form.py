@@ -19,7 +19,7 @@ from wazo_ui.helpers.form import BaseForm
 from wazo_ui.plugins.sip_template.form import EndpointSIPForm
 
 
-class EnpointCustomForm(BaseForm):
+class EndpointCustomForm(BaseForm):
     id = HiddenField()
     interface = StringField(l_('Interface'), validators=[InputRequired()])
     interface_suffix = StringField(l_('Interface Suffix'), validators=[Length(max=32)])
@@ -30,7 +30,7 @@ class OptionsForm(BaseForm):
     option_value = StringField(validators=[InputRequired()])
 
 
-class EnpointIaxForm(BaseForm):
+class EndpointIaxForm(BaseForm):
     id = HiddenField()
     name = StringField(l_('Name'), validators=[InputRequired(), Length(max=40)])
     type = SelectField(l_('Type'), choices=[('user', l_('User')), ('peer', l_('Peer')), ('friend', l_('Friend'))])
@@ -55,7 +55,7 @@ class TrunkForm(BaseForm):
     context = SelectField(l_('Context'), choices=[])
     protocol = SelectField(choices=[('sip', l_('SIP')), ('iax', l_('IAX')), ('custom', l_('CUSTOM'))])
     endpoint_sip = FormField(EndpointSIPForm)
-    endpoint_iax = FormField(EnpointIaxForm)
-    endpoint_custom = FormField(EnpointCustomForm)
+    endpoint_iax = FormField(EndpointIaxForm)
+    endpoint_custom = FormField(EndpointCustomForm)
     register_iax = FormField(RegisterIAXForm)
     submit = SubmitField(l_('Submit'))
