@@ -29,11 +29,6 @@ class EnpointCustomForm(BaseForm):
     interface_suffix = StringField(l_('Interface Suffix'), validators=[Length(max=32)])
 
 
-class OptionsForm(BaseForm):
-    option_key = StringField(validators=[InputRequired()])
-    option_value = StringField(validators=[InputRequired()])
-
-
 class EnpointSipForm(BaseForm):
     uuid = HiddenField()
     label = StringField(l_('Label'), validators=[InputRequired(), Length(max=128)])
