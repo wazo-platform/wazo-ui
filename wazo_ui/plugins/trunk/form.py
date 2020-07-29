@@ -9,6 +9,7 @@ from wtforms.fields import (
     HiddenField,
     IntegerField,
     SelectField,
+    SelectMultipleField,
     StringField,
     SubmitField,
 )
@@ -16,6 +17,13 @@ from wtforms.validators import InputRequired, Length
 from wtforms.widgets import PasswordInput
 
 from wazo_ui.helpers.form import BaseForm
+from wazo_ui.plugins.sip_template.form import (
+    BasePJSIPOptionsForm,
+    IdentifyPJSIPOptionsForm,
+    RegistrationPJSIPOptionsForm,
+    TransportForm,
+    TemplateForm,
+)
 
 
 class EnpointCustomForm(BaseForm):
@@ -30,15 +38,19 @@ class OptionsForm(BaseForm):
 
 
 class EnpointSipForm(BaseForm):
-    id = HiddenField()
-    name = StringField(l_('Name'), validators=[InputRequired(), Length(max=40)])
-    username = StringField(l_('Username'), validators=[InputRequired(), Length(max=40)])
-    secret = StringField(l_('Password'), validators=[Length(max=80)], widget=PasswordInput(hide_value=False))
-    type = SelectField(l_('Type'), choices=[('user', l_('User')), ('peer', l_('Peer')), ('friend', l_('Friend'))])
-    host = SelectField(l_('Host'), validators=[InputRequired(), Length(max=255)],
-                       choices=[('dynamic', l_('Dynamic')), ('static', l_('Static'))])
-    host_value = StringField('', validators=[Length(max=255)])
-    options = FieldList(FormField(OptionsForm))
+    uuid = HiddenField()
+    label = StringField(l_('Label'), validators=[InputRequired(), Length(max=128)])
+    name = StringField(l_('Name'), [Length(max=128)])
+    aor_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    endpoint_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    identify_section_options = FieldList(FormField(IdentifyPJSIPOptionsForm))
+    registration_section_options = FieldList(FormField(RegistrationPJSIPOptionsForm))
+    registration_outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    transport = FormField(TransportForm)
+    template_uuids = SelectMultipleField(l_('Templates'), choices=[])
+    templates = FieldList(FormField(TemplateForm))
 
 
 class EnpointIaxForm(BaseForm):
@@ -49,19 +61,6 @@ class EnpointIaxForm(BaseForm):
                        choices=[('dynamic', l_('Dynamic')), ('static', l_('Static'))])
     host_value = StringField('', validators=[Length(max=255)])
     options = FieldList(FormField(OptionsForm))
-
-
-class RegisterSIPForm(BaseForm):
-    id = HiddenField()
-    enabled = BooleanField(l_('Enabled'), default=False)
-    sip_username = StringField(l_('SIP Username'), validators=[InputRequired()])
-    auth_username = StringField(l_('Authentication Username'))
-    auth_password = StringField(l_('Authentication Password'), widget=PasswordInput(hide_value=False))
-    remote_host = StringField(l_('Remote Host'), validators=[InputRequired()])
-    remote_port = IntegerField(l_('Remote port'))
-    transport = StringField(l_('Transport'))  # TODO(pc-m): Should be a valid transport
-    callback_extension = StringField(l_('Callback Extension'))
-    expiration = IntegerField(l_('Expiration'))
 
 
 class RegisterIAXForm(BaseForm):
@@ -81,6 +80,5 @@ class TrunkForm(BaseForm):
     endpoint_sip = FormField(EnpointSipForm)
     endpoint_iax = FormField(EnpointIaxForm)
     endpoint_custom = FormField(EnpointCustomForm)
-    register_sip = FormField(RegisterSIPForm)
     register_iax = FormField(RegisterIAXForm)
     submit = SubmitField(l_('Submit'))
