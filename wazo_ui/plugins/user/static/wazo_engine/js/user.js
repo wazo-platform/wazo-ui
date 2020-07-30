@@ -1,6 +1,7 @@
 $(document).ready(function() {
   create_list_table();
   init_add_available_extensions.call(this);
+  init_toggle_template_disable.call(this);
 
   // Remove spaces in email
   var removeSpace = function() {
@@ -10,10 +11,12 @@ $(document).ready(function() {
 
   $('.row-template').on("row:cloned", function(e, row) {
     init_add_available_extensions.call(row);
+    init_toggle_template_disable.call(row);
   });
 
   $('.row-line').each(function(e, row) {
     add_available_extensions.call(row);
+    toggle_template_disable.call(row);
   });
 
   toggle_busy_destination_validator();
@@ -146,4 +149,30 @@ function add_available_extensions() {
       }
     }
   });
+}
+
+function init_toggle_template_disable(){
+  $('.line-protocol', this).on("select2:select", function(e) {
+    toggle_template_disable.call(this);
+  });
+  toggle_template_disable()
+}
+
+function toggle_template_disable() {
+  let protocol_select, template_select;
+
+  if ($('.row-template').length === 0) {
+    protocol_select = $(".line-protocol");
+    template_select = $(".line-template");
+  } else {
+    protocol_select = $(this).closest("tr").find(".line-protocol");
+    template_select = $(this).closest("tr").find(".line-template");
+  }
+  console.log(protocol_select.val());
+
+  if (protocol_select.val() == 'sip') {
+    $(template_select).removeAttr('disabled');
+  } else {
+    $(template_select).attr('disabled', 'disabled');
+  }
 }

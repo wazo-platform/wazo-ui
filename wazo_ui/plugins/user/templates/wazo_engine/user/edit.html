@@ -90,6 +90,7 @@
 
                   {% call build_table_headers() %}
                     <th>{{ _('Protocol') }}</th>
+                    <th>{{ _('Templates') }}</th>
                     <th>{{ _('Name') }}</th>
                     <th>{{ _('Context') }}</th>
                     <th>{{ _('Extension') }}</th>
@@ -188,12 +189,20 @@
   {% endif %}
   <tr class="{{ tr_class }}">
     {{ render_field(line['id']) }}
-    {{ render_field(line.endpoint_sip_id) }}
+    {{ render_field(line.endpoint_sip_uuid) }}
     {{ render_field(line.endpoint_sccp_id) }}
     {{ render_field(line.endpoint_custom_id) }}
     {{ render_field(line.extensions[0]['id']) }}
     <td>
-      {{ render_field(line.protocol, with_label=False) }}
+      {{ render_field(line.protocol, class_='line-protocol', with_label=False) }}
+    </td>
+    <td>
+      {{ render_field(line.template_uuids,
+                      with_label=False,
+                      class_='line-template',
+                      data_allow_clear='true',
+                      data_listing_href=url_for(listing_urls['sip_template'])) }}
+      {{ render_field(line.templates, with_label=False) }}
     </td>
     <td>
       {{ render_field(line['name'], with_label=False, disabled=True) }}

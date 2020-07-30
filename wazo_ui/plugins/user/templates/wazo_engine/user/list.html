@@ -28,7 +28,7 @@
           {{ render_field(form.password, type='password', data_toggle='password', autocomplete="off") }}
           {% do form.lines.append_entry() %}
           {{ render_field(form.lines[0]['id']) }}
-          {{ render_field(form.lines[0].endpoint_sip_id) }}
+          {{ render_field(form.lines[0].endpoint_sip_uuid) }}
           {{ render_field(form.lines[0].endpoint_sccp_id) }}
           {{ render_field(form.lines[0].endpoint_custom_id) }}
           {{ render_field(form.lines[0].extensions[0]['id']) }}
@@ -46,6 +46,11 @@
                           data_allow_custom_values=True,
                           data_listing_href=url_for(listing_urls['available_extension_user'])) }}
           {{ render_field(form.lines[0].protocol) }}
+          {{ render_field(form.lines[0].template_uuids,
+                          class_='line-template',
+                          data_allow_clear='true',
+                          data_listing_href=url_for(listing_urls['sip_template'])) }}
+          {{ render_field(form.lines[0].templates, with_label=False) }}
         {% endcall %}
       {% endcall %}
     {% endcall %}
