@@ -13,7 +13,6 @@ _DEFAULT_CONFIG = {
     'debug': False,
     'log_level': 'info',
     'log_filename': '/var/log/wazo-ui.log',
-    'pid_filename': '/run/wazo-ui/wazo-ui.pid',
     'session_lifetime': 60 * 60 * 8,
     'http': {
         'listen': '127.0.0.1',

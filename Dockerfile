@@ -17,7 +17,6 @@ COPY ./etc/wazo-ui /etc/wazo-ui
 RUN true \
     && adduser --quiet --system --group --home /var/lib/wazo-ui wazo-ui \
     && mkdir -p /etc/wazo-ui/conf.d \
-    && install -d -o wazo-ui -g wazo-ui /run/wazo-ui/ \
     && install -o wazo-ui -g wazo-ui /dev/null /var/log/wazo-ui.log
 
 
