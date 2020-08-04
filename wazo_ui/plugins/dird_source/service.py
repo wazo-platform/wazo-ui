@@ -48,8 +48,6 @@ class DirdSourceService:
         return getattr(self._dird, endpoints[backend]).edit(source_data['uuid'], source_data[backend + '_config'])
 
     def delete(self, backend, source_uuid):
-        source = self.get(backend, source_uuid)
-
         if backend not in endpoints.keys():
             return self._dird.backends.delete_source(backend, source_uuid)
 
