@@ -26,7 +26,11 @@ class DirdSourceView(BaseIPBXHelperView):
 
     def _index(self, form=None):
         try:
-            resource_list = self.service.list()
+            resources_list = self.service.list()
+            resource_list = {"items": []}
+            for r in resources_list['items']:
+                r['get_url'] = "{}/".format(r['backend'])
+                resource_list['items'].append(r)
             backend_list = self.service.list_backends()
         except HTTPError as error:
             self._flash_http_error(error)
@@ -148,9 +152,13 @@ class DirdSourceView(BaseIPBXHelperView):
                                current_breadcrumbs=self._get_current_breadcrumbs(),
                                form=form)
 
-    def _get(self, id, form=None):
+    @route('/get/<backend>/<id>')
+    def get(self, backend, id):
+        return self._get(backend, id)
+
+    def _get(self, backend, id, form=None):
         try:
-            resource = self.service.get(id)
+            resource = self.service.get(backend, id)
         except HTTPError as error:
             self._flash_http_error(error)
             return self._redirect_for('index')
@@ -158,7 +166,7 @@ class DirdSourceView(BaseIPBXHelperView):
         form = form or self._map_resources_to_form(resource)
         form = self._populate_form(form)
 
-        return render_template(self._get_template(backend=resource['backend']),
+        return render_template(self._get_template(backend=backend),
                                form=form,
                                resource=resource,
                                current_breadcrumbs=self._get_current_breadcrumbs(),

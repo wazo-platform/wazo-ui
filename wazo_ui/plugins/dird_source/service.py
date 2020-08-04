@@ -20,17 +20,13 @@ class DirdSourceService:
     def list(self):
         return self._dird.sources.list()
 
-    def get(self, source_uuid):
-        results = [source for source in self.list()['items'] if source['uuid'] == source_uuid]
-        source = results[0] if len(results) else None
-        backend = source['backend']
-
+    def get(self, backend, source_uuid):
         if backend not in endpoints.keys():
             result = self._dird.backends.get_source(backend, source_uuid)
         else:
             result = getattr(self._dird, endpoints[backend]).get(source_uuid)
 
-        result.update(source)
+        result['backend'] = backend
         return result
 
     def create(self, source_data):
