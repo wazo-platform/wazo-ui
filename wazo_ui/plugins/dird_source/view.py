@@ -26,11 +26,10 @@ class DirdSourceView(BaseIPBXHelperView):
 
     def _index(self, form=None):
         try:
-            resources_list = self.service.list()
             resource_list = {"items": []}
-            for r in resources_list['items']:
-                r['get_url'] = "{}/".format(r['backend'])
-                resource_list['items'].append(r)
+            for source in self.service.list()['items']:
+                source['get_url'] = "{}/".format(source['backend'])
+                resource_list['items'].append(source)
             backend_list = self.service.list_backends()
         except HTTPError as error:
             self._flash_http_error(error)
