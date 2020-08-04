@@ -190,6 +190,16 @@ class DirdSourceView(BaseIPBXHelperView):
         flash('Resource has been created', 'success')
         return self._redirect_for('index')
 
+    @route('/delete/<backend>/<id>', methods=['GET'])
+    def delete(self, backend, id):
+        try:
+            self.service.delete(backend, id)
+            flash(l_('%(resource)s: Resource %(id)s has been deleted', resource=self.resource, id=id), 'success')
+        except HTTPError as error:
+            self._flash_http_error(error)
+
+        return self._redirect_referrer_or('index')
+
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
         backend = resource['backend']

@@ -544,6 +544,7 @@ function get_row_infos(row) {
 
   if (data_get_url) {
     data_infos.get_url = data_infos.get_url.slice(0, -1) + data_get_url;
+    data_infos.delete_url = data_infos.delete_url.slice(0, -1) + data_get_url;
   }
 
   if (data_tenant_uuid && data_non_unique_id) {

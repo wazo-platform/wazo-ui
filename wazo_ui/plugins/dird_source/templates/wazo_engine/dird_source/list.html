@@ -10,7 +10,7 @@
   <section class="content">
     {% call build_list_containers(_('Directory'), 'address-book') %}
       {% call build_list_table() %}
-        {% call build_list_table_headers(get=url_for('.DirdSourceView:get', backend='', id=''), delete=url_for('.DirdSourceView:delete', id='')) %}
+        {% call build_list_table_headers(get=url_for('.DirdSourceView:get', backend='', id=''), delete=url_for('.DirdSourceView:delete', backend='', id='')) %}
           <th>{{ _('Name') }}</th>
           <th>{{ _('Backend') }}</th>
         {% endcall %}
