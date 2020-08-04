@@ -528,10 +528,12 @@ function addIdToURL(url, id) {
 }
 
 function get_row_infos(row) {
-  var data_uuid, data_id, data_tenant_uuid, data_non_unique_id;
+  var data_uuid, data_id, data_tenant_uuid, data_non_unique_id, data_get_url;
 
   data_uuid = row.uuid ? row.uuid : row.attr('data-uuid');
   data_id = row.id ? row.id : row.attr('data-id');
+  data_get_url = row.get_url ? row.get_url : row.attr('data-get_url');
+
   if (row.tenant_uuid) {
     data_tenant_uuid = row.tenant_uuid;
   } else {
@@ -539,6 +541,11 @@ function get_row_infos(row) {
   }
   data_non_unique_id = row.attr('data-non-unique-id') === 'True';
   var data_infos = get_data_infos(row.parent().parent());
+
+  if (data_get_url) {
+    data_infos.get_url = data_infos.get_url.slice(0, -1) + data_get_url;
+    data_infos.delete_url = data_infos.delete_url.slice(0, -1) + data_get_url;
+  }
 
   if (data_tenant_uuid && data_non_unique_id) {
     if (data_infos.get_url) {

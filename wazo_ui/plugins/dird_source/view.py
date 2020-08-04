@@ -26,7 +26,10 @@ class DirdSourceView(BaseIPBXHelperView):
 
     def _index(self, form=None):
         try:
-            resource_list = self.service.list()
+            resource_list = {"items": []}
+            for source in self.service.list()['items']:
+                source['get_url'] = "{}/".format(source['backend'])
+                resource_list['items'].append(source)
             backend_list = self.service.list_backends()
         except HTTPError as error:
             self._flash_http_error(error)
@@ -148,9 +151,13 @@ class DirdSourceView(BaseIPBXHelperView):
                                current_breadcrumbs=self._get_current_breadcrumbs(),
                                form=form)
 
-    def _get(self, id, form=None):
+    @route('/get/<backend>/<id>')
+    def get(self, backend, id):
+        return self._get(backend, id)
+
+    def _get(self, backend, id, form=None):
         try:
-            resource = self.service.get(id)
+            resource = self.service.get(backend, id)
         except HTTPError as error:
             self._flash_http_error(error)
             return self._redirect_for('index')
@@ -158,7 +165,7 @@ class DirdSourceView(BaseIPBXHelperView):
         form = form or self._map_resources_to_form(resource)
         form = self._populate_form(form)
 
-        return render_template(self._get_template(backend=resource['backend']),
+        return render_template(self._get_template(backend=backend),
                                form=form,
                                resource=resource,
                                current_breadcrumbs=self._get_current_breadcrumbs(),
@@ -181,6 +188,34 @@ class DirdSourceView(BaseIPBXHelperView):
 
         flash('Resource has been created', 'success')
         return self._redirect_for('index')
+
+    @route('/put/<backend>/<id>', methods=['POST'])
+    def put(self, backend, id):
+        form = self.form()
+        if not form.csrf_token.validate(form):
+            self._flash_basic_form_errors(form)
+            return self._get(backend, id, form)
+
+        resources = self._map_form_to_resources_put(form, id)
+        try:
+            self.service.update(resources)
+        except HTTPError as error:
+            form = self._fill_form_error(form, error)
+            self._flash_http_error(error)
+            return self._get(backend, id, form)
+
+        flash(l_('%(resource)s: Resource has been updated', resource=self.resource), 'success')
+        return self._redirect_referrer_or('index')
+
+    @route('/delete/<backend>/<id>', methods=['GET'])
+    def delete(self, backend, id):
+        try:
+            self.service.delete(backend, id)
+            flash(l_('%(resource)s: Resource %(id)s has been deleted', resource=self.resource, id=id), 'success')
+        except HTTPError as error:
+            self._flash_http_error(error)
+
+        return self._redirect_referrer_or('index')
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
