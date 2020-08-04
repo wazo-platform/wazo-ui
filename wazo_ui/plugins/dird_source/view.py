@@ -189,6 +189,24 @@ class DirdSourceView(BaseIPBXHelperView):
         flash('Resource has been created', 'success')
         return self._redirect_for('index')
 
+    @route('/put/<backend>/<id>', methods=['POST'])
+    def put(self, backend, id):
+        form = self.form()
+        if not form.csrf_token.validate(form):
+            self._flash_basic_form_errors(form)
+            return self._get(backend, id, form)
+
+        resources = self._map_form_to_resources_put(form, id)
+        try:
+            self.service.update(resources)
+        except HTTPError as error:
+            form = self._fill_form_error(form, error)
+            self._flash_http_error(error)
+            return self._get(backend, id, form)
+
+        flash(l_('%(resource)s: Resource has been updated', resource=self.resource), 'success')
+        return self._redirect_referrer_or('index')
+
     @route('/delete/<backend>/<id>', methods=['GET'])
     def delete(self, backend, id):
         try:
