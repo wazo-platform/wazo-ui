@@ -67,6 +67,6 @@ class EndpointSIPTemplateForm(BaseForm):
     registration_outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     transport = FormField(TransportForm)
-    template_uuids = SelectMultipleField(l_('Templates'), choices=[])
+    template_uuids = SelectMultipleField(l_('Parent Templates'), choices=[])
     templates = FieldList(FormField(TemplateForm))
     submit = SubmitField()
