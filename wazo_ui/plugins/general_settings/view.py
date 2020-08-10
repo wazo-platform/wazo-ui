@@ -292,4 +292,5 @@ class PJSIPDocListingView(LoginRequiredView):
         doc = self.service.get().get(section, {}).keys()
         term = params.get('search') or ''
         with_id = [{'id': key, 'text': key} for key in doc if term in key]
+        params['limit'] = len(with_id)  # avoid pagination
         return jsonify(build_select2_response(with_id, len(with_id), params))
