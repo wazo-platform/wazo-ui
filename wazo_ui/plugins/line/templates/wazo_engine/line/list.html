@@ -29,7 +29,7 @@
           </td>
           <td>
             {% if line.endpoint_sip %}
-              {{ line.endpoint_sip.username }}
+              {{ line.endpoint_sip.label or '-' }}
             {% elif line.endpoint_custom %}
               {{ line.endpoint_custom.interface }}
             {% endif %}

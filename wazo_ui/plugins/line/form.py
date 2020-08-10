@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
@@ -7,12 +7,20 @@ from wtforms.fields import (
     FormField,
     HiddenField,
     SelectField,
+    SelectMultipleField,
     StringField,
     SubmitField,
 )
 from wtforms.validators import InputRequired, Length
 
 from wazo_ui.helpers.form import BaseForm
+from wazo_ui.plugins.sip_template.form import (
+    BasePJSIPOptionsForm,
+    IdentifyPJSIPOptionsForm,
+    RegistrationPJSIPOptionsForm,
+    TransportForm,
+    TemplateForm,
+)
 
 
 class EnpointCustomForm(BaseForm):
@@ -27,18 +35,23 @@ class OptionsForm(BaseForm):
 
 
 class EnpointSipForm(BaseForm):
-    id = HiddenField()
-    username = StringField(l_('Username'), validators=[InputRequired(), Length(max=40)])
-    secret = StringField(l_('Secret'), validators=[InputRequired(), Length(max=80)])
-    type = SelectField(l_('Type'), choices=[('user', l_('User')), ('peer', l_('Peer')), ('friend', l_('Friend'))])
-    host = SelectField(l_('Host'), validators=[InputRequired(), Length(max=255)],
-                       choices=[('dynamic', l_('Dynamic')), ('static', l_('Static'))])
-    host_value = StringField('', validators=[Length(max=255)])
-    options = FieldList(FormField(OptionsForm))
+    uuid = HiddenField()
+    label = StringField(l_('Label'), validators=[InputRequired(), Length(max=128)])
+    name = StringField(l_('Name'), [Length(max=128)])
+    aor_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    endpoint_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    identify_section_options = FieldList(FormField(IdentifyPJSIPOptionsForm))
+    registration_section_options = FieldList(FormField(RegistrationPJSIPOptionsForm))
+    registration_outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    transport = FormField(TransportForm)
+    template_uuids = SelectMultipleField(l_('Templates'), choices=[])
+    templates = FieldList(FormField(TemplateForm))
 
 
 class LineForm(BaseForm):
-    context = SelectField(l_('Context'), choices=[])
+    context = SelectField(l_('Context'), validators=[InputRequired()], choices=[])
     protocol = SelectField(choices=[('sip', l_('SIP')), ('custom', l_('CUSTOM'))])
     endpoint_sip = FormField(EnpointSipForm)
     endpoint_custom = FormField(EnpointCustomForm)

@@ -87,19 +87,16 @@ class EndpointSIPTemplateView(NewHelperViewMixin, BaseIPBXHelperView):
         ]
 
     def _map_form_to_resources(self, form, form_id=None):
-        data = form.to_dict()
-        if form_id:
-            data['uuid'] = form_id
-
+        resource = super()._map_form_to_resources(form, form_id)
         for section in SECTIONS:
-            data[section] = self._map_options_to_resource(data[section])
+            resource[section] = self._map_options_to_resource(resource[section])
 
-        if not data['transport'].get('uuid'):
-            data['transport'] = None
+        if not resource['transport'].get('uuid'):
+            resource['transport'] = None
 
-        data['templates'] = [{'uuid': template_uuid} for template_uuid in form.template_uuids.data]
+        resource['templates'] = [{'uuid': template_uuid} for template_uuid in form.template_uuids.data]
 
-        return data
+        return resource
 
     def _map_options_to_resource(self, options):
         return [[option['option_key'], option['option_value']] for option in options]
