@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import logging
@@ -290,5 +290,6 @@ class PJSIPDocListingView(LoginRequiredView):
     def list_json_by_section(self, section):
         params = extract_select2_params(request.args)
         doc = self.service.get().get(section, {}).keys()
-        with_id = [{'id': key, 'text': key} for key in doc]
-        return jsonify(build_select2_response(with_id, len(doc), params))
+        term = params.get('search') or ''
+        with_id = [{'id': key, 'text': key} for key in doc if term in key]
+        return jsonify(build_select2_response(with_id, len(with_id), params))
