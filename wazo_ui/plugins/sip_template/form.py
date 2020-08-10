@@ -57,8 +57,10 @@ class RegistrationPJSIPOptionsForm(BasePJSIPOptionsForm):
     )
 
 
-class EndpointSIPTemplateForm(BaseForm):
+class EndpointSIPForm(BaseForm):
+    uuid = HiddenField()
     label = StringField(l_('Label'), [Length(max=128)])
+    name = StringField(l_('Name'), [Length(max=128)])
     aor_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     endpoint_section_options = FieldList(FormField(BasePJSIPOptionsForm))

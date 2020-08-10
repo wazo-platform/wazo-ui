@@ -13,7 +13,7 @@ from wazo_ui.helpers.classful import (
     build_select2_response
 )
 
-from .form import EndpointSIPTemplateForm
+from .form import EndpointSIPForm
 
 SECTIONS = [
     'aor_section_options',
@@ -33,7 +33,7 @@ EXCLUDE_CHOICE_SECTIONS = [
 
 class EndpointSIPTemplateView(NewHelperViewMixin, BaseIPBXHelperView):
 
-    form = EndpointSIPTemplateForm
+    form = EndpointSIPForm
     resource = l_('SIP Template')
 
     @menu_item('.ipbx.sip_templates', l_('SIP Templates'), icon="compress", multi_tenant=True)
