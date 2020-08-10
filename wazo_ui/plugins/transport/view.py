@@ -3,7 +3,15 @@
 
 import logging
 
+from flask import jsonify, request
+
 from flask_babel import lazy_gettext as l_
+
+from wazo_ui.helpers.classful import (
+    LoginRequiredView,
+    extract_select2_params,
+    build_select2_response
+)
 
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView, NewHelperViewMixin
@@ -45,3 +53,12 @@ class TransportView(NewHelperViewMixin, BaseIPBXHelperView):
         data = super()._map_form_to_resources(form, form_id)
         data['options'] = [[opt['option_key'], opt['option_value']] for opt in data['options']]
         return data
+
+
+class TransportDestinationView(LoginRequiredView):
+
+    def list_json(self):
+        params = extract_select2_params(request.args)
+        transports = self.service.list(**params)
+        results = [{'id': t['uuid'], 'text': t['name']} for t in transports['items']]
+        return jsonify(build_select2_response(results, transports['total'], params))
