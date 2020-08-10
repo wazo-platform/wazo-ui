@@ -66,12 +66,6 @@ class UserService(BaseConfdService):
     def list_funckeys(self, user_uuid):
         return self._confd.users(user_uuid).list_funckeys()
 
-    def is_webrtc(self, endpoint_id):
-        endpoint_sip = self._confd.endpoints_sip.get(endpoint_id)
-        if ['webrtc', 'yes'] in endpoint_sip['options']:
-            return True
-        return False
-
     def create(self, user):
         username = user.pop('username')
         password = user.pop('password')
@@ -281,9 +275,6 @@ class UserService(BaseConfdService):
 
     def _update_line_and_associations(self, line):
         if line.get('endpoint_sip'):
-            # If we move from SIP to WEBRTC
-            if 'options' in line['endpoint_sip']:
-                self._update_endoint_sip_webrtc(line['endpoint_sip'])
             self._confd.endpoints_sip.update(line['endpoint_sip'])
 
         if line.get('application', {}).get('uuid'):
@@ -325,11 +316,6 @@ class UserService(BaseConfdService):
 
         self._confd.lines.update(line)
 
-    def _update_endoint_sip_webrtc(self, endpoint_sip):
-        existing_endpoint_sip_options = self._confd.endpoints_sip.get(endpoint_sip)['options']
-        merged_endpoint_sip_options_dict = {**dict(existing_endpoint_sip_options), **dict(endpoint_sip['options'])}
-        endpoint_sip['options'] = [(k, v) for k, v in merged_endpoint_sip_options_dict.items()]
-
     def _is_extension_associated_with_other_lines(self, extension):
         if len(extension['lines']) > 1:
             return True
@@ -363,6 +349,12 @@ class UserService(BaseConfdService):
         result = self._confd.contexts.list(name=context)
         for context in result['items']:
             return context
+
+    def get_endpoint_sip(self, uuid):
+        return self._confd.endpoints_sip.get(uuid)
+
+    def get_sip_template(self, uuid):
+        return self._confd.endpoints_sip_templates.get(uuid)
 
     def get_call_permission(self, id):
         return self._confd.call_permissions.get(id)

@@ -102,6 +102,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         form.music_on_hold.choices = self._build_set_choices_moh(form)
         form.outgoing_caller_id.choices = self._build_set_choices_outgoing_caller_id(form)
         for form_line in form.lines:
+            form_line.template_uuids.choices = self._build_set_choices_templates(form_line)
             form_line.application.form.uuid.choices = self._build_set_choices_application(form_line)
             form_line.registrar.choices = self._build_set_choices_registrar(form_line)
             form_line.device.choices = self._build_set_choices_device(form_line)
@@ -113,6 +114,13 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         form.voicemail.form.id.choices = self._build_set_choices_voicemail(form)
         form.call_permission_ids.choices = self._build_set_choices_callpermissions(form.call_permissions)
         return form
+
+    def _build_set_choices_templates(self, line):
+        results = []
+        for template_uuid in line.template_uuids.data:
+            template = self.service.get_sip_template(template_uuid)
+            results.append((template['uuid'], template['label']))
+        return results
 
     def _build_set_choices_application(self, line):
         application = line.application.form
@@ -193,13 +201,14 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         results = []
         for line in lines:
             name = protocol = 'undefined'
-            endpoint_sip_id = endpoint_sccp_id = endpoint_custom_id = ''
+            endpoint_sip_uuid = endpoint_sccp_id = endpoint_custom_id = ''
+            template_uuids = []
             if line.get('endpoint_sip'):
                 protocol = 'sip'
-                name = line['endpoint_sip']['username']
-                endpoint_sip_id = line['endpoint_sip']['id']
-                if self.service.is_webrtc(endpoint_sip_id):
-                    protocol = 'webrtc'
+                endpoint_sip = self.service.get_endpoint_sip(line['endpoint_sip']['uuid'])
+                name = endpoint_sip['name']
+                template_uuids = [template['uuid'] for template in endpoint_sip['templates']]
+                endpoint_sip_uuid = line['endpoint_sip']['uuid']
             elif line.get('endpoint_sccp'):
                 protocol = 'sccp'
                 name = line['extensions'][0]['exten'] if line['extensions'] else ''
@@ -211,6 +220,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
 
             device = line['device_id'] if line['device_id'] else ''
             results.append({'protocol': protocol,
+                            'template_uuids': template_uuids,
                             'name': name,
                             'device': device,
                             'position': line['position'],
@@ -219,7 +229,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
                             'application': line.get('application'),
                             'registrar': line.get('registrar'),
                             'extensions': line['extensions'],
-                            'endpoint_sip_id': endpoint_sip_id,
+                            'endpoint_sip_uuid': endpoint_sip_uuid,
                             'endpoint_sccp_id': endpoint_sccp_id,
                             'endpoint_custom_id': endpoint_custom_id})
         return results
@@ -267,21 +277,8 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
                       'device_id': line.get('device')}
 
             if line['protocol'] == 'sip':
-                result['endpoint_sip'] = {'id': line['endpoint_sip_id']}
-            elif line['protocol'] == 'webrtc':
-                result['endpoint_sip'] = {
-                    'id': line['endpoint_sip_id'],
-                    'options': [
-                        ('transport', 'transport-wss'),  # TODO(pc-m) use a valid transport of type wss.
-                        ('directmedia', 'no'),
-                        ('dtlsverify', 'no'),
-                        ('dtlscertfile', '/usr/share/xivo-certs/server.crt'),
-                        ('dtlsprivatekey', '/usr/share/xivo-certs/server.key'),
-                        ('nat', 'force_rport,comedia'),
-                        ('webrtc', 'yes'),
-                        ('allow', '!all,opus,g722,alaw,ulaw,vp9,vp8,h264')
-                    ]
-                }
+                templates = [{'uuid': uuid} for uuid in line['template_uuids']]
+                result['endpoint_sip'] = {'uuid': line['endpoint_sip_uuid'], 'templates': templates}
             elif line['protocol'] == 'sccp':
                 result['endpoint_sccp'] = {'id': line['endpoint_sccp_id']}
             elif line['protocol'] == 'custom':
