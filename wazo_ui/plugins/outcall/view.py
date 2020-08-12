@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask import jsonify, request
@@ -59,7 +59,7 @@ class OutcallView(BaseIPBXHelperView):
             else:
                 trunk_data = self.service.get_trunk(trunk.form.id.data)
                 if trunk_data['endpoint_sip']:
-                    results.append((trunk_data['id'], trunk_data['endpoint_sip']['username'] + ' (sip)'))
+                    results.append((trunk_data['id'], trunk_data['endpoint_sip']['label'] + ' (sip)'))
                 elif trunk_data['endpoint_custom']:
                     results.append((trunk_data['id'], trunk_data['endpoint_custom']['interface'] + ' (cus)'))
                 elif trunk_data['endpoint_iax']:
