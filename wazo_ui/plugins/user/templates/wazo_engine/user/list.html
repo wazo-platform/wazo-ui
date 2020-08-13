@@ -45,7 +45,7 @@
                           class_='line-extension',
                           data_allow_custom_values=True,
                           data_listing_href=url_for(listing_urls['available_extension_user'])) }}
-          {{ render_field(form.lines[0].protocol) }}
+          {{ render_field(form.lines[0].protocol, class_='line-protocol') }}
           {{ render_field(form.lines[0].template_uuids,
                           class_='line-template',
                           data_allow_clear='true',

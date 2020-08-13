@@ -277,7 +277,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
                       'device_id': line.get('device')}
 
             if line['protocol'] == 'sip':
-                templates = [{'uuid': uuid} for uuid in line['template_uuids']]
+                templates = [{'uuid': uuid} for uuid in line.get('template_uuids', [])]
                 result['endpoint_sip'] = {'uuid': line['endpoint_sip_uuid'], 'templates': templates}
             elif line['protocol'] == 'sccp':
                 result['endpoint_sccp'] = {'id': line['endpoint_sccp_id']}
