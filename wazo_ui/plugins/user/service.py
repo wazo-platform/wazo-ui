@@ -259,7 +259,8 @@ class UserService(BaseConfdService):
         if 'endpoint_sip' in line:
             # Note(pc-m): This is done here until we find a better solution
             # https://wazo-dev.atlassian.net/browse/WAZO-1912
-            while True:
+            max_retries = 3
+            for n in range(max_retries):
                 name, password = generate_string(), generate_string()
                 endpoint_sip_body = dict(line['endpoint_sip'])
                 endpoint_sip_body['label'] = name
@@ -272,6 +273,8 @@ class UserService(BaseConfdService):
                     endpoint_sip = self._confd.endpoints_sip.create(endpoint_sip_body)
                     break
                 except requests.HTTPError as e:
+                    if n == max_retries - 1:
+                        raise
                     response = getattr(e, 'response', None)
                     status_code = getattr(response, 'status_code', None)
                     if status_code == 400 and '''["Resource Error - SIPEndpoint already exists ('name':''' in response.text:
