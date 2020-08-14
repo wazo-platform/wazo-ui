@@ -2,12 +2,19 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 import logging
+import random
+import string
 
 import requests
 
 from wazo_ui.helpers.service import BaseConfdService
 
 logger = logging.getLogger(__name__)
+ALPHANUMERIC_POOL = string.ascii_lowercase + string.digits
+
+
+def generate_string(length=8):
+    return ''.join(random.choice(ALPHANUMERIC_POOL) for _ in range(length))
 
 
 class UserService(BaseConfdService):
@@ -250,7 +257,27 @@ class UserService(BaseConfdService):
         line['id'] = self._confd.lines.create(line)['id']
 
         if 'endpoint_sip' in line:
-            endpoint_sip = self._confd.endpoints_sip.create(line['endpoint_sip'])
+            # Note(pc-m): This is done here until we find a better solution
+            # https://wazo-dev.atlassian.net/browse/WAZO-1912
+            while True:
+                name, password = generate_string(), generate_string()
+                endpoint_sip_body = dict(line['endpoint_sip'])
+                endpoint_sip_body['label'] = name
+                endpoint_sip_body['name'] = name
+                endpoint_sip_body['auth_section_options'] = [
+                    ['username', name],
+                    ['password', password],
+                ]
+                try:
+                    endpoint_sip = self._confd.endpoints_sip.create(endpoint_sip_body)
+                    break
+                except requests.HTTPError as e:
+                    response = getattr(e, 'response', None)
+                    status_code = getattr(response, 'status_code', None)
+                    if status_code == 400 and '''["Resource Error - SIPEndpoint already exists ('name':''' in response.text:
+                        logger.info('generated a duplicate endpoint_sip name. retrying...')
+                        continue
+                    raise
             if endpoint_sip:
                 self._confd.lines(line).add_endpoint_sip(endpoint_sip)
         elif 'endpoint_sccp' in line:
