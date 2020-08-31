@@ -131,7 +131,7 @@ class TestUserServiceUpdateUserLines(unittest.TestCase):
 
         self.service._update_user_lines(existing_user, user)
 
-        self.confd.endpoints_sip.create.assert_called_once_with({})
+        self.confd.endpoints_sip.create.assert_called_once()
         self.confd.lines.return_value.add_endpoint_sip.assert_called_once_with({'id': 'new-sip-id'})
 
     def test_when_line_and_no_existing_line_with_endpoint_sccp(self):
@@ -312,7 +312,7 @@ class TestUserServiceCreateUserLines(unittest.TestCase):
 
         self.service._create_user_lines(user)
 
-        self.confd.endpoints_sip.create.assert_called_once_with({})
+        self.confd.endpoints_sip.create.assert_called_once()
         self.confd.lines.return_value.add_endpoint_sip.assert_called_once_with({'id': 'new-sip-id'})
 
     def test_when_line_with_endpoint_sccp(self):
