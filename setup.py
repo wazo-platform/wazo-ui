@@ -131,6 +131,7 @@ setup(
             'queue = wazo_ui.plugins.queue.plugin:Plugin',
             'rtp = wazo_ui.plugins.rtp.plugin:Plugin',
             'schedule = wazo_ui.plugins.schedule.plugin:Plugin',
+            'sip_template = wazo_ui.plugins.sip_template.plugin:Plugin',
             'skill = wazo_ui.plugins.skill.plugin:Plugin',
             'skillrule = wazo_ui.plugins.skillrule.plugin:Plugin',
             'sound = wazo_ui.plugins.sound.plugin:Plugin',

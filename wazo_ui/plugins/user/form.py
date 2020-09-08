@@ -1,23 +1,29 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 
 from flask_babel import lazy_gettext as l_
-from wtforms.fields import (BooleanField,
-                            FormField,
-                            FieldList,
-                            FileField,
-                            HiddenField,
-                            SelectField,
-                            SelectMultipleField,
-                            SubmitField,
-                            StringField)
+from wtforms.fields import (
+    BooleanField,
+    FormField,
+    FieldList,
+    FileField,
+    HiddenField,
+    SelectField,
+    SelectMultipleField,
+    SubmitField,
+    StringField,
+)
 from wtforms.fields.html5 import EmailField, IntegerField
 from wtforms.validators import InputRequired, Length, NumberRange
 
 from wazo_ui.helpers.form import BaseForm
 from wazo_ui.helpers.destination import FallbacksForm, DestinationHiddenField
 from wazo_ui.helpers.funckey import FuncKeyDestinationField
+
+
+class TemplateForm(BaseForm):
+    uuid = HiddenField()
 
 
 class ApplicationForm(BaseForm):
@@ -37,14 +43,17 @@ class ImportCSVForm(BaseForm):
 
 class LineForm(BaseForm):
     id = HiddenField()
+    template_uuids = SelectMultipleField(label='Templates', choices=[])
+    templates = FieldList(FormField(TemplateForm))
     context = SelectField(label='Context', choices=[])
-    endpoint_sip_id = HiddenField()
+    endpoint_sip_uuid = HiddenField()
     endpoint_sccp_id = HiddenField()
     endpoint_custom_id = HiddenField()
-    protocol = SelectField(choices=[('sip', l_('SIP')),
-                                    ('sccp', l_('SCCP')),
-                                    ('custom', l_('CUSTOM')),
-                                    ('webrtc', l_('Webrtc'))])
+    protocol = SelectField(choices=[
+        ('sip', l_('SIP')),
+        ('sccp', l_('SCCP')),
+        ('custom', l_('CUSTOM'),)
+    ])
     extensions = FieldList(FormField(ExtensionForm), min_entries=1)
     application = FormField(ApplicationForm)
     registrar = SelectField(choices=[])
