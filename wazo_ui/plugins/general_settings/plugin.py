@@ -10,7 +10,6 @@ from .service import (
     PJSIPDocService,
     PJSIPGlobalSettingsService,
     PJSIPSystemSettingsService,
-    SipGeneralSettingsService,
     IaxGeneralSettingsService,
     SccpGeneralSettingsService,
     VoicemailGeneralSettingsService,
@@ -21,7 +20,6 @@ from .view import (
     PJSIPDocListingView,
     PJSIPGlobalSettingsView,
     PJSIPSystemSettingsView,
-    SipGeneralSettingsView,
     IaxGeneralSettingsView,
     SccpGeneralSettingsView,
     VoicemailGeneralSettingsView,
@@ -48,10 +46,6 @@ class Plugin(object):
         PJSIPSystemSettingsView.service = PJSIPSystemSettingsService(clients['wazo_confd'])
         PJSIPSystemSettingsView.register(general_settings, route_base='/pjsip_system_settings')
         register_flaskview(general_settings, PJSIPSystemSettingsView)
-
-        SipGeneralSettingsView.service = SipGeneralSettingsService(clients['wazo_confd'])
-        SipGeneralSettingsView.register(general_settings, route_base='/sip_general_settings')
-        register_flaskview(general_settings, SipGeneralSettingsView)
 
         IaxGeneralSettingsView.service = IaxGeneralSettingsService(clients['wazo_confd'])
         IaxGeneralSettingsView.register(general_settings, route_base='/iax_general_settings')

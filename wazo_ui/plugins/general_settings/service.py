@@ -39,20 +39,6 @@ class PJSIPSystemSettingsService(object):
         self._confd.pjsip_system.update(pjsip_system)
 
 
-class SipGeneralSettingsService(object):
-
-    def __init__(self, confd_client):
-        self._confd = confd_client
-
-    def get(self):
-        result = self._confd.sip_general.get()
-        result['ordered_options'] = [{'option_key': values[0], 'option_value': values[1]} for values in result['ordered_options']]
-        return result
-
-    def update(self, sip_general):
-        self._confd.sip_general.update(sip_general)
-
-
 class IaxGeneralSettingsService(object):
 
     def __init__(self, confd_client):

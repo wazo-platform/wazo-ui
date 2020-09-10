@@ -31,7 +31,6 @@ from .form import (
     SccpGeneralSettingsForm,
     PJSIPGlobalSettingsForm,
     PJSIPSystemSettingsForm,
-    SipGeneralSettingsForm,
     VoicemailGeneralSettingsForm,
 )
 
@@ -138,30 +137,6 @@ class PJSIPSystemSettingsView(BasePJSIPSettingsView):
     )
     def index(self, form=None):
         return super().index(form)
-
-
-class SipGeneralSettingsView(BaseGeneralSettingsView):
-    form = SipGeneralSettingsForm
-    resource = 'sip_general_settings'
-    settings = 'sip_general'
-
-    @menu_item(
-        '.ipbx.advanced.sip_general_settings',
-        l_('SIP General Settings'),
-        order=4,
-        icon='asterisk',
-    )
-    def index(self, form=None):
-        return super().index(form)
-
-    def _map_form_to_resources(self, form, form_id=None):
-        data = form.to_dict()
-
-        data['ordered_options'] = [[option['option_key'], option['option_value']] for option in data['ordered_options']]
-        data['ordered_options'] += [[option['option_key'], option['option_value']] for option in data['options']]
-
-        data['options'] = {}
-        return data
 
 
 class IaxGeneralSettingsView(BaseGeneralSettingsView):

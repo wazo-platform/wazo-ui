@@ -56,10 +56,6 @@ class GeneralSettingsOptionsForm(BaseForm):
     ordered_options = FieldList(FormField(OptionsForm))
 
 
-class SipGeneralSettingsForm(GeneralSettingsOptionsForm):
-    submit = SubmitField(l_('Submit'))
-
-
 class PJSIPGlobalSettingsForm(BaseForm):
     options = FieldList(FormField(PJSIPGlobalOptionsForm))
     submit = SubmitField(l_('Submit'))
