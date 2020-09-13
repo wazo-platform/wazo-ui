@@ -57,8 +57,15 @@
 
           {% call build_tab_content_item('members') %}
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
-              {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
-              {{ render_field(form.members.users, with_label=False) }}
+	      <div class=col-xs-6>
+                {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+                {{ render_field(form.members.users, with_label=False) }}
+              </div>
+	      <div class=col-xs-6>
+                {% for extension in resource.members.extensions %}
+		  <p>{{ extension['exten'] }}</p>
+                {% endfor %}
+              </div>
             {% endcall %}
           {% endcall %}
 

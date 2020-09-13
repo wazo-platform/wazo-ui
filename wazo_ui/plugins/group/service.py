@@ -43,7 +43,8 @@ class GroupService(BaseConfdExtensionService):
             self._update_callpermissions_relations(group, call_permissions, existing_group)
 
     def _update_members_to_group(self, group, members):
-        return self._confd.groups.relations(group).update_user_members(members.get('users'))
+        self._confd.groups.relations(group).update_user_members(members.get('users'))
+        return self._confd.groups.relations(group).update_extension_members(members.get('extensions'))
 
     def _update_fallbacks_to_group(self, group, fallbacks):
         return self._confd.groups.relations(group).update_fallbacks(fallbacks)
