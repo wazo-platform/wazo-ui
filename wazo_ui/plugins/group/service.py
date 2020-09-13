@@ -26,6 +26,7 @@ class GroupService(BaseConfdExtensionService):
 
     def _update_relations(self, group, existing_group=None):
         members = group.get('members')
+        extensions_members = group.get('extensions_members', list())
         fallbacks = group.get('fallbacks')
         schedules = group.get('schedules')
         call_permissions = group.get('call_permissions')
@@ -42,8 +43,16 @@ class GroupService(BaseConfdExtensionService):
         if call_permissions:
             self._update_callpermissions_relations(group, call_permissions, existing_group)
 
+        self._update_extensions_members_to_group(group, extensions_members)
+
     def _update_members_to_group(self, group, members):
         return self._confd.groups.relations(group).update_user_members(members.get('users'))
+
+    def _update_extensions_members_to_group(self, group, extensions_members):
+        context = group.get('extensions')[0]['context']
+        for index, extension in enumerate(extensions_members):
+            extensions_members[index]['context'] = context
+        return self._confd.groups.relations(group).update_extension_members(extensions_members)
 
     def _update_fallbacks_to_group(self, group, fallbacks):
         return self._confd.groups.relations(group).update_fallbacks(fallbacks)
