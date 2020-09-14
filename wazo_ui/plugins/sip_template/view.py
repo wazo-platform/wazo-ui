@@ -36,7 +36,7 @@ class EndpointSIPTemplateView(NewHelperViewMixin, BaseIPBXHelperView):
     form = EndpointSIPForm
     resource = l_('SIP Template')
 
-    @menu_item('.ipbx.sip_templates', l_('SIP Templates'), icon="compress", multi_tenant=True)
+    @menu_item('.ipbx.advanced.sip_templates', l_('SIP Templates'), icon="compress", multi_tenant=True)
     def index(self):
         return super().index()
 

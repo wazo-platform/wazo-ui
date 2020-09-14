@@ -32,7 +32,8 @@ class MohView(BaseIPBXHelperView):
     form = MohForm
     resource = 'moh'
 
-    @menu_item('.ipbx.moh', l_('Musics'), icon='music', multi_tenant=True)
+    @menu_item('.ipbx.sound_greeting', l_('Sounds & Greetings'), icon='music', multi_tenant=True)
+    @menu_item('.ipbx.sound_greeting.moh', l_('Musics'), icon='music', multi_tenant=True)
     def index(self):
         return super().index()
 

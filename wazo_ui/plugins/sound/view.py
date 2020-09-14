@@ -22,7 +22,7 @@ class SoundView(BaseIPBXHelperView):
     form = SoundForm
     resource = 'sound'
 
-    @menu_item('.ipbx.sound', l_('Sound Files'), icon="file-sound-o", multi_tenant=True)
+    @menu_item('.ipbx.sound_greeting.sound', l_('Sound Files'), icon="file-sound-o", multi_tenant=True)
     def index(self):
         return super().index()
 

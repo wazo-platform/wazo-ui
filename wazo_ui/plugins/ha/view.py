@@ -19,7 +19,7 @@ class HaView(BaseIPBXHelperView):
     form = HaForm
     resource = 'ha'
 
-    @menu_item('.ipbx.network.ha', l_('High Availability'), order=2, icon="balance-scale")
+    @menu_item('.ipbx.global_settings.ha', l_('High Availability'), order=2, icon="balance-scale")
     def index(self):
         try:
             resource = self.service.get()

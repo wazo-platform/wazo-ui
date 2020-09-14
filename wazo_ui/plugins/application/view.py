@@ -21,7 +21,7 @@ class ApplicationView(BaseIPBXHelperView):
     form = ApplicationForm
     resource = 'application'
 
-    @menu_item('.ipbx.applications', l_('Applications'), icon="cubes", multi_tenant=True)
+    @menu_item('.ipbx.services.applications', l_('Applications'), icon="cubes", multi_tenant=True)
     def index(self):
         return super().index()
 

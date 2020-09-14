@@ -21,7 +21,7 @@ class TrunkView(BaseIPBXHelperView):
     form = TrunkForm
     resource = 'trunk'
 
-    @menu_item('.ipbx.trunks', l_('Trunks'), icon="server", multi_tenant=True)
+    @menu_item('.ipbx.call_management.trunks', l_('Trunks'), icon="server", multi_tenant=True)
     def index(self):
         return super().index()
 

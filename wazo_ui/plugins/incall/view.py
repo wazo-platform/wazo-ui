@@ -13,7 +13,8 @@ class IncallView(BaseIPBXHelperView):
     form = IncallForm
     resource = 'incall'
 
-    @menu_item('.ipbx.incalls', l_('Incalls'), icon="long-arrow-right", multi_tenant=True)
+    @menu_item('.ipbx.call_management', l_('Call Management'), order=2, icon="phone", multi_tenant=True)
+    @menu_item('.ipbx.call_management.incalls', l_('Incalls'), order=1, icon="long-arrow-right", multi_tenant=True)
     def index(self):
         return super().index()
 
