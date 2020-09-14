@@ -12,5 +12,4 @@ class GlobalSettingsView(LoginRequiredView):
 
     @menu_item('.ipbx.global_settings', l_('Global Settings'), order=1000, icon="gears", multi_tenant=False)
     def index(self):
-        settings = self.service.list()['items']
         return render_template('wazo_engine/global_settings/index.html')
