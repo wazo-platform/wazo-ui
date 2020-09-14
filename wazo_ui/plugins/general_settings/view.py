@@ -117,7 +117,7 @@ class PJSIPGlobalSettingsView(BasePJSIPSettingsView):
     settings = 'pjsip_global'
 
     @menu_item(
-        '.ipbx.advanced.pjsip_global_settings',
+        '.ipbx.global_settings.pjsip_global_settings',
         l_('PJSIP Global Settings'),
         icon='asterisk',
     )
@@ -131,7 +131,7 @@ class PJSIPSystemSettingsView(BasePJSIPSettingsView):
     settings = 'pjsip_system'
 
     @menu_item(
-        '.ipbx.advanced.pjsip_system_settings',
+        '.ipbx.global_settings.pjsip_system_settings',
         l_('PJSIP System Settings'),
         icon='asterisk',
     )
@@ -145,7 +145,7 @@ class IaxGeneralSettingsView(BaseGeneralSettingsView):
     settings = 'iax_general'
 
     @menu_item(
-        '.ipbx.advanced.iax_general_settings',
+        '.ipbx.global_settings.iax_general_settings',
         l_('IAX General Settings'),
         order=5,
         icon='asterisk',
@@ -170,7 +170,7 @@ class SccpGeneralSettingsView(BaseGeneralSettingsView):
     settings = 'sccp_general'
 
     @menu_item(
-        '.ipbx.advanced.sccp_general_settings',
+        '.ipbx.global_settings.sccp_general_settings',
         l_('SCCP General Settings'),
         order=6,
         icon='asterisk',
@@ -185,7 +185,7 @@ class VoicemailGeneralSettingsView(BaseGeneralSettingsView):
     settings = 'voicemail_general'
 
     @menu_item(
-        '.ipbx.advanced.voicemail_general_settings',
+        '.ipbx.global_settings.voicemail_general_settings',
         l_('Voicemail General Settings'),
         order=7,
         icon='asterisk',
@@ -210,7 +210,7 @@ class FeaturesGeneralSettingsView(BaseGeneralSettingsView):
     settings = 'features_general'
 
     @menu_item(
-        '.ipbx.advanced.features_general_settings',
+        '.ipbx.global_settings.features_general_settings',
         l_('Features General Settings'),
         order=8,
         icon='asterisk',
@@ -239,7 +239,7 @@ class ConfBridgeGeneralSettingsView(BaseGeneralSettingsView):
     settings = 'confbridge_general'
 
     @menu_item(
-        '.ipbx.advanced.confbridge_general_settings',
+        '.ipbx.global_settings.confbridge_general_settings',
         l_('ConfBridge General Settings'),
         order=9,
         icon='asterisk',

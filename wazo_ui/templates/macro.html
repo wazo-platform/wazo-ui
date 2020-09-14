@@ -66,7 +66,7 @@
 {% macro _build_chidren(item, root, current_user) %}
   <ul class="{% if root %}sidebar-menu tree{% else %}treeview-menu{% endif %}"{% if root %}data-widget="tree"{% endif %}>
     {% for i in item.children %}
-      {% if i.children and i.text %}
+      {% if i.children and i.text and i.name != 'global_settings' %}
         {{ _build_menu_chidren(i, current_user) }}
       {% elif i.visible %}
         <li class="{{ 'active' if i.active }} {{ 'multi-tenant' if i.multi_tenant }}">

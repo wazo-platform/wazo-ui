@@ -16,7 +16,7 @@ from wazo_ui.helpers.menu import menu_item
 
 class PluginView(LoginRequiredView):
 
-    @menu_item('.ipbx.plugins', l_('Plugins'), icon="cubes", multi_tenant=False)
+    @menu_item('.ipbx.global_settings.plugins', l_('Plugins'), icon="cubes", multi_tenant=False)
     def index(self):
         return render_template('wazo_engine/plugin/list.html')
 
