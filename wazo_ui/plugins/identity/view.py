@@ -1,9 +1,11 @@
 # Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-from flask import jsonify, request, render_template
+from flask import jsonify, request, render_template, redirect, url_for
 from flask_babel import lazy_gettext as l_
 from flask_classful import route
+
+from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.tenant import refresh_instance_tenants
 from wazo_ui.helpers.classful import (

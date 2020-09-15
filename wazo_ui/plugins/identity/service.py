@@ -128,7 +128,7 @@ class TenantService(BaseAuthService):
         items = list()
         for resource in resources['items']:
             if resource['name'] != 'master':
-               items.append(resource)
+                items.append(resource)
         resources.pop('items')
         resources['items'] = items
         return resources

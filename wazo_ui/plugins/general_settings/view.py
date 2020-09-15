@@ -146,7 +146,7 @@ class IaxGeneralSettingsView(BaseGeneralSettingsView):
 
     @menu_item(
         '.ipbx.global_settings.iax_general_settings',
-        l_('IAX General Settings'),
+        l_('IAX'),
         order=5,
         icon='asterisk',
     )
@@ -171,7 +171,7 @@ class SccpGeneralSettingsView(BaseGeneralSettingsView):
 
     @menu_item(
         '.ipbx.global_settings.sccp_general_settings',
-        l_('SCCP General Settings'),
+        l_('SCCP'),
         order=6,
         icon='asterisk',
     )
@@ -186,9 +186,9 @@ class VoicemailGeneralSettingsView(BaseGeneralSettingsView):
 
     @menu_item(
         '.ipbx.global_settings.voicemail_general_settings',
-        l_('Voicemail General Settings'),
+        l_('Voicemail'),
         order=7,
-        icon='asterisk',
+        icon='envelope',
     )
     def index(self, form=None):
         return super().index(form)
@@ -211,7 +211,7 @@ class FeaturesGeneralSettingsView(BaseGeneralSettingsView):
 
     @menu_item(
         '.ipbx.global_settings.features_general_settings',
-        l_('Features General Settings'),
+        l_('Features Code'),
         order=8,
         icon='asterisk',
     )
@@ -240,9 +240,9 @@ class ConfBridgeGeneralSettingsView(BaseGeneralSettingsView):
 
     @menu_item(
         '.ipbx.global_settings.confbridge_general_settings',
-        l_('ConfBridge General Settings'),
+        l_('Conference'),
         order=9,
-        icon='asterisk',
+        icon='compress',
     )
     def index(self, form=None):
         return super().index(form)

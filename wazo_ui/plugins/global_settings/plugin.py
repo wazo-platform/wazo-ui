@@ -14,7 +14,6 @@ class Plugin(object):
 
     def load(self, dependencies):
         core = dependencies['flask']
-        clients = dependencies['clients']
 
         GlobalSettingsView.register(global_settings, route_base='/global_settings')
         register_flaskview(global_settings, GlobalSettingsView)
