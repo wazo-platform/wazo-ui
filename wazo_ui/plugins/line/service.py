@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from wazo_ui.helpers.service import BaseConfdService
@@ -19,18 +19,24 @@ class LineService(BaseConfdService):
         for context in result['items']:
             return context
 
-    def get_endpoint_sip(self, endpoint_id):
-        return self._confd.endpoints_sip.get(endpoint_id)
+    def get_endpoint_sip(self, endpoint_uuid):
+        return self._confd.endpoints_sip.get(endpoint_uuid)
 
     def get_endpoint_custom(self, endpoint_id):
         return self._confd.endpoints_custom.get(endpoint_id)
+
+    def get_transport(self, uuid):
+        return self._confd.sip_transports.get(uuid)
+
+    def get_sip_template(self, uuid):
+        return self._confd.endpoints_sip_templates.get(uuid)
 
     def create(self, resource):
         resource_created = super().create(resource)
         resource['id'] = resource_created['id']
         if resource.get('endpoint_sip'):
             endpoint_sip = self._confd.endpoints_sip.create(resource['endpoint_sip'])
-            self._confd.lines(resource['id']).add_endpoint_sip(endpoint_sip['id'])
+            self._confd.lines(resource['id']).add_endpoint_sip(endpoint_sip['uuid'])
         if resource.get('endpoint_custom'):
             endpoint_custom = self._confd.endpoints_custom.create(resource['endpoint_custom'])
             self._confd.lines(resource['id']).add_endpoint_custom(endpoint_custom['id'])

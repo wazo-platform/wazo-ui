@@ -1,19 +1,42 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 
-class SipGeneralSettingsService(object):
+class PJSIPDocService(object):
+
+    def __init__(self, confd_client):
+        self._confd = confd_client
+        self._cached_doc = None
+
+    def get(self):
+        if self._cached_doc is None:
+            self._cached_doc = self._confd.pjsip_doc.get()
+
+        return self._cached_doc
+
+
+class PJSIPGlobalSettingsService(object):
 
     def __init__(self, confd_client):
         self._confd = confd_client
 
     def get(self):
-        result = self._confd.sip_general.get()
-        result['ordered_options'] = [{'option_key': values[0], 'option_value': values[1]} for values in result['ordered_options']]
-        return result
+        return self._confd.pjsip_global.get()
 
-    def update(self, sip_general):
-        self._confd.sip_general.update(sip_general)
+    def update(self, pjsip_global):
+        self._confd.pjsip_global.update(pjsip_global)
+
+
+class PJSIPSystemSettingsService(object):
+
+    def __init__(self, confd_client):
+        self._confd = confd_client
+
+    def get(self):
+        return self._confd.pjsip_system.get()
+
+    def update(self, pjsip_system):
+        self._confd.pjsip_system.update(pjsip_system)
 
 
 class IaxGeneralSettingsService(object):

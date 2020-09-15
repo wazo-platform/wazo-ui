@@ -75,6 +75,7 @@ class GroupForm(BaseForm):
     schedules = FieldList(FormField(ScheduleForm), min_entries=1)
     call_permission_ids = SelectMultipleField(l_('Call Permissions'), choices=[])
     call_permissions = FieldList(FormField(CallPermissionForm))
+    mark_answered_elsewhere = BooleanField(l_('Mark all calls as answered elsewhere when cancelled'), default=False)
     submit = SubmitField(l_('Submit'))
 
 

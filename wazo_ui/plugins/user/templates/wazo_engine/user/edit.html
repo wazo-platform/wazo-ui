@@ -49,7 +49,10 @@
               {% call add_default_fields(form=form, submit_value=_('Update')) %}
                 {{ render_field(form.mobile_phone_number) }}
                 {{ render_field(form.ring_seconds) }}
-                {{ render_field(form.music_on_hold, data_listing_href=url_for(listing_urls['moh'])) }}
+                {{ render_field(form.music_on_hold,
+                                data_listing_href=url_for(listing_urls['moh']),
+                                data_allow_clear='true',
+                                data_placeholder='Choose Music on Hold') }}
                 {{ render_field(form.preprocess_subroutine) }}
                 {{ render_field(form.simultaneous_calls) }}
                 {{ render_field(form.timezone) }}
@@ -87,11 +90,13 @@
 
                   {% call build_table_headers() %}
                     <th>{{ _('Protocol') }}</th>
+                    <th>{{ _('Templates') }}</th>
                     <th>{{ _('Name') }}</th>
                     <th>{{ _('Context') }}</th>
                     <th>{{ _('Extension') }}</th>
                     <th style="min-width: 175px">{{ _('Device') }}</th>
                     <th>{{ _('Line (N°)') }}</th>
+                    <th>{{ _('Registrar') }}</th>
                     <th>{{ _('Application') }}</th>
                     <th style="width: 21px"></th>
                   {% endcall %}
@@ -184,12 +189,20 @@
   {% endif %}
   <tr class="{{ tr_class }}">
     {{ render_field(line['id']) }}
-    {{ render_field(line.endpoint_sip_id) }}
+    {{ render_field(line.endpoint_sip_uuid) }}
     {{ render_field(line.endpoint_sccp_id) }}
     {{ render_field(line.endpoint_custom_id) }}
     {{ render_field(line.extensions[0]['id']) }}
     <td>
-      {{ render_field(line.protocol, with_label=False) }}
+      {{ render_field(line.protocol, class_='line-protocol', with_label=False) }}
+    </td>
+    <td>
+      {{ render_field(line.template_uuids,
+                      with_label=False,
+                      class_='line-template',
+                      data_allow_clear='true',
+                      data_listing_href=url_for(listing_urls['sip_template'])) }}
+      {{ render_field(line.templates, with_label=False) }}
     </td>
     <td>
       {{ render_field(line['name'], with_label=False, disabled=True) }}
@@ -218,6 +231,13 @@
     </td>
     <td>
       {{ render_field(line.position, with_label=False) }}
+    </td>
+    <td>
+      {{ render_field(line.registrar,
+                      with_label=False,
+                      class_='line-registrar',
+                      data_allow_clear='true',
+                      data_listing_href=url_for(listing_urls['registrar'])) }}
     </td>
     <td>
       {{ render_field(line.application.uuid,

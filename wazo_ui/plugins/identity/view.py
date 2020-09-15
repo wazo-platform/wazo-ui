@@ -1,9 +1,11 @@
 # Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-from flask import jsonify, request
+from flask import jsonify, request, render_template, redirect, url_for
 from flask_babel import lazy_gettext as l_
 from flask_classful import route
+
+from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.tenant import refresh_instance_tenants
 from wazo_ui.helpers.classful import (
@@ -123,9 +125,25 @@ class TenantView(BaseIPBXHelperView):
     form = TenantForm
     resource = 'tenant'
 
-    @menu_item('.ipbx.identity.tenants', l_('Tenants'), order=3, icon="building")
+    @menu_item('.ipbx.global_settings.tenants', l_('Tenants'), order=3, icon="building")
     def index(self):
         return super().index()
+
+    def _index(self, form=None):
+        try:
+            resource_list = self.service.list()
+        except HTTPError as error:
+            self._flash_http_error(error)
+            return redirect(url_for('admin.Admin:get'))
+
+        form = form or self.form()
+        form = self._populate_form(form)
+
+        return render_template(self._get_template('list'),
+                               form=form,
+                               resource_list=resource_list,
+                               listing_urls=self.listing_urls,
+                               current_breadcrumbs=self._get_current_breadcrumbs())
 
     def post(self):
         result = super().post()

@@ -41,10 +41,14 @@
                               divclass='col-sm-2',
                               class_='queue-exten',
                               data_listing_href=url_for(listing_urls['available_extension_queue'])) }}
-              {{ render_field(form.music_on_hold, data_listing_href=url_for(listing_urls['moh'])) }}
+              {{ render_field(form.music_on_hold,
+                              data_listing_href=url_for(listing_urls['moh']),
+                              data_allow_clear='true',
+                              data_placeholder='Choose Music on Hold') }}
               {{ render_field(form.caller_id_mode) }}
               {{ render_field(form.caller_id_name) }}
               {{ render_field(form.preprocess_subroutine) }}
+              {{ render_field(form.mark_answered_elsewhere) }}
               {{ render_field(form.enabled) }}
 
             {% endcall %}

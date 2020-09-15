@@ -1,13 +1,13 @@
 [Unit]
 Description=wazo-ui
 After=network.target
-Before=monit.service
+StartLimitBurst=15
+StartLimitIntervalSec=150
 
 [Service]
-Type=forking
-ExecStartPre=/usr/bin/install -d -o wazo-ui -g wazo-ui /run/wazo-ui
 ExecStart=/usr/bin/wazo-ui
-PIDFile=/run/wazo-ui/wazo-ui.pid
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

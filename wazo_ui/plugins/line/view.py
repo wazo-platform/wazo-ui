@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask import jsonify, request, render_template
@@ -12,6 +12,8 @@ from wazo_ui.helpers.classful import (
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
 
+from wazo_ui.plugins.sip_template.view import SECTIONS, EXCLUDE_CHOICE_SECTIONS
+
 from .form import LineForm
 
 
@@ -19,7 +21,7 @@ class LineView(BaseIPBXHelperView):
     form = LineForm
     resource = 'line'
 
-    @menu_item('.ipbx.lines', l_('Lines'), icon="exchange", multi_tenant=True)
+    @menu_item('.ipbx.user_management.lines', l_('Lines'), order=3, icon="exchange", multi_tenant=True)
     def index(self):
         return super().index()
 
@@ -35,30 +37,48 @@ class LineView(BaseIPBXHelperView):
         endpoint_sip = endpoint_custom = protocol = None
         if resource['endpoint_sip']:
             protocol = 'sip'
-            endpoint_sip = self.service.get_endpoint_sip(resource['endpoint_sip']['id'])
-            if endpoint_sip['host'] != 'dynamic':
-                endpoint_sip['host_value'] = endpoint_sip['host']
-                endpoint_sip['host'] = 'static'
-            endpoint_sip['options'] = self._build_sip_options(endpoint_sip['options'])
+            endpoint_sip = self.service.get_endpoint_sip(resource['endpoint_sip']['uuid'])
+
+            choices = []
+            for section in SECTIONS:
+                for key, _ in endpoint_sip[section]:
+                    choices.append((key, key))
+
+                endpoint_sip[section] = self._build_options(endpoint_sip[section])
+
+            endpoint_sip['template_uuids'] = [template['uuid'] for template in endpoint_sip['templates']]
+
         elif resource['endpoint_custom']:
             protocol = 'custom'
             endpoint_custom = self.service.get_endpoint_custom(resource['endpoint_custom']['id'])
-        form = self.form(data=resource,
-                         protocol=protocol,
-                         endpoint_sip=endpoint_sip,
-                         endpoint_custom=endpoint_custom)
+
+        form = self.form(
+            data=resource,
+            protocol=protocol,
+            endpoint_sip=endpoint_sip,
+            endpoint_custom=endpoint_custom,
+        )
+
+        if resource['endpoint_sip']:
+            for section in SECTIONS:
+                if section in EXCLUDE_CHOICE_SECTIONS:
+                    continue
+
+                for option in getattr(form.endpoint_sip, section):
+                    option.option_key.choices = choices
+
         return form
 
-    def _build_sip_options(self, options):
-        result = []
-        for option in options:
-            result.append({'option_key': option[0],
-                           'option_value': option[1]})
-
-        return result
+    def _build_options(self, options):
+        return [
+            {'option_key': option_key, 'option_value': option_value}
+            for option_key, option_value in options
+        ]
 
     def _populate_form(self, form):
         form.context.choices = self._build_set_choices_context(form.context)
+        form.endpoint_sip.transport.form.uuid.choices = self._build_set_choices_transport(form.endpoint_sip)
+        form.endpoint_sip.template_uuids.choices = self._build_set_choices_templates(form.endpoint_sip.templates)
         return form
 
     def _build_set_choices_context(self, context_form):
@@ -71,29 +91,45 @@ class LineView(BaseIPBXHelperView):
 
         return [(context_form.data, context_form.data)]
 
+    def _build_set_choices_transport(self, sip):
+        transport_uuid = sip.transport.form.uuid.data
+        if not transport_uuid or transport_uuid == 'None':
+            return []
+        transport = self.service.get_transport(transport_uuid)
+        return [(transport['uuid'], transport['name'])]
+
+    def _build_set_choices_templates(self, templates):
+        results = []
+        for template in templates:
+            template = self.service.get_sip_template(template.uuid.data)
+            results.append((template['uuid'], template['label']))
+        return results
+
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('line', {}))
         return form
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
-        if 'username' in resource['endpoint_sip']:
-            resource = self._map_form_to_resource_sip_options(form, resource)
-            if resource['endpoint_sip']['host'] == 'static':
-                resource['endpoint_sip']['host'] = form.endpoint_sip.host_value.data
+        if resource['endpoint_sip'] is not None:
+            sip = resource['endpoint_sip']
+            for section in SECTIONS:
+                sip[section] = self._map_options_to_resource(sip[section])
+
+            if not sip['transport'].get('uuid'):
+                sip['transport'] = None
+
+            template_uuids = form.endpoint_sip.template_uuids.data
+            sip['templates'] = [{'uuid': template_uuid} for template_uuid in template_uuids]
+
             del resource['endpoint_custom']
-        elif 'interface' in resource['endpoint_custom']:
+        elif resource['endpoint_custom'] is not None:
             del resource['endpoint_sip']
 
         return resource
 
-    def _map_form_to_resource_sip_options(self, form, resource):
-        options = []
-        for option in resource['endpoint_sip']['options']:
-            options.append([option['option_key'], option['option_value']])
-
-        resource['endpoint_sip']['options'] = options
-        return resource
+    def _map_options_to_resource(self, options):
+        return [[option['option_key'], option['option_value']] for option in options]
 
 
 class LineListingView(LoginRequiredView):
@@ -110,6 +146,6 @@ class LineListingView(LoginRequiredView):
             if line.get('endpoint_custom'):
                 text = '{} ({})'.format(line['endpoint_custom']['interface'], 'custom')
             if line.get('endpoint_sip'):
-                text = '{} ({})'.format(line['endpoint_sip']['username'], 'sip')
+                text = '{} ({})'.format(line['endpoint_sip']['label'], 'sip')
             results.append({'id': line['id'], 'text': text})
         return results

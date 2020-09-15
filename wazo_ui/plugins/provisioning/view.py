@@ -38,8 +38,7 @@ class ProvisioningBaseView(BaseIPBXHelperView):
 class PluginView(ProvisioningBaseView):
     resource = 'plugin'
 
-    @menu_item('.ipbx.provisionings', l_('Provisioning'), icon="retweet")
-    @menu_item('.ipbx.provisionings.plugins', l_('Plugins'), order=1, icon="file-code-o")
+    @menu_item('.ipbx.global_settings.provisioning_plugins', l_('Devices Plugins'), order=1, icon="file-code-o")
     def index(self):
         return super().index()
 
@@ -145,7 +144,7 @@ class ConfigRegistrarView(ProvisioningBaseView):
     form = ConfigRegistrarForm
     resource = 'config_registrar'
 
-    @menu_item('.ipbx.provisionings.configs', l_('Registrars'), order=2, icon="file-o")
+    @menu_item('.ipbx.global_settings.provisioning_configs', l_('Provisioning Registrars'), order=2, icon="file-o")
     def index(self):
         return super().index()
 
@@ -170,7 +169,7 @@ class ConfigDeviceView(ProvisioningBaseView):
     form = ConfigDeviceForm
     resource = 'config_device'
 
-    @menu_item('.ipbx.provisionings.devices', l_('Config device'), order=3, icon="file-zip-o")
+    @menu_item('.ipbx.global_settings.provisioning_devices', l_('Provisioning Config device'), order=3, icon="file-zip-o")
     def index(self):
         return super().index()
 
@@ -196,8 +195,8 @@ class ConfigurationView(ProvisioningBaseView):
     resource = 'configuration'
 
     @menu_item(
-        '.ipbx.provisionings.configuration',
-        l_('Configuration'),
+        '.ipbx.global_settings.provisioning_configuration',
+        l_('Provisioning Configuration'),
         order=4,
         icon="gears",
     )
@@ -256,3 +255,15 @@ class ConfigDeviceListingView(LoginRequiredView):
         configs = self.service.list_device(**params)
         results = [{'id': config['id'], 'text': config['label']} for config in configs['items']]
         return jsonify(build_select2_response(results, configs['total'], params))
+
+
+class ConfigRegistrarListingView(LoginRequiredView):
+
+    def list_json(self):
+        params = extract_select2_params(request.args)
+        registrars = self.service.list()
+        results = []
+        for registrar in registrars['items']:
+            results.append({'id': registrar['id'], 'text': registrar['name']})
+
+        return jsonify(build_select2_response(results, registrars['total'], params))

@@ -12,6 +12,7 @@
       {% call build_list_table() %}
         {% call build_list_table_headers(get=url_for('.TrunkView:get', id=''), delete=url_for('.TrunkView:delete', id='')) %}
           <th width="75">{{ _('Protocol') }}</th>
+          <th>{{ _('Label') }}</th>
           <th>{{ _('Name') }}</th>
           <th>{{ _('Relations') }}</th>
         {% endcall %}
@@ -25,6 +26,11 @@
               CUSTOM
             {% else %}
               -
+            {% endif %}
+          </td>
+          <td>
+            {% if trunk.endpoint_sip %}
+              {{ trunk.endpoint_sip.label }}
             {% endif %}
           </td>
           <td>

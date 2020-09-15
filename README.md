@@ -39,42 +39,55 @@ amid:
   host: <your_engine_ip_or_dns>
   port: 443
   prefix: /api/amid
+  https: true
   verify_certificate: false
 auth:
   host: <your_engine_ip_or_dns>
   port: 443
   timeout: 30
   prefix: /api/auth
+  https: true
   verify_certificate: false
 call-logd:
   host: <your_engine_ip_or_dns>
   port: 443
   prefix: /api/call-logd
+  https: true
   verify_certificate: false
 confd:
   host: <your_engine_ip_or_dns>
   port: 443
   prefix: /api/confd
+  https: true
   verify_certificate: false
 dird:
   host: <your_engine_ip_or_dns>
   port: 443
   prefix: /api/dird
+  https: true
   verify_certificate: false
 plugind:
   host: <your_engine_ip_or_dns>
   port: 443
   prefix: /api/plugind
+  https: true
   verify_certificate: false
 provd:
   host: <your_engine_ip_or_dns>
   port: 443
   prefix: /api/provd
+  https: true
   verify_certificate: false
 webhookd:
   host: <your_engine_ip_or_dns>
   port: 443
   prefix: /api/webhookd
+  https: true
+  verify_certificate: false
+websocketd:
+  host: <your_engine_ip_or_dns>
+  port: 443
+  prefix: /api/websocketd
   verify_certificate: false
 ```
 

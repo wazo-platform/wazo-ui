@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import argparse
@@ -11,56 +11,69 @@ _DEFAULT_CONFIG = {
     'config_file': '/etc/wazo-ui/config.yml',
     'extra_config_files': '/etc/wazo-ui/conf.d',
     'debug': False,
-    'foreground': False,
     'log_level': 'info',
     'log_filename': '/var/log/wazo-ui.log',
-    'pid_filename': '/run/wazo-ui/wazo-ui.pid',
     'session_lifetime': 60 * 60 * 8,
-    'https': {
-        'listen': '0.0.0.0',
+    'http': {
+        'listen': '127.0.0.1',
         'port': 9296,
-        'certificate': '/usr/share/xivo-certs/server.crt',
-        'private_key': '/usr/share/xivo-certs/server.key',
+        'certificate': None,
+        'private_key': None,
     },
     'amid': {
         'host': 'localhost',
         'port': 9491,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'auth': {
         'host': 'localhost',
         'port': 9497,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'call-logd': {
         'host': 'localhost',
         'port': 9298,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'confd': {
         'host': 'localhost',
         'port': 9486,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'dird': {
         'host': 'localhost',
         'port': 9489,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'plugind': {
         'host': 'localhost',
         'port': 9503,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'provd': {
         'host': 'localhost',
         'port': 8666,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
     },
     'webhookd': {
         'host': 'localhost',
         'port': 9300,
-        'verify_certificate': '/usr/share/xivo-certs/server.crt',
+        'prefix': None,
+        'https': False,
+    },
+    # Information for websocketd are used by the client browser
+    'websocketd': {
+        'host': None,
+        'port': 443,
+        'prefix': '/api/websocketd',
+        'verify_certificate': False,
     },
     'enabled_plugins': {
         'access_feature': True,
@@ -84,6 +97,7 @@ _DEFAULT_CONFIG = {
         'funckey': True,
         'general_settings': True,
         'group': True,
+        'global_settings': True,
         'ha': True,
         'hep': True,
         'identity': True,
@@ -99,10 +113,12 @@ _DEFAULT_CONFIG = {
         'queue': True,
         'rtp': True,
         'schedule': True,
+        'sip_template': True,
         'skill': True,
         'skillrule': True,
         'sound': True,
         'switchboard': True,
+        'transport': True,
         'trunk': True,
         'user': True,
         'voicemail': True,
@@ -121,10 +137,6 @@ def _parse_cli_args(argv):
                         '--debug',
                         action='store_true',
                         help='Log debug messages. Default %(default)s')
-    parser.add_argument('-f',
-                        '--foreground',
-                        action='store_true',
-                        help="Foreground, don't daemonize. Default %(default)s")
     parser.add_argument('-l',
                         '--log-level',
                         action='store',
@@ -141,8 +153,6 @@ def _parse_cli_args(argv):
         result['config_file'] = parsed_args.config_file
     if parsed_args.debug:
         result['debug'] = parsed_args.debug
-    if parsed_args.foreground:
-        result['foreground'] = parsed_args.foreground
     if parsed_args.log_level:
         result['log_level'] = parsed_args.log_level
     if parsed_args.user:

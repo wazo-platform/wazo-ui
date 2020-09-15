@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import requests
@@ -57,5 +57,6 @@ class LoginForm(FlaskForm):
 
         self.user = UserUI(response['token'], response['auth_id'])
         self.user.set_tenant(response['metadata']['tenant_uuid'])
+        self.user.set_instance_config(app.config)
 
         return True

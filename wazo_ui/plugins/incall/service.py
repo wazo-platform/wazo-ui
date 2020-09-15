@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from wazo_ui.helpers.extension import BaseConfdExtensionService
@@ -38,3 +38,6 @@ class IncallService(BaseConfdExtensionService):
 
             if schedules[0].get('id'):
                 self._confd.incalls(incall).add_schedule(schedules[0])
+
+    def list_sound(self):
+        return self._confd.sounds.list()

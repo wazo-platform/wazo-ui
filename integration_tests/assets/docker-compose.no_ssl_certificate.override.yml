@@ -1,9 +1,0 @@
-version: '3'
-services:
-  sync:
-    depends_on:
-      - wazo-ui
-
-  wazo-ui:
-    volumes:
-      - "./etc/wazo-ui/conf.d/no-ssl-certificate.yml:/etc/wazo-ui/conf.d/02-no-ssl-certificate.yml"

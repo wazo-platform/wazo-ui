@@ -7,9 +7,9 @@
   {% set submit_value = _('Add') %}
   {% set breadcrumb = { 'name': _('Add Conference source'), 'icon': 'address-book' } %}
 {% else %}
-  {% set url_action = url_for('.DirdSourceView:put', id=resource.uuid) %}
+  {% set url_action = url_for('.DirdSourceView:put', backend=backend, id=resource.uuid) %}
   {% set submit_value = _('Edit') %}
-  {% set breadcrumb = { 'name': resource.name, 'link': url_for('.DirdSourceView:get', id=resource.uuid), 'icon': 'address-book' } %}
+  {% set breadcrumb = { 'name': resource.name, 'link': url_for('.DirdSourceView:get', backend=backend, id=resource.uuid), 'icon': 'address-book' } %}
 {% endif %}
 
 {% block content_header %}
@@ -38,6 +38,8 @@
               <h4>Authentication</h4>
               {{ render_field(form.conference_config.auth.host) }}
               {{ render_field(form.conference_config.auth.port) }}
+              {{ render_field(form.conference_config.auth.prefix_) }}
+              {{ render_field(form.conference_config.auth.https, class_="auth_https") }}
               {{ render_field(form.conference_config.auth.verify_certificate, class_="auth_verify_certificate") }}
               {{ render_field(form.conference_config.auth.certificate_path, class_="auth_certificate_path") }}
               {{ render_field(form.conference_config.auth.timeout) }}
@@ -49,9 +51,10 @@
               <h4>Confd</h4>
               {{ render_field(form.conference_config.confd.host) }}
               {{ render_field(form.conference_config.confd.port) }}
+              {{ render_field(form.conference_config.confd.prefix_) }}
+              {{ render_field(form.conference_config.confd.https, class_="confd_https") }}
               {{ render_field(form.conference_config.confd.verify_certificate, class_="confd_verify_certificate") }}
               {{ render_field(form.conference_config.confd.certificate_path, class_="confd_certificate_path") }}
-              {{ render_field(form.conference_config.confd.https) }}
               {{ render_field(form.conference_config.confd.timeout) }}
               {{ render_field(form.conference_config.confd.version) }}
             {% endcall %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Global Settings'), 'link': url_for('.GlobalSettingsView:index'), 'icon': 'gears' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Global Settings'), '', 'gears') }}
+
+      <br>
+      <br>
+      <br>
+      {%- for item in current_menu.submenu('.ipbx.global_settings').children recursive -%}
+        {{ _build_global_section(item) }}
+      {%- endfor -%}
+      {% endcall %}
+
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_global_section(item) %}
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-gray">
+        <i class="fa fa-{{ item.icon if item.icon else 'windows' }}"></i>
+      </span>
+      <div class="info-box-content">
+        <a href="{{ item.url }}">
+          <span class="info-box-text">{{ item.text }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endmacro %}

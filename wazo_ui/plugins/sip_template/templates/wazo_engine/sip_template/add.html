@@ -1,0 +1,254 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumb(_('SIP Template'), '', 'navicon', [_('List')]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {{ add_tab_navigation_item('aor_section_options', _('AOR')) }}
+        {{ add_tab_navigation_item('auth_section_options', _('Authentication')) }}
+        {{ add_tab_navigation_item('endpoint_section_options', _('Endpoint')) }}
+        {{ add_tab_navigation_item('identify_section_options', _('Identify')) }}
+        {{ add_tab_navigation_item('registration_section_options', _('Registration')) }}
+        {{ add_tab_navigation_item('registration_outbound_auth_section_options', _('Registration Outbound Auth')) }}
+        {{ add_tab_navigation_item('outbound_auth_section_options', _('Outbound Auth')) }}
+      {% endcall %}
+    {% call build_form(action=url_for('.EndpointSIPTemplateView:post')) %}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.label) }}
+              {{ render_field(form.transport.uuid,
+                              data_listing_href=url_for(listing_urls['transport']),
+                              data_allow_clear='true',
+                              data_placeholder=_('Choose Transport')) }}
+              {{ render_field(form.template_uuids,
+                              data_listing_href=url_for(listing_urls['sip_template']),
+                              data_allow_clear='true',
+                              data_placeholder=_('Choose Templates')) }}
+              {{ render_field(form.templates, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('aor_section_options') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Option Key') }}</th>
+                  <th>{{  _('Option Value') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.aor_section_options.append_entry() %}
+                  {{ _build_option_entry(form.aor_section_options.pop_entry(), 'aor', template=True) }}
+
+                  {% for option in form.aor_section_options %}
+                    {{ _build_option_entry(option, 'aor') }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('auth_section_options') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Option Key') }}</th>
+                  <th>{{  _('Option Value') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.auth_section_options.append_entry() %}
+                  {{ _build_option_entry(form.auth_section_options.pop_entry(), 'auth', template=True) }}
+
+                  {% for option in form.auth_section_options %}
+                    {{ _build_option_entry(option, 'auth') }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('endpoint_section_options') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Option Key') }}</th>
+                  <th>{{  _('Option Value') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.endpoint_section_options.append_entry() %}
+                  {{ _build_option_entry(form.endpoint_section_options.pop_entry(), 'endpoint', template=True) }}
+
+                  {% for option in form.endpoint_section_options %}
+                    {{ _build_option_entry(option, 'endpoint') }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('identify_section_options') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Option Key') }}</th>
+                  <th>{{  _('Option Value') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.identify_section_options.append_entry() %}
+                  {{ _build_option_entry(form.identify_section_options.pop_entry(), template=True) }}
+
+                  {% for option in form.identify_section_options %}
+                    {{ _build_option_entry(option) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('registration_section_options') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Option Key') }}</th>
+                  <th>{{  _('Option Value') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.registration_section_options.append_entry() %}
+                  {{ _build_option_entry(form.registration_section_options.pop_entry(), template=True) }}
+
+                  {% for option in form.registration_section_options %}
+                    {{ _build_option_entry(option) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('registration_outbound_auth_section_options') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Option Key') }}</th>
+                  <th>{{  _('Option Value') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.registration_outbound_auth_section_options.append_entry() %}
+                  {{ _build_option_entry(form.registration_outbound_auth_section_options.pop_entry(), 'auth', template=True) }}
+
+                  {% for option in form.registration_outbound_auth_section_options %}
+                    {{ _build_option_entry(option, 'auth') }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('outbound_auth_section_options') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Option Key') }}</th>
+                  <th>{{  _('Option Value') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.outbound_auth_section_options.append_entry() %}
+                  {{ _build_option_entry(form.outbound_auth_section_options.pop_entry(), 'auth', template=True) }}
+
+                  {% for option in form.outbound_auth_section_options %}
+                    {{ _build_option_entry(option, 'auth') }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
+
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  {% endcall %}
+{% endblock %}
+
+
+{% macro _build_option_entry(option, section=None, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+  {% if section %}
+    <td>{{ render_field(
+      option.option_key,
+      with_label=False,
+      inputclass='ui-helper-clearfix',
+      data_listing_href=url_for(listing_urls['pjsip_doc'], section=section),
+    ) }}</td>
+  {% else %}
+    <td>{{ render_field(option.option_key, with_label=False, inputclass='ui-helper-clearfix') }}</td>
+  {% endif %}
+    <td>{{ render_field(option.option_value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

@@ -13,7 +13,7 @@ class ParkingLotView(BaseIPBXHelperView):
     form = ParkingLotForm
     resource = 'parking_lot'
 
-    @menu_item('.ipbx.parkinglots', l_('Parking Lots'), icon="automobile", multi_tenant=True)
+    @menu_item('.ipbx.services.parkinglots', l_('Parking Lots'), icon="automobile", multi_tenant=True)
     def index(self):
         return super().index()
 
@@ -37,3 +37,8 @@ class ParkingLotView(BaseIPBXHelperView):
         form.populate_errors(resources.get('parking_lot', {}))
         form.extensions[0].populate_errors(resources.get('extension', {}))
         return form
+
+    def _map_form_to_resources(self, form, form_id=None):
+        resource = super()._map_form_to_resources(form, form_id)
+        resource['music_on_hold'] = form.music_on_hold.data or None
+        return resource

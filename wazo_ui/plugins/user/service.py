@@ -1,13 +1,20 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import logging
+import random
+import string
 
 import requests
 
 from wazo_ui.helpers.service import BaseConfdService
 
 logger = logging.getLogger(__name__)
+ALPHANUMERIC_POOL = string.ascii_lowercase + string.digits
+
+
+def generate_string(length=8):
+    return ''.join(random.choice(ALPHANUMERIC_POOL) for _ in range(length))
 
 
 class UserService(BaseConfdService):
@@ -19,15 +26,16 @@ class UserService(BaseConfdService):
 
     def get(self, resource_id):
         resource = super().get(resource_id)
-        call_permissions = self._confd.users(resource_id).list_call_permissions()
         wazo_user = dict()
+
         try:
             wazo_user = self._auth.users.get(resource_id)
             resource['username'] = wazo_user['username']
             resource['auth_enabled'] = wazo_user['enabled']
         except:
             pass
-        resource['call_permissions'] = self._build_call_permissions_list(call_permissions['items'])
+
+        resource['call_permissions'] = self._build_call_permissions_list(resource['call_permissions'])
         return resource
 
     def import_csv(self, form):
@@ -46,11 +54,7 @@ class UserService(BaseConfdService):
     def _build_call_permissions_list(self, call_permissions):
         result = []
         for call_permission in call_permissions:
-            call_permission_data = self.get_call_permission(call_permission['call_permission_id'])
-            result.append({
-                'id': call_permission['call_permission_id'],
-                'name': call_permission_data['name']
-            })
+            result.append({'id': call_permission['id'], 'name': call_permission['name']})
         return result
 
     def list(self, limit=None, order=None, direction=None, offset=None, search=None):
@@ -69,14 +73,11 @@ class UserService(BaseConfdService):
     def get_device(self, device_id):
         return self._confd.devices.get(device_id)
 
+    def get_registrar(self, registrar_id):
+        return self._confd.registrars.get(registrar_id)
+
     def list_funckeys(self, user_uuid):
         return self._confd.users(user_uuid).list_funckeys()
-
-    def is_webrtc(self, endpoint_id):
-        endpoint_sip = self._confd.endpoints_sip.get(endpoint_id)
-        if ['transport', 'wss'] in endpoint_sip['options']:
-            return True
-        return False
 
     def create(self, user):
         username = user.pop('username')
@@ -185,9 +186,9 @@ class UserService(BaseConfdService):
 
     def _update_callpermissions(self, existing_user, user):
         if existing_user:
-            existing_call_permissions = self._confd.users(existing_user).list_call_permissions()
-            for existing_call_permission in existing_call_permissions['items']:
-                self._confd.users(existing_user).remove_call_permission(existing_call_permission['call_permission_id'])
+            existing_call_permissions = self._confd.users.get(existing_user)['call_permissions']
+            for existing_call_permission in existing_call_permissions:
+                self._confd.users(existing_user).remove_call_permission(existing_call_permission['id'])
 
         for call_permission in user['call_permissions']:
             self._confd.users(user).add_call_permission(call_permission['id'])
@@ -207,9 +208,9 @@ class UserService(BaseConfdService):
 
     def _update_user_lines(self, existing_user, user):
         lines = user.get('lines', [])
-        line_ids = set([l.get('id') for l in lines])
+        line_ids = set([line.get('id') for line in lines])
         existing_lines = existing_user['lines']
-        existing_line_ids = set([l['id'] for l in existing_lines])
+        existing_line_ids = set([line['id'] for line in existing_lines])
         extensions_to_remove = []
 
         line_ids_to_remove = existing_line_ids - line_ids
@@ -269,7 +270,30 @@ class UserService(BaseConfdService):
         line['id'] = self._confd.lines.create(line)['id']
 
         if 'endpoint_sip' in line:
-            endpoint_sip = self._confd.endpoints_sip.create(line['endpoint_sip'])
+            # Note(pc-m): This is done here until we find a better solution
+            # https://wazo-dev.atlassian.net/browse/WAZO-1912
+            max_retries = 3
+            for n in range(max_retries):
+                name, password = generate_string(), generate_string()
+                endpoint_sip_body = dict(line['endpoint_sip'])
+                endpoint_sip_body['label'] = name
+                endpoint_sip_body['name'] = name
+                endpoint_sip_body['auth_section_options'] = [
+                    ['username', name],
+                    ['password', password],
+                ]
+                try:
+                    endpoint_sip = self._confd.endpoints_sip.create(endpoint_sip_body)
+                    break
+                except requests.HTTPError as e:
+                    if n == max_retries - 1:
+                        raise
+                    response = getattr(e, 'response', None)
+                    status_code = getattr(response, 'status_code', None)
+                    if status_code == 400 and '''["Resource Error - SIPEndpoint already exists ('name':''' in response.text:
+                        logger.info('generated a duplicate endpoint_sip name. retrying...')
+                        continue
+                    raise
             if endpoint_sip:
                 self._confd.lines(line).add_endpoint_sip(endpoint_sip)
         elif 'endpoint_sccp' in line:
@@ -294,9 +318,6 @@ class UserService(BaseConfdService):
 
     def _update_line_and_associations(self, line):
         if line.get('endpoint_sip'):
-            # If we move from SIP to WEBRTC
-            if 'options' in line['endpoint_sip']:
-                self._update_endoint_sip_webrtc(line['endpoint_sip'])
             self._confd.endpoints_sip.update(line['endpoint_sip'])
 
         if line.get('application', {}).get('uuid'):
@@ -338,11 +359,6 @@ class UserService(BaseConfdService):
 
         self._confd.lines.update(line)
 
-    def _update_endoint_sip_webrtc(self, endpoint_sip):
-        existing_endpoint_sip_options = self._confd.endpoints_sip.get(endpoint_sip)['options']
-        merged_endpoint_sip_options_dict = {**dict(existing_endpoint_sip_options), **dict(endpoint_sip['options'])}
-        endpoint_sip['options'] = [(k, v) for k, v in merged_endpoint_sip_options_dict.items()]
-
     def _is_extension_associated_with_other_lines(self, extension):
         if len(extension['lines']) > 1:
             return True
@@ -376,6 +392,12 @@ class UserService(BaseConfdService):
         result = self._confd.contexts.list(name=context)
         for context in result['items']:
             return context
+
+    def get_endpoint_sip(self, uuid):
+        return self._confd.endpoints_sip.get(uuid)
+
+    def get_sip_template(self, uuid):
+        return self._confd.endpoints_sip_templates.get(uuid)
 
     def get_call_permission(self, id):
         return self._confd.call_permissions.get(id)

@@ -40,7 +40,7 @@ class AsteriskCliView(BaseIPBXHelperView):
     form = AsteriskCliForm
     resource = 'asterisk_cli'
 
-    @menu_item('.ipbx.advanced.asterisk_cli', 'Asterisk CLI', icon="terminal")
+    @menu_item('.ipbx.global_settings.asterisk_cli', 'Asterisk CLI', icon="terminal")
     def index(self):
         return render_template(self._get_template('list'), form=self._populate_form(self.form()))
 

@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask import jsonify, request
@@ -17,11 +17,11 @@ from .form import ConferenceForm
 
 class ConferenceView(BaseIPBXHelperView):
 
-    resource_name = 'conference'
     form = ConferenceForm
     resource = l_('conference')
 
-    @menu_item('.ipbx.conferences', l_('Conferences'), icon="compress", multi_tenant=True)
+    @menu_item('.ipbx.services', l_('Services'), icon="star", multi_tenant=True)
+    @menu_item('.ipbx.services.conferences', l_('Conferences'), icon="compress", multi_tenant=True)
     def index(self):
         return super().index()
 
@@ -51,6 +51,15 @@ class ConferenceView(BaseIPBXHelperView):
         if not moh.data or moh.data == 'None':
             return []
         return [(moh.data, moh.data)]
+
+    def _map_form_to_resources(self, form, form_id=None):
+        resource = form.to_dict()
+        if form_id:
+            resource['uuid'] = form_id
+
+        resource['music_on_hold'] = form.music_on_hold.data or None
+
+        return resource
 
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('conference', {}))

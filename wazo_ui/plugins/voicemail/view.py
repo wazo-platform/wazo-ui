@@ -19,7 +19,7 @@ class VoicemailView(BaseIPBXHelperView):
     form = VoicemailForm
     resource = 'voicemail'
 
-    @menu_item('.ipbx.voicemails', l_('Voicemails'), icon="envelope", multi_tenant=True)
+    @menu_item('.ipbx.user_management.voicemails', l_('Voicemails'), order=5, icon="envelope", multi_tenant=True)
     def index(self):
         return super().index()
 

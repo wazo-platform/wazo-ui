@@ -1,8 +1,12 @@
-*.egg-info/
+*.egg-info
 *.mo
 *.pyc
 *.pyo
+.coverage
 .eggs
 .tox
-*~
-__pycache__
+*.swp
+coverage.xml
+pycodestyle.txt
+pylint.txt
+unit-tests.xml

@@ -1,10 +1,9 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 import unittest
 
 from mock import Mock, call
-from hamcrest import assert_that, contains_inanyorder, has_entries
 
 import wazo_ui.helpers.service
 import wazo_ui.plugins.user.service as service
@@ -132,7 +131,7 @@ class TestUserServiceUpdateUserLines(unittest.TestCase):
 
         self.service._update_user_lines(existing_user, user)
 
-        self.confd.endpoints_sip.create.assert_called_once_with({})
+        self.confd.endpoints_sip.create.assert_called_once()
         self.confd.lines.return_value.add_endpoint_sip.assert_called_once_with({'id': 'new-sip-id'})
 
     def test_when_line_and_no_existing_line_with_endpoint_sccp(self):
@@ -181,37 +180,6 @@ class TestUserServiceUpdateUserLines(unittest.TestCase):
 
         self.confd.extensions.create.assert_not_called()
         self.confd.lines.return_value.add_extension.assert_called_once_with({'id': 'extension-id'})
-
-    def test_when_line_with_webrtc_endpoint_sip(self):
-        existing_endpoint_sip = {
-            'id': 1,
-            'options': [
-                ['toto', 'titi'],
-                ['allow', 'no'],
-                ['avpf', 'no']
-            ]
-        }
-        endpoint_sip = {
-            'id': 1,
-            'options': [
-                ('transport', 'wss'),
-                ('avpf', 'yes')
-            ]
-        }
-        line = {'id': 1, 'endpoint_sip': endpoint_sip}
-        self.confd.endpoints_sip.get.return_value = existing_endpoint_sip
-
-        self.service._update_line_and_associations(line)
-
-        self.confd.endpoints_sip.get.assert_called_once_with(endpoint_sip)
-        self.confd.endpoints_sip.update.assert_called_once()
-        args, kwargs = self.confd.endpoints_sip.update.call_args
-        assert_that(args[0], has_entries(options=contains_inanyorder(
-            ('toto', 'titi'),
-            ('allow', 'no'),
-            ('avpf', 'yes'),
-            ('transport', 'wss'),
-        )))
 
     def test_when_line_and_no_existing_line_with_device_id(self):
         user = {'uuid': '1234', 'lines': [{'endpoint_sip': {}, 'device_id': 'device-id'}]}
@@ -344,7 +312,7 @@ class TestUserServiceCreateUserLines(unittest.TestCase):
 
         self.service._create_user_lines(user)
 
-        self.confd.endpoints_sip.create.assert_called_once_with({})
+        self.confd.endpoints_sip.create.assert_called_once()
         self.confd.lines.return_value.add_endpoint_sip.assert_called_once_with({'id': 'new-sip-id'})
 
     def test_when_line_with_endpoint_sccp(self):

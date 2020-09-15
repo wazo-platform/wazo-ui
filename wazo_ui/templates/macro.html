@@ -57,6 +57,12 @@
         </select>
       </div>
     </form>
+	{% if session['working_instance_tenant_uuid'] == current_user.get_tenant_uuid() %}
+	  <div class="alert alert-error alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	    <i>Don't use <strong>master</strong> tenant for configuration!</i>
+          </div>
+	{% endif %}
   {% endif %}
 
   {{ _build_chidren(item, true, current_user) }}
@@ -66,7 +72,7 @@
 {% macro _build_chidren(item, root, current_user) %}
   <ul class="{% if root %}sidebar-menu tree{% else %}treeview-menu{% endif %}"{% if root %}data-widget="tree"{% endif %}>
     {% for i in item.children %}
-      {% if i.children and i.text %}
+      {% if i.children and i.text and i.name != 'global_settings' %}
         {{ _build_menu_chidren(i, current_user) }}
       {% elif i.visible %}
         <li class="{{ 'active' if i.active }} {{ 'multi-tenant' if i.multi_tenant }}">
@@ -326,7 +332,7 @@
   {% call build_table_body() %}
     {% for item in items %}
       {% set editable = false if item.editable == False else true %}
-      <tr{{ ' data-id=' ~ item.id if item.id }}{{ ' data-uuid=' ~ item.uuid if item.uuid }}{{ ' data-tenant-uuid=' ~ item.tenant_uuid if item.tenant_uuid }}{{ ' data-non-unique-id=' ~ non_unique_id if non_unique_id }} data-editable="{{ editable }}">
+      <tr{{ ' data-id=' ~ item.id if item.id }}{{ ' data-uuid=' ~ item.uuid if item.uuid }}{{ ' data-tenant-uuid=' ~ item.tenant_uuid if item.tenant_uuid }}{{ ' data-non-unique-id=' ~ non_unique_id if non_unique_id }}{{ ' data-get_url=' ~ item.get_url if item.get_url }} data-editable="{{ editable }}">
         {{ caller_(item) }}
       </tr>
     {% endfor %}

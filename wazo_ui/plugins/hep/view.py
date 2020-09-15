@@ -16,7 +16,7 @@ class HepView(BaseIPBXHelperView):
     form = HepForm
     resource = 'hep'
 
-    @menu_item('.ipbx.advanced.hep', l_('Hep'), icon="signal")
+    @menu_item('.ipbx.global_settings.hep', l_('Hep'), icon="signal")
     def index(self):
         try:
             resource = self.service.get()

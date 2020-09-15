@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from distutils.cmd import Command as _Command
@@ -116,6 +116,7 @@ setup(
             'funckey = wazo_ui.plugins.funckey.plugin:Plugin',
             'general_settings = wazo_ui.plugins.general_settings.plugin:Plugin',
             'group = wazo_ui.plugins.group.plugin:Plugin',
+            'global_settings = wazo_ui.plugins.global_settings.plugin:Plugin',
             'ha = wazo_ui.plugins.ha.plugin:Plugin',
             'hep = wazo_ui.plugins.hep.plugin:Plugin',
             'identity = wazo_ui.plugins.identity.plugin:Plugin',
@@ -131,10 +132,12 @@ setup(
             'queue = wazo_ui.plugins.queue.plugin:Plugin',
             'rtp = wazo_ui.plugins.rtp.plugin:Plugin',
             'schedule = wazo_ui.plugins.schedule.plugin:Plugin',
+            'sip_template = wazo_ui.plugins.sip_template.plugin:Plugin',
             'skill = wazo_ui.plugins.skill.plugin:Plugin',
             'skillrule = wazo_ui.plugins.skillrule.plugin:Plugin',
             'sound = wazo_ui.plugins.sound.plugin:Plugin',
             'switchboard = wazo_ui.plugins.switchboard.plugin:Plugin',
+            'transport = wazo_ui.plugins.transport.plugin:Plugin',
             'trunk = wazo_ui.plugins.trunk.plugin:Plugin',
             'user = wazo_ui.plugins.user.plugin:Plugin',
             'voicemail = wazo_ui.plugins.voicemail.plugin:Plugin',

@@ -13,7 +13,7 @@ cheroot==6.5.4
 flask-babel==0.11.2
 flask-classful==0.13.1
 flask-login==0.4.1
-flask-menu==0.7.0
+flask-menu==0.7.2
 flask-session==0.3.1
 flask-sqlalchemy==2.1
 flask-wtf==0.14.2
@@ -22,3 +22,5 @@ itsdangerous==0.24
 pyyaml==3.13  # from xivo-lib-python
 requests==2.21.0
 stevedore==1.29.0
+werkzeug==0.14.1
+wtforms==2.2.1

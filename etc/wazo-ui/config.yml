@@ -12,51 +12,60 @@
 # # Log file.
 # log_filename: /var/log/wazo-ui.log
 # 
-# # PID file.
-# pid_filename: /run/wazo-ui/wazo-ui.pid
-# 
-# https:
-#   listen: 0.0.0.0
+# http:
+#   listen: 127.0.0.1
 #   port: 9296
-#   certificate: /usr/share/xivo-certs/server.crt
-#   private_key: /usr/share/xivo-certs/server.key
 # 
 # amid:
 #   host: localhost
 #   port: 9491
-#   verify_certificate: /usr/share/xivo-certs/server.crt
+#   prefix: None
+#   https: false
 # 
 # auth:
 #   host: localhost
 #   port: 9497
-#   verify_certificate: /usr/share/xivo-certs/server.crt
+#   prefix: None
+#   https: false
 # 
 # call-logd:
 #   host: localhost
 #   port: 9298
-#   verify_certificate: /usr/share/xivo-certs/server.crt
+#   prefix: None
+#   https: false
 # 
 # confd:
 #   host: localhost
 #   port: 9486
-#   verify_certificate: /usr/share/xivo-certs/server.crt
+#   prefix: None
+#   https: false
 # 
 # dird:
 #   host: localhost
 #   port: 9489
-#   verify_certificate: /usr/share/xivo-certs/server.crt
+#   prefix: None
+#   https: false
 # 
 # plugind:
 #   host: localhost
 #   port: 9503
-#   verify_certificate: /usr/share/xivo-certs/server.crt
+#   prefix: None
+#   https: false
 # 
 # provd:
 #   host: localhost
 #   port: 8666
-#   verify_certificate: /usr/share/xivo-certs/server.crt
+#   prefix: None
+#   https: false
 # 
 # webhookd:
 #   host: localhost
 #   port: 9300
-#   verify_certificate: /usr/share/xivo-certs/server.crt
+#   prefix: None
+#   https: false
+#
+# websocketd:
+#   host: null  # populated with browser url
+#   port: 443
+#   prefix: /api/websocketd
+#   verify_certificate: False

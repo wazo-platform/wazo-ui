@@ -19,7 +19,7 @@ class GroupView(BaseIPBXHelperView):
     form = GroupForm
     resource = 'group'
 
-    @menu_item('.ipbx.groups', l_('Groups'), icon="users", multi_tenant=True)
+    @menu_item('.ipbx.user_management.groups', l_('Ring Groups'), order=2, icon="users", multi_tenant=True)
     def index(self):
         return super().index()
 
@@ -82,6 +82,7 @@ class GroupView(BaseIPBXHelperView):
         resource['members']['users'] = [{'uuid': user_uuid} for user_uuid in form.members.user_uuids.data]
         resource['call_permissions'] = [{'id': call_permission_id} for call_permission_id in
                                         form.call_permission_ids.data]
+        resource['music_on_hold'] = form.music_on_hold.data or None
         return resource
 
     def _map_resources_to_form_errors(self, form, resources):

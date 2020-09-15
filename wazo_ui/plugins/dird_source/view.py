@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask import request, jsonify, redirect, url_for, render_template, flash
@@ -26,7 +26,10 @@ class DirdSourceView(BaseIPBXHelperView):
 
     def _index(self, form=None):
         try:
-            resource_list = self.service.list()
+            resource_list = {"items": []}
+            for source in self.service.list()['items']:
+                source['get_url'] = "{}/".format(source['backend'])
+                resource_list['items'].append(source)
             backend_list = self.service.list_backends()
         except HTTPError as error:
             self._flash_http_error(error)
@@ -48,18 +51,21 @@ class DirdSourceView(BaseIPBXHelperView):
             'host': 'localhost',
             'port': 9497,
             'timeout': '',
-            'verify_certificate': True,
-            'certificate_path': '/usr/share/xivo-certs/server.crt',
+            'prefix_': None,
+            'https': False,
+            'verify_certificate': False,
+            'certificate_path': '',
             'version': '0.1',
         }
         default_confd_config = {
             'host': 'localhost',
             'port': 9486,
             'timeout': '',
-            'verify_certificate': True,
-            'certificate_path': '/usr/share/xivo-certs/server.crt',
+            'prefix_': None,
+            'https': False,
+            'verify_certificate': False,
+            'certificate_path': '',
             'version': '1.1',
-            'https': True,
         }
         default = {
             'conference_config': {
@@ -127,9 +133,14 @@ class DirdSourceView(BaseIPBXHelperView):
                     {'value': 'lastname'},
                     {'value': 'exten'},
                 ],
+                'first_matched_columns': [
+                    {'value': 'mobile_phone_number'},
+                    {'value': 'exten'},
+                ],
                 'format_columns': [
                     {'key': 'name', 'value': '{firstname} {lastname}'},
                     {'key': 'phone', 'value': '{exten}'},
+                    {'key': 'reverse', 'value': '{firstname} {lastname}'},
                 ],
             }
         }
@@ -140,9 +151,13 @@ class DirdSourceView(BaseIPBXHelperView):
                                current_breadcrumbs=self._get_current_breadcrumbs(),
                                form=form)
 
-    def _get(self, id, form=None):
+    @route('/get/<backend>/<id>')
+    def get(self, backend, id):
+        return self._get(backend, id)
+
+    def _get(self, backend, id, form=None):
         try:
-            resource = self.service.get(id)
+            resource = self.service.get(backend, id)
         except HTTPError as error:
             self._flash_http_error(error)
             return self._redirect_for('index')
@@ -150,7 +165,7 @@ class DirdSourceView(BaseIPBXHelperView):
         form = form or self._map_resources_to_form(resource)
         form = self._populate_form(form)
 
-        return render_template(self._get_template(backend=resource['backend']),
+        return render_template(self._get_template(backend=backend),
                                form=form,
                                resource=resource,
                                current_breadcrumbs=self._get_current_breadcrumbs(),
@@ -174,20 +189,44 @@ class DirdSourceView(BaseIPBXHelperView):
         flash('Resource has been created', 'success')
         return self._redirect_for('index')
 
+    @route('/put/<backend>/<id>', methods=['POST'])
+    def put(self, backend, id):
+        form = self.form()
+        if not form.csrf_token.validate(form):
+            self._flash_basic_form_errors(form)
+            return self._get(backend, id, form)
+
+        resources = self._map_form_to_resources_put(form, id)
+        try:
+            self.service.update(resources)
+        except HTTPError as error:
+            form = self._fill_form_error(form, error)
+            self._flash_http_error(error)
+            return self._get(backend, id, form)
+
+        flash(l_('%(resource)s: Resource has been updated', resource=self.resource), 'success')
+        return self._redirect_referrer_or('index')
+
+    @route('/delete/<backend>/<id>', methods=['GET'])
+    def delete(self, backend, id):
+        try:
+            self.service.delete(backend, id)
+            flash(l_('%(resource)s: Resource %(id)s has been deleted', resource=self.resource, id=id), 'success')
+        except HTTPError as error:
+            self._flash_http_error(error)
+
+        return self._redirect_referrer_or('index')
+
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
         backend = resource['backend']
         config_name = backend + '_config'
 
-        # Boolean field aren't False when no checked
         if 'confd' in resource[config_name]:
-            resource[config_name]['confd']['https'] = 'https' in resource[config_name]['confd']
-            resource[config_name]['confd']['verify_certificate'] = 'verify_certificate' in resource[config_name]['confd']
             if not resource[config_name]['confd']['timeout']:
                 del resource[config_name]['confd']['timeout']
 
         if 'auth' in resource[config_name] and backend != 'office365' and backend != 'google':
-            resource[config_name]['auth']['verify_certificate'] = 'verify_certificate' in resource[config_name]['auth']
             if not resource[config_name]['auth']['timeout']:
                 del resource[config_name]['auth']['timeout']
 
@@ -203,8 +242,14 @@ class DirdSourceView(BaseIPBXHelperView):
             resource[config_name]['first_matched_columns'] = [option['value'] for option in
                                                               resource[config_name]['first_matched_columns']]
 
-        if 'delimiter' in resource[backend + '_config']:
+        if 'delimiter' in resource[config_name]:
             resource[config_name]['separator'] = resource[config_name]['delimiter']
+
+        if 'prefix_' in resource[config_name].get('auth', {}):
+            resource[config_name]['auth']['prefix'] = resource[config_name]['auth'].pop('prefix_')
+
+        if 'prefix_' in resource[config_name].get('confd', {}):
+            resource[config_name]['confd']['prefix'] = resource[config_name]['confd'].pop('prefix_')
 
         # Handle `verify_certificate` for office 365 or google that can be True, False or the value of certificate_path
         if backend in ('office365', 'google', 'conference', 'wazo'):
@@ -253,9 +298,15 @@ class DirdSourceView(BaseIPBXHelperView):
             resource[config_name]['first_matched_columns'] = [{'value': option} for option in
                                                               resource[config_name]['first_matched_columns']]
 
+        if 'prefix' in resource[config_name].get('auth', {}):
+            resource[config_name]['auth']['prefix_'] = resource[config_name]['auth'].pop('prefix')
+
+        if 'prefix' in resource[config_name].get('confd', {}):
+            resource[config_name]['confd']['prefix_'] = resource[config_name]['confd'].pop('prefix')
+
         # Handle `verify_certificate` for office 365 or google that can be True, False or the value of certificate_path
         if backend in ('office365', 'google', 'conference', 'wazo'):
-            verify_certificate = resource[config_name]['auth']['verify_certificate']
+            verify_certificate = resource[config_name]['auth'].get('verify_certificate')
             if verify_certificate in (True, False):
                 verify = verify_certificate
             else:
@@ -265,7 +316,7 @@ class DirdSourceView(BaseIPBXHelperView):
             resource[config_name]['auth']['verify_certificate'] = verify
 
         if backend in ('conference', 'wazo'):
-            verify_certificate = resource[config_name]['confd']['verify_certificate']
+            verify_certificate = resource[config_name]['confd'].get('verify_certificate')
             if verify_certificate in (True, False):
                 verify = verify_certificate
             else:

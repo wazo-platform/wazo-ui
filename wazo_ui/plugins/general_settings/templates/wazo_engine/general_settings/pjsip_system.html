@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumb(_('PJSIP System Settings'), '', 'asterisk', [_('Edit')]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+
+      {% call build_form_tabs_box() %}
+        {% call build_tabs_navigation() %}
+          {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {% endcall %}
+
+        {% call build_form(action=url_for('.PJSIPSystemSettingsView:put')) %}
+          {% call build_tabs_content() %}
+
+            {% call build_tab_content_item('general', active=True) %}
+              {% call add_default_fields(form=form, submit_value=_('Update')) %}
+
+                {{ build_add_row_entry_header() }}
+                {% call build_table() %}
+
+                  {% call build_table_headers() %}
+                    <th>{{  _('Option Key') }}</th>
+                    <th>{{  _('Option Value') }}</th>
+                    <th style="width: 21px"></th>
+                  {% endcall %}
+
+                  {% call build_table_body(class_='dynamic-table') %}
+                    {% do form.options.append_entry() %}
+                    {{ _build_option_entry(form.options.pop_entry(), template=True) }}
+
+                    {% for option in form.options %}
+                      {{ _build_option_entry(option) }}
+                    {% endfor %}
+
+                  {% endcall %}
+
+                {% endcall %}
+
+                {{ build_add_row_entry_header() }}
+
+              {% endcall %}
+            {% endcall %}
+
+          {% endcall %}
+        {% endcall %}
+
+      {% endcall %}
+
+  {% endcall %}
+{% endblock %}
+
+
+{% macro _build_option_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+      <td>{{ render_field(
+          option.option_key,
+          with_label=False,
+          inputclass='ui-helper-clearfix',
+          data_listing_href=url_for(listing_urls['pjsip_doc'], section='system')) }}</td>
+    <td>{{ render_field(option.option_value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

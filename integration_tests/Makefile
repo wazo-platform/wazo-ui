@@ -1,11 +1,4 @@
-.PHONY: test-setup test docker-pull build-ui egg-info
-
-test-setup: docker-pull build-ui egg-info
-
-docker-pull:
-	docker pull wazopbx/wait
-	docker pull wazopbx/wazo-auth-mock
-	docker pull selenium/standalone-firefox
+test-setup: build-ui egg-info
 
 build-ui:
 	docker build -t wazopbx/wazo-ui ..
@@ -15,4 +8,6 @@ egg-info:
 	cd .. && python setup.py egg_info
 
 test:
-	nosetests
+	pytest
+
+.PHONY: test-setup test build-ui egg-info

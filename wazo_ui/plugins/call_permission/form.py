@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
@@ -26,7 +26,7 @@ class ExtensionsForm(BaseForm):
 
 
 class UserForm(BaseForm):
-    id = HiddenField()
+    uuid = HiddenField()
     firstname = HiddenField()
     lastname = HiddenField()
 
@@ -46,7 +46,7 @@ class CallPermissionForm(BaseForm):
     password = StringField(l_('Password'))
     extensions = FieldList(FormField(ExtensionsForm))
     mode = SelectField(l_('Mode'), choices=[(k, v) for k, v in mode_map.items()])
-    user_ids = SelectMultipleField(l_('Users'), choices=[])
+    user_uuids = SelectMultipleField(l_('Users'), choices=[])
     users = FieldList(FormField(UserForm))
     group_ids = SelectMultipleField(l_('Groups'), choices=[])
     groups = FieldList(FormField(GroupForm))

@@ -5,7 +5,7 @@ services:
     environment:
       TIMEOUT: "${INTEGRATION_TEST_TIMEOUT}"
 
-  wazo-ui:
+  ui:
     image: wazo-ui-test
     ports:
       - "9296"
@@ -14,8 +14,7 @@ services:
     volumes:
       - "../..:/usr/src/wazo-ui"
       - "./etc/wazo-ui/conf.d/default.yml:/etc/wazo-ui/conf.d/50-default.yml"
-      - "./ssl:/usr/local/share/ssl"
-      # - "${LOCAL_GIT_REPOS}/xivo-lib-python/xivo:/usr/local/lib/python3.7/site-packages/xivo"
+      # - "${LOCAL_GIT_REPOS}/xivo-lib-python/xivo:/opt/venv/lib/python3.7/site-packages/xivo"
 
   auth:
     image: wazopbx/wazo-auth-mock
