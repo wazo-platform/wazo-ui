@@ -125,6 +125,12 @@ class TenantService(BaseAuthService):
     def list(self):
         tenant_uuid = current_user.get_tenant_uuid()
         resources = self._auth.tenants.list(tenant_uuid=tenant_uuid, recurse=True)
+        items = list()
+        for resource in resources['items']:
+            if resource['name'] != 'master':
+               items.append(resource)
+        resources.pop('items')
+        resources['items'] = items
         return resources
 
     def get(self, resource_id):
