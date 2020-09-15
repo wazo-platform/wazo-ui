@@ -1,2 +1,0 @@
-wazo_ui/config.py:49:19: E126 continuation line over-indented for hanging indent
-wazo_ui/helpers/client.py:87:1: E302 expected 2 blank lines, found 1

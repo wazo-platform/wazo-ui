@@ -19,8 +19,7 @@ class DhcpView(BaseIPBXHelperView):
     form = DhcpForm
     resource = 'dhcp'
 
-    @menu_item('.ipbx.network', l_('Network'), icon="wifi")
-    @menu_item('.ipbx.network.dhcp', l_('Dhcp'), order=1, icon="gear")
+    @menu_item('.ipbx.global_settings.dhcp', l_('Dhcp'), order=1, icon="gear")
     def index(self):
         try:
             resource = self.service.get()

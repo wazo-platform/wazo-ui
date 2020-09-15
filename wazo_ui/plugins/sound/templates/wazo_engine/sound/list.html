@@ -13,12 +13,10 @@
         {% call build_list_table_headers(get=url_for('.SoundFileView:list_files', tenant_uuid='', category=''), delete=url_for('.SoundView:delete', tenant_uuid='', category='')) %}
           <th>{{ _('Name') }}</th>
           <th>{{ _('Files') }}</th>
-          <th>{{ _('Tenant') }}</th>
         {% endcall %}
         {% call(sound) build_list_table_rows(resource_list['items'], non_unique_id=true) %}
           <td>{{ sound.name }}</td>
           <td>{{ sound.files|length }}</td>
-          <td>{{ sound.tenant_uuid }}</td>
         {% endcall %}
       {% endcall %}
     {% endcall %}

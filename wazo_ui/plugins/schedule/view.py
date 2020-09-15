@@ -19,7 +19,7 @@ class ScheduleView(BaseIPBXHelperView):
     form = ScheduleForm
     resource = 'schedule'
 
-    @menu_item('.ipbx.schedules', l_('Schedules'), icon='clock-o', multi_tenant=True)
+    @menu_item('.ipbx.call_management.schedules', l_('Schedules'), icon='clock-o', multi_tenant=True)
     def index(self):
         return super().index()
 

@@ -10,8 +10,10 @@ def menu_item_aux(path, text, **kwargs):
     # Item without order use their label as order
     order = kwargs.setdefault('order', text)
     if isinstance(order, int):
-        if order > 100:
-            # Ugly hack to set order higher than items without order
+        # Ugly hack to set order higher than items without order
+        if order > 100 and order < 1000:
+            kwargs['order'] = 'yyy{}'.format(order)
+        elif order > 999:
             kwargs['order'] = 'zzz{}'.format(order)
         else:
             kwargs['order'] = '{0:03}'.format(order)

@@ -19,7 +19,7 @@ class OutcallView(BaseIPBXHelperView):
     form = OutcallForm
     resource = 'outcall'
 
-    @menu_item('.ipbx.outcalls', l_('Outcalls'), icon="long-arrow-left", multi_tenant=True)
+    @menu_item('.ipbx.call_management.outcalls', l_('Outcalls'), order=2, icon="long-arrow-left", multi_tenant=True)
     def index(self):
         return super().index()
 

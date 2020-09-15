@@ -30,7 +30,7 @@ class DeviceView(BaseIPBXHelperView):
     form = DeviceForm
     resource = 'device'
 
-    @menu_item('.ipbx.devices', l_('Devices'), icon="phone-square", multi_tenant=True)
+    @menu_item('.ipbx.user_management.devices', l_('Devices'), order=4, icon="phone-square", multi_tenant=True)
     def index(self):
         return super().index()
 

@@ -27,7 +27,7 @@ class CallFilterView(BaseIPBXHelperView):
     form = CallFilterForm
     resource = 'call_filter'
 
-    @menu_item('.ipbx.callfilters', l_('BS Filters'), icon='filter', multi_tenant=True)
+    @menu_item('.ipbx.call_management.callfilters', l_('BS Filters'), icon='filter', multi_tenant=True)
     def index(self):
         return super().index()
 

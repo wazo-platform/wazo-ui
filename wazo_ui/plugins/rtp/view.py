@@ -16,7 +16,7 @@ class RtpView(BaseIPBXHelperView):
     form = RtpForm
     resource = 'rtp'
 
-    @menu_item('.ipbx.advanced.rtp', l_('Rtp'), icon="volume-off")
+    @menu_item('.ipbx.global_settings.rtp', l_('Rtp'), icon="volume-off")
     def index(self):
         try:
             resource = self.service.get()

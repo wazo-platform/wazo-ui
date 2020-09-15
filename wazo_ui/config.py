@@ -97,6 +97,7 @@ _DEFAULT_CONFIG = {
         'funckey': True,
         'general_settings': True,
         'group': True,
+        'global_settings': True,
         'ha': True,
         'hep': True,
         'identity': True,

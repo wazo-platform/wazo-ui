@@ -19,7 +19,7 @@ class GroupView(BaseIPBXHelperView):
     form = GroupForm
     resource = 'group'
 
-    @menu_item('.ipbx.groups', l_('Groups'), icon="users", multi_tenant=True)
+    @menu_item('.ipbx.user_management.groups', l_('Ring Groups'), order=2, icon="users", multi_tenant=True)
     def index(self):
         return super().index()
 
