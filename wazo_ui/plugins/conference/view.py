@@ -20,7 +20,8 @@ class ConferenceView(BaseIPBXHelperView):
     form = ConferenceForm
     resource = l_('conference')
 
-    @menu_item('.ipbx.conferences', l_('Conferences'), icon="compress", multi_tenant=True)
+    @menu_item('.ipbx.services', l_('Services'), icon="star", multi_tenant=True)
+    @menu_item('.ipbx.services.conferences', l_('Conferences'), icon="compress", multi_tenant=True)
     def index(self):
         return super().index()
 

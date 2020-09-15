@@ -117,7 +117,7 @@ class PJSIPGlobalSettingsView(BasePJSIPSettingsView):
     settings = 'pjsip_global'
 
     @menu_item(
-        '.ipbx.advanced.pjsip_global_settings',
+        '.ipbx.global_settings.pjsip_global_settings',
         l_('PJSIP Global Settings'),
         icon='asterisk',
     )
@@ -131,7 +131,7 @@ class PJSIPSystemSettingsView(BasePJSIPSettingsView):
     settings = 'pjsip_system'
 
     @menu_item(
-        '.ipbx.advanced.pjsip_system_settings',
+        '.ipbx.global_settings.pjsip_system_settings',
         l_('PJSIP System Settings'),
         icon='asterisk',
     )
@@ -145,8 +145,8 @@ class IaxGeneralSettingsView(BaseGeneralSettingsView):
     settings = 'iax_general'
 
     @menu_item(
-        '.ipbx.advanced.iax_general_settings',
-        l_('IAX General Settings'),
+        '.ipbx.global_settings.iax_general_settings',
+        l_('IAX'),
         order=5,
         icon='asterisk',
     )
@@ -170,8 +170,8 @@ class SccpGeneralSettingsView(BaseGeneralSettingsView):
     settings = 'sccp_general'
 
     @menu_item(
-        '.ipbx.advanced.sccp_general_settings',
-        l_('SCCP General Settings'),
+        '.ipbx.global_settings.sccp_general_settings',
+        l_('SCCP'),
         order=6,
         icon='asterisk',
     )
@@ -185,10 +185,10 @@ class VoicemailGeneralSettingsView(BaseGeneralSettingsView):
     settings = 'voicemail_general'
 
     @menu_item(
-        '.ipbx.advanced.voicemail_general_settings',
-        l_('Voicemail General Settings'),
+        '.ipbx.global_settings.voicemail_general_settings',
+        l_('Voicemail'),
         order=7,
-        icon='asterisk',
+        icon='envelope',
     )
     def index(self, form=None):
         return super().index(form)
@@ -210,8 +210,8 @@ class FeaturesGeneralSettingsView(BaseGeneralSettingsView):
     settings = 'features_general'
 
     @menu_item(
-        '.ipbx.advanced.features_general_settings',
-        l_('Features General Settings'),
+        '.ipbx.global_settings.features_general_settings',
+        l_('Features Code'),
         order=8,
         icon='asterisk',
     )
@@ -239,10 +239,10 @@ class ConfBridgeGeneralSettingsView(BaseGeneralSettingsView):
     settings = 'confbridge_general'
 
     @menu_item(
-        '.ipbx.advanced.confbridge_general_settings',
-        l_('ConfBridge General Settings'),
+        '.ipbx.global_settings.confbridge_general_settings',
+        l_('Conference'),
         order=9,
-        icon='asterisk',
+        icon='compress',
     )
     def index(self, form=None):
         return super().index(form)

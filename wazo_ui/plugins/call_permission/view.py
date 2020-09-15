@@ -26,7 +26,7 @@ class CallPermissionView(NewHelperViewMixin, BaseIPBXHelperView):
     form = CallPermissionForm
     resource = 'call_permission'
 
-    @menu_item('.ipbx.callpermissions', l_('Call Permissions'), icon='ban', multi_tenant=True)
+    @menu_item('.ipbx.call_management.callpermissions', l_('Call Permissions'), icon='ban', multi_tenant=True)
     def index(self):
         return super().index()
 

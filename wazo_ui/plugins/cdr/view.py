@@ -11,6 +11,7 @@ class CdrView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
     form = object
     resource = 'cdr'
 
-    @menu_item('.ipbx.cdrs', l_('CDR'), icon="newspaper-o")
+    @menu_item('.ipbx.reporting', l_('Reporting'), icon="pie-chart")
+    @menu_item('.ipbx.reporting.cdrs', l_('CDR'), icon="newspaper-o")
     def index(self):
         return super().index()

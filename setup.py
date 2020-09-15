@@ -116,6 +116,7 @@ setup(
             'funckey = wazo_ui.plugins.funckey.plugin:Plugin',
             'general_settings = wazo_ui.plugins.general_settings.plugin:Plugin',
             'group = wazo_ui.plugins.group.plugin:Plugin',
+            'global_settings = wazo_ui.plugins.global_settings.plugin:Plugin',
             'ha = wazo_ui.plugins.ha.plugin:Plugin',
             'hep = wazo_ui.plugins.hep.plugin:Plugin',
             'identity = wazo_ui.plugins.identity.plugin:Plugin',

@@ -14,7 +14,7 @@ class PagingView(BaseIPBXHelperView):
     form = PagingForm
     resource = 'paging'
 
-    @menu_item('.ipbx.pagings', l_('Pagings'), icon="bullhorn", multi_tenant=True)
+    @menu_item('.ipbx.services.pagings', l_('Pagings'), icon="bullhorn", multi_tenant=True)
     def index(self):
         return super().index()
 

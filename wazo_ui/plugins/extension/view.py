@@ -44,7 +44,7 @@ class ExtensionFeaturesView(BaseIPBXHelperView):
     form = ExtensionFeaturesForm
     resource = 'extension'
 
-    @menu_item('.ipbx.advanced.extensions_features', l_('Extensions Features'), order=2, icon="fax")
+    @menu_item('.ipbx.global_settings.extensions_features', l_('Extensions Features'), order=2, icon="fax")
     def index(self):
         resource = {}
         try:

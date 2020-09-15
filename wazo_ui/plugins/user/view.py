@@ -34,7 +34,8 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
     resource = 'user'
 
     @menu_item('.ipbx', l_('Telephony'), order=999, icon="phone", multi_tenant=True, visible_when=has_wazo_server)
-    @menu_item('.ipbx.users', l_('Users'), order=1, icon="user", multi_tenant=True)
+    @menu_item('.ipbx.user_management', l_('User Management'), order=1, icon="users", multi_tenant=True)
+    @menu_item('.ipbx.user_management.users', l_('Users'), order=1, icon="user", multi_tenant=True)
     def index(self):
         return super().index()
 

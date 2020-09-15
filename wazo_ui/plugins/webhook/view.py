@@ -22,7 +22,7 @@ class WebhookView(BaseIPBXHelperView):
     resource = 'webhook'
     raw_events = []
 
-    @menu_item('.ipbx.webhooks', l_('Webhooks'), icon="globe", multi_tenant=True)
+    @menu_item('.ipbx.services.webhooks', l_('Webhooks'), icon="globe", multi_tenant=True)
     def index(self):
         return super().index()
 

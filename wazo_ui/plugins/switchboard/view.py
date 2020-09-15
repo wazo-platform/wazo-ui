@@ -19,7 +19,7 @@ class SwitchboardView(BaseIPBXHelperView):
     form = SwitchboardForm
     resource = 'switchboard'
 
-    @menu_item('.ipbx.switchboards', l_('Switchboards'), icon="desktop", multi_tenant=True)
+    @menu_item('.ipbx.services.switchboards', l_('Switchboards'), icon="desktop", multi_tenant=True)
     def index(self):
         return super().index()
 

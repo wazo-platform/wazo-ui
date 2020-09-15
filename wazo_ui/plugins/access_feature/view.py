@@ -20,7 +20,7 @@ class AccessFeatureView(BaseIPBXHelperView):
     form = AccessFeatureForm
 
     @menu_item(
-        '.ipbx.advanced.access_features',
+        '.ipbx.global_settings.access_features',
         l_('Features access'),
         icon="lock",
         multi_tenant=False,
