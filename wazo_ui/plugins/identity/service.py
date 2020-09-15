@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_login import current_user
@@ -124,13 +124,13 @@ class TenantService(BaseAuthService):
 
     def list(self):
         tenant_uuid = current_user.get_tenant_uuid()
-        resources = self._auth.tenants.list(tenant_uuid=tenant_uuid, recurse=True)
-        items = list()
-        for resource in resources['items']:
-            if resource['name'] != 'master':
-                items.append(resource)
-        resources.pop('items')
-        resources['items'] = items
+        tenants = self._auth.tenants.list(tenant_uuid=tenant_uuid, recurse=True)['items']
+        tenants = [tenant for tenant in tenants if tenant['name'] != 'master']
+        resources = {
+            'items': tenants,
+            'total': len(tenants),
+            'filtered': len(tenants),
+        }
         return resources
 
     def get(self, resource_id):
