@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from wazo_ui.helpers.extension import BaseConfdExtensionService
@@ -26,7 +26,7 @@ class GroupService(BaseConfdExtensionService):
 
     def _update_relations(self, group, existing_group=None):
         members = group.get('members')
-        extensions_members = group.get('extensions_members', list())
+        extensions_members = group.get('extensions_members', [])
         fallbacks = group.get('fallbacks')
         schedules = group.get('schedules')
         call_permissions = group.get('call_permissions')
@@ -50,8 +50,8 @@ class GroupService(BaseConfdExtensionService):
 
     def _update_extensions_members_to_group(self, group, extensions_members):
         context = group.get('extensions')[0]['context']
-        for index, extension in enumerate(extensions_members):
-            extensions_members[index]['context'] = context
+        for member in extensions_members:
+            member['context'] = context
         return self._confd.groups.relations(group).update_extension_members(extensions_members)
 
     def _update_fallbacks_to_group(self, group, fallbacks):
