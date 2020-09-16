@@ -35,7 +35,12 @@ class BasePJSIPOptionsForm(BaseForm):
 
 class IdentifyPJSIPOptionsForm(BasePJSIPOptionsForm):
     option_key = SelectField(
-        choices=[('match', 'match'), ('endpoint', 'endpoint')],
+        choices=[
+            ('endpoint', 'endpoint'),
+            ('match', 'match'),
+            ('match_header', 'match_header'),
+            ('srv_lookups', 'srv_lookups'),
+        ],
         validators=[InputRequired()]
     )
 
@@ -45,12 +50,18 @@ class RegistrationPJSIPOptionsForm(BasePJSIPOptionsForm):
         choices=[
             ('auth_rejection_permanent', 'auth_rejection_permanent'),
             ('client_uri', 'client_uri'),
+            ('contact_header_params', 'contact_header_params'),
             ('contact_user', 'contact_user'),
             ('expiration', 'expiration'),
+            ('fatal_retry_interval', 'fatal_retry_interval'),
+            ('forbidden_retry_interval', 'forbidden_retry_interval'),
+            ('line', 'line'),
             ('max_retries', 'max_retries'),
             ('outbound_proxy', 'outbound_proxy'),
             ('retry_interval', 'retry_interval'),
             ('server_uri', 'server_uri'),
+            ('support_outbound', 'support_outbound'),
+            ('support_path', 'support_path'),
             ('transport', 'transport'),
         ],
         validators=[InputRequired()]
