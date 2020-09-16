@@ -35,7 +35,12 @@ class BasePJSIPOptionsForm(BaseForm):
 
 class IdentifyPJSIPOptionsForm(BasePJSIPOptionsForm):
     option_key = SelectField(
-        choices=[('match', 'match'), ('endpoint', 'endpoint')],
+        choices=[
+            ('match', 'match'),
+            ('endpoint', 'endpoint'),
+            ('srv_lookups', 'srv_lookups'),
+            ('match_header', 'match_header'),
+        ],
         validators=[InputRequired()]
     )
 
