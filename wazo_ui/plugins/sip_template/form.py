@@ -48,6 +48,12 @@ class IdentifyPJSIPOptionsForm(BasePJSIPOptionsForm):
 class RegistrationPJSIPOptionsForm(BasePJSIPOptionsForm):
     option_key = SelectField(
         choices=[
+            ('contact_header_params', 'contact_header_params'),
+            ('forbidden_retry_interval', 'forbidden_retry_interval'),
+            ('fatal_retry_interval', 'fatal_retry_interval'),
+            ('line', 'line'),
+            ('support_path', 'support_path'),
+            ('support_outbound', 'support_outbound'),
             ('auth_rejection_permanent', 'auth_rejection_permanent'),
             ('client_uri', 'client_uri'),
             ('contact_user', 'contact_user'),
