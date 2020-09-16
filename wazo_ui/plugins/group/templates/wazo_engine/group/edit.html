@@ -57,8 +57,32 @@
 
           {% call build_tab_content_item('members') %}
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
-              {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
-              {{ render_field(form.members.users, with_label=False) }}
+	      <div class=col-xs-6>
+		<div class=box-header></div>
+                {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+                {{ render_field(form.members.users, with_label=False) }}
+              </div>
+	      <div class=col-xs-6>
+                {{ build_add_row_entry_header() }}
+                {% call build_table() %}
+
+                  {% call build_table_headers() %}
+                    <th>{{ _('Extension') }}</th>
+                    <th>{{ _('Context') }}</th>
+                    <th style="width: 21px;"></th>
+                  {% endcall %}
+
+                  {% call build_table_body(class_='dynamic-table') %}
+                    {% do form.extensions_members.append_entry() %}
+                    {{ _build_option_entry(form.extensions_members.pop_entry(), template=True) }}
+
+                    {% for extension in form.extensions_members %}
+                      {{ _build_option_entry(extension) }}
+                    {% endfor %}
+                  {% endcall %}
+
+                {% endcall %}
+              </div>
             {% endcall %}
           {% endcall %}
 
@@ -93,6 +117,20 @@
     {% endcall %}
   {% endcall %}
 {% endblock %}
+
+{% macro _build_option_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(option.exten, with_label=False) }}</td>
+    <td>{{ render_field(option.context, with_label=False, disabled=True) }}</td>
+    <td>{{ render_field(option.priority, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}
 
 {% block additional_js %}
   <script src="{{ url_for('.static', filename='js/group.js') }}"></script>

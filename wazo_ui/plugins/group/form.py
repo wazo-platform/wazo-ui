@@ -24,6 +24,12 @@ class ExtensionForm(BaseForm):
     context = SelectField(l_('Context'), choices=[])
 
 
+class ExtensionsMembersForm(BaseForm):
+    exten = StringField(l_('Extension'), [InputRequired(), Length(max=128)])
+    context = StringField(l_('Context'), [InputRequired(), Length(max=128)])
+    priority = HiddenField(default=1)
+
+
 class UserForm(BaseForm):
     uuid = HiddenField()
     firstname = HiddenField()
@@ -71,6 +77,7 @@ class GroupForm(BaseForm):
     timeout = IntegerField(l_('Timeout'), [NumberRange(min=0)])
     user_timeout = IntegerField(l_('User timeout'), [NumberRange(min=0)])
     members = FormField(MembersForm)
+    extensions_members = FieldList(FormField(ExtensionsMembersForm))
     fallbacks = FormField(FallbacksForm)
     schedules = FieldList(FormField(ScheduleForm), min_entries=1)
     call_permission_ids = SelectMultipleField(l_('Call Permissions'), choices=[])

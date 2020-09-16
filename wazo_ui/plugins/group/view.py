@@ -25,6 +25,7 @@ class GroupView(BaseIPBXHelperView):
 
     def _map_resources_to_form(self, resource):
         resource['members']['user_uuids'] = [user['uuid'] for user in resource['members']['users']]
+        resource['extensions_members'] = resource['members']['extensions']
         resource['call_permission_ids'] = [call_permission['id'] for call_permission in resource['call_permissions']]
         form = self.form(data=resource)
         return form
