@@ -1,4 +1,4 @@
-FROM wazopbx/wazo-ui
+FROM wazoplatform/wazo-ui
 
 COPY . /usr/src/wazo-ui
 WORKDIR /usr/src/wazo-ui

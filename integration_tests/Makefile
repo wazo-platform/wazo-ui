@@ -1,7 +1,7 @@
 test-setup: build-ui egg-info
 
 build-ui:
-	docker build -t wazopbx/wazo-ui ..
+	docker build -t wazoplatform/wazo-ui ..
 	docker build --no-cache -t wazo-ui-test -f Dockerfile ..
 
 egg-info:
