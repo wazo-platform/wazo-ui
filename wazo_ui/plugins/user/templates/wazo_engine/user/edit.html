@@ -74,12 +74,23 @@
               {% call add_default_fields(form=form, submit_value=_('Update')) %}
                 {{ render_field(form.services.dnd.enabled) }}
                 {{ render_field(form.services.incallfilter.enabled) }}
+                {{ render_field(form.call_record_enabled) }}
+                {{ render_field(form.call_permission_password) }}
+                <fieldset>
+                  <legend>{{ _('Call Forwards') }}</legend>
                 {{ render_field(form.forwards.busy.enabled) }}
                 {{ render_field(form.forwards.busy.destination) }}
                 {{ render_field(form.forwards.unconditional.enabled) }}
                 {{ render_field(form.forwards.unconditional.destination) }}
                 {{ render_field(form.forwards.noanswer.enabled) }}
                 {{ render_field(form.forwards.noanswer.destination) }}
+                </fieldset>
+                <fieldset>
+                  <legend>{{ _('DTMF Services') }}</legend>
+                  {{ render_field(form.call_transfer_enabled) }}
+                  {{ render_field(form.dtmf_hangup_enabled) }}
+                  {{ render_field(form.online_call_record_enabled) }}
+                </fieldset>
               {% endcall %}
             {% endcall %}
 
