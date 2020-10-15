@@ -108,6 +108,7 @@ _DEFAULT_CONFIG = {
         'outcall': True,
         'paging': True,
         'parking_lot': True,
+        'phonebook': True,
         'plugin': True,
         'provisioning': True,
         'queue': True,
