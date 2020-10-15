@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_login import current_user
+from flask import session
 
 
 class BaseAuthService:
@@ -142,6 +143,10 @@ class TenantService(BaseAuthService):
 
     def update(self, resource):
         self._auth.tenants.edit(resource['uuid'], **resource)
+
+    def delete(self, resource_id):
+        tenant_uuid = current_user.get_tenant_uuid()
+        self._auth.tenants.delete(resource_id, tenant_uuid=tenant_uuid)
 
 
 class PolicyService(BaseAuthService):
