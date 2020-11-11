@@ -85,14 +85,14 @@ class TenantForm(BaseForm):
     submit = SubmitField()
 
 
-class AclTemplatesForm(BaseForm):
-    acl = StringField(validators=[InputRequired()])
+class AccessForm(BaseForm):
+    value = StringField(validators=[InputRequired()])
 
 
 class PolicyForm(BaseForm):
     name = StringField(l_('Name'), validators=[InputRequired()])
     description = StringField(l_('Description'))
-    acl_templates = FieldList(FormField(AclTemplatesForm))
+    acl = FieldList(FormField(AccessForm))
     tenant_uuid = SelectField(l_('Tenant'), choices=[])
     tenant = FormField(TenantUuidForm)
     submit = SubmitField()
