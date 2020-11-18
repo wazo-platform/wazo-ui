@@ -33,7 +33,7 @@ class DirdSourceView(BaseIPBXHelperView):
             backend_list = self.service.list_backends()
         except HTTPError as error:
             self._flash_http_error(error)
-            return redirect(url_for('customer.CustomerView:index'))
+            return redirect(url_for('index.IndexView:index'))
 
         form = form or self.form()
         form = self._populate_form(form)

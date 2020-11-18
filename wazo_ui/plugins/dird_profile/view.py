@@ -27,7 +27,7 @@ class DirdProfileView(BaseIPBXHelperView):
             sources = self.source_service.list()
         except HTTPError as error:
             self._flash_http_error(error)
-            return redirect(url_for('customer.CustomerView:index'))
+            return redirect(url_for('index.IndexView:index'))
 
         form = form or self._map_resources_to_form(resource)
         form = self._populate_form(form)

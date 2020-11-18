@@ -39,13 +39,13 @@ class DeviceView(BaseIPBXHelperView):
             device_list = self.service.list()
         except HTTPError as error:
             self._flash_http_error(error)
-            return redirect(url_for('customer.CustomerView:index'))
+            return redirect(url_for('index.IndexView:index'))
 
         try:
             unallocated_list = self.service.list_unallocated()
         except HTTPError as error:
             self._flash_http_error(error)
-            return redirect(url_for('customer.CustomerView:index'))
+            return redirect(url_for('index.IndexView:index'))
 
         # We do not want the unallocated devices to be editable
         for device in unallocated_list['items']:

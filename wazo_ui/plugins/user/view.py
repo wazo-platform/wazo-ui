@@ -44,7 +44,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
             resource_list = self.service.list()
         except HTTPError as error:
             self._flash_http_error(error)
-            return redirect(url_for('customer.CustomerView:index'))
+            return redirect(url_for('index.IndexView:index'))
 
         form = self.form()
         form = self._populate_form(form)

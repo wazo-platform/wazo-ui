@@ -31,7 +31,7 @@ class WebhookView(BaseIPBXHelperView):
             resource_list = self.service.get_logs(id)
         except HTTPError as error:
             self._flash_http_error(error)
-            return redirect(url_for('customer.CustomerView:index'))
+            return redirect(url_for('index.IndexView:index'))
         for item in resource_list["items"]:
             item["detail"] = pprint.pformat(item["detail"], width=160, indent=2)
             item["event"] = pprint.pformat(item["event"], width=80, indent=2)
