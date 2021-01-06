@@ -74,7 +74,10 @@
               {% call add_default_fields(form=form, submit_value=_('Update')) %}
                 {{ render_field(form.services.dnd.enabled) }}
                 {{ render_field(form.services.incallfilter.enabled) }}
-                {{ render_field(form.call_record_enabled) }}
+                {{ render_field(form.call_record_outgoing_external_enabled) }}
+                {{ render_field(form.call_record_outgoing_internal_enabled) }}
+                {{ render_field(form.call_record_incoming_external_enabled) }}
+                {{ render_field(form.call_record_incoming_internal_enabled) }}
                 {{ render_field(form.call_permission_password) }}
                 <fieldset>
                   <legend>{{ _('Call Forwards') }}</legend>
