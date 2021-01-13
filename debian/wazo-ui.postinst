@@ -35,6 +35,10 @@ case "$1" in
 			if getent group www-data | grep -q $USER; then
 				deluser --quiet $USER www-data
 			fi
+		elif dpkg --compare-versions "${previous_version}" lt '21.01'; then
+			ln -sf \
+				/etc/nginx/locations/http-available/$DAEMONNAME \
+				/etc/nginx/locations/http-enabled/$DAEMONNAME
 		fi
 	;;
 
