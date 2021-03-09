@@ -1,4 +1,4 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
@@ -81,6 +81,7 @@ class GroupForm(BaseForm):
 
 class TenantForm(BaseForm):
     name = StringField(l_('Name'), validators=[InputRequired()])
+    slug = StringField(l_('Identifier'))
     members = FormField(MembersForm)
     submit = SubmitField()
 
