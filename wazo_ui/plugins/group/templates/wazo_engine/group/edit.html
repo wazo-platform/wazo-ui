@@ -2,7 +2,7 @@
 
 {% block content_header %}
   {{ build_breadcrumbs(current_breadcrumbs + [
-    { 'name': resource.name, 'link': url_for('.GroupView:get', id=resource.id), 'icon': 'users' }
+    { 'name': resource.name, 'link': url_for('.GroupView:get', id=resource.uuid), 'icon': 'users' }
   ]) }}
 {% endblock %}
 
@@ -18,7 +18,7 @@
           {{ add_tab_navigation_item('callpermissions', _('Call Permissions')) }}
         {% endcall %}
 
-      {% call build_form(action=url_for('.GroupView:put', id=resource.id)) %}
+      {% call build_form(action=url_for('.GroupView:put', id=resource.uuid)) %}
         {% call build_tabs_content() %}
 
           {% call build_tab_content_item('general', active=True) %}

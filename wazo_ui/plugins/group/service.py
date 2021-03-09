@@ -15,7 +15,7 @@ class GroupService(BaseConfdExtensionService):
 
     def create(self, resource):
         resource_created = super().create(resource)
-        resource['id'] = resource_created['id']
+        resource['uuid'] = resource_created['uuid']
         del resource['fallbacks']
         self._update_relations(resource)
 
