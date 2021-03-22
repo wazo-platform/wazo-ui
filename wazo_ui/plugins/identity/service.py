@@ -64,8 +64,8 @@ class IdentityService(BaseAuthService):
         groups = groups or []
         existing_groups = self._auth.users.get_groups(resource['uuid'])['items']
 
-        group_uuids = set([group.get('uuid') for group in groups])
-        existing_group_uuids = set([group['uuid'] for group in existing_groups])
+        group_uuids = {group.get('uuid') for group in groups}
+        existing_group_uuids = {group['uuid'] for group in existing_groups}
         group_uuids_to_remove = existing_group_uuids - group_uuids
         for group_uuid in group_uuids_to_remove:
             self._auth.groups.remove_user(group_uuid, resource['uuid'])

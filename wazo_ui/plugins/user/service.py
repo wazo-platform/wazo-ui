@@ -195,9 +195,9 @@ class UserService(BaseConfdService):
 
     def _update_user_lines(self, existing_user, user):
         lines = user.get('lines', [])
-        line_ids = set([line.get('id') for line in lines])
+        line_ids = {line.get('id') for line in lines}
         existing_lines = existing_user['lines']
-        existing_line_ids = set([line['id'] for line in existing_lines])
+        existing_line_ids = {line['id'] for line in existing_lines}
         extensions_to_remove = []
 
         line_ids_to_remove = existing_line_ids - line_ids
