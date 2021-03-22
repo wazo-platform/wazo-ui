@@ -61,13 +61,18 @@ class IdentityService(BaseAuthService):
         self._auth.users.edit(resource['uuid'], **resource)
 
     def _update_groups(self, resource, groups):
+        groups = groups or []
         existing_groups = self._auth.users.get_groups(resource['uuid'])['items']
-        if existing_groups:
-            for group in existing_groups:
-                self._auth.groups.remove_user(group['uuid'], resource['uuid'])
-        if groups:
-            for group in groups:
-                self._auth.groups.add_user(group['uuid'], resource['uuid'])
+
+        group_uuids = {group.get('uuid') for group in groups}
+        existing_group_uuids = {group['uuid'] for group in existing_groups}
+        group_uuids_to_remove = existing_group_uuids - group_uuids
+        for group_uuid in group_uuids_to_remove:
+            self._auth.groups.remove_user(group_uuid, resource['uuid'])
+
+        group_uuids_to_add = group_uuids - existing_group_uuids
+        for group_uuid in group_uuids_to_add:
+            self._auth.groups.add_user(group_uuid, resource['uuid'])
 
     def _update_policies(self, resource, policies):
         existing_policies = self._auth.users.get_policies(resource['uuid'])['items']
