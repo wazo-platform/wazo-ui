@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask import jsonify, request
@@ -97,5 +97,5 @@ class GroupDestinationView(LoginRequiredView):
     def list_json(self):
         params = extract_select2_params(request.args)
         groups = self.service.list(**params)
-        results = [{'id': group['id'], 'text': group['name']} for group in groups['items']]
+        results = [{'id': group['id'], 'text': group['label']} for group in groups['items']]
         return jsonify(build_select2_response(results, groups['total'], params))

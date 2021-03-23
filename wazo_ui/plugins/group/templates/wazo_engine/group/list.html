@@ -11,10 +11,12 @@
     {% call build_list_containers(_('Group'), 'users') %}
       {% call build_list_table() %}
         {% call build_list_table_headers(get=url_for('.GroupView:get', id=''), delete=url_for('.GroupView:delete', id='')) %}
+          <th>{{ _('Label') }}</th>
           <th>{{ _('Name') }}</th>
           <th>{{ _('Extension') }}</th>
         {% endcall %}
         {% call(group) build_list_table_rows(resource_list['items']) %}
+          <td>{{ group.label }}</td>
           <td>{{ group.name }}</td>
           <td>
             {% for extension in group.extensions %}
@@ -34,7 +36,7 @@
     {% call build_hidden_add_containers(_('Add Group')) %}
       {% call build_form() %}
         {% call add_default_fields(form=form, submit_value=_('Add')) %}
-          {{ render_field(form.name) }}
+          {{ render_field(form.label) }}
           {{ render_field(form.extensions[0].context,
                           label='Extension',
                           inputclass='ui-helper-clearfix',
