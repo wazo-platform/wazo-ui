@@ -189,6 +189,22 @@ class ConfigDeviceView(ProvisioningBaseView):
                                current_breadcrumbs=self._get_current_breadcrumbs(),
                                listing_urls=self.listing_urls)
 
+    def _populate_form(self, form):
+        form.raw_config.timezone.choices = self._build_set_choices_timezones(form.raw_config)
+        return form
+
+    def _build_set_choices_timezones(self, config):
+        if not config.timezone.data or config.timezone.data == 'None':
+            return []
+        return [(config.timezone.data, config.timezone.data)]
+
+    def _map_form_to_resources(self, form, form_id=None):
+        resource = form.to_dict()
+        if form_id:
+            resource['uuid'] = form_id
+        resource['raw_config']['timezone'] = form.raw_config.timezone.data or None
+        return resource
+
 
 class ConfigurationView(ProvisioningBaseView):
     form = ConfigurationForm
