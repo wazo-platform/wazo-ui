@@ -25,7 +25,10 @@
       {% call build_form() %}
         {% call add_default_fields(form=form, submit_value=_('Add')) %}
           {{ render_field(form.name) }}
-          {{ render_field(form.timezone) }}
+          {{ render_field(form.timezone,
+                          data_listing_href=url_for(listing_urls['timezone']),
+                          data_allow_clear='true',
+                          data_placeholder=_('Choose Timezone')) }}
           {{ render_field(form.closed_destination, with_label=False) }}
         {% endcall %}
       {% endcall %}
