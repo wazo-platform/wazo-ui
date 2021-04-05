@@ -7,24 +7,26 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import (
+    ConfBridgeGeneralSettingsService,
+    FeaturesGeneralSettingsService,
+    IaxGeneralSettingsService,
     PJSIPDocService,
     PJSIPGlobalSettingsService,
     PJSIPSystemSettingsService,
-    IaxGeneralSettingsService,
     SccpGeneralSettingsService,
+    TimezoneService,
     VoicemailGeneralSettingsService,
-    FeaturesGeneralSettingsService,
-    ConfBridgeGeneralSettingsService
 )
 from .view import (
+    ConfBridgeGeneralSettingsView,
+    FeaturesGeneralSettingsView,
+    IaxGeneralSettingsView,
     PJSIPDocListingView,
     PJSIPGlobalSettingsView,
     PJSIPSystemSettingsView,
-    IaxGeneralSettingsView,
     SccpGeneralSettingsView,
+    TimezoneListingView,
     VoicemailGeneralSettingsView,
-    FeaturesGeneralSettingsView,
-    ConfBridgeGeneralSettingsView
 )
 
 general_settings = create_blueprint('general_settings', __name__)
@@ -38,6 +40,7 @@ class Plugin(object):
 
         PJSIPDocListingView.service = PJSIPDocService(clients['wazo_confd'])
         PJSIPDocListingView.register(general_settings, route_base='/list_json_by_section')
+        register_listing_url('pjsip_doc', 'general_settings.PJSIPDocListingView:list_json_by_section')
 
         PJSIPGlobalSettingsView.service = PJSIPGlobalSettingsService(clients['wazo_confd'])
         PJSIPGlobalSettingsView.register(general_settings, route_base='/pjsip_global_settings')
@@ -67,6 +70,9 @@ class Plugin(object):
         ConfBridgeGeneralSettingsView.register(general_settings, route_base='/confbridge_general_settings')
         register_flaskview(general_settings, ConfBridgeGeneralSettingsView)
 
-        register_listing_url('pjsip_doc', 'general_settings.PJSIPDocListingView:list_json_by_section')
+        TimezoneListingView.service = TimezoneService(clients['wazo_confd'])
+        TimezoneListingView.register(general_settings, route_base='/timezones_listing')
+        register_flaskview(general_settings, TimezoneListingView)
+        register_listing_url('timezone', 'general_settings.TimezoneListingView:list_json')
 
         core.register_blueprint(general_settings)
