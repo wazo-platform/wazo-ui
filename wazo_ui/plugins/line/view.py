@@ -26,7 +26,7 @@ class LineView(BaseIPBXHelperView):
         return super().index()
 
     def new(self, protocol):
-        if protocol not in ['sip', 'custom']:
+        if protocol not in ['sip', 'sccp', 'custom']:
             return self._index()
 
         return render_template(self._get_template('protocol_{}'.format(protocol)),
@@ -34,7 +34,7 @@ class LineView(BaseIPBXHelperView):
                                listing_urls=self.listing_urls)
 
     def _map_resources_to_form(self, resource):
-        endpoint_sip = endpoint_custom = protocol = None
+        endpoint_sip = endpoint_sccp = endpoint_custom = protocol = None
         if resource['endpoint_sip']:
             protocol = 'sip'
             endpoint_sip = self.service.get_endpoint_sip(resource['endpoint_sip']['uuid'])
@@ -48,6 +48,10 @@ class LineView(BaseIPBXHelperView):
 
             endpoint_sip['template_uuids'] = [template['uuid'] for template in endpoint_sip['templates']]
 
+        elif resource['endpoint_sccp']:
+            protocol = 'sccp'
+            endpoint_sccp = self.service.get_endpoint_sccp(resource['endpoint_sccp']['id'])
+
         elif resource['endpoint_custom']:
             protocol = 'custom'
             endpoint_custom = self.service.get_endpoint_custom(resource['endpoint_custom']['id'])
@@ -56,6 +60,7 @@ class LineView(BaseIPBXHelperView):
             data=resource,
             protocol=protocol,
             endpoint_sip=endpoint_sip,
+            endpoint_sccp=endpoint_sccp,
             endpoint_custom=endpoint_custom,
         )
 
@@ -145,6 +150,8 @@ class LineListingView(LoginRequiredView):
         for line in lines:
             if line.get('endpoint_custom'):
                 text = '{} ({})'.format(line['endpoint_custom']['interface'], 'custom')
+            if line.get('endpoint_sccp'):
+                text = '{} ({})'.format(line['endpoint_sccp']['id'], 'sccp')
             if line.get('endpoint_sip'):
                 text = '{} ({})'.format(line['endpoint_sip']['label'], 'sip')
             results.append({'id': line['id'], 'text': text})

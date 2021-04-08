@@ -21,6 +21,8 @@
           <td>
             {% if line.endpoint_sip %}
               {{ _('SIP') }}
+            {% elif line.endpoint_sccp %}
+              {{ _('SCCP') }}
             {% elif line.endpoint_custom %}
               {{ _('CUSTOM') }}
             {% else %}
@@ -30,6 +32,8 @@
           <td>
             {% if line.endpoint_sip %}
               {{ line.endpoint_sip.label or '-' }}
+            {% elif line.endpoint_sccp %}
+              {{ line.name }}
             {% elif line.endpoint_custom %}
               {{ line.endpoint_custom.interface }}
             {% endif %}
@@ -45,6 +49,8 @@
     {% call build_hidden_add_containers(_('Choose your protocol')) %}
       <button type="button" class="btn btn-block btn-default"
               onclick="location.href='{{ url_for('.LineView:new', protocol='sip') }}'">{{ _('SIP') }}</button>
+      <button type="button" class="btn btn-block btn-default"
+              onclick="location.href='{{ url_for('.LineView:new', protocol='sccp') }}'">{{ _('SCCP') }}</button>
       <button type="button" class="btn btn-block btn-default" onclick="location.href='{{ url_for('.LineView:new',
               protocol='custom') }}'">{{ _('CUSTOM') }}</button>
     {% endcall %}

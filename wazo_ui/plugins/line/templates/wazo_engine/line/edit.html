@@ -242,6 +242,39 @@
         {% endcall %}
       {% endcall %}
 
+    {% elif form.protocol.data == 'sccp' %}
+
+      {% call build_form_box(_('Line'), form.endpoint_sccp.id, 'server') %}
+        {% call build_form(action=url_for('.LineView:put', id=resource.id)) %}
+          {% call add_default_fields(form=form, submit_value=_('Update')) %}
+            {{ render_field(form.context,
+                            data_allow_clear='true',
+                            class_='line-context',
+                            placeholder=_('Choose Context'),
+                            data_listing_href=url_for(listing_urls['context'])) }}
+            {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+
+                {% call build_table_headers() %}
+                  <th>{{  _('Option Key') }}</th>
+                  <th>{{  _('Option Value') }}</th>
+                  <th style="width: 21px"></th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.endpoint_sccp.options.append_entry() %}
+                  {{ _build_option_entry(form.endpoint_sccp.options.pop_entry(), template=True) }}
+
+                  {% for extension in form.endpoint_sccp.options %}
+                    {{ _build_option_entry(extension) }}
+                  {% endfor %}
+                {% endcall %}
+
+              {% endcall %}
+          {% endcall %}
+        {% endcall %}
+      {% endcall %}
+
     {% elif form.protocol.data == 'custom' %}
 
       {% call build_form_box(_('Line'), form.endpoint_custom.interface.data, 'server') %}
