@@ -33,6 +33,6 @@ class AdminUIAssetLaunchingTestCase(AssetLaunchingTestCase):
         Page.CONFIG['base_url'] = 'http://ui:9296'
 
         browser_port = cls.service_port(4444, 'browser')
-        remote_url = 'http://localhost:{port}/wd/hub'.format(port=browser_port)
+        remote_url = 'http://127.0.0.1:{port}/wd/hub'.format(port=browser_port)
         browser = RemoteBrowser(remote_url, username, password)
         return browser
