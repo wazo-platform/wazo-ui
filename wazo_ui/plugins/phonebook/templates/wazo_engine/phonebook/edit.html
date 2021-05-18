@@ -12,6 +12,7 @@
       {% call build_form(action=url_for('.PhonebookView:put', id=resource.id)) %}
         {% call add_default_fields(form=form, submit_value=_('Update')) %}
           {{ render_field(form.name) }}
+          {{ render_field(form.description) }}
         {% endcall %}
       {% endcall %}
     {% endcall %}
