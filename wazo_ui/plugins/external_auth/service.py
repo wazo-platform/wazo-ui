@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import session
@@ -24,8 +24,8 @@ class ExternalAuthService:
 
         return {'items': items}
 
-    def get(self, type):
-        service = self._auth.external.get_config(type)
+    def get(self, backend):
+        service = self._auth.external.get_config(backend)
         return service
 
     def create(self, auth_data, form):
@@ -41,8 +41,9 @@ class ExternalAuthService:
     def delete(self, auth_type):
         return self._auth.external.delete_config(auth_type)
 
-    def list_types(self):
-        return ['microsoft', 'mobile', 'google']
+    def list_backend(self):
+        service_list = self._auth.external.list_(session['working_instance_tenant_uuid'])
+        return [service['type'] for service in service_list['items']]
 
     def _parse_payload(self, auth_data):
         auth_type = auth_data['type']
