@@ -15,12 +15,53 @@
                       class_='line-context',
                       placeholder='Choose Context',
                       data_listing_href=url_for(listing_urls['context'])) }}
+      {{ build_add_row_entry_header() }}
+        {% call build_table() %}
+
+          {% call build_table_headers() %}
+            <th>{{  _('Option Key') }}</th>
+            <th>{{  _('Option Value') }}</th>
+            <th style="width: 21px"></th>
+          {% endcall %}
+
+          {% call build_table_body(class_='dynamic-table') %}
+            {% do form.endpoint_sccp.options.append_entry() %}
+              {{ _build_option_entry(form.endpoint_sccp.options.pop_entry(), template=True) }}
+
+              {% for extension in form.endpoint_sccp.options %}
+                {{ _build_option_entry(extension) }}
+              {% endfor %}
+          {% endcall %}
+
+        {% endcall %}
     {% endcall %}
   {% endcall %}
 {% endcall %}
 
   {% endcall %}
 {% endblock %}
+
+{% macro _build_option_entry(option, section=None, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+  {% if section %}
+    <td>{{ render_field(
+      option.option_key,
+      with_label=False,
+      inputclass='ui-helper-clearfix',
+      data_listing_href=url_for(listing_urls['sccp_doc'], section=section),
+    ) }}</td>
+  {% else %}
+    <td>{{ render_field(option.option_key, with_label=False, inputclass='ui-helper-clearfix') }}</td>
+  {% endif %}
+    <td>{{ render_field(option.option_value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}
 
 
 {% block additional_js %}

@@ -13,6 +13,7 @@ from .service import (
     PJSIPDocService,
     PJSIPGlobalSettingsService,
     PJSIPSystemSettingsService,
+    SccpDocService,
     SccpGeneralSettingsService,
     TimezoneService,
     VoicemailGeneralSettingsService,
@@ -24,6 +25,7 @@ from .view import (
     PJSIPDocListingView,
     PJSIPGlobalSettingsView,
     PJSIPSystemSettingsView,
+    SccpDocListingView,
     SccpGeneralSettingsView,
     TimezoneListingView,
     VoicemailGeneralSettingsView,
@@ -41,6 +43,10 @@ class Plugin(object):
         PJSIPDocListingView.service = PJSIPDocService(clients['wazo_confd'])
         PJSIPDocListingView.register(general_settings, route_base='/list_json_by_section')
         register_listing_url('pjsip_doc', 'general_settings.PJSIPDocListingView:list_json_by_section')
+
+        SccpDocListingView.service = SccpDocService()
+        SccpDocListingView.register(general_settings, route_base='/sccp_documentation')
+        register_listing_url('sccp_doc', 'general_settings.SccpDocListingView')
 
         PJSIPGlobalSettingsView.service = PJSIPGlobalSettingsService(clients['wazo_confd'])
         PJSIPGlobalSettingsView.register(general_settings, route_base='/pjsip_global_settings')

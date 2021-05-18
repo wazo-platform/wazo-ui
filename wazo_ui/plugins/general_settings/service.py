@@ -57,6 +57,15 @@ class IaxGeneralSettingsService(object):
         self._confd.iax_general.update(resource['general'])
 
 
+class SccpDocService(object):
+
+    def get(self):
+        doc = [
+            {'pouet': 'pouet'}
+        ]
+        return doc
+
+
 class SccpGeneralSettingsService(object):
 
     def __init__(self, confd_client):
