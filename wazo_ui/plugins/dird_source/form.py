@@ -109,7 +109,6 @@ class PhonebookForm(BaseForm):
     first_matched_columns = FieldList(FormField(ColumnsForm))
     format_columns = FieldList(FormField(ValueColumnsForm))
     searched_columns = FieldList(FormField(ColumnsForm))
-    db_uri = StringField(l_('DB Uri'), validators=[InputRequired()])
 
 
 class WazoAuthForm(BaseForm):

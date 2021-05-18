@@ -34,7 +34,6 @@
             {% call add_default_fields(form=form, submit_value=submit_value) %}
               {{ render_field(form.backend) }}
               {{ render_field(form.name) }}
-              {{ render_field(form.phonebook_config.db_uri) }}
             {% endcall %}
           {% endcall %}
 
