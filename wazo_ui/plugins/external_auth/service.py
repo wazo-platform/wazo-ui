@@ -1,7 +1,7 @@
 # Copyright 2018-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import session
+from flask_login import current_user
 from requests.exceptions import HTTPError
 
 
@@ -11,7 +11,7 @@ class ExternalAuthService:
         self._auth = auth_client
 
     def list(self):
-        service_list = self._auth.external.list_(session['working_instance_tenant_uuid'])
+        service_list = self._auth.external.list_(current_user.uuid)
         items = []
 
         for service in service_list['items']:
@@ -42,7 +42,7 @@ class ExternalAuthService:
         return self._auth.external.delete_config(auth_type)
 
     def list_backend(self):
-        service_list = self._auth.external.list_(session['working_instance_tenant_uuid'])
+        service_list = self._auth.external.list_(current_user.uuid)
         return [service['type'] for service in service_list['items']]
 
     def _parse_payload(self, auth_data):
