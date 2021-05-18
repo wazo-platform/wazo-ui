@@ -87,16 +87,7 @@ class VoicemailZonemessages(BaseForm):
     timezone = SelectField(
         l_('Timezone'),
         validators=[InputRequired()],
-        choices=[
-            ('America/St_Johns', 'America/St_Johns'),
-            ('America/Halifax', 'America/Halifax'),
-            ('America/New_York', 'America/New_York'),
-            ('America/Chicago', 'America/Chicago'),
-            ('America/Denver', 'America/Denver'),
-            ('America/Los_Angeles', 'America/Los_Angeles'),
-            ('America/Anchorage', 'America/Anchorage'),
-            ('Europe/Paris', 'Europe/Paris'),
-        ]
+        choices=[],
     )
     message = StringField(l_('Message'))
 

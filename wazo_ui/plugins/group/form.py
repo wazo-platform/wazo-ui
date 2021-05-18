@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
@@ -52,7 +52,8 @@ class CallPermissionForm(BaseForm):
 
 
 class GroupForm(BaseForm):
-    name = StringField(l_('Name'), [InputRequired(), Length(max=128)])
+    name = StringField(l_('Name'), render_kw={'disabled': True})
+    label = StringField(l_('Label'), [InputRequired(), Length(max=128)])
     extensions = FieldList(FormField(ExtensionForm), min_entries=1)
     caller_id_mode = SelectField(l_('Callerid mode'), choices=[
         ('', l_('None')),

@@ -1,8 +1,6 @@
 # Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-import pytz
-
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
     SubmitField,
@@ -50,13 +48,6 @@ def convert_list_to_choices(list_):
     return result
 
 
-def list_timezones():
-    result = [('', l_('None'))]
-    # XXX: Should use REST API /timezones to avoid disparities with different systems
-    result.extend(list(zip(pytz.all_timezones, pytz.all_timezones)))
-    return result
-
-
 class PeriodForm(BaseForm):
     hours_start = StringField(l_('Hour Start'), validators=[InputRequired()])
     hours_end = StringField(l_('Hour End'), validators=[InputRequired()])
@@ -75,7 +66,7 @@ class ScheduleOpenPeriodForm(PeriodForm):
 
 class ScheduleForm(BaseForm):
     name = StringField(l_('Name'), validators=[InputRequired()])
-    timezone = SelectField(l_('Timezone'), choices=list_timezones())
+    timezone = SelectField(l_('Timezone'), choices=[])
     closed_destination = DestinationField()
     exceptional_periods = FieldList(FormField(ScheduleExceptionalPeriodForm))
     open_periods = FieldList(FormField(ScheduleOpenPeriodForm))

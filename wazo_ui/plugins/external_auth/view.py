@@ -25,7 +25,7 @@ class ExternalAuthView(BaseIPBXHelperView):
             type_list = self.service.list_types()
         except HTTPError as error:
             self._flash_http_error(error)
-            return redirect(url_for('customer.CustomerView:index'))
+            return redirect(url_for('index.IndexView:index'))
 
         form = form or self.form()
         form = self._populate_form(form)

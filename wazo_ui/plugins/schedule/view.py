@@ -39,9 +39,25 @@ class ScheduleView(BaseIPBXHelperView):
             destination['format'] = format_['format']
             destination['language'] = format_['language']
 
+    def _populate_form(self, form):
+        form.timezone.choices = self._build_set_choices_timezones(form)
+        return form
+
+    def _build_set_choices_timezones(self, form):
+        if not form.timezone.data or form.timezone.data == 'None':
+            return []
+        return [(form.timezone.data, form.timezone.data)]
+
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('schedule', {}))
         return form
+
+    def _map_form_to_resources(self, form, form_id=None):
+        resource = form.to_dict()
+        if form_id:
+            resource['id'] = form_id
+        resource['timezone'] = form.timezone.data or None
+        return resource
 
 
 class ScheduleListingView(LoginRequiredView):

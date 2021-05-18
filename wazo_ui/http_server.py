@@ -147,7 +147,7 @@ class Server():
         @babel.localeselector
         def get_locale():
             if not session.get('language'):
-                translations = set([locale.language for locale in babel.list_translations()])
+                translations = {locale.language for locale in babel.list_translations()}
                 translations.add(BABEL_DEFAULT_LOCALE)
 
                 session['language'] = request.accept_languages.best_match(translations)

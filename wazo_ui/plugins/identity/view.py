@@ -207,13 +207,13 @@ class PolicyView(BaseIPBXHelperView):
         return super().index()
 
     def _map_resources_to_form(self, resource):
-        resource['acl_templates'] = [{'acl': acl_template} for acl_template in resource['acl_templates']]
+        resource['acl'] = [{'value': access} for access in resource['acl']]
         form = self.form(data=resource)
         return form
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
-        resource['acl_templates'] = [acl_template['acl'] for acl_template in resource['acl_templates']]
+        resource['acl'] = [access['value'] for access in resource['acl']]
         return resource
 
 

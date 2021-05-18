@@ -46,9 +46,9 @@ class OutcallService(BaseConfdService):
 
     def _update_extensions_relations(self, outcall):
         extensions = outcall.get('extensions', [])
-        extension_ids = set([e.get('id') for e in extensions])
+        extension_ids = {e.get('id') for e in extensions}
         existing_extensions = self._confd.outcalls.get(outcall['id'])['extensions']
-        existing_extension_ids = set([e['id'] for e in existing_extensions])
+        existing_extension_ids = {e['id'] for e in existing_extensions}
         extension_ids_to_remove = existing_extension_ids - extension_ids
 
         for extension in extensions:

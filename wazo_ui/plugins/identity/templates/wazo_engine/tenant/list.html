@@ -12,9 +12,11 @@
       {% call build_list_table() %}
         {% call build_list_table_headers(get=url_for('.TenantView:get', id=''), delete=url_for('.TenantView:delete', id='')) %}
           <th>{{ _('Name') }}</th>
+          <th>{{ _('Identifier') }}</th>
         {% endcall %}
         {% call(tenant) build_list_table_rows(resource_list['items']) %}
           <td>{{ tenant.name }}</td>
+          <td>{{ tenant.slug }}</td>
         {% endcall %}
       {% endcall %}
     {% endcall %}
@@ -23,6 +25,7 @@
       {% call build_form() %}
         {% call add_default_fields(form=form, submit_value=_('Add')) %}
           {{ render_field(form.name) }}
+          {{ render_field(form.slug) }}
         {% endcall %}
       {% endcall %}
     {% endcall %}

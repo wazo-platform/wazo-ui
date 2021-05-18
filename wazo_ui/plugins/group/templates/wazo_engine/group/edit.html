@@ -2,7 +2,7 @@
 
 {% block content_header %}
   {{ build_breadcrumbs(current_breadcrumbs + [
-    { 'name': resource.name, 'link': url_for('.GroupView:get', id=resource.id), 'icon': 'users' }
+    { 'name': resource.name, 'link': url_for('.GroupView:get', id=resource.uuid), 'icon': 'users' }
   ]) }}
 {% endblock %}
 
@@ -10,7 +10,7 @@
   {% call build_section_row() %}
     {% call build_form_tabs_box() %}
         {% call build_tabs_navigation() %}
-          {{ add_tab_navigation_header(_('Group'), resource.name, 'users') }}
+          {{ add_tab_navigation_header(_('Group'), resource.label, 'users') }}
           {{ add_tab_navigation_item('general', _('General'), active=True) }}
           {{ add_tab_navigation_item('members', _('Members')) }}
           {{ add_tab_navigation_item('fallbacks', _('Fallbacks')) }}
@@ -18,11 +18,12 @@
           {{ add_tab_navigation_item('callpermissions', _('Call Permissions')) }}
         {% endcall %}
 
-      {% call build_form(action=url_for('.GroupView:put', id=resource.id)) %}
+      {% call build_form(action=url_for('.GroupView:put', id=resource.uuid)) %}
         {% call build_tabs_content() %}
 
           {% call build_tab_content_item('general', active=True) %}
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.label) }}
               {{ render_field(form.name) }}
               {{ render_field(form.extensions[0].context,
                               label='Exten',

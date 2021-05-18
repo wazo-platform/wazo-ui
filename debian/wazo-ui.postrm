@@ -6,4 +6,5 @@ DAEMONNAME='wazo-ui'
 
 if [ "$1" = remove ]; then
     rm -f "/etc/nginx/locations/https-enabled/$DAEMONNAME"
+    rm -f "/etc/nginx/locations/http-enabled/$DAEMONNAME"
 fi

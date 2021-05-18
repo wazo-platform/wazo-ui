@@ -86,6 +86,15 @@ class VoicemailGeneralSettingsService(object):
         self._confd.voicemail_general.update(resource['general'])
 
 
+class TimezoneService(object):
+
+    def __init__(self, confd_client):
+        self._confd = confd_client
+
+    def list_timezones(self):
+        return self._confd.timezones.list()
+
+
 class FeaturesGeneralSettingsService(object):
 
     def __init__(self, confd_client):

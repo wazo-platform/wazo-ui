@@ -1,8 +1,6 @@
 # Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-import pytz
-
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
     SubmitField,
@@ -17,13 +15,6 @@ from wtforms.fields.html5 import IntegerField
 from wtforms.validators import InputRequired, Length, IPAddress, Regexp, URL
 
 from wazo_ui.helpers.form import BaseForm
-
-
-def list_timezones():
-    result = [('', l_('None'))]
-    # XXX: Should use REST API /timezones to avoid disparities with different systems
-    result.extend(list(zip(pytz.all_timezones, pytz.all_timezones)))
-    return result
 
 
 class ConfigRegistrarForm(BaseForm):
@@ -53,7 +44,7 @@ class RawConfigDeviceForm(BaseForm):
         ('nl_NL', 'nl_NL'),
         ('pl_PL', 'pl_PL'),
     ])
-    timezone = SelectField(l_('Timezone'), choices=list_timezones())
+    timezone = SelectField(l_('Timezone'), choices=[])
     protocol = SelectField(l_('Protocol'), choices=[
         ('', l_('None')),
         ('SIP', 'SIP'),

@@ -35,11 +35,11 @@
                 {% endcall %}
 
                 {% call build_table_body(class_='dynamic-table') %}
-                  {% do form.acl_templates.append_entry() %}
-                  {{ _build_acl_entry(form.acl_templates.pop_entry(), template=True) }}
+                  {% do form.acl.append_entry() %}
+                  {{ _build_access_entry(form.acl.pop_entry(), template=True) }}
 
-                  {% for acl in form.acl_templates %}
-                    {{ _build_acl_entry(acl) }}
+                  {% for access in form.acl %}
+                    {{ _build_access_entry(access) }}
                   {% endfor %}
                 {% endcall %}
 
@@ -55,14 +55,14 @@
   {% endcall %}
 {% endblock %}
 
-{% macro _build_acl_entry(option, template=False) %}
+{% macro _build_access_entry(option, template=False) %}
   {% if template %}
     {% set tr_class = "row-template hidden" %}
   {% else %}
     {% set tr_class = "row-line" %}
   {% endif %}
   <tr class="{{ tr_class }}">
-    <td>{{ render_field(option.acl, with_label=False) }}</td>
+    <td>{{ render_field(option.value, with_label=False) }}</td>
     <td>{{ add_delete_entry_button() }}</td>
   </tr>
 {% endmacro %}

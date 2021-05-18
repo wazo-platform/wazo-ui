@@ -100,7 +100,10 @@
   {% endif %}
   <tr class="{{ tr_class }}">
     <td>{{ render_field(zonemessage['name'], with_label=False) }}</td>
-    <td>{{ render_field(zonemessage.timezone, with_label=False) }}</td>
+    <td>{{ render_field(zonemessage.timezone,
+                        with_label=False,
+                        data_listing_href=url_for(listing_urls['timezone']),
+                        data_placeholder=_('Choose Timezone')) }}</td>
     <td>{{ render_field(zonemessage.message, with_label=False) }}</td>
     <td>{{ add_delete_entry_button() }}</td>
   </tr>

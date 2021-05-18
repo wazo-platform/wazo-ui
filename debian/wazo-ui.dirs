@@ -1,2 +1,3 @@
 etc/nginx/locations/https-enabled
+etc/nginx/locations/http-enabled
 etc/wazo-ui/conf.d

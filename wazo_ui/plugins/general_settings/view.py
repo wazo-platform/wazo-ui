@@ -198,6 +198,16 @@ class VoicemailGeneralSettingsView(BaseGeneralSettingsView):
         form = self.form(data=resource)
         return form
 
+    def _populate_form(self, form):
+        for zonemessage in form.zonemessages:
+            zonemessage.timezone.choices = self._build_set_choices_timezones(zonemessage)
+        return form
+
+    def _build_set_choices_timezones(self, zonemessage):
+        if not zonemessage.timezone.data or zonemessage.timezone.data == 'None':
+            return []
+        return [(zonemessage.timezone.data, zonemessage.timezone.data)]
+
     def _map_form_to_resources(self, form, form_id=None):
         data = form.to_dict()
         data['general']['options'] = self._map_options_to_resource(data['general']['options'])
@@ -269,3 +279,18 @@ class PJSIPDocListingView(LoginRequiredView):
         with_id = [{'id': key, 'text': key} for key in doc if term in key]
         params['limit'] = len(with_id)  # avoid pagination
         return jsonify(build_select2_response(with_id, len(with_id), params))
+
+
+class TimezoneListingView(LoginRequiredView):
+
+    def list_json(self):
+        params = extract_select2_params(request.args)
+        timezones = self.service.list_timezones()['items']
+        term = params.get('search') or ''
+        results = []
+        for tz in timezones:
+            if term and term.lower() not in tz['zone_name'].lower():
+                continue
+            results.append({'id': tz['zone_name'], 'text': tz['zone_name']})
+        params['limit'] = len(results)  # avoid pagination
+        return jsonify(build_select2_response(results, len(results), params))
