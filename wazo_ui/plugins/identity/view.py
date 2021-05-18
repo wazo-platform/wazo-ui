@@ -7,7 +7,7 @@ from flask_classful import route
 
 from requests.exceptions import HTTPError
 
-from wazo_ui.helpers.tenant import refresh_instance_tenants
+from wazo_ui.helpers.tenant import refresh_tenants
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     extract_select2_params,
@@ -147,21 +147,21 @@ class TenantView(BaseIPBXHelperView):
 
     def post(self):
         result = super().post()
-        refresh_instance_tenants()
+        refresh_tenants()
 
         return result
 
     @route('/put/<id>', methods=['POST'])
     def put(self, id):
         result = super().put(id)
-        refresh_instance_tenants()
+        refresh_tenants()
 
         return result
 
     @route('/delete/<id>', methods=['GET'])
     def delete(self, id):
         result = super().delete(id)
-        refresh_instance_tenants()
+        refresh_tenants()
 
         return result
 

@@ -34,16 +34,16 @@ class UserUI(UserMixin):
     def get_user_index_url(self):
         return url_for('wazo_engine.user.UserView:index')
 
-    def get_current_instance_tenants(self):
+    def get_current_tenants(self):
         instance = self.get_instance()
         if not instance:
             return []
 
-        return session['instance_tenants'] if 'instance_tenants' in session else []
+        return session['tenants'] if 'tenants' in session else []
 
     def reset_instance(self):
         session['instance'] = None
-        session['instance_tenants'] = []
+        session['tenants'] = []
 
     def set_tenant(self, tenant=None):
         session['instance'] = {}
