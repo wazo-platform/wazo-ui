@@ -130,6 +130,11 @@ class DirdSourceView(BaseIPBXHelperView):
                     {'value': 'phone'},
                     {'value': 'mobile_phone'},
                 ],
+                'first_matched_columns': [
+                    {'value': 'phone'},
+                    {'value': 'mobile_phone'},
+                    {'value': 'fax'},
+                ],
                 'format_columns': [
                     {'key': 'name', 'value': '{firstname} {lastname}'},
                     {'key': 'reverse', 'value': '{firstname} {lastname}'},
