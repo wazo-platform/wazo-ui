@@ -35,3 +35,30 @@ class PhonebookService:
         tenant_uuid = session['working_instance_tenant_uuid']
         tenant = [tenant['name'] for tenant in session['instance_tenants'] if tenant['uuid'] == tenant_uuid][0]
         return (tenant, tenant_uuid)
+
+
+class ManagePhonebookService:
+
+    def __init__(self, dird_client):
+        self._dird = dird_client
+
+    def list_phonebook(self):
+        tenant, tenant_uuid = self._get_tenant()
+        return self._dird.phonebook.list(tenant=tenant, tenant_uuid=tenant_uuid)
+
+    def create_contact(self, contact):
+        tenant, tenant_uuid = self._get_tenant()
+        return self._dird.phonebook.create_contact(tenant=tenant, phonebook_id=contact['phonebook_id'], contact_body=contact, tenant_uuid=tenant_uuid)
+
+    def delete_contact(self, phonebook_id, contact_uuid):
+        tenant, tenant_uuid = self._get_tenant()
+        self._dird.phonebook.delete_contact(tenant=tenant, phonebook_id=phonebook_id, contact_uuid=contact_uuid, tenant_uuid=tenant_uuid)
+
+    def list_contacts(self, phonebook_id):
+        tenant, tenant_uuid = self._get_tenant()
+        return self._dird.phonebook.list_contacts(tenant=tenant, tenant_uuid=tenant_uuid, phonebook_id=phonebook_id)
+
+    def _get_tenant(self):
+        tenant_uuid = session['working_instance_tenant_uuid']
+        tenant = [tenant['name'] for tenant in session['instance_tenants'] if tenant['uuid'] == tenant_uuid][0]
+        return (tenant, tenant_uuid)
