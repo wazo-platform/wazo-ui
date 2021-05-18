@@ -57,7 +57,7 @@
         </select>
       </div>
     </form>
-	{% if session['working_tenant_uuid'] == current_user.get_tenant_uuid() %}
+	{% if session['working_tenant_uuid'] == current_user.get_user_tenant_uuid() %}
 	  <div class="alert alert-error alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 	    <i>Don't use <strong>master</strong> tenant for configuration!</i>

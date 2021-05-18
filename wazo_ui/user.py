@@ -18,8 +18,8 @@ class UserUI(UserMixin):
     def get_user(self):
         return session.get('user')
 
-    def get_tenant(self):
-        return session.get('user_tenant')
+    def get_user_tenant_uuid(self):
+        return session['user'].get('tenant_uuid')
 
     def get_displayname(self):
         return session['user']['username']
