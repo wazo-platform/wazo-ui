@@ -68,7 +68,7 @@ $(document).ready(function() {
     btnOkClass: 'btn-xs btn-primary bg-green color-palette'
   });
 
-  $("#working-tenant,#working-instance-tenant").on("change", function () {
+  $("#working-tenant").on("change", function () {
     $(this).submit();
   });
 

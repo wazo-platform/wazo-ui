@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask import request, redirect, url_for, render_template, flash
@@ -22,7 +22,7 @@ class ExternalAuthView(BaseIPBXHelperView):
     def _index(self, form=None):
         try:
             resource_list = self.service.list()
-            type_list = self.service.list_types()
+            backend_list = self.service.list_backend()
         except HTTPError as error:
             self._flash_http_error(error)
             return redirect(url_for('index.IndexView:index'))
@@ -35,7 +35,7 @@ class ExternalAuthView(BaseIPBXHelperView):
 
         configured_types = [service['type'] for service in resource_list['items']]
 
-        type_list = [service_type for service_type in type_list if service_type not in configured_types]
+        type_list = [service_type for service_type in backend_list if service_type not in configured_types]
 
         return render_template(self._get_template('list'),
                                form=form,

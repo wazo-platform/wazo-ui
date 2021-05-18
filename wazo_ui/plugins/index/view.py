@@ -17,6 +17,6 @@ class IndexView(BaseHelperViewWithoutLogin):
 
 
 class WorkingTenantView(LoginRequiredView):
-    def set_working_instance_tenant(self):
-        session['working_instance_tenant_uuid'] = request.args.get('tenant_uuid')
+    def set_working_tenant(self):
+        session['working_tenant_uuid'] = request.args.get('tenant_uuid')
         return redirect(request.referrer)
