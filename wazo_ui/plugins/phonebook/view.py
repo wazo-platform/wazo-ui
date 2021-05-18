@@ -5,6 +5,7 @@ from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
 from flask_classful import route
 from flask import (
+    request,
     redirect,
     render_template,
     flash
@@ -33,9 +34,11 @@ class ManagePhonebookView(BaseIPBXHelperView):
 
     @menu_item('.ipbx.phonebooks.manage', l_('Contacts'), order=2, icon="users", multi_tenant=True)
     def index(self, form=None):
+        phonebook_id = request.args.get('phonebook_id')
         try:
-            resource = self.service.list_phonebook()['items'][0]
-            phonebook_id = resource['phonebook_id'] = resource['id']
+            phonebook_list = self.service.list_phonebook()
+            resource = phonebook_list['items'][0]
+            phonebook_id = resource['phonebook_id'] = phonebook_id or resource['id']
             resource_list = self.service.list_contacts(phonebook_id)
         except HTTPError as error:
             self._flash_http_error(error)
@@ -47,7 +50,8 @@ class ManagePhonebookView(BaseIPBXHelperView):
         kwargs = {
             'form': form,
             'resource_list': resource_list,
-            'phonebook_id': phonebook_id
+            'phonebook_id': phonebook_id,
+            'phonebook_list': phonebook_list['items']
         }
         if self.listing_urls:
             kwargs['listing_urls'] = self.listing_urls

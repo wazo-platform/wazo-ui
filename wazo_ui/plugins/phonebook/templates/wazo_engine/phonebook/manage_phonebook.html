@@ -8,6 +8,17 @@
 
 {% block content %}
   <section class="content">
+    <div class="form-group">
+      <span class="pull-right-container">
+        {{ _('Choose you phonebook: ') }}
+      </span>
+      <select id="phonebook" class="input-md select2-single">
+      {% for p in phonebook_list %}
+        <option value="{{ p.id }}" {% if phonebook_id|int == p.id|int %} selected {% endif %}>{{ p.name }}</option>
+      {% endfor %}
+      </select>
+    </div>
+
     {% call build_list_containers(_('Manage Contacts'), 'users') %}
       {% call build_list_table() %}
         {% call build_list_table_headers(get=url_for('.ManagePhonebookView:get', id=''), delete=url_for('.ManagePhonebookView:delete', phonebook_id=phonebook_id, id='')) %}
@@ -39,4 +50,8 @@
       {% endcall %}
     {% endcall %}
   </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/phonebook.js') }}"></script>
 {% endblock %}
