@@ -10,8 +10,7 @@ class UserUI(UserMixin):
     def __init__(self, token, uuid=None):
         self.token = token
         self.uuid = uuid
-        if 'instance' not in session:
-            session['instance'] = None
+        self.config = {}
 
     def get_id(self):
         return self.token
@@ -19,8 +18,8 @@ class UserUI(UserMixin):
     def get_user(self):
         return session.get('user')
 
-    def get_tenant(self):
-        return session.get('user_tenant')
+    def get_user_tenant_uuid(self):
+        return session['user'].get('tenant_uuid')
 
     def get_displayname(self):
         return session['user']['username']
@@ -34,29 +33,15 @@ class UserUI(UserMixin):
     def get_user_index_url(self):
         return url_for('wazo_engine.user.UserView:index')
 
-    def get_current_instance_tenants(self):
-        instance = self.get_instance()
-        if not instance:
-            return []
+    def get_current_tenants(self):
+        return session['tenants'] if 'tenants' in session else []
 
-        return session['instance_tenants'] if 'instance_tenants' in session else []
+    def reset(self):
+        session['config'] = {}
+        session['tenants'] = []
 
-    def reset_instance(self):
-        session['instance'] = None
-        session['instance_tenants'] = []
-
-    def set_tenant(self, tenant=None):
-        session['instance'] = {}
-        session['instance']['wazo_tenant'] = tenant
-
-    def set_instance_config(self, config):
-        if not session['instance']:
-            session['instance'] = {}
-
-        session['instance']['config'] = {'websocketd': config['websocketd']}
-
-    def get_instance(self):
-        return session['instance']
+    def set_config(self, config):
+        session['config'] = {'websocketd': config['websocketd']}
 
     @property
     def is_active(self):

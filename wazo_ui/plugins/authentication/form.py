@@ -44,7 +44,6 @@ class LoginForm(FlaskForm):
             auth_client.set_token(response['token'])
             user = auth_client.users.get(response['metadata']['uuid'])
             user['password'] = self.password.data
-            user['instance_uuid'] = response['xivo_uuid']
             session['user'] = user
         except HTTPError as e:
             if unauthorized(e):
@@ -56,7 +55,6 @@ class LoginForm(FlaskForm):
             raise ValidationError(l_('Wazo authentication server connection error'))
 
         self.user = UserUI(response['token'], response['auth_id'])
-        self.user.set_tenant(response['metadata']['tenant_uuid'])
-        self.user.set_instance_config(app.config)
+        self.user.set_config(app.config)
 
         return True

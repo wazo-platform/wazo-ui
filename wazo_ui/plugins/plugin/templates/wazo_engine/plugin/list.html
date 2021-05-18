@@ -76,11 +76,10 @@
   <script src="{{ url_for('.static', filename='js/ladda.min.js') }}"></script>
   <script src="{{ url_for('.static', filename='js/plugin.js') }}"></script>
   <script>
-    {% set config = current_user.get_instance().config %}
     connect(
-      "{{ config.websocketd.host or '' }}",
-      "{{ config.websocketd.port }}",
-      "{{ config.websocketd.prefix }}",
+      "{{ current_user.config.websocketd.host or '' }}",
+      "{{ current_user.config.websocketd.port }}",
+      "{{ current_user.config.websocketd.prefix }}",
       "{{ current_user.token }}"
     );
   </script>
