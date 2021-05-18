@@ -122,6 +122,25 @@ class DirdSourceView(BaseIPBXHelperView):
                 ],
 
             },
+            'phonebook_config': {
+                'searched_columns': [
+                    {'value': 'firstname'},
+                    {'value': 'lastname'},
+                    {'value': 'email'},
+                    {'value': 'phone'},
+                    {'value': 'mobile_phone'},
+                ],
+                'first_matched_columns': [
+                    {'value': 'phone'},
+                    {'value': 'mobile_phone'},
+                    {'value': 'fax'},
+                ],
+                'format_columns': [
+                    {'key': 'name', 'value': '{firstname} {lastname}'},
+                    {'key': 'reverse', 'value': '{firstname} {lastname}'},
+                    {'key': 'phone_mobile', 'value': '{mobile_phone}'},
+                ],
+            },
             'wazo_config': {
                 'auth': dict(
                     key_file='/var/lib/wazo-auth-keys/wazo-dird-wazo-backend-key.yml',
