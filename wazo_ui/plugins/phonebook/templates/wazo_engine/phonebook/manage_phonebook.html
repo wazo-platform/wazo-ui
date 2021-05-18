@@ -20,7 +20,7 @@
           <td>{{ phonebook.firstname }}</td>
           <td>{{ phonebook.lastname }}</td>
           <td>{{ phonebook.phone }}</td>
-          <td>{{ phonebook.email }}</td>
+          <td>{{ phonebook.email or '-' }}</td>
         {% endcall %}
       {% endcall %}
     {% endcall %}
