@@ -10,8 +10,7 @@ class UserUI(UserMixin):
     def __init__(self, token, uuid=None):
         self.token = token
         self.uuid = uuid
-        if 'instance' not in session:
-            session['instance'] = None
+        self.config = {}
 
     def get_id(self):
         return self.token
@@ -35,24 +34,14 @@ class UserUI(UserMixin):
         return url_for('wazo_engine.user.UserView:index')
 
     def get_current_tenants(self):
-        instance = self.get_instance()
-        if not instance:
-            return []
-
         return session['tenants'] if 'tenants' in session else []
 
-    def reset_instance(self):
-        session['instance'] = None
+    def reset(self):
+        session['config'] = {}
         session['tenants'] = []
 
-    def set_instance_config(self, config):
-        if not session['instance']:
-            session['instance'] = {}
-
-        session['instance']['config'] = {'websocketd': config['websocketd']}
-
-    def get_instance(self):
-        return session['instance']
+    def set_config(self, config):
+        session['config'] = {'websocketd': config['websocketd']}
 
     @property
     def is_active(self):

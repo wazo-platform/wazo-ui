@@ -47,7 +47,7 @@
 {% macro _build_ipbx_menu(item, current_user) %}
   {% set tenants = current_user.get_current_tenants() %}
   {% if tenants|length > 0 %}
-    <form class="navbar-form navbar-left" id="working-instance-tenant" action="{{ url_for('index.WorkingTenantView:set_working_tenant') }}">
+    <form class="navbar-form navbar-left" id="working-tenant" action="{{ url_for('index.WorkingTenantView:set_working_tenant') }}">
       <div class="form-group">
         <select name="tenant_uuid" class="selectfield">
           {% for tenant in tenants %}

@@ -59,7 +59,7 @@ class Logout(FlaskView):
 
     def get(self):
         token = current_user.get_id()
-        current_user.reset_instance()
+        current_user.reset()
         try:
             self.auth_client.token.revoke(token)
         except requests.HTTPError as e:
