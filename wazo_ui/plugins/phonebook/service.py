@@ -32,8 +32,8 @@ class PhonebookService:
         return self._dird.phonebook.delete(tenant=tenant, phonebook_id=id, tenant_uuid=tenant_uuid)
 
     def _get_tenant(self):
-        tenant_uuid = session['working_instance_tenant_uuid']
-        tenant = [tenant['name'] for tenant in session['instance_tenants'] if tenant['uuid'] == tenant_uuid][0]
+        tenant_uuid = session['working_tenant_uuid']
+        tenant = [tenant['name'] for tenant in session['tenants'] if tenant['uuid'] == tenant_uuid][0]
         return (tenant, tenant_uuid)
 
 
@@ -59,6 +59,6 @@ class ManagePhonebookService:
         return self._dird.phonebook.list_contacts(tenant=tenant, tenant_uuid=tenant_uuid, phonebook_id=phonebook_id)
 
     def _get_tenant(self):
-        tenant_uuid = session['working_instance_tenant_uuid']
-        tenant = [tenant['name'] for tenant in session['instance_tenants'] if tenant['uuid'] == tenant_uuid][0]
+        tenant_uuid = session['working_tenant_uuid']
+        tenant = [tenant['name'] for tenant in session['tenants'] if tenant['uuid'] == tenant_uuid][0]
         return (tenant, tenant_uuid)
