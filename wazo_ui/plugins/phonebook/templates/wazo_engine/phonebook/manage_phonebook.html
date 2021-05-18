@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Manage Contacts'), 'link': url_for('.ManagePhonebookView:index'), 'icon': 'users' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    {% call build_list_containers(_('Manage Contacts'), 'users') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.ManagePhonebookView:get', id=''), delete=url_for('.ManagePhonebookView:delete', phonebook_id=phonebook_id, id='')) %}
+          <th>{{ _('Firstname') }}</th>
+          <th>{{ _('Lastname') }}</th>
+          <th>{{ _('Phone Number') }}</th>
+          <th>{{ _('Email') }}</th>
+        {% endcall %}
+        {% call(phonebook) build_list_table_rows(resource_list['items']) %}
+          <td>{{ phonebook.firstname }}</td>
+          <td>{{ phonebook.lastname }}</td>
+          <td>{{ phonebook.phone }}</td>
+          <td>{{ phonebook.email }}</td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Contact')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.phonebook_id) }}
+          {{ render_field(form.firstname) }}
+          {{ render_field(form.lastname) }}
+          {{ render_field(form.email) }}
+          {{ render_field(form.phone) }}
+          {{ render_field(form.mobile_phone) }}
+          {{ render_field(form.fax) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
