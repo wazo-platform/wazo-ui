@@ -45,10 +45,6 @@ class UserUI(UserMixin):
         session['instance'] = None
         session['tenants'] = []
 
-    def set_tenant(self, tenant=None):
-        session['instance'] = {}
-        session['instance']['wazo_tenant'] = tenant
-
     def set_instance_config(self, config):
         if not session['instance']:
             session['instance'] = {}
