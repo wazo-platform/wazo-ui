@@ -98,8 +98,8 @@ def get_wazo_dird_client():
 
 
 def add_tenant_to(client):
-    if 'working_instance_tenant_uuid' in session and session['working_instance_tenant_uuid']:
-        client.set_tenant(session['working_instance_tenant_uuid'])
+    if 'working_tenant_uuid' in session and session['working_tenant_uuid']:
+        client.set_tenant(session['working_tenant_uuid'])
 
 
 engine_clients = {

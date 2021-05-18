@@ -3,7 +3,7 @@
 
 from random import randint
 
-from flask import Response, request, jsonify, session, render_template, redirect, url_for, flash
+from flask import Response, request, jsonify, render_template, redirect, url_for, flash
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
 from flask_classful import route
@@ -19,21 +19,12 @@ from wazo_ui.helpers.view import BaseIPBXHelperView, IndexAjaxHelperViewMixin
 from .form import UserForm, ImportCSVForm
 
 
-def has_wazo_server():
-    instance = session.get('instance')
-
-    if instance.get('service_id') == 1 and instance.get('uuid', False):
-        return True
-
-    return False
-
-
 class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
     form = UserForm
     import_csv_form = ImportCSVForm
     resource = 'user'
 
-    @menu_item('.ipbx', l_('Telephony'), order=999, icon="phone", multi_tenant=True, visible_when=has_wazo_server)
+    @menu_item('.ipbx', l_('Telephony'), multi_tenant=True)
     @menu_item('.ipbx.user_management', l_('User Management'), order=1, icon="users", multi_tenant=True)
     @menu_item('.ipbx.user_management.users', l_('Users'), order=1, icon="user", multi_tenant=True)
     def index(self):
