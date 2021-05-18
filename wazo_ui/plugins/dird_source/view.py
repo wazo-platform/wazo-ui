@@ -128,12 +128,12 @@ class DirdSourceView(BaseIPBXHelperView):
                     {'value': 'lastname'},
                     {'value': 'email'},
                     {'value': 'phone'},
-                    {'value': 'mobilephone'},
+                    {'value': 'mobile_phone'},
                 ],
                 'format_columns': [
                     {'key': 'name', 'value': '{firstname} {lastname}'},
                     {'key': 'reverse', 'value': '{firstname} {lastname}'},
-                    {'key': 'phone_mobile', 'value': '{mobilephone}'},
+                    {'key': 'phone_mobile', 'value': '{mobile_phone}'},
                 ],
             },
             'wazo_config': {
