@@ -60,10 +60,11 @@ class IaxGeneralSettingsService(object):
 class SccpDocService(object):
 
     def get(self):
-        doc = [
-            {'pouet': 'pouet'}
+        return [
+            {'id': 'cid_name', 'text': 'cid_name'},
+            {'id': 'cid_num', 'text': 'cid_num'},
+            {'id': 'setvar', 'text': 'setvar'},
         ]
-        return doc
 
 
 class SccpGeneralSettingsService(object):

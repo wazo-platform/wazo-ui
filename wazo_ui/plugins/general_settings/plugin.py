@@ -46,7 +46,7 @@ class Plugin(object):
 
         SccpDocListingView.service = SccpDocService()
         SccpDocListingView.register(general_settings, route_base='/sccp_documentation')
-        register_listing_url('sccp_doc', 'general_settings.SccpDocListingView')
+        register_listing_url('sccp_doc', 'general_settings.SccpDocListingView:list_json')
 
         PJSIPGlobalSettingsView.service = PJSIPGlobalSettingsService(clients['wazo_confd'])
         PJSIPGlobalSettingsView.register(general_settings, route_base='/pjsip_global_settings')

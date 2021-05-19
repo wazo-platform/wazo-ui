@@ -272,11 +272,9 @@ class ConfBridgeGeneralSettingsView(BaseGeneralSettingsView):
 
 class SccpDocListingView(LoginRequiredView):
 
-    def list_json_by_section(self):
+    def list_json(self):
         doc = self.service.get()
-        print(doc)
-        doc['limit'] = 10  # avoid pagination
-        return jsonify(build_select2_response(doc, len(doc), doc))
+        return jsonify({'results': doc})
 
 
 class PJSIPDocListingView(LoginRequiredView):

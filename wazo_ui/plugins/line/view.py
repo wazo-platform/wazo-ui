@@ -51,6 +51,10 @@ class LineView(BaseIPBXHelperView):
         elif resource['endpoint_sccp']:
             protocol = 'sccp'
             endpoint_sccp = self.service.get_endpoint_sccp(resource['endpoint_sccp']['id'])
+            choices = []
+            for key, _ in endpoint_sccp['options']:
+                choices.append((key, key))
+            endpoint_sccp['options'] = (self._build_options(endpoint_sccp['options']))
 
         elif resource['endpoint_custom']:
             protocol = 'custom'
@@ -71,6 +75,10 @@ class LineView(BaseIPBXHelperView):
 
                 for option in getattr(form.endpoint_sip, section):
                     option.option_key.choices = choices
+
+        if resource['endpoint_sccp']:
+            for option in getattr(form.endpoint_sccp, 'options'):
+                option.option_key.choices = choices
 
         return form
 
@@ -115,8 +123,9 @@ class LineView(BaseIPBXHelperView):
         return form
 
     def _map_form_to_resources(self, form, form_id=None):
+        endpoint_sip = endpoint_sccp = endpoint_custom = protocol = None
         resource = super()._map_form_to_resources(form, form_id)
-        if resource['endpoint_sip'] is not None:
+        if self._check_is_not_empty(resource['endpoint_sip']):
             sip = resource['endpoint_sip']
             for section in SECTIONS:
                 sip[section] = self._map_options_to_resource(sip[section])
@@ -127,11 +136,23 @@ class LineView(BaseIPBXHelperView):
             template_uuids = form.endpoint_sip.template_uuids.data
             sip['templates'] = [{'uuid': template_uuid} for template_uuid in template_uuids]
 
-            del resource['endpoint_custom']
+            resource['endpoint_custom'] = None
+            resource['endpoint_sccp'] = None
+        elif self._check_is_not_empty(resource['endpoint_sccp']):
+            resource['endpoint_sccp']['options'] = self._map_options_to_resource(resource['endpoint_sccp']['options'])
+            resource['endpoint_sip'] = None
+            resource['endpoint_custom'] = None
         elif resource['endpoint_custom'] is not None:
-            del resource['endpoint_sip']
+            resource['endpoint_sip'] = None
+            resource['endpoint_sccp'] = None
 
         return resource
+
+    def _check_is_not_empty(self, resources):
+        for section in resources:
+            if len(resources[section]) > 0:
+                return True
+        return False
 
     def _map_options_to_resource(self, options):
         return [[option['option_key'], option['option_value']] for option in options]

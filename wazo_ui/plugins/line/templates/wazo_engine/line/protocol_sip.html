@@ -239,13 +239,6 @@
   {% endcall %}
 {% endblock %}
 
-
-{% block additional_js %}
-  <script src="{{ url_for('.static', filename='js/line.js') }}"></script>
-{% endblock %}
-
-
-
 {% macro _build_option_entry(option, section=None, template=False) %}
   {% if template %}
     {% set tr_class = "row-template hidden" %}
