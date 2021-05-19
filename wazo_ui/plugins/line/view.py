@@ -123,7 +123,6 @@ class LineView(BaseIPBXHelperView):
         return form
 
     def _map_form_to_resources(self, form, form_id=None):
-        endpoint_sip = endpoint_sccp = endpoint_custom = protocol = None
         resource = super()._map_form_to_resources(form, form_id)
         if self._check_is_not_empty(resource['endpoint_sip']):
             sip = resource['endpoint_sip']
