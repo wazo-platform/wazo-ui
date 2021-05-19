@@ -26,7 +26,7 @@
 
             {% call build_table_body(class_='dynamic-table') %}
               {% do form.endpoint_sccp.options.append_entry() %}
-              {{ _build_option_entry(form.endpoint_sccp.options.pop_entry()) }}
+              {{ _build_option_entry(form.endpoint_sccp.options.pop_entry(), template=True) }}
 
               {% for option in form.endpoint_sccp.options %}
                 {{ _build_option_entry(option) }}
@@ -41,8 +41,13 @@
   {% endcall %}
 {% endblock %}
 
-{% macro _build_option_entry(option) %}
-  <tr class="row-line">
+{% macro _build_option_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
     <td>{{ render_field(
       option.option_key,
       with_label=False,
