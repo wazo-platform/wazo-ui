@@ -1,9 +1,15 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
-    { 'name': resource.endpoint_sip['label'], 'link': url_for('.LineView:get', id=resource.id), 'icon': 'exchange' }
-  ]) }}
+  {% if form.protocol.data == 'sip' %}
+    {{ build_breadcrumbs(current_breadcrumbs + [
+      { 'name': resource.endpoint_sip['label'], 'link': url_for('.LineView:get', id=resource.id), 'icon': 'exchange' }
+    ]) }}
+  {% elif form.protocol.data == 'sccp' %}
+    {{ build_breadcrumbs(current_breadcrumbs + [
+      { 'name': resource.name, 'link': url_for('.LineView:get', id=resource.id), 'icon': 'exchange' }
+    ]) }}
+  {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -244,33 +250,34 @@
 
     {% elif form.protocol.data == 'sccp' %}
 
-      {% call build_form_box(_('Line'), form.endpoint_sccp.id, 'server') %}
+      {% call build_form_box(_('Line'), form.endpoint_sccp['id'], 'server') %}
         {% call build_form(action=url_for('.LineView:put', id=resource.id)) %}
           {% call add_default_fields(form=form, submit_value=_('Update')) %}
+            {{ render_field(form.endpoint_sccp['id']) }}
             {{ render_field(form.context,
                             data_allow_clear='true',
                             class_='line-context',
                             placeholder=_('Choose Context'),
                             data_listing_href=url_for(listing_urls['context'])) }}
             {{ build_add_row_entry_header() }}
-              {% call build_table() %}
+            {% call build_table() %}
 
-                {% call build_table_headers() %}
-                  <th>{{  _('Option Key') }}</th>
-                  <th>{{  _('Option Value') }}</th>
-                  <th style="width: 21px"></th>
-                {% endcall %}
-
-                {% call build_table_body(class_='dynamic-table') %}
-                  {% do form.endpoint_sccp.options.append_entry() %}
-                  {{ _build_option_entry(form.endpoint_sccp.options.pop_entry(), template=True) }}
-
-                  {% for extension in form.endpoint_sccp.options %}
-                    {{ _build_option_entry(extension) }}
-                  {% endfor %}
-                {% endcall %}
-
+              {% call build_table_headers() %}
+                <th>{{  _('Option Key') }}</th>
+                <th>{{  _('Option Value') }}</th>
+                <th style="width: 21px"></th>
               {% endcall %}
+
+              {% call build_table_body(class_='dynamic-table') %}
+                {% do form.endpoint_sccp.options.append_entry() %}
+                {{ _build_sccp_option_entry(form.endpoint_sccp.options.pop_entry()) }}
+
+                {% for option in form.endpoint_sccp.options %}
+                  {{ _build_sccp_option_entry(option) }}
+                {% endfor %}
+              {% endcall %}
+
+            {% endcall %}
           {% endcall %}
         {% endcall %}
       {% endcall %}
@@ -315,6 +322,19 @@
   {% else %}
     <td>{{ render_field(option.option_key, with_label=False, inputclass='ui-helper-clearfix') }}</td>
   {% endif %}
+    <td>{{ render_field(option.option_value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}
+
+{% macro _build_sccp_option_entry(option) %}
+  <tr class="row-line">
+    <td>{{ render_field(
+      option.option_key,
+      with_label=False,
+      inputclass='ui-helper-clearfix',
+      data_listing_href=url_for(listing_urls['sccp_doc']),
+    ) }}</td>
     <td>{{ render_field(option.option_value, with_label=False) }}</td>
     <td>{{ add_delete_entry_button() }}</td>
   </tr>
