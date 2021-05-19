@@ -38,12 +38,15 @@ class ManagePhonebookView(BaseIPBXHelperView):
         phonebook_id = request.args.get('phonebook_id')
         try:
             phonebook_list = self.service.list_phonebook()
+            if len(phonebook_list['items']) < 1:
+                flash(l_('Please add phonebook before adding contacts!'), 'error')
+                return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
             resource = phonebook_list['items'][0]
-            phonebook_id = resource['phonebook_id'] = phonebook_id or resource['id']
+            phonebook_id = resource['phonebook_id'] = phonebook_id or resource.get('id')
             resource_list = self.service.list_contacts(phonebook_id)
         except HTTPError as error:
             self._flash_http_error(error)
-            return redirect(url_for('admin.Admin:get'))
+            return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
 
         form = form or self._map_resources_to_form(resource)
         form = self._populate_form(form)
