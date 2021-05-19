@@ -10,7 +10,10 @@ class UserUI(UserMixin):
     def __init__(self, token, uuid=None):
         self.token = token
         self.uuid = uuid
-        self.config = {}
+        if 'config' not in session:
+            session['config'] = {}
+        if 'tenants' not in session:
+            session['tenants'] = []
 
     def get_id(self):
         return self.token
@@ -39,6 +42,9 @@ class UserUI(UserMixin):
     def reset(self):
         session['config'] = {}
         session['tenants'] = []
+
+    def get_config(self):
+        return session['config']
 
     def set_config(self, config):
         session['config'] = {'websocketd': config['websocketd']}
