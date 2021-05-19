@@ -28,7 +28,6 @@
 
             {% call build_tab_content_item('user', active=True) %}
               {% call add_default_fields(form=form, submit_value=_('Update')) %}
-                {{ render_field(form.subscription_type) }}
                 {{ render_field(form.firstname) }}
                 {{ render_field(form.lastname) }}
                 {{ render_field(form.caller_id) }}
