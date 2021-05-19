@@ -21,7 +21,6 @@
     {% call build_hidden_add_containers(_('Add User')) %}
       {% call build_form() %}
         {% call add_default_fields(form=form, submit_value=_('Add')) %}
-          {{ render_field(form.subscription_type) }}
           {{ render_field(form.firstname) }}
           {{ render_field(form.lastname) }}
           {{ render_field(form.email) }}
