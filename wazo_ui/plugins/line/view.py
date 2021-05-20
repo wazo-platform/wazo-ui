@@ -1,7 +1,7 @@
 # Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-from flask import jsonify, request, render_template
+from flask import jsonify, request, render_template, flash
 from flask_babel import lazy_gettext as l_
 
 from wazo_ui.helpers.classful import (
@@ -32,6 +32,24 @@ class LineView(BaseIPBXHelperView):
         return render_template(self._get_template('protocol_{}'.format(protocol)),
                                form=self.form(),
                                listing_urls=self.listing_urls)
+
+    def post(self):
+        form = self.form()
+        resources = self._map_form_to_resources_post(form)
+
+        if not form.csrf_token.validate(form):
+            self._flash_basic_form_errors(form)
+            return self._new(form)
+
+        try:
+            self.service.create(resources)
+        except HTTPError as error:
+            form = self._fill_form_error(form, error)
+            self._flash_http_error(error)
+            return self._new(form)
+
+        flash(l_('%(resource)s: Resource has been created', resource=self.resource), 'success')
+        return self._redirect_for('index')
 
     def _map_resources_to_form(self, resource):
         endpoint_sip = endpoint_sccp = endpoint_custom = protocol = None
