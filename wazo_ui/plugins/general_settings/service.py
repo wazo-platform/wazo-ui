@@ -63,7 +63,8 @@ class SccpDocService(object):
         return [
             {'id': 'cid_name', 'text': 'cid_name'},
             {'id': 'cid_num', 'text': 'cid_num'},
-            {'id': 'setvar', 'text': 'setvar'},
+            {'id': 'allow', 'text': 'allow'},
+            {'id': 'disallow', 'text': 'disallow'},
         ]
 
 
