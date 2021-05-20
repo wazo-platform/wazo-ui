@@ -3,6 +3,7 @@
 
 from flask import jsonify, request, render_template, flash
 from flask_babel import lazy_gettext as l_
+from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
