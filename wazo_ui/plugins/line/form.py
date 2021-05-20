@@ -16,14 +16,14 @@ from wazo_ui.helpers.form import BaseForm
 from wazo_ui.plugins.sip_template.form import EndpointSIPForm
 
 
-class SccpOptionsForm(BaseForm):
+class SCCPOptionsForm(BaseForm):
     option_key = SelectField(choices=[], validators=[InputRequired()])
     option_value = StringField()
 
 
-class EndpointSccpForm(BaseForm):
+class EndpointSCCPForm(BaseForm):
     id = HiddenField()
-    options = FieldList(FormField(SccpOptionsForm))
+    options = FieldList(FormField(SCCPOptionsForm))
 
 
 class EndpointCustomForm(BaseForm):
@@ -36,6 +36,6 @@ class LineForm(BaseForm):
     context = SelectField(l_('Context'), validators=[InputRequired()], choices=[])
     protocol = SelectField(choices=[('sip', l_('SIP')), ('sccp', l_('SCCP')), ('custom', l_('CUSTOM'))])
     endpoint_sip = FormField(EndpointSIPForm)
-    endpoint_sccp = FormField(EndpointSccpForm)
+    endpoint_sccp = FormField(EndpointSCCPForm)
     endpoint_custom = FormField(EndpointCustomForm)
     submit = SubmitField(l_('Submit'))

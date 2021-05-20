@@ -78,7 +78,7 @@ class IaxGeneralSettingsForm(BaseForm):
     submit = SubmitField(l_('Submit'))
 
 
-class SccpGeneralSettingsForm(GeneralSettingsOptionsForm):
+class SCCPGeneralSettingsForm(GeneralSettingsOptionsForm):
     submit = SubmitField(l_('Submit'))
 
 

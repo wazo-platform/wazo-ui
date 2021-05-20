@@ -13,8 +13,8 @@ from .service import (
     PJSIPDocService,
     PJSIPGlobalSettingsService,
     PJSIPSystemSettingsService,
-    SccpDocService,
-    SccpGeneralSettingsService,
+    SCCPDocService,
+    SCCPGeneralSettingsService,
     TimezoneService,
     VoicemailGeneralSettingsService,
 )
@@ -25,8 +25,8 @@ from .view import (
     PJSIPDocListingView,
     PJSIPGlobalSettingsView,
     PJSIPSystemSettingsView,
-    SccpDocListingView,
-    SccpGeneralSettingsView,
+    SCCPDocListingView,
+    SCCPGeneralSettingsView,
     TimezoneListingView,
     VoicemailGeneralSettingsView,
 )
@@ -44,9 +44,9 @@ class Plugin(object):
         PJSIPDocListingView.register(general_settings, route_base='/list_json_by_section')
         register_listing_url('pjsip_doc', 'general_settings.PJSIPDocListingView:list_json_by_section')
 
-        SccpDocListingView.service = SccpDocService()
-        SccpDocListingView.register(general_settings, route_base='/sccp_documentation')
-        register_listing_url('sccp_doc', 'general_settings.SccpDocListingView:list_json')
+        SCCPDocListingView.service = SCCPDocService()
+        SCCPDocListingView.register(general_settings, route_base='/sccp_documentation')
+        register_listing_url('sccp_doc', 'general_settings.SCCPDocListingView:list_json')
 
         PJSIPGlobalSettingsView.service = PJSIPGlobalSettingsService(clients['wazo_confd'])
         PJSIPGlobalSettingsView.register(general_settings, route_base='/pjsip_global_settings')
@@ -60,9 +60,9 @@ class Plugin(object):
         IaxGeneralSettingsView.register(general_settings, route_base='/iax_general_settings')
         register_flaskview(general_settings, IaxGeneralSettingsView)
 
-        SccpGeneralSettingsView.service = SccpGeneralSettingsService(clients['wazo_confd'])
-        SccpGeneralSettingsView.register(general_settings, route_base='/sccp_general_settings')
-        register_flaskview(general_settings, SccpGeneralSettingsView)
+        SCCPGeneralSettingsView.service = SCCPGeneralSettingsService(clients['wazo_confd'])
+        SCCPGeneralSettingsView.register(general_settings, route_base='/sccp_general_settings')
+        register_flaskview(general_settings, SCCPGeneralSettingsView)
 
         VoicemailGeneralSettingsView.service = VoicemailGeneralSettingsService(clients['wazo_confd'])
         VoicemailGeneralSettingsView.register(general_settings, route_base='/voicemail_general_settings')

@@ -57,7 +57,7 @@ class IaxGeneralSettingsService(object):
         self._confd.iax_general.update(resource['general'])
 
 
-class SccpDocService(object):
+class SCCPDocService(object):
 
     def get(self):
         return [
@@ -68,7 +68,7 @@ class SccpDocService(object):
         ]
 
 
-class SccpGeneralSettingsService(object):
+class SCCPGeneralSettingsService(object):
 
     def __init__(self, confd_client):
         self._confd = confd_client

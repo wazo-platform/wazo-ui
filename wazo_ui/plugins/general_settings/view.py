@@ -28,7 +28,7 @@ from .form import (
     ConfBridgeGeneralSettingsForm,
     FeaturesGeneralSettingsForm,
     IaxGeneralSettingsForm,
-    SccpGeneralSettingsForm,
+    SCCPGeneralSettingsForm,
     PJSIPGlobalSettingsForm,
     PJSIPSystemSettingsForm,
     VoicemailGeneralSettingsForm,
@@ -164,8 +164,8 @@ class IaxGeneralSettingsView(BaseGeneralSettingsView):
         return data
 
 
-class SccpGeneralSettingsView(BaseGeneralSettingsView):
-    form = SccpGeneralSettingsForm
+class SCCPGeneralSettingsView(BaseGeneralSettingsView):
+    form = SCCPGeneralSettingsForm
     resource = 'sccp_general_settings'
     settings = 'sccp_general'
 
@@ -270,7 +270,7 @@ class ConfBridgeGeneralSettingsView(BaseGeneralSettingsView):
         return data
 
 
-class SccpDocListingView(LoginRequiredView):
+class SCCPDocListingView(LoginRequiredView):
 
     def list_json(self):
         doc = self.service.get()
