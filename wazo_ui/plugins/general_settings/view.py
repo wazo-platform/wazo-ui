@@ -273,8 +273,12 @@ class ConfBridgeGeneralSettingsView(BaseGeneralSettingsView):
 class SCCPDocListingView(LoginRequiredView):
 
     def list_json(self):
+        params = extract_select2_params(request.args)
         doc = self.service.get()
-        return jsonify({'results': doc})
+        term = params.get('search') or ''
+        with_id = [item for item in doc if term in item['text']]
+        params['limit'] = len(with_id)  # avoid pagination
+        return jsonify(build_select2_response(with_id, len(with_id), params))
 
 
 class PJSIPDocListingView(LoginRequiredView):
