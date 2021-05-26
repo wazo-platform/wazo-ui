@@ -3,7 +3,11 @@
 
 import logging
 
+import requests
+
 logger = logging.getLogger(__name__)
+
+PLUGIN_URL = "https://plugins.wazo.community/0.1/plugins"
 
 
 class PluginService:
@@ -35,3 +39,10 @@ class PluginService:
             results.append(plugin)
 
         return {'items': results}
+
+    def list_community_plugins(self):
+        try:
+            r = requests.get(PLUGIN_URL)
+            return r.json()
+        except (requests.RequestException, ValueError):
+            return []

@@ -12,12 +12,69 @@
       <div class="col-md-12">
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#market" data-toggle="tab">{{ _('Installed') }}</a></li>
+            <li class="active"><a href="#market" data-toggle="tab">{{ _('Market') }}</a></li>
+            <li><a href="#installed" data-toggle="tab">{{ _('Installed') }}</a></li>
             <li><a href="#git" data-toggle="tab">{{ _('Git') }}</a></li>
           </ul>
           <div class="tab-content">
 
             <div class="tab-pane active" id="market">
+              <div class="row">
+                <div class="col-md-2 pull-right">
+                  <div class="input-group">
+                    <input class="form-control" placeholder="{{ _('Search plugin') }}" type="text" id="search_plugin_community"
+                      data-search-url="{{ url_for('wazo_engine.plugin.PluginView:search_plugin_community') }}">
+                    <span class="input-group-addon">
+                      <i class="fa fa-search"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="row"><hr></div>
+              <div class="row">
+                <div id="market">
+                  {% if plugins|length < 1 %}
+                    <div class="col-md-12">
+                      <div class="callout callout-warning">
+                        <h4>No response from the community service plugins!</h4>
+                        <p>There is no public plugins for the moment. Please try again or wait for plugins.</p>
+                      </div>
+                    </div>
+                  {% else %}
+                  {% for plugin in plugins['items'] %}
+                  <div class="col-md-4">
+                    <div class="box box-solid box-primary">
+                      <div class="box-header with-border">
+                        <i class="fa fa-cubes"></i>
+                        <h3 class="box-title">{{ plugin.name }} v{{ plugin.version}}</h3>
+                        <div class="pull-right box-tools">
+                          <i class="fa fa-star"></i>
+                          <span>{{ plugin.stars }}</span>
+                        </div>
+                      </div>
+
+                      <div class="box-body">
+                        <dl>
+                          <dt><i class="fa fa-book"></i> Description</dt>
+                            <dd>{{ plugin.description }}</dd>
+                            <br>
+                          <dt><i class="fa fa-user"></i> Author</dt>
+                            <dd>{{ plugin.author }}</dd>
+                            <br>
+                          <dt><i class="fa fa-tags"></i> Tags</dt>
+                            <dd>{% for tag in plugin.tags %} <span class="label label-default">{{ tag }}</span> {% endfor %}</dd>
+                        </dl>
+                        <span class="pull-right"><a href="#">Details</a> <i class="fa fa-arrow-right"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane" id="installed">
               <div class="row">
                 <div class="col-md-2 pull-right">
                   <div class="input-group">

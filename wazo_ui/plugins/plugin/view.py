@@ -15,7 +15,8 @@ class PluginView(LoginRequiredView):
         '.ipbx.global_settings.plugins', l_('Plugins'), icon="cubes", multi_tenant=False
     )
     def index(self):
-        return render_template('plugin/list.html')
+        plugins = self.service.list_community_plugins()
+        return render_template('wazo_engine/plugin/list.html', plugins=plugins)
 
     @route('/install_plugin/', methods=['POST'])
     def install_plugin(self):
@@ -43,3 +44,7 @@ class PluginView(LoginRequiredView):
         except HTTPError as error:
             flash(error, category='error')
             return render_template('flashed_messages.html')
+
+    @route('/search_plugin_community/', methods=['POST'])
+    def search_plugin_community(self):
+        return ""
