@@ -143,7 +143,7 @@ class LineView(BaseIPBXHelperView):
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
-        if self._check_is_not_empty(resource['endpoint_sip']):
+        if not self._sip_is_empty(resource['endpoint_sip']):
             sip = resource['endpoint_sip']
             for section in SECTIONS:
                 sip[section] = self._map_options_to_resource(sip[section])
@@ -156,8 +156,9 @@ class LineView(BaseIPBXHelperView):
 
             resource['endpoint_custom'] = None
             resource['endpoint_sccp'] = None
-        elif self._check_is_not_empty(resource['endpoint_sccp']):
-            resource['endpoint_sccp']['options'] = self._map_options_to_resource(resource['endpoint_sccp']['options'])
+        elif not self._sccp_is_empty(resource['endpoint_sccp']):
+            options = self._map_options_to_resource(resource['endpoint_sccp']['options'])
+            resource['endpoint_sccp']['options'] = options
             resource['endpoint_sip'] = None
             resource['endpoint_custom'] = None
         elif resource['endpoint_custom'] is not None:
@@ -166,11 +167,17 @@ class LineView(BaseIPBXHelperView):
 
         return resource
 
-    def _check_is_not_empty(self, resources):
-        for section in resources:
-            if len(resources[section]) > 0:
-                return True
-        return False
+    def _sip_is_empty(self, sip):
+        empty = {
+            'transport': {},
+            'templates': [],
+            **{section: [] for section in SECTIONS},
+        }
+        return sip == empty
+
+    def _sccp_is_empty(self, sccp):
+        empty = {'options': []}
+        return sccp == empty
 
     def _map_options_to_resource(self, options):
         return [[option['option_key'], option['option_value']] for option in options]
