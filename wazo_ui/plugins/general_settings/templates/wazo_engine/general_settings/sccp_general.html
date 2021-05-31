@@ -12,7 +12,7 @@
           {{ add_tab_navigation_item('general', _('General'), active=True) }}
         {% endcall %}
 
-        {% call build_form(action=url_for('.SccpGeneralSettingsView:put')) %}
+        {% call build_form(action=url_for('.SCCPGeneralSettingsView:put')) %}
           {% call build_tabs_content() %}
 
             {% call build_tab_content_item('general', active=True) %}

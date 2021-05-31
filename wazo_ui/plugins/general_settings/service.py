@@ -57,7 +57,18 @@ class IaxGeneralSettingsService(object):
         self._confd.iax_general.update(resource['general'])
 
 
-class SccpGeneralSettingsService(object):
+class SCCPDocService(object):
+
+    def get(self):
+        return [
+            {'id': 'cid_name', 'text': 'cid_name'},
+            {'id': 'cid_num', 'text': 'cid_num'},
+            {'id': 'allow', 'text': 'allow'},
+            {'id': 'disallow', 'text': 'disallow'},
+        ]
+
+
+class SCCPGeneralSettingsService(object):
 
     def __init__(self, confd_client):
         self._confd = confd_client

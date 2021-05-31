@@ -28,7 +28,7 @@ from .form import (
     ConfBridgeGeneralSettingsForm,
     FeaturesGeneralSettingsForm,
     IaxGeneralSettingsForm,
-    SccpGeneralSettingsForm,
+    SCCPGeneralSettingsForm,
     PJSIPGlobalSettingsForm,
     PJSIPSystemSettingsForm,
     VoicemailGeneralSettingsForm,
@@ -164,8 +164,8 @@ class IaxGeneralSettingsView(BaseGeneralSettingsView):
         return data
 
 
-class SccpGeneralSettingsView(BaseGeneralSettingsView):
-    form = SccpGeneralSettingsForm
+class SCCPGeneralSettingsView(BaseGeneralSettingsView):
+    form = SCCPGeneralSettingsForm
     resource = 'sccp_general_settings'
     settings = 'sccp_general'
 
@@ -268,6 +268,17 @@ class ConfBridgeGeneralSettingsView(BaseGeneralSettingsView):
         data['wazo_default_user']['options'] = self._map_options_to_resource(data['wazo_default_user']['options'])
         data['wazo_default_bridge']['options'] = self._map_options_to_resource(data['wazo_default_bridge']['options'])
         return data
+
+
+class SCCPDocListingView(LoginRequiredView):
+
+    def list_json(self):
+        params = extract_select2_params(request.args)
+        doc = self.service.get()
+        term = params.get('search') or ''
+        with_id = [item for item in doc if term in item['text']]
+        params['limit'] = len(with_id)  # avoid pagination
+        return jsonify(build_select2_response(with_id, len(with_id), params))
 
 
 class PJSIPDocListingView(LoginRequiredView):

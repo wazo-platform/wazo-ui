@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumb(_('Lines'), '', 'exchange', [_('List')]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+
+    {% call build_form_box(_('Line'), '', 'exchange') %}
+      {% call build_form(action=url_for('.LineView:post')) %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.context,
+            data_allow_clear='true',
+            class_='line-context',
+            placeholder='Choose Context',
+            data_listing_href=url_for(listing_urls['context'])) }}
+          {{ build_add_row_entry_header() }}
+          {% call build_table() %}
+
+            {% call build_table_headers() %}
+              <th>{{  _('Option Key') }}</th>
+              <th>{{  _('Option Value') }}</th>
+              <th style="width: 21px"></th>
+            {% endcall %}
+
+            {% call build_table_body(class_='dynamic-table') %}
+              {% do form.endpoint_sccp.options.append_entry() %}
+              {{ _build_option_entry(form.endpoint_sccp.options.pop_entry(), template=True) }}
+
+              {% for option in form.endpoint_sccp.options %}
+                {{ _build_option_entry(option) }}
+              {% endfor %}
+            {% endcall %}
+
+          {% endcall %}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+  {% endcall %}
+{% endblock %}
+
+{% macro _build_option_entry(option, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% else %}
+    {% set tr_class = "row-line" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(
+      option.option_key,
+      with_label=False,
+      inputclass='ui-helper-clearfix',
+      data_listing_href=url_for(listing_urls['sccp_doc']),
+    ) }}</td>
+    <td>{{ render_field(option.option_value, with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}
