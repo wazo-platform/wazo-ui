@@ -18,7 +18,7 @@ from wazo_ui.plugins.sip_template.form import EndpointSIPForm
 
 class SCCPOptionsForm(BaseForm):
     option_key = SelectField(choices=[], validators=[InputRequired()])
-    option_value = StringField()
+    option_value = StringField(validators=[InputRequired()])
 
 
 class EndpointSCCPForm(BaseForm):
