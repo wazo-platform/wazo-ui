@@ -1,8 +1,9 @@
 # Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
+from flask import jsonify, request, render_template, flash
 from flask_babel import lazy_gettext as l_
-from flask import jsonify, request, render_template
+from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
@@ -32,6 +33,24 @@ class TrunkView(BaseIPBXHelperView):
         return render_template(self._get_template('protocol_{}'.format(protocol)),
                                form=self.form(),
                                listing_urls=self.listing_urls)
+
+    def post(self):
+        form = self.form()
+        resources = self._map_form_to_resources_post(form)
+
+        if not form.csrf_token.validate(form):
+            self._flash_basic_form_errors(form)
+            return self._new(form)
+
+        try:
+            self.service.create(resources)
+        except HTTPError as error:
+            form = self._fill_form_error(form, error)
+            self._flash_http_error(error)
+            return self._new(form)
+
+        flash(l_('%(resource)s: Resource has been created', resource=self.resource), 'success')
+        return self._redirect_for('index')
 
     def _map_resources_to_form(self, resource):
         if resource['endpoint_sip']:
@@ -114,7 +133,7 @@ class TrunkView(BaseIPBXHelperView):
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
-        if resource['endpoint_sip'] is not None:
+        if not self._sip_is_empty(resource['endpoint_sip']):
             sip = resource['endpoint_sip']
             for section in SECTIONS:
                 sip[section] = self._map_options_to_resource(sip[section])
@@ -125,7 +144,7 @@ class TrunkView(BaseIPBXHelperView):
             sip['templates'] = [{'uuid': template_uuid} for template_uuid in template_uuids]
 
             del resource['endpoint_custom'], resource['endpoint_iax'], resource['register_iax']
-        elif resource['endpoint_iax'] is not None:
+        elif not self._iax_is_empty(resource['endpoint_iax']):
             resource['endpoint_iax'] = self._map_form_to_resource_endpoint(resource['endpoint_iax'])
             del resource['endpoint_custom'], resource['endpoint_sip']
             if (not resource['register_iax']['enabled']
@@ -146,6 +165,18 @@ class TrunkView(BaseIPBXHelperView):
 
         endpoint['options'] = [[option['option_key'], option['option_value']] for option in endpoint['options']]
         return endpoint
+
+    def _sip_is_empty(self, sip):
+        empty = {
+            'transport': {},
+            'templates': [],
+            **{section: [] for section in SECTIONS},
+        }
+        return sip == empty
+
+    def _iax_is_empty(self, iax):
+        empty = {'options': []}
+        return iax == empty
 
 
 class TrunkListingView(LoginRequiredView):
