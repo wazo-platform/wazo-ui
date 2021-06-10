@@ -67,7 +67,7 @@ class TrunkView(BaseIPBXHelperView):
             resource['protocol'] = 'iax'
             endpoint_iax = self.service.get_endpoint_iax(resource['endpoint_iax']['id'])
             self._build_host_for_endpoint(endpoint_iax)
-            endpoint_iax['options'] = self.__build_options(endpoint_iax['options'])
+            endpoint_iax['options'] = self._build_options(endpoint_iax['options'])
             if resource['register_iax']:
                 resource['register_iax'] = self.service.get_register_iax(resource['register_iax']['id'])
             resource['endpoint_iax'] = endpoint_iax
