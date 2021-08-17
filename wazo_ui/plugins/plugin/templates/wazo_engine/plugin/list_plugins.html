@@ -1,78 +1,54 @@
 {% macro _render_plugin(entry) %}
-  <div class="col-md-3 col-sm-6 col-xs-12 plugin-container">
-    <div class="small-box bg-{{ entry.color|default('green') }} box box-solid">
-      <div class="inner">
-	<h4 style="font-size:14px">{{ entry.display_name }} ({{ entry.installed_version or (entry.versions[0]['version'] if entry.versions) }})</h4>
-	<p><i>{{ _('By') }} {{ entry.author }}</i></p>
-        {{ _render_tags(entry.tags) }}
-        {% if entry.installed_version %}
-          {{ _render_remove_button(entry.namespace, entry.name) }}
-
-          {% set version = entry.versions|selectattr('upgradable')|first %}
-          {{ _render_upgrade_button(entry.namespace, entry.name, version.version) if version}}
-        {% else %}
-          {{ _render_install_button(entry.namespace, entry.name) }}
-        {% endif %}
-
+  <div class="col-md-4">
+    <div class="box box-solid box-primary">
+      <div class="box-header with-border">
+        <i class="fa fa-cubes"></i>
+        <h3 class="box-title">{{ entry.name }} v{{ entry.installed_version or (entry.versions[0]['version'] if entry.versions) }}</h3>
+        <div class="pull-right box-tools">
+         {% if entry.installed_version %}
+           {{ _render_remove_button(entry.namespace, entry.name) }}
+           {% set version = entry.versions|selectattr('upgradable')|first %}
+           {{ _render_upgrade_button(entry.namespace, entry.name, version.version) if version}}
+         {% endif %}
+        </div>
       </div>
-      <div class="icon">
-        <i class="fa fa-{{ entry.icon|default('gears') }}"></i>
-      </div>
-      <a href="{{ entry.homepage or '#' }}" class="small-box-footer" target="_blank">
-        {{ _('More info') }} <i class="fa fa-arrow-circle-right"></i>
-      </a>
-      <div class="overlay {% if not entry.on_installation %}hidden{% endif %}">
-        <i class="fa fa-refresh fa-spin"></i>
-      </div>
-    </div>
-  </div>
-{% endmacro %}
 
-{% macro _render_tags(tags) %}
-  {% for tag in tags %}
-    <span>
-      <small class="label label-default">
-        <i class="fa fa-tag"></i>
-        {{ tag }}
-      </small>
-      &nbsp;
-    </span>
-  {% endfor %}
+      <div class="box-body">
+        <dl>
+          <dt><i class="fa fa-book"></i> Description</dt>
+            <dd>{{ entry.display_name }}</dd>
+            <br>
+          <dt><i class="fa fa-user"></i> Author</dt>
+            <dd>{{ entry.author }}</dd>
+            <br>
+           <dt><i class="fa fa-tags"></i> Tags</dt>
+             <dd>{% for tag in entry.tags %} <span class="label label-default">{{ tag }}</span> {% endfor %}</dd>
+         </dl>
+         <span class="pull-right"><a href="{{ entry.homepage or '#' }}">Details</a> <i class="fa fa-arrow-right"></i></span>
+       </div>
+     </div>
+   </div>
 {% endmacro %}
 
 {% macro _render_remove_button(namespace, name) %}
-  <button type="button" class="btn btn-default btn-xs margin label btn-remove-plugin"
+  <button type="button" class="btn btn-default btn-sm btn-remove-plugin"
     style="z-index:1;position:relative;"
     data-namespace="{{ namespace }}"
     data-name="{{ name }}"
     data-remove-url="{{ url_for('wazo_engine.plugin.PluginView:remove_plugin') }}"
   >
-    {{ _('Remove') }}
     <i class="fa fa-trash"></i>
   </button>
 {% endmacro %}
 
-{% macro _render_install_button(namespace, name) %}
-  <button type="button" class="btn btn-default btn-xs margin label btn-install-plugin"
-    style="z-index:1;position:relative;"
-    data-namespace="{{ namespace }}"
-    data-name="{{ name }}"
-    data-install-url="{{ url_for('wazo_engine.plugin.PluginView:install_plugin') }}"
-  >
-    {{ _('Install') }}
-    <i class="fa fa-download"></i>
-  </button>
-{% endmacro %}
-
 {% macro _render_upgrade_button(namespace, name, version) %}
-  <button type="button" class="btn btn-default btn-xs margin label btn-upgrade-plugin"
+  <button type="button" class="btn btn-warning btn-sm btn-upgrade-plugin"
     style="z-index:1;position:relative;"
     data-namespace="{{ namespace }}"
     data-name="{{ name }}"
     data-version="{{ version }}"
     data-upgrade-url="{{ url_for('wazo_engine.plugin.PluginView:install_plugin') }}"
   >
-    {{ _('Upgrade') }} ({{ version }})
     <i class="fa fa-download"></i>
   </button>
 {% endmacro %}

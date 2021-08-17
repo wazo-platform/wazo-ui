@@ -153,6 +153,15 @@ div.box-header {
   border-left-color: transparent;
 }
 
+.box.box-solid.box-primary>.box-header {
+  background: #98c451 !important;
+  background-color: #98c451 !important;
+}
+
+.box.box-solid.box-primary {
+  border: 1px solid #98c451 !important;
+}
+
 .main-sidebar form {
   float: none!important;
 }
