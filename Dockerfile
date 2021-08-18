@@ -19,7 +19,6 @@ RUN true \
     && mkdir -p /etc/wazo-ui/conf.d \
     && install -o wazo-ui -g wazo-ui /dev/null /var/log/wazo-ui.log
 
-
 EXPOSE 9296
 
 # Activate virtual env
