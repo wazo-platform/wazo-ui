@@ -19,3 +19,4 @@ class SwitchboardService(BaseConfdService):
     def update(self, switchboard):
         super().update(switchboard)
         self._confd.switchboards(switchboard).update_user_members(switchboard['members']['users'])
+        self._confd.switchboards(switchboard).update_fallbacks(switchboard['fallbacks'])
