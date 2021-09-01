@@ -13,7 +13,7 @@ class ParkingLotView(BaseIPBXHelperView):
     form = ParkingLotForm
     resource = 'parking_lot'
 
-    @menu_item('.ipbx.services.parkinglots', l_('Parking Lots'), icon="automobile", multi_tenant=True)
+    @menu_item('.ipbx.services.parkinglots', l_('Parking Lots'), icon="parking", multi_tenant=True)
     def index(self):
         return super().index()
 

@@ -22,7 +22,7 @@ class SoundView(BaseIPBXHelperView):
     form = SoundForm
     resource = 'sound'
 
-    @menu_item('.ipbx.sound_greeting.sound', l_('Sound Files'), icon="file-sound-o", multi_tenant=True)
+    @menu_item('.ipbx.sound_greeting.sound', l_('Sound Files'), icon="file-audio", multi_tenant=True)
     def index(self):
         return super().index()
 
@@ -67,7 +67,7 @@ class SoundFileView(BaseIPBXHelperView):
     form = SoundFilenameForm
     resource = 'sound'
 
-    @menu_item('.ipbx.global_settings.sound_system', l_('Sound Files System'), order=2, icon="file-sound-o")
+    @menu_item('.ipbx.global_settings.sound_system', l_('Sound Files System'), order=1, icon="file-audio")
     def sound_files_system(self):
         sound = self._get_sound_by_category(tenant_uuid=None, category='system')
         return render_template(self._get_template('list_system_files'),

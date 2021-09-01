@@ -13,7 +13,7 @@ class CallPickupView(BaseIPBXHelperView):
     form = CallPickupForm
     resource = 'call_pickup'
 
-    @menu_item('.ipbx.call_management.callpickups', l_('Call Pickups'), icon='rotate-left', multi_tenant=True)
+    @menu_item('.ipbx.call_management.callpickups', l_('Call Pickups'), icon='undo', multi_tenant=True)
     def index(self):
         return super().index()
 

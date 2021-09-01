@@ -15,7 +15,7 @@ class ExternalAuthView(BaseIPBXHelperView):
     form = ExternalAuthForm
     resource = 'external_auth'
 
-    @menu_item('.ipbx.identity.external_auth', l_('External Auth'), icon='external-link', multi_tenant=True)
+    @menu_item('.ipbx.identity.external_auth', l_('External Auth'), icon='external-link-alt', multi_tenant=True)
     def index(self):
         return super().index()
 

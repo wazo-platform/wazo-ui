@@ -55,7 +55,7 @@ $(document).ready(function() {
       $select.val(id);
 
       $select.select2({
-        theme: 'bootstrap',
+        theme: 'bootstrap4',
         placeholder: 'Select...',
       });
     }});
@@ -136,7 +136,7 @@ function add_available_extensions() {
 
   extension_select.select2({
     allowClear: true,
-    theme: 'bootstrap',
+    theme: 'bootstrap4',
     placeholder: 'Select...',
     tags: true,
     ajax: {
@@ -168,7 +168,6 @@ function toggle_template_disable() {
     protocol_select = $(this).closest("tr").find(".line-protocol");
     template_select = $(this).closest("tr").find(".line-template");
   }
-  console.log(protocol_select.val());
 
   if (protocol_select.val() == 'sip') {
     $(template_select).removeAttr('disabled');

@@ -9,9 +9,8 @@
 
 {% block content %}
     {% call build_section_row() %}
-      {% call build_form_tabs_box() %}
+      {% call build_form_tabs_box(_('User'), name, 'user') %}
         {% call build_tabs_navigation() %}
-          {{ add_tab_navigation_header(_('User'), name, 'user') }}
           {{ add_tab_navigation_item('user', _('User'), active=True) }}
           {{ add_tab_navigation_item('general', _('General')) }}
           {{ add_tab_navigation_item('fallbacks', _('Fallbacks')) }}

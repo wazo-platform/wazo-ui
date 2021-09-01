@@ -19,7 +19,7 @@ class QueueView(BaseIPBXHelperView):
     form = QueueForm
     resource = 'queue'
 
-    @menu_item('.ipbx.callcenter', l_('Call Center'), icon="support", multi_tenant=True)
+    @menu_item('.ipbx.callcenter', l_('Call Center'), icon="headset", multi_tenant=True)
     @menu_item('.ipbx.callcenter.queues', l_('Queues'), icon="cubes", multi_tenant=True)
     def index(self):
         return super().index()

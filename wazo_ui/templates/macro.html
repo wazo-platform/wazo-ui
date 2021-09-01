@@ -1,144 +1,174 @@
 {% macro build_menu(current_user, current_menu) %}
   {% if current_user.is_authenticated %}
-    {% for item in current_menu.children recursive %}
-      {% if item.visible %}
-        {% if item.name == 'ipbx' %}
-          {{ _build_ipbx_menu(item, current_user) }}
-        {% else %}
-          <ul class="sidebar-menu" data-widget="tree">
-            <li class="{{ 'active' if item.active }} {{ 'multi-tenant' if item.multi_tenant }}">
+    {{ _build_tenant_choices(current_user) }}
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu">
+      {% for item in current_menu.children recursive %}
+        {% if item.visible %}
+          {% if item.name == 'ipbx' %}
+            {{ _build_chidren(item, true, current_user) }}
+          {% else %}
+            <li class="nav-item {{ 'menu-open' if item.has_active_child() }} {{ 'multi-tenant' if item.multi_tenant }}">
               {% if item.children %}
                 {{ _build_menu_chidren(item, current_user) }}
               {% else %}
                 {{ _build_menu_link(item, current_user) }}
               {% endif %}
             </li>
-          </ul>
+          {% endif %}
         {% endif %}
-      {% endif %}
-    {% endfor %}
+      {% endfor %}
+      </ul>
+    </nav>
   {% endif %}
-{% endmacro %}
-
-
-{% macro _build_menu_link(item, current_user) %}
-  <a href="{{ item.url }}">
-    <i class="fa fa-{{ item.icon if item.icon else 'windows' }}"></i>
-    <span>{{ item.text }}</span>
-  </a>
 {% endmacro %}
 
 
 {% macro _build_menu_chidren(item, current_user) %}
   {% if item.visible %}
-    <li class="treeview {% if item.active or item.active_item %}active{% endif %}">
-      <a href="">
-        <i class="fa fa-{{ item.icon if item.icon else 'windows' }}"></i>
-        <span>{{ item.text }}</span>
-        <span class="pull-right-container">
-          <i class="fa fa-angle-left pull-right"></i>
-        </span>
+    <li class="nav-item {{ 'menu-open' if item.has_active_child() }}">
+      <a href="#" class="nav-link">
+        <i class="fas fa-{{ item.icon if item.icon else 'windows' }} nav-icon"></i>
+        <p>
+          {{ item.text }}
+          <i class="right fas fa-angle-left"></i>
+        </p>
       </a>
       {{ _build_chidren(item, false, current_user) }}
     </li>
   {% endif %}
 {% endmacro %}
 
-{% macro _build_ipbx_menu(item, current_user) %}
-  {% set tenants = current_user.get_current_tenants() %}
-  {% if tenants|length > 0 %}
-    <form class="navbar-form navbar-left" id="working-tenant" action="{{ url_for('index.WorkingTenantView:set_working_tenant') }}">
-      <div class="form-group">
-        <select name="tenant_uuid" class="selectfield">
-          {% for tenant in tenants %}
-            {% set selected = 'selected' if session['working_tenant_uuid'] == tenant.uuid else '' %}
-            <option value="{{ tenant.uuid }}" {{ selected }}>{{ tenant.name }}</option>
-          {% endfor %}
-        </select>
-      </div>
-    </form>
-	{% if session['working_tenant_uuid'] == current_user.get_user_tenant_uuid() %}
-	  <div class="alert alert-error alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-	    <i>Don't use <strong>master</strong> tenant for configuration!</i>
-          </div>
-	{% endif %}
-  {% endif %}
-
-  {{ _build_chidren(item, true, current_user) }}
-{% endmacro %}
-
 
 {% macro _build_chidren(item, root, current_user) %}
-  <ul class="{% if root %}sidebar-menu tree{% else %}treeview-menu{% endif %}"{% if root %}data-widget="tree"{% endif %}>
     {% for i in item.children %}
-      {% if i.children and i.text and i.name != 'global_settings' %}
+      {% if root and i.children and i.text and i.name != 'global_settings' %}
         {{ _build_menu_chidren(i, current_user) }}
-      {% elif i.visible %}
-        <li class="{{ 'active' if i.active }} {{ 'multi-tenant' if i.multi_tenant }}">
-          <a href="{{ i.url }}">
-            <i class="fa fa-{{ i.icon if i.icon else 'circle-o' }}"></i>
+      {% elif i.name == 'global_settings' %}
+        <li class="nav-item {{ 'multi-tenant' if i.multi_tenant }}">
+          <a href="{{ i.url }}" class="nav-link {{ 'active' if i.active }}">
+            <i class="fas fa-{{ i.icon if i.icon else 'circle' }} nav-icon"></i>
             {{ i.text }}
           </a>
         </li>
+      {% elif i.visible %}
+        <ul class="nav nav-treeview">
+          <li class="nav-item {{ 'multi-tenant' if i.multi_tenant }}">
+            <a href="{{ i.url }}" class="nav-link {{ 'active' if i.active }}">
+              <i class="fas fa-{{ i.icon if i.icon else 'circle' }} nav-icon"></i>
+              {{ i.text }}
+            </a>
+          </li>
+        </ul>
       {% endif %}
     {% endfor %}
-  </ul>
+{% endmacro %}
+
+
+{% macro _build_menu_link(item, current_user) %}
+  <a href="{{ item.url }}" class="nav-link">
+    <i class="fas fa-{{ item.icon if item.icon else 'windows' }} nav-icon"></i>
+    <p>{{ item.text }}</p>
+  </a>
+{% endmacro %}
+
+
+{% macro _build_tenant_choices(current_user) %}
+  {% set tenants = current_user.get_current_tenants() %}
+  {% if tenants|length > 0 %}
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="info">
+        <form class="navbar-form" id="working-tenant" action="{{ url_for('index.WorkingTenantView:set_working_tenant') }}">
+          <select name="tenant_uuid" class="form-control form-control-sidebar selectfield">
+            {% for tenant in tenants %}
+              {% set selected = 'selected' if session['working_tenant_uuid'] == tenant.uuid else '' %}
+              <option value="{{ tenant.uuid }}" {{ selected }}>{{ tenant.name }}</option>
+            {% endfor %}
+          </select>
+        </form>
+        {% if session['working_tenant_uuid'] == current_user.get_user_tenant_uuid() %}
+          <div class="info-box mb-1 bg-danger">
+            <div class="info-box-content">
+              <span class="info-box-text">
+                <i>Don't use <strong>master</strong> tenant <br>for configuration!</i>
+              </span>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
 {% endmacro %}
 
 
 {% macro build_breadcrumb(name, description, icon, path) %}
-  <section class="content-header">
-    <h1>
-      <i class="fa fa-{{ icon }}"></i> {{ name }}
-      {% if description %}
-        <small>{{ description }}</small>
-      {% endif %}
-    </h1>
-
-    {% if path %}
-      <ol class="breadcrumb">
-        <li>
-          <i class="fa fa-{{ icon }}"></i> {{ name }}
-        </li>
-        {% for link in path %}
-          <li class="active">{{ link }}</li>
-        {% endfor %}
-      </ol>
-    {% endif %}
-  </section>
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-12">
+        <div class="col-sm-12">
+          <h1 class="m-0 text-dark">
+            <i class="fas fa-{{ icon }}"></i> {{ name }}
+            {% if description %}
+              <small>{{ description }}</small>
+            {% endif %}
+          </h1>
+        </div>
+        <div class="col-sm-6">
+          {% if path %}
+            <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item">
+              <i class="fas fa-{{ icon }}"></i> {{ name }}
+            </li>
+            {% for link in path %}
+              <li class="breadcrumb-item active">{{ link }}</li>
+            {% endfor %}
+            </ol>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 {% endmacro %}
 
 
 {% macro build_breadcrumbs(crumbs) %}
-  <section class="content-header">
-    <ol class="breadcrumb">
-      {%  for crumb in crumbs %}
-        <li>
-          {% if crumb.link %}<a href="{{ crumb.link }}">{% endif %}
-          {% if crumb.icon %}<i class="fa fa-{{ crumb.icon }}"></i> {% endif %}
-          &nbsp;{{ crumb.name }}
-          {% if crumb.link %}</a>{% endif %}
-        </li>
-      {% endfor %}
-    </ol>
-  </section>
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-12">
+        <div class="col-sm-12">
+          <ol class="breadcrumb float-sm-right">
+            {% for crumb in crumbs %}
+              <li class="breadcrumb-item">
+                {% if crumb.link %}<a href="{{ crumb.link }}">{% endif %}
+                {% if crumb.icon %}<i class="fas fa-{{ crumb.icon }}"></i> {% endif %}
+                &nbsp;{{ crumb.name }}
+                {% if crumb.link %}</a>{% endif %}
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endmacro %}
 
 
 {% macro build_section_row() %}
   <section class="content">
-    <div class="row">
-      {{ caller() }}
+    <div class="container-fluid">
+      <div class="row">
+        {{ caller() }}
+      </div>
     </div>
   </section>
 {% endmacro %}
 
 
-{% macro build_form_tabs_box(box_class, without_tab=False, container_class='col-xs-12') %}
+{% macro build_form_tabs_box(title, subtitle, icon, box_class, without_tab=False, container_class='col-md-12') %}
   <div class="{{ container_class }}">
-    <div class="{{ box_class }}{{ ' box box-primary' if without_tab }}">
-      <div class="nav-tabs-custom">
+    <div class="{{ box_class }} {{ ' card card-primary' if not without_tab }} card-outline">
+      {{ build_tabs_header(title, subtitle, icon) }}
+      <div class="card-body">
         {{ caller() }}
       </div>
     </div>
@@ -146,7 +176,7 @@
 {% endmacro %}
 
 
-{% macro build_form_box(title, subtitle, icon, box_class, container_class='col-xs-12') %}
+{% macro build_form_box(title, subtitle, icon, box_class, container_class='col-md-12') %}
   {% set caller_ = caller %}
   {% call build_form_tabs_box(box_class, without_tab=True, container_class=container_class) %}
     {% call build_tabs_navigation() %}
@@ -156,22 +186,31 @@
   {% endcall %}
 {% endmacro %}
 
+{% macro build_tabs_header(title, subtitle, icon) %}
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-{{ icon }}"></i>
+      {{ title }}
+      <small>{{ subtitle }}</small>
+    </h3>
+  </div>
+{% endmacro %}
 
 {% macro build_tabs_navigation() %}
-  <ul class="nav nav-tabs pull-right">
+  <ul class="nav nav-tabs right" role="tablist">
     {{ caller() }}
   </ul>
 {% endmacro %}
 
 
 {% macro add_tab_navigation_item(id, name, active=False) %}
-  <li class="{{ 'active' if active }}"><a href="#{{ id }}" data-toggle="tab">{{ name }}</a></li>
+  <li class="nav-item"><a href="#{{ id }}" class="nav-link {{ 'active' if active }}" role="tab" data-toggle="tab">{{ name }}</a></li>
 {% endmacro %}
 
 
 {% macro add_tab_navigation_header(title, subtitle, icon) %}
-  <li class="pull-left header"><i class="fa fa-{{ icon }}"></i> {{ title }}</li>
-  <li class="pull-left header"><small>{{ subtitle }}</small></li>
+  <li class="nav-header left"><i class="fas fa-{{ icon }}"></i> {{ title }}</li>
+  <li class="nav-header left"><small>{{ subtitle }}</small></li>
 {% endmacro %}
 
 
@@ -195,14 +234,14 @@
 
 {% macro add_add_entry_button() %}
   <button class="btn btn-box-tool add-row-entry">
-    <i class="fa fa-plus"></i>
+    <i class="fas fa-plus"></i>
   </button>
 {% endmacro %}
 
 
 {% macro add_delete_entry_button() %}
   <button class="btn btn-xs btn-danger delete-row-entry">
-    <i class="fa fa-minus"></i>
+    <i class="fas fa-minus"></i>
   </button>
 {% endmacro %}
 
@@ -238,10 +277,14 @@
 
 
 {% macro build_list_containers(title, icon, size='12') %}
-  <div class="col-xs-{{ size }}">
-    <div class="box box-primary">
-      <div class="box-body">
-        {{ caller() }}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-{{ size }}">
+        <div class="box box-primary">
+          <div class="box-body">
+            {{ caller() }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -345,7 +388,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+            <button type="button" class="close" data-dismiss="modal"><i class="fas fa-close"></i></button>
             <h4 class="modal-title">{{ title }}</h4>
           </div>
           <div class="modal-body clearfix">{{ caller() }}</div>

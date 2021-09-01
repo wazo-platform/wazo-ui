@@ -214,7 +214,7 @@ class ConfigurationView(ProvisioningBaseView):
         '.ipbx.global_settings.provisioning_configuration',
         l_('Provisioning Configuration'),
         order=4,
-        icon="gears",
+        icon="cogs",
     )
     def index(self):
         return super().index()

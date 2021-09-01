@@ -19,7 +19,7 @@ class SkillRuleView(BaseIPBXHelperView):
     form = SkillRuleForm
     resource = 'skillrule'
 
-    @menu_item('.ipbx.callcenter.skillrules', l_('Skill Rules'), icon="sticky-note-o", multi_tenant=True)
+    @menu_item('.ipbx.callcenter.skillrules', l_('Skill Rules'), icon="brain", multi_tenant=True)
     def index(self):
         return super().index()
 

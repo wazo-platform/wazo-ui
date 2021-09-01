@@ -19,7 +19,7 @@ class IvrView(NewHelperViewMixin, BaseIPBXHelperView):
     form = IvrForm
     resource = 'ivr'
 
-    @menu_item('.ipbx.services.ivr', l_('IVR'), icon="navicon", multi_tenant=True)
+    @menu_item('.ipbx.services.ivr', l_('IVR'), icon="route", multi_tenant=True)
     def index(self):
         return super().index()
 

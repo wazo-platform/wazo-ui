@@ -25,7 +25,7 @@ class ExtensionView(BaseIPBXHelperView):
     form = ExtensionForm
     resource = 'extension'
 
-    @menu_item('.ipbx.advanced', l_('Advanced'), order=999, icon="gears", multi_tenant=True)
+    @menu_item('.ipbx.advanced', l_('Advanced'), order=999, icon="cogs", multi_tenant=True)
     @menu_item('.ipbx.advanced.extensions', l_('Extensions'), order=1, icon="tty", multi_tenant=True)
     def index(self):
         return super().index()

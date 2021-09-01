@@ -2,18 +2,23 @@
   {% for category, message in messages %}
     {% if category == 'message' %}
       {% set category = 'info' %}
+      {% set message_title = category %}
     {% endif %}
     {% if category == 'error' %}
-      {% set icon = 'icon fa fa-ban' %}
+      {% set icon = 'icon fas fa-ban' %}
+      {% set category = 'danger' %}
+      {% set message_title = 'error' %}
     {% elif category == 'success' %}
-      {% set icon = 'icon fa fa-check' %}
+      {% set icon = 'icon fas fa-check' %}
+      {% set message_title = category %}
     {% else %}
-      {% set icon = 'icon fa fa-info' %}
+      {% set icon = 'icon fas fa-info' %}
+      {% set message_title = category %}
     {% endif %}
     {% if category != 'error_details' %}
-      <div class="alert alert-{{ category }} alert-dismissible">
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="{{ icon }}"></i> {{ category|title }}!</h4>
+        <h4><i class="{{ icon }}"></i> {{ message_title|title }}!</h4>
         {{ message }}
         {% for message in get_flashed_messages(category_filter=['error_details']) %}
           <div id="error-details-show">

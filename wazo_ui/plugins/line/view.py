@@ -22,7 +22,7 @@ class LineView(BaseIPBXHelperView):
     form = LineForm
     resource = 'line'
 
-    @menu_item('.ipbx.user_management.lines', l_('Lines'), order=3, icon="exchange", multi_tenant=True)
+    @menu_item('.ipbx.user_management.lines', l_('Lines'), order=3, icon="exchange-alt", multi_tenant=True)
     def index(self):
         return super().index()
 

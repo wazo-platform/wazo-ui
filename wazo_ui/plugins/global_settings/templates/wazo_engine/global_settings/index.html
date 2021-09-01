@@ -2,7 +2,7 @@
 
 {% block content_header %}
   {{ build_breadcrumbs([
-    { 'name': _('Global Settings'), 'link': url_for('.GlobalSettingsView:index'), 'icon': 'gears' }
+    { 'name': _('Global Settings'), 'link': url_for('.GlobalSettingsView:index'), 'icon': 'cogs' }
   ]) }}
 {% endblock %}
 
@@ -11,7 +11,7 @@
 
     {% call build_form_tabs_box() %}
       {% call build_tabs_navigation() %}
-        {{ add_tab_navigation_header(_('Global Settings'), '', 'gears') }}
+        {{ add_tab_navigation_header(_('Global Settings'), '', 'cogs') }}
 
       <br>
       <br>

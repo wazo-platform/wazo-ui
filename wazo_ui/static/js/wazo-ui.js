@@ -32,21 +32,23 @@ $.extend(true, $.fn.dataTable.defaults, {
   ],
   dom: "<'row'<'col-sm-8'B><'col-sm-4'f>>" +
        "<'row'<'col-sm-12'tr>>" +
-       "<'row'<'col-sm-5'il><'col-sm-7'p>>",
+       "<'row'<'col-sm-5'i><'col-sm-7'p>>",
   buttons: [
     'selectAll',
     'selectNone'
   ],
   initComplete: function(oSettings, json) {
     $('select[name^=table-list]').select2({
-      theme: 'bootstrap',
+      theme: 'bootstrap4',
       tags: true
     });
   },
 });
 
-$.fn.validator.Constructor.INPUT_SELECTOR = ':input:not([type="hidden"], [type="submit"], [type="reset"],' +
-  ' [disabled], button, .hidden :input, .select2-search__field)';
+//$.fn.validator.Constructor.INPUT_SELECTOR = ':input:not([type="hidden"], [type="submit"], [type="reset"],' +
+//  ' [disabled], button, .hidden :input, .select2-search__field)';
+
+$.fn.validator = () => {};
 
 function concatHashToString(hash){
   var emptyStr = '';
@@ -61,12 +63,12 @@ var tableInstances = [];
 $(document).ready(function() {
   create_table_clientside();
 
-  $('[data-toggle=confirmation]').confirmation({
-    rootSelector: '[data-toggle=confirmation]',
-    popout: true,
-    btnCancelClass: 'hidden',
-    btnOkClass: 'btn-xs btn-primary bg-green color-palette'
-  });
+  //$('[data-toggle=confirmation]').confirmation({
+  //  rootSelector: '[data-toggle=confirmation]',
+ //   popout: true,
+ //   btnCancelClass: 'hidden',
+ //   btnOkClass: 'btn-xs btn-primary bg-green color-palette'
+ // });
 
   $("#working-tenant").on("change", function () {
     $(this).submit();
@@ -86,7 +88,7 @@ $(document).ready(function() {
 
   init_destination_select.call(this);
   init_select2.call(this);
-  $(':input[type=password]:not(.row-template :input, [data-toggle=password])').password();
+  //$(':input[type=password]:not(.row-template :input, [data-toggle=password])').password();
 
   $('.add-row-entry').click(function(e) {
     e.preventDefault();
@@ -162,9 +164,9 @@ function clone_row() {
   $('.dynamic-table', context).append(row);
   init_destination_select.call(row);
   init_select2.call(row);
-  $(':input[type=password]', row).password();
+  //$(':input[type=password]', row).password();
 
-  $('form').validator('update').validator('validate');
+  //$('form').validator('update').validator('validate');
 
   template_row.trigger("row:cloned", row);
 
@@ -269,7 +271,7 @@ function init_select2() {
       return;
     }
     var config = {
-      theme: 'bootstrap',
+      theme: 'bootstrap4',
       width: null,
     };
 
@@ -324,6 +326,7 @@ function fix_select2_placeholder_width_cutting_off_text() {
 
 // https://github.com/select2/select2/issues/3004
 function select2_sortable($select2){
+  return;
   var ul = $select2.next('.select2-container').find('ul.select2-selection__rendered');
   ul.sortable({
     placeholder : 'ui-state-highlight',
@@ -348,7 +351,7 @@ function init_datatable_buttons(datatable) {
 
   datatable.button().add( 2, {
     className: 'btn edit-selected-rows disabled',
-    text: '<i class="fa fa-edit"></i>',
+    text: '<i class="fas fa-edit"></i>',
     titleAttr: dataInfos.tooltips.get,
     action: function (e, dt, node, config) {
       dt.rows({selected: true}).every(function(rowIdx, tableLoop, rowLoop) {
@@ -366,7 +369,7 @@ function init_datatable_buttons(datatable) {
   if (addForm.length || dataInfos.add_url) {
     datatable.button().add( 2, {
       className: 'btn',
-      text: '<i class="fa fa-plus"></i>',
+      text: '<i class="fas fa-plus"></i>',
       titleAttr: dataInfos.tooltips.add,
       action: function () {
         var row_infos = get_row_infos($('thead tr', tableNode));
@@ -400,7 +403,7 @@ function init_datatable_buttons(datatable) {
 
     datatable.button().add(2, {
       className: 'btn',
-      text: '<i class="fa fa-' + button.icon + '"></i> ' + action + ' CSV',
+      text: '<i class="fas fa-' + button.icon + '"></i> ' + action + ' CSV',
       titleAttr: dataInfos.tooltips[action],
       enabled: action !== 'update',
       data: {
@@ -428,7 +431,7 @@ function get_delete_button(row_infos) {
     title: row_infos.tooltips.delete,
     onclick: "return confirm('Are you sure you want to delete this item?');"
   }).append($('<i>', {
-    class: 'fa fa-times'
+    class: 'fas fa-times'
   }));
 
   return delete_button.prop('outerHTML');

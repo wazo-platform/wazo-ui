@@ -14,7 +14,7 @@ class IncallView(BaseIPBXHelperView):
     resource = 'incall'
 
     @menu_item('.ipbx.call_management', l_('Call Management'), order=2, icon="phone", multi_tenant=True)
-    @menu_item('.ipbx.call_management.incalls', l_('Incalls'), order=1, icon="long-arrow-right", multi_tenant=True)
+    @menu_item('.ipbx.call_management.incalls', l_('Incalls'), order=1, icon="arrow-right", multi_tenant=True)
     def index(self):
         return super().index()
 

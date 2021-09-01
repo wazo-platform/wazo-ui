@@ -1,8 +1,11 @@
 {% from "macro.html" import build_menu %}
 
-<aside class="main-sidebar">
-  <section class="sidebar">
+<aside class="main-sidebar sidebar-light">
+  <a href="{{ current_user.get_user_index_url() }}" class="brand-link navbar-brand logo-switch">
+    <img class="brand-image-xs logo-full-svg" src="{{ url_for('static', filename='img/wazo-text-bird-reverse.svg') }}" />
+  </a>
+  <div class="sidebar">
     {{ build_menu(current_user, current_menu) }}
-  </section>
+  </div>
 </aside>
 
