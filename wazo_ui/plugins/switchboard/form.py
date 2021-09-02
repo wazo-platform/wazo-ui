@@ -11,10 +11,11 @@ from wtforms.fields import (
     SelectField,
     SelectMultipleField
 )
-from wtforms.validators import InputRequired, Length
+from wtforms.fields.html5 import IntegerField
+from wtforms.validators import InputRequired, Length, NumberRange
 
 from wazo_ui.helpers.form import BaseForm
-from wazo_ui.helpers.destination import DestinationHiddenField
+from wazo_ui.helpers.destination import FallbacksForm, DestinationHiddenField
 
 
 class UserForm(BaseForm):
@@ -31,6 +32,10 @@ class MembersForm(BaseForm):
 class SwitchboardForm(BaseForm):
     name = StringField(l_('Name'), [InputRequired(), Length(max=128)])
     members = FormField(MembersForm)
+    queue_music_on_hold = SelectField(l_('Music On Hold'), [Length(max=128)], choices=[])
+    waiting_room_music_on_hold = SelectField(l_('Waiting Room Music On Hold'), [Length(max=128)], choices=[])
+    fallbacks = FormField(FallbacksForm)
+    timeout = IntegerField(l_('Timeout'), [NumberRange(min=1)])
     submit = SubmitField(l_('Submit'))
 
 

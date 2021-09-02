@@ -31,6 +31,8 @@ class SwitchboardView(BaseIPBXHelperView):
 
     def _populate_form(self, form):
         form.members.user_uuids.choices = self._build_set_choices_users(form.members.users)
+        form.queue_music_on_hold.choices = self._build_set_choices_moh(form.queue_music_on_hold)
+        form.waiting_room_music_on_hold.choices = self._build_set_choices_moh(form.waiting_room_music_on_hold)
         return form
 
     def _build_set_choices_users(self, users):
@@ -43,9 +45,17 @@ class SwitchboardView(BaseIPBXHelperView):
             results.append((user.uuid.data, text))
         return results
 
+    def _build_set_choices_moh(self, moh):
+        if not moh.data or moh.data == 'None':
+            return []
+        return [(moh.data, moh.data)]
+
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
         resource['members']['users'] = [{'uuid': user_uuid} for user_uuid in form.members.user_uuids.data]
+        resource['queue_music_on_hold'] = self._convert_empty_string_to_none(form.queue_music_on_hold.data)
+        resource['waiting_room_music_on_hold'] = self._convert_empty_string_to_none(form.waiting_room_music_on_hold.data)
+
         return resource
 
     def _map_resources_to_form_errors(self, form, resources):

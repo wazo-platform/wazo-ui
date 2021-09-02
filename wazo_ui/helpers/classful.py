@@ -317,6 +317,14 @@ class BaseView(BaseHelperView):
 
         return self._redirect_referrer_or('index')
 
+    def _convert_empty_string_to_none(self, value):
+        # This behavior is a bug from wtforms and is fixed in newer version
+        if value == 'None':
+            return None
+        if not value:
+            return None
+        return value
+
 
 def extract_select2_params(args, limit=10):
     search = args.get('term')
