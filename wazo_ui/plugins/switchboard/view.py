@@ -53,6 +53,9 @@ class SwitchboardView(BaseIPBXHelperView):
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
         resource['members']['users'] = [{'uuid': user_uuid} for user_uuid in form.members.user_uuids.data]
+        resource['queue_music_on_hold'] = self._convert_empty_string_to_none(form.queue_music_on_hold.data)
+        resource['waiting_room_music_on_hold'] = self._convert_empty_string_to_none(form.waiting_room_music_on_hold.data)
+
         return resource
 
     def _map_resources_to_form_errors(self, form, resources):

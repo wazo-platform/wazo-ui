@@ -57,7 +57,7 @@ class ConferenceView(BaseIPBXHelperView):
         if form_id:
             resource['uuid'] = form_id
 
-        resource['music_on_hold'] = form.music_on_hold.data or None
+        resource['music_on_hold'] = self._convert_empty_string_to_none(form.music_on_hold.data)
 
         return resource
 

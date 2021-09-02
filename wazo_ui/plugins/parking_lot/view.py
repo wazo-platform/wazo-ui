@@ -40,5 +40,5 @@ class ParkingLotView(BaseIPBXHelperView):
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
-        resource['music_on_hold'] = form.music_on_hold.data or None
+        resource['music_on_hold'] = self._convert_empty_string_to_none(form.music_on_hold.data)
         return resource
