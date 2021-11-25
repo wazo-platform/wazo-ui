@@ -83,7 +83,7 @@ class GroupView(BaseIPBXHelperView):
         resource['members']['users'] = [{'uuid': user_uuid} for user_uuid in form.members.user_uuids.data]
         resource['call_permissions'] = [{'id': call_permission_id} for call_permission_id in
                                         form.call_permission_ids.data]
-        resource['music_on_hold'] = form.music_on_hold.data or None
+        resource['music_on_hold'] = self._convert_empty_string_to_none(form.music_on_hold.data)
         return resource
 
     def _map_resources_to_form_errors(self, form, resources):
