@@ -1,5 +1,5 @@
-# Copyright 2018-2021 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
@@ -9,10 +9,12 @@ from wtforms.fields import (
     FieldList,
     FormField,
     HiddenField,
+    IntegerField,
+    PasswordField,
     SelectField,
     SelectMultipleField
 )
-from wtforms.validators import InputRequired, Email
+from wtforms.validators import AnyOf, Email, InputRequired, Length, NumberRange
 
 from wazo_ui.helpers.form import BaseForm
 
@@ -96,4 +98,19 @@ class PolicyForm(BaseForm):
     acl = FieldList(FormField(AccessForm))
     tenant_uuid = SelectField(l_('Tenant'), choices=[])
     tenant = FormField(TenantUuidForm)
+    submit = SubmitField()
+
+
+class LDAPForm(BaseForm):
+    host = StringField(l_('Host'), validators=[InputRequired(), Length(max=512)])
+    port = IntegerField(l_('Port'), validators=[InputRequired()])
+    protocol_version = IntegerField(l_('Protocol version'), validators=[NumberRange(min=2, max=3)])
+    protocol_security = StringField(l_('Protocol security'), validators=[AnyOf(['ldaps', 'tls'])])
+    bind_dn = StringField(l_('Bind DN'), validators=[Length(max=256)])
+    bind_password = PasswordField(l_('Bind password'))
+    user_base_dn = StringField(l_('User base DN'), validators=[InputRequired(), Length(max=256)])
+    user_login_attribute = StringField(l_('User login attribute'), validators=[InputRequired(), Length(max=64)])
+    user_email_attribute = StringField(l_('User email attribute'), validators=[InputRequired(), Length(max=64)])
+    search_filters = StringField(l_('Search filters'))
+
     submit = SubmitField()

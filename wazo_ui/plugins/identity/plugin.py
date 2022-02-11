@@ -1,5 +1,5 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_menu.classy import register_flaskview
 
@@ -7,24 +7,28 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import (
-    IdentityService,
     GroupService,
+    IdentityService,
+    LDAPService,
+    PolicyService,
     TenantService,
-    PolicyService)
+)
 from .view import (
-    IdentityView,
-    IdentityListingView,
     GroupView,
     GroupListingView,
-    TenantView,
-    TenantListingView,
+    IdentityView,
+    IdentityListingView,
+    LDAPConfigView,
     PolicyView,
     PolicyListingView,
+    TenantView,
+    TenantListingView,
 )
 
 identity = create_blueprint('identity', __name__)
 identity_group = create_blueprint('identity_group', __name__)
 tenant = create_blueprint('tenant', __name__)
+ldap_config = create_blueprint('ldap', __name__)
 policy = create_blueprint('policy', __name__)
 
 
@@ -71,7 +75,12 @@ class Plugin(object):
 
         register_listing_url('policy', 'policy.PolicyListingView:list_json')
 
+        LDAPConfigView.service = LDAPService(clients['wazo_auth'])
+        LDAPConfigView.register(ldap_config, route_base='/ldap_config')
+        register_flaskview(ldap_config, LDAPConfigView)
+
         core.register_blueprint(identity)
         core.register_blueprint(identity_group)
         core.register_blueprint(tenant)
+        core.register_blueprint(ldap_config)
         core.register_blueprint(policy)

@@ -1,4 +1,4 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_login import current_user
@@ -159,3 +159,22 @@ class PolicyService(BaseAuthService):
         uuid = resource['uuid']
         del resource['uuid']
         self._auth.policies.edit(uuid, **resource)
+
+
+class LDAPService(BaseAuthService):
+    resource_auth = 'ldap_config'
+
+    def __init__(self, auth_client):
+        self._auth = auth_client
+
+    def get(self):
+        tenant_uuid = current_user.get_tenant_uuid()
+        return self._auth.ldap_config.get(tenant_uuid)
+
+    def update(self, resource):
+        tenant_uuid = current_user.get_tenant_uuid()
+        self._auth.ldap_config.update(resource, tenant_uuid=tenant_uuid)
+
+    def delete(self):
+        tenant_uuid = current_user.get_tenant_uuid()
+        self._auth.ldap_config.delete(tenant_uuid)

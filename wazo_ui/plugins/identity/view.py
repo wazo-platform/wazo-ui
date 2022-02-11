@@ -1,7 +1,14 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import jsonify, request, render_template, redirect, url_for
+from flask import (
+    jsonify,
+    flash,
+    request,
+    render_template,
+    redirect,
+    url_for,
+)
 from flask_babel import lazy_gettext as l_
 from flask_classful import route
 
@@ -11,16 +18,17 @@ from wazo_ui.helpers.tenant import refresh_tenants
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     extract_select2_params,
-    build_select2_response
+    build_select2_response,
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
 
 from .form import (
-    IdentityForm,
     GroupForm,
+    IdentityForm,
+    LDAPForm,
+    PolicyForm,
     TenantForm,
-    PolicyForm
 )
 
 
@@ -224,3 +232,42 @@ class PolicyListingView(LoginRequiredView):
         groups = self.service.list(**params)
         results = [{'id': group['uuid'], 'text': group['name']} for group in groups['items']]
         return jsonify(build_select2_response(results, groups['total'], params))
+
+
+class LDAPConfigView(BaseIPBXHelperView):
+    form = LDAPForm
+    resource = 'ldap'
+
+    @menu_item('.ipbx.identity.ldap', l_('LDAP'), order=5, icon="wrench", multi_tenant=True)
+    def index(self, form=None):
+        resource = {}
+        try:
+            resource = self.service.get()
+        except HTTPError as error:
+            if error.response.status_code != 404:
+                self._flash_http_error(error)
+                return self._redirect_for('index')
+
+        form = form or self.form()
+        return render_template(self._get_template('index'),
+                               form=self.form(data=resource))
+
+    def post(self):
+        form = self.form()
+        if not form.csrf_token.validate(form):
+            self._flash_basic_form_errors(form)
+            return self.index(form)
+
+        resource = form.to_dict()
+        try:
+            self.service.update(resource)
+        except HTTPError as error:
+            self._flash_http_error(error)
+            return self.index()
+
+        flash(l_('LDAP config has been updated'), 'success')
+        return self._redirect_for('index')
+
+    def get(self, id):
+        logger.debug('AFDEBUG: tigidi')
+        self._get(id)
