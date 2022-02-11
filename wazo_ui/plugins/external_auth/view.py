@@ -1,5 +1,5 @@
 # Copyright 2018-2021 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import request, redirect, url_for, render_template, flash
 from flask_classful import route
