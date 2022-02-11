@@ -252,13 +252,18 @@ class LDAPConfigView(BaseIPBXHelperView):
         return render_template(self._get_template('index'),
                                form=self.form(data=resource))
 
+    def _map_form_to_resources_post(self, form, form_id=None):
+        resource = super()._map_form_to_resources(form, form_id)
+        resource['protocol_security'] = self._convert_empty_string_to_none(form.protocol_security.data)
+        return resource
+
     def post(self):
         form = self.form()
         if not form.csrf_token.validate(form):
             self._flash_basic_form_errors(form)
             return self.index(form)
 
-        resource = form.to_dict()
+        resource = self._map_form_to_resources_post(form)
         try:
             self.service.update(resource)
         except HTTPError as error:
