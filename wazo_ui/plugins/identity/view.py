@@ -267,7 +267,3 @@ class LDAPConfigView(BaseIPBXHelperView):
 
         flash(l_('LDAP config has been updated'), 'success')
         return self._redirect_for('index')
-
-    def get(self, id):
-        logger.debug('AFDEBUG: tigidi')
-        self._get(id)
