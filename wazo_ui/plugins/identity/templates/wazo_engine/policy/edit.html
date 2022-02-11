@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': resource.name, 'link': url_for('.PolicyView:get', id=resource.id), 'icon': 'lock' }
   ]) }}
 {% endblock %}
@@ -66,4 +66,3 @@
     <td>{{ add_delete_entry_button() }}</td>
   </tr>
 {% endmacro %}
-
