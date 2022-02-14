@@ -6,12 +6,10 @@ import logging
 from selenium import webdriver
 from selenium.webdriver.remote.remote_connection import LOGGER
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from easyprocess import log as easyprocess_logger
 from pyvirtualdisplay import Display
 
 from .login import LoginPage
 
-easyprocess_logger.setLevel(logging.CRITICAL)
 LOGGER.setLevel(logging.CRITICAL)
 
 
