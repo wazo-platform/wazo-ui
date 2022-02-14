@@ -240,14 +240,7 @@ class LDAPConfigView(BaseIPBXHelperView):
 
     @menu_item('.ipbx.identity.ldap', l_('LDAP'), order=5, icon="wrench", multi_tenant=True)
     def index(self, form=None):
-        resource = {}
-        try:
-            resource = self.service.get()
-        except HTTPError as error:
-            if error.response.status_code != 404:
-                self._flash_http_error(error)
-                return self._redirect_for('index')
-
+        resource = self.service.get()
         form = form or self.form()
         return render_template(self._get_template('index'),
                                form=self.form(data=resource))
