@@ -13,7 +13,7 @@ from wtforms.fields import (
     SelectMultipleField
 )
 from wtforms.fields.html5 import IntegerField
-from wtforms.validators import Email, InputRequired, Length, NumberRange
+from wtforms.validators import Email, InputRequired, Length
 
 from wazo_ui.helpers.form import BaseForm, SelectField
 
@@ -103,7 +103,9 @@ class PolicyForm(BaseForm):
 class LDAPForm(BaseForm):
     host = StringField(l_('Host'), validators=[InputRequired(), Length(max=512)])
     port = IntegerField(l_('Port'), validators=[InputRequired()])
-    protocol_version = IntegerField(l_('Protocol version'), validators=[NumberRange(min=2, max=3)])
+    protocol_version = SelectField(
+        l_('Protocol version'), coerce=int, choices=[(2, '2'), (3, '3')], default=3,
+    )
     protocol_security = SelectField(
         l_('Protocol security'),
         choices=[('tls', l_('TLS')), ('ldaps', l_('LDAPS')), (None, l_('None'))],
