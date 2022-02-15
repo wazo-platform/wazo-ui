@@ -9,10 +9,10 @@ from wtforms.fields import (
     FieldList,
     FormField,
     HiddenField,
-    IntegerField,
     PasswordField,
     SelectMultipleField
 )
+from wtforms.fields.html5 import IntegerField
 from wtforms.validators import Email, InputRequired, Length, NumberRange
 
 from wazo_ui.helpers.form import BaseForm, SelectField
