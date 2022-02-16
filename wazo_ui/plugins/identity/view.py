@@ -265,3 +265,13 @@ class LDAPConfigView(BaseIPBXHelperView):
 
         flash(l_('LDAP config has been updated'), 'success')
         return self._redirect_for('index')
+
+    @route('/delete', methods=['GET'])
+    def delete(self):
+        try:
+            self.service.delete()
+            flash(l_('%(resource)s: LDAP configuration has been deleted', resource=self.resource), 'success')
+        except HTTPError as error:
+            self._flash_http_error(error)
+
+        return self._redirect_referrer_or('index')

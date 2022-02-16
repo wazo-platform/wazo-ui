@@ -9,7 +9,7 @@
     {% call build_form_box('', '', '') %}
       {% call build_form(action=url_for('.LDAPConfigView:post')) %}
 
-        {% call add_default_fields(form=form, submit_value=_('Update')) %}
+        {% call add_default_fields(form=form, submit_value=_('Update'), delete_action=url_for('.LDAPConfigView:delete')) %}
           {{ render_field(form.host) }}
           {{ render_field(form.port) }}
           {{ render_field(form.protocol_security) }}
@@ -21,7 +21,6 @@
           {{ render_field(form.user_email_attribute) }}
           {{ render_field(form.search_filters) }}
         {% endcall %}
-
       {% endcall %}
     {% endcall %}
   {% endcall %}
