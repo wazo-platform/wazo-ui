@@ -1,20 +1,21 @@
-# Copyright 2018-2021 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
-    SubmitField,
-    StringField,
     BooleanField,
+    SubmitField,
     FieldList,
     FormField,
     HiddenField,
-    SelectField,
-    SelectMultipleField
+    PasswordField,
+    SelectMultipleField,
+    StringField,
 )
-from wtforms.validators import InputRequired, Email
+from wtforms.fields.html5 import IntegerField
+from wtforms.validators import Email, InputRequired, Length
 
-from wazo_ui.helpers.form import BaseForm
+from wazo_ui.helpers.form import BaseForm, SelectField
 
 
 class UserUuidForm(BaseForm):
@@ -96,4 +97,24 @@ class PolicyForm(BaseForm):
     acl = FieldList(FormField(AccessForm))
     tenant_uuid = SelectField(l_('Tenant'), choices=[])
     tenant = FormField(TenantUuidForm)
+    submit = SubmitField()
+
+
+class LDAPForm(BaseForm):
+    host = StringField(l_('Host'), validators=[InputRequired(), Length(max=512)])
+    port = IntegerField(l_('Port'), validators=[InputRequired()])
+    protocol_version = SelectField(
+        l_('Protocol version'), coerce=int, choices=[(2, '2'), (3, '3')], default=3,
+    )
+    protocol_security = SelectField(
+        l_('Protocol security'),
+        choices=[('tls', l_('TLS')), ('ldaps', l_('LDAPS')), (None, l_('None'))],
+    )
+    bind_dn = StringField(l_('Bind DN'), validators=[Length(max=256)])
+    bind_password = PasswordField(l_('Bind password'))
+    user_base_dn = StringField(l_('User base DN'), validators=[InputRequired(), Length(max=256)])
+    user_login_attribute = StringField(l_('User login attribute'), validators=[InputRequired(), Length(max=64)])
+    user_email_attribute = StringField(l_('User email attribute'), validators=[InputRequired(), Length(max=64)])
+    search_filters = StringField(l_('Search filters'))
+
     submit = SubmitField()
