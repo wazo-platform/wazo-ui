@@ -231,9 +231,13 @@
   </div>
   {% if submit_value or delete_action %}
     <div class="box-footer text-center">
-      {{ render_field(form.submit, class_="btn btn-primary", value=submit_value, with_label=False) }}
+      <div class="col-sm-5"></div>
+      {{ render_field(form.submit, class_="btn btn-primary", value=submit_value, with_label=False, divclass='col-sm-1') }}
       {% if delete_action %}
-      <div><a href="{{ delete_action }}" class="btn btn-danger">Delete</a></div>
+      <div class="col-sm-1">
+        <a href="{{ delete_action }}" class="btn btn-danger">Delete</a>
+      </div>
+      <div class="col-sm-5"></div>
       {% endif %}
     </div>
   {% endif %}
