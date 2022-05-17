@@ -146,7 +146,23 @@ class TenantService(BaseAuthService):
         return resource
 
     def update(self, resource):
+
+        if 'domain_names' in resource and resource['domain_names']:
+            domain_names_list = [domain_name['name'] for domain_name in resource['domain_names']]
+            domain_names_list = list(filter(None, domain_names_list))
+            resource.update({'domain_names': domain_names_list})
+        else:
+            resource['domain_names'] = []
         self._auth.tenants.edit(resource['uuid'], **resource)
+
+    def new(self, resource):
+        if 'domain_names' in resource and resource['domain_names']:
+            domain_names_list = [domain_name['name'] for domain_name in resource['domain_names']]
+            domain_names_list = list(filter(None, domain_names_list))
+            resource.update({'domain_names': domain_names_list})
+        else:
+            resource['domain_names'] = []
+        self._auth.tenants.new(**resource)
 
 
 class PolicyService(BaseAuthService):
