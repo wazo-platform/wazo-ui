@@ -4,7 +4,7 @@
 import unittest
 
 from hamcrest import assert_that, any_of, equal_to, empty, is_, none
-from mock import Mock
+from unittest.mock import Mock
 
 from ..error import ErrorExtractor, ErrorTranslator, ConfdErrorExtractor, ConfdErrorTranslator
 

@@ -3,7 +3,7 @@
 
 import unittest
 
-from mock import Mock, call
+from unittest.mock import Mock, call
 
 import wazo_ui.helpers.service
 import wazo_ui.plugins.user.service as service

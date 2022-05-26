@@ -5,7 +5,7 @@ import unittest
 
 from flask import Flask
 from hamcrest import assert_that, contains, empty
-from mock import Mock
+from unittest.mock import Mock
 from wtforms import StringField
 
 from wazo_ui.helpers.form import BaseForm

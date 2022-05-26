@@ -5,7 +5,7 @@ import unittest
 
 from flask import Flask
 from hamcrest import assert_that, empty, is_, equal_to, has_items, matches_regexp
-from mock import Mock
+from unittest.mock import Mock
 from wtforms import StringField
 
 from ..classful import BaseView, _is_positive_integer, extract_select2_params, build_select2_response
