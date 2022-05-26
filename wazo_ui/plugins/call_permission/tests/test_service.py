@@ -4,7 +4,7 @@
 from unittest import TestCase
 
 from hamcrest import assert_that, contains_inanyorder, empty
-from mock import Mock
+from unittest.mock import Mock
 
 from ..service import CallPermissionService
 

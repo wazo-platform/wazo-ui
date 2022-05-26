@@ -4,7 +4,7 @@
 import unittest
 
 from hamcrest import assert_that, equal_to
-from mock import Mock
+from unittest.mock import Mock
 
 from wazo_ui.helpers.service import BaseConfdService
 from wazo_ui.helpers.extension import BaseConfdExtensionService
