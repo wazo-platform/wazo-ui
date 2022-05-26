@@ -20,7 +20,7 @@ flask-wtf==0.14.2
 flask==1.0.2
 itsdangerous==0.24
 itsdangerous==0.24  # from flask
-jinja2==2.10  # from flask
+jinja2==2.11.3  # from flask
 markupsafe==1.1.0 # from flask
 pyyaml==3.13  # from xivo-lib-python
 requests==2.21.0
