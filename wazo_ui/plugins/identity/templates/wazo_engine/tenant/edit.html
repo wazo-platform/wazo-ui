@@ -67,7 +67,7 @@
     {% set tr_class = "row-line" %}
   {% endif %}
   <tr class="{{ tr_class }}">
-    <td>{{ render_field(domain_name.form.name) }}</td>
+    <td>{{ render_field(domain_name) }}</td>
     <td>{{ add_delete_entry_button() }}</td>
   </tr>
 {% endmacro %}

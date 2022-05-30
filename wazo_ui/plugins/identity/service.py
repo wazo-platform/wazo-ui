@@ -1,7 +1,12 @@
 # Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import logging
+
 from flask_login import current_user
+
+
+logger = logging.getLogger(__name__)
 
 
 class BaseAuthService:
@@ -146,23 +151,24 @@ class TenantService(BaseAuthService):
         return resource
 
     def update(self, resource):
-
-        if 'domain_names' in resource and resource['domain_names']:
-            domain_names_list = [domain_name['name'] for domain_name in resource['domain_names']]
-            domain_names_list = list(filter(None, domain_names_list))
-            resource.update({'domain_names': domain_names_list})
-        else:
-            resource['domain_names'] = []
+        logger.info('resource: %s', resource)
+        resource = self._update_domain_names(resource, resource['domain_names'])
+        logger.info('body: %s', resource)
         self._auth.tenants.edit(resource['uuid'], **resource)
 
     def new(self, resource):
-        if 'domain_names' in resource and resource['domain_names']:
-            domain_names_list = [domain_name['name'] for domain_name in resource['domain_names']]
-            domain_names_list = list(filter(None, domain_names_list))
-            resource.update({'domain_names': domain_names_list})
-        else:
-            resource['domain_names'] = []
+        resource = self._update_domain_names(resource, resource['domain_names'])
         self._auth.tenants.new(**resource)
+
+    def _update_domain_names(self, resource, domain_names):
+        result = []
+        for row in domain_names or []:
+            domain_name = row.get('name')
+            if not domain_name:
+                continue
+            result.append(domain_name)
+        resource['domain_names'] = result
+        return resource
 
 
 class PolicyService(BaseAuthService):

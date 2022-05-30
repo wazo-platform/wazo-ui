@@ -134,7 +134,10 @@ class TenantView(BaseIPBXHelperView):
     resource = 'tenant'
 
     @menu_item('.ipbx.global_settings.tenants', l_('Tenants'), order=3, icon="building")
-    def index(self, form=None):
+    def index(self):
+        return super().index()
+
+    def _index(self, form=None):
         refresh_tenants()
         try:
             resource_list = self.service.list()

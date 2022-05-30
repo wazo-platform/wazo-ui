@@ -87,7 +87,7 @@ class DomainNameForm(BaseForm):
 class TenantForm(BaseForm):
     name = StringField(l_('Name'), validators=[InputRequired()])
     slug = StringField(l_('Identifier'))
-    domain_names = FieldList(FormField(DomainNameForm), min_entries=3)
+    domain_names = FieldList(FormField(DomainNameForm), min_entries=0)
     members = FormField(MembersForm)
     submit = SubmitField()
 
