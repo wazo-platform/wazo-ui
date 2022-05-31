@@ -154,13 +154,12 @@ class TenantService(BaseAuthService):
         self._auth.tenants.new(**resource)
 
     def _update_resource_with_domain_names(self, resource, domain_names):
-        results = []
-        for domain in domain_names or []:
-            domain_name = domain.get('name')
-            if not domain_name:
-                continue
-            results.append(domain_name)
-        resource['domain_names'] = results
+        existing_domain_names = self._auth.tenants.get(resource['uuid'])['domain_names']
+        new_domain_names = [domain.get('name') for domain in domain_names if domain.get('name')]
+        if new_domain_names:
+            resource['domain_names'] = new_domain_names
+        else:
+            resource['domain_names'] = existing_domain_names
         return resource
 
 
