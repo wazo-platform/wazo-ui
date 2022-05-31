@@ -81,7 +81,7 @@ class GroupForm(BaseForm):
 
 
 class DomainNameForm(BaseForm):
-    name = StringField(validators=[Length(max=253)])
+    name = StringField(l_('DomainName'), validators=[Length(max=253)])
 
 
 class TenantForm(BaseForm):
