@@ -31,17 +31,6 @@
 
           {% call build_tab_content_item('new_domain_names') %}
               {% call add_default_fields(form=form, submit_value=_('Update')) %}
-                {% call build_table() %}
-                  {% call build_table_headers() %}
-                      <th>{{  _('Current Domain Names') }}</th>
-                      <th style="width: 21px"></th>
-                  {% endcall %}
-                  {% call build_table_body() %}
-                    {% call(tenant) build_list_table_rows(resource_list['items']) %}
-                      <td>{{ tenant.domain_names }}</td>
-                    {% endcall %}
-                  {% endcall %}
-                {% endcall %}
                 {{ build_add_row_entry_header() }}
                 {% call build_table() %}
                   {% call build_table_headers() %}
@@ -52,7 +41,6 @@
                   {% call build_table_body(class_='dynamic-table') %}
                     {% do form.domain_names.append_entry() %}
                     {{ _build_domain_name_entry(form.domain_names.pop_entry(), template=True) }}
-
                     {% for domain_name in form.domain_names %}
                       {{ _build_domain_name_entry(domain_name) }}
                     {% endfor %}

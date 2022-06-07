@@ -182,6 +182,7 @@ class TenantView(BaseIPBXHelperView):
         try:
             self.service.update(resources)
             refresh_tenants()
+            form = self._populate_form(form)
         except HTTPError as error:
             form = self._fill_form_error(form, error)
             self._flash_http_error(error)
@@ -198,11 +199,14 @@ class TenantView(BaseIPBXHelperView):
             new_resource_list['filtered'] = 1
             new_resource_list['total'] = resource_list['total']
             new_resource_list['items'] = [tenant for tenant in resource_list['items'] if tenant['uuid'] == id]
+            current_tenant_domain_names = [{'name': domain} for domain in new_resource_list['items'][0]['domain_names'] if domain]
         except HTTPError as error:
             self._flash_http_error(error)
             return self._redirect_for('index')
 
         form = form or self._map_resources_to_form(resource)
+        for domain_name in current_tenant_domain_names:
+            form.domain_names.append_entry(domain_name)
         form = self._populate_form(form)
 
         return render_template(self._get_template('edit'),
