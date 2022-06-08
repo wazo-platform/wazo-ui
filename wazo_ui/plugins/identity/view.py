@@ -205,6 +205,10 @@ class TenantView(BaseIPBXHelperView):
             return self._redirect_for('index')
 
         form = form or self._map_resources_to_form(resource)
+
+        for i in range(len(current_tenant_domain_names)):
+            form.domain_names.pop_entry()
+
         for domain_name in current_tenant_domain_names:
             form.domain_names.append_entry(domain_name)
         form = self._populate_form(form)
