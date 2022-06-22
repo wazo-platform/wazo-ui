@@ -179,6 +179,12 @@ class TenantView(BaseIPBXHelperView):
         form = self.form(data=resource)
         return form
 
+    def _map_form_to_resources(self, form, form_id=None):
+        resource = super()._map_form_to_resources(form, form_id)
+        domains = resource.pop('domains')
+        resource['domain_names'] = [domain['name'] for domain in domains if domain['name']]
+        return resource
+
     def _populate_form(self, form):
         form.members.user_uuids.choices = self._build_set_choices_users(form.members.users)
         form.members.policy_uuids.choices = self._build_set_choices_policies(form.members.policies)

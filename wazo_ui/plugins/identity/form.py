@@ -80,9 +80,14 @@ class GroupForm(BaseForm):
     submit = SubmitField()
 
 
+class DomainNameForm(BaseForm):
+    name = StringField('', validators=[Length(max=253)])
+
+
 class TenantForm(BaseForm):
     name = StringField(l_('Name'), validators=[InputRequired()])
     slug = StringField(l_('Identifier'))
+    domains = FieldList(FormField(DomainNameForm))
     domain_names = FieldList(StringField(l_('Domain Names')))  # Read-Only
     members = FormField(MembersForm)
     submit = SubmitField()
