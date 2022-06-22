@@ -26,9 +26,15 @@ class UserService(BaseConfdService):
 
     def get(self, resource_id):
         resource = super().get(resource_id)
-        wazo_user = self._auth.users.get(resource_id)
-        resource['username'] = wazo_user['username']
-        resource['auth_enabled'] = wazo_user['enabled']
+        wazo_user = dict()
+
+        try:
+            wazo_user = self._auth.users.get(resource_id)
+            resource['username'] = wazo_user['username']
+            resource['auth_enabled'] = wazo_user['enabled']
+        except:
+            pass
+
         resource['call_permissions'] = self._build_call_permissions_list(resource['call_permissions'])
         return resource
 
@@ -77,23 +83,19 @@ class UserService(BaseConfdService):
         username = user.pop('username')
         password = user.pop('password')
         user['uuid'] = super().create(user)['uuid']
-        self._auth.users.new(
-            uuid=user['uuid'],
-            username=username or user['email'],
-            password=password,
-            firstname=user['firstname'],
-            lastname=user['lastname'],
-            email_address=user['email'],
-            enabled=password is not None,
-        )
-
+        self._create_wazo_user(user)
         self._create_user_lines(user)
 
     def update(self, user):
         username = user.pop('username')
         password = user.pop('password')
         super().update(user)
-        self._update_wazo_user(user, username, password)
+
+        try:
+            self._auth.users.get(user['uuid'])
+            self._update_wazo_user(user, username, password)
+        except:
+            self._create_wazo_user(user, username, password)
 
         existing_user = self._confd.users.get(user)
 
@@ -149,6 +151,17 @@ class UserService(BaseConfdService):
             if not line.get('id'):
                 line = self._create_line_and_associations(line)
             self._confd.users(user).add_line(line)
+
+    def _create_wazo_user(self, user, username, password):
+        self._auth.users.new(
+            uuid=user['uuid'],
+            username=username or user['email'],
+            password=password or user['password'],
+            firstname=user['firstname'],
+            lastname=user['lastname'],
+            email_address=user['email'],
+            enabled=password is not None,
+        )
 
     def _update_wazo_user(self, user, username, password):
         self._auth.users.edit(
