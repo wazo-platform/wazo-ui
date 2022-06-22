@@ -81,13 +81,14 @@ class GroupForm(BaseForm):
 
 
 class DomainNameForm(BaseForm):
-    name = StringField(l_(''), validators=[Length(max=253)])
+    name = StringField('', validators=[Length(max=253)])
 
 
 class TenantForm(BaseForm):
     name = StringField(l_('Name'), validators=[InputRequired()])
     slug = StringField(l_('Identifier'))
-    domain_names = FieldList(FormField(DomainNameForm), min_entries=0)
+    domains = FieldList(FormField(DomainNameForm))
+    domain_names = FieldList(StringField(l_('Domain Names')))  # Read-Only
     members = FormField(MembersForm)
     submit = SubmitField()
 
