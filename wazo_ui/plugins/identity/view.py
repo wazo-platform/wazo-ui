@@ -176,6 +176,7 @@ class TenantView(BaseIPBXHelperView):
     def _map_resources_to_form(self, resource):
         resource['members']['user_uuids'] = [user['uuid'] for user in resource['members']['users']]
         resource['members']['policy_uuids'] = [policy['uuid'] for policy in resource['members']['policies']]
+        resource['domains'] = [{'name': name} for name in resource['domain_names']]
         form = self.form(data=resource)
         return form
 
