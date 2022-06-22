@@ -138,12 +138,11 @@ class TenantView(BaseIPBXHelperView):
         return super().index()
 
     def _index(self, form=None):
-        refresh_tenants()
         try:
             resource_list = self.service.list()
         except HTTPError as error:
             self._flash_http_error(error)
-            redirect(url_for('index.IndexView:index'))
+            return redirect(url_for('admin.Admin:get'))
 
         form = form or self.form()
         form = self._populate_form(form)
@@ -155,70 +154,17 @@ class TenantView(BaseIPBXHelperView):
                                current_breadcrumbs=self._get_current_breadcrumbs())
 
     def post(self):
-        form = self.form()
-        resources = self._map_form_to_resources_post(form)
+        result = super().post()
+        refresh_tenants()
 
-        if not form.csrf_token.validate(form):
-            self._flash_basic_form_errors(form)
-            return self._new(form)
+        return result
 
-        try:
-            self.service.new(resources)
-        except HTTPError as error:
-            form = self._fill_form_error(form, error)
-            self._flash_http_error(error)
-            return self._new(form)
-
-        flash(l_('%(resource)s: Resource has been created', resource=self.resource), 'success')
-        return self._redirect_referrer_or('index')
-
-    @route('/put/<id>', methods=['GET', 'POST'])
+    @route('/put/<id>', methods=['POST'])
     def put(self, id):
-        form = self.form()
-        if not form.csrf_token.validate(form):
-            self._flash_basic_form_errors(form)
-            return self._get(id, form)
-        resources = self._map_form_to_resources_put(form, id)
-        try:
-            self.service.update(resources)
-            refresh_tenants()
-            form = self._populate_form(form)
-        except HTTPError as error:
-            form = self._fill_form_error(form, error)
-            self._flash_http_error(error)
-            return self._get(id, form)
-        flash(l_('%(resource)s: Resource has been updated', resource=self.resource), 'success')
-        return self._redirect_referrer_or('index')
+        result = super().put(id)
+        refresh_tenants()
 
-    def _get(self, id, form=None):
-
-        try:
-            resource = self.service.get(id)
-            resource_list = self.service.list()
-            new_resource_list = dict()
-            new_resource_list['filtered'] = 1
-            new_resource_list['total'] = resource_list['total']
-            new_resource_list['items'] = [tenant for tenant in resource_list['items'] if tenant['uuid'] == id]
-            current_tenant_domain_names = [{'name': domain} for domain in new_resource_list['items'][0]['domain_names'] if domain]
-        except HTTPError as error:
-            self._flash_http_error(error)
-            return self._redirect_for('index')
-
-        form = form or self._map_resources_to_form(resource)
-
-        for i in range(len(current_tenant_domain_names)):
-            form.domain_names.pop_entry()
-
-        for domain_name in current_tenant_domain_names:
-            form.domain_names.append_entry(domain_name)
-        form = self._populate_form(form)
-
-        return render_template(self._get_template('edit'),
-                               form=form,
-                               resource=resource,
-                               resource_list=new_resource_list,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return result
 
     @route('/delete/<id>', methods=['GET'])
     def delete(self, id):
