@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
@@ -11,7 +11,7 @@ from .page import Page
 
 class LoginPage(Page):
 
-    PATH = "/login"
+    PATH = '/login'
 
     def login(self, username, password, language='en'):
         self.go()
@@ -22,10 +22,10 @@ class LoginPage(Page):
 
     def logout(self):
         try:
-            user_menu = self.driver.find_element_by_class_name('user-menu')
+            user_menu = self.driver.find_element(By.CLASS_NAME, 'user-menu')
             user_menu.click()
             self.wait_for(By.ID, 'logout')
-            btn = self.driver.find_element_by_id('logout')
+            btn = self.driver.find_element(By.ID, 'logout')
         except NoSuchElementException:
             return
         btn.click()
@@ -38,7 +38,7 @@ class LoginPage(Page):
         return self
 
     def save(self, waiting=True):
-        btn = self.driver.find_element_by_id("submit")
+        btn = self.driver.find_element(By.ID, 'submit')
         btn.click()
         if waiting:
             self.wait_for(By.CLASS_NAME, 'wazo-logo')
