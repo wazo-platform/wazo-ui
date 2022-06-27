@@ -11,7 +11,7 @@ from .page import Page
 
 class LoginPage(Page):
 
-    PATH = "/login"
+    PATH = '/login'
 
     def login(self, username, password, language='en'):
         self.go()
@@ -38,7 +38,7 @@ class LoginPage(Page):
         return self
 
     def save(self, waiting=True):
-        btn = self.driver.find_element(By.ID, "submit")
+        btn = self.driver.find_element(By.ID, 'submit')
         btn.click()
         if waiting:
             self.wait_for(By.CLASS_NAME, 'wazo-logo')

@@ -31,9 +31,9 @@ class Page(object):
 
     def build_url(self, *parts, **kwargs):
         path = '/'.join(parts)
-        url = "{}/{}".format(self.CONFIG['base_url'].rstrip('/'), path.lstrip('/'))
+        url = '{}/{}'.format(self.CONFIG['base_url'].rstrip('/'), path.lstrip('/'))
         if kwargs:
-            url += "?{}".format(urllib.parse.urlencode(kwargs))
+            url += '?{}'.format(urllib.parse.urlencode(kwargs))
         return url
 
     def wait(self):
@@ -109,19 +109,19 @@ class Page(object):
 
     def extract_errors(self):
         try:
-            container = self.driver.find_element(By.CLASS_NAME, "alert-error")
+            container = self.driver.find_element(By.CLASS_NAME, 'alert-error')
         except NoSuchElementException:
             return ''
 
         return container.get_attribute('innerHTML')
 
     def save(self):
-        btn = self.driver.find_element(By.ID, "submit")
+        btn = self.driver.find_element(By.ID, 'submit')
         btn.click()
         self.wait_for(By.CSS_SELECTOR, '.alert')
 
         try:
-            self.driver.find_element(By.CLASS_NAME, "alert-success")
+            self.driver.find_element(By.CLASS_NAME, 'alert-success')
         except NoSuchElementException:
             raise SubmitException(self.extract_errors())
 
@@ -242,7 +242,7 @@ class ListPage(Page, metaclass=abc.ABCMeta):
         self.wait_for_list_table()
 
     def get_row(self, text):
-        table = self.driver.find_element(By.CSS_SELECTOR, "table tbody")
+        table = self.driver.find_element(By.CSS_SELECTOR, 'table tbody')
         xpath = '//tr[td[contains(., "{}")]]'.format(text)
         headers = self._extract_headers(table)
         return ListRow(table.find_element(By.XPATH, xpath), headers=headers)

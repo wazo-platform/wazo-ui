@@ -45,7 +45,7 @@ class Select2(object):
 
     def ajax_complete(self, driver):
         try:
-            return driver.execute_script("return jQuery.active == 0")
+            return driver.execute_script('return jQuery.active == 0')
         except WebDriverException:
             return False
 
@@ -64,7 +64,7 @@ class Select2(object):
     @property
     def items(self):
         self.open()
-        WebDriverWait(self.browser, self.TIMEOUT).until(self.ajax_complete, "Timeout waiting for page to load")
+        WebDriverWait(self.browser, self.TIMEOUT).until(self.ajax_complete, 'Timeout waiting for page to load')
         return self.dropdown.find_elements(
             By.CSS_SELECTOR,
             'ul.select2-results__options li.select2-results__option',
