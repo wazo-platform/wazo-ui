@@ -29,15 +29,15 @@
 
           {% call build_tab_content_item('interceptors') %}
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
-              {{ render_field(form.interceptors.form.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
-              {{ render_field(form.interceptors.form.group_ids, data_listing_href=url_for(listing_urls['group'])) }}
+              {{ render_field(form.interceptors.form.user_uuids, data_select_unselect_all=True, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+              {{ render_field(form.interceptors.form.group_ids, data_select_unselect_all=True, data_listing_href=url_for(listing_urls['group'])) }}
             {% endcall %}
           {% endcall %}
 
           {% call build_tab_content_item('targets') %}
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
-              {{ render_field(form.targets.form.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
-              {{ render_field(form.targets.form.group_ids, data_listing_href=url_for(listing_urls['group'])) }}
+              {{ render_field(form.targets.form.user_uuids, data_select_unselect_all=True, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+              {{ render_field(form.targets.form.group_ids, data_select_unselect_all=True, data_listing_href=url_for(listing_urls['group'])) }}
             {% endcall %}
           {% endcall %}
 
