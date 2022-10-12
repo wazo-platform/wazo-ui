@@ -1,4 +1,4 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -76,7 +76,21 @@ class UserService(BaseConfdService):
     def create(self, user):
         username = user.pop('username')
         password = user.pop('password')
-        user['uuid'] = super().create(user)['uuid']
+
+        confd_user = dict(user)
+        read_only_fields = [
+            'call_permissions',
+            'fallbacks',
+            'forwards',
+            'groups',
+            'lines',
+            'services',
+            'voicemail',
+        ]
+        for field in read_only_fields:
+            confd_user.pop(field, None)
+
+        user['uuid'] = super().create(confd_user)['uuid']
         self._auth.users.new(
             uuid=user['uuid'],
             username=username or user['email'],
@@ -254,15 +268,21 @@ class UserService(BaseConfdService):
             self._confd.lines(line_id).add_device(device_id)
 
     def _create_line_and_associations(self, line):
+        endpoint_sip = line.pop('endpoint_sip', None)
+        endpoint_sccp = line.pop('endpoint_sccp', None)
+        endpoint_custom = line.pop('endpoint_custom', None)
+        extensions = line.pop('extensions', None) or []
+        application = line.pop('application', None) or {}
+
         line['id'] = self._confd.lines.create(line)['id']
 
-        if 'endpoint_sip' in line:
+        if endpoint_sip is not None:
             # Note(pc-m): This is done here until we find a better solution
             # https://wazo-dev.atlassian.net/browse/WAZO-1912
             max_retries = 3
             for n in range(max_retries):
                 name, password = generate_string(), generate_string()
-                endpoint_sip_body = dict(line['endpoint_sip'])
+                endpoint_sip_body = dict(endpoint_sip)
                 endpoint_sip_body['label'] = name
                 endpoint_sip_body['name'] = name
                 endpoint_sip_body['auth_section_options'] = [
@@ -283,23 +303,23 @@ class UserService(BaseConfdService):
                     raise
             if endpoint_sip:
                 self._confd.lines(line).add_endpoint_sip(endpoint_sip)
-        elif 'endpoint_sccp' in line:
-            endpoint_sccp = self._confd.endpoints_sccp.create(line['endpoint_sccp'])
-            if endpoint_sccp:
+        elif endpoint_sccp is not None:
+            endpoint_sccp = self._confd.endpoints_sccp.create(endpoint_sccp)
+            if endpoint_sccp is not None:
                 self._confd.lines(line).add_endpoint_sccp(endpoint_sccp)
-        elif 'endpoint_custom' in line:
-            endpoint_custom = self._confd.endpoints_custom.create(line['endpoint_custom'])
+        elif endpoint_custom is not None:
+            endpoint_custom = self._confd.endpoints_custom.create(endpoint_custom)
             if endpoint_custom:
                 self._confd.lines(line).add_endpoint_custom(endpoint_custom)
         else:
             logger.debug('No endpoint found for line: %s', line)
             return line
 
-        if line.get('extensions'):
-            self._create_or_associate_extension(line, line['extensions'][0])
+        if extensions:
+            self._create_or_associate_extension(dict(line, extensions=extensions), extensions[0])
 
-        if line.get('application', {}).get('uuid'):
-            self._confd.lines(line).add_application(line['application'])
+        if application.get('uuid'):
+            self._confd.lines(line).add_application(application)
 
         return line
 
