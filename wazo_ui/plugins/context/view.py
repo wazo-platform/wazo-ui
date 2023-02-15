@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -7,7 +7,7 @@ from flask_babel import lazy_gettext as l_
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     extract_select2_params,
-    build_select2_response
+    build_select2_response,
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -19,7 +19,9 @@ class ContextView(BaseIPBXHelperView):
     resource = 'context'
     form = ContextForm
 
-    @menu_item('.ipbx.advanced.contexts', l_('Contexts'), icon="random", multi_tenant=True)
+    @menu_item(
+        '.ipbx.advanced.contexts', l_('Contexts'), icon="random", multi_tenant=True
+    )
     def index(self):
         return super().index()
 
@@ -38,7 +40,6 @@ class ContextView(BaseIPBXHelperView):
 
 
 class ContextListingView(LoginRequiredView):
-
     def list_json_by_type(self, type_):
         return self._list_json(type_)
 

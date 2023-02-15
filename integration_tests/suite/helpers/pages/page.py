@@ -1,4 +1,4 @@
-# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import abc
@@ -20,8 +20,7 @@ class SubmitException(Exception):
     pass
 
 
-class Page(object):
-
+class Page:
     TIMEOUT = 4
     POLL_FREQUENCY = 0.2
     CONFIG = {'base_url': 'http://localhost:9296'}
@@ -37,7 +36,11 @@ class Page(object):
         return url
 
     def wait(self):
-        return WebDriverWait(self.driver, self.TIMEOUT, poll_frequency=self.POLL_FREQUENCY)
+        return WebDriverWait(
+            self.driver,
+            self.TIMEOUT,
+            poll_frequency=self.POLL_FREQUENCY,
+        )
 
     def wait_for(self, by, arg, message=None):
         condition = ec.presence_of_element_located((by, arg))
@@ -126,20 +129,23 @@ class Page(object):
             raise SubmitException(self.extract_errors())
 
     def is_not_savable(self):
-        self.wait_for(By.XPATH,
-                      '//input[@id="submit" and contains(@class, "disabled")]',
-                      message='Submit is savable')
+        self.wait_for(
+            By.XPATH,
+            '//input[@id="submit" and contains(@class, "disabled")]',
+            message='Submit is savable',
+        )
         return True
 
     def is_savable(self):
-        self.wait_for(By.XPATH,
-                      '//input[@id="submit" and not(contains(@class, "disabled"))]',
-                      message='Submit is not savable')
+        self.wait_for(
+            By.XPATH,
+            '//input[@id="submit" and not(contains(@class, "disabled"))]',
+            message='Submit is not savable',
+        )
         return True
 
 
 class InputElement(WebElement):
-
     def __init__(self, element):
         super(InputElement, self).__init__(element.parent, element.id)
 
@@ -159,7 +165,6 @@ class InputElement(WebElement):
 
 
 class ListPage(Page, metaclass=abc.ABCMeta):
-
     line_xpath = "//tr[td[contains(., '{name}')]]"
     edit_xpath = "{}/td[1]".format(line_xpath)
     delete_xpath = "{}/td/a[@title='Delete']".format(line_xpath)
@@ -259,13 +264,12 @@ class ListPage(Page, metaclass=abc.ABCMeta):
             return None
 
 
-class ListRow(object):
-
+class ListRow:
     def __init__(self, row, headers):
         self.row = row
         self.headers = headers
 
     def extract(self, column):
         index = self.headers.index(column)
-        box = self.row.find_element(By.CSS_SELECTOR, 'td:nth-child({})'.format(index + 1))
+        box = self.row.find_element(By.CSS_SELECTOR, f'td:nth-child({index + 1})')
         return box.text

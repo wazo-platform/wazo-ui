@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.extension import BaseConfdService
@@ -23,4 +23,6 @@ class AgentService(BaseConfdService):
 
         # Add new
         for skill in skills:
-            self._confd.agents.relations(existing_agent['id']).add_skill(skill['skill_id'], **{'skill_weight': skill['skill_weight']})
+            self._confd.agents.relations(existing_agent['id']).add_skill(
+                skill['skill_id'], **{'skill_weight': skill['skill_weight']}
+            )

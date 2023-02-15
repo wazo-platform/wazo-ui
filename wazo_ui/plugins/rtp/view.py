@@ -1,4 +1,4 @@
-# Copyright 2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2019-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import render_template, flash
@@ -24,8 +24,9 @@ class RtpView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self._redirect_for('index')
 
-        return render_template(self._get_template('index'),
-                               form=self.form(data=resource['options']))
+        return render_template(
+            self._get_template('index'), form=self.form(data=resource['options'])
+        )
 
     def post(self):
         form = self.form()

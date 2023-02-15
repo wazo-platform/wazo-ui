@@ -1,4 +1,4 @@
-# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from hamcrest import assert_that, contains_string, equal_to, not_, calling, raises
@@ -10,7 +10,6 @@ from .helpers.constants import USERNAME_PASSWORD_ERROR
 
 
 class TestLogin(IntegrationTest):
-
     asset = 'base'
 
     def setUp(self):
@@ -49,5 +48,7 @@ class TestLogin(IntegrationTest):
         assert_that(password.get_error().text, equal_to(USERNAME_PASSWORD_ERROR))
 
     def test_cannot_access_without_login(self):
-        assert_that(calling(self.browser.__getattr__).with_args('index'),
-                    raises(TimeoutException))
+        assert_that(
+            calling(self.browser.__getattr__).with_args('index'),
+            raises(TimeoutException),
+        )

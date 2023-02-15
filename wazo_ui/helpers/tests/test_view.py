@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
@@ -25,7 +25,6 @@ app = Flask('test_nestbox_ui')
 
 
 class TestBaseView(unittest.TestCase):
-
     def setUp(self):
         self.view = BaseIPBXHelperView()
         ConfdErrorExtractor.generic_patterns = GENERIC_PATTERN_ERRORS
@@ -45,38 +44,52 @@ class TestBaseView(unittest.TestCase):
     def test_fill_form_error_with_confd_input_error(self):
         confd_error = ["Input Error - attribute1: 'Longer than maximum length'"]
         path_url = '/1.1/resources_url/42'
-        form = self.view._fill_form_error(self.form, self._build_error(confd_error, path_url))
+        form = self.view._fill_form_error(
+            self.form, self._build_error(confd_error, path_url)
+        )
 
         assert_that(form.attribute1.errors, contains('Longer than maximum length'))
 
     def test_fill_form_error_with_confd_input_error_and_not_register_msg(self):
         confd_error = ["Input Error - attribute1: 'Unregistered message'"]
         path_url = '/1.1/resources_url/42'
-        form = self.view._fill_form_error(self.form, self._build_error(confd_error, path_url))
+        form = self.view._fill_form_error(
+            self.form, self._build_error(confd_error, path_url)
+        )
 
         assert_that(form.attribute1.errors, empty())
 
     def test_fill_form_error_with_confd_input_error_and_invalid_attribute(self):
         confd_error = ["Input Error - invalid_attr: 'Longer than maximum length'"]
         path_url = '/1.1/resources_url/42'
-        form = self.view._fill_form_error(self.form, self._build_error(confd_error, path_url))
+        form = self.view._fill_form_error(
+            self.form, self._build_error(confd_error, path_url)
+        )
 
         assert_that(form.attribute1.errors, empty())
 
     def test_fill_form_error_with_confd_input_error_and_invalid_format(self):
-        confd_error = ["Input Error - field 'users': User was not found ('uuid': 'patate')"]
+        confd_error = [
+            "Input Error - field 'users': User was not found ('uuid': 'patate')"
+        ]
         path_url = '/1.1/resources_url/42'
-        form = self.view._fill_form_error(self.form, self._build_error(confd_error, path_url))
+        form = self.view._fill_form_error(
+            self.form, self._build_error(confd_error, path_url)
+        )
 
         assert_that(form.attribute1.errors, empty())
 
     def test_fill_form_error_with_confd_not_input_error(self):
         confd_error = ["Some Error - "]
         path_url = '/1.1/resources_url/42'
-        form = self.view._fill_form_error(self.form, self._build_error(confd_error, path_url))
+        form = self.view._fill_form_error(
+            self.form, self._build_error(confd_error, path_url)
+        )
 
         assert_that(form.attribute1.errors, empty())
 
     def _build_error(self, error, path_url):
-        return Mock(response=Mock(json=Mock(return_value=error)),
-                    request=Mock(path_url=path_url))
+        return Mock(
+            response=Mock(json=Mock(return_value=error)),
+            request=Mock(path_url=path_url),
+        )

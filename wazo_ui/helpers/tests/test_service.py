@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
@@ -11,7 +11,6 @@ from wazo_ui.helpers.extension import BaseConfdExtensionService
 
 
 class TestBaseConfdService(unittest.TestCase):
-
     def setUp(self):
         self.confd = Mock()
         self.service = BaseConfdService()
@@ -44,7 +43,6 @@ class TestBaseConfdService(unittest.TestCase):
 
 
 class TestBaseConfdExtensionService(unittest.TestCase):
-
     def setUp(self):
         self.confd = Mock()
         self.service = BaseConfdExtensionService()
@@ -86,7 +84,9 @@ class TestBaseConfdExtensionService(unittest.TestCase):
 
         self.confd.extensions.delete.assert_called_once_with(existing_extension)
         self.confd.resource1.assert_called_once_with(resource)
-        self.confd.resource1.return_value.remove_extension.assert_called_once_with(existing_extension)
+        self.confd.resource1.return_value.remove_extension.assert_called_once_with(
+            existing_extension
+        )
 
     def test_update_extension_when_no_exten_key(self):
         existing_extension = {'exten': None, 'context': 'default', 'id': 42}
@@ -97,7 +97,9 @@ class TestBaseConfdExtensionService(unittest.TestCase):
 
         self.confd.extensions.delete.assert_called_once_with(existing_extension)
         self.confd.resource1.assert_called_once_with(resource)
-        self.confd.resource1.return_value.remove_extension.assert_called_once_with(existing_extension)
+        self.confd.resource1.return_value.remove_extension.assert_called_once_with(
+            existing_extension
+        )
 
     def test_update_extension_when_no_exten_and_no_existing_extension(self):
         self.confd.resource1.get.return_value = {'extensions': []}
@@ -136,7 +138,9 @@ class TestBaseConfdExtensionService(unittest.TestCase):
 
         self.confd.extensions.create.assert_called_once_with(extension)
         self.confd.resource1.assert_called_once_with(resource)
-        self.confd.resource1.return_value.add_extension.assert_called_once_with(extension)
+        self.confd.resource1.return_value.add_extension.assert_called_once_with(
+            extension
+        )
 
     def test_create_extension_when_no_extension(self):
         resource = {'id': 3}
@@ -177,7 +181,9 @@ class TestBaseConfdExtensionService(unittest.TestCase):
 
         self.confd.extensions.create.assert_called_once_with(extension)
         self.confd.resource1.assert_called_once_with(resource)
-        self.confd.resource1.return_value.add_extension.assert_called_once_with(extension)
+        self.confd.resource1.return_value.add_extension.assert_called_once_with(
+            extension
+        )
 
     def test_delete_extension_when_no_extension(self):
         resource = {'id': 42, 'extensions': []}
@@ -194,4 +200,6 @@ class TestBaseConfdExtensionService(unittest.TestCase):
 
         self.confd.extensions.delete.assert_called_once_with(extension)
         self.confd.resource1.assert_called_once_with(resource)
-        self.confd.resource1.return_value.remove_extension.assert_called_once_with(extension)
+        self.confd.resource1.return_value.remove_extension.assert_called_once_with(
+            extension
+        )

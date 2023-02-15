@@ -1,11 +1,10 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.service import BaseConfdService
 
 
 class CallFilterService(BaseConfdService):
-
     resource_confd = 'call_filters'
 
     def __init__(self, confd_client):
@@ -16,13 +15,21 @@ class CallFilterService(BaseConfdService):
 
     def create(self, resource):
         callfilter_id = super().create(resource)['id']
-        self._confd.call_filters(callfilter_id).update_user_recipients(resource['recipients_user'])
-        self._confd.call_filters(callfilter_id).update_user_surrogates(resource['surrogates_user'])
+        self._confd.call_filters(callfilter_id).update_user_recipients(
+            resource['recipients_user']
+        )
+        self._confd.call_filters(callfilter_id).update_user_surrogates(
+            resource['surrogates_user']
+        )
 
     def update(self, resource):
         super().update(resource)
-        self._confd.call_filters(resource['id']).update_user_recipients(resource['recipients_user'])
-        self._confd.call_filters(resource['id']).update_user_surrogates(resource['surrogates_user'])
+        self._confd.call_filters(resource['id']).update_user_recipients(
+            resource['recipients_user']
+        )
+        self._confd.call_filters(resource['id']).update_user_surrogates(
+            resource['surrogates_user']
+        )
         self._confd.call_filters(resource['id']).update_fallbacks(resource['fallbacks'])
 
     def list_sound(self):

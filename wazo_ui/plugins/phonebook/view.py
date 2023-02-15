@@ -1,16 +1,10 @@
-# Copyright 2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
 from flask_classful import route
-from flask import (
-    request,
-    redirect,
-    render_template,
-    flash,
-    url_for
-)
+from flask import request, redirect, render_template, flash, url_for
 
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -23,7 +17,13 @@ class PhonebookView(BaseIPBXHelperView):
     resource = 'phonebook'
 
     @menu_item('.ipbx.phonebooks', l_('Phonebooks'), icon="book", multi_tenant=True)
-    @menu_item('.ipbx.phonebooks.config', l_('Configuration'), order=1, icon="wrench", multi_tenant=True)
+    @menu_item(
+        '.ipbx.phonebooks.config',
+        l_('Configuration'),
+        order=1,
+        icon="wrench",
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
@@ -33,7 +33,13 @@ class ManagePhonebookView(BaseIPBXHelperView):
     resource = 'phonebook'
     settings = 'manage_phonebook'
 
-    @menu_item('.ipbx.phonebooks.manage', l_('Contacts'), order=2, icon="users", multi_tenant=True)
+    @menu_item(
+        '.ipbx.phonebooks.manage',
+        l_('Contacts'),
+        order=2,
+        icon="users",
+        multi_tenant=True,
+    )
     def index(self, form=None):
         phonebook_id = request.args.get('phonebook_id')
         try:
@@ -55,7 +61,7 @@ class ManagePhonebookView(BaseIPBXHelperView):
             'form': form,
             'resource_list': resource_list,
             'phonebook_id': phonebook_id,
-            'phonebook_list': phonebook_list['items']
+            'phonebook_list': phonebook_list['items'],
         }
         if self.listing_urls:
             kwargs['listing_urls'] = self.listing_urls
@@ -76,14 +82,24 @@ class ManagePhonebookView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self._new(form)
 
-        flash(l_('%(resource)s: Resource has been created', resource=self.resource), 'success')
+        flash(
+            l_('%(resource)s: Resource has been created', resource=self.resource),
+            'success',
+        )
         return self._redirect_referrer_or('index')
 
     @route('/delete/<phonebook_id>/<id>', methods=['GET'])
     def delete(self, phonebook_id, id):
         try:
             self.service.delete_contact(phonebook_id, id)
-            flash(l_('%(resource)s: Resource %(id)s has been deleted', resource=self.resource, id=id), 'success')
+            flash(
+                l_(
+                    '%(resource)s: Resource %(id)s has been deleted',
+                    resource=self.resource,
+                    id=id,
+                ),
+                'success',
+            )
         except HTTPError as error:
             self._flash_http_error(error)
 

@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_menu.classy import register_flaskview
@@ -13,7 +13,6 @@ dird_profile = create_blueprint('dird_profile', __name__)
 
 
 class Plugin:
-
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']

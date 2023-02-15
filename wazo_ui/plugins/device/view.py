@@ -1,24 +1,14 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import (
-    jsonify,
-    request,
-    flash,
-    redirect,
-    render_template,
-    url_for
-)
-from flask_babel import (
-    gettext as _,
-    lazy_gettext as l_
-)
+from flask import jsonify, request, flash, redirect, render_template, url_for
+from flask_babel import gettext as _, lazy_gettext as l_
 from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     extract_select2_params,
-    build_select2_response
+    build_select2_response,
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -30,7 +20,13 @@ class DeviceView(BaseIPBXHelperView):
     form = DeviceForm
     resource = 'device'
 
-    @menu_item('.ipbx.user_management.devices', l_('Devices'), order=4, icon="phone-square", multi_tenant=True)
+    @menu_item(
+        '.ipbx.user_management.devices',
+        l_('Devices'),
+        order=4,
+        icon="phone-square",
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
@@ -56,11 +52,13 @@ class DeviceView(BaseIPBXHelperView):
 
         resources = {'all': device_list, 'unallocated': unallocated_list}
 
-        return render_template(self._get_template('list'),
-                               form=form,
-                               resource_list=resources,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('list'),
+            form=form,
+            resource_list=resources,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
 
     def _populate_form(self, form):
         form.plugin.choices = self._build_set_choices_plugin(form)
@@ -87,7 +85,13 @@ class DeviceView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self._redirect_for('index')
 
-        flash(_('%(resource)s: Resource has been reset to autoprov', resource=self.resource), 'success')
+        flash(
+            _(
+                '%(resource)s: Resource has been reset to autoprov',
+                resource=self.resource,
+            ),
+            'success',
+        )
         return self._redirect_for('index')
 
     def synchronize(self, device_id):
@@ -97,7 +101,10 @@ class DeviceView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self._redirect_for('index')
 
-        flash(_('%(resource)s: Resource has been synchronized', resource=self.resource), 'success')
+        flash(
+            _('%(resource)s: Resource has been synchronized', resource=self.resource),
+            'success',
+        )
         return self._redirect_for('index')
 
     def assign_tenant(self, device_id):
@@ -107,14 +114,21 @@ class DeviceView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self._redirect_for('index')
 
-        flash(_('%(resource)s: Device has been assigned to tenant', resource=self.resource), 'success')
+        flash(
+            _(
+                '%(resource)s: Device has been assigned to tenant',
+                resource=self.resource,
+            ),
+            'success',
+        )
         return self._redirect_for('index')
 
 
 class DeviceListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         devices = self.service.list(**params)
-        results = [{'id': device['id'], 'text': device['mac']} for device in devices['items']]
+        results = [
+            {'id': device['id'], 'text': device['mac']} for device in devices['items']
+        ]
         return jsonify(build_select2_response(results, devices['total'], params))

@@ -1,4 +1,4 @@
-# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_menu.classy import register_flaskview
@@ -32,8 +32,7 @@ ldap_config = create_blueprint('ldap', __name__)
 policy = create_blueprint('policy', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
@@ -54,7 +53,9 @@ class Plugin(object):
         GroupListingView.service = GroupService(clients['wazo_auth'])
         GroupListingView.register(identity_group, route_base='/identity_groups_listing')
 
-        register_listing_url('identity_group', 'identity_group.GroupListingView:list_json')
+        register_listing_url(
+            'identity_group', 'identity_group.GroupListingView:list_json'
+        )
 
         PolicyView.service = PolicyService(clients['wazo_auth'])
         PolicyView.register(policy, route_base='/policies')

@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -47,7 +47,10 @@ class Login(FlaskView):
         session_locale = get_locale()
         first_choice = (session_locale.language, session_locale.language_name)
 
-        choices = {(translation.language, translation.language_name) for translation in self.babel.list_translations()}
+        choices = {
+            (translation.language, translation.language_name)
+            for translation in self.babel.list_translations()
+        }
         choices.add(first_choice)
         choices.add((default_locale.language, default_locale.language_name))
         choices.remove(first_choice)
@@ -56,16 +59,19 @@ class Login(FlaskView):
 
 
 class Logout(FlaskView):
-
     def get(self):
         token = current_user.get_id()
         current_user.reset()
         try:
             self.auth_client.token.revoke(token)
         except requests.HTTPError as e:
-            logger.warning('Error with Wazo authentication server: %(error)s', error=e.message)
+            logger.warning(
+                'Error with Wazo authentication server: %(error)s', error=e.message
+            )
         except requests.ConnectionError:
-            logger.warning('Wazo authentication server connection error: Unable to revoke token')
+            logger.warning(
+                'Wazo authentication server connection error: Unable to revoke token'
+            )
         session.clear()
         logout_user()
         return redirect(url_for('login.Login:get'))

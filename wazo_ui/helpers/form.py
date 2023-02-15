@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_wtf import FlaskForm
@@ -6,12 +6,11 @@ from wtforms.fields import (
     FieldList,
     FormField,
     SelectField as WTFSelectField,
-    SubmitField
+    SubmitField,
 )
 
 
 class BaseForm(FlaskForm):
-
     def to_dict(self, empty_string=False):
         result = {}
         for name, f in self._fields.items():
@@ -54,7 +53,6 @@ class BaseForm(FlaskForm):
 
 
 class SelectField(WTFSelectField):
-
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('coerce', self._coerce_str_unless_none)
         super().__init__(*args, **kwargs)

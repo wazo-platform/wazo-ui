@@ -1,9 +1,8 @@
-# Copyright 2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2019-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
-class HepService(object):
-
+class HepService:
     def __init__(self, confd_client):
         self._confd = confd_client
 
@@ -15,7 +14,8 @@ class HepService(object):
         return self._confd.hep_general.update(self._convert_enabled(options, True))
 
     def _convert_enabled(self, options, is_put=None):
-        if options['options'].get('enabled') is True or options['options'].get('enabled') == '1':
+        enabled = options['options'].get('enabled')
+        if enabled is True or enabled == '1':
             options['options']['enabled'] = '1' if is_put else 1
         else:
             options['options']['enabled'] = '0' if is_put else 0

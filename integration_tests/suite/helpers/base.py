@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_test_helpers.asset_launching_test_case import AssetLaunchingTestCase
@@ -9,13 +9,11 @@ from .pages.index import IndexPage
 
 
 class SSLIntegrationTest(AssetLaunchingTestCase):
-
     assets_root = ASSET_ROOT
     service = 'ui'
 
 
 class IntegrationTest(AdminUIAssetLaunchingTestCase):
-
     assets_root = ASSET_ROOT
 
     @classmethod

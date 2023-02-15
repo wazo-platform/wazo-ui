@@ -1,4 +1,4 @@
-# Copyright 2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2020-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import render_template
@@ -9,7 +9,12 @@ from wazo_ui.helpers.menu import menu_item
 
 
 class GlobalSettingsView(LoginRequiredView):
-
-    @menu_item('.ipbx.global_settings', l_('Global Settings'), order=1000, icon="gears", multi_tenant=False)
+    @menu_item(
+        '.ipbx.global_settings',
+        l_('Global Settings'),
+        order=1000,
+        icon="gears",
+        multi_tenant=False,
+    )
     def index(self):
         return render_template('wazo_engine/global_settings/index.html')

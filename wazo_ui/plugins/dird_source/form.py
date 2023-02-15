@@ -1,4 +1,4 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -10,7 +10,7 @@ from wtforms.fields import (
     SubmitField,
     StringField,
     SelectField,
-    HiddenField
+    HiddenField,
 )
 from wtforms.validators import InputRequired
 from wtforms.widgets import PasswordInput
@@ -54,11 +54,19 @@ class CsvWsForm(BaseForm):
 class LdapForm(BaseForm):
     first_matched_columns = FieldList(FormField(ColumnsForm))
     format_columns = FieldList(FormField(ValueColumnsForm))
-    ldap_base_dn = StringField(l_('Base DN'), validators=[InputRequired()], default='ou=people,dc=example,dc=com')
+    ldap_base_dn = StringField(
+        l_('Base DN'),
+        validators=[InputRequired()],
+        default='ou=people,dc=example,dc=com',
+    )
     custom_filter = StringField(l_('Custom filter'))
     ldap_password = StringField(l_('Password'), widget=PasswordInput(hide_value=False))
     ldap_uri = StringField(l_('Uri'), validators=[InputRequired()])
-    ldap_username = StringField(l_('Username'), validators=[InputRequired()], default='cn=admin,dc=example,dc=org')
+    ldap_username = StringField(
+        l_('Username'),
+        validators=[InputRequired()],
+        default='cn=admin,dc=example,dc=org',
+    )
     searched_columns = FieldList(FormField(ColumnsForm))
     unique_column = StringField(l_('Unique column'))
     unique_column_format = SelectField('Unique column format', choices=column_formats)

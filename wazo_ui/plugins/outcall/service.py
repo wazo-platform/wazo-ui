@@ -1,11 +1,10 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.service import BaseConfdService
 
 
 class OutcallService(BaseConfdService):
-
     resource_confd = 'outcalls'
 
     def __init__(self, confd_client):
@@ -15,7 +14,9 @@ class OutcallService(BaseConfdService):
         return super().list(*args, **kwargs)
 
     def get_first_outcall_context(self):
-        result = self._confd.contexts.list(type='outcall', limit=1, direction='asc', order='id')
+        result = self._confd.contexts.list(
+            type='outcall', limit=1, direction='asc', order='id'
+        )
         for context in result['items']:
             return context
 
@@ -78,7 +79,9 @@ class OutcallService(BaseConfdService):
     def _get_first_existing_extension(self, extension):
         if extension['exten'] is None:
             return None
-        items = self._confd.extensions.list(exten=extension['exten'], context=extension['context'])['items']
+        items = self._confd.extensions.list(
+            exten=extension['exten'], context=extension['context']
+        )['items']
         return items[0] if items else None
 
     def _update_or_associate_extension(self, outcall, extension):
@@ -110,7 +113,9 @@ class OutcallService(BaseConfdService):
         existing_resource = self._confd.outcalls.get(outcall)
         if existing_resource and existing_resource.get('call_permissions'):
             for existing_call_permission in existing_resource['call_permissions']:
-                self._confd.outcalls(outcall).remove_call_permission(existing_call_permission['id'])
+                self._confd.outcalls(outcall).remove_call_permission(
+                    existing_call_permission['id']
+                )
 
         if call_permissions:
             for call_permission in call_permissions:

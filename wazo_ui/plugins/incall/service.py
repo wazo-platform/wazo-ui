@@ -1,11 +1,10 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.extension import BaseConfdExtensionService
 
 
 class IncallService(BaseConfdExtensionService):
-
     resource_confd = 'incalls'
 
     def __init__(self, confd_client):
@@ -15,7 +14,9 @@ class IncallService(BaseConfdExtensionService):
         return super().list(*args, **kwargs)
 
     def get_first_incall_context(self, name=None):
-        result = self._confd.contexts.list(type='incall', name=name, limit=1, direction='asc', order='id')
+        result = self._confd.contexts.list(
+            type='incall', name=name, limit=1, direction='asc', order='id'
+        )
         for context in result['items']:
             return context
 

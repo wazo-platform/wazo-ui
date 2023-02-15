@@ -1,4 +1,4 @@
-# Copyright 2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -20,8 +20,7 @@ from .form import (
 group = create_blueprint('group', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
@@ -34,8 +33,12 @@ class Plugin(object):
         GroupDestinationView.register(group, route_base='/group_destination')
 
         register_destination_form('group', 'Group', GroupDestinationForm)
-        register_funckey_destination_form('group', l_('Group'), GroupFuncKeyDestinationForm)
-        register_funckey_destination_form('groupmember', l_('Group Member'), GroupMemberFuncKeyDestinationForm)
+        register_funckey_destination_form(
+            'group', l_('Group'), GroupFuncKeyDestinationForm
+        )
+        register_funckey_destination_form(
+            'groupmember', l_('Group Member'), GroupMemberFuncKeyDestinationForm
+        )
         register_listing_url('group', 'group.GroupDestinationView:list_json')
         register_listing_url('groupmember', 'group.GroupDestinationView:list_json')
 

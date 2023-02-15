@@ -1,15 +1,17 @@
-# Copyright 2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
-from wtforms.fields import (SubmitField,
-                            StringField,
-                            IntegerField,
-                            SelectField,
-                            SelectMultipleField,
-                            FormField,
-                            FieldList,
-                            HiddenField)
+from wtforms.fields import (
+    SubmitField,
+    StringField,
+    IntegerField,
+    SelectField,
+    SelectMultipleField,
+    FormField,
+    FieldList,
+    HiddenField,
+)
 from wtforms.validators import InputRequired, Length
 
 from wazo_ui.helpers.form import BaseForm
@@ -32,13 +34,17 @@ class IncallRangesForm(BaseRangesForm):
 class ContextForm(BaseForm):
     name = StringField(l_('Name'), validators=[InputRequired(), Length(max=39)])
     label = StringField(l_('Label'), validators=[InputRequired(), Length(max=128)])
-    type = SelectField(l_('Type'),
-                       choices=[('internal', l_('Internal')),
-                                ('incall', l_('Incall')),
-                                ('outcall', l_('Outcall')),
-                                ('services', l_('Services')),
-                                ('others', l_('Others'))],
-                       validators=[InputRequired()])
+    type = SelectField(
+        l_('Type'),
+        choices=[
+            ('internal', l_('Internal')),
+            ('incall', l_('Incall')),
+            ('outcall', l_('Outcall')),
+            ('services', l_('Services')),
+            ('others', l_('Others')),
+        ],
+        validators=[InputRequired()],
+    )
     description = StringField(l_('Description'))
     user_ranges = FieldList(FormField(BaseRangesForm))
     queue_ranges = FieldList(FormField(BaseRangesForm))

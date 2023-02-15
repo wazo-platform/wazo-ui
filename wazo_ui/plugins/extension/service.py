@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.service import BaseConfdService
@@ -35,7 +35,10 @@ class ExtensionFeaturesService(BaseConfdService):
     def _feature_has_changed(self, existing_features, feature):
         for existing_feature in existing_features:
             if feature['feature'] == existing_feature['feature']:
-                if feature['exten'] != existing_feature['exten'] or feature['enabled'] != existing_feature['enabled']:
+                if (
+                    feature['exten'] != existing_feature['exten']
+                    or feature['enabled'] != existing_feature['enabled']
+                ):
                     return True
                 else:
                     return False

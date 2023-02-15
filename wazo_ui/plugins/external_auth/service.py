@@ -1,4 +1,4 @@
-# Copyright 2018-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_login import current_user
@@ -6,7 +6,6 @@ from requests.exceptions import HTTPError
 
 
 class ExternalAuthService:
-
     def __init__(self, auth_client):
         self._auth = auth_client
 
@@ -31,12 +30,16 @@ class ExternalAuthService:
     def create(self, auth_data, form):
         auth_type = auth_data['type']
 
-        return self._auth.external.create_config(auth_type, self._parse_payload(auth_data))
+        return self._auth.external.create_config(
+            auth_type, self._parse_payload(auth_data)
+        )
 
     def update(self, auth_data, form):
         auth_type = auth_data['type']
 
-        return self._auth.external.update_config(auth_type, self._parse_payload(auth_data))
+        return self._auth.external.update_config(
+            auth_type, self._parse_payload(auth_data)
+        )
 
     def delete(self, auth_type):
         return self._auth.external.delete_config(auth_type)

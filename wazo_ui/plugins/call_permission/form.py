@@ -1,4 +1,4 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -9,16 +9,13 @@ from wtforms.fields import (
     SelectMultipleField,
     HiddenField,
     FieldList,
-    FormField
+    FormField,
 )
 from wtforms.validators import InputRequired
 
 from wazo_ui.helpers.form import BaseForm, SelectField
 
-mode_map = {
-    'allow': l_('Allow'),
-    'deny': l_('Deny')
-}
+mode_map = {'allow': l_('Allow'), 'deny': l_('Deny')}
 
 
 class ExtensionsForm(BaseForm):

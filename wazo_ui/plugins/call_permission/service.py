@@ -1,11 +1,10 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.service import BaseConfdService
 
 
 class CallPermissionService(BaseConfdService):
-
     resource_confd = 'call_permissions'
 
     def __init__(self, confd_client):
@@ -22,11 +21,13 @@ class CallPermissionService(BaseConfdService):
     def _build_user_list(self, users):
         result = []
         for user in users:
-            result.append({
-                'uuid': user['uuid'],
-                'firstname': user['firstname'],
-                'lastname': user['lastname']
-            })
+            result.append(
+                {
+                    'uuid': user['uuid'],
+                    'firstname': user['firstname'],
+                    'lastname': user['lastname'],
+                }
+            )
         return result
 
     def create(self, resource):
@@ -57,21 +58,27 @@ class CallPermissionService(BaseConfdService):
     def update_users(self, callpermission_id, user_uuids, existing_user_uuids):
         add, remove = self.find_add_and_remove(user_uuids, existing_user_uuids)
         for existing_user_uuid in remove:
-            self._confd.users(existing_user_uuid).remove_call_permission(callpermission_id)
+            self._confd.users(existing_user_uuid).remove_call_permission(
+                callpermission_id
+            )
         for user_uuid in add:
             self._confd.users(user_uuid).add_call_permission(callpermission_id)
 
     def update_groups(self, callpermission_id, group_ids, existing_group_ids):
         add, remove = self.find_add_and_remove(group_ids, existing_group_ids)
         for existing_group_id in remove:
-            self._confd.groups(existing_group_id).remove_call_permission(callpermission_id)
+            self._confd.groups(existing_group_id).remove_call_permission(
+                callpermission_id
+            )
         for groups_id in add:
             self._confd.groups(groups_id).add_call_permission(callpermission_id)
 
     def update_outcalls(self, callpermission_id, outcall_ids, existing_outcall_ids):
         add, remove = self.find_add_and_remove(outcall_ids, existing_outcall_ids)
         for existing_outcall_id in remove:
-            self._confd.outcalls(existing_outcall_id).remove_call_permission(callpermission_id)
+            self._confd.outcalls(existing_outcall_id).remove_call_permission(
+                callpermission_id
+            )
         for outcall_id in add:
             self._confd.outcalls(outcall_id).add_call_permission(callpermission_id)
 

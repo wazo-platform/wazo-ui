@@ -1,4 +1,4 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request, render_template, flash
@@ -8,7 +8,7 @@ from requests.exceptions import HTTPError
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     extract_select2_params,
-    build_select2_response
+    build_select2_response,
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -22,7 +22,13 @@ class LineView(BaseIPBXHelperView):
     form = LineForm
     resource = 'line'
 
-    @menu_item('.ipbx.user_management.lines', l_('Lines'), order=3, icon="exchange", multi_tenant=True)
+    @menu_item(
+        '.ipbx.user_management.lines',
+        l_('Lines'),
+        order=3,
+        icon="exchange",
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
@@ -30,9 +36,11 @@ class LineView(BaseIPBXHelperView):
         if protocol not in ['sip', 'sccp', 'custom']:
             return self._index()
 
-        return render_template(self._get_template('protocol_{}'.format(protocol)),
-                               form=self.form(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('protocol_{}'.format(protocol)),
+            form=self.form(),
+            listing_urls=self.listing_urls,
+        )
 
     def post(self):
         form = self.form()
@@ -49,14 +57,19 @@ class LineView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self._new(form)
 
-        flash(l_('%(resource)s: Resource has been created', resource=self.resource), 'success')
+        flash(
+            l_('%(resource)s: Resource has been created', resource=self.resource),
+            'success',
+        )
         return self._redirect_for('index')
 
     def _map_resources_to_form(self, resource):
         endpoint_sip = endpoint_sccp = endpoint_custom = protocol = None
         if resource['endpoint_sip']:
             protocol = 'sip'
-            endpoint_sip = self.service.get_endpoint_sip(resource['endpoint_sip']['uuid'])
+            endpoint_sip = self.service.get_endpoint_sip(
+                resource['endpoint_sip']['uuid']
+            )
 
             choices = []
             for section in SECTIONS:
@@ -65,19 +78,25 @@ class LineView(BaseIPBXHelperView):
 
                 endpoint_sip[section] = self._build_options(endpoint_sip[section])
 
-            endpoint_sip['template_uuids'] = [template['uuid'] for template in endpoint_sip['templates']]
+            endpoint_sip['template_uuids'] = [
+                template['uuid'] for template in endpoint_sip['templates']
+            ]
 
         elif resource['endpoint_sccp']:
             protocol = 'sccp'
-            endpoint_sccp = self.service.get_endpoint_sccp(resource['endpoint_sccp']['id'])
+            endpoint_sccp = self.service.get_endpoint_sccp(
+                resource['endpoint_sccp']['id']
+            )
             choices = []
             for key, _ in endpoint_sccp['options']:
                 choices.append((key, key))
-            endpoint_sccp['options'] = (self._build_options(endpoint_sccp['options']))
+            endpoint_sccp['options'] = self._build_options(endpoint_sccp['options'])
 
         elif resource['endpoint_custom']:
             protocol = 'custom'
-            endpoint_custom = self.service.get_endpoint_custom(resource['endpoint_custom']['id'])
+            endpoint_custom = self.service.get_endpoint_custom(
+                resource['endpoint_custom']['id']
+            )
 
         form = self.form(
             data=resource,
@@ -109,8 +128,12 @@ class LineView(BaseIPBXHelperView):
 
     def _populate_form(self, form):
         form.context.choices = self._build_set_choices_context(form.context)
-        form.endpoint_sip.transport.form.uuid.choices = self._build_set_choices_transport(form.endpoint_sip)
-        form.endpoint_sip.template_uuids.choices = self._build_set_choices_templates(form.endpoint_sip.templates)
+        form.endpoint_sip.transport.form.uuid.choices = (
+            self._build_set_choices_transport(form.endpoint_sip)
+        )
+        form.endpoint_sip.template_uuids.choices = self._build_set_choices_templates(
+            form.endpoint_sip.templates
+        )
         return form
 
     def _build_set_choices_context(self, context_form):
@@ -152,12 +175,16 @@ class LineView(BaseIPBXHelperView):
                 sip['transport'] = None
 
             template_uuids = form.endpoint_sip.template_uuids.data
-            sip['templates'] = [{'uuid': template_uuid} for template_uuid in template_uuids]
+            sip['templates'] = [
+                {'uuid': template_uuid} for template_uuid in template_uuids
+            ]
 
             resource['endpoint_custom'] = None
             resource['endpoint_sccp'] = None
         elif not self._sccp_is_empty(resource['endpoint_sccp']):
-            options = self._map_options_to_resource(resource['endpoint_sccp']['options'])
+            options = self._map_options_to_resource(
+                resource['endpoint_sccp']['options']
+            )
             resource['endpoint_sccp']['options'] = options
             resource['endpoint_sip'] = None
             resource['endpoint_custom'] = None
@@ -184,7 +211,6 @@ class LineView(BaseIPBXHelperView):
 
 
 class LineListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         lines = self.service.list(**params)
