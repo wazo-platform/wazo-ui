@@ -1,4 +1,4 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -7,13 +7,16 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class PluginService(object):
-
+class PluginService:
     def __init__(self, plugind):
         self.plugind = plugind
 
     def install(self, plugin):
-        return self.plugind.plugins.install(url=plugin.get('url'), method=plugin['method'], options=plugin.get('options'))
+        return self.plugind.plugins.install(
+            url=plugin.get('url'),
+            method=plugin['method'],
+            options=plugin.get('options'),
+        )
 
     def uninstall(self, plugin):
         if 'namespace' in plugin and 'name' in plugin:

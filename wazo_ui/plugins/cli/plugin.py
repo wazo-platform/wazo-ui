@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
@@ -17,8 +17,7 @@ from wazo_ui.helpers.view import BaseIPBXHelperView
 asterisk_cli = create_blueprint('asterisk_cli', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
@@ -36,22 +35,26 @@ class AsteriskCliForm(BaseForm):
 
 
 class AsteriskCliView(BaseIPBXHelperView):
-
     form = AsteriskCliForm
     resource = 'asterisk_cli'
 
     @menu_item('.ipbx.global_settings.asterisk_cli', 'Asterisk CLI', icon="terminal")
     def index(self):
-        return render_template(self._get_template('list'), form=self._populate_form(self.form()))
+        return render_template(
+            self._get_template('list'), form=self._populate_form(self.form())
+        )
 
     def post(self):
         resources = self._map_form_to_resources_post(self.form())
         data = self.service.send_cmd(resources.get('command'))
-        return render_template(self._get_template('list'), form=self._populate_form(self.form()), results=data)
+        return render_template(
+            self._get_template('list'),
+            form=self._populate_form(self.form()),
+            results=data,
+        )
 
 
-class AsteriskCliService(object):
-
+class AsteriskCliService:
     def __init__(self, amid_client):
         self._amid = amid_client
 

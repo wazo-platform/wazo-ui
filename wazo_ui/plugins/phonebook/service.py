@@ -1,11 +1,10 @@
-# Copyright 2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import session
 
 
 class _Service:
-
     def __init__(self, dird_client):
         self._dird = dird_client
 
@@ -18,7 +17,6 @@ class _Service:
 
 
 class PhonebookService(_Service):
-
     def list(self):
         tenant, tenant_uuid = self._get_tenant()
         return self._dird.phonebook.list(
@@ -63,7 +61,6 @@ class PhonebookService(_Service):
 
 
 class ManagePhonebookService(_Service):
-
     def list_phonebook(self):
         tenant, tenant_uuid = self._get_tenant()
         return self._dird.phonebook.list(

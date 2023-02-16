@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -14,11 +14,20 @@ from .form import (
 )
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
-        register_funckey_destination_form('custom', l_('Custom'), CustomFuncKeyDestination)
-        register_funckey_destination_form('transfer', l_('Transfer'), TransferServicesFuncKeyDestinationForm)
-        register_funckey_destination_form('service', l_('Service'), GeneralServicesFuncKeyDestinationForm)
-        register_funckey_destination_form('forward', l_('Forward'), ForwardServicesFuncKeyDestinationForm)
-        register_funckey_destination_form('onlinerec', l_('Online Recording'), OnlineRecFuncKeyDestinationForm)
+        register_funckey_destination_form(
+            'custom', l_('Custom'), CustomFuncKeyDestination
+        )
+        register_funckey_destination_form(
+            'transfer', l_('Transfer'), TransferServicesFuncKeyDestinationForm
+        )
+        register_funckey_destination_form(
+            'service', l_('Service'), GeneralServicesFuncKeyDestinationForm
+        )
+        register_funckey_destination_form(
+            'forward', l_('Forward'), ForwardServicesFuncKeyDestinationForm
+        )
+        register_funckey_destination_form(
+            'onlinerec', l_('Online Recording'), OnlineRecFuncKeyDestinationForm
+        )

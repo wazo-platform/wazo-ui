@@ -1,4 +1,4 @@
-# Copyright 2017-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -29,7 +29,9 @@ class UserService(BaseConfdService):
         wazo_user = self._auth.users.get(resource_id)
         resource['username'] = wazo_user['username']
         resource['auth_enabled'] = wazo_user['enabled']
-        resource['call_permissions'] = self._build_call_permissions_list(resource['call_permissions'])
+        resource['call_permissions'] = self._build_call_permissions_list(
+            resource['call_permissions']
+        )
         return resource
 
     def import_csv(self, form):
@@ -48,7 +50,9 @@ class UserService(BaseConfdService):
     def _build_call_permissions_list(self, call_permissions):
         result = []
         for call_permission in call_permissions:
-            result.append({'id': call_permission['id'], 'name': call_permission['name']})
+            result.append(
+                {'id': call_permission['id'], 'name': call_permission['name']}
+            )
         return result
 
     def list(self, limit=None, order=None, direction=None, offset=None, search=None):
@@ -172,7 +176,11 @@ class UserService(BaseConfdService):
             lastname=user['lastname'],
             enabled='auth_enabled' in user,
         )
-        emails = [{'address': user['email'], 'confirmed': True, 'main': True}] if user['email'] else []
+        emails = (
+            [{'address': user['email'], 'confirmed': True, 'main': True}]
+            if user['email']
+            else []
+        )
         self._auth.admin.update_user_emails(user['uuid'], emails)
 
         if password:
@@ -187,16 +195,24 @@ class UserService(BaseConfdService):
 
     def _update_callpermissions(self, existing_user, user):
         if existing_user:
-            existing_call_permissions = self._confd.users.get(existing_user)['call_permissions']
+            existing_call_permissions = self._confd.users.get(existing_user)[
+                'call_permissions'
+            ]
             for existing_call_permission in existing_call_permissions:
-                self._confd.users(existing_user).remove_call_permission(existing_call_permission['id'])
+                self._confd.users(existing_user).remove_call_permission(
+                    existing_call_permission['id']
+                )
 
         for call_permission in user['call_permissions']:
             self._confd.users(user).add_call_permission(call_permission['id'])
 
     def _update_voicemail(self, existing_user, user):
-        existing_voicemail_id = existing_user['voicemail'].get('id') if existing_user['voicemail'] else None
-        voicemail_id = int(user['voicemail']['id']) if user['voicemail'].get('id') else None
+        existing_voicemail_id = (
+            existing_user['voicemail'].get('id') if existing_user['voicemail'] else None
+        )
+        voicemail_id = (
+            int(user['voicemail']['id']) if user['voicemail'].get('id') else None
+        )
 
         if existing_voicemail_id == voicemail_id:
             return
@@ -231,7 +247,9 @@ class UserService(BaseConfdService):
             else:
                 self._create_line_and_associations(line)
 
-        if line_ids != existing_line_ids or self._get_first_line_id(lines) != self._get_first_line_id(existing_lines):
+        if line_ids != existing_line_ids or self._get_first_line_id(
+            lines
+        ) != self._get_first_line_id(existing_lines):
             self._confd.users(user).update_lines(lines)
 
         for line in lines:
@@ -297,8 +315,14 @@ class UserService(BaseConfdService):
                         raise
                     response = getattr(e, 'response', None)
                     status_code = getattr(response, 'status_code', None)
-                    if status_code == 400 and '''["Resource Error - SIPEndpoint already exists ('name':''' in response.text:
-                        logger.info('generated a duplicate endpoint_sip name. retrying...')
+                    if (
+                        status_code == 400
+                        and '''["Resource Error - SIPEndpoint already exists ('name':'''
+                        in response.text
+                    ):
+                        logger.info(
+                            'generated a duplicate endpoint_sip name. retrying...'
+                        )
                         continue
                     raise
             if endpoint_sip:
@@ -316,7 +340,9 @@ class UserService(BaseConfdService):
             return line
 
         if extensions:
-            self._create_or_associate_extension(dict(line, extensions=extensions), extensions[0])
+            self._create_or_associate_extension(
+                dict(line, extensions=extensions), extensions[0]
+            )
 
         if application.get('uuid'):
             self._confd.lines(line).add_application(application)
@@ -341,8 +367,8 @@ class UserService(BaseConfdService):
             if self._is_extension_has_changed(form_extension, old_extension):
                 new_extension = self._get_first_existing_extension(extensions[0])
                 if (
-                        not self._is_extension_associated_with_other_lines(old_extension)
-                        and not new_extension
+                    not self._is_extension_associated_with_other_lines(old_extension)
+                    and not new_extension
                 ):
                     self._confd.extensions.update(form_extension)
                 else:
@@ -352,7 +378,9 @@ class UserService(BaseConfdService):
                     self._confd.lines(line).remove_extension(old_extension)
                     self._confd.lines(line).add_extension(new_extension)
 
-                    if not self._is_extension_associated_with_other_lines(old_extension):
+                    if not self._is_extension_associated_with_other_lines(
+                        old_extension
+                    ):
                         self._confd.extensions.delete(old_extension)
 
         elif extensions:
@@ -372,8 +400,10 @@ class UserService(BaseConfdService):
         return False
 
     def _is_extension_has_changed(self, extension, existing_extension):
-        if (existing_extension['exten'] == extension['exten']
-                and existing_extension['context'] == extension['context']):
+        if (
+            existing_extension['exten'] == extension['exten']
+            and existing_extension['context'] == extension['context']
+        ):
             return False
         return True
 
@@ -387,11 +417,15 @@ class UserService(BaseConfdService):
             self._confd.lines(line).add_extension(existing_extension)
 
     def _get_first_existing_extension(self, extension):
-        items = self._confd.extensions.list(exten=extension['exten'], context=extension['context'])['items']
+        items = self._confd.extensions.list(
+            exten=extension['exten'], context=extension['context']
+        )['items']
         return items[0] if items else None
 
     def get_first_internal_context(self):
-        result = self._confd.contexts.list(type='internal', limit=1, direction='asc', order='id')
+        result = self._confd.contexts.list(
+            type='internal', limit=1, direction='asc', order='id'
+        )
         for context in result['items']:
             return context
 

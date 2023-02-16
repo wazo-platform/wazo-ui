@@ -1,4 +1,4 @@
-# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -64,10 +64,7 @@ class IdentityForm(BaseForm):
     tenant = FormField(TenantUuidForm)
     purpose = SelectField(
         l_('Purpose'),
-        choices=[
-            ('user', l_('User')),
-            ('external_api', l_('External API'))
-        ]
+        choices=[('user', l_('User')), ('external_api', l_('External API'))],
     )
     submit = SubmitField()
 
@@ -110,7 +107,10 @@ class LDAPForm(BaseForm):
     host = StringField(l_('Host'), validators=[InputRequired(), Length(max=512)])
     port = IntegerField(l_('Port'), validators=[InputRequired()])
     protocol_version = SelectField(
-        l_('Protocol version'), coerce=int, choices=[(2, '2'), (3, '3')], default=3,
+        l_('Protocol version'),
+        coerce=int,
+        choices=[(2, '2'), (3, '3')],
+        default=3,
     )
     protocol_security = SelectField(
         l_('Protocol security'),
@@ -118,9 +118,15 @@ class LDAPForm(BaseForm):
     )
     bind_dn = StringField(l_('Bind DN'), validators=[Length(max=256)])
     bind_password = PasswordField(l_('Bind password'))
-    user_base_dn = StringField(l_('User base DN'), validators=[InputRequired(), Length(max=256)])
-    user_login_attribute = StringField(l_('User login attribute'), validators=[InputRequired(), Length(max=64)])
-    user_email_attribute = StringField(l_('User email attribute'), validators=[InputRequired(), Length(max=64)])
+    user_base_dn = StringField(
+        l_('User base DN'), validators=[InputRequired(), Length(max=256)]
+    )
+    user_login_attribute = StringField(
+        l_('User login attribute'), validators=[InputRequired(), Length(max=64)]
+    )
+    user_email_attribute = StringField(
+        l_('User email attribute'), validators=[InputRequired(), Length(max=64)]
+    )
     search_filters = StringField(l_('Search filters'))
 
     submit = SubmitField()

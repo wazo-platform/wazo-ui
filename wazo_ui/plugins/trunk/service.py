@@ -1,11 +1,10 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.service import BaseConfdService
 
 
 class TrunkService(BaseConfdService):
-
     resource_confd = 'trunks'
 
     def __init__(self, confd_client):
@@ -50,8 +49,12 @@ class TrunkService(BaseConfdService):
             register_iax = self._confd.registers_iax.create(resource['register_iax'])
             self._confd.trunks(resource['id']).add_register_iax(register_iax)
         if resource.get('endpoint_custom'):
-            endpoint_custom = self._confd.endpoints_custom.create(resource['endpoint_custom'])
-            self._confd.trunks(resource['id']).add_endpoint_custom(endpoint_custom['id'])
+            endpoint_custom = self._confd.endpoints_custom.create(
+                resource['endpoint_custom']
+            )
+            self._confd.trunks(resource['id']).add_endpoint_custom(
+                endpoint_custom['id']
+            )
 
     def update(self, resource):
         super().update(resource)

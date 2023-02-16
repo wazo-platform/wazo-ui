@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -16,8 +16,7 @@ from .form import SwitchboardDestinationForm
 switchboard = create_blueprint('switchboard', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
@@ -27,9 +26,15 @@ class Plugin(object):
         register_flaskview(switchboard, SwitchboardView)
 
         SwitchboardDestinationView.service = SwitchboardService(clients['wazo_confd'])
-        SwitchboardDestinationView.register(switchboard, route_base='/switchboard_destination')
+        SwitchboardDestinationView.register(
+            switchboard, route_base='/switchboard_destination'
+        )
 
-        register_destination_form('switchboard', l_('Switchboard'), SwitchboardDestinationForm)
-        register_listing_url('switchboard', 'switchboard.SwitchboardDestinationView:list_json')
+        register_destination_form(
+            'switchboard', l_('Switchboard'), SwitchboardDestinationForm
+        )
+        register_listing_url(
+            'switchboard', 'switchboard.SwitchboardDestinationView:list_json'
+        )
 
         core.register_blueprint(switchboard)

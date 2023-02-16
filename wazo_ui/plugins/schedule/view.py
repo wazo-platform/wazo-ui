@@ -1,4 +1,4 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -7,7 +7,7 @@ from flask_babel import lazy_gettext as l_
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     extract_select2_params,
-    build_select2_response
+    build_select2_response,
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -19,7 +19,12 @@ class ScheduleView(BaseIPBXHelperView):
     form = ScheduleForm
     resource = 'schedule'
 
-    @menu_item('.ipbx.call_management.schedules', l_('Schedules'), icon='clock-o', multi_tenant=True)
+    @menu_item(
+        '.ipbx.call_management.schedules',
+        l_('Schedules'),
+        icon='clock-o',
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
@@ -61,9 +66,11 @@ class ScheduleView(BaseIPBXHelperView):
 
 
 class ScheduleListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         schedules = self.service.list(**params)
-        results = [{'id': schedule['id'], 'text': schedule['name']} for schedule in schedules['items']]
+        results = [
+            {'id': schedule['id'], 'text': schedule['name']}
+            for schedule in schedules['items']
+        ]
         return jsonify(build_select2_response(results, schedules['total'], params))

@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_menu.classy import register_flaskview
@@ -12,8 +12,7 @@ from .view import CallPermissionView, CallPermissionListingView
 call_permission = create_blueprint('call_permission', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
@@ -23,8 +22,12 @@ class Plugin(object):
         register_flaskview(call_permission, CallPermissionView)
 
         CallPermissionListingView.service = CallPermissionService(clients['wazo_confd'])
-        CallPermissionListingView.register(call_permission, route_base='/callpermissions_listing')
+        CallPermissionListingView.register(
+            call_permission, route_base='/callpermissions_listing'
+        )
 
-        register_listing_url('callpermission', 'call_permission.CallPermissionListingView:list_json')
+        register_listing_url(
+            'callpermission', 'call_permission.CallPermissionListingView:list_json'
+        )
 
         core.register_blueprint(call_permission)

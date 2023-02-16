@@ -1,4 +1,4 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import argparse
@@ -130,23 +130,26 @@ _DEFAULT_CONFIG = {
 
 def _parse_cli_args(argv):
     parser = argparse.ArgumentParser()
-    parser.add_argument('-c',
-                        '--config-file',
-                        action='store',
-                        help='The path to the config file. Default %(default)s')
-    parser.add_argument('-d',
-                        '--debug',
-                        action='store_true',
-                        help='Log debug messages. Default %(default)s')
-    parser.add_argument('-l',
-                        '--log-level',
-                        action='store',
-                        help="Logs messages with LOG_LEVEL details. Must be one of:\n"
-                             "critical, error, warning, info, debug. Default: %(default)s")
-    parser.add_argument('-u',
-                        '--user',
-                        action='store',
-                        help='The owner of the process')
+    parser.add_argument(
+        '-c',
+        '--config-file',
+        action='store',
+        help='The path to the config file. Default %(default)s',
+    )
+    parser.add_argument(
+        '-d',
+        '--debug',
+        action='store_true',
+        help='Log debug messages. Default %(default)s',
+    )
+    parser.add_argument(
+        '-l',
+        '--log-level',
+        action='store',
+        help="Logs messages with LOG_LEVEL details. Must be one of:\n"
+        "critical, error, warning, info, debug. Default: %(default)s",
+    )
+    parser.add_argument('-u', '--user', action='store', help='The owner of the process')
     parsed_args = parser.parse_args(argv)
 
     result = {}
@@ -175,5 +178,7 @@ def _get_reinterpreted_raw_values(config):
 def load(argv):
     cli_config = _parse_cli_args(argv)
     file_config = read_config_file_hierarchy(ChainMap(cli_config, _DEFAULT_CONFIG))
-    reinterpreted_config = _get_reinterpreted_raw_values(ChainMap(cli_config, file_config, _DEFAULT_CONFIG))
+    reinterpreted_config = _get_reinterpreted_raw_values(
+        ChainMap(cli_config, file_config, _DEFAULT_CONFIG)
+    )
     return ChainMap(reinterpreted_config, cli_config, file_config, _DEFAULT_CONFIG)

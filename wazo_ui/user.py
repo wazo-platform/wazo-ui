@@ -1,4 +1,4 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import session, url_for
@@ -6,7 +6,6 @@ from flask_login.mixins import UserMixin
 
 
 class UserUI(UserMixin):
-
     def __init__(self, token, uuid=None):
         self.token = token
         self.uuid = uuid

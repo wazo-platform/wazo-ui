@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.destination import (
@@ -48,10 +48,11 @@ class ApplicationDestinationForm(BaseDestinationForm):
 
 
 class ApplicationDestinationField(FormField):
-
     def __init__(self, *args, **kwargs):
         self.destination_label = kwargs.pop('destination_label', None)
-        self.destination_form = kwargs.pop('destination_form', ApplicationDestinationForm)
+        self.destination_form = kwargs.pop(
+            'destination_form', ApplicationDestinationForm
+        )
         super().__init__(self.destination_form, *args, **kwargs)
 
     def process(self, formdata, data=unset_value):
@@ -68,9 +69,12 @@ class ApplicationForm(BaseForm):
 
 
 class NodeDestinationForm(BaseForm):
-    type = SelectField(l_('Type'), choices=[
-        ('holding', l_('Holding')),
-    ])
+    type = SelectField(
+        l_('Type'),
+        choices=[
+            ('holding', l_('Holding')),
+        ],
+    )
     music_on_hold = StringField(l_('Music On Hold'))
     answer = BooleanField(l_('Answer'), default=False)
 

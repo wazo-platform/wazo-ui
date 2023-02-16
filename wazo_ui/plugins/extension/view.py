@@ -1,12 +1,7 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import (
-    jsonify,
-    render_template,
-    request,
-    flash
-)
+from flask import jsonify, render_template, request, flash
 from flask_babel import gettext as _
 from flask_babel import lazy_gettext as l_
 from flask_classful import route
@@ -25,8 +20,16 @@ class ExtensionView(BaseIPBXHelperView):
     form = ExtensionForm
     resource = 'extension'
 
-    @menu_item('.ipbx.advanced', l_('Advanced'), order=999, icon="gears", multi_tenant=True)
-    @menu_item('.ipbx.advanced.extensions', l_('Extensions'), order=1, icon="tty", multi_tenant=True)
+    @menu_item(
+        '.ipbx.advanced', l_('Advanced'), order=999, icon="gears", multi_tenant=True
+    )
+    @menu_item(
+        '.ipbx.advanced.extensions',
+        l_('Extensions'),
+        order=1,
+        icon="tty",
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
@@ -44,7 +47,12 @@ class ExtensionFeaturesView(BaseIPBXHelperView):
     form = ExtensionFeaturesForm
     resource = 'extension'
 
-    @menu_item('.ipbx.global_settings.extensions_features', l_('Extensions Features'), order=2, icon="fax")
+    @menu_item(
+        '.ipbx.global_settings.extensions_features',
+        l_('Extensions Features'),
+        order=2,
+        icon="fax",
+    )
     def index(self):
         resource = {}
         try:
@@ -53,8 +61,9 @@ class ExtensionFeaturesView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self._redirect_for('index')
 
-        return render_template(self._get_template('edit_features'),
-                               form=self.form(data=resource))
+        return render_template(
+            self._get_template('edit_features'), form=self.form(data=resource)
+        )
 
     @route('/put', methods=['POST'])
     def put(self):
@@ -75,7 +84,6 @@ class ExtensionFeaturesView(BaseIPBXHelperView):
 
 
 class ExtensionListingView(LoginRequiredView):
-
     def list_available_exten_incall(self):
         return self._list_available_exten(context_range='incall_ranges')
 
@@ -124,7 +132,9 @@ class ExtensionListingView(LoginRequiredView):
             return jsonify({'results': []})
 
         used_extens = set([])
-        for extension in self.service.list(search=search, context=context['name'])['items']:
+        for extension in self.service.list(search=search, context=context['name'])[
+            'items'
+        ]:
             if search and search not in extension['exten']:
                 continue
 

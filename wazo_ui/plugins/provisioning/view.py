@@ -1,14 +1,7 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import (
-    redirect,
-    render_template,
-    jsonify,
-    url_for,
-    flash,
-    request
-)
+from flask import redirect, render_template, jsonify, url_for, flash, request
 from flask_babel import gettext as _
 from flask_babel import lazy_gettext as l_
 from flask_classful import route
@@ -17,7 +10,7 @@ from requests.exceptions import HTTPError
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     extract_select2_params,
-    build_select2_response
+    build_select2_response,
 )
 
 from wazo_ui.helpers.menu import menu_item
@@ -27,18 +20,25 @@ from .form import ConfigRegistrarForm, ConfigDeviceForm, ConfigurationForm
 
 
 class ProvisioningBaseView(BaseIPBXHelperView):
-
     def _get_template(self, type_):
         blueprint = request.blueprint.replace('.', '/')
-        return self.templates.get(type_, '{blueprint}/{resource}/{type_}.html'.format(blueprint=blueprint,
-                                                                                      resource=self.resource,
-                                                                                      type_=type_))
+        return self.templates.get(
+            type_,
+            '{blueprint}/{resource}/{type_}.html'.format(
+                blueprint=blueprint, resource=self.resource, type_=type_
+            ),
+        )
 
 
 class PluginView(ProvisioningBaseView):
     resource = 'plugin'
 
-    @menu_item('.ipbx.global_settings.provisioning_plugins', l_('Devices Plugins'), order=1, icon="file-code-o")
+    @menu_item(
+        '.ipbx.global_settings.provisioning_plugins',
+        l_('Devices Plugins'),
+        order=1,
+        icon="file-code-o",
+    )
     def index(self):
         return super().index()
 
@@ -59,10 +59,12 @@ class PluginView(ProvisioningBaseView):
             else:
                 plugin_installable['editable'] = False
 
-        return render_template(self._get_template('list'),
-                               resource_list=plugins_installable,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('list'),
+            resource_list=plugins_installable,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
 
     def _get(self, id, form=None):
         try:
@@ -75,13 +77,15 @@ class PluginView(ProvisioningBaseView):
 
         package_ids_installed = [p['id'] for p in packages_installed['items']]
 
-        return render_template(self._get_template('edit'),
-                               plugin_name=id,
-                               plugin=plugin,
-                               resource_list=packages_installable,
-                               package_ids_installed=package_ids_installed,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('edit'),
+            plugin_name=id,
+            plugin=plugin,
+            resource_list=packages_installable,
+            package_ids_installed=package_ids_installed,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
 
     def install(self, plugin_name):
         try:
@@ -89,7 +93,10 @@ class PluginView(ProvisioningBaseView):
         except HTTPError as error:
             self._flash_http_error(error)
         else:
-            flash(_('Plugin %(plugin_name)s has been installed', plugin_name=plugin_name), 'success')
+            flash(
+                _('Plugin %(plugin_name)s has been installed', plugin_name=plugin_name),
+                'success',
+            )
         return redirect(url_for('.PluginView:index'))
 
     def uninstall(self, plugin_name):
@@ -98,7 +105,13 @@ class PluginView(ProvisioningBaseView):
         except HTTPError as error:
             self._flash_http_error(error)
         else:
-            flash(_('Plugin %(plugin_name)s has been uninstalled', plugin_name=plugin_name), 'success')
+            flash(
+                _(
+                    'Plugin %(plugin_name)s has been uninstalled',
+                    plugin_name=plugin_name,
+                ),
+                'success',
+            )
         return redirect(url_for('.PluginView:index'))
 
     def install_package_ajax(self, plugin_name, package_name):
@@ -113,7 +126,11 @@ class PluginView(ProvisioningBaseView):
         location = request.args.get('location')
         result = self.service.get_package_status(location)
 
-        return jsonify(state=result.state, base_url=result._command.base_url, location=result._location)
+        return jsonify(
+            state=result.state,
+            base_url=result._command.base_url,
+            location=result._location,
+        )
 
     def uninstall_package_ajax(self, plugin_name, package_name):
         try:
@@ -122,21 +139,28 @@ class PluginView(ProvisioningBaseView):
             self._flash_http_error(error)
             return jsonify(error=error)
         else:
-            flash(_('Package %(package_name)s has been uninstalled', package_name=package_name), 'success')
+            flash(
+                _(
+                    'Package %(package_name)s has been uninstalled',
+                    package_name=package_name,
+                ),
+                'success',
+            )
 
         return jsonify(state='completed')
 
 
 class PluginListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         plugins = self.service.list_installed(**params)
-        results = [{'id': plugin['id'], 'text': plugin['id']} for plugin in plugins['items']]
+        results = [
+            {'id': plugin['id'], 'text': plugin['id']} for plugin in plugins['items']
+        ]
         results = sorted(results, key=lambda value: value['id'])
         offset = params['offset']
         limit = params['limit']
-        results = results[offset:offset + limit]
+        results = results[offset : offset + limit]
         return jsonify(build_select2_response(results, plugins['total'], params))
 
 
@@ -144,7 +168,12 @@ class ConfigRegistrarView(ProvisioningBaseView):
     form = ConfigRegistrarForm
     resource = 'config_registrar'
 
-    @menu_item('.ipbx.global_settings.provisioning_configs', l_('Provisioning Registrars'), order=2, icon="file-o")
+    @menu_item(
+        '.ipbx.global_settings.provisioning_configs',
+        l_('Provisioning Registrars'),
+        order=2,
+        icon="file-o",
+    )
     def index(self):
         return super().index()
 
@@ -158,18 +187,25 @@ class ConfigRegistrarView(ProvisioningBaseView):
         form = form or self.form()
         form = self._populate_form(form)
 
-        return render_template(self._get_template('list'),
-                               form=form,
-                               resource_list=resource_list,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('list'),
+            form=form,
+            resource_list=resource_list,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
 
 
 class ConfigDeviceView(ProvisioningBaseView):
     form = ConfigDeviceForm
     resource = 'config_device'
 
-    @menu_item('.ipbx.global_settings.provisioning_devices', l_('Provisioning Config device'), order=3, icon="file-zip-o")
+    @menu_item(
+        '.ipbx.global_settings.provisioning_devices',
+        l_('Provisioning Config device'),
+        order=3,
+        icon="file-zip-o",
+    )
     def index(self):
         return super().index()
 
@@ -183,14 +219,18 @@ class ConfigDeviceView(ProvisioningBaseView):
         form = form or self.form()
         form = self._populate_form(form)
 
-        return render_template(self._get_template('list'),
-                               form=form,
-                               resource_list=resource_list,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('list'),
+            form=form,
+            resource_list=resource_list,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
 
     def _populate_form(self, form):
-        form.raw_config.timezone.choices = self._build_set_choices_timezones(form.raw_config)
+        form.raw_config.timezone.choices = self._build_set_choices_timezones(
+            form.raw_config
+        )
         return form
 
     def _build_set_choices_timezones(self, config):
@@ -223,7 +263,11 @@ class ConfigurationView(ProvisioningBaseView):
         form = form or self.form()
         form = self._populate_form(form)
 
-        return render_template(self._get_template('edit'), form=form, current_breadcrumbs=self._get_current_breadcrumbs())
+        return render_template(
+            self._get_template('edit'),
+            form=form,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+        )
 
     def _populate_form(self, form):
         return self.form(data=self.service.get())
@@ -260,21 +304,24 @@ class ConfigurationView(ProvisioningBaseView):
             flash(_('Error during update: %(error)s', error=error), 'error')
             return self._index(form)
 
-        flash(_('%(resource)s: Resource has been updated', resource=self.resource), 'success')
+        flash(
+            _('%(resource)s: Resource has been updated', resource=self.resource),
+            'success',
+        )
         return self._redirect_for('index')
 
 
 class ConfigDeviceListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         configs = self.service.list_device(**params)
-        results = [{'id': config['id'], 'text': config['label']} for config in configs['items']]
+        results = [
+            {'id': config['id'], 'text': config['label']} for config in configs['items']
+        ]
         return jsonify(build_select2_response(results, configs['total'], params))
 
 
 class ConfigRegistrarListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         registrars = self.service.list()

@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -13,14 +13,21 @@ class ParkingLotView(BaseIPBXHelperView):
     form = ParkingLotForm
     resource = 'parking_lot'
 
-    @menu_item('.ipbx.services.parkinglots', l_('Parking Lots'), icon="automobile", multi_tenant=True)
+    @menu_item(
+        '.ipbx.services.parkinglots',
+        l_('Parking Lots'),
+        icon="automobile",
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
     def _populate_form(self, form):
         form.music_on_hold.choices = self._build_set_choices_moh(form)
         for form_extension in form.extensions:
-            form_extension.context.choices = self._build_set_choices_context(form_extension)
+            form_extension.context.choices = self._build_set_choices_context(
+                form_extension
+            )
         return form
 
     def _build_set_choices_moh(self, form):
@@ -40,5 +47,7 @@ class ParkingLotView(BaseIPBXHelperView):
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
-        resource['music_on_hold'] = self._convert_empty_string_to_none(form.music_on_hold.data)
+        resource['music_on_hold'] = self._convert_empty_string_to_none(
+            form.music_on_hold.data
+        )
         return resource

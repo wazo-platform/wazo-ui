@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -7,7 +7,7 @@ from wtforms.fields import (
     StringField,
     SelectField,
     FormField,
-    BooleanField
+    BooleanField,
 )
 from wtforms.validators import IPAddress, MacAddress, InputRequired
 
@@ -26,11 +26,14 @@ class DeviceForm(BaseForm):
     plugin = SelectField(l_('Plugin'), validators=[InputRequired()], choices=[])
     vendor = StringField(l_('Vendor'))
     version = StringField(l_('Version'))
-    status = SelectField(l_('Status'), choices=[
-        ('autoprov', l_('Autoprov')),
-        ('configured', l_('Configured')),
-        ('not_configured', l_('Not configured')),
-    ])
+    status = SelectField(
+        l_('Status'),
+        choices=[
+            ('autoprov', l_('Autoprov')),
+            ('configured', l_('Configured')),
+            ('not_configured', l_('Not configured')),
+        ],
+    )
     options = FormField(DeviceOptionsForm)
     description = StringField(l_('Description'))
     submit = SubmitField()

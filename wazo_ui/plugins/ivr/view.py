@@ -1,4 +1,4 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -7,7 +7,7 @@ from flask import jsonify, request
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     extract_select2_params,
-    build_select2_response
+    build_select2_response,
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView, NewHelperViewMixin
@@ -32,7 +32,9 @@ class IvrView(NewHelperViewMixin, BaseIPBXHelperView):
         for choice in resource['choices']:
             if choice['destination']['type'] != 'sound':
                 continue
-            file_, format_ = self.service.find_sound_by_path(choice['destination']['filename'])
+            file_, format_ = self.service.find_sound_by_path(
+                choice['destination']['filename']
+            )
             if file_:
                 choice['destination']['name'] = file_['name']
                 choice['destination']['format'] = format_['format']
@@ -51,7 +53,9 @@ class IvrView(NewHelperViewMixin, BaseIPBXHelperView):
         for sound in sounds['items']:
             for file_ in sound['files']:
                 for format_ in file_['formats']:
-                    name = format_['path'] if sound['name'] != 'system' else file_['name']
+                    name = (
+                        format_['path'] if sound['name'] != 'system' else file_['name']
+                    )
                     label = self._prepare_sound_filename_label(file_, format_)
                     results.append((name, label))
         return results
@@ -69,7 +73,6 @@ class IvrView(NewHelperViewMixin, BaseIPBXHelperView):
 
 
 class IvrDestinationView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         ivrs = self.service.list(**params)

@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import g, session
@@ -110,5 +110,5 @@ engine_clients = {
     'wazo_amid': LocalProxy(get_amid_client),
     'wazo_provd': LocalProxy(get_provd_client),
     'wazo_plugind': LocalProxy(get_plugind_client),
-    'wazo_dird': LocalProxy(get_wazo_dird_client)
+    'wazo_dird': LocalProxy(get_wazo_dird_client),
 }

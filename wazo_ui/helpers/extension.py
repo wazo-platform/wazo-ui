@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -15,7 +15,6 @@ __all__ = [
 
 
 class BaseConfdExtensionService(BaseConfdService):
-
     def _extract_main_extension(self, resource):
         extensions = resource.get('extensions')
         for extension in extensions:
@@ -70,8 +69,9 @@ class BaseConfdExtensionService(BaseConfdService):
             resource_client(resource).add_extension(extension)
 
     def _update_extension(self, extension, existing_extension):
-        if existing_extension.get('exten') == extension.get('exten') and \
-                existing_extension.get('context') == extension.get('context'):
+        if existing_extension.get('exten') == extension.get(
+            'exten'
+        ) and existing_extension.get('context') == extension.get('context'):
             return
 
         extension['id'] = existing_extension['id']
@@ -85,7 +85,9 @@ class BaseConfdExtensionService(BaseConfdService):
     def _get_main_extension(self, resource):
         resource_id = resource.get('uuid', resource.get('id'))
         if not resource_id:
-            logger.debug('Unable to extract resource_id from %s resource', self.resource_confd)
+            logger.debug(
+                'Unable to extract resource_id from %s resource', self.resource_confd
+            )
             return
 
         resource_client = getattr(self._confd, self.resource_confd)

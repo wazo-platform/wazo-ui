@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -16,7 +16,6 @@ sound = create_blueprint('sound', __name__)
 
 
 class Plugin(object):
-
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']

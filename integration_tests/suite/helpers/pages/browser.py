@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -13,8 +13,7 @@ from .login import LoginPage
 LOGGER.setLevel(logging.CRITICAL)
 
 
-class Browser(object):
-
+class Browser:
     pages = {'login': LoginPage}
 
     def __init__(self, username, password, virtual=True):
@@ -44,14 +43,16 @@ class Browser(object):
 
 
 class RemoteBrowser(Browser):
-
     def __init__(self, remote_url, username, password):
         self.remote_url = remote_url
         self.username = username
         self.password = password
 
     def start(self):
-        self.driver = webdriver.Remote(command_executor=self.remote_url, desired_capabilities=DesiredCapabilities.FIREFOX)
+        self.driver = webdriver.Remote(
+            command_executor=self.remote_url,
+            desired_capabilities=DesiredCapabilities.FIREFOX,
+        )
         self.driver.set_window_size(1920, 1080)
         self._login()
 

@@ -1,4 +1,4 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_test_helpers.asset_launching_test_case import AssetLaunchingTestCase
@@ -8,7 +8,6 @@ from .pages.page import Page
 
 
 class AdminUIAssetLaunchingTestCase(AssetLaunchingTestCase):
-
     service = 'wazo-ui'
 
     @classmethod

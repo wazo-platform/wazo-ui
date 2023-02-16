@@ -1,10 +1,7 @@
-# Copyright 2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2019-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import (
-    render_template,
-    flash
-)
+from flask import render_template, flash
 from flask_babel import gettext as _
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
@@ -19,7 +16,12 @@ class HaView(BaseIPBXHelperView):
     form = HaForm
     resource = 'ha'
 
-    @menu_item('.ipbx.global_settings.ha', l_('High Availability'), order=2, icon="balance-scale")
+    @menu_item(
+        '.ipbx.global_settings.ha',
+        l_('High Availability'),
+        order=2,
+        icon="balance-scale",
+    )
     def index(self):
         try:
             resource = self.service.get()
@@ -27,8 +29,9 @@ class HaView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self._redirect_for('index')
 
-        return render_template(self._get_template('index'),
-                               form=self.form(data=resource))
+        return render_template(
+            self._get_template('index'), form=self.form(data=resource)
+        )
 
     def post(self):
         form = self.form()

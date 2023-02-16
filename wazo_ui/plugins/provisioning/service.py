@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.service import BaseConfdService
@@ -6,7 +6,6 @@ from wazo_provd_client.operation import OperationInProgress
 
 
 class PluginService:
-
     def __init__(self, provd_client):
         self._provd = provd_client
 
@@ -35,11 +34,15 @@ class PluginService:
         self._provd.plugins.uninstall(id)
 
     def get_packages_installed(self, plugin, **kwargs):
-        packages_installed = self._provd.plugins.get_packages_installed(plugin=plugin, **kwargs)['pkgs']
+        packages_installed = self._provd.plugins.get_packages_installed(
+            plugin=plugin, **kwargs
+        )['pkgs']
         return self._prepare_resource_list_for_view(packages_installed)
 
     def get_packages_installable(self, plugin, **kwargs):
-        packages_installable = self._provd.plugins.get_packages_installable(plugin=plugin, **kwargs)['pkgs']
+        packages_installable = self._provd.plugins.get_packages_installable(
+            plugin=plugin, **kwargs
+        )['pkgs']
         return self._prepare_resource_list_for_view(packages_installable)
 
     def install_package(self, plugin_name, package_name):
@@ -53,17 +56,13 @@ class PluginService:
 
     def _prepare_resource_list_for_view(self, resource_list):
         for plugin_name, plugin_infos in resource_list.items():
-            plugin_infos.update({
-                'id': plugin_name,
-                'name': plugin_name
-            })
+            plugin_infos.update({'id': plugin_name, 'name': plugin_name})
             if 'dsize' in plugin_infos:
-                plugin_infos['dsize'] = self._format_bytes_to_human_readable_size(plugin_infos['dsize'])
+                plugin_infos['dsize'] = self._format_bytes_to_human_readable_size(
+                    plugin_infos['dsize']
+                )
 
-        result = {
-            'items': list(resource_list.values()),
-            'total': len(resource_list)
-        }
+        result = {'items': list(resource_list.values()), 'total': len(resource_list)}
         return result
 
     def _format_bytes_to_human_readable_size(self, size):
@@ -78,7 +77,6 @@ class PluginService:
 
 
 class ConfigService:
-
     def __init__(self, provd_client):
         self._provd = provd_client
 
@@ -102,23 +100,18 @@ class ConfigService:
         return self._prepare_resource_list_for_view(configs_device['configs'])
 
     def _prepare_resource_list_for_view(self, resource_list):
-        result = {
-            'items': resource_list,
-            'total': len(resource_list)
-        }
+        result = {'items': resource_list, 'total': len(resource_list)}
         return result
 
 
 class RegistrarService(BaseConfdService):
-
     resource_confd = 'registrars'
 
     def __init__(self, confd_client):
         self._confd = confd_client
 
 
-class ConfigurationService(object):
-
+class ConfigurationService:
     def __init__(self, provd_client, confd_client):
         self._provd = provd_client
         self._confd = confd_client

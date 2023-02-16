@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -15,8 +15,7 @@ from .form import VoicemailDestinationForm
 voicemail = create_blueprint('voicemail', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
@@ -28,8 +27,12 @@ class Plugin(object):
         VoicemailDestinationView.service = VoicemailService(clients['wazo_confd'])
         VoicemailDestinationView.register(voicemail, route_base='/voicemails_listing')
 
-        register_destination_form('voicemail', l_('Voicemail'), VoicemailDestinationForm)
+        register_destination_form(
+            'voicemail', l_('Voicemail'), VoicemailDestinationForm
+        )
 
-        register_listing_url('voicemail', 'voicemail.VoicemailDestinationView:list_json')
+        register_listing_url(
+            'voicemail', 'voicemail.VoicemailDestinationView:list_json'
+        )
 
         core.register_blueprint(voicemail)

@@ -1,4 +1,4 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -9,7 +9,7 @@ from wtforms.fields import (
     SubmitField,
     StringField,
     SelectField,
-    SelectMultipleField
+    SelectMultipleField,
 )
 from wtforms.fields.html5 import IntegerField
 from wtforms.validators import InputRequired, Length, NumberRange
@@ -32,8 +32,12 @@ class MembersForm(BaseForm):
 class SwitchboardForm(BaseForm):
     name = StringField(l_('Name'), [InputRequired(), Length(max=128)])
     members = FormField(MembersForm)
-    queue_music_on_hold = SelectField(l_('Music On Hold'), [Length(max=128)], choices=[])
-    waiting_room_music_on_hold = SelectField(l_('Waiting Room Music On Hold'), [Length(max=128)], choices=[])
+    queue_music_on_hold = SelectField(
+        l_('Music On Hold'), [Length(max=128)], choices=[]
+    )
+    waiting_room_music_on_hold = SelectField(
+        l_('Waiting Room Music On Hold'), [Length(max=128)], choices=[]
+    )
     fallbacks = FormField(FallbacksForm)
     timeout = IntegerField(l_('Timeout'), [NumberRange(min=1)])
     submit = SubmitField(l_('Submit'))

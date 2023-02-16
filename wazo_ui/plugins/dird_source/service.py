@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 endpoints = {
@@ -13,7 +13,6 @@ endpoints = {
 
 
 class DirdSourceService:
-
     def __init__(self, dird_client):
         self._dird = dird_client
 
@@ -34,7 +33,9 @@ class DirdSourceService:
         source_data[backend + '_config']['name'] = source_data['name']
 
         if backend not in endpoints.keys():
-            return self._dird.backends.create_source(backend, source_data[backend + '_config'])
+            return self._dird.backends.create_source(
+                backend, source_data[backend + '_config']
+            )
 
         getattr(self._dird, endpoints[backend]).create(source_data[backend + '_config'])
 
@@ -43,9 +44,13 @@ class DirdSourceService:
         source_data[backend + '_config']['name'] = source_data['name']
 
         if backend not in endpoints.keys():
-            return self._dird.backends.edit_source(backend, source_data['uuid'], source_data[backend + '_config'])
+            return self._dird.backends.edit_source(
+                backend, source_data['uuid'], source_data[backend + '_config']
+            )
 
-        return getattr(self._dird, endpoints[backend]).edit(source_data['uuid'], source_data[backend + '_config'])
+        return getattr(self._dird, endpoints[backend]).edit(
+            source_data['uuid'], source_data[backend + '_config']
+        )
 
     def delete(self, backend, source_uuid):
         if backend not in endpoints.keys():

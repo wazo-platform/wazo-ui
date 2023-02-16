@@ -1,14 +1,16 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
-from wtforms.fields import (FieldList,
-                            FormField,
-                            HiddenField,
-                            SubmitField,
-                            StringField,
-                            BooleanField,
-                            SelectMultipleField)
+from wtforms.fields import (
+    FieldList,
+    FormField,
+    HiddenField,
+    SubmitField,
+    StringField,
+    BooleanField,
+    SelectMultipleField,
+)
 
 from wtforms.validators import InputRequired, Length, Regexp
 
@@ -34,7 +36,9 @@ class CallersForm(BaseForm):
 class PagingForm(BaseForm):
     name = StringField(l_('Name'), [InputRequired(), Length(max=128)])
     context = StringField(default='default')
-    number = StringField(l_('Number'), [InputRequired(), Length(max=32), Regexp(r'^[0-9]+$')])
+    number = StringField(
+        l_('Number'), [InputRequired(), Length(max=32), Regexp(r'^[0-9]+$')]
+    )
     members = FormField(MembersForm)
     callers = FormField(CallersForm)
     announce_caller = BooleanField(l_('Announce caller'), default=False)

@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import url_for, redirect, render_template, request, session
@@ -8,7 +8,6 @@ from wazo_ui.helpers.classful import BaseHelperViewWithoutLogin, LoginRequiredVi
 
 
 class IndexView(BaseHelperViewWithoutLogin):
-
     def index(self):
         if not current_user.is_authenticated:
             return redirect(url_for('login.Login:get'))

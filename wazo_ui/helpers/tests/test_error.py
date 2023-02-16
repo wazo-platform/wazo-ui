@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
@@ -6,19 +6,27 @@ import unittest
 from hamcrest import assert_that, any_of, equal_to, empty, is_, none
 from unittest.mock import Mock
 
-from ..error import ErrorExtractor, ErrorTranslator, ConfdErrorExtractor, ConfdErrorTranslator
+from ..error import (
+    ErrorExtractor,
+    ErrorTranslator,
+    ConfdErrorExtractor,
+    ConfdErrorTranslator,
+)
 
-GENERIC_MESSAGE_ERRORS = {'resource-not-found': 'Resource not found',
-                          'invalid-data': 'Input error'}
+GENERIC_MESSAGE_ERRORS = {
+    'resource-not-found': 'Resource not found',
+    'invalid-data': 'Input error',
+}
 
-SPECIFIC_MESSAGE_ERRORS = {'required': 'Missing data for required field',
-                           'invalid-choice': 'Not a valid choice'}
+SPECIFIC_MESSAGE_ERRORS = {
+    'required': 'Missing data for required field',
+    'invalid-choice': 'Not a valid choice',
+}
 
 URL_TO_NAME_RESOURCES = {'resource_url': 'resource'}
 
 
 class TestErrorTranslator(unittest.TestCase):
-
     def setUp(self):
         ErrorTranslator.register_generic_messages(GENERIC_MESSAGE_ERRORS)
         ErrorTranslator.register_specific_messages(SPECIFIC_MESSAGE_ERRORS)
@@ -35,7 +43,6 @@ class TestErrorTranslator(unittest.TestCase):
 
 
 class TestErrorExtractor(unittest.TestCase):
-
     def setUp(self):
         ErrorExtractor.register_url_to_name_resources(URL_TO_NAME_RESOURCES)
 
@@ -60,57 +67,72 @@ class TestErrorExtractor(unittest.TestCase):
         assert_that(resource, equal_to('resource'))
 
 
-GENERIC_PATTERN_ERRORS = {'resource-not-found': r'^Resource Not Found',
-                          'invalid-data': r'^Input Error'}
+GENERIC_PATTERN_ERRORS = {
+    'resource-not-found': r'^Resource Not Found',
+    'invalid-data': r'^Input Error',
+}
 
-GENERIC_MESSAGE_ERRORS = {'resource-not-found': 'Resource not found',
-                          'invalid-data': 'Input error'}
+GENERIC_MESSAGE_ERRORS = {
+    'resource-not-found': 'Resource not found',
+    'invalid-data': 'Input error',
+}
 
-SPECIFIC_PATTERN_ERRORS = {'required': r'Missing data for required field',
-                           'invalid-choice': r'Not a valid choice'}
+SPECIFIC_PATTERN_ERRORS = {
+    'required': r'Missing data for required field',
+    'invalid-choice': r'Not a valid choice',
+}
 
-SPECIFIC_MESSAGE_ERRORS = {'required': 'Missing data for required field',
-                           'invalid-choice': 'Not a valid choice'}
+SPECIFIC_MESSAGE_ERRORS = {
+    'required': 'Missing data for required field',
+    'invalid-choice': 'Not a valid choice',
+}
 
 URL_TO_NAME_RESOURCES = {'resource_url': 'resource'}
 
 
 class TestConfdErrorTranslator(unittest.TestCase):
-
     def setUp(self):
         ConfdErrorTranslator.register_generic_messages(GENERIC_MESSAGE_ERRORS)
         ConfdErrorTranslator.register_specific_messages(SPECIFIC_MESSAGE_ERRORS)
 
     def test_translate_specific_error_id_from_fields(self):
-        fields = {'name': 'required',
-                  'description': 'invalid-choice'}
-        field_message = ConfdErrorTranslator.translate_specific_error_id_from_fields(fields)
-        expected = {'name': 'Missing data for required field',
-                    'description': 'Not a valid choice'}
+        fields = {'name': 'required', 'description': 'invalid-choice'}
+        field_message = ConfdErrorTranslator.translate_specific_error_id_from_fields(
+            fields
+        )
+        expected = {
+            'name': 'Missing data for required field',
+            'description': 'Not a valid choice',
+        }
         assert_that(field_message, equal_to(expected))
 
     def test_translate_specific_error_id_from_fields_when_dict(self):
-        fields = {'name': {'patate': 'required',
-                           'pomme': 'invalid-choice'}}
-        field_message = ConfdErrorTranslator.translate_specific_error_id_from_fields(fields)
-        expected = {'name': {'patate': 'Missing data for required field',
-                             'pomme': 'Not a valid choice'}}
+        fields = {'name': {'patate': 'required', 'pomme': 'invalid-choice'}}
+        field_message = ConfdErrorTranslator.translate_specific_error_id_from_fields(
+            fields
+        )
+        expected = {
+            'name': {
+                'patate': 'Missing data for required field',
+                'pomme': 'Not a valid choice',
+            }
+        }
         assert_that(field_message, equal_to(expected))
 
 
 class TestConfdErrorExtractor(unittest.TestCase):
-
     def setUp(self):
         ConfdErrorExtractor.register_generic_patterns(GENERIC_PATTERN_ERRORS)
         ConfdErrorExtractor.register_specific_patterns(SPECIFIC_PATTERN_ERRORS)
 
     def test_extract_specific_error_id_from_fields(self):
-        fields = {'name': ['Missing data for required field'],
-                  'description': ['Not a valid choice']}
+        fields = {
+            'name': ['Missing data for required field'],
+            'description': ['Not a valid choice'],
+        }
         error_ids = ConfdErrorExtractor.extract_specific_error_id_from_fields(fields)
 
-        expected = {'name': 'required',
-                    'description': 'invalid-choice'}
+        expected = {'name': 'required', 'description': 'invalid-choice'}
         assert_that(error_ids, equal_to(expected))
 
     def test_extract_specific_error_id_from_fields_when_string(self):
@@ -121,17 +143,21 @@ class TestConfdErrorExtractor(unittest.TestCase):
         assert_that(error_ids, equal_to(expected))
 
     def test_extract_specific_error_id_from_fields_when_embeded_fields(self):
-        fields = {'1': {'name': ['Missing data for required field'],
-                        'description': ['Not a valid choice']}}
+        fields = {
+            '1': {
+                'name': ['Missing data for required field'],
+                'description': ['Not a valid choice'],
+            }
+        }
         error_ids = ConfdErrorExtractor.extract_specific_error_id_from_fields(fields)
 
-        expected = {'1': {'name': 'required',
-                          'description': 'invalid-choice'}}
+        expected = {'1': {'name': 'required', 'description': 'invalid-choice'}}
         assert_that(error_ids, equal_to(expected))
 
-    def test_extract_specific_error_id_from_fields_when_field_with_multiple_errors(self):
-        fields = {'name': ['Missing data for required field'
-                           'Not a valid choice']}
+    def test_extract_specific_error_id_from_fields_when_field_with_multiple_errors(
+        self,
+    ):
+        fields = {'name': ['Missing data for required field' 'Not a valid choice']}
         error_ids = ConfdErrorExtractor.extract_specific_error_id_from_fields(fields)
 
         expected1 = {'name': 'required'}
@@ -192,8 +218,12 @@ class TestConfdErrorExtractor(unittest.TestCase):
                                             '2': {'label': ['label error']}}"
         field = ConfdErrorExtractor.extract_field(message)
 
-        expected = {'funckeys': {'1': {'name': ['string error']},
-                                 '2': {'label': ['label error']}}}
+        expected = {
+            'funckeys': {
+                '1': {'name': ['string error']},
+                '2': {'label': ['label error']},
+            }
+        }
         assert_that(field, equal_to(expected))
 
     def test_extract_field_when_message_is_invalid_object(self):
@@ -214,8 +244,7 @@ class TestConfdErrorExtractor(unittest.TestCase):
         response = [message1, message2]
         fields = ConfdErrorExtractor.extract_fields(response)
 
-        expected = {'name': ['name error1'],
-                    'description': ['description error2']}
+        expected = {'name': ['name error1'], 'description': ['description error2']}
         assert_that(fields, expected)
 
     def test_extract_fields_when_response_has_same_key(self):

@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import request, jsonify
@@ -9,7 +9,7 @@ from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     extract_select2_params,
-    build_select2_response
+    build_select2_response,
 )
 
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -21,7 +21,12 @@ class ApplicationView(BaseIPBXHelperView):
     form = ApplicationForm
     resource = 'application'
 
-    @menu_item('.ipbx.services.applications', l_('Applications'), icon="cubes", multi_tenant=True)
+    @menu_item(
+        '.ipbx.services.applications',
+        l_('Applications'),
+        icon="cubes",
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
@@ -43,7 +48,6 @@ class ApplicationView(BaseIPBXHelperView):
 
 
 class ApplicationDestinationView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         applications = self.service.list()

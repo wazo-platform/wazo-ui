@@ -1,4 +1,4 @@
-# Copyright 2018-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_login import current_user
@@ -7,14 +7,18 @@ from flask_login import current_user
 class BaseAuthService:
     resource_auth = None
 
-    def list(self, limit=None, order=None, direction=None, offset=None, search=None, **kwargs):
+    def list(
+        self, limit=None, order=None, direction=None, offset=None, search=None, **kwargs
+    ):
         resource_client = getattr(self._auth, self.resource_auth)
-        return resource_client.list(search=search,
-                                    order=order,
-                                    limit=limit,
-                                    direction=direction,
-                                    offset=offset,
-                                    **kwargs)
+        return resource_client.list(
+            search=search,
+            order=order,
+            limit=limit,
+            direction=direction,
+            offset=offset,
+            **kwargs
+        )
 
     def get(self, resource_id):
         resource_client = getattr(self._auth, self.resource_auth)
@@ -45,8 +49,12 @@ class IdentityService(BaseAuthService):
     def get(self, resource_id):
         resource = self._auth.users.get(resource_id)
         resource['members'] = {}
-        resource['members']['groups'] = self._auth.users.get_groups(resource['uuid'])['items']
-        resource['members']['policies'] = self._auth.users.get_policies(resource['uuid'])['items']
+        resource['members']['groups'] = self._auth.users.get_groups(resource['uuid'])[
+            'items'
+        ]
+        resource['members']['policies'] = self._auth.users.get_policies(
+            resource['uuid']
+        )['items']
         resource['tenant'] = self._auth.tenants.get(resource['tenant_uuid'])
         return resource
 
@@ -93,8 +101,12 @@ class GroupService(BaseAuthService):
     def get(self, resource_id):
         resource = self._auth.groups.get(resource_id)
         resource['members'] = {}
-        resource['members']['users'] = self._auth.groups.get_users(resource['uuid'])['items']
-        resource['members']['policies'] = self._auth.groups.get_policies(resource['uuid'])['items']
+        resource['members']['users'] = self._auth.groups.get_users(resource['uuid'])[
+            'items'
+        ]
+        resource['members']['policies'] = self._auth.groups.get_policies(
+            resource['uuid']
+        )['items']
         return resource
 
     def update(self, resource):
@@ -129,7 +141,9 @@ class TenantService(BaseAuthService):
 
     def list(self):
         tenant_uuid = current_user.get_tenant_uuid()
-        tenants = self._auth.tenants.list(tenant_uuid=tenant_uuid, recurse=True)['items']
+        tenants = self._auth.tenants.list(tenant_uuid=tenant_uuid, recurse=True)[
+            'items'
+        ]
         tenants = [tenant for tenant in tenants if tenant['name'] != 'master']
         resources = {
             'items': tenants,
@@ -141,8 +155,12 @@ class TenantService(BaseAuthService):
     def get(self, resource_id):
         resource = self._auth.tenants.get(resource_id)
         resource['members'] = {}
-        resource['members']['users'] = self._auth.tenants.get_users(resource['uuid'])['items']
-        resource['members']['policies'] = self._auth.tenants.get_policies(resource['uuid'])['items']
+        resource['members']['users'] = self._auth.tenants.get_users(resource['uuid'])[
+            'items'
+        ]
+        resource['members']['policies'] = self._auth.tenants.get_policies(
+            resource['uuid']
+        )['items']
         return resource
 
     def update(self, resource):

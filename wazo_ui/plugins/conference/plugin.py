@@ -1,4 +1,4 @@
-# Copyright 2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -16,8 +16,7 @@ from .form import ConferenceDestinationForm, ConferenceFuncKeyDestinationForm
 conference = create_blueprint('conference', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
@@ -27,10 +26,18 @@ class Plugin(object):
         register_flaskview(conference, ConferenceView)
 
         ConferenceDestinationView.service = ConferenceService(clients['wazo_confd'])
-        ConferenceDestinationView.register(conference, route_base='/conference_destination')
+        ConferenceDestinationView.register(
+            conference, route_base='/conference_destination'
+        )
 
-        register_destination_form('conference', l_('Conference'), ConferenceDestinationForm)
-        register_funckey_destination_form('conference', l_('Conference'), ConferenceFuncKeyDestinationForm)
-        register_listing_url('conference', 'conference.ConferenceDestinationView:list_json')
+        register_destination_form(
+            'conference', l_('Conference'), ConferenceDestinationForm
+        )
+        register_funckey_destination_form(
+            'conference', l_('Conference'), ConferenceFuncKeyDestinationForm
+        )
+        register_listing_url(
+            'conference', 'conference.ConferenceDestinationView:list_json'
+        )
 
         core.register_blueprint(conference)
