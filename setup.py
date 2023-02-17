@@ -86,7 +86,10 @@ setup(
     author_email='dev@wazo.community',
     url='https://github.com/wazo-platform/wazo-ui',
     packages=find_packages(),
-    include_package_data=True,
+    package_data={
+        'wazo_ui': ['static', 'templates', 'translations'],
+        'wazo_ui.plugins': ['*.static', '*.templates', '*.translations'],
+    },
     setup_requires=['babel'],
     install_requires=['babel'],
     zip_safe=False,
@@ -99,7 +102,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'wazo-ui=wazo_ui.bin.daemon:main',
+            'wazo-ui = wazo_ui.bin.daemon:main',
         ],
         'wazo_ui.plugins': [
             'access_feature = wazo_ui.plugins.access_feature.plugin:Plugin',
