@@ -2,6 +2,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
+import signal
+import threading
 
 from flask_babel import lazy_gettext as l_
 
@@ -38,6 +40,7 @@ logger = logging.getLogger(__name__)
 class Controller:
     def __init__(self, config):
         self.server = Server(config)
+        self._stopping_thread = None
         plugin_helpers.load(
             namespace='wazo_ui.plugins',
             names=config['enabled_plugins'],
@@ -93,3 +96,14 @@ class Controller:
             self.server.run()
         finally:
             logger.info('wazo-ui stopping...')
+            if self._stopping_thread:
+                self._stopping_thread.join()
+
+    def stop(self, reason):
+        logger.warning('Stopping wazo-ui: %s', reason)
+        self._stopping_thread = threading.Thread(target=self.server.stop, name=reason)
+        self._stopping_thread.start()
+
+
+def _signal_handler(controller, signum, frame):
+    controller.stop(reason=signal.Signals(signum).name)
