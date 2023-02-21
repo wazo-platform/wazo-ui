@@ -93,10 +93,7 @@ class Server:
         for route in http_helpers.list_routes(app):
             logger.debug(route)
 
-        try:
-            self.server.start()
-        except KeyboardInterrupt:
-            self.server.stop()
+        self.server.start()
 
     def stop(self):
         if self.server:
