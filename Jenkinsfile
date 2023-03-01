@@ -12,18 +12,22 @@ pipeline {
     stage('Debian build and deploy') {
       steps {
         build job: 'build-package-no-arch', parameters: [
-          string(name: 'PACKAGE', value: "${JOB_NAME}"),
+          string(name: 'PACKAGE', value: "wazo-ui"),
+          string(name: "BRANCH", value: "bullseye"),
+          string(name: "DISTRIBUTION", value: "wazo-dev-wip-bullseye"),
         ]
       }
     }
     stage('Docker build') {
       steps {
-        sh "docker build -t wazoplatform/${JOB_NAME}:latest ."
+        sh "sed -i 's/master.zip/bullseye.zip/g' requirements.txt"
+        sh "docker build -t wazoplatform/wazo-ui:bullseye ."
+        sh "sed -i 's/bullseye.zip/master.zip/g' requirements.txt"
       }
     }
     stage('Docker publish') {
       steps {
-        sh "docker push wazoplatform/${JOB_NAME}:latest"
+        sh "docker push wazoplatform/wazo-ui:bullseye"
       }
     }
   }
