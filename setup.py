@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
+from collections import defaultdict
+from glob import glob
 from distutils.cmd import Command as _Command
+from pathlib import Path
+
 from setuptools import find_packages
 from setuptools import setup
 from setuptools.command.build_py import build_py as _build_py
@@ -78,6 +83,20 @@ class BabelWrapper:
 
 babel_wrapper = BabelWrapper()
 
+
+def get_package_data_recursive(data: dict[str, list[str]]) -> dict[str, list[str]]:
+    """
+    The option `package_data` does not resolve `**` recursive globs.
+    """
+    matches = defaultdict(list)
+    root_dir = Path(__file__).parent.resolve()
+    for module, glob_patterns in data.items():
+        module_dir = root_dir / module.replace('.', '/')
+        for glob_pattern in glob_patterns:
+            matches[module].extend(glob(str(module_dir / glob_pattern), recursive=True))
+    return matches
+
+
 setup(
     name=PROJECT,
     version='0.1',
@@ -86,7 +105,20 @@ setup(
     author_email='dev@wazo.community',
     url='https://github.com/wazo-platform/wazo-ui',
     packages=find_packages(),
-    include_package_data=True,
+    package_data=get_package_data_recursive(
+        {
+            'wazo_ui': [
+                'static/**',
+                'templates/**',
+                'translations/**',
+            ],
+            'wazo_ui.plugins': [
+                '*/static/**',
+                '*/templates/**',
+                '*/translations/**',
+            ],
+        }
+    ),
     setup_requires=['babel'],
     install_requires=['babel'],
     zip_safe=False,
@@ -99,7 +131,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'wazo-ui=wazo_ui.bin.daemon:main',
+            'wazo-ui = wazo_ui.bin.daemon:main',
         ],
         'wazo_ui.plugins': [
             'access_feature = wazo_ui.plugins.access_feature.plugin:Plugin',

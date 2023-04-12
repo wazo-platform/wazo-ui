@@ -18,7 +18,7 @@ from flask_session import Session
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from pkg_resources import iter_entry_points, resource_filename, resource_isdir
-from werkzeug.contrib.fixers import ProxyFix
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from xivo import http_helpers
 from xivo.http_helpers import ReverseProxied
@@ -93,10 +93,7 @@ class Server:
         for route in http_helpers.list_routes(app):
             logger.debug(route)
 
-        try:
-            self.server.start()
-        except KeyboardInterrupt:
-            self.server.stop()
+        self.server.start()
 
     def stop(self):
         if self.server:
