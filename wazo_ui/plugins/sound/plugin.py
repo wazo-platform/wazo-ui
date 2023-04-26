@@ -15,7 +15,7 @@ from .view import SoundView, SoundListingView, SoundFileView
 sound = create_blueprint('sound', __name__)
 
 
-class Plugin(object):
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']

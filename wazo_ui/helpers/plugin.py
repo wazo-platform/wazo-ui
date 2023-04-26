@@ -17,7 +17,7 @@ def create_blueprint_core(name, import_name, url_prefix=None):
 
 def create_blueprint(name, import_name):
     return Blueprint(
-        'wazo_engine.{}'.format(name),
+        f'wazo_engine.{name}',
         import_name,
         template_folder='templates',
         static_folder='static/wazo_engine',

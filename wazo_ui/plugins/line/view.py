@@ -37,7 +37,7 @@ class LineView(BaseIPBXHelperView):
             return self._index()
 
         return render_template(
-            self._get_template('protocol_{}'.format(protocol)),
+            self._get_template(f'protocol_{protocol}'),
             form=self.form(),
             listing_urls=self.listing_urls,
         )
@@ -221,10 +221,10 @@ class LineListingView(LoginRequiredView):
         results = []
         for line in lines:
             if line.get('endpoint_custom'):
-                text = '{} ({})'.format(line['endpoint_custom']['interface'], 'custom')
+                text = f'{line["endpoint_custom"]["interface"]} ({"custom"})'
             if line.get('endpoint_sccp'):
-                text = '{} ({})'.format(line['endpoint_sccp']['id'], 'sccp')
+                text = f'{line["endpoint_sccp"]["id"]} ({"sccp"})'
             if line.get('endpoint_sip'):
-                text = '{} ({})'.format(line['endpoint_sip']['label'], 'sip')
+                text = f'{line["endpoint_sip"]["label"]} ({"sip"})'
             results.append({'id': line['id'], 'text': text})
         return results

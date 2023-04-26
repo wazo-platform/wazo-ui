@@ -168,9 +168,7 @@ class Server:
 
     def _configure_session(self):
         app.config['SESSION_TYPE'] = 'sqlalchemy'
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{home}/sessions.db'.format(
-            home=HOME
-        )
+        app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{HOME}/sessions.db'
         db = SQLAlchemy(app)
         app.config['SESSION_SQLALCHEMY'] = db
         flask_session = Session()

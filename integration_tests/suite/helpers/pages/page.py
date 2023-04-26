@@ -30,9 +30,9 @@ class Page:
 
     def build_url(self, *parts, **kwargs):
         path = '/'.join(parts)
-        url = '{}/{}'.format(self.CONFIG['base_url'].rstrip('/'), path.lstrip('/'))
+        url = f'{self.CONFIG["base_url"].rstrip("/")}/{path.lstrip("/")}'
         if kwargs:
-            url += '?{}'.format(urllib.parse.urlencode(kwargs))
+            url += f'?{urllib.parse.urlencode(kwargs)}'
         return url
 
     def wait(self):
@@ -147,7 +147,7 @@ class Page:
 
 class InputElement(WebElement):
     def __init__(self, element):
-        super(InputElement, self).__init__(element.parent, element.id)
+        super().__init__(element.parent, element.id)
 
     def get_error(self):
         errors = self.parent.find_element(By.CLASS_NAME, 'with-errors')
@@ -166,8 +166,8 @@ class InputElement(WebElement):
 
 class ListPage(Page, metaclass=abc.ABCMeta):
     line_xpath = "//tr[td[contains(., '{name}')]]"
-    edit_xpath = "{}/td[1]".format(line_xpath)
-    delete_xpath = "{}/td/a[@title='Delete']".format(line_xpath)
+    edit_xpath = f"{line_xpath}/td[1]"
+    delete_xpath = f"{line_xpath}/td/a[@title='Delete']"
 
     list_selector = (By.CSS_SELECTOR, 'tbody tr')
     form_selector = (By.CSS_SELECTOR, 'form')
@@ -248,7 +248,7 @@ class ListPage(Page, metaclass=abc.ABCMeta):
 
     def get_row(self, text):
         table = self.driver.find_element(By.CSS_SELECTOR, 'table tbody')
-        xpath = '//tr[td[contains(., "{}")]]'.format(text)
+        xpath = f'//tr[td[contains(., "{text}")]]'
         headers = self._extract_headers(table)
         return ListRow(table.find_element(By.XPATH, xpath), headers=headers)
 

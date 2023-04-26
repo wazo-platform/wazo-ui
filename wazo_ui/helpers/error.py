@@ -116,9 +116,7 @@ class ErrorExtractor:
             constraint_message = ErrorTranslator.translate_constraint(
                 error['constraint_id']
             )
-            return '{constraint_message} ({constraint})'.format(
-                constraint_message=constraint_message, constraint=error['constraint']
-            )
+            return f'{constraint_message} ({error["constraint"]})'
 
     @classmethod
     def get_resource_from_error(cls, error):

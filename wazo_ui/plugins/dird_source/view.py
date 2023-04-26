@@ -28,7 +28,7 @@ class DirdSourceView(BaseIPBXHelperView):
         try:
             resource_list = {"items": []}
             for source in self.service.list()['items']:
-                source['get_url'] = "{}/".format(source['backend'])
+                source['get_url'] = f"{source['backend']}/"
                 resource_list['items'].append(source)
             backend_list = self.service.list_backends()
         except HTTPError as error:
@@ -391,11 +391,9 @@ class DirdSourceView(BaseIPBXHelperView):
         blueprint = request.blueprint.replace('.', '/')
 
         if not type_:
-            return '{blueprint}/form/form_{backend}.html'.format(
-                blueprint=blueprint, backend=backend
-            )
+            return f'{blueprint}/form/form_{backend}.html'
         else:
-            return '{blueprint}/{type_}.html'.format(blueprint=blueprint, type_=type_)
+            return f'{blueprint}/{type_}.html'
 
 
 class DirdSourceListingView(LoginRequiredView):

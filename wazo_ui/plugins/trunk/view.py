@@ -33,7 +33,7 @@ class TrunkView(BaseIPBXHelperView):
             return self._index()
 
         return render_template(
-            self._get_template('protocol_{}'.format(protocol)),
+            self._get_template(f'protocol_{protocol}'),
             form=self.form(),
             listing_urls=self.listing_urls,
         )
@@ -226,10 +226,10 @@ class TrunkListingView(LoginRequiredView):
         results = []
         for trunk in trunks:
             if trunk.get('endpoint_custom'):
-                text = '{} ({})'.format(trunk['endpoint_custom']['interface'], 'custom')
+                text = f'{trunk["endpoint_custom"]["interface"]} ({"custom"})'
             if trunk.get('endpoint_sip'):
-                text = '{} ({})'.format(trunk['endpoint_sip']['label'], 'sip')
+                text = f'{trunk["endpoint_sip"]["label"]} ({"sip"})'
             if trunk.get('endpoint_iax'):
-                text = '{} ({})'.format(trunk['endpoint_iax']['name'], 'iax')
+                text = f'{trunk["endpoint_iax"]["name"]} ({"iax"})'
             results.append({'id': trunk['id'], 'text': text})
         return results

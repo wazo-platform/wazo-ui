@@ -363,8 +363,8 @@ class UserDestinationView(LoginRequiredView):
         users = self.service.list(**params)
         results = []
         for user in users['items']:
-            if user.get('lastname'):
-                text = '{} {}'.format(user['firstname'], user['lastname'])
+            if last_name := user.get('lastname'):
+                text = f'{user["firstname"]} {last_name}'
             else:
                 text = user['firstname']
 

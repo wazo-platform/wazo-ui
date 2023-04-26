@@ -20,7 +20,7 @@ listing_urls = {}
 
 
 def register_listing_url(type_id, endpoint):
-    listing_urls[type_id] = 'wazo_engine.{}'.format(endpoint)
+    listing_urls[type_id] = f'wazo_engine.{endpoint}'
 
 
 class BaseEngineView:
@@ -64,19 +64,12 @@ class BaseIPBXHelperView(BaseEngineView, BaseView):
 
             translated_resource = e_translator.resources.get(resource, '')
             flash(
-                '{resource}{delimiter}{generic_error}'.format(
-                    resource=translated_resource,
-                    delimiter=': ' if translated_resource else '',
-                    generic_error=e_translator.generic_messages.get(error_id, ''),
-                ),
+                f'{translated_resource}{": " if translated_resource else ""}'
+                f'{e_translator.generic_messages.get(error_id, "")}',
                 'error',
             )
             flash(
-                '{method} {url}: {response}'.format(
-                    method=error.request.method,
-                    url=error.request.url,
-                    response=response,
-                ),
+                f'{error.request.method} {error.request.url}: {response}',
                 'error_details',
             )
         except Exception:

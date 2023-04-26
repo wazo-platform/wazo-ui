@@ -18,6 +18,6 @@ class IntegrationTest(AdminUIAssetLaunchingTestCase):
 
     @classmethod
     def setup_browser(cls):
-        browser = super(IntegrationTest, cls).setup_browser()
+        browser = super().setup_browser()
         browser.pages['index'] = IndexPage
         return browser

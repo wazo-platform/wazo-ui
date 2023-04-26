@@ -73,25 +73,19 @@ class MohView(BaseIPBXHelperView):
 
     def delete_filename(self, uuid, moh_filename):
         self.service.delete_filename(uuid, moh_filename)
-        return redirect(
-            url_for('.{}:{}'.format(self.__class__.__name__, 'get'), id=uuid)
-        )
+        return redirect(url_for(f'.{self.__class__.__name__}:{"get"}', id=uuid))
 
     @route('/upload_filename/<uuid>', methods=['POST'])
     def upload_filename(self, uuid):
         if 'moh_filename' not in request.files:
             flash('[upload] Upload attempt with no file', 'error')
-            return redirect(
-                url_for('.{}:{}'.format(self.__class__.__name__, 'get'), id=uuid)
-            )
+            return redirect(url_for(f'.{self.__class__.__name__}:{"get"}', id=uuid))
 
         file = request.files.get('moh_filename')
 
         self.service.upload_filename(uuid, file.filename, file.read())
 
-        return redirect(
-            url_for('.{}:{}'.format(self.__class__.__name__, 'get'), id=uuid)
-        )
+        return redirect(url_for(f'.{self.__class__.__name__}:{"get"}', id=uuid))
 
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('moh', {}))

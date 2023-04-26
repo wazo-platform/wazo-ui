@@ -17,7 +17,7 @@ class Select2:
         self.browser = root
         self.element = self.browser.find_element(
             By.ID,
-            'select2-{0}-container'.format(element.get_attribute('id')),
+            f'select2-{element.get_attribute("id")}-container',
         )
 
     def click(self, element=None):
