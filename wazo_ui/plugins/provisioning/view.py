@@ -24,9 +24,7 @@ class ProvisioningBaseView(BaseIPBXHelperView):
         blueprint = request.blueprint.replace('.', '/')
         return self.templates.get(
             type_,
-            '{blueprint}/{resource}/{type_}.html'.format(
-                blueprint=blueprint, resource=self.resource, type_=type_
-            ),
+            f'{blueprint}/{self.resource}/{type_}.html',
         )
 
 

@@ -128,8 +128,6 @@ class ExternalAuthView(BaseIPBXHelperView):
         blueprint = request.blueprint.replace('.', '/')
 
         if not type_:
-            return '{blueprint}/form/form_{type}.html'.format(
-                blueprint=blueprint, type=type
-            )
+            return f'{blueprint}/form/form_{type}.html'
         else:
-            return '{blueprint}/{type_}.html'.format(blueprint=blueprint, type_=type_)
+            return f'{blueprint}/{type_}.html'

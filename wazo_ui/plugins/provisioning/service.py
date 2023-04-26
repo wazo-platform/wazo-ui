@@ -68,9 +68,9 @@ class PluginService:
     def _format_bytes_to_human_readable_size(self, size):
         for count in ['Bytes', 'KB', 'MB', 'GB']:
             if size > -1024.0 and size < 1024.0:
-                return "%3.1f%s" % (size, count)
+                return f"{size:3.1f}{count}"
             size /= 1024.0
-        return "%3.1f%s" % (size, 'TB')
+        return f"{size:3.1f}{'TB'}"
 
     def _filter_dict(self, dict_, search):
         return {key: value for key, value in dict_.items() if search in key}

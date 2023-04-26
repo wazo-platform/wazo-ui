@@ -116,17 +116,12 @@ class CallFilterView(BaseIPBXHelperView):
         results = []
         for user in users:
             if user.firstname.data and user.lastname.data:
-                text = '{}{}'.format(
-                    user.firstname.data,
-                    ' {}'.format(user.lastname.data) if user.lastname.data else '',
-                )
+                text = f'{user.firstname.data}{f" {user.lastname.data}" if user.lastname.data else ""}'
             elif user.uuid.data:
                 user_data = self.service.get_user_by_uuid(user.uuid.data)
                 text = '{}{}'.format(
                     user_data['firstname'],
-                    ' {}'.format(user_data['lastname'])
-                    if user_data['lastname']
-                    else '',
+                    f' {user_data["lastname"]}' if user_data['lastname'] else '',
                 )
             else:
                 continue
@@ -140,10 +135,8 @@ class CallFilterView(BaseIPBXHelperView):
         for user in users:
             text = '{}{}{}'.format(
                 user.firstname.data,
-                ' {}'.format(user.lastname.data) if user.lastname.data else '',
-                ' ({}{})'.format(bsfilter_exten, user.member_id.data)
-                if bsfilter_exten
-                else '',
+                f' {user.lastname.data}' if user.lastname.data else '',
+                f' ({bsfilter_exten}{user.member_id.data})' if bsfilter_exten else '',
             )
             results.append((user.uuid.data, text))
         return results
@@ -163,8 +156,8 @@ class CallFilterView(BaseIPBXHelperView):
     def _prepare_sound_filename_label(self, file_, format_):
         return '{}{}{}'.format(
             file_['name'],
-            ' [{}]'.format(format_['format']) if format_['format'] else '',
-            ' ({})'.format(format_['language']) if format_['language'] else '',
+            f' [{format_["format"]}]' if format_['format'] else '',
+            f' ({format_["language"]})' if format_['language'] else '',
         )
 
     def _map_form_to_resources(self, form, form_id=None):
@@ -185,7 +178,7 @@ class CallFilterMemberListingView(LoginRequiredView):
                 'id': user['member_id'],
                 'text': '{}{}'.format(
                     user['firstname'],
-                    ' {}'.format(user['lastname'] if user['lastname'] else ''),
+                    f" {user['lastname'] if user['lastname'] else ''}",
                 ),
             }
             for callfilter in callfilters['items']

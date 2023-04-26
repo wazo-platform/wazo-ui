@@ -72,7 +72,7 @@ class CallPermissionView(NewHelperViewMixin, BaseIPBXHelperView):
         results = []
         for user in users:
             if user.form.lastname.data:
-                text = '{} {}'.format(user.form.firstname.data, user.form.lastname.data)
+                text = f'{user.form.firstname.data} {user.form.lastname.data}'
             else:
                 text = user.form.firstname.data
             results.append((user.form.uuid.data, text))

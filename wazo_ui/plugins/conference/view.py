@@ -87,9 +87,8 @@ class ConferenceDestinationView(LoginRequiredView):
     def _list_json(self, field_id):
         params = extract_select2_params(request.args)
         conferences = self.service.list(**params)
-        results = []
-        for conference in conferences['items']:
-            text = '{}'.format(conference['name'])
-            results.append({'id': conference[field_id], 'text': text})
-
+        results = [
+            {'id': conference[field_id], 'text': f'{conference["name"]}'}
+            for conference in conferences['items']
+        ]
         return jsonify(build_select2_response(results, conferences['total'], params))

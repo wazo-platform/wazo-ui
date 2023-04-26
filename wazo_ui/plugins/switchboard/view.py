@@ -50,7 +50,7 @@ class SwitchboardView(BaseIPBXHelperView):
         results = []
         for user in users:
             if user.lastname.data:
-                text = '{} {}'.format(user.firstname.data, user.lastname.data)
+                text = f'{user.firstname.data} {user.lastname.data}'
             else:
                 text = user.firstname.data
             results.append((user.uuid.data, text))

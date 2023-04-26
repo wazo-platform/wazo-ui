@@ -131,7 +131,7 @@ class ExtensionListingView(LoginRequiredView):
         if not all_extens:
             return jsonify({'results': []})
 
-        used_extens = set([])
+        used_extens = set()
         for extension in self.service.list(search=search, context=context['name'])[
             'items'
         ]:

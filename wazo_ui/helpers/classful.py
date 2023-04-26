@@ -48,7 +48,7 @@ class IndexAjaxViewMixin:
         offset = request.args.get('start')
         direction = request.args.get('order[0][dir]')
         order_column = request.args.get('order[0][column]', 0)
-        order = request.args.get('columns[{}][data]'.format(order_column))
+        order = request.args.get(f'columns[{order_column}][data]')
         search = request.args.get('search[value]')
 
         result = self.service.list(
@@ -147,10 +147,10 @@ class BaseHelperViewWithoutLogin(FlaskView):
         if request.referrer:
             return redirect(request.referrer)
 
-        return redirect(url_for('.{}:{}'.format(self.__class__.__name__, method_view)))
+        return redirect(url_for(f'.{self.__class__.__name__}:{method_view}'))
 
     def _redirect_for(self, method_view):
-        return redirect(url_for('.{}:{}'.format(self.__class__.__name__, method_view)))
+        return redirect(url_for(f'.{self.__class__.__name__}:{method_view}'))
 
     def _fill_form_error(self, form, error):
         error_resources = self._extract_error_for_form(error)
@@ -161,22 +161,15 @@ class BaseHelperViewWithoutLogin(FlaskView):
     def _flash_http_error(self, error):
         response = error.response.json()
         resource = ErrorExtractor.get_resource_from_error(error)
+        generic_error = ErrorTranslator.generic_messages.get(
+            response.get('error_id'), ''
+        )
         flash(
-            '{resource}{delimiter}{generic_error}'.format(
-                resource=resource,
-                delimiter=': ' if resource else '',
-                generic_error=ErrorTranslator.generic_messages.get(
-                    response.get('error_id'), ''
-                ),
-            ),
+            f'{resource}{": " if resource else ""}{generic_error}',
             'error',
         )
         flash(
-            '{method} {url}: {response}'.format(
-                method=error.request.method,
-                url=error.request.url,
-                response=response,
-            ),
+            f'{error.request.method} {error.request.url}: {response}',
             'error_details',
         )
 
@@ -184,9 +177,7 @@ class BaseHelperViewWithoutLogin(FlaskView):
         for field, errors in form.errors.items():
             for error in errors:
                 flash(
-                    '{field} - {message}'.format(
-                        field=getattr(form, field).label.text, message=error
-                    ),
+                    f'{getattr(form, field).label.text} - {error}',
                     'error',
                 )
 
@@ -205,11 +196,7 @@ class BaseHelperViewWithoutLogin(FlaskView):
         errors_msg = []
         for field, errors in form.errors.items():
             for error in errors:
-                errors_msg.append(
-                    '{field} - {message}'.format(
-                        field=getattr(form, field).label.text, message=error
-                    )
-                )
+                errors_msg.append(f'{getattr(form, field).label.text} - {error}')
         return errors_msg
 
     def _extract_error_message(self, error):
@@ -223,11 +210,7 @@ class BaseHelperViewWithoutLogin(FlaskView):
 
     def _get_full_error(self, error):
         response = error.response.json()
-        return '{method} {url}: {response}'.format(
-            method=error.request.method,
-            url=error.request.url,
-            response=response,
-        )
+        return f'{error.request.method} {error.request.url}: {response}'
 
 
 # TODO implement this in all views that do not require all methods (CRUD)

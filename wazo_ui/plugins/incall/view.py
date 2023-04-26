@@ -80,8 +80,8 @@ class IncallView(BaseIPBXHelperView):
     def _prepare_sound_filename_label(self, file_, format_):
         return '{}{}{}'.format(
             file_['name'],
-            ' [{}]'.format(format_['format']) if format_['format'] else '',
-            ' ({})'.format(format_['language']) if format_['language'] else '',
+            f' [{format_["format"]}]' if format_['format'] else '',
+            f' ({format_["language"]})' if format_['language'] else '',
         )
 
     def _map_resources_to_form_errors(self, form, resources):
