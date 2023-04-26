@@ -210,15 +210,15 @@ class SoundListingView(LoginRequiredView):
         for sound in sounds['items']:
             for file_ in sound['files']:
                 for format_ in file_['formats']:
+                    format_label = (
+                        f' [{format_["format"]}]' if format_['format'] else ''
+                    )
+                    language_label = (
+                        f' ({format_["language"]})' if format_['language'] else ''
+                    )
                     results.append(
                         {
-                            'text': '{}{}{}'.format(
-                                file_['name'],
-                                f' [{format_["format"]}]' if format_['format'] else '',
-                                f' ({format_["language"]})'
-                                if format_['language']
-                                else '',
-                            ),
+                            'text': f'{file_["name"]}{format_label}{language_label}',
                             'id': file_['name']
                             if sound['name'] == 'system'
                             else format_['path'],

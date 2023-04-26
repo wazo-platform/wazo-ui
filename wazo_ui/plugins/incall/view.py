@@ -78,11 +78,9 @@ class IncallView(BaseIPBXHelperView):
         return results
 
     def _prepare_sound_filename_label(self, file_, format_):
-        return '{}{}{}'.format(
-            file_['name'],
-            f' [{format_["format"]}]' if format_['format'] else '',
-            f' ({format_["language"]})' if format_['language'] else '',
-        )
+        format_label = f' [{format_["format"]}]' if format_['format'] else ''
+        language_label = f' ({format_["language"]})' if format_['language'] else ''
+        return f'{file_["name"]}{format_label}{language_label}'
 
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('incall', {}))
