@@ -37,7 +37,7 @@ class HaView(BaseIPBXHelperView):
         form = self.form()
         if not form.csrf_token.validate(form):
             self._flash_basic_form_errors(form)
-            return self._index(form)
+            return self.index()
 
         resource = form.to_dict()
 
