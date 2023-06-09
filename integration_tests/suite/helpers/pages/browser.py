@@ -5,7 +5,7 @@ import logging
 
 from selenium import webdriver
 from selenium.webdriver.remote.remote_connection import LOGGER
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from pyvirtualdisplay import Display
 
 from .login import LoginPage
@@ -51,7 +51,7 @@ class RemoteBrowser(Browser):
     def start(self):
         self.driver = webdriver.Remote(
             command_executor=self.remote_url,
-            desired_capabilities=DesiredCapabilities.FIREFOX,
+            options=FirefoxOptions(),
         )
         self.driver.set_window_size(1920, 1080)
         self._login()
