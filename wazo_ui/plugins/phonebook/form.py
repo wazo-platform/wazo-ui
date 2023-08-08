@@ -21,5 +21,5 @@ class ManagePhonebookForm(BaseForm):
     phone = StringField(l_('Phone'), [InputRequired(), Length(max=80)])
     mobile_phone = StringField(l_('Mobile Phone'), [Length(max=80)])
     fax = StringField(l_('Fax'), [Length(max=80)])
-    phonebook_id = HiddenField()
+    phonebook_uuid = HiddenField()
     submit = SubmitField(l_('Submit'))

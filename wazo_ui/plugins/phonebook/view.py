@@ -41,15 +41,17 @@ class ManagePhonebookView(BaseIPBXHelperView):
         multi_tenant=True,
     )
     def index(self, form=None):
-        phonebook_id = request.args.get('phonebook_id')
+        phonebook_uuid = request.args.get('phonebook_uuid')
         try:
             phonebook_list = self.service.list_phonebook()
             if len(phonebook_list['items']) < 1:
                 flash(l_('Please add phonebook before adding contacts!'), 'error')
                 return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
             resource = phonebook_list['items'][0]
-            phonebook_id = resource['phonebook_id'] = phonebook_id or resource.get('id')
-            resource_list = self.service.list_contacts(phonebook_id)
+            phonebook_uuid = resource[
+                'phonebook_uuid'
+            ] = phonebook_uuid or resource.get('uuid')
+            resource_list = self.service.list_contacts(phonebook_uuid)
         except HTTPError as error:
             self._flash_http_error(error)
             return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
@@ -60,7 +62,7 @@ class ManagePhonebookView(BaseIPBXHelperView):
         kwargs = {
             'form': form,
             'resource_list': resource_list,
-            'phonebook_id': phonebook_id,
+            'phonebook_uuid': phonebook_uuid,
             'phonebook_list': phonebook_list['items'],
         }
         if self.listing_urls:
@@ -88,10 +90,10 @@ class ManagePhonebookView(BaseIPBXHelperView):
         )
         return self._redirect_referrer_or('index')
 
-    @route('/delete/<phonebook_id>/<id>', methods=['GET'])
-    def delete(self, phonebook_id, id):
+    @route('/delete/<phonebook_uuid>/<id>', methods=['GET'])
+    def delete(self, phonebook_uuid, id):
         try:
-            self.service.delete_contact(phonebook_id, id)
+            self.service.delete_contact(phonebook_uuid, id)
             flash(
                 l_(
                     '%(resource)s: Resource %(id)s has been deleted',
