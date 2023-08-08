@@ -23,7 +23,7 @@ class ExtensionForm(BaseForm):
 
 
 class FeaturesForm(BaseForm):
-    id = HiddenField()
+    uuid = HiddenField()
     enabled = BooleanField(l_('Enabled'), default=False)
     feature = StringField(l_('Feature'), validators=[InputRequired()])
     exten = StringField(l_('Extension'), validators=[InputRequired()])
