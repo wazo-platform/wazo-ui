@@ -38,7 +38,7 @@ class ConferenceForm(BaseForm):
         [Regexp(r'^[0-9]+$'), Length(max=80)],
         render_kw={'type': 'password', 'data_toggle': 'password'},
     )
-    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=39)])
+    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=79)])
     quiet_join_leave = BooleanField(l_('Quiet join/leave'), default=False)
     submit = SubmitField()
 

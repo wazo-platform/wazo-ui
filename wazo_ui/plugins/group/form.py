@@ -67,7 +67,7 @@ class GroupForm(BaseForm):
     caller_id_name = StringField('Callerid name', [Length(max=80)])
     enabled = BooleanField(l_('Enabled'))
     music_on_hold = SelectField('Music On Hold', [Length(max=128)], choices=[])
-    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=39)])
+    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=79)])
     retry_delay = IntegerField('Retry delay', [NumberRange(min=0)])
     ring_in_use = BooleanField('Ring in use', default=False)
     ring_strategy = SelectField(
