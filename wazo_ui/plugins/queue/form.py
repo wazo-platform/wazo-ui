@@ -102,7 +102,7 @@ class QueueForm(BaseForm):
     )
 
     ignore_forward = BooleanField(l_('Ignore forward'), default=False)
-    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=39)])
+    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=79)])
     retry_on_timeout = BooleanField(l_('Retry on timeout'), default=False)
     ring_on_hold = BooleanField(l_('Ring on hold'), default=False)
     timeout = IntegerField(l_('Timeout'), [NumberRange(min=0)])

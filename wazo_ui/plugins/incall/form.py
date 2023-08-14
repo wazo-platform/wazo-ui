@@ -30,7 +30,7 @@ class ScheduleForm(BaseForm):
 class IncallForm(BaseForm):
     extensions = FieldList(FormField(ExtensionForm), min_entries=1)
     destination = DestinationField()
-    preprocess_subroutine = StringField(l_('Preprocess Subroutine'), [Length(max=39)])
+    preprocess_subroutine = StringField(l_('Preprocess Subroutine'), [Length(max=79)])
     greeting_sound = SelectField(
         l_('Greeting sound'), choices=[], validators=[Length(max=255)]
     )

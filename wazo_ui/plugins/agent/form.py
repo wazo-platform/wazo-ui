@@ -26,7 +26,7 @@ class AgentForm(BaseForm):
     lastname = StringField(l_('Lastname'), [Length(max=128)])
     number = StringField(l_('Agent Number'), [InputRequired(), Length(max=128)])
     description = StringField(l_('Description'), [Length(max=128)])
-    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=128)])
+    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=79)])
     password = StringField(l_('Password'), [Length(max=128)])
     language = StringField(l_('Language'), [Length(max=128)])
     skills = FieldList(FormField(SkillListForm))

@@ -32,7 +32,7 @@ class IncallRangesForm(BaseRangesForm):
 
 
 class ContextForm(BaseForm):
-    name = StringField(l_('Name'), validators=[InputRequired(), Length(max=39)])
+    name = StringField(l_('Name'), validators=[InputRequired(), Length(max=79)])
     label = StringField(l_('Label'), validators=[InputRequired(), Length(max=128)])
     type = SelectField(
         l_('Type'),

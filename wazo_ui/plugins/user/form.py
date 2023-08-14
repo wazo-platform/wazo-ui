@@ -151,7 +151,7 @@ class UserForm(BaseForm):
     mobile_phone_number = StringField(l_('Phone mobile'), [Length(max=80)])
     ring_seconds = IntegerField(l_('Ring seconds'), [NumberRange(min=0, max=60)])
     music_on_hold = SelectField(l_('Music On Hold'), choices=[])
-    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=39)])
+    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=79)])
     outgoing_caller_id = SelectField(l_('Outgoing caller ID'))
     simultaneous_calls = IntegerField(
         l_('Simultaneous calls'), [NumberRange(min=1, max=20)]

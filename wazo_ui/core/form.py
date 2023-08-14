@@ -55,7 +55,7 @@ class ApplicationCallBackDISADestination(BaseForm):
         render_kw={'type': 'password'},
     )
     context = StringField(
-        l_('Context'), [InputRequired(), Length(max=39), Regexp(r'^[a-zA-Z0-9_-]+$')]
+        l_('Context'), [InputRequired(), Length(max=79), Regexp(r'^[a-zA-Z0-9_-]+$')]
     )
 
 
@@ -65,7 +65,7 @@ class ApplicationDISADestination(ApplicationCallBackDISADestination):
 
 class ApplicationDirectoryDestination(BaseForm):
     context = StringField(
-        l_('Context'), [InputRequired(), Length(max=39), Regexp(r'^[a-zA-Z0-9_-]+$')]
+        l_('Context'), [InputRequired(), Length(max=79), Regexp(r'^[a-zA-Z0-9_-]+$')]
     )
 
 
@@ -75,7 +75,7 @@ class ApplicationFaxToMailDestination(BaseForm):
 
 class ApplicationVoicemailDestination(BaseForm):
     context = StringField(
-        l_('Context'), [InputRequired(), Length(max=39), Regexp(r'^[a-zA-Z0-9_-]+$')]
+        l_('Context'), [InputRequired(), Length(max=79), Regexp(r'^[a-zA-Z0-9_-]+$')]
     )
 
 
