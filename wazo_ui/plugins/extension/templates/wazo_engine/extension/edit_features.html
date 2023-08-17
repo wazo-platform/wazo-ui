@@ -22,7 +22,7 @@
 
             {% call build_table_body(class_='dynamic-table') %}
               {% for extension in form.extensions %}
-                {{ render_field(extension['id']) }}
+                {{ render_field(extension['uuid']) }}
                 <tr class="row-line">
                   <td>{{ render_field(extension.enabled, with_label=False) }}</td>
                   <td>{{ render_field(extension.feature, with_label=False, readonly=True) }}</td>
