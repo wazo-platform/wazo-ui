@@ -1,7 +1,9 @@
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
+from typing import Protocol, TypeVar
 
 from flask import flash, jsonify, redirect, render_template, request, url_for
 from flask_babel import gettext as _
@@ -124,7 +126,7 @@ class BaseHelperViewWithoutLogin(FlaskView):
     def _populate_form(self, form):
         return form
 
-    def _map_form_to_resources(self, form, form_id=None):
+    def _map_form_to_resources(self, form, form_id=None) -> dict:
         data = form.to_dict()
         if form_id:
             try:
@@ -218,8 +220,29 @@ class BaseHelperView(BaseHelperViewWithoutLogin, LoginRequiredView):
     pass
 
 
+ResourceT = TypeVar("ResourceT")
+
+
+class Service(Protocol[ResourceT]):
+    def list(self) -> list[ResourceT]:
+        ...
+
+    def get(self, id) -> ResourceT:
+        ...
+
+    def delete(self, id) -> None:
+        ...
+
+    def update(self, resource: ResourceT) -> ResourceT:
+        ...
+
+    def create(self, resource: ResourceT) -> ResourceT:
+        ...
+
+
 class BaseView(BaseHelperView):
     listing_urls = listing_urls
+    service: Service
 
     def index(self):
         return self._index()
