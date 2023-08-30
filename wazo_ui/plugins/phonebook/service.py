@@ -57,14 +57,14 @@ class PhonebookService(_Service):
         )
 
 
-class ManagePhonebookService(_Service):
-    def list_phonebook(self):
+class ManagePhonebookContactsService(_Service):
+    def list_phonebook(self) -> list[dict]:
         tenant, tenant_uuid = self._get_tenant()
         return self._dird.phonebook.list(
             tenant_uuid=tenant_uuid,
-        )
+        )['items']
 
-    def create_contact(self, contact: dict):
+    def create(self, contact: dict) -> dict:
         tenant, tenant_uuid = self._get_tenant()
         return self._dird.phonebook.create_contact(
             phonebook_uuid=contact['phonebook_uuid'],
@@ -72,7 +72,7 @@ class ManagePhonebookService(_Service):
             tenant_uuid=tenant_uuid,
         )
 
-    def delete_contact(self, phonebook_uuid: str, contact_uuid: str):
+    def delete(self, phonebook_uuid: str, contact_uuid: str):
         tenant, tenant_uuid = self._get_tenant()
         self._dird.phonebook.delete_contact(
             phonebook_uuid=phonebook_uuid,
@@ -80,9 +80,10 @@ class ManagePhonebookService(_Service):
             tenant_uuid=tenant_uuid,
         )
 
-    def list_contacts(self, phonebook_uuid: str):
+    def list(self, phonebook_uuid: str) -> list[dict]:
         tenant, tenant_uuid = self._get_tenant()
         return self._dird.phonebook.list_contacts(
             tenant_uuid=tenant_uuid,
             phonebook_uuid=phonebook_uuid,
-        )
+        )['items']
+

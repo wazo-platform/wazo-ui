@@ -1,5 +1,6 @@
 # Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
@@ -8,6 +9,7 @@ from flask import request, redirect, render_template, flash, url_for
 
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
+from wazo_ui.plugins.phonebook.service import ManagePhonebookContactsService
 
 from .form import PhonebookForm, ManagePhonebookForm
 
@@ -32,6 +34,7 @@ class ManagePhonebookView(BaseIPBXHelperView):
     form = ManagePhonebookForm
     resource = 'phonebook'
     settings = 'manage_phonebook'
+    service: ManagePhonebookContactsService
 
     @menu_item(
         '.ipbx.phonebooks.manage',
@@ -44,26 +47,24 @@ class ManagePhonebookView(BaseIPBXHelperView):
         phonebook_uuid = request.args.get('phonebook_uuid')
         try:
             phonebook_list = self.service.list_phonebook()
-            if len(phonebook_list['items']) < 1:
+            if len(phonebook_list) < 1:
                 flash(l_('Please add phonebook before adding contacts!'), 'error')
                 return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
-            resource = phonebook_list['items'][0]
-            phonebook_uuid = resource[
-                'phonebook_uuid'
-            ] = phonebook_uuid or resource.get('uuid')
-            resource_list = self.service.list_contacts(phonebook_uuid)
+            default_phonebook = phonebook_list[0]
+            phonebook_uuid = phonebook_uuid or default_phonebook.get('uuid')
+            resource_list = self.service.list(phonebook_uuid)
         except HTTPError as error:
             self._flash_http_error(error)
             return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
 
-        form = form or self._map_resources_to_form(resource)
+        form = form or self._map_resources_to_form(dict(phonebook_uuid=phonebook_uuid))
         form = self._populate_form(form)
 
         kwargs = {
             'form': form,
             'resource_list': resource_list,
             'phonebook_uuid': phonebook_uuid,
-            'phonebook_list': phonebook_list['items'],
+            'phonebook_list': phonebook_list,
         }
         if self.listing_urls:
             kwargs['listing_urls'] = self.listing_urls
@@ -78,7 +79,7 @@ class ManagePhonebookView(BaseIPBXHelperView):
             return self._new(form)
 
         try:
-            self.service.create_contact(resources)
+            self.service.create(resources)
         except HTTPError as error:
             form = self._fill_form_error(form, error)
             self._flash_http_error(error)
@@ -93,7 +94,7 @@ class ManagePhonebookView(BaseIPBXHelperView):
     @route('/delete/<phonebook_uuid>/<id>', methods=['GET'])
     def delete(self, phonebook_uuid, id):
         try:
-            self.service.delete_contact(phonebook_uuid, id)
+            self.service.delete(phonebook_uuid, id)
             flash(
                 l_(
                     '%(resource)s: Resource %(id)s has been deleted',

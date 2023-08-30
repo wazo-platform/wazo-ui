@@ -24,11 +24,11 @@
           <th>{{ _("Phone Number") }}</th>
           <th>{{ _("Email") }}</th>
         {% endcall %}
-        {% call(phonebook) build_list_table_rows(resource_list['items']) %}
-          <td>{{ phonebook.firstname }}</td>
-          <td>{{ phonebook.lastname }}</td>
-          <td>{{ phonebook.phone }}</td>
-          <td>{{ phonebook.email or '-' }}</td>
+        {% call(contact) build_list_table_rows(resource_list) %}
+          <td>{{ contact.firstname }}</td>
+          <td>{{ contact.lastname }}</td>
+          <td>{{ contact.phone }}</td>
+          <td>{{ contact.email or '-' }}</td>
         {% endcall %}
       {% endcall %}
     {% endcall %}
