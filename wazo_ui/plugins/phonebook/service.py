@@ -87,3 +87,22 @@ class ManagePhonebookContactsService(_Service):
             phonebook_uuid=phonebook_uuid,
         )['items']
 
+    def get(self, phonebook_uuid: str, id: str) -> dict:
+        tenant, tenant_uuid = self._get_tenant()
+        return self._dird.phonebook.get_contact(
+            tenant_uuid=tenant_uuid, phonebook_uuid=phonebook_uuid, contact_uuid=id
+        )
+
+    def update(self, data: dict) -> dict:
+        uuid = data.pop('id', None)
+        phonebook_uuid = data.pop('phonebook_uuid')
+        assert (
+            uuid and phonebook_uuid
+        ), f"data={data}, uuid=­{uuid}, phonebook_uuid={phonebook_uuid}"
+        tenant, tenant_uuid = self._get_tenant()
+        return self._dird.phonebook.edit_contact(
+            contact_uuid=uuid,
+            phonebook_uuid=phonebook_uuid,
+            contact_body=data,
+            tenant_uuid=tenant_uuid,
+        )

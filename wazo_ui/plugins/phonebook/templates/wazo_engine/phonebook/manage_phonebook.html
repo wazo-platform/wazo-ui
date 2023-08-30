@@ -17,7 +17,7 @@
     </div>
     {% call build_list_containers(_('Manage Contacts'), 'users') %}
       {% call build_list_table() %}
-        {% call build_list_table_headers(get=url_for('.ManagePhonebookView:get', id=''),
+        {% call build_list_table_headers(get=url_for('.ManagePhonebookView:get', phonebook_uuid=phonebook_uuid, id=''),
           delete=url_for('.ManagePhonebookView:delete', phonebook_uuid=phonebook_uuid, id='')) %}
           <th>{{ _("Firstname") }}</th>
           <th>{{ _("Lastname") }}</th>

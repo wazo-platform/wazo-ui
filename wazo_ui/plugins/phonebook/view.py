@@ -107,3 +107,37 @@ class ManagePhonebookView(BaseIPBXHelperView):
             self._flash_http_error(error)
 
         return self._redirect_referrer_or('index')
+
+    def get(self, id):
+        return self._get(id, phonebook_uuid=request.args.get('phonebook_uuid'))
+
+    def _map_form_to_resources(self, form: ManagePhonebookForm, form_id: str = None):
+        data = form.to_dict()
+        if form_id:
+            data['id'] = form_id
+        return data
+
+    def _get(
+        self, id: str, form: ManagePhonebookForm | None = None, phonebook_uuid=None
+    ):
+        assert form and form.phonebook_uuid or phonebook_uuid
+        try:
+            resource = self.service.get(
+                phonebook_uuid=(form and form.phonebook_uuid or phonebook_uuid), id=id
+            )
+        except HTTPError as error:
+            self._flash_http_error(error)
+            return self._redirect_for('index')
+
+        form = self._map_resources_to_form(
+            dict(resource, phonebook_uuid=phonebook_uuid)
+        )
+        form = self._populate_form(form)
+
+        return render_template(
+            self._get_template('edit_contact'),
+            form=form,
+            resource=resource,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
