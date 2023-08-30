@@ -1,5 +1,6 @@
 # Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 from flask import session
 from wazo_dird_client import Client as DirdClient
@@ -18,27 +19,27 @@ class _Service:
 
 
 class PhonebookService(_Service):
-    def list(self):
+    def list(self) -> list[dict]:
         tenant, tenant_uuid = self._get_tenant()
         return self._dird.phonebook.list(
             tenant_uuid=tenant_uuid,
-        )
+        )['items']
 
-    def get(self, id: str):
+    def get(self, id: str) -> dict:
         tenant, tenant_uuid = self._get_tenant()
         return self._dird.phonebook.get(
             phonebook_uuid=id,
             tenant_uuid=tenant_uuid,
         )
 
-    def create(self, data: dict):
+    def create(self, data: dict) -> dict:
         tenant, tenant_uuid = self._get_tenant()
         return self._dird.phonebook.create(
             phonebook_body=data,
             tenant_uuid=tenant_uuid,
         )
 
-    def update(self, data: dict):
+    def update(self, data: dict) -> dict:
         uuid = data.pop('uuid', None)
         assert uuid, f"data={data}"
         tenant, tenant_uuid = self._get_tenant()

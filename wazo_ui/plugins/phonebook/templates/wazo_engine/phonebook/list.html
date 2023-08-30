@@ -12,7 +12,7 @@
           <th>{{ _("Name") }}</th>
           <th>{{ _("Description") }}</th>
         {% endcall %}
-        {% call(phonebook) build_list_table_rows(resource_list['items'], id_field='id') %}
+        {% call(phonebook) build_list_table_rows(resource_list, id_field='uuid') %}
           <td>{{ phonebook.name }}</td>
           <td>{{ phonebook.description or '-' }}</td>
         {% endcall %}
