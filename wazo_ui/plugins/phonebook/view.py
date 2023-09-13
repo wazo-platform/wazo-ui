@@ -9,7 +9,10 @@ from flask import request, redirect, render_template, flash, url_for
 
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
-from wazo_ui.plugins.phonebook.service import ManagePhonebookContactsService
+from wazo_ui.plugins.phonebook.service import (
+    ContactSelector,
+    ManagePhonebookContactsService,
+)
 
 from .form import PhonebookForm, ManagePhonebookForm
 
@@ -52,7 +55,7 @@ class ManagePhonebookView(BaseIPBXHelperView):
                 return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
             default_phonebook = phonebook_list[0]
             phonebook_uuid = phonebook_uuid or default_phonebook.get('uuid')
-            resource_list = self.service.list(phonebook_uuid)
+            resource_list = self.service.list(phonebook_uuid=phonebook_uuid)
         except HTTPError as error:
             self._flash_http_error(error)
             return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
@@ -94,7 +97,9 @@ class ManagePhonebookView(BaseIPBXHelperView):
     @route('/delete/<phonebook_uuid>/<id>', methods=['GET'])
     def delete(self, phonebook_uuid, id):
         try:
-            self.service.delete(phonebook_uuid, id)
+            self.service.delete(
+                ContactSelector(phonebook_uuid=phonebook_uuid, contact_id=id)
+            )
             flash(
                 l_(
                     '%(resource)s: Resource %(id)s has been deleted',
@@ -111,19 +116,29 @@ class ManagePhonebookView(BaseIPBXHelperView):
     def get(self, id):
         return self._get(id, phonebook_uuid=request.args.get('phonebook_uuid'))
 
-    def _map_form_to_resources(self, form: ManagePhonebookForm, form_id: str = None):
+    def _map_form_to_resources(
+        self, form: ManagePhonebookForm, form_id: str | None = None
+    ):
         data = form.to_dict()
         if form_id:
             data['id'] = form_id
         return data
 
     def _get(
-        self, id: str, form: ManagePhonebookForm | None = None, phonebook_uuid=None
+        self,
+        id: str,
+        form: ManagePhonebookForm | None = None,
+        phonebook_uuid: str | None = None,
     ):
-        assert form and form.phonebook_uuid or phonebook_uuid
+        assert (form and form.phonebook_uuid) or phonebook_uuid
         try:
             resource = self.service.get(
-                phonebook_uuid=(form and form.phonebook_uuid or phonebook_uuid), id=id
+                ContactSelector(
+                    phonebook_uuid=(
+                        (form and str(form.phonebook_uuid)) or phonebook_uuid  # type: ignore[arg-type]
+                    ),
+                    contact_id=id,
+                )
             )
         except HTTPError as error:
             self._flash_http_error(error)

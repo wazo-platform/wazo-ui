@@ -1,6 +1,8 @@
 # Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
+from dataclasses import dataclass
+from typing import TypedDict
 
 from flask import session
 from wazo_dird_client import Client as DirdClient
@@ -57,6 +59,16 @@ class PhonebookService(_Service):
         )
 
 
+@dataclass(frozen=True)
+class ContactSelector:
+    phonebook_uuid: str
+    contact_id: str
+
+
+class ListContactParams(TypedDict, total=False):
+    phonebook_uuid: str
+
+
 class ManagePhonebookContactsService(_Service):
     def list_phonebook(self) -> list[dict]:
         tenant, tenant_uuid = self._get_tenant()
@@ -72,25 +84,27 @@ class ManagePhonebookContactsService(_Service):
             tenant_uuid=tenant_uuid,
         )
 
-    def delete(self, phonebook_uuid: str, contact_uuid: str):
+    def delete(self, id: ContactSelector):
         tenant, tenant_uuid = self._get_tenant()
         self._dird.phonebook.delete_contact(
-            phonebook_uuid=phonebook_uuid,
-            contact_uuid=contact_uuid,
+            phonebook_uuid=id.phonebook_uuid,
+            contact_uuid=id.contact_id,
             tenant_uuid=tenant_uuid,
         )
 
-    def list(self, phonebook_uuid: str) -> list[dict]:
+    def list(self, **kwargs: ListContactParams) -> list[dict]:
         tenant, tenant_uuid = self._get_tenant()
         return self._dird.phonebook.list_contacts(
             tenant_uuid=tenant_uuid,
-            phonebook_uuid=phonebook_uuid,
+            phonebook_uuid=kwargs.get('phonebook_uuid'),
         )['items']
 
-    def get(self, phonebook_uuid: str, id: str) -> dict:
+    def get(self, id: ContactSelector) -> dict:
         tenant, tenant_uuid = self._get_tenant()
         return self._dird.phonebook.get_contact(
-            tenant_uuid=tenant_uuid, phonebook_uuid=phonebook_uuid, contact_uuid=id
+            tenant_uuid=tenant_uuid,
+            phonebook_uuid=id.phonebook_uuid,
+            contact_uuid=id.contact_id,
         )
 
     def update(self, data: dict) -> dict:
