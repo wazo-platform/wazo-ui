@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import logging
-from typing import Protocol, TypeVar
+from typing import Any, Protocol
 
 from flask import flash, jsonify, redirect, render_template, request, url_for
 from flask_babel import gettext as _
@@ -220,23 +220,20 @@ class BaseHelperView(BaseHelperViewWithoutLogin, LoginRequiredView):
     pass
 
 
-ResourceT = TypeVar("ResourceT")
-
-
-class Service(Protocol[ResourceT]):
-    def list(self) -> list[ResourceT]:
+class Service(Protocol):
+    def list(self, **kwargs) -> list[dict]:
         ...
 
-    def get(self, id) -> ResourceT:
+    def get(self, id: Any) -> dict:
         ...
 
-    def delete(self, id) -> None:
+    def delete(self, id: Any) -> None:
         ...
 
-    def update(self, resource: ResourceT) -> ResourceT:
+    def update(self, resource: dict) -> dict:
         ...
 
-    def create(self, resource: ResourceT) -> ResourceT:
+    def create(self, resource: dict) -> dict:
         ...
 
 
