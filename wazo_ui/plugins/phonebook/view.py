@@ -1,6 +1,7 @@
 # Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
+import logging
 
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
@@ -16,6 +17,8 @@ from wazo_ui.plugins.phonebook.service import (
 
 from .form import PhonebookForm, ManagePhonebookForm
 
+logger = logging.getLogger(__name__)
+
 
 class PhonebookView(BaseIPBXHelperView):
     form = PhonebookForm
@@ -30,6 +33,7 @@ class PhonebookView(BaseIPBXHelperView):
         multi_tenant=True,
     )
     def index(self):
+        logger.debug('Rendering phonebook index page(args=%s)', request.args)
         return super().index()
 
 

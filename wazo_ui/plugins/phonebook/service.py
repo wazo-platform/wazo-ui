@@ -1,11 +1,15 @@
 # Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
+
 from dataclasses import dataclass
+import logging
 from typing import TypedDict
 
 from flask import session
 from wazo_dird_client import Client as DirdClient
+
+logger = logging.getLogger(__name__)
 
 
 class _Service:
@@ -23,12 +27,14 @@ class _Service:
 class PhonebookService(_Service):
     def list(self) -> list[dict]:
         tenant, tenant_uuid = self._get_tenant()
+        logger.debug('Querying phonebooks(tenant_uuid=%s)', tenant_uuid)
         return self._dird.phonebook.list(
             tenant_uuid=tenant_uuid,
         )['items']
 
     def get(self, id: str) -> dict:
         tenant, tenant_uuid = self._get_tenant()
+        logger.debug('Querying phonebook(tenant_uuid=%s, uuid=%s)', tenant_uuid, id)
         return self._dird.phonebook.get(
             phonebook_uuid=id,
             tenant_uuid=tenant_uuid,
@@ -36,6 +42,7 @@ class PhonebookService(_Service):
 
     def create(self, data: dict) -> dict:
         tenant, tenant_uuid = self._get_tenant()
+        logger.debug('Creating phonebook(tenant_uuid=%s)', tenant_uuid)
         return self._dird.phonebook.create(
             phonebook_body=data,
             tenant_uuid=tenant_uuid,
@@ -45,6 +52,7 @@ class PhonebookService(_Service):
         uuid = data.pop('uuid', None)
         assert uuid, f"data={data}"
         tenant, tenant_uuid = self._get_tenant()
+        logger.debug('Updating phonebook(tenant_uuid=%s, uuid=%s)', tenant_uuid, uuid)
         return self._dird.phonebook.edit(
             phonebook_uuid=uuid,
             phonebook_body=data,
@@ -53,6 +61,11 @@ class PhonebookService(_Service):
 
     def delete(self, id: str):
         tenant, tenant_uuid = self._get_tenant()
+        logger.debug(
+            'Deleting phonebook(tenant_uuid=%s, uuid=%s)',
+            tenant_uuid,
+            id,
+        )
         return self._dird.phonebook.delete(
             phonebook_uuid=id,
             tenant_uuid=tenant_uuid,
@@ -72,12 +85,18 @@ class ListContactParams(TypedDict, total=False):
 class ManagePhonebookContactsService(_Service):
     def list_phonebook(self) -> list[dict]:
         tenant, tenant_uuid = self._get_tenant()
+        logger.debug('Querying phonebooks(tenant_uuid=%s)', tenant_uuid)
         return self._dird.phonebook.list(
             tenant_uuid=tenant_uuid,
         )['items']
 
     def create(self, contact: dict) -> dict:
         tenant, tenant_uuid = self._get_tenant()
+        logger.debug(
+            'Creating contact(tenant_uuid=%s, phonebook_uuid=%s)',
+            tenant_uuid,
+            contact['phonebook_uuid'],
+        )
         return self._dird.phonebook.create_contact(
             phonebook_uuid=contact['phonebook_uuid'],
             contact_body=contact,
@@ -86,6 +105,12 @@ class ManagePhonebookContactsService(_Service):
 
     def delete(self, id: ContactSelector):
         tenant, tenant_uuid = self._get_tenant()
+        logger.debug(
+            'Deleting contact(tenant_uuid=%s, phonebook_uuid=%s, contact_id=%s)',
+            tenant_uuid,
+            id.phonebook_uuid,
+            id.contact_id,
+        )
         self._dird.phonebook.delete_contact(
             phonebook_uuid=id.phonebook_uuid,
             contact_uuid=id.contact_id,
@@ -94,13 +119,25 @@ class ManagePhonebookContactsService(_Service):
 
     def list(self, **kwargs: ListContactParams) -> list[dict]:
         tenant, tenant_uuid = self._get_tenant()
+        phonebook_uuid = kwargs.get('phonebook_uuid')
+        logger.debug(
+            'Listing contacts(tenant_uuid=%s, phonebook_uuid=%s)',
+            tenant_uuid,
+            phonebook_uuid,
+        )
         return self._dird.phonebook.list_contacts(
             tenant_uuid=tenant_uuid,
-            phonebook_uuid=kwargs.get('phonebook_uuid'),
+            phonebook_uuid=phonebook_uuid,
         )['items']
 
     def get(self, id: ContactSelector) -> dict:
         tenant, tenant_uuid = self._get_tenant()
+        logger.debug(
+            'Getting contact(tenant_uuid=%s, phonebook_uuid=%s, contact_id=%s)',
+            tenant_uuid,
+            id.phonebook_uuid,
+            id.contact_id,
+        )
         return self._dird.phonebook.get_contact(
             tenant_uuid=tenant_uuid,
             phonebook_uuid=id.phonebook_uuid,
@@ -114,6 +151,12 @@ class ManagePhonebookContactsService(_Service):
             uuid and phonebook_uuid
         ), f"data={data}, uuid=­{uuid}, phonebook_uuid={phonebook_uuid}"
         tenant, tenant_uuid = self._get_tenant()
+        logger.debug(
+            'Updating contact(tenant_uuid=%s, phonebook_uuid=%s, contact_id=%s)',
+            tenant_uuid,
+            phonebook_uuid,
+            uuid,
+        )
         return self._dird.phonebook.edit_contact(
             contact_uuid=uuid,
             phonebook_uuid=phonebook_uuid,
