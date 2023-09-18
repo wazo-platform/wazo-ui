@@ -1,20 +1,18 @@
 {% extends "layout.html" %}
-
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
-    { 'name': resource.name, 'link': url_for('.PhonebookView:get', id=resource.uuid), 'icon': 'book' }
-  ]) }}
+    {{ build_breadcrumbs(current_breadcrumbs + [
+        { 'name': resource.name, 'link': url_for('.PhonebookView:get', id=resource.uuid) , 'icon': 'book' }
+    ]) }}
 {% endblock %}
-
 {% block content %}
-  {% call build_section_row() %}
-    {% call build_form_box(_('Phonebook'), resource.name, 'book') %}
-      {% call build_form(action=url_for('.PhonebookView:put', id=resource.id)) %}
-        {% call add_default_fields(form=form, submit_value=_('Update')) %}
-          {{ render_field(form.name) }}
-          {{ render_field(form.description) }}
+    {% call build_section_row() %}
+        {% call build_form_box(_('Phonebook'), resource.name, 'book') %}
+            {% call build_form(action=url_for('.PhonebookView:put', id=resource.uuid)) %}
+                {% call add_default_fields(form=form, submit_value=_('Update')) %}
+                    {{ render_field(form.name) }}
+                    {{ render_field(form.description) }}
+                {% endcall %}
+            {% endcall %}
         {% endcall %}
-      {% endcall %}
     {% endcall %}
-  {% endcall %}
 {% endblock %}
