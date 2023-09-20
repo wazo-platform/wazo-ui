@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs([
+  {{ build_breadcrumbs([
     { 'name': _('Provisioning / Plugins'), 'link': url_for('.PluginView:index'), 'icon': 'file-code-o' }
   ]) }}
 {% endblock %}

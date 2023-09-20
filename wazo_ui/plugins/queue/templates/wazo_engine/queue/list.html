@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs([
+  {{ build_breadcrumbs([
     { 'name': _('Queues'), 'link': url_for('.QueueView:index'), 'icon': 'cubes' }
   ]) }}
 {% endblock %}

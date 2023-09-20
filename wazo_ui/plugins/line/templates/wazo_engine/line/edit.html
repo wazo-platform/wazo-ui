@@ -2,11 +2,11 @@
 
 {% block content_header %}
   {% if form.protocol.data == 'sip' %}
-    {{ build_breadcrumbs(current_breadcrumbs + [
+    {{ build_breadcrumbs(current_breadcrumbs + [
       { 'name': resource.endpoint_sip['label'], 'link': url_for('.LineView:get', id=resource.id), 'icon': 'exchange' }
     ]) }}
   {% elif form.protocol.data == 'sccp' %}
-    {{ build_breadcrumbs(current_breadcrumbs + [
+    {{ build_breadcrumbs(current_breadcrumbs + [
       { 'name': resource.name, 'link': url_for('.LineView:get', id=resource.id), 'icon': 'exchange' }
     ]) }}
   {% endif %}

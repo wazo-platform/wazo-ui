@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': resource.caller_id_name, 'link': url_for('.IncallView:get', id=resource.id), 'icon': 'long-arrow-right' }
   ]) }}
 {% endblock %}
