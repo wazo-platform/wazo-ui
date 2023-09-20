@@ -334,12 +334,12 @@
 {% endmacro %}
 
 
-{% macro build_list_table_rows(items, non_unique_id=false, id_field='') %}
+{% macro build_list_table_rows(items, non_unique_id=false) %}
   {% set caller_ = caller %}
   {% call build_table_body() %}
     {% for item in items %}
       {% set editable = false if item.editable == False else true %}
-      <tr{% if not id_field or id_field == 'id' %}{{ ' data-id=' ~ item.id if item.id }}{% endif %}{% if not id_field or id_field == 'uuid' %}{{ ' data-uuid=' ~ item.uuid if item.uuid }}{% endif %}{{ ' data-tenant-uuid=' ~ item.tenant_uuid if item.tenant_uuid }}{{ ' data-non-unique-id=' ~ non_unique_id if non_unique_id }}{{ ' data-get_url=' ~ item.get_url if item.get_url }} data-editable="{{ editable }}">
+      <tr{{ ' data-id=' ~ item.id if item.id }}{{ ' data-uuid=' ~ item.uuid if item.uuid }}{{ ' data-tenant-uuid=' ~ item.tenant_uuid if item.tenant_uuid }}{{ ' data-non-unique-id=' ~ non_unique_id if non_unique_id }}{{ ' data-get_url=' ~ item.get_url if item.get_url }} data-editable="{{ editable }}">
         {{ caller_(item) }}
       </tr>
     {% endfor %}
