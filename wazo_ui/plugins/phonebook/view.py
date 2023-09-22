@@ -64,7 +64,7 @@ class ManagePhonebookView(BaseIPBXHelperView):
                 return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
             default_phonebook = phonebook_list[0]
             phonebook_uuid = phonebook_uuid or default_phonebook.get('uuid')
-            resource_list = self.service.list(phonebook_uuid=phonebook_uuid)['items']
+            resource_list = self.service.list(phonebook_uuid=phonebook_uuid)
         except HTTPError as error:
             self._flash_http_error(error)
             return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
