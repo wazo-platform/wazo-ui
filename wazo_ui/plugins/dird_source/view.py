@@ -171,6 +171,7 @@ class DirdSourceView(BaseIPBXHelperView):
             form_mode='add',
             current_breadcrumbs=self._get_current_breadcrumbs(),
             form=form,
+            listing_urls=self.listing_urls,
         )
 
     @route('/get/<backend>/<id>')

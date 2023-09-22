@@ -25,12 +25,24 @@ class _Service:
 
 
 class PhonebookService(_Service):
-    def list(self) -> list[dict]:
+    def list(
+        self,
+        limit=None,
+        order=None,
+        direction=None,
+        offset=None,
+        search=None,
+    ) -> list[dict]:
         tenant, tenant_uuid = self._get_tenant()
         logger.debug('Querying phonebooks(tenant_uuid=%s)', tenant_uuid)
         return self._dird.phonebook.list(
             tenant_uuid=tenant_uuid,
-        )['items']
+            limit=limit,
+            order=order,
+            direction=direction,
+            offset=offset,
+            search=search,
+        )
 
     def get(self, id: str) -> dict:
         tenant, tenant_uuid = self._get_tenant()
