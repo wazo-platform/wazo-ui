@@ -251,6 +251,19 @@ class DirdSourceView(BaseIPBXHelperView):
 
         return self._redirect_referrer_or('index')
 
+    def _populate_form(self, form):
+        if form.backend.data == 'phonebook':
+            choices = self._build_set_choices_phonebook(form)
+            form.phonebook_config.phonebook_uuid.choices = choices
+        return form
+
+    def _build_set_choices_phonebook(self, source):
+        phonebook_uuid = source.phonebook_config.phonebook_uuid.data
+        if not phonebook_uuid or phonebook_uuid == 'None':
+            return []
+        phonebook_name = self.service.get_phonebook(phonebook_uuid)['name']
+        return [(phonebook_uuid, phonebook_name)]
+
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
         backend = resource['backend']

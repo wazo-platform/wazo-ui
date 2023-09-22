@@ -60,3 +60,6 @@ class DirdSourceService:
 
     def list_backends(self):
         return self._dird.backends.list()
+
+    def get_phonebook(self, phonebook_uuid):
+        return self._dird.phonebook.get(phonebook_uuid=phonebook_uuid)
