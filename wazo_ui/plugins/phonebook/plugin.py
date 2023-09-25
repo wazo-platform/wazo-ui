@@ -30,6 +30,8 @@ class Plugin:
         ManagePhonebookView.register(phonebook, route_base='/manage_phonebooks')
         PhonebookDestinationView.register(phonebook, route_base='/phonebooks_listing')
         register_flaskview(phonebook, ManagePhonebookView)
-        register_listing_url('phonebook', 'phonebook.PhonebookDestinationView:list_json')
+        register_listing_url(
+            'phonebook', 'phonebook.PhonebookDestinationView:list_json'
+        )
 
         core.register_blueprint(phonebook)
