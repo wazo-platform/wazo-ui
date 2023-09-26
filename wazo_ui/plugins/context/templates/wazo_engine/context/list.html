@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': _('Contexts'), 'link': url_for('.ContextView:index'), 'icon': 'random' }
   ]) }}
 {% endblock %}

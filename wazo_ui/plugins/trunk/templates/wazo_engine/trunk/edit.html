@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': resource.endpoint_sip['label'], 'link': url_for('.TrunkView:get', id=resource.id), 'icon': 'server' }
   ]) }}
 {% endblock %}

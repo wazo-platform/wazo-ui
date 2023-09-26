@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs([
+  {{ build_breadcrumbs([
     { 'name': _('Conferences'), 'link': url_for('.ConferenceView:index'), 'icon': 'compress' }
   ]) }}
 {% endblock %}

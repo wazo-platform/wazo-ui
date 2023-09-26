@@ -3,14 +3,14 @@
     {% for item in current_menu.children recursive %}
       {% if item.visible %}
         {% if item.name == 'ipbx' %}
-          {{ _build_ipbx_menu(item, current_user) }}
+          {{ _build_ipbx_menu(item, current_user) }}
         {% else %}
           <ul class="sidebar-menu" data-widget="tree">
             <li class="{{ 'active' if item.active }} {{ 'multi-tenant' if item.multi_tenant }}">
               {% if item.children %}
-                {{ _build_menu_chidren(item, current_user) }}
+                {{ _build_menu_chidren(item, current_user) }}
               {% else %}
-                {{ _build_menu_link(item, current_user) }}
+                {{ _build_menu_link(item, current_user) }}
               {% endif %}
             </li>
           </ul>
@@ -34,12 +34,12 @@
     <li class="treeview {% if item.active or item.active_item %}active{% endif %}">
       <a href="">
         <i class="fa fa-{{ item.icon if item.icon else 'windows' }}"></i>
-        <span>{{ item.text }}</span>
+        <span>{{ item.text }}</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
         </span>
       </a>
-      {{ _build_chidren(item, false, current_user) }}
+      {{ _build_chidren(item, false, current_user) }}
     </li>
   {% endif %}
 {% endmacro %}
@@ -65,7 +65,7 @@
 	{% endif %}
   {% endif %}
 
-  {{ _build_chidren(item, true, current_user) }}
+  {{ _build_chidren(item, true, current_user) }}
 {% endmacro %}
 
 
@@ -73,7 +73,7 @@
   <ul class="{% if root %}sidebar-menu tree{% else %}treeview-menu{% endif %}"{% if root %}data-widget="tree"{% endif %}>
     {% for i in item.children %}
       {% if i.children and i.text and i.name != 'global_settings' %}
-        {{ _build_menu_chidren(i, current_user) }}
+        {{ _build_menu_chidren(i, current_user) }}
       {% elif i.visible %}
         <li class="{{ 'active' if i.active }} {{ 'multi-tenant' if i.multi_tenant }}">
           <a href="{{ i.url }}">
@@ -334,12 +334,12 @@
 {% endmacro %}
 
 
-{% macro build_list_table_rows(items, non_unique_id=false, id_field='') %}
+{% macro build_list_table_rows(items, non_unique_id=false) %}
   {% set caller_ = caller %}
   {% call build_table_body() %}
     {% for item in items %}
       {% set editable = false if item.editable == False else true %}
-      <tr{% if not id_field or id_field == 'id' %}{{ ' data-id=' ~ item.id if item.id }}{% endif %}{% if not id_field or id_field == 'uuid' %}{{ ' data-uuid=' ~ item.uuid if item.uuid }}{% endif %}{{ ' data-tenant-uuid=' ~ item.tenant_uuid if item.tenant_uuid }}{{ ' data-non-unique-id=' ~ non_unique_id if non_unique_id }}{{ ' data-get_url=' ~ item.get_url if item.get_url }} data-editable="{{ editable }}">
+      <tr{{ ' data-id=' ~ item.id if item.id }}{{ ' data-uuid=' ~ item.uuid if item.uuid }}{{ ' data-tenant-uuid=' ~ item.tenant_uuid if item.tenant_uuid }}{{ ' data-non-unique-id=' ~ non_unique_id if non_unique_id }}{{ ' data-get_url=' ~ item.get_url if item.get_url }} data-editable="{{ editable }}">
         {{ caller_(item) }}
       </tr>
     {% endfor %}

@@ -2,7 +2,7 @@
 {% set name = resource.firstname ~ (' ' ~ resource.lastname if resource.lastname else '') %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': name, 'link': url_for('.UserView:get', id=resource.uuid), 'icon': 'user' }
   ]) }}
 {% endblock %}

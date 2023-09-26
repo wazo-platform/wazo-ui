@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': 'Provisioning', 'link': url_for('.ConfigurationView:index'), 'icon': 'gears' }
   ]) }}
 {% endblock %}

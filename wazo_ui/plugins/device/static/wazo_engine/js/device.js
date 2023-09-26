@@ -6,7 +6,7 @@ $(document).ready(function() {
     text: '<i class="fa fa-arrows-h"></i>',
     titleAttr: 'Synchronize selected devices',
     action: function (e, dt, node, config) {
-      if (confirm('Are you sure you want to synchronize these devices ?')) {
+      if (confirm('Are you sure you want to synchronize these devices ?')) {
         dt.rows({selected: true}).every(function(rowIdx, tableLoop, rowLoop) {
           let row = this.nodes().to$();
           $.ajax({

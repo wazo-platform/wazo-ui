@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': resource.ip, 'link': url_for('.DeviceView:get', id=resource.id), 'icon': 'phone-square' }
   ]) }}
 {% endblock %}

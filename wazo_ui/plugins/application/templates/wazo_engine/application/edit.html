@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': resource.name, 'link': url_for('.ApplicationView:get', id=resource.uuid), 'icon': 'cubes' }
   ]) }}
 {% endblock %}

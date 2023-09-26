@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': sound.name, 'link': url_for('.SoundFileView:list_files', tenant_uuid=sound.tenant_id, category=sound.id), 'icon': 'file-sound-o' }
   ]) }}
 {% endblock %}

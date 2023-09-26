@@ -13,7 +13,7 @@
     {% if category != 'error_details' %}
       <div class="alert alert-{{ category }} alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="{{ icon }}"></i> {{ category|title }}!</h4>
+        <h4><i class="{{ icon }}"></i> {{ category|title }}!</h4>
         {{ message }}
         {% for message in get_flashed_messages(category_filter=['error_details']) %}
           <div id="error-details-show">
