@@ -366,14 +366,12 @@ class DirdSourceView(BaseIPBXHelperView):
             ]
 
         if 'prefix' in resource[config_name].get('auth', {}):
-            resource[config_name]['auth']['prefix_'] = resource[config_name][
-                'auth'
-            ].pop('prefix')
+            prefix = resource[config_name]['auth'].pop('prefix')
+            resource[config_name]['auth']['prefix_'] = prefix
 
         if 'prefix' in resource[config_name].get('confd', {}):
-            resource[config_name]['confd']['prefix_'] = resource[config_name][
-                'confd'
-            ].pop('prefix')
+            prefix = resource[config_name]['confd'].pop('prefix')
+            resource[config_name]['confd']['prefix_'] = prefix
 
         # Handle `verify_certificate` for office 365 or google that can be True, False or the value of certificate_path
         if backend in ('office365', 'google', 'conference', 'wazo'):
