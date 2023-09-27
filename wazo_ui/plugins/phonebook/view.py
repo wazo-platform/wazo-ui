@@ -5,8 +5,13 @@ import logging
 
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
-from flask_classful import route
-from flask import request, redirect, render_template, flash, url_for
+from wazo_ui.helpers.classful import (
+    LoginRequiredView,
+    extract_select2_params,
+    build_select2_response,
+    route,
+)
+from flask import request, jsonify, redirect, render_template, flash, url_for
 
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -160,3 +165,14 @@ class ManagePhonebookView(BaseIPBXHelperView):
             current_breadcrumbs=self._get_current_breadcrumbs(),
             listing_urls=self.listing_urls,
         )
+
+
+class PhonebookDestinationView(LoginRequiredView):
+    def list_json(self):
+        params = extract_select2_params(request.args)
+        phonebooks = self.service.list(**params)
+        results = [
+            {'id': phonebook['uuid'], 'text': phonebook['name']}
+            for phonebook in phonebooks['items']
+        ]
+        return jsonify(build_select2_response(results, phonebooks['total'], params))

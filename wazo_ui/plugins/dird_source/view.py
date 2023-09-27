@@ -171,6 +171,7 @@ class DirdSourceView(BaseIPBXHelperView):
             form_mode='add',
             current_breadcrumbs=self._get_current_breadcrumbs(),
             form=form,
+            listing_urls=self.listing_urls,
         )
 
     @route('/get/<backend>/<id>')
@@ -250,6 +251,19 @@ class DirdSourceView(BaseIPBXHelperView):
             self._flash_http_error(error)
 
         return self._redirect_referrer_or('index')
+
+    def _populate_form(self, form):
+        if form.backend.data == 'phonebook':
+            choices = self._build_set_choices_phonebook(form)
+            form.phonebook_config.phonebook_uuid.choices = choices
+        return form
+
+    def _build_set_choices_phonebook(self, source):
+        phonebook_uuid = source.phonebook_config.phonebook_uuid.data
+        if not phonebook_uuid or phonebook_uuid == 'None':
+            return []
+        phonebook_name = self.service.get_phonebook(phonebook_uuid)['name']
+        return [(phonebook_uuid, phonebook_name)]
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
@@ -352,14 +366,12 @@ class DirdSourceView(BaseIPBXHelperView):
             ]
 
         if 'prefix' in resource[config_name].get('auth', {}):
-            resource[config_name]['auth']['prefix_'] = resource[config_name][
-                'auth'
-            ].pop('prefix')
+            prefix = resource[config_name]['auth'].pop('prefix')
+            resource[config_name]['auth']['prefix_'] = prefix
 
         if 'prefix' in resource[config_name].get('confd', {}):
-            resource[config_name]['confd']['prefix_'] = resource[config_name][
-                'confd'
-            ].pop('prefix')
+            prefix = resource[config_name]['confd'].pop('prefix')
+            resource[config_name]['confd']['prefix_'] = prefix
 
         # Handle `verify_certificate` for office 365 or google that can be True, False or the value of certificate_path
         if backend in ('office365', 'google', 'conference', 'wazo'):
