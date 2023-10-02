@@ -37,6 +37,7 @@
               {{ render_field(form.phonebook_config.phonebook_uuid,
                               data_listing_href=url_for(listing_urls['phonebook']),
                               data_placeholder=_('Choose Phonebook')) }}
+              {{ render_field(form.phonebook_config.phonebook_name) }}
             {% endcall %}
           {% endcall %}
 
