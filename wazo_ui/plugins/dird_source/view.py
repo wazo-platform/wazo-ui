@@ -1,6 +1,7 @@
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import logging
 from flask import request, jsonify, redirect, url_for, render_template, flash
 from flask_classful import route
 from flask_babel import lazy_gettext as l_
@@ -14,6 +15,8 @@ from wazo_ui.helpers.classful import (
 )
 
 from .form import DirdSourceForm
+
+logger = logging.getLogger(__name__)
 
 
 class DirdSourceView(BaseIPBXHelperView):
@@ -262,11 +265,17 @@ class DirdSourceView(BaseIPBXHelperView):
         phonebook_uuid = source.phonebook_config.phonebook_uuid.data
         if not phonebook_uuid or phonebook_uuid == 'None':
             return []
-        phonebook_name = self.service.get_phonebook(phonebook_uuid)['name']
+        phonebook_name = source.phonebook_config.phonebook_name.data
+        logger.debug(
+            'phonebook selected: uuid=%s, name=%s',
+            phonebook_uuid,
+            phonebook_name,
+        )
         return [(phonebook_uuid, phonebook_name)]
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
+        logger.debug('resource: %s', resource)
         backend = resource['backend']
         config_name = backend + '_config'
 

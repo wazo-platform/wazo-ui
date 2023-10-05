@@ -118,6 +118,7 @@ class PhonebookForm(BaseForm):
     format_columns = FieldList(FormField(ValueColumnsForm))
     searched_columns = FieldList(FormField(ColumnsForm))
     phonebook_uuid = SelectField(l_('Phonebook'), choices=[])
+    phonebook_name = HiddenField()
 
 
 class WazoAuthForm(BaseForm):
