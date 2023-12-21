@@ -6,16 +6,16 @@ from wtforms.fields import (
     FieldList,
     FormField,
     HiddenField,
-    SubmitField,
-    StringField,
     SelectField,
     SelectMultipleField,
+    StringField,
+    SubmitField,
 )
 from wtforms.fields.html5 import IntegerField
 from wtforms.validators import InputRequired, Length, NumberRange
 
+from wazo_ui.helpers.destination import DestinationHiddenField, FallbacksForm
 from wazo_ui.helpers.form import BaseForm
-from wazo_ui.helpers.destination import FallbacksForm, DestinationHiddenField
 
 
 class UserForm(BaseForm):

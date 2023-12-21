@@ -14,15 +14,15 @@ from .service import (
     TenantService,
 )
 from .view import (
-    GroupView,
     GroupListingView,
-    IdentityView,
+    GroupView,
     IdentityListingView,
+    IdentityView,
     LDAPConfigView,
-    PolicyView,
     PolicyListingView,
-    TenantView,
+    PolicyView,
     TenantListingView,
+    TenantView,
 )
 
 identity = create_blueprint('identity', __name__)

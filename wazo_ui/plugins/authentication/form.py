@@ -1,18 +1,17 @@
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import requests
 import logging
 
-from requests.exceptions import HTTPError
-
+import requests
 from flask import session
 from flask_babel import lazy_gettext as l_
 from flask_wtf import FlaskForm
-from wtforms.fields import PasswordField, StringField, SubmitField, SelectField
+from requests.exceptions import HTTPError
+from wazo_auth_client import Client as AuthClient
+from wtforms.fields import PasswordField, SelectField, StringField, SubmitField
 from wtforms.validators import InputRequired, ValidationError
 
-from wazo_auth_client import Client as AuthClient
 from wazo_ui.http_server import app
 from wazo_ui.user import UserUI
 

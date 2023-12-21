@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import ast
-import re
 import logging
+import re
 
 from flask_babel import lazy_gettext as l_
 

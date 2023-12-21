@@ -2,14 +2,15 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
-import requests
 
-from flask import url_for, render_template, redirect, session
+import requests
+from flask import redirect, render_template, session, url_for
 from flask_babel import Locale, get_locale
 from flask_classful import FlaskView
-from flask_login import login_user, logout_user, current_user
+from flask_login import current_user, login_user, logout_user
 
 from wazo_ui.helpers.tenant import refresh_tenants
+
 from .form import LoginForm
 
 logger = logging.getLogger(__name__)

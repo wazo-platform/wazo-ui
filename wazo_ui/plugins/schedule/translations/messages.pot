@@ -1,5 +1,5 @@
 # Translations template for wazo_admin_ui_schedule.
-# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # wazo_admin_ui_schedule project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
@@ -188,4 +188,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_schedule_official/templates/schedule/list.html:24
 msgid "Add"
 msgstr ""
-

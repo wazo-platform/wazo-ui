@@ -6,26 +6,14 @@ import signal
 import threading
 
 from flask_babel import lazy_gettext as l_
-
 from xivo import plugin_helpers
-from .http_server import Server
-from wazo_ui.helpers.destination import register_destination_form
-from wazo_ui.helpers.error import (
-    ErrorExtractor,
-    ErrorTranslator,
-    ConfdErrorExtractor,
-    URL_TO_NAME_RESOURCES,
-    RESOURCES,
-    GENERIC_PATTERN_ERRORS,
-    SPECIFIC_PATTERN_ERRORS,
-)
 
 from wazo_ui.core.client import engine_clients
 from wazo_ui.core.form import (
-    ApplicationDestination,
     ApplicationCallBackDISADestination,
-    ApplicationDISADestination,
+    ApplicationDestination,
     ApplicationDirectoryDestination,
+    ApplicationDISADestination,
     ApplicationFaxToMailDestination,
     ApplicationVoicemailDestination,
     CustomDestination,
@@ -33,6 +21,18 @@ from wazo_ui.core.form import (
     NoneDestination,
     register_destination_form_application,
 )
+from wazo_ui.helpers.destination import register_destination_form
+from wazo_ui.helpers.error import (
+    GENERIC_PATTERN_ERRORS,
+    RESOURCES,
+    SPECIFIC_PATTERN_ERRORS,
+    URL_TO_NAME_RESOURCES,
+    ConfdErrorExtractor,
+    ErrorExtractor,
+    ErrorTranslator,
+)
+
+from .http_server import Server
 
 logger = logging.getLogger(__name__)
 

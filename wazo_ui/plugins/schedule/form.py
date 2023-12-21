@@ -3,17 +3,17 @@
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
-    SubmitField,
-    StringField,
-    SelectField,
-    SelectMultipleField,
     FieldList,
     FormField,
+    SelectField,
+    SelectMultipleField,
+    StringField,
+    SubmitField,
 )
 from wtforms.validators import InputRequired
 
-from wazo_ui.helpers.form import BaseForm
 from wazo_ui.helpers.destination import DestinationField
+from wazo_ui.helpers.form import BaseForm
 
 week_days = [
     l_('Monday'),

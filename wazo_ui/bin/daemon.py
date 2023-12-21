@@ -1,10 +1,11 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import sys
 
 from xivo import xivo_logging
 from xivo.user_rights import change_user
+
 from wazo_ui.config import load as load_config
 from wazo_ui.controller import Controller
 

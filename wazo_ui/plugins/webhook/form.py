@@ -3,13 +3,13 @@
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
-    SubmitField,
-    StringField,
-    TextAreaField,
-    HiddenField,
     BooleanField,
-    SelectMultipleField,
+    HiddenField,
     SelectField,
+    SelectMultipleField,
+    StringField,
+    SubmitField,
+    TextAreaField,
 )
 from wtforms.validators import InputRequired, Length
 

@@ -1,6 +1,6 @@
 # Wazo UI
 
-Wazo-ui is an open source UI to help people easily interact with the wazo-platform APIs. 
+Wazo-ui is an open source UI to help people easily interact with the wazo-platform APIs.
 This project is not always up-to-date with the entire API engine, but you can still do a lot.
 
 ![Login screenshot](/contribs/screenshots/login.png?raw=true "Login")
