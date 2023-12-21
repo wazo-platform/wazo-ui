@@ -1,5 +1,5 @@
 # Translations template for wazo_admin_ui_paging.
-# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # wazo_admin_ui_paging project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
@@ -91,4 +91,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_paging_official/templates/paging/list.html:25
 msgid "Add"
 msgstr ""
-

@@ -2,25 +2,24 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
-
-from xivo import plugin_helpers
 from wazo_plugind_ui_ipbx_official.helpers.destination import register_destination_form
 from wazo_plugind_ui_ipbx_official.helpers.error import (
+    GENERIC_PATTERN_ERRORS,
+    RESOURCES,
+    SPECIFIC_PATTERN_ERRORS,
+    URL_TO_NAME_RESOURCES,
+    ConfdErrorExtractor,
     ErrorExtractor,
     ErrorTranslator,
-    ConfdErrorExtractor,
-    URL_TO_NAME_RESOURCES,
-    RESOURCES,
-    GENERIC_PATTERN_ERRORS,
-    SPECIFIC_PATTERN_ERRORS,
 )
+from xivo import plugin_helpers
 
 from .client import engine_clients
 from .form import (
-    ApplicationDestination,
     ApplicationCallBackDISADestination,
-    ApplicationDISADestination,
+    ApplicationDestination,
     ApplicationDirectoryDestination,
+    ApplicationDISADestination,
     ApplicationFaxToMailDestination,
     ApplicationVoicemailDestination,
     CustomDestination,

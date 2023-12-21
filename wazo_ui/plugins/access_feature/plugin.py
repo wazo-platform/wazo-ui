@@ -7,7 +7,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import AccessFeaturesService
-from .view import AccessFeatureView, AccessFeaturesListingView
+from .view import AccessFeaturesListingView, AccessFeatureView
 
 access_features = create_blueprint('access_features', __name__)
 

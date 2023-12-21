@@ -3,7 +3,7 @@
 
 from flask_babel import lazy_gettext as l_
 from werkzeug.datastructures import ImmutableMultiDict
-from wtforms.fields import SelectField, FormField, HiddenField, StringField
+from wtforms.fields import FormField, HiddenField, SelectField, StringField
 from wtforms.utils import unset_value
 
 from wazo_ui.helpers.form import BaseForm

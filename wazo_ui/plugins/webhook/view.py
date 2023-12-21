@@ -7,8 +7,8 @@ from flask import redirect, render_template, url_for
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
 
-from wazo_ui.helpers.view import BaseIPBXHelperView
 from wazo_ui.helpers.menu import menu_item
+from wazo_ui.helpers.view import BaseIPBXHelperView
 
 from .form import WebhookFormHTTP
 

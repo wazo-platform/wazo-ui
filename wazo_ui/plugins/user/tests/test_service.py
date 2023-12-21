@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
-
 from unittest.mock import Mock, call
 
 import wazo_ui.helpers.service

@@ -2,17 +2,17 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
+from unittest.mock import Mock
 
 from flask import Flask
-from hamcrest import assert_that, empty, is_, equal_to, has_items, matches_regexp
-from unittest.mock import Mock
+from hamcrest import assert_that, empty, equal_to, has_items, is_, matches_regexp
 from wtforms import StringField
 
 from ..classful import (
     BaseView,
     _is_positive_integer,
-    extract_select2_params,
     build_select2_response,
+    extract_select2_params,
 )
 from ..error import ErrorExtractor, ErrorTranslator
 from ..form import BaseForm

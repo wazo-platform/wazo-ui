@@ -7,19 +7,19 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import (
-    PluginService,
     ConfigService,
     ConfigurationService,
+    PluginService,
     RegistrarService,
 )
 from .view import (
-    PluginView,
-    PluginListingView,
-    ConfigRegistrarView,
-    ConfigDeviceView,
-    ConfigurationView,
     ConfigDeviceListingView,
+    ConfigDeviceView,
     ConfigRegistrarListingView,
+    ConfigRegistrarView,
+    ConfigurationView,
+    PluginListingView,
+    PluginView,
 )
 
 provisioning = create_blueprint('provisioning', __name__)

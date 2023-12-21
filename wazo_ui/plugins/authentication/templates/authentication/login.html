@@ -9,13 +9,13 @@
   <div class="auth">
     <div class="login">
       <form action="" method="post" name="login_user_form" data-toggle="validator">
-        
+
         <img class="wazo-logo" src="{{ url_for('login.static', filename='img/wazo-logo.svg') }}">
 
         <div id="messages" class="row">
           {% include "flashed_messages.html" %}
         </div>
-        
+
         {{ form.hidden_tag() }}
         {{ render_field(form.username, divclass='form-group', with_label=False, placeholder=_("Username"), class_="form-control login input-lg") }}
         {{ render_field(form.password, divclass='form-group', with_label=False, placeholder=_("Password"), data_toggle='password', class_="form-control login input-lg") }}

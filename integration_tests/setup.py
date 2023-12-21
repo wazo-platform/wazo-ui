@@ -4,7 +4,6 @@
 
 from setuptools import setup
 
-
 setup(
     name='wazo_ui_test_helpers',
     version='1.0.0',
