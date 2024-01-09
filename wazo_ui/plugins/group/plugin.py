@@ -9,13 +9,13 @@ from wazo_ui.helpers.funckey import register_funckey_destination_form
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
+from .service import GroupService
+from .view import GroupView, GroupDestinationView
 from .form import (
     GroupDestinationForm,
     GroupFuncKeyDestinationForm,
     GroupMemberFuncKeyDestinationForm,
 )
-from .service import GroupService
-from .view import GroupDestinationView, GroupView
 
 group = create_blueprint('group', __name__)
 

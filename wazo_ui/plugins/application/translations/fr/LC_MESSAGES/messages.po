@@ -1,5 +1,5 @@
 # French translations for nestbox_wazo_admin_plugins.
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # nestbox_wazo_admin_plugins project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
@@ -63,3 +63,4 @@ msgstr "Ajouter Application"
 #: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:24
 msgid "Add"
 msgstr "Ajouter"
+

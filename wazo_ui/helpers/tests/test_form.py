@@ -2,13 +2,14 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
-
 from flask import Flask
+from wtforms.fields import FieldList, FormField, StringField, SubmitField
+
 from hamcrest import (
     assert_that,
     contains,
-    empty,
     equal_to,
+    empty,
     has_entries,
     has_key,
     has_properties,
@@ -16,9 +17,9 @@ from hamcrest import (
     instance_of,
     not_,
 )
-from wtforms.fields import FieldList, FormField, StringField, SubmitField
 
 from ..form import BaseForm, SelectField
+
 
 app = Flask('test_wazo_ui')
 

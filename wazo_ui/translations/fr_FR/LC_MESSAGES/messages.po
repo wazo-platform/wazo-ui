@@ -1,5 +1,5 @@
 # French (France) translations for wazo_ui.
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # wazo_ui project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
@@ -3831,3 +3831,4 @@ msgstr ""
 #: wazo_ui/templates/translations.html:50
 msgid "Not long enough"
 msgstr ""
+

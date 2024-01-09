@@ -7,7 +7,8 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import TrunkService
-from .view import TrunkListingView, TrunkView
+from .view import TrunkView, TrunkListingView
+
 
 trunk = create_blueprint('trunk', __name__)
 

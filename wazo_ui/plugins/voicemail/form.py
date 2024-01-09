@@ -3,19 +3,19 @@
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
-    BooleanField,
     FieldList,
     FormField,
     HiddenField,
-    SelectField,
-    StringField,
     SubmitField,
+    StringField,
+    SelectField,
+    BooleanField,
 )
 from wtforms.fields.html5 import EmailField, IntegerField
 from wtforms.validators import InputRequired, Length, NumberRange, Regexp
 
-from wazo_ui.helpers.destination import DestinationHiddenField
 from wazo_ui.helpers.form import BaseForm
+from wazo_ui.helpers.destination import DestinationHiddenField
 
 
 class UserForm(BaseForm):

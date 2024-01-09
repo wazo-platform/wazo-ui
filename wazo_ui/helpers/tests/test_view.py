@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
-from unittest.mock import Mock
 
 from flask import Flask
 from hamcrest import assert_that, contains, empty
+from unittest.mock import Mock
 from wtforms import StringField
 
 from wazo_ui.helpers.form import BaseForm

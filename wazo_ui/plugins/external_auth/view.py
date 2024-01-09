@@ -1,11 +1,10 @@
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import flash, redirect, render_template, request, url_for
-from flask_babel import lazy_gettext as l_
+from flask import request, redirect, url_for, render_template, flash
 from flask_classful import route
+from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
-
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
 

@@ -10,8 +10,8 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.support.ui import Select, WebDriverWait
 
 from .select2 import Select2
 

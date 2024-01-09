@@ -9,9 +9,9 @@ from wazo_ui.helpers.funckey import register_funckey_destination_form
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
-from .form import QueueDestinationForm, QueueFuncKeyDestinationForm
 from .service import QueueService
-from .view import QueueDestinationView, QueueView
+from .view import QueueView, QueueDestinationView
+from .form import QueueDestinationForm, QueueFuncKeyDestinationForm
 
 queue = create_blueprint('queue', __name__)
 

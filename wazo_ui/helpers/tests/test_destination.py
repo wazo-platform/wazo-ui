@@ -4,12 +4,13 @@
 import unittest
 
 from flask import Flask
-from hamcrest import assert_that, empty, equal_to, has_entries
-from wtforms import FormField, IntegerField, StringField
+from hamcrest import assert_that, equal_to, empty, has_entries
+from wtforms import StringField, FormField, IntegerField
 from wtforms.fields import SelectField
 
-from wazo_ui.helpers.destination import BaseDestinationForm, FallbacksForm
 from wazo_ui.helpers.form import BaseForm
+from wazo_ui.helpers.destination import BaseDestinationForm, FallbacksForm
+
 
 app = Flask('test_nestbox_ui')
 

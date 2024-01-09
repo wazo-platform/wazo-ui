@@ -8,6 +8,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from .service import HepService
 from .view import HepView
 
+
 hep = create_blueprint('hep', __name__)
 
 

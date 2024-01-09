@@ -1,7 +1,7 @@
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from hamcrest import assert_that, calling, contains_string, equal_to, not_, raises
+from hamcrest import assert_that, contains_string, equal_to, not_, calling, raises
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 

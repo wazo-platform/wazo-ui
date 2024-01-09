@@ -2,19 +2,17 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
-
-from flask import flash, jsonify, redirect, render_template, request, url_for
-from flask_babel import lazy_gettext as l_
+from flask import request, jsonify, redirect, url_for, render_template, flash
 from flask_classful import route
+from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
-
+from wazo_ui.helpers.menu import menu_item
+from wazo_ui.helpers.view import BaseIPBXHelperView
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     build_select2_response,
     extract_select2_params,
 )
-from wazo_ui.helpers.menu import menu_item
-from wazo_ui.helpers.view import BaseIPBXHelperView
 
 from .form import DirdSourceForm
 

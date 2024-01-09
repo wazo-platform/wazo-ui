@@ -3,20 +3,20 @@
 
 from random import randint
 
-from flask import Response, flash, jsonify, redirect, render_template, request, url_for
+from flask import Response, request, jsonify, render_template, redirect, url_for, flash
 from flask_babel import lazy_gettext as l_
-from flask_classful import route
 from requests.exceptions import HTTPError
+from flask_classful import route
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
-    build_select2_response,
     extract_select2_params,
+    build_select2_response,
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView, IndexAjaxHelperViewMixin
 
-from .form import ImportCSVForm, UserForm
+from .form import UserForm, ImportCSVForm
 
 
 class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):

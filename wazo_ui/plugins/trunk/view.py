@@ -1,18 +1,19 @@
 # Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import flash, jsonify, render_template, request
+from flask import jsonify, request, render_template, flash
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
-    build_select2_response,
     extract_select2_params,
+    build_select2_response,
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
-from wazo_ui.plugins.sip_template.view import EXCLUDE_CHOICE_SECTIONS, SECTIONS
+
+from wazo_ui.plugins.sip_template.view import SECTIONS, EXCLUDE_CHOICE_SECTIONS
 
 from .form import TrunkForm
 

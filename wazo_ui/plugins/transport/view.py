@@ -4,13 +4,15 @@
 import logging
 
 from flask import jsonify, request
+
 from flask_babel import lazy_gettext as l_
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
-    build_select2_response,
     extract_select2_params,
+    build_select2_response,
 )
+
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView, NewHelperViewMixin
 

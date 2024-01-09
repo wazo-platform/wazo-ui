@@ -7,7 +7,8 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import LineService
-from .view import LineListingView, LineView
+from .view import LineView, LineListingView
+
 
 line = create_blueprint('line', __name__)
 

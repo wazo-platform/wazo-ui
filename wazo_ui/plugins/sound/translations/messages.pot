@@ -1,5 +1,5 @@
 # Translations template for wazo_admin_ui_sound.
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # wazo_admin_ui_sound project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
@@ -137,3 +137,4 @@ msgstr ""
 #: wazo_plugind_admin_ui_sound_official/templates/sound/list_files.html:57
 msgid "Upload"
 msgstr ""
+

@@ -8,9 +8,10 @@ from wazo_ui.helpers.destination import register_destination_form
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
-from .form import SwitchboardDestinationForm
 from .service import SwitchboardService
-from .view import SwitchboardDestinationView, SwitchboardView
+from .view import SwitchboardView, SwitchboardDestinationView
+from .form import SwitchboardDestinationForm
+
 
 switchboard = create_blueprint('switchboard', __name__)
 

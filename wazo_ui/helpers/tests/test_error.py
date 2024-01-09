@@ -2,15 +2,15 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
+
+from hamcrest import assert_that, any_of, equal_to, empty, is_, none
 from unittest.mock import Mock
 
-from hamcrest import any_of, assert_that, empty, equal_to, is_, none
-
 from ..error import (
-    ConfdErrorExtractor,
-    ConfdErrorTranslator,
     ErrorExtractor,
     ErrorTranslator,
+    ConfdErrorExtractor,
+    ConfdErrorTranslator,
 )
 
 GENERIC_MESSAGE_ERRORS = {

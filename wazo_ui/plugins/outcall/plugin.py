@@ -7,7 +7,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import OutcallService
-from .view import OutcallDestinationView, OutcallView
+from .view import OutcallView, OutcallDestinationView
 
 outcall = create_blueprint('outcall', __name__)
 
