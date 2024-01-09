@@ -6,8 +6,8 @@ from flask_menu.classy import register_flaskview
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
+from .view import DirdSourceView, DirdSourceListingView
 from .service import DirdSourceService
-from .view import DirdSourceListingView, DirdSourceView
 
 dird_source = create_blueprint('dird_source', __name__)
 

@@ -11,53 +11,53 @@
 
 # # Log file.
 # log_filename: /var/log/wazo-ui.log
-#
+# 
 # http:
 #   listen: 127.0.0.1
 #   port: 9296
-#
+# 
 # amid:
 #   host: localhost
 #   port: 9491
 #   prefix: None
 #   https: false
-#
+# 
 # auth:
 #   host: localhost
 #   port: 9497
 #   prefix: None
 #   https: false
-#
+# 
 # call-logd:
 #   host: localhost
 #   port: 9298
 #   prefix: None
 #   https: false
-#
+# 
 # confd:
 #   host: localhost
 #   port: 9486
 #   prefix: None
 #   https: false
-#
+# 
 # dird:
 #   host: localhost
 #   port: 9489
 #   prefix: None
 #   https: false
-#
+# 
 # plugind:
 #   host: localhost
 #   port: 9503
 #   prefix: None
 #   https: false
-#
+# 
 # provd:
 #   host: localhost
 #   port: 8666
 #   prefix: None
 #   https: false
-#
+# 
 # webhookd:
 #   host: localhost
 #   port: 9300

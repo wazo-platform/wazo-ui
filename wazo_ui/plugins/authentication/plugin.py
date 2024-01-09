@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.plugin import create_blueprint_core as create_blueprint
-
 from .view import Login, Logout
 
 login = create_blueprint('login', __name__)

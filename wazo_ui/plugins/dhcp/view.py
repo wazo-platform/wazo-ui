@@ -1,7 +1,7 @@
 # Copyright 2019-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import flash, render_template
+from flask import render_template, flash
 from flask_babel import gettext as _
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError

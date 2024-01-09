@@ -2,12 +2,22 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
-from wtforms.fields import FieldList, FormField, SelectField, StringField, SubmitField
+from wtforms.fields import (
+    FieldList,
+    FormField,
+    SelectField,
+    StringField,
+    SubmitField,
+)
 from wtforms.fields.html5 import IntegerField
-from wtforms.validators import InputRequired, Length, NumberRange
+from wtforms.validators import (
+    InputRequired,
+    Length,
+    NumberRange,
+)
 
-from wazo_ui.helpers.destination import DestinationField, DestinationHiddenField
 from wazo_ui.helpers.form import BaseForm
+from wazo_ui.helpers.destination import DestinationHiddenField, DestinationField
 
 
 class IvrChoiceForm(BaseForm):

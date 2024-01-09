@@ -1,5 +1,5 @@
 # Translations template for wazo_admin_ui_call_filter.
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # wazo_admin_ui_call_filter project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
@@ -171,3 +171,4 @@ msgstr ""
 #: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:32
 msgid "Add"
 msgstr ""
+

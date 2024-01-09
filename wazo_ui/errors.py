@@ -4,16 +4,18 @@
 import logging
 import traceback
 
-from flask import redirect, url_for
+from flask import redirect
+from flask import url_for
 from flask.helpers import flash
-from flask_login import current_user
 from requests.exceptions import ConnectionError
+from flask_login import current_user
 
 from .helpers.error import (
+    ErrorTranslator,
     GENERIC_MESSAGE_ERRORS,
     SPECIFIC_MESSAGE_ERRORS,
-    ErrorTranslator,
 )
+
 
 logger = logging.getLogger(__name__)
 

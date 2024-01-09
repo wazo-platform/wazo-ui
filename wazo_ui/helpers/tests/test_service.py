@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
-from unittest.mock import Mock
 
 from hamcrest import assert_that, equal_to
+from unittest.mock import Mock
 
-from wazo_ui.helpers.extension import BaseConfdExtensionService
 from wazo_ui.helpers.service import BaseConfdService
+from wazo_ui.helpers.extension import BaseConfdExtensionService
 
 
 class TestBaseConfdService(unittest.TestCase):

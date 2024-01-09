@@ -1,7 +1,7 @@
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import flash, jsonify, redirect, render_template, request, url_for
+from flask import redirect, render_template, jsonify, url_for, flash, request
 from flask_babel import gettext as _
 from flask_babel import lazy_gettext as l_
 from flask_classful import route
@@ -9,13 +9,14 @@ from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
-    build_select2_response,
     extract_select2_params,
+    build_select2_response,
 )
+
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
 
-from .form import ConfigDeviceForm, ConfigRegistrarForm, ConfigurationForm
+from .form import ConfigRegistrarForm, ConfigDeviceForm, ConfigurationForm
 
 
 class ProvisioningBaseView(BaseIPBXHelperView):

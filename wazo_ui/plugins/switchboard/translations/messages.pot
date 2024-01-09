@@ -1,5 +1,5 @@
 # Translations template for wazo_admin_ui_switchboard.
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # wazo_admin_ui_switchboard project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
@@ -58,3 +58,4 @@ msgstr ""
 #: wazo_plugind_admin_ui_switchboard_official/templates/switchboard/list.html:36
 msgid "Add"
 msgstr ""
+

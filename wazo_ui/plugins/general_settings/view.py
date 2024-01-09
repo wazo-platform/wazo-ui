@@ -3,27 +3,34 @@
 
 import logging
 
-from flask import flash, jsonify, redirect, render_template, request, url_for
 from flask_babel import gettext as _
 from flask_babel import lazy_gettext as l_
+from flask import (
+    flash,
+    redirect,
+    request,
+    render_template,
+    url_for,
+    jsonify,
+)
 from flask_classful import route
 from requests.exceptions import HTTPError
 
+from wazo_ui.helpers.menu import menu_item
+from wazo_ui.helpers.view import BaseIPBXHelperView
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     build_select2_response,
     extract_select2_params,
 )
-from wazo_ui.helpers.menu import menu_item
-from wazo_ui.helpers.view import BaseIPBXHelperView
 
 from .form import (
     ConfBridgeGeneralSettingsForm,
     FeaturesGeneralSettingsForm,
     IaxGeneralSettingsForm,
+    SCCPGeneralSettingsForm,
     PJSIPGlobalSettingsForm,
     PJSIPSystemSettingsForm,
-    SCCPGeneralSettingsForm,
     VoicemailGeneralSettingsForm,
 )
 

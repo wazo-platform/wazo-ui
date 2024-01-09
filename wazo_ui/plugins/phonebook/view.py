@@ -1,19 +1,18 @@
 # Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
-
 import logging
 
-from flask import flash, jsonify, redirect, render_template, request, url_for
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
-
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
-    build_select2_response,
     extract_select2_params,
+    build_select2_response,
     route,
 )
+from flask import request, jsonify, redirect, render_template, flash, url_for
+
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
 from wazo_ui.plugins.phonebook.service import (
@@ -21,7 +20,7 @@ from wazo_ui.plugins.phonebook.service import (
     ManagePhonebookContactsService,
 )
 
-from .form import ManagePhonebookForm, PhonebookForm
+from .form import PhonebookForm, ManagePhonebookForm
 
 logger = logging.getLogger(__name__)
 

@@ -1,6 +1,12 @@
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+from wazo_ui.helpers.destination import (
+    BaseDestinationForm,
+    DestinationHiddenField,
+)
+from wtforms.utils import unset_value
+
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
     BooleanField,
@@ -9,11 +15,10 @@ from wtforms.fields import (
     StringField,
     SubmitField,
 )
-from wtforms.utils import unset_value
-from wtforms.validators import InputRequired, Length
+from wtforms.validators import Length, InputRequired
 
-from wazo_ui.helpers.destination import BaseDestinationForm, DestinationHiddenField
 from wazo_ui.helpers.form import BaseForm
+
 
 _application_destination_choices = []
 

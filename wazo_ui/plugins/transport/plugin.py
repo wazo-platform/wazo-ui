@@ -7,7 +7,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import TransportService
-from .view import TransportDestinationView, TransportView
+from .view import TransportView, TransportDestinationView
 
 transport = create_blueprint('transports', __name__)
 

@@ -2,11 +2,12 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import cgi
+
 from io import BytesIO
 
-from flask import flash, jsonify, redirect, render_template, request, send_file, url_for
-from flask_babel import gettext as _
+from flask import jsonify, request, render_template, redirect, url_for, send_file, flash
 from flask_babel import lazy_gettext as l_
+from flask_babel import gettext as _
 from flask_classful import route
 from requests.exceptions import HTTPError
 
@@ -14,7 +15,7 @@ from wazo_ui.helpers.classful import LoginRequiredView
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
 
-from .form import SoundFilenameForm, SoundForm
+from .form import SoundForm, SoundFilenameForm
 
 
 class SoundView(BaseIPBXHelperView):

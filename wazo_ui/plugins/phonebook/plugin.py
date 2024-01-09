@@ -2,12 +2,14 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_menu.classy import register_flaskview
-
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
-from .service import ManagePhonebookContactsService, PhonebookService
-from .view import ManagePhonebookView, PhonebookDestinationView, PhonebookView
+from .service import (
+    ManagePhonebookContactsService,
+    PhonebookService,
+)
+from .view import PhonebookView, ManagePhonebookView, PhonebookDestinationView
 
 phonebook = create_blueprint('phonebook', __name__)
 

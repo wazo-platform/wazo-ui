@@ -2,9 +2,12 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_wtf import FlaskForm
-from wtforms.fields import FieldList, FormField
-from wtforms.fields import SelectField as WTFSelectField
-from wtforms.fields import SubmitField
+from wtforms.fields import (
+    FieldList,
+    FormField,
+    SelectField as WTFSelectField,
+    SubmitField,
+)
 
 
 class BaseForm(FlaskForm):

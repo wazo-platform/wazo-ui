@@ -10,7 +10,7 @@ from wazo_ui.helpers.view import register_listing_url
 
 from .form import SoundDestinationForm
 from .service import SoundService
-from .view import SoundFileView, SoundListingView, SoundView
+from .view import SoundView, SoundListingView, SoundFileView
 
 sound = create_blueprint('sound', __name__)
 

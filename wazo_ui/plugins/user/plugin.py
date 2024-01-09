@@ -9,9 +9,9 @@ from wazo_ui.helpers.funckey import register_funckey_destination_form
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
-from .form import UserDestinationForm, UserFuncKeyDestinationForm
 from .service import UserService
-from .view import UserDestinationView, UserView
+from .view import UserView, UserDestinationView
+from .form import UserDestinationForm, UserFuncKeyDestinationForm
 
 user = create_blueprint('user', __name__)
 

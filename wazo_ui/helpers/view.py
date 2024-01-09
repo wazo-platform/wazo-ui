@@ -1,15 +1,15 @@
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import logging
-
 from flask import flash, request
 
+import logging
+
 from wazo_ui.helpers.classful import (
-    DEFAULT_TEMPLATE,
     BaseView,
     IndexAjaxViewMixin,
     NewViewMixin,
+    DEFAULT_TEMPLATE,
 )
 
 from .error import ConfdErrorExtractor as e_extractor

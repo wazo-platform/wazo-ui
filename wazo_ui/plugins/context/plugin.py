@@ -7,7 +7,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import ContextService
-from .view import ContextListingView, ContextView
+from .view import ContextView, ContextListingView
 
 context = create_blueprint('context', __name__)
 

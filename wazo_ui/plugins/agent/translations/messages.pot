@@ -1,5 +1,5 @@
 # Translations template for nestbox_ui_wazo_plugins.
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # nestbox_ui_wazo_plugins project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
@@ -88,3 +88,4 @@ msgstr ""
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:26
 msgid "Add"
 msgstr ""
+

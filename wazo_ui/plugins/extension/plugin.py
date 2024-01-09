@@ -9,8 +9,8 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .form import ExtensionDestinationForm
-from .service import ExtensionFeaturesService, ExtensionService
-from .view import ExtensionFeaturesView, ExtensionListingView, ExtensionView
+from .service import ExtensionService, ExtensionFeaturesService
+from .view import ExtensionView, ExtensionListingView, ExtensionFeaturesView
 
 extension = create_blueprint('extension', __name__)
 

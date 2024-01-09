@@ -7,9 +7,9 @@ from wazo_ui.helpers.destination import register_destination_form
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
-from .form import IvrDestinationForm
 from .service import IvrService
-from .view import IvrDestinationView, IvrView
+from .view import IvrView, IvrDestinationView
+from .form import IvrDestinationForm
 
 ivr = create_blueprint('ivr', __name__)
 

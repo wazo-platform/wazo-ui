@@ -8,9 +8,9 @@ from wazo_ui.helpers.destination import register_destination_form
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
-from .form import VoicemailDestinationForm
 from .service import VoicemailService
-from .view import VoicemailDestinationView, VoicemailView
+from .view import VoicemailView, VoicemailDestinationView
+from .form import VoicemailDestinationForm
 
 voicemail = create_blueprint('voicemail', __name__)
 
