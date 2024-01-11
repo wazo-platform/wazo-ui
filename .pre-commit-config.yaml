@@ -1,4 +1,5 @@
 # See https://pre-commit.com for more information
+exclude: '^wazo_ui/static/(?!.*wazo).*'
 repos:
   - repo: https://github.com/PyCQA/flake8
     rev: '6.1.0'
@@ -16,28 +17,21 @@ repos:
     hooks:
       - id: pyupgrade
         args: [--py39-plus]
-        exclude: 'wazo_ui/static/(css|js)/(?!(wazo-ui\.css|wazo-ui\.js)$).*'
 # Automatically sort and format imports (in black compatible way)
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
     hooks:
       - id: isort
         args: [--filter-files]
-        exclude: 'wazo_ui/static/(css|js)/(?!(wazo-ui\.css|wazo-ui\.js)$).*'
 # See https://pre-commit.com for more information
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:
       - id: trailing-whitespace
-        exclude: 'wazo_ui/static/(css|js)/(?!(wazo-ui\.css|wazo-ui\.js)$).*'
       - id: end-of-file-fixer
-        exclude: 'wazo_ui/static/(css|js)/(?!(wazo-ui\.css|wazo-ui\.js)$).*'
       - id: check-yaml
-        exclude: 'wazo_ui/static/(css|js)/(?!(wazo-ui\.css|wazo-ui\.js)$).*'
       - id: check-toml
-        exclude: 'wazo_ui/static/(css|js)/(?!(wazo-ui\.css|wazo-ui\.js)$).*'
   - repo: https://github.com/wazo-platform/wazo-git-hooks
     rev: 1.1.1
     hooks:
       - id: wazo-copyright-check
-        exclude: 'wazo_ui/static/(css|js)/(?!(wazo-ui\.css|wazo-ui\.js)$).*'
