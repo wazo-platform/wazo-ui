@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wtforms.fields import (
-    FormField,
     BooleanField,
-    SelectField,
-    HiddenField,
     FieldList,
+    FormField,
+    HiddenField,
+    SelectField,
     SubmitField,
 )
 from wtforms.validators import InputRequired

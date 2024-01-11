@@ -171,4 +171,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_call_filter_official/templates/call_filter/list.html:32
 msgid "Add"
 msgstr ""
-

@@ -7,7 +7,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import DeviceService
-from .view import DeviceView, DeviceListingView
+from .view import DeviceListingView, DeviceView
 
 device = create_blueprint('device', __name__)
 

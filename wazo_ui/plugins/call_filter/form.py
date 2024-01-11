@@ -4,18 +4,18 @@
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
     BooleanField,
-    SubmitField,
-    StringField,
-    IntegerField,
+    FieldList,
     FormField,
     HiddenField,
+    IntegerField,
     SelectMultipleField,
-    FieldList,
+    StringField,
+    SubmitField,
 )
 from wtforms.validators import InputRequired
 
-from wazo_ui.helpers.form import BaseForm, SelectField
 from wazo_ui.helpers.destination import DestinationField, DestinationHiddenField
+from wazo_ui.helpers.form import BaseForm, SelectField
 
 bs_strategy_map = {
     'all-surrogates-then-all-recipients': l_('All secretaries'),

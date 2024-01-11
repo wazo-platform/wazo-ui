@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the
 # wazo-admin-ui-call-filter project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wazo-admin-ui-call-filter 0.1\n"

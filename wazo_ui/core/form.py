@@ -2,13 +2,12 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
-from wtforms.fields import StringField, SelectField, FormField
-from wtforms.fields.html5 import IntegerField, EmailField
+from wtforms.fields import FormField, SelectField, StringField
+from wtforms.fields.html5 import EmailField, IntegerField
 from wtforms.validators import InputRequired, Length, NumberRange, Regexp
 
-from wazo_ui.helpers.form import BaseForm
 from wazo_ui.helpers.destination import BaseDestinationForm
-
+from wazo_ui.helpers.form import BaseForm
 from wazo_ui.helpers.view import listing_urls
 
 _application_destination_choices = []

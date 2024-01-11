@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the
 # wazo_admin_ui_voicemail project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wazo_admin_ui_voicemail 0.1\n"
