@@ -134,4 +134,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_context_official/templates/context/list.html:26
 msgid "Add"
 msgstr ""
-

@@ -112,4 +112,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_extension_official/templates/extension/list.html:51
 msgid "Add"
 msgstr ""
-

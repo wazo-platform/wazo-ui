@@ -90,4 +90,3 @@ msgstr ""
 #: wazo_admin_ui_market/templates/plugin/list_plugins.html:76
 msgid "Upgrade"
 msgstr ""
-

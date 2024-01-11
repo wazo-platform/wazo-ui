@@ -61,4 +61,3 @@ msgstr ""
 #: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:24
 msgid "Add"
 msgstr ""
-

@@ -172,4 +172,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_general_settings_official/templates/general_settings/voicemail_general.html:13
 msgid "Timezones"
 msgstr ""
-

@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the
 # wazo_admin_ui_conference project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
-# 
+#
 # Translators:
 # Wimdv <wimdv@eyepea.eu>, 2017
 msgid ""

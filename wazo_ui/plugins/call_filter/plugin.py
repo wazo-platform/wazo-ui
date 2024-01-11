@@ -10,7 +10,7 @@ from wazo_ui.helpers.view import register_listing_url
 
 from .form import CallFilterFuncKeyDestinationForm
 from .service import CallFilterService
-from .view import CallFilterView, CallFilterMemberListingView
+from .view import CallFilterMemberListingView, CallFilterView
 
 call_filter = create_blueprint('call_filter', __name__)
 

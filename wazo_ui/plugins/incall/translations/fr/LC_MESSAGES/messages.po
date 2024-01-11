@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the
 # wazo_admin_ui_incall project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
-# 
+#
 # Translators:
 # Cedric Abunar <cabunar@wazo.io>, 2018
 msgid ""

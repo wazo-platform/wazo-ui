@@ -141,4 +141,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:24
 msgid "Add"
 msgstr ""
-

@@ -98,4 +98,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_conference_official/templates/conference/list.html:36
 msgid "Add"
 msgstr ""
-

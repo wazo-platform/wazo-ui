@@ -166,4 +166,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_line_official/templates/line/protocol_sip.html:24
 msgid "Set host value"
 msgstr ""
-

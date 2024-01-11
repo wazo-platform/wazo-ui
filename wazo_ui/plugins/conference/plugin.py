@@ -9,9 +9,9 @@ from wazo_ui.helpers.funckey import register_funckey_destination_form
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
-from .service import ConferenceService
-from .view import ConferenceView, ConferenceDestinationView
 from .form import ConferenceDestinationForm, ConferenceFuncKeyDestinationForm
+from .service import ConferenceService
+from .view import ConferenceDestinationView, ConferenceView
 
 conference = create_blueprint('conference', __name__)
 

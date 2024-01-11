@@ -5,8 +5,8 @@ from flask_menu.classy import register_flaskview
 
 from wazo_ui.helpers.plugin import create_blueprint
 
-from .view import ExternalAuthView
 from .service import ExternalAuthService
+from .view import ExternalAuthView
 
 external_auth = create_blueprint('external_auth', __name__)
 

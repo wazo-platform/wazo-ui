@@ -185,4 +185,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_ivr_official/templates/ivr/list.html:22
 msgid "incall"
 msgstr ""
-
