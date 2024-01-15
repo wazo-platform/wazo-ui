@@ -91,4 +91,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_paging_official/templates/paging/list.html:25
 msgid "Add"
 msgstr ""
-

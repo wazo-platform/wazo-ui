@@ -175,4 +175,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_group_official/templates/group/list.html:47
 msgid "Choose Context"
 msgstr ""
-

@@ -5,6 +5,7 @@ import sys
 
 from xivo import xivo_logging
 from xivo.user_rights import change_user
+
 from wazo_ui.config import load as load_config
 from wazo_ui.controller import Controller
 

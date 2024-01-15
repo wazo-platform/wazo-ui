@@ -111,4 +111,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_incall_official/templates/incall/list.html:48
 msgid "Add"
 msgstr ""
-

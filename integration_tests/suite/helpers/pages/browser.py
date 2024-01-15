@@ -3,10 +3,10 @@
 
 import logging
 
-from selenium import webdriver
-from selenium.webdriver.remote.remote_connection import LOGGER
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from pyvirtualdisplay import Display
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.remote.remote_connection import LOGGER
 
 from .login import LoginPage
 

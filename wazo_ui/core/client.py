@@ -3,8 +3,6 @@
 
 from flask import g, session
 from flask_login import current_user
-from werkzeug.local import LocalProxy
-
 from wazo_amid_client import Client as AmidClient
 from wazo_auth_client import Client as AuthClient
 from wazo_call_logd_client import Client as CallLogdClient
@@ -13,6 +11,7 @@ from wazo_dird_client import Client as DirdClient
 from wazo_plugind_client import Client as PlugindClient
 from wazo_provd_client import Client as ProvdClient
 from wazo_webhookd_client import Client as WebhookdClient
+from werkzeug.local import LocalProxy
 
 from wazo_ui.http_server import app
 

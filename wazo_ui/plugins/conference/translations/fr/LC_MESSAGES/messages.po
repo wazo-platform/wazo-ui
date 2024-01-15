@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the
 # wazo_admin_ui_conference project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
-# 
+#
 # Translators:
 # Francois Blackburn <fblackburn@wazo.community>, 2017
 # Cedric Abunar <cabunar@wazo.io>, 2018

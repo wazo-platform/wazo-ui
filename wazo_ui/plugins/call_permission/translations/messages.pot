@@ -116,4 +116,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_call_permission_official/templates/call_permission/list.html:4
 msgid "List"
 msgstr ""
-

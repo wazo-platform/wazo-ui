@@ -147,4 +147,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_moh_official/templates/moh/list.html:34
 msgid "Add"
 msgstr ""
-

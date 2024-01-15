@@ -3,8 +3,8 @@
 
 from flask_babel import lazy_gettext as l_
 
-from wazo_ui.helpers.view import BaseIPBXHelperView
 from wazo_ui.helpers.menu import menu_item
+from wazo_ui.helpers.view import BaseIPBXHelperView
 
 from .form import PagingForm
 

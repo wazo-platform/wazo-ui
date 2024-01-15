@@ -88,4 +88,3 @@ msgstr ""
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:26
 msgid "Add"
 msgstr ""
-

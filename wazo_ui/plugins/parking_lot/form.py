@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
-from wtforms.fields import SubmitField, StringField, SelectField, FieldList, FormField
+from wtforms.fields import FieldList, FormField, SelectField, StringField, SubmitField
 from wtforms.fields.html5 import IntegerField
-from wtforms.validators import InputRequired, NumberRange, Length, Regexp
+from wtforms.validators import InputRequired, Length, NumberRange, Regexp
 
 from wazo_ui.helpers.form import BaseForm
 

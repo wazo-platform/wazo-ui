@@ -3829,4 +3829,3 @@ msgstr ""
 #: wazo_ui/templates/translations.html:50
 msgid "Not long enough"
 msgstr ""
-

@@ -7,7 +7,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import MohService
-from .view import MohView, MohListingView
+from .view import MohListingView, MohView
 
 moh = create_blueprint('moh', __name__)
 

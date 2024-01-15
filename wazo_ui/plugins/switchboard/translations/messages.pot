@@ -58,4 +58,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_switchboard_official/templates/switchboard/list.html:36
 msgid "Add"
 msgstr ""
-

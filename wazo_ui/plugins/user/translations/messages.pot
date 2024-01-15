@@ -273,4 +273,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_user_official/templates/user/list.html:42
 msgid "Choose Context"
 msgstr ""
-

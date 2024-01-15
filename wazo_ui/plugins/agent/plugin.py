@@ -7,7 +7,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import AgentService
-from .view import AgentView, AgentListingView
+from .view import AgentListingView, AgentView
 
 agent = create_blueprint('agent', __name__)
 

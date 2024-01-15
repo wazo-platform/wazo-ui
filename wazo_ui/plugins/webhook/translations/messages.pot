@@ -116,4 +116,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_webhook_official/templates/webhook/list.html:32
 msgid "Add"
 msgstr ""
-

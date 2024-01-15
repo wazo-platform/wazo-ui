@@ -133,4 +133,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_voicemail_official/templates/voicemail/list.html:26
 msgid "Add"
 msgstr ""
-

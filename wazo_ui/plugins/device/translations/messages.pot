@@ -131,4 +131,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_device_official/templates/device/list.html:67
 msgid "Add"
 msgstr ""
-

@@ -7,7 +7,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import CallPermissionService
-from .view import CallPermissionView, CallPermissionListingView
+from .view import CallPermissionListingView, CallPermissionView
 
 call_permission = create_blueprint('call_permission', __name__)
 

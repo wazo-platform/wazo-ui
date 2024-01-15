@@ -7,7 +7,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import ScheduleService
-from .view import ScheduleView, ScheduleListingView
+from .view import ScheduleListingView, ScheduleView
 
 schedule = create_blueprint('schedule', __name__)
 

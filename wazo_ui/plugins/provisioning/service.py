@@ -1,8 +1,9 @@
 # Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from wazo_ui.helpers.service import BaseConfdService
 from wazo_provd_client.operation import OperationInProgress
+
+from wazo_ui.helpers.service import BaseConfdService
 
 
 class PluginService:

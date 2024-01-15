@@ -4,15 +4,13 @@
 
 from flask import render_template
 from flask_menu.classy import register_flaskview
-from wtforms.fields import SubmitField, StringField
+from wtforms.fields import StringField, SubmitField
 from wtforms.validators import InputRequired, Length
 
 from wazo_ui.helpers.form import BaseForm
 from wazo_ui.helpers.menu import menu_item
-
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import BaseIPBXHelperView
-
 
 asterisk_cli = create_blueprint('asterisk_cli', __name__)
 

@@ -3,13 +3,13 @@
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
-    SubmitField,
-    StringField,
-    SelectField,
-    FormField,
     BooleanField,
+    FormField,
+    SelectField,
+    StringField,
+    SubmitField,
 )
-from wtforms.validators import IPAddress, MacAddress, InputRequired
+from wtforms.validators import InputRequired, IPAddress, MacAddress
 
 from wazo_ui.helpers.form import BaseForm
 

@@ -7,7 +7,7 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import SkillRuleService
-from .view import SkillRuleView, SkillRuleListingView
+from .view import SkillRuleListingView, SkillRuleView
 
 skillrule = create_blueprint('skillrule', __name__)
 

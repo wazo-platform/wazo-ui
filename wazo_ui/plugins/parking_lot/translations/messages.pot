@@ -106,4 +106,3 @@ msgstr ""
 #: wazo_plugind_admin_ui_parking_lot_official/templates/parking_lot/list.html:35
 msgid "Add"
 msgstr ""
-

@@ -8,7 +8,6 @@ from wazo_ui.helpers.plugin import create_blueprint
 from .service import RtpService
 from .view import RtpView
 
-
 rtp = create_blueprint('rtp', __name__)
 
 
