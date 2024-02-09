@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
@@ -326,7 +326,7 @@ class BaseView(BaseHelperView):
             _('%(resource)s: Resource has been updated', resource=self.resource),
             'success',
         )
-        return self._redirect_referrer_or('index')
+        return self._redirect_for('index')
 
     def _map_form_to_resources_put(self, form, form_id):
         return self._map_form_to_resources(form, form_id)
