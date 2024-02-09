@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -6,6 +6,7 @@ from wtforms.fields import FieldList, FormField, SelectField, StringField, Submi
 from wtforms.fields.html5 import IntegerField
 from wtforms.validators import InputRequired, Length, NumberRange, Regexp
 
+from wazo_ui.helpers.destination import DestinationHiddenField
 from wazo_ui.helpers.form import BaseForm
 
 
@@ -26,3 +27,10 @@ class ParkingLotForm(BaseForm):
     music_on_hold = SelectField(l_('Music On Hold'), [Length(max=128)], choices=[])
     timeout = IntegerField(l_('Timeout'), [NumberRange(min=0)])
     submit = SubmitField(l_('Submit'))
+
+
+class ParkingFuncKeyDestinationForm(BaseForm):
+    set_value_template = '{parking_lot_name}'
+
+    parking_lot_id = SelectField(l_('Parking Lot'), [InputRequired()], choices=[])
+    parking_lot_name = DestinationHiddenField()
