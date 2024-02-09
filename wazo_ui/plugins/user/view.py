@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from random import randint
@@ -83,11 +83,6 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         self.service.update_csv(form)
 
         flash('Resources have been updated', 'success')
-        return self._redirect_for('index')
-
-    @route('/put/<id>', methods=['POST'])
-    def put(self, id):
-        super().put(id)
         return self._redirect_for('index')
 
     def _map_resources_to_form(self, resource):

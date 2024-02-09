@@ -1,8 +1,14 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+from flask import jsonify, request
 from flask_babel import lazy_gettext as l_
 
+from wazo_ui.helpers.classful import (
+    LoginRequiredView,
+    build_select2_response,
+    extract_select2_params,
+)
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
 
@@ -51,3 +57,11 @@ class ParkingLotView(BaseIPBXHelperView):
             form.music_on_hold.data
         )
         return resource
+
+
+class ParkingLotDestinationView(LoginRequiredView):
+    def list_json(self):
+        params = extract_select2_params(request.args)
+        parking_lots = self.service.list(**params)
+        results = [{'id': pl['id'], 'text': pl['name']} for pl in parking_lots['items']]
+        return jsonify(build_select2_response(results, parking_lots['total'], params))
