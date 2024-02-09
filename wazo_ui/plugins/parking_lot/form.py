@@ -34,3 +34,11 @@ class ParkingFuncKeyDestinationForm(BaseForm):
 
     parking_lot_id = SelectField(l_('Parking Lot'), [InputRequired()], choices=[])
     parking_lot_name = DestinationHiddenField()
+
+
+class ParkPositionFuncKeyDestinationForm(BaseForm):
+    set_value_template = '{parking_lot_name}'
+
+    parking_lot_id = SelectField(l_('Parking Lot'), [InputRequired()], choices=[])
+    position = IntegerField(l_('Position'), [InputRequired()])
+    parking_lot_name = DestinationHiddenField()

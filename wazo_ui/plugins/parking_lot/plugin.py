@@ -8,7 +8,7 @@ from wazo_ui.helpers.funckey import register_funckey_destination_form
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
-from .form import ParkingFuncKeyDestinationForm
+from .form import ParkingFuncKeyDestinationForm, ParkPositionFuncKeyDestinationForm
 from .service import ParkingLotService
 from .view import ParkingLotDestinationView, ParkingLotView
 
@@ -32,8 +32,14 @@ class Plugin:
         register_funckey_destination_form(
             'parking', l_('Parking'), ParkingFuncKeyDestinationForm
         )
+        register_funckey_destination_form(
+            'park_position', l_('Parking Position'), ParkPositionFuncKeyDestinationForm
+        )
         register_listing_url(
             'parking', 'parking_lot.ParkingLotDestinationView:list_json'
+        )
+        register_listing_url(
+            'park_position', 'parking_lot.ParkingLotDestinationView:list_json'
         )
 
         core.register_blueprint(parking_lot)
