@@ -131,16 +131,6 @@ class CallPermissionForm(BaseForm):
 
 
 class UserForm(BaseForm):
-    subscription_type = SelectField(
-        l_('Subscription Type'),
-        choices=[
-            (0, l_('Voice')),
-            (1, l_('Unified Communication')),
-            (2, l_('Collaboration')),
-            (3, l_('Customer Relationship')),
-        ],
-        validators=[InputRequired()],
-    )
     firstname = StringField(l_('Firstname'), [InputRequired(), Length(max=128)])
     lastname = StringField(l_('Lastname'), [Length(max=128)])
     username = StringField(l_('Username'), [InputRequired(), Length(min=2, max=254)])
