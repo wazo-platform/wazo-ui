@@ -952,7 +952,7 @@ msgstr "Patron et tous les secrétaires"
 #: wazo_ui/plugins/call_filter/form.py:40
 #: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:16
 msgid "Boss"
-msgstr "Chef"
+msgstr "Patron"
 
 #: wazo_ui/plugins/call_filter/form.py:41
 msgid "Boss Timeout"
@@ -1054,7 +1054,7 @@ msgstr "Ajouter un filtre Patron/Secrétaire"
 
 #: wazo_ui/plugins/call_permission/form.py:18
 msgid "Allow"
-msgstr "Permettre"
+msgstr "Autoriser"
 
 #: wazo_ui/plugins/call_permission/form.py:18
 msgid "Deny"
@@ -1121,7 +1121,7 @@ msgstr "Autorisations d'appel"
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:15
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:16
 msgid "Extensions"
-msgstr "Numéros"
+msgstr "Extensions"
 
 #: wazo_ui/plugins/call_pickup/form.py:31
 msgid "Interceptor Users"
@@ -1464,7 +1464,7 @@ msgstr "%(resource)s : la ressource a été synchronisée"
 #: wazo_ui/plugins/device/view.py:119
 #, python-format
 msgid "%(resource)s: Device has been assigned to tenant"
-msgstr "%(resource)s : l'appareil a été attribué au locataire"
+msgstr "%(resource)s : l'appareil a été attribué au tenant"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/edit.html:11
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:110
@@ -1497,7 +1497,7 @@ msgstr "Attribuer un appareil au tenant actuel"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:106
 msgid "Are you sure you want to assign this device to the current tenant?"
-msgstr "Êtes-vous sûr de vouloir attribuer cet appareil au locataire actuel ?"
+msgstr "Êtes-vous sûr de vouloir attribuer cet appareil au tenant actuel ?"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:108
 msgid "Take"
@@ -1812,7 +1812,7 @@ msgstr "Ajouter une extension"
 #: wazo_ui/plugins/external_auth/form.py:20
 #: wazo_ui/plugins/external_auth/form.py:27
 msgid "Client ID"
-msgstr "identité du client"
+msgstr "ID du client"
 
 #: wazo_ui/plugins/external_auth/form.py:22
 #: wazo_ui/plugins/external_auth/form.py:29
@@ -2251,7 +2251,7 @@ msgstr "Groupes de sonneries"
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:17
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:17
 msgid "Fallbacks"
-msgstr "Solutions de repli"
+msgstr "Non réponse"
 
 #: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:111
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:80
@@ -2294,11 +2294,11 @@ msgstr "Désactivé"
 
 #: wazo_ui/plugins/ha/form.py:16
 msgid "Master"
-msgstr "Maître"
+msgstr "Primaire"
 
 #: wazo_ui/plugins/ha/form.py:17
 msgid "Slave"
-msgstr "Esclave"
+msgstr "Secondaire"
 
 #: wazo_ui/plugins/ha/form.py:21
 msgid "Remote address"
@@ -2372,7 +2372,7 @@ msgstr "Adresse"
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:17
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:13
 msgid "Tenant"
-msgstr "Locataire"
+msgstr "Tenant"
 
 #: wazo_ui/plugins/identity/form.py:66
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:18
@@ -2441,7 +2441,7 @@ msgstr "Identifications"
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:11
 #: wazo_ui/plugins/identity/view.py:30
 msgid "Identities"
-msgstr "Identités"
+msgstr "Utilisateurs"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:5
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:11
@@ -2960,7 +2960,7 @@ msgstr "Appelants"
 #: wazo_ui/plugins/voicemail/form.py:31
 #: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:15
 msgid "Number"
-msgstr "Nombre"
+msgstr "Numéro"
 
 #: wazo_ui/plugins/paging/form.py:43 wazo_ui/plugins/paging/form.py:49
 msgid "Announce caller"
@@ -2998,11 +2998,11 @@ msgstr "Ajouter une pagination"
 
 #: wazo_ui/plugins/parking_lot/form.py:22
 msgid "Slots Start"
-msgstr "Début des machines à sous"
+msgstr "Début des emplacements"
 
 #: wazo_ui/plugins/parking_lot/form.py:25
 msgid "Slots End"
-msgstr "Fin des machines à sous"
+msgstr "Fin des emplacements"
 
 #: wazo_ui/plugins/parking_lot/form.py:35
 #: wazo_ui/plugins/parking_lot/form.py:42
@@ -3112,11 +3112,11 @@ msgstr "Git"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:24
 msgid "Search plugin"
-msgstr "Chercher un plugin"
+msgstr "Chercher un module"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:35
 msgid "Show only official"
-msgstr "Afficher uniquement l'officiel"
+msgstr "Afficher uniquement officiel"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:46
 msgid "Give your GIT url to install a plugin!"
@@ -3261,12 +3261,12 @@ msgstr "Modules de périphériques"
 #: wazo_ui/plugins/provisioning/view.py:94
 #, python-format
 msgid "Plugin %(plugin_name)s has been installed"
-msgstr "Le plugin %(plugin_name)s a été installé"
+msgstr "Le module %(plugin_name)s a été installé"
 
 #: wazo_ui/plugins/provisioning/view.py:106
 #, python-format
 msgid "Plugin %(plugin_name)s has been uninstalled"
-msgstr "Le plugin %(plugin_name)s a été désinstallé"
+msgstr "Le module %(plugin_name)s a été désinstallé"
 
 #: wazo_ui/plugins/provisioning/view.py:140
 #, python-format
@@ -3355,7 +3355,7 @@ msgstr "Approvisionnement / Modules"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:28
 msgid "Install this plugin"
-msgstr "Installez ce plugin"
+msgstr "Installez ce module"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:30
 msgid "Are you sure you want to install this plugin ?"
@@ -3540,7 +3540,7 @@ msgstr "La configuration RTP a été mise à jour"
 
 #: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:16
 msgid "Ice Host Candidates"
-msgstr "ICE hôte Candidates"
+msgstr "Hôte ICE Candidates"
 
 #: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:47
 msgid "Local Address"
@@ -3815,7 +3815,7 @@ msgstr "POPC"
 
 #: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/list.html:36
 msgid "Add Switchboard"
-msgstr "Ajouter un standard"
+msgstr "Ajouter un POPC"
 
 #: wazo_ui/plugins/transport/view.py:28
 msgid "PJSIP Transports"
@@ -4075,7 +4075,7 @@ msgstr "Ajouter une messagerie vocale"
 
 #: wazo_ui/plugins/webhook/form.py:20
 msgid "Display name"
-msgstr "Afficher un nom"
+msgstr "Nom affiché"
 
 #: wazo_ui/plugins/webhook/form.py:22
 msgid "Event Name"
@@ -4111,7 +4111,7 @@ msgstr "HEAD"
 
 #: wazo_ui/plugins/webhook/form.py:42
 msgid "Content Type"
-msgstr "Type de contenu"
+msgstr "Content Type"
 
 #: wazo_ui/plugins/webhook/form.py:44
 msgid "Verify Certificate"
@@ -4133,7 +4133,7 @@ msgstr "Webhook"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:14
 msgid "Display Name"
-msgstr "Afficher un nom"
+msgstr "Nom affiché"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:15
 msgid "Events Name"
