@@ -112,6 +112,15 @@ using:
 
     % python3 setup.py compile_catalog
 
+# Transifex
+
+To use with transifex. The configuration is set in .tx directory.
+
+    tx pull -t -l \<lang\> (eg. fr)
+    python3 setup.py compile_catalog
+    wdk mount wazo-ui
+    wdk restart wazo-ui
+
 # Debugging bootstrap
 
 To enable live-edit of bootstrap.min.css, you will need to add the following line at the end of
