@@ -3,19 +3,24 @@
 # This file is distributed under the same license as the
 # wazo_ui project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
-#
+# 
+# Translators:
+# Sylvain Boily <sylvainboilydroid@gmail.com>, 2024
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: wazo_ui 0.1\n"
 "Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
 "POT-Creation-Date: 2024-02-27 18:10-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Wazo Authors <dev@wazo.community>\n"
-"Language-Team: en <dev@wazo.community>\n"
+"PO-Revision-Date: 2024-02-29 12:59+0000\n"
+"Last-Translator: Sylvain Boily <sylvainboilydroid@gmail.com>, 2024\n"
+"Language-Team: French (https://app.transifex.com/wazo/teams/69545/fr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: wazo_ui/controller.py:61 wazo_ui/core/form.py:84 wazo_ui/core/plugin.py:49
 #: wazo_ui/plugins/application/form.py:84
@@ -26,17 +31,17 @@ msgstr ""
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:23
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:113
 msgid "Application"
-msgstr ""
+msgstr "Application"
 
 #: wazo_ui/controller.py:63 wazo_ui/core/plugin.py:51
 msgid "Hangup"
-msgstr ""
+msgstr "Raccrocher"
 
 #: wazo_ui/controller.py:64 wazo_ui/core/plugin.py:52
 #: wazo_ui/plugins/application/plugin.py:37
 #: wazo_ui/plugins/funckey/plugin.py:20 wazo_ui/plugins/moh/form.py:10
 msgid "Custom"
-msgstr ""
+msgstr "Personnalisée"
 
 #: wazo_ui/controller.py:65 wazo_ui/core/plugin.py:53
 #: wazo_ui/plugins/application/plugin.py:41
@@ -49,11 +54,11 @@ msgstr ""
 #: wazo_ui/plugins/provisioning/form.py:65 wazo_ui/plugins/queue/form.py:77
 #: wazo_ui/plugins/voicemail/form.py:81
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 #: wazo_ui/controller.py:69 wazo_ui/core/plugin.py:57
 msgid "CallBack DISA"
-msgstr ""
+msgstr "Rappel DISA"
 
 #: wazo_ui/controller.py:74 wazo_ui/core/plugin.py:62
 #: wazo_ui/plugins/dird_profile/templates/wazo_engine/dird_profile/list.html:11
@@ -61,15 +66,15 @@ msgstr ""
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/list.html:5
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/list.html:11
 msgid "Directory"
-msgstr ""
+msgstr "Annuaire"
 
 #: wazo_ui/controller.py:79 wazo_ui/core/plugin.py:67
 msgid "DISA"
-msgstr ""
+msgstr "DISA"
 
 #: wazo_ui/controller.py:84 wazo_ui/core/plugin.py:72
 msgid "Fax to Mail"
-msgstr ""
+msgstr "Fax vers courriel"
 
 #: wazo_ui/controller.py:89 wazo_ui/core/plugin.py:77
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:4
@@ -80,7 +85,7 @@ msgstr ""
 #: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/edit.html:11
 #: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:5
 msgid "Voicemail"
-msgstr ""
+msgstr "Messagerie vocale"
 
 #: wazo_ui/core/form.py:23 wazo_ui/core/form.py:27
 #: wazo_ui/plugins/dird_source/form.py:50
@@ -89,29 +94,29 @@ msgstr ""
 #: wazo_ui/plugins/ivr/form.py:76 wazo_ui/plugins/parking_lot/form.py:28
 #: wazo_ui/plugins/queue/form.py:108 wazo_ui/plugins/switchboard/form.py:42
 msgid "Timeout"
-msgstr ""
+msgstr "Délai d'attente"
 
 #: wazo_ui/core/form.py:38
 msgid "Cause"
-msgstr ""
+msgstr "Cause"
 
 #: wazo_ui/core/form.py:40
 msgid "Normal"
-msgstr ""
+msgstr "Normale"
 
 #: wazo_ui/core/form.py:41 wazo_ui/helpers/destination.py:121
 #: wazo_ui/plugins/user/form.py:71 wazo_ui/plugins/voicemail/form.py:82
 msgid "Busy"
-msgstr ""
+msgstr "Occupé"
 
 #: wazo_ui/core/form.py:42 wazo_ui/helpers/destination.py:122
 msgid "Congestion"
-msgstr ""
+msgstr "Congestion"
 
 #: wazo_ui/core/form.py:52 wazo_ui/plugins/conference/form.py:32
 #: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:16
 msgid "PIN"
-msgstr ""
+msgstr "PIN"
 
 #: wazo_ui/core/form.py:57 wazo_ui/core/form.py:67 wazo_ui/core/form.py:77
 #: wazo_ui/plugins/conference/form.py:21
@@ -129,7 +134,7 @@ msgstr ""
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:108
 #: wazo_ui/plugins/voicemail/form.py:29
 msgid "Context"
-msgstr ""
+msgstr "Contexte"
 
 #: wazo_ui/core/form.py:72 wazo_ui/plugins/identity/form.py:60
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:40
@@ -141,26 +146,26 @@ msgstr ""
 #: wazo_ui/plugins/voicemail/form.py:33
 #: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:16
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: wazo_ui/helpers/classful.py:281 wazo_ui/plugins/line/view.py:60
 #: wazo_ui/plugins/phonebook/view.py:102 wazo_ui/plugins/trunk/view.py:56
 #, python-format
 msgid "%(resource)s: Resource has been created"
-msgstr ""
+msgstr "%(resource)s : la ressource a été créée"
 
 #: wazo_ui/helpers/classful.py:326 wazo_ui/plugins/dird_source/view.py:238
 #: wazo_ui/plugins/general_settings/view.py:67
 #: wazo_ui/plugins/provisioning/view.py:305
 #, python-format
 msgid "%(resource)s: Resource has been updated"
-msgstr ""
+msgstr "%(resource)s : la ressource a été mise à jour"
 
 #: wazo_ui/helpers/classful.py:339 wazo_ui/plugins/dird_source/view.py:248
 #: wazo_ui/plugins/phonebook/view.py:114
 #, python-format
 msgid "%(resource)s: Resource %(id)s has been deleted"
-msgstr ""
+msgstr "%(resource)s : la ressource %(id)s a été supprimée"
 
 #: wazo_ui/helpers/destination.py:100 wazo_ui/helpers/funckey.py:30
 #: wazo_ui/plugins/application/form.py:31
@@ -173,155 +178,156 @@ msgstr ""
 #: wazo_ui/plugins/user/form.py:82
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:144
 msgid "Destination"
-msgstr ""
+msgstr "Destination"
 
 #: wazo_ui/helpers/destination.py:123
 msgid "Fail"
-msgstr ""
+msgstr "Échouer"
 
 #: wazo_ui/helpers/destination.py:124 wazo_ui/plugins/user/form.py:76
 msgid "No answer"
-msgstr ""
+msgstr "Pas de réponse"
 
 #: wazo_ui/helpers/error.py:11
 msgid "Resource not found"
-msgstr ""
+msgstr "Ressource introuvable"
 
 #: wazo_ui/helpers/error.py:12
 msgid "Input error"
-msgstr ""
+msgstr "Erreur d'entrée"
 
 #: wazo_ui/helpers/error.py:16
 msgid "One or more of the choices you made was not acceptable"
 msgstr ""
+"Un ou plusieurs des choix que vous avez faits n'étaient pas acceptables"
 
 #: wazo_ui/helpers/error.py:17 wazo_ui/helpers/error.py:36
 msgid "Invalid value"
-msgstr ""
+msgstr "valeur invalide"
 
 #: wazo_ui/helpers/error.py:18
 msgid "cannot be formatted as a datetime"
-msgstr ""
+msgstr "ne peut pas être formaté en datetime"
 
 #: wazo_ui/helpers/error.py:19
 msgid "cannot be formatted as date"
-msgstr ""
+msgstr "ne peut pas être formaté en date"
 
 #: wazo_ui/helpers/error.py:20
 msgid "cannot be formatted as a timedelta"
-msgstr ""
+msgstr "ne peut pas être formaté en timedelta"
 
 #: wazo_ui/helpers/error.py:21
 msgid "Not a valid boolean"
-msgstr ""
+msgstr "Ce n'est pas un booléen valide"
 
 #: wazo_ui/helpers/error.py:22
 msgid "Not a valid datetime"
-msgstr ""
+msgstr "Pas une date/heure valide"
 
 #: wazo_ui/helpers/error.py:23
 msgid "Not a valid mapping type"
-msgstr ""
+msgstr "Ce n'est pas un type de mappage valide"
 
 #: wazo_ui/helpers/error.py:24
 msgid "Not a valid email address"
-msgstr ""
+msgstr "Adresse courriel invalide"
 
 #: wazo_ui/helpers/error.py:25
 msgid "Cannot format string with given data"
-msgstr ""
+msgstr "Impossible de formater la chaîne avec les données données"
 
 #: wazo_ui/helpers/error.py:26
 msgid "Not a valid integer"
-msgstr ""
+msgstr "Pas un entier valide"
 
 #: wazo_ui/helpers/error.py:27
 msgid "Not a valid number"
-msgstr ""
+msgstr "Ce n'est pas un numéro valide"
 
 #: wazo_ui/helpers/error.py:28
 msgid "Not a valid string"
-msgstr ""
+msgstr "Ce n'est pas une chaîne valide"
 
 #: wazo_ui/helpers/error.py:29
 msgid "Not a valid time"
-msgstr ""
+msgstr "Pas une heure valide"
 
 #: wazo_ui/helpers/error.py:30
 msgid "Not a valid period of time"
-msgstr ""
+msgstr "Pas une période de temps valide"
 
 #: wazo_ui/helpers/error.py:31
 msgid "Not a valid URL"
-msgstr ""
+msgstr "Ce n'est pas une URL valide"
 
 #: wazo_ui/helpers/error.py:32
 msgid "Not a valid UUID"
-msgstr ""
+msgstr "Pas un UUID valide"
 
 #: wazo_ui/helpers/error.py:33
 msgid "Field may not be null"
-msgstr ""
+msgstr "Le champ ne peut pas être nul"
 
 #: wazo_ui/helpers/error.py:34
 msgid "Missing data for required field"
-msgstr ""
+msgstr "Données manquantes pour le champ obligatoire"
 
 #: wazo_ui/helpers/error.py:35
 msgid "Invalid input type"
-msgstr ""
+msgstr "Type d'entrée invalide"
 
 #: wazo_ui/helpers/error.py:37
 msgid "Invalid input"
-msgstr ""
+msgstr "Entrée invalide"
 
 #: wazo_ui/helpers/error.py:38
 msgid "Invalid length"
-msgstr ""
+msgstr "Longueur invalide"
 
 #: wazo_ui/helpers/error.py:39
 msgid "Not a valid choice"
-msgstr ""
+msgstr "Pas un choix valable"
 
 #: wazo_ui/helpers/error.py:40
 msgid "Invalid range"
-msgstr ""
+msgstr "Plage invalide"
 
 #: wazo_ui/helpers/error.py:41 wazo_ui/helpers/error.py:42
 msgid "String does not match expected pattern"
-msgstr ""
+msgstr "La chaîne ne correspond pas au modèle attendu"
 
 #: wazo_ui/helpers/error.py:188
 msgid "call permission"
-msgstr ""
+msgstr "autorisation d'appel"
 
 #: wazo_ui/helpers/error.py:189 wazo_ui/plugins/conference/view.py:20
 msgid "conference"
-msgstr ""
+msgstr "conférence"
 
 #: wazo_ui/helpers/error.py:190
 msgid "context"
-msgstr ""
+msgstr "contexte"
 
 #: wazo_ui/helpers/error.py:191
 msgid "endpoint"
-msgstr ""
+msgstr "point final"
 
 #: wazo_ui/helpers/error.py:192
 msgid "entity"
-msgstr ""
+msgstr "entité"
 
 #: wazo_ui/helpers/error.py:193
 msgid "extension"
-msgstr ""
+msgstr "extension"
 
 #: wazo_ui/helpers/error.py:194
 msgid "function keys"
-msgstr ""
+msgstr "les touches de fonction"
 
 #: wazo_ui/helpers/error.py:195
 msgid "group"
-msgstr ""
+msgstr "groupe"
 
 #: wazo_ui/helpers/error.py:196
 #: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:26
@@ -329,55 +335,55 @@ msgstr ""
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:24
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:25
 msgid "incall"
-msgstr ""
+msgstr "appel"
 
 #: wazo_ui/helpers/error.py:197
 msgid "ivr"
-msgstr ""
+msgstr "svi"
 
 #: wazo_ui/helpers/error.py:198
 msgid "line"
-msgstr ""
+msgstr "ligne"
 
 #: wazo_ui/helpers/error.py:199
 msgid "music on hold"
-msgstr ""
+msgstr "Musique en attente"
 
 #: wazo_ui/helpers/error.py:200
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:47
 msgid "outcall"
-msgstr ""
+msgstr "sortie"
 
 #: wazo_ui/helpers/error.py:201
 msgid "paging"
-msgstr ""
+msgstr "appel de recherche"
 
 #: wazo_ui/helpers/error.py:202
 msgid "parking lot"
-msgstr ""
+msgstr "Parc d'appel"
 
 #: wazo_ui/helpers/error.py:203
 msgid "switchboard"
-msgstr ""
+msgstr "POPC"
 
 #: wazo_ui/helpers/error.py:204
 msgid "trunk"
-msgstr ""
+msgstr "trunk"
 
 #: wazo_ui/helpers/error.py:205
 msgid "user"
-msgstr ""
+msgstr "utilisateur"
 
 #: wazo_ui/helpers/error.py:206
 msgid "voicemail"
-msgstr ""
+msgstr "messagerie vocale"
 
 #: wazo_ui/plugins/access_feature/form.py:13
 #: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:15
 #: wazo_ui/plugins/extension/form.py:28
 #: wazo_ui/plugins/extension/templates/wazo_engine/extension/edit_features.html:19
 msgid "Feature"
-msgstr ""
+msgstr "Fonctionnalité"
 
 #: wazo_ui/plugins/access_feature/form.py:14
 #: wazo_ui/plugins/dird_source/form.py:120
@@ -385,17 +391,17 @@ msgstr ""
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/edit.html:9
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/list.html:4
 msgid "Phonebook"
-msgstr ""
+msgstr "Annuaire"
 
 #: wazo_ui/plugins/access_feature/form.py:17
 #: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:14
 #: wazo_ui/plugins/dird_source/form.py:76
 #: wazo_ui/plugins/dird_source/form.py:94
 #: wazo_ui/plugins/dird_source/form.py:125
-#: wazo_ui/plugins/dird_source/form.py:139 wazo_ui/plugins/identity/form.py:107
-#: wazo_ui/plugins/trunk/form.py:41
+#: wazo_ui/plugins/dird_source/form.py:139
+#: wazo_ui/plugins/identity/form.py:107 wazo_ui/plugins/trunk/form.py:41
 msgid "Host"
-msgstr ""
+msgstr "Hôte"
 
 #: wazo_ui/plugins/access_feature/form.py:18 wazo_ui/plugins/agent/form.py:34
 #: wazo_ui/plugins/application/form.py:63
@@ -427,15 +433,15 @@ msgstr ""
 #: wazo_ui/plugins/trunk/form.py:71 wazo_ui/plugins/user/form.py:181
 #: wazo_ui/plugins/voicemail/form.py:71 wazo_ui/plugins/webhook/form.py:46
 msgid "Submit"
-msgstr ""
+msgstr "Soumettre"
 
 #: wazo_ui/plugins/access_feature/view.py:24
 msgid "Features access"
-msgstr ""
+msgstr "Accès aux fonctionnalités"
 
 #: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/edit.html:11
 msgid "Access Feature"
-msgstr ""
+msgstr "Fonctionnalité d'accès"
 
 #: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/edit.html:13
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:23
@@ -581,16 +587,16 @@ msgstr ""
 #: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/edit.html:13
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/edit.html:13
 msgid "Update"
-msgstr ""
+msgstr "Mise à jour"
 
 #: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:5
 #: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:11
 msgid "Features Access"
-msgstr ""
+msgstr "Accès aux fonctionnalités"
 
 #: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:24
 msgid "Add feature access"
-msgstr ""
+msgstr "Ajouter un accès aux fonctionnalités"
 
 #: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:26
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:28
@@ -655,7 +661,7 @@ msgstr ""
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:43
 #: wazo_ui/templates/macro.html:298
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 #: wazo_ui/plugins/agent/form.py:26
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:15
@@ -666,7 +672,7 @@ msgstr ""
 #: wazo_ui/plugins/user/form.py:134
 #: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:12
 msgid "Firstname"
-msgstr ""
+msgstr "Prénom"
 
 #: wazo_ui/plugins/agent/form.py:27
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:16
@@ -677,12 +683,12 @@ msgstr ""
 #: wazo_ui/plugins/user/form.py:135
 #: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:13
 msgid "Lastname"
-msgstr ""
+msgstr "Nom de famille"
 
 #: wazo_ui/plugins/agent/form.py:28
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:14
 msgid "Agent Number"
-msgstr ""
+msgstr "Numéro d'agent"
 
 #: wazo_ui/plugins/agent/form.py:29 wazo_ui/plugins/call_filter/form.py:84
 #: wazo_ui/plugins/call_permission/form.py:52
@@ -699,13 +705,13 @@ msgstr ""
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:15
 #: wazo_ui/plugins/skill/form.py:14 wazo_ui/plugins/user/form.py:151
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: wazo_ui/plugins/agent/form.py:30 wazo_ui/plugins/conference/form.py:41
 #: wazo_ui/plugins/group/form.py:70 wazo_ui/plugins/queue/form.py:105
 #: wazo_ui/plugins/user/form.py:144
 msgid "Subroutine"
-msgstr ""
+msgstr "Sous-routine"
 
 #: wazo_ui/plugins/agent/form.py:31 wazo_ui/plugins/authentication/form.py:29
 #: wazo_ui/plugins/authentication/templates/authentication/login.html:21
@@ -715,7 +721,7 @@ msgstr ""
 #: wazo_ui/plugins/dird_source/form.py:134 wazo_ui/plugins/identity/form.py:57
 #: wazo_ui/plugins/user/form.py:137 wazo_ui/plugins/voicemail/form.py:35
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #: wazo_ui/plugins/agent/form.py:32 wazo_ui/plugins/authentication/form.py:30
 #: wazo_ui/plugins/authentication/templates/authentication/login.html:22
@@ -724,18 +730,18 @@ msgstr ""
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:33
 #: wazo_ui/plugins/voicemail/form.py:54
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:5
 #: wazo_ui/plugins/agent/view.py:23 wazo_ui/plugins/queue/form.py:59
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:20
 msgid "Agents"
-msgstr ""
+msgstr "Agents"
 
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:13
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:11
 msgid "Agent"
-msgstr ""
+msgstr "Agent"
 
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:14
 #: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/edit.html:15
@@ -763,7 +769,7 @@ msgstr ""
 #: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/edit.html:14
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:16
 msgid "General"
-msgstr ""
+msgstr "Général"
 
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:15
 #: wazo_ui/plugins/extension/view.py:24
@@ -771,27 +777,27 @@ msgstr ""
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/configuration/edit.html:14
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:15
 msgid "Advanced"
-msgstr ""
+msgstr "Avancé"
 
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:16
 #: wazo_ui/plugins/skill/templates/wazo_engine/skill/list.html:5
 #: wazo_ui/plugins/skill/view.py:23
 msgid "Skills"
-msgstr ""
+msgstr "Compétences"
 
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:46
 #: wazo_ui/plugins/skill/templates/wazo_engine/skill/edit.html:13
 #: wazo_ui/plugins/skill/templates/wazo_engine/skill/list.html:11
 msgid "Skill"
-msgstr ""
+msgstr "Compétence"
 
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:47
 msgid "Weight"
-msgstr ""
+msgstr "Poids"
 
 #: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:26
 msgid "Add Agent"
-msgstr ""
+msgstr "Ajouter un agent"
 
 #: wazo_ui/plugins/application/form.py:60
 #: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:15
@@ -856,50 +862,50 @@ msgstr ""
 #: wazo_ui/plugins/voicemail/form.py:28
 #: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:14
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: wazo_ui/plugins/application/form.py:68 wazo_ui/plugins/context/form.py:38
 #: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:16
 #: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/list.html:14
 #: wazo_ui/plugins/trunk/form.py:37
 msgid "Type"
-msgstr ""
+msgstr "Taper"
 
 #: wazo_ui/plugins/application/form.py:70
 msgid "Holding"
-msgstr ""
+msgstr "Mise en attente"
 
 #: wazo_ui/plugins/application/form.py:73
 #: wazo_ui/plugins/parking_lot/form.py:27 wazo_ui/plugins/queue/form.py:72
 #: wazo_ui/plugins/switchboard/form.py:36 wazo_ui/plugins/user/form.py:143
 msgid "Music On Hold"
-msgstr ""
+msgstr "Musique en attente"
 
 #: wazo_ui/plugins/application/form.py:74
 msgid "Answer"
-msgstr ""
+msgstr "Répondre"
 
 #: wazo_ui/plugins/application/plugin.py:43
 msgid "Node"
-msgstr ""
+msgstr "Nœud"
 
 #: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:11
 #: wazo_ui/plugins/application/view.py:24
 msgid "Applications"
-msgstr ""
+msgstr "Applications"
 
 #: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:14
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:14
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 #: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:24
 msgid "Add Application"
-msgstr ""
+msgstr "Ajouter une application"
 
 #: wazo_ui/plugins/authentication/form.py:18
 msgid "Wrong username and/or password"
-msgstr ""
+msgstr "Mauvais nom d'utilisateur et / ou mot de passe"
 
 #: wazo_ui/plugins/authentication/form.py:28
 #: wazo_ui/plugins/authentication/templates/authentication/login.html:20
@@ -908,106 +914,106 @@ msgstr ""
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:14
 #: wazo_ui/plugins/user/form.py:136
 msgid "Username"
-msgstr ""
+msgstr "Nom d'utilisateur"
 
 #: wazo_ui/plugins/authentication/form.py:32
 msgid "Login"
-msgstr ""
+msgstr "Se connecter"
 
 #: wazo_ui/plugins/authentication/form.py:57
 #, python-format
 msgid "Error with Wazo authentication server: %(error)s"
-msgstr ""
+msgstr "Erreur avec le serveur d'authentification Wazo : %(error)s"
 
 #: wazo_ui/plugins/authentication/form.py:60
 msgid "Wazo authentication server connection error"
-msgstr ""
+msgstr "Erreur de connexion au serveur d'authentification Wazo"
 
 #: wazo_ui/plugins/call_filter/form.py:21
 msgid "All secretaries"
-msgstr ""
+msgstr "Tous les secrétaires"
 
 #: wazo_ui/plugins/call_filter/form.py:22
 msgid "Secretaries sequentially"
-msgstr ""
+msgstr "Secrétaires séquentiellement"
 
 #: wazo_ui/plugins/call_filter/form.py:23
 msgid "Boss, then secretaries sequentially"
-msgstr ""
+msgstr "Patron, puis secrétaires successivement"
 
 #: wazo_ui/plugins/call_filter/form.py:24
 msgid "Boss, then all secretaries"
-msgstr ""
+msgstr "Patron, puis tous les secrétaires"
 
 #: wazo_ui/plugins/call_filter/form.py:25
 msgid "Boss and all secretaries"
-msgstr ""
+msgstr "Patron et tous les secrétaires"
 
 #: wazo_ui/plugins/call_filter/form.py:40
 #: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:16
 msgid "Boss"
-msgstr ""
+msgstr "Chef"
 
 #: wazo_ui/plugins/call_filter/form.py:41
 msgid "Boss Timeout"
-msgstr ""
+msgstr "Délai d'attente du patron"
 
 #: wazo_ui/plugins/call_filter/form.py:52
 #: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:17
 msgid "Secretaries"
-msgstr ""
+msgstr "Secrétaires"
 
 #: wazo_ui/plugins/call_filter/form.py:60
 #: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:15
 msgid "Ring Strategy"
-msgstr ""
+msgstr "Stratégie de sonnerie"
 
 #: wazo_ui/plugins/call_filter/form.py:63 wazo_ui/plugins/incall/form.py:38
 #: wazo_ui/plugins/queue/form.py:75
 msgid "Caller ID mode"
-msgstr ""
+msgstr "Mode d'identification de l'appelant"
 
 #: wazo_ui/plugins/call_filter/form.py:66 wazo_ui/plugins/group/form.py:62
 #: wazo_ui/plugins/incall/form.py:41 wazo_ui/plugins/queue/form.py:78
 msgid "Prepend"
-msgstr ""
+msgstr "Ajouter un préfixe"
 
 #: wazo_ui/plugins/call_filter/form.py:67 wazo_ui/plugins/group/form.py:63
 #: wazo_ui/plugins/incall/form.py:42 wazo_ui/plugins/queue/form.py:79
 msgid "Overwrite"
-msgstr ""
+msgstr "Écraser"
 
 #: wazo_ui/plugins/call_filter/form.py:68 wazo_ui/plugins/group/form.py:64
 #: wazo_ui/plugins/incall/form.py:43 wazo_ui/plugins/queue/form.py:80
 msgid "Append"
-msgstr ""
+msgstr "Ajouter"
 
 #: wazo_ui/plugins/call_filter/form.py:71 wazo_ui/plugins/incall/form.py:46
 #: wazo_ui/plugins/queue/form.py:83
 msgid "Caller ID name"
-msgstr ""
+msgstr "Nom d'identification de l'appelant"
 
 #: wazo_ui/plugins/call_filter/form.py:73
 msgid "Call From"
-msgstr ""
+msgstr "Appeler depuis"
 
 #: wazo_ui/plugins/call_filter/form.py:75 wazo_ui/plugins/context/form.py:40
 msgid "Internal"
-msgstr ""
+msgstr "Interne"
 
 #: wazo_ui/plugins/call_filter/form.py:76
 msgid "External"
-msgstr ""
+msgstr "Externe"
 
 #: wazo_ui/plugins/call_filter/form.py:77
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:14
 #: wazo_ui/plugins/group/form.py:76
 msgid "All"
-msgstr ""
+msgstr "Tous"
 
 #: wazo_ui/plugins/call_filter/form.py:81
 msgid "Secretaries ringing time"
-msgstr ""
+msgstr "Heure de sonnerie des secrétaires"
 
 #: wazo_ui/plugins/call_filter/form.py:85
 #: wazo_ui/plugins/call_permission/form.py:53
@@ -1018,48 +1024,48 @@ msgstr ""
 #: wazo_ui/plugins/paging/form.py:47 wazo_ui/plugins/queue/form.py:124
 #: wazo_ui/plugins/trunk/form.py:51
 msgid "Enabled"
-msgstr ""
+msgstr "Activé"
 
 #: wazo_ui/plugins/call_filter/form.py:93
 msgid "Call Filter Member"
-msgstr ""
+msgstr "Membre du filtre d'appels"
 
 #: wazo_ui/plugins/call_filter/plugin.py:33
 msgid "Call Filter"
-msgstr ""
+msgstr "Filtre d'appel"
 
 #: wazo_ui/plugins/call_filter/view.py:26
 msgid "BS Filters"
-msgstr ""
+msgstr "Filtres Patron/Secrétaire"
 
 #: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/edit.html:16
 #: wazo_ui/plugins/sound/form.py:42
 msgid "No Answer"
-msgstr ""
+msgstr "Pas de réponse"
 
 #: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:5
 #: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:11
 msgid "Boss Secretaries Filters"
-msgstr ""
+msgstr "Filtres des secrétaires du patron"
 
 #: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:36
 msgid "Add BS Filter"
-msgstr ""
+msgstr "Ajouter un filtre Patron/Secrétaire"
 
 #: wazo_ui/plugins/call_permission/form.py:18
 msgid "Allow"
-msgstr ""
+msgstr "Permettre"
 
 #: wazo_ui/plugins/call_permission/form.py:18
 msgid "Deny"
-msgstr ""
+msgstr "Refuser"
 
 #: wazo_ui/plugins/call_permission/form.py:45
 #: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/list.html:19
 #: wazo_ui/plugins/moh/form.py:34
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:15
 msgid "Mode"
-msgstr ""
+msgstr "Mode"
 
 #: wazo_ui/plugins/call_permission/form.py:46
 #: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:17
@@ -1069,7 +1075,7 @@ msgstr ""
 #: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:4
 #: wazo_ui/plugins/user/view.py:37 wazo_ui/plugins/voicemail/form.py:63
 msgid "Users"
-msgstr ""
+msgstr "Utilisateurs"
 
 #: wazo_ui/plugins/call_permission/form.py:48
 #: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:18
@@ -1082,7 +1088,7 @@ msgstr ""
 #: wazo_ui/plugins/identity/view.py:98 wazo_ui/plugins/user/form.py:174
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:20
 msgid "Groups"
-msgstr ""
+msgstr "Groupes"
 
 #: wazo_ui/plugins/call_permission/form.py:50
 #: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:19
@@ -1090,7 +1096,7 @@ msgstr ""
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:11
 #: wazo_ui/plugins/outcall/view.py:24
 msgid "Outcalls"
-msgstr ""
+msgstr "Appels sortants"
 
 #: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:5
 #: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:14
@@ -1104,7 +1110,7 @@ msgstr ""
 #: wazo_ui/plugins/user/form.py:179
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:24
 msgid "Call Permissions"
-msgstr ""
+msgstr "Autorisations d'appel"
 
 #: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:16
 #: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:41
@@ -1115,79 +1121,79 @@ msgstr ""
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:15
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:16
 msgid "Extensions"
-msgstr ""
+msgstr "Numéros"
 
 #: wazo_ui/plugins/call_pickup/form.py:31
 msgid "Interceptor Users"
-msgstr ""
+msgstr "Utilisateurs d'intercepteurs"
 
 #: wazo_ui/plugins/call_pickup/form.py:33
 msgid "Interceptor Groups"
-msgstr ""
+msgstr "Groupes d'intercepteurs"
 
 #: wazo_ui/plugins/call_pickup/form.py:38
 msgid "Target Users"
-msgstr ""
+msgstr "Utilisateurs cibles"
 
 #: wazo_ui/plugins/call_pickup/form.py:40
 msgid "Target Groups"
-msgstr ""
+msgstr "Groupes cibles"
 
 #: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/edit.html:14
 #: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/list.html:5
 #: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/list.html:11
 #: wazo_ui/plugins/call_pickup/view.py:18
 msgid "Call Pickups"
-msgstr ""
+msgstr "Interception d'appels"
 
 #: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/edit.html:16
 msgid "Interceptors"
-msgstr ""
+msgstr "Intercepteurs"
 
 #: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/edit.html:17
 msgid "Targets"
-msgstr ""
+msgstr "Cibles"
 
 #: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/list.html:27
 msgid "Add Call Pickup"
-msgstr ""
+msgstr "Ajouter une interception d'appel"
 
 #: wazo_ui/plugins/cdr/view.py:14
 msgid "Reporting"
-msgstr ""
+msgstr "Rapports"
 
 #: wazo_ui/plugins/cdr/view.py:15
 msgid "CDR"
-msgstr ""
+msgstr "CDR"
 
 #: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:5
 #: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:11
 msgid "Cdr"
-msgstr ""
+msgstr "Cdr"
 
 #: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:14
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:15
 msgid "Source"
-msgstr ""
+msgstr "Source"
 
 #: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:16
 msgid "Source name"
-msgstr ""
+msgstr "Nom de la source"
 
 #: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:18
 msgid "Destination name"
-msgstr ""
+msgstr "Nom de la destination"
 
 #: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:19
 msgid "Duration"
-msgstr ""
+msgstr "Durée"
 
 #: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:20
 msgid "Answered"
-msgstr ""
+msgstr "Répondu"
 
 #: wazo_ui/plugins/conference/form.py:20
 #: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:15
@@ -1209,27 +1215,27 @@ msgstr ""
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:109
 #: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:15
 msgid "Extension"
-msgstr ""
+msgstr "Extension"
 
 #: wazo_ui/plugins/conference/form.py:27
 msgid "Announce join leave"
-msgstr ""
+msgstr "Annoncer un participant"
 
 #: wazo_ui/plugins/conference/form.py:28
 msgid "Announce only user"
-msgstr ""
+msgstr "Annoncer uniquement l'utilisateur"
 
 #: wazo_ui/plugins/conference/form.py:29
 msgid "Announce user count"
-msgstr ""
+msgstr "Annoncer le nombre d'utilisateurs"
 
 #: wazo_ui/plugins/conference/form.py:37
 msgid "Admin PIN"
-msgstr ""
+msgstr "Code PIN d'administrateur"
 
 #: wazo_ui/plugins/conference/form.py:42
 msgid "Quiet join/leave"
-msgstr ""
+msgstr "Rejoindre/partir en silence"
 
 #: wazo_ui/plugins/conference/form.py:56
 #: wazo_ui/plugins/conference/plugin.py:34
@@ -1241,44 +1247,44 @@ msgstr ""
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:4
 #: wazo_ui/plugins/general_settings/view.py:275
 msgid "Conference"
-msgstr ""
+msgstr "Conférence"
 
 #: wazo_ui/plugins/conference/view.py:22 wazo_ui/plugins/context/form.py:43
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:18
 #: wazo_ui/plugins/webhook/form.py:24
 msgid "Services"
-msgstr ""
+msgstr "Services"
 
 #: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:5
 #: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:11
 #: wazo_ui/plugins/conference/view.py:25
 msgid "Conferences"
-msgstr ""
+msgstr "Conférences"
 
 #: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:22
 #: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:23
 #: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:23
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:21
 msgid "internal"
-msgstr ""
+msgstr "interne"
 
 #: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:36
 msgid "Add Conference"
-msgstr ""
+msgstr "Ajouter une conférence"
 
 #: wazo_ui/plugins/context/form.py:26
 #: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:86
 msgid "Start"
-msgstr ""
+msgstr "Commencer"
 
 #: wazo_ui/plugins/context/form.py:27
 #: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:87
 msgid "End"
-msgstr ""
+msgstr "Fin"
 
 #: wazo_ui/plugins/context/form.py:31
 msgid "DID length"
-msgstr ""
+msgstr "Longueur du SDA"
 
 #: wazo_ui/plugins/context/form.py:36
 #: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:15
@@ -1292,7 +1298,7 @@ msgstr ""
 #: wazo_ui/plugins/user/form.py:111
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:143
 msgid "Label"
-msgstr ""
+msgstr "Étiquette"
 
 #: wazo_ui/plugins/context/form.py:41
 #: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:21
@@ -1301,28 +1307,28 @@ msgstr ""
 #: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:15
 #: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:5
 msgid "Incall"
-msgstr ""
+msgstr "Appel entrant"
 
 #: wazo_ui/plugins/context/form.py:42
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:14
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:15
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:5
 msgid "Outcall"
-msgstr ""
+msgstr "Appel sortant"
 
 #: wazo_ui/plugins/context/form.py:44
 msgid "Others"
-msgstr ""
+msgstr "Autres"
 
 #: wazo_ui/plugins/context/form.py:54
 msgid "Contexts included"
-msgstr ""
+msgstr "Contextes inclus"
 
 #: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:5
 #: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:11
 #: wazo_ui/plugins/context/view.py:23
 msgid "Contexts"
-msgstr ""
+msgstr "Contextes"
 
 #: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:16
 #: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:43
@@ -1336,7 +1342,7 @@ msgstr ""
 #: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:9
 #: wazo_ui/plugins/webhook/form.py:26
 msgid "User"
-msgstr ""
+msgstr "Utilisateur"
 
 #: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:17
 #: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:49
@@ -1346,7 +1352,7 @@ msgstr ""
 #: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:11
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/edit.html:11
 msgid "Group"
-msgstr ""
+msgstr "Groupe"
 
 #: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:18
 #: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:55
@@ -1355,56 +1361,56 @@ msgstr ""
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:13
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:11
 msgid "Queue"
-msgstr ""
+msgstr "File d'attente"
 
 #: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:89
 msgid "DID Length"
-msgstr ""
+msgstr "Longueur du SDA"
 
 #: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:26
 msgid "Add Context"
-msgstr ""
+msgstr "Ajouter du contexte"
 
 #: wazo_ui/plugins/device/form.py:18 wazo_ui/plugins/switchboard/form.py:49
 #: wazo_ui/plugins/switchboard/plugin.py:33
 #: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/edit.html:11
 #: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/list.html:5
 msgid "Switchboard"
-msgstr ""
+msgstr "POPC"
 
 #: wazo_ui/plugins/device/form.py:22
 msgid "Template"
-msgstr ""
+msgstr "Modèle"
 
 #: wazo_ui/plugins/device/form.py:23
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:23
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:75
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 #: wazo_ui/plugins/device/form.py:24
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:24
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:76
 msgid "MAC"
-msgstr ""
+msgstr "MAC"
 
 #: wazo_ui/plugins/device/form.py:25
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:25
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:77
 msgid "Model"
-msgstr ""
+msgstr "Modèle"
 
 #: wazo_ui/plugins/device/form.py:26
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:26
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:78
 msgid "Plugin"
-msgstr ""
+msgstr "Module"
 
 #: wazo_ui/plugins/device/form.py:27
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:27
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:79
 msgid "Vendor"
-msgstr ""
+msgstr "Fournisseur"
 
 #: wazo_ui/plugins/device/form.py:28
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:28
@@ -1416,111 +1422,111 @@ msgstr ""
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:26
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:16
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: wazo_ui/plugins/device/form.py:30
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:115
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:16
 msgid "Status"
-msgstr ""
+msgstr "Statut"
 
 #: wazo_ui/plugins/device/form.py:32
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:117
 msgid "Autoprov"
-msgstr ""
+msgstr "Autoprov"
 
 #: wazo_ui/plugins/device/form.py:33
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:116
 msgid "Configured"
-msgstr ""
+msgstr "Configuré"
 
 #: wazo_ui/plugins/device/form.py:34
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:118
 msgid "Not configured"
-msgstr ""
+msgstr "Pas configuré"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:5
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:11
 #: wazo_ui/plugins/device/view.py:26
 msgid "Devices"
-msgstr ""
+msgstr "Périphériques"
 
 #: wazo_ui/plugins/device/view.py:90
 #, python-format
 msgid "%(resource)s: Resource has been reset to autoprov"
-msgstr ""
+msgstr "%(resource)s : la ressource a été réinitialisée en autoprov"
 
 #: wazo_ui/plugins/device/view.py:106
 #, python-format
 msgid "%(resource)s: Resource has been synchronized"
-msgstr ""
+msgstr "%(resource)s : la ressource a été synchronisée"
 
 #: wazo_ui/plugins/device/view.py:119
 #, python-format
 msgid "%(resource)s: Device has been assigned to tenant"
-msgstr ""
+msgstr "%(resource)s : l'appareil a été attribué au locataire"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/edit.html:11
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:110
 msgid "Device"
-msgstr ""
+msgstr "Périphérique"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:15
 msgid "Unallocated"
-msgstr ""
+msgstr "Non alloué"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:52
 msgid "Synchronize device"
-msgstr ""
+msgstr "Synchroniser le périphérique"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:54
 msgid "Are you sure you want to synchronize this device ?"
-msgstr ""
+msgstr "Etes-vous sûr de vouloir synchroniser ce périphérique ?"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:60
 msgid "Reset device to autoprov mode"
-msgstr ""
+msgstr "Réinitialiser le périphérique en mode autoprov"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:62
 msgid "Are you sure you want to reset this device ?"
-msgstr ""
+msgstr "Etes-vous sûr de vouloir réinitialiser cet périphérique ?"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:104
 msgid "Assign device to current tenant"
-msgstr ""
+msgstr "Attribuer un appareil au tenant actuel"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:106
 msgid "Are you sure you want to assign this device to the current tenant?"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir attribuer cet appareil au locataire actuel ?"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:108
 msgid "Take"
-msgstr ""
+msgstr "Prendre"
 
 #: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:124
 msgid "Add Device"
-msgstr ""
+msgstr "Ajouter un périphérique"
 
 #: wazo_ui/plugins/dhcp/form.py:13
 msgid "Network interface"
-msgstr ""
+msgstr "Interface réseau"
 
 #: wazo_ui/plugins/dhcp/form.py:14
 msgid "Pool start"
-msgstr ""
+msgstr "Début de la plage"
 
 #: wazo_ui/plugins/dhcp/form.py:15
 msgid "Pool end"
-msgstr ""
+msgstr "Fin de la plage"
 
 #: wazo_ui/plugins/dhcp/templates/wazo_engine/dhcp/index.html:4
 #: wazo_ui/plugins/dhcp/view.py:19
 msgid "Dhcp"
-msgstr ""
+msgstr "DHCP"
 
 #: wazo_ui/plugins/dhcp/view.py:51
 msgid "Dhcp config has been updated"
-msgstr ""
+msgstr "La configuration DHCP a été mise à jour"
 
 #: wazo_ui/plugins/dhcp/templates/wazo_engine/dhcp/index.html:4
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:11
@@ -1545,57 +1551,58 @@ msgstr ""
 #: wazo_ui/plugins/ha/templates/wazo_engine/ha/index.html:4
 #: wazo_ui/templates/macro.html:302
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 #: wazo_ui/plugins/dird_profile/view.py:21
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: wazo_ui/plugins/dird_profile/templates/wazo_engine/dird_profile/list.html:5
 msgid "Directory profile"
-msgstr ""
+msgstr "Profil d'annuaire"
 
 #: wazo_ui/plugins/dird_source/form.py:37
 #: wazo_ui/plugins/dird_source/form.py:47
 msgid "Delimiter"
-msgstr ""
+msgstr "Délimiteur"
 
 #: wazo_ui/plugins/dird_source/form.py:38
 msgid "File"
-msgstr ""
+msgstr "Déposer"
 
 #: wazo_ui/plugins/dird_source/form.py:39
 #: wazo_ui/plugins/dird_source/form.py:51
 #: wazo_ui/plugins/dird_source/form.py:71
 msgid "Unique column"
-msgstr ""
+msgstr "Colonne unique"
 
 #: wazo_ui/plugins/dird_source/form.py:48
 msgid "List URL"
-msgstr ""
+msgstr "URL de la liste"
 
 #: wazo_ui/plugins/dird_source/form.py:49
 msgid "Lookup URL"
-msgstr ""
+msgstr "URL de recherche"
 
 #: wazo_ui/plugins/dird_source/form.py:58
 msgid "Base DN"
-msgstr ""
+msgstr "DN de base"
 
 #: wazo_ui/plugins/dird_source/form.py:62
 msgid "Custom filter"
-msgstr ""
+msgstr "Filtre personnalisé"
 
 #: wazo_ui/plugins/dird_source/form.py:64
 msgid "Uri"
-msgstr ""
+msgstr "Uri"
 
 #: wazo_ui/plugins/dird_source/form.py:77
 #: wazo_ui/plugins/dird_source/form.py:95
 #: wazo_ui/plugins/dird_source/form.py:126
-#: wazo_ui/plugins/dird_source/form.py:140 wazo_ui/plugins/identity/form.py:108
+#: wazo_ui/plugins/dird_source/form.py:140
+#: wazo_ui/plugins/identity/form.py:108
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: wazo_ui/plugins/dird_source/form.py:78
 #: wazo_ui/plugins/dird_source/form.py:96
@@ -1604,27 +1611,27 @@ msgstr ""
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:45
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:39
 msgid "Prefix"
-msgstr ""
+msgstr "Préfixe"
 
 #: wazo_ui/plugins/dird_source/form.py:79
 #: wazo_ui/plugins/dird_source/form.py:97
 #: wazo_ui/plugins/dird_source/form.py:128
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #: wazo_ui/plugins/dird_source/form.py:80
 #: wazo_ui/plugins/dird_source/form.py:98
 #: wazo_ui/plugins/dird_source/form.py:129
 #: wazo_ui/plugins/dird_source/form.py:142
 msgid "Verify certificate"
-msgstr ""
+msgstr "Vérifier le certificat"
 
 #: wazo_ui/plugins/dird_source/form.py:81
 #: wazo_ui/plugins/dird_source/form.py:99
 #: wazo_ui/plugins/dird_source/form.py:130
 #: wazo_ui/plugins/dird_source/form.py:143
 msgid "Certificate path"
-msgstr ""
+msgstr "Chemin du certificat"
 
 #: wazo_ui/plugins/dird_source/form.py:90
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:26
@@ -1634,31 +1641,31 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:20
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:16
 msgid "Endpoint"
-msgstr ""
+msgstr "Point de terminaison"
 
 #: wazo_ui/plugins/dird_source/form.py:132
 msgid "Key file"
-msgstr ""
+msgstr "Fichier clé"
 
 #: wazo_ui/plugins/dird_source/form.py:145
 msgid "Https"
-msgstr ""
+msgstr "Https"
 
 #: wazo_ui/plugins/dird_source/view.py:28
 msgid "Sources"
-msgstr ""
+msgstr "Sources"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/list.html:15
 msgid "Backend"
-msgstr ""
+msgstr "Back-end"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/list.html:24
 msgid "Add Directory Source"
-msgstr ""
+msgstr "Ajouter une source de répertoire"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:8
 msgid "Add Conference source"
-msgstr ""
+msgstr "Ajouter une source de conférence"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:25
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:25
@@ -1670,7 +1677,7 @@ msgstr ""
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:25
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:25
 msgid "First matched columns"
-msgstr ""
+msgstr "Premières colonnes correspondantes"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:26
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:26
@@ -1681,7 +1688,7 @@ msgstr ""
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:26
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:26
 msgid "Format columns"
-msgstr ""
+msgstr "Formater les colonnes"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:27
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:27
@@ -1693,275 +1700,275 @@ msgstr ""
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:27
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:27
 msgid "Search columns"
-msgstr ""
+msgstr "Colonnes de recherche"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:8
 msgid "Add CSV source"
-msgstr ""
+msgstr "Ajouter une source CSV"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:24
 #: wazo_ui/templates/translations.html:23
 msgid "CSV"
-msgstr ""
+msgstr "CSV"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv_ws.html:8
 msgid "Add CSV WS source"
-msgstr ""
+msgstr "Ajouter une source CSV WS"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv_ws.html:24
 msgid "CSV WS"
-msgstr ""
+msgstr "CSV WS"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_google.html:8
 msgid "Add Google source"
-msgstr ""
+msgstr "Ajouter une source Google"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_google.html:24
 msgid "Google"
-msgstr ""
+msgstr "Google"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:8
 msgid "Add LDAP source"
-msgstr ""
+msgstr "Ajouter une source LDAP"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:24
 #: wazo_ui/plugins/identity/templates/wazo_engine/ldap/index.html:4
 #: wazo_ui/plugins/identity/view.py:293
 msgid "LDAP"
-msgstr ""
+msgstr "LDAP"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:26
 msgid "Columns"
-msgstr ""
+msgstr "Colonnes"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_office365.html:8
 msgid "Add Office 365 source"
-msgstr ""
+msgstr "Ajouter une source Office 365"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_office365.html:24
 msgid "Office 365"
-msgstr ""
+msgstr "Office 365"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_personal.html:8
 msgid "Add a Personal source"
-msgstr ""
+msgstr "Ajouter une source personnelle"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_personal.html:24
 msgid "Personal"
-msgstr ""
+msgstr "Personnel"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:8
 msgid "Add Phonebook source"
-msgstr ""
+msgstr "Ajouter une source de répertoire"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:39
 msgid "Choose Phonebook"
-msgstr ""
+msgstr "Choisir le répertoire"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:8
 msgid "Add Wazo source"
-msgstr ""
+msgstr "Ajouter une source Wazo"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:24
 msgid "Wazo"
-msgstr ""
+msgstr "Wazo"
 
 #: wazo_ui/plugins/extension/view.py:52
 msgid "Extensions Features"
-msgstr ""
+msgstr "Fonctionnalités de numérotation"
 
 #: wazo_ui/plugins/extension/view.py:82
 msgid "Extensions features has been updated"
-msgstr ""
+msgstr "Les fonctionnalités de numérotation ont été mises à jour"
 
 #: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:16
 msgid "Conference ID"
-msgstr ""
+msgstr "ID de conférence"
 
 #: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:17
 msgid "Parking Lot ID"
-msgstr ""
+msgstr "ID du parking"
 
 #: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:18
 msgid "Group ID"
-msgstr ""
+msgstr "Identifiant du groupe"
 
 #: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:19
 msgid "Incall ID"
-msgstr ""
+msgstr "ID d'appel"
 
 #: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:20
 msgid "Lines ID"
-msgstr ""
+msgstr "Identifiant des lignes"
 
 #: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:21
 msgid "Outcall ID"
-msgstr ""
+msgstr "ID appel sortant"
 
 #: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:51
 msgid "Add Extension"
-msgstr ""
+msgstr "Ajouter une extension"
 
 #: wazo_ui/plugins/external_auth/form.py:20
 #: wazo_ui/plugins/external_auth/form.py:27
 msgid "Client ID"
-msgstr ""
+msgstr "identité du client"
 
 #: wazo_ui/plugins/external_auth/form.py:22
 #: wazo_ui/plugins/external_auth/form.py:29
 msgid "Client secret"
-msgstr ""
+msgstr "Secret client"
 
 #: wazo_ui/plugins/external_auth/form.py:35
 msgid "Firebase Cloud Messaging Api Key"
-msgstr ""
+msgstr "Clé API de messagerie cloud Firebase"
 
 #: wazo_ui/plugins/external_auth/form.py:38
 msgid "Firebase Cloud Messaging Sender ID"
-msgstr ""
+msgstr "ID de l'expéditeur de la messagerie Firebase Cloud"
 
 #: wazo_ui/plugins/external_auth/form.py:40
 msgid "Ios APN Certificate"
-msgstr ""
+msgstr "Certificat APN iOS"
 
 #: wazo_ui/plugins/external_auth/form.py:41
 msgid "Ios APN Private certificate"
-msgstr ""
+msgstr "Certificat privé Ios APN"
 
 #: wazo_ui/plugins/external_auth/form.py:42
 msgid "Use sandbox"
-msgstr ""
+msgstr "Utiliser le bac à sable"
 
 #: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/list.html:5
 #: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/list.html:11
 #: wazo_ui/plugins/external_auth/view.py:21
 msgid "External Auth"
-msgstr ""
+msgstr "Authentification externe"
 
 #: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/list.html:23
 msgid "Add External Authentication"
-msgstr ""
+msgstr "Ajouter une authentification externe"
 
 #: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_google.html:8
 msgid "Add Google external auth"
-msgstr ""
+msgstr "Ajouter l'authentification externe Google"
 
 #: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_google.html:21
 #: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_microsoft.html:21
 #: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_mobile.html:21
 msgid "External auth"
-msgstr ""
+msgstr "Authentification externe"
 
 #: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_microsoft.html:8
 msgid "Add Microsoft external auth"
-msgstr ""
+msgstr "Ajouter l'authentification externe Microsoft"
 
 #: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_mobile.html:8
 msgid "Add Mobile external auth"
-msgstr ""
+msgstr "Ajouter une authentification externe mobile"
 
 #: wazo_ui/plugins/funckey/form.py:19 wazo_ui/plugins/funckey/plugin.py:26
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:16
 msgid "Service"
-msgstr ""
+msgstr "Service"
 
 #: wazo_ui/plugins/funckey/form.py:21
 msgid "Enable voicemail"
-msgstr ""
+msgstr "Activer la messagerie vocale"
 
 #: wazo_ui/plugins/funckey/form.py:22
 msgid "Reach the voicemail"
-msgstr ""
+msgstr "Accéder à la messagerie vocale"
 
 #: wazo_ui/plugins/funckey/form.py:23
 msgid "Delete messages from voicemail"
-msgstr ""
+msgstr "Supprimer des messages de la messagerie vocale"
 
 #: wazo_ui/plugins/funckey/form.py:24
 msgid "Phone status"
-msgstr ""
+msgstr "Statut du téléphone"
 
 #: wazo_ui/plugins/funckey/form.py:25
 msgid "Sound recording"
-msgstr ""
+msgstr "Enregistrement sonore"
 
 #: wazo_ui/plugins/funckey/form.py:26
 msgid "Disable all forwarding"
-msgstr ""
+msgstr "Désactiver tous les transferts"
 
 #: wazo_ui/plugins/funckey/form.py:27
 msgid "Listen to online calls"
-msgstr ""
+msgstr "Écouter les appels en ligne"
 
 #: wazo_ui/plugins/funckey/form.py:28
 msgid "Directory access"
-msgstr ""
+msgstr "Accès à l'annuaire"
 
 #: wazo_ui/plugins/funckey/form.py:29
 msgid "Group Interception"
-msgstr ""
+msgstr "Interception de groupe"
 
 #: wazo_ui/plugins/funckey/form.py:30
 msgid "Call recording"
-msgstr ""
+msgstr "Enregistrement d'appel"
 
 #: wazo_ui/plugins/funckey/form.py:31
 msgid "Incoming call filtering"
-msgstr ""
+msgstr "Filtrage des appels entrants"
 
 #: wazo_ui/plugins/funckey/form.py:32 wazo_ui/plugins/user/form.py:92
 msgid "Do not disturb"
-msgstr ""
+msgstr "Ne pas déranger"
 
 #: wazo_ui/plugins/funckey/form.py:42 wazo_ui/plugins/funckey/plugin.py:23
 msgid "Transfer"
-msgstr ""
+msgstr "Transfert"
 
 #: wazo_ui/plugins/funckey/form.py:44
 msgid "Blind transfer"
-msgstr ""
+msgstr "Transfert aveugle"
 
 #: wazo_ui/plugins/funckey/form.py:45
 msgid "Indirect transfer"
-msgstr ""
+msgstr "Transfert indirect"
 
 #: wazo_ui/plugins/funckey/form.py:55 wazo_ui/plugins/funckey/plugin.py:29
 msgid "Forward"
-msgstr ""
+msgstr "Avant"
 
 #: wazo_ui/plugins/funckey/form.py:57
 msgid "Enable / Disable forwarding on busy"
-msgstr ""
+msgstr "Activer / Désactiver le renvoi sur occupation"
 
 #: wazo_ui/plugins/funckey/form.py:58
 msgid "Enable / Disable forwarding on no answer"
-msgstr ""
+msgstr "Activer / Désactiver le renvoi sur non-réponse"
 
 #: wazo_ui/plugins/funckey/form.py:59
 msgid "Enable / Disable forwarding unconditional"
-msgstr ""
+msgstr "Activer/Désactiver le transfert inconditionnel"
 
 #: wazo_ui/plugins/funckey/form.py:64
 msgid "Exten"
-msgstr ""
+msgstr "Extension"
 
 #: wazo_ui/plugins/funckey/plugin.py:32
 msgid "Online Recording"
-msgstr ""
+msgstr "Enregistrement en ligne"
 
 #: wazo_ui/plugins/general_settings/form.py:62
 msgid "IP Address"
-msgstr ""
+msgstr "Adresse IP"
 
 #: wazo_ui/plugins/general_settings/form.py:63
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:53
 msgid "Netmask"
-msgstr ""
+msgstr "Masque de réseau"
 
 #: wazo_ui/plugins/general_settings/form.py:64
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:54
 msgid "Limit"
-msgstr ""
+msgstr "Limite"
 
 #: wazo_ui/plugins/general_settings/form.py:80
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:53
@@ -1969,47 +1976,48 @@ msgstr ""
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:15
 #: wazo_ui/plugins/user/form.py:149 wazo_ui/plugins/voicemail/form.py:40
 msgid "Timezone"
-msgstr ""
+msgstr "Fuseau horaire"
 
 #: wazo_ui/plugins/general_settings/form.py:84
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:54
 msgid "Message"
-msgstr ""
+msgstr "Message"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_global.html:4
 #: wazo_ui/plugins/general_settings/view.py:121
 msgid "PJSIP Global Settings"
-msgstr ""
+msgstr "Paramètres globaux PJSIP"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_system.html:4
 #: wazo_ui/plugins/general_settings/view.py:135
 msgid "PJSIP System Settings"
-msgstr ""
+msgstr "Paramètres du système PJSIP"
 
 #: wazo_ui/plugins/general_settings/view.py:149
 #: wazo_ui/plugins/trunk/form.py:65
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:58
 msgid "IAX"
-msgstr ""
+msgstr "IAX"
 
-#: wazo_ui/plugins/general_settings/view.py:178 wazo_ui/plugins/line/form.py:38
+#: wazo_ui/plugins/general_settings/view.py:178
+#: wazo_ui/plugins/line/form.py:38
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:25
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:53
 #: wazo_ui/plugins/user/form.py:55
 msgid "SCCP"
-msgstr ""
+msgstr "SCCP"
 
 #: wazo_ui/plugins/general_settings/view.py:234
 msgid "Features Code"
-msgstr ""
+msgstr "Code des fonctionnalités"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:12
 msgid "Default Bridge"
-msgstr ""
+msgstr "Pont par défaut"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:13
 msgid "Default User"
-msgstr ""
+msgstr "Utilisateur par défaut"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:26
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:52
@@ -2059,7 +2067,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:187
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:214
 msgid "Option Key"
-msgstr ""
+msgstr "Clé d'option"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:27
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:53
@@ -2109,39 +2117,39 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:188
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:215
 msgid "Option Value"
-msgstr ""
+msgstr "Valeur d'option"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:4
 msgid "Features General Settings"
-msgstr ""
+msgstr "Fonctionnalités Paramètres généraux"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:13
 msgid "Featuremap"
-msgstr ""
+msgstr "Carte des fonctionnalités"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:14
 msgid "Applicationmap"
-msgstr ""
+msgstr "Carte des applications"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:4
 msgid "IAX General Settings"
-msgstr ""
+msgstr "Paramètres généraux IAX"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:13
 msgid "Call Number Limits"
-msgstr ""
+msgstr "Limites des numéros d'appel"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:52
 msgid "Ip Address"
-msgstr ""
+msgstr "Adresse IP"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/sccp_general.html:4
 msgid "SCCP General Settings"
-msgstr ""
+msgstr "Paramètres généraux du SCCP"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:13
 msgid "Timezones"
-msgstr ""
+msgstr "Fuseaux horaires"
 
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:106
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/edit.html:28
@@ -2149,20 +2157,20 @@ msgstr ""
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:29
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:31
 msgid "Choose Timezone"
-msgstr ""
+msgstr "Choisissez le fuseau horaire"
 
 #: wazo_ui/plugins/global_settings/templates/wazo_engine/global_settings/index.html:5
 #: wazo_ui/plugins/global_settings/templates/wazo_engine/global_settings/index.html:14
 #: wazo_ui/plugins/global_settings/view.py:14
 msgid "Global Settings"
-msgstr ""
+msgstr "Paramètres globaux"
 
 #: wazo_ui/plugins/group/form.py:40
 #: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:15
 #: wazo_ui/plugins/identity/form.py:42 wazo_ui/plugins/paging/form.py:26
 #: wazo_ui/plugins/switchboard/form.py:28
 msgid "Members"
-msgstr ""
+msgstr "Membres"
 
 #: wazo_ui/plugins/group/form.py:45
 #: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:17
@@ -2177,84 +2185,84 @@ msgstr ""
 #: wazo_ui/plugins/user/form.py:119
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:22
 msgid "Schedule"
-msgstr ""
+msgstr "Calendrier"
 
 #: wazo_ui/plugins/group/form.py:59
 msgid "Callerid mode"
-msgstr ""
+msgstr "Mode présentation de l'appelant"
 
 #: wazo_ui/plugins/group/form.py:77 wazo_ui/plugins/moh/form.py:15
 msgid "Random"
-msgstr ""
+msgstr "Aléatoire"
 
 #: wazo_ui/plugins/group/form.py:78
 msgid "Least recent"
-msgstr ""
+msgstr "Le moins récent"
 
 #: wazo_ui/plugins/group/form.py:79
 msgid "Linear"
-msgstr ""
+msgstr "Linéaire"
 
 #: wazo_ui/plugins/group/form.py:80
 msgid "Fewest calls"
-msgstr ""
+msgstr "Moins d'appels"
 
 #: wazo_ui/plugins/group/form.py:81
 msgid "Memorized round robin"
-msgstr ""
+msgstr "Round robin mémorisé"
 
 #: wazo_ui/plugins/group/form.py:85
 msgid "User timeout"
-msgstr ""
+msgstr "Délai d'expiration de l'utilisateur"
 
 #: wazo_ui/plugins/group/form.py:93 wazo_ui/plugins/queue/form.py:127
 msgid "Mark all calls as answered elsewhere when cancelled"
-msgstr ""
+msgstr "Marquer tous les appels comme répondus ailleurs en cas d'annulation"
 
 #: wazo_ui/plugins/group/form.py:102 wazo_ui/plugins/queue/form.py:137
 msgid "Ring Time"
-msgstr ""
+msgstr "Durée de sonnerie"
 
 #: wazo_ui/plugins/group/form.py:117
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 #: wazo_ui/plugins/group/form.py:120
 msgid "Join group"
-msgstr ""
+msgstr "Rejoindre le groupe"
 
 #: wazo_ui/plugins/group/form.py:121
 msgid "Leave group"
-msgstr ""
+msgstr "Quitter le groupe"
 
 #: wazo_ui/plugins/group/form.py:122
 msgid "Join or leave group"
-msgstr ""
+msgstr "Rejoindre ou quitter le groupe"
 
 #: wazo_ui/plugins/group/plugin.py:40
 msgid "Group Member"
-msgstr ""
+msgstr "Membre du groupe"
 
 #: wazo_ui/plugins/group/view.py:24
 msgid "Ring Groups"
-msgstr ""
+msgstr "Groupes de sonneries"
 
 #: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:16
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:17
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:17
 msgid "Fallbacks"
-msgstr ""
+msgstr "Solutions de repli"
 
 #: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:111
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:80
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:185
 msgid "Choose Call Permissions"
-msgstr ""
+msgstr "Choisissez les autorisations d'appel"
 
 #: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:36
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/list.html:22
 msgid "Add Group"
-msgstr ""
+msgstr "Ajouter un groupe"
 
 #: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:45
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:53
@@ -2274,73 +2282,73 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:40
 #: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:38
 msgid "Choose Context"
-msgstr ""
+msgstr "Choisissez le contexte"
 
 #: wazo_ui/plugins/ha/form.py:13
 msgid "Node Type"
-msgstr ""
+msgstr "Type de nœud"
 
 #: wazo_ui/plugins/ha/form.py:15
 msgid "Disabled"
-msgstr ""
+msgstr "Désactivé"
 
 #: wazo_ui/plugins/ha/form.py:16
 msgid "Master"
-msgstr ""
+msgstr "Maître"
 
 #: wazo_ui/plugins/ha/form.py:17
 msgid "Slave"
-msgstr ""
+msgstr "Esclave"
 
 #: wazo_ui/plugins/ha/form.py:21
 msgid "Remote address"
-msgstr ""
+msgstr "Adresse distante"
 
 #: wazo_ui/plugins/ha/view.py:21
 msgid "High Availability"
-msgstr ""
+msgstr "Haute disponibilité"
 
 #: wazo_ui/plugins/ha/view.py:50
 msgid "High Availabitity config has been updated"
-msgstr ""
+msgstr "La configuration haute disponibilité a été mise à jour"
 
 #: wazo_ui/plugins/ha/templates/wazo_engine/ha/index.html:4
 msgid "Ha"
-msgstr ""
+msgstr "Ha"
 
 #: wazo_ui/plugins/hep/form.py:13
 msgid "Capture Address"
-msgstr ""
+msgstr "Adresse de capture"
 
 #: wazo_ui/plugins/hep/form.py:15
 msgid "Capture Password"
-msgstr ""
+msgstr "Mot de passe de la capture"
 
 #: wazo_ui/plugins/hep/form.py:17
 msgid "Capture ID"
-msgstr ""
+msgstr "Identifiant de la capture"
 
 #: wazo_ui/plugins/hep/form.py:19
 msgid "UUID Type"
-msgstr ""
+msgstr "Type d'UUID"
 
 #: wazo_ui/plugins/hep/form.py:20
 msgid "Call ID"
-msgstr ""
+msgstr "Identifiant d'appel"
 
 #: wazo_ui/plugins/hep/form.py:20
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 #: wazo_ui/plugins/hep/templates/wazo_engine/hep/index.html:5
 #: wazo_ui/plugins/hep/templates/wazo_engine/hep/index.html:14
 #: wazo_ui/plugins/hep/view.py:19
 msgid "Hep"
-msgstr ""
+msgstr "Hep"
 
 #: wazo_ui/plugins/hep/view.py:45
 msgid "HEP config has been updated"
-msgstr ""
+msgstr "La configuration HEP a été mise à jour"
 
 #: wazo_ui/plugins/identity/form.py:46
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:18
@@ -2348,264 +2356,282 @@ msgstr ""
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/list.html:11
 #: wazo_ui/plugins/identity/view.py:259
 msgid "Policies"
-msgstr ""
+msgstr "Règles de sécurité"
 
 #: wazo_ui/plugins/identity/form.py:51
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:41
 msgid "Main"
-msgstr ""
+msgstr "Principal"
 
 #: wazo_ui/plugins/identity/form.py:52
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #: wazo_ui/plugins/identity/form.py:63 wazo_ui/plugins/identity/form.py:75
 #: wazo_ui/plugins/identity/form.py:101
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:17
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:13
 msgid "Tenant"
-msgstr ""
+msgstr "Locataire"
 
 #: wazo_ui/plugins/identity/form.py:66
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:18
 msgid "Purpose"
-msgstr ""
+msgstr "Type"
 
 #: wazo_ui/plugins/identity/form.py:67
 msgid "External API"
-msgstr ""
+msgstr "API externe"
 
 #: wazo_ui/plugins/identity/form.py:86
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:15
 msgid "Identifier"
-msgstr ""
+msgstr "Identifiant"
 
 #: wazo_ui/plugins/identity/form.py:88
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:32
 msgid "Domain Names"
-msgstr ""
+msgstr "Noms de domaine"
 
 #: wazo_ui/plugins/identity/form.py:110
 msgid "Protocol version"
-msgstr ""
+msgstr "Version du protocole"
 
 #: wazo_ui/plugins/identity/form.py:116
 msgid "Protocol security"
-msgstr ""
+msgstr "Sécurité du protocole"
 
 #: wazo_ui/plugins/identity/form.py:117
 msgid "TLS"
-msgstr ""
+msgstr "TLS"
 
 #: wazo_ui/plugins/identity/form.py:117
 msgid "LDAPS"
-msgstr ""
+msgstr "LDAPS"
 
 #: wazo_ui/plugins/identity/form.py:119
 msgid "Bind DN"
-msgstr ""
+msgstr "Lier le nom distinctif"
 
 #: wazo_ui/plugins/identity/form.py:120
 msgid "Bind password"
-msgstr ""
+msgstr "Lier le mot de passe"
 
 #: wazo_ui/plugins/identity/form.py:122
 msgid "User base DN"
-msgstr ""
+msgstr "DN de la base d'utilisateurs"
 
 #: wazo_ui/plugins/identity/form.py:125
 msgid "User login attribute"
-msgstr ""
+msgstr "Attribut de connexion utilisateur"
 
 #: wazo_ui/plugins/identity/form.py:128
 msgid "User email attribute"
-msgstr ""
+msgstr "Attribut de courrier électronique de l'utilisateur"
 
 #: wazo_ui/plugins/identity/form.py:130
 msgid "Search filters"
-msgstr ""
+msgstr "Filtres de recherche"
 
 #: wazo_ui/plugins/identity/view.py:26
 msgid "Credentials"
-msgstr ""
+msgstr "Identifications"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:5
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:11
 #: wazo_ui/plugins/identity/view.py:30
 msgid "Identities"
-msgstr ""
+msgstr "Identités"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:5
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:11
 #: wazo_ui/plugins/identity/view.py:159
 msgid "Tenants"
-msgstr ""
+msgstr "Tenant"
 
 #: wazo_ui/plugins/identity/view.py:322
 msgid "LDAP config has been updated"
-msgstr ""
+msgstr "La configuration LDAP a été mise à jour"
 
 #: wazo_ui/plugins/identity/view.py:330
 #, python-format
 msgid "%(resource)s: LDAP configuration %(id)s has been deleted"
-msgstr ""
+msgstr "%(resource)s : la configuration LDAP %(id)s a été supprimée"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:13
 #: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:16
 msgid "Identity"
-msgstr ""
+msgstr "Identité"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:15
 msgid "Emails"
-msgstr ""
+msgstr "E-mails"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:36
 msgid "Add Identity"
-msgstr ""
+msgstr "Ajouter une identité"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:13
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:14
 msgid "Policy"
-msgstr ""
+msgstr "Politique"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:15
 msgid "ACL"
-msgstr ""
+msgstr "Liste de contrôle d'accès"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:33
 msgid "acl"
-msgstr ""
+msgstr "acl"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/list.html:22
 msgid "Add Policy"
-msgstr ""
+msgstr "Ajouter une stratégie"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:15
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:16
 msgid "Domains"
-msgstr ""
+msgstr "Domaines"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:26
 msgid "Add Tenant"
-msgstr ""
+msgstr "Ajouter un tenant"
 
 #: wazo_ui/plugins/incall/form.py:21
 #: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:14
 msgid "Did"
-msgstr ""
+msgstr "SDA"
 
 #: wazo_ui/plugins/incall/form.py:33 wazo_ui/plugins/outcall/form.py:52
 msgid "Preprocess Subroutine"
-msgstr ""
+msgstr "Sous-routine de prétraitement"
 
 #: wazo_ui/plugins/incall/form.py:35 wazo_ui/plugins/ivr/form.py:39
 msgid "Greeting sound"
-msgstr ""
+msgstr "Pré-décroché"
 
 #: wazo_ui/plugins/incall/view.py:18
 msgid "Call Management"
-msgstr ""
+msgstr "Gestion des appels"
 
 #: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:11
 #: wazo_ui/plugins/incall/view.py:25
 msgid "Incalls"
-msgstr ""
+msgstr "Appels entrants"
 
 #: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:29
 msgid "Choose Incall Context"
-msgstr ""
+msgstr "Choisissez le contexte d'appel"
 
 #: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:51
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:71
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:167
 msgid "Choose Schedules"
-msgstr ""
+msgstr "Choisir les horaires"
 
 #: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:50
 msgid "Add Incall"
-msgstr ""
+msgstr "Ajouter un appel"
 
 #: wazo_ui/plugins/ivr/form.py:21
 msgid "Abort destination"
-msgstr ""
+msgstr "Abandonner la destination"
 
 #: wazo_ui/plugins/ivr/form.py:22
 msgid ""
-"The destination to redirect the caller to when the maximum number of "
-"tries is reached.                        If not set, the call will be "
-"hanged up after playing the abort sound (if set)"
+"The destination to redirect the caller to when the maximum number of tries "
+"is reached.                        If not set, the call will be hanged up "
+"after playing the abort sound (if set)"
 msgstr ""
+"Destination vers laquelle rediriger l'appelant lorsque le nombre maximum "
+"d'essais est atteint. S'il n'est pas défini, l'appel sera raccroché après "
+"avoir émis le son d'abandon (si défini)"
 
 #: wazo_ui/plugins/ivr/form.py:28
 msgid "Abort sound"
-msgstr ""
+msgstr "Son d'abandon"
 
 #: wazo_ui/plugins/ivr/form.py:31
 msgid ""
 "The sound played when the caller reach the maximum number of tries."
 "                        Not used if an abort destination is set"
 msgstr ""
+"Le son émis lorsque l'appelant atteint le nombre maximum d'essais. Non "
+"utilisé si une destination d'abandon est définie"
 
 #: wazo_ui/plugins/ivr/form.py:42
 msgid "The sound played to greet the caller"
-msgstr ""
+msgstr "Le son joué pour saluer l'appelant"
 
 #: wazo_ui/plugins/ivr/form.py:45
 msgid "Invalid destination"
-msgstr ""
+msgstr "Destination invalide"
 
 #: wazo_ui/plugins/ivr/form.py:46
 msgid ""
-"The destination to redirect the caller to when he choose an invalid "
-"option.                        If not set, the menu will be replayed"
+"The destination to redirect the caller to when he choose an invalid option."
+"                        If not set, the menu will be replayed"
 msgstr ""
+"La destination vers laquelle rediriger l'appelant lorsqu'il choisit une "
+"option non valide. S’il n’est pas défini, le menu sera relu"
 
 #: wazo_ui/plugins/ivr/form.py:52
 msgid "Invalid Sound"
-msgstr ""
+msgstr "Son invalide"
 
 #: wazo_ui/plugins/ivr/form.py:55
 msgid ""
 "The sound played when the caller choose an invalid option."
 "                        Not used if an invalid destination is set"
 msgstr ""
+"Le son émis lorsque l'appelant choisit une option non valide. Non utilisé si"
+" une destination non valide est définie"
 
 #: wazo_ui/plugins/ivr/form.py:61
 msgid "Max tries"
-msgstr ""
+msgstr "Essaies max"
 
 #: wazo_ui/plugins/ivr/form.py:64
 msgid ""
 "The maximum number of tries before aborting the call."
-"                        Both a timeout and an invalid choice counts "
-"toward the number of tries integer Default:3"
+"                        Both a timeout and an invalid choice counts toward "
+"the number of tries integer Default:3"
 msgstr ""
+"Nombre maximum d'essais avant d'abandonner l'appel. Un délai d'attente et un"
+" choix non valide sont pris en compte dans le nombre d'essais. Nombre entier"
+" Par défaut : 3"
 
 #: wazo_ui/plugins/ivr/form.py:70
 msgid "Menu Sound"
-msgstr ""
+msgstr "Son des menus"
 
 #: wazo_ui/plugins/ivr/form.py:73
 msgid "The sound played to prompt the caller for input"
-msgstr ""
+msgstr "Le son émis pour inviter l'appelant à entrer une entrée"
 
 #: wazo_ui/plugins/ivr/form.py:79
 msgid ""
 "Number of seconds to wait after the menu sound is played before either "
 "replaying the menu,                        redirecting the call to the "
-"timeout destination (if set) or aborting the call                        "
-"(if the maximum number of tries has been reached) integer Default:5"
+"timeout destination (if set) or aborting the call                        (if"
+" the maximum number of tries has been reached) integer Default:5"
 msgstr ""
+"Nombre de secondes à attendre après la lecture du son du menu avant de "
+"relire le menu, de rediriger l'appel vers la destination du délai d'attente "
+"(si défini) ou d'abandonner l'appel (si le nombre maximum d'essais a été "
+"atteint) entier Par défaut : 5"
 
 #: wazo_ui/plugins/ivr/form.py:86
 msgid "Timeout destination"
-msgstr ""
+msgstr "Destination d'expiration"
 
 #: wazo_ui/plugins/ivr/form.py:87
 msgid ""
-"The destination to redirect the caller to on timeout. If not set, the "
-"menu will be replayed"
+"The destination to redirect the caller to on timeout. If not set, the menu "
+"will be replayed"
 msgstr ""
+"Destination vers laquelle rediriger l'appelant en cas d'expiration du délai."
+" S’il n’est pas défini, le menu sera relu"
 
 #: wazo_ui/plugins/ivr/form.py:109
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:4
@@ -2614,7 +2640,7 @@ msgstr ""
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:11
 #: wazo_ui/plugins/ivr/view.py:22
 msgid "IVR"
-msgstr ""
+msgstr "SVI"
 
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:4
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_custom.html:4
@@ -2627,38 +2653,38 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:4
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:4
 msgid "List"
-msgstr ""
+msgstr "Liste"
 
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:11
 msgid "Add IVR"
-msgstr ""
+msgstr "Ajouter un SVI"
 
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:27
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/edit.html:29
 msgid "Add choices"
-msgstr ""
+msgstr "Ajouter des choix"
 
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:33
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/edit.html:35
 msgid "Digit"
-msgstr ""
+msgstr "Chiffre"
 
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:35
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:36
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:16
 msgid "Menu sound"
-msgstr ""
+msgstr "Son des menus"
 
 #: wazo_ui/plugins/line/form.py:31 wazo_ui/plugins/trunk/form.py:24
 msgid "Interface"
-msgstr ""
+msgstr "Interface"
 
 #: wazo_ui/plugins/line/form.py:32 wazo_ui/plugins/trunk/form.py:25
 msgid "Interface Suffix"
-msgstr ""
+msgstr "Suffixe d'interface"
 
 #: wazo_ui/plugins/line/form.py:38
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:23
@@ -2667,7 +2693,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:57
 #: wazo_ui/plugins/user/form.py:54
 msgid "SIP"
-msgstr ""
+msgstr "SIP"
 
 #: wazo_ui/plugins/line/form.py:38
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:27
@@ -2676,7 +2702,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:59
 #: wazo_ui/plugins/user/form.py:58
 msgid "CUSTOM"
-msgstr ""
+msgstr "PERSONNALISÉ"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:11
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_custom.html:4
@@ -2685,7 +2711,7 @@ msgstr ""
 #: wazo_ui/plugins/line/view.py:26
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:19
 msgid "Lines"
-msgstr ""
+msgstr "Lignes"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:22
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:23
@@ -2697,7 +2723,7 @@ msgstr ""
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:12
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:13
 msgid "Line"
-msgstr ""
+msgstr "Ligne"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:24
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:14
@@ -2706,7 +2732,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:18
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:14
 msgid "AOR"
-msgstr ""
+msgstr "AOR"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:25
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:15
@@ -2716,7 +2742,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:15
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:39
 msgid "Authentication"
-msgstr ""
+msgstr "Authentification"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:27
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:17
@@ -2725,7 +2751,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:21
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:17
 msgid "Identify"
-msgstr ""
+msgstr "Identifier"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:28
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:18
@@ -2734,7 +2760,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:22
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:18
 msgid "Registration"
-msgstr ""
+msgstr "Inscription"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:29
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:19
@@ -2743,7 +2769,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:23
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:19
 msgid "Registration Outbound Auth"
-msgstr ""
+msgstr "Inscription Authentification sortante"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:30
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:20
@@ -2752,7 +2778,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:24
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:20
 msgid "Outbound Auth"
-msgstr ""
+msgstr "Authentification sortante"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:44
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:31
@@ -2761,7 +2787,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:38
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:31
 msgid "Choose Transport"
-msgstr ""
+msgstr "Choisissez les transports"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:48
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:35
@@ -2770,7 +2796,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:42
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:35
 msgid "Choose Templates"
-msgstr ""
+msgstr "Choisir des modèles"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:14
 #: wazo_ui/plugins/provisioning/form.py:58
@@ -2778,125 +2804,131 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:14
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:105
 msgid "Protocol"
-msgstr ""
+msgstr "Protocole"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:16
 msgid "Provisioning Extension"
-msgstr ""
+msgstr "Extension de provisionnement"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:17
 msgid "Caller Id Name"
-msgstr ""
+msgstr "Nom de l'appelant"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:18
 msgid "Caller Id Number"
-msgstr ""
+msgstr "Numéro d'identification de l'appelant"
 
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:49
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:56
 msgid "Choose your protocol"
-msgstr ""
+msgstr "Choisissez votre protocole"
 
 #: wazo_ui/plugins/moh/form.py:10
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:32
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:15
 msgid "Files"
-msgstr ""
+msgstr "Fichiers"
 
 #: wazo_ui/plugins/moh/form.py:10
 msgid "MP3"
-msgstr ""
+msgstr "MP3"
 
 #: wazo_ui/plugins/moh/form.py:14
 msgid "Alphabetical"
-msgstr ""
+msgstr "Alphabétique"
 
 #: wazo_ui/plugins/moh/form.py:16
 msgid "Random start"
-msgstr ""
+msgstr "Démarrage aléatoire"
 
 #: wazo_ui/plugins/moh/form.py:28
-msgid "The name used by Asterisk (can only by set on create and must be unique)"
+msgid ""
+"The name used by Asterisk (can only by set on create and must be unique)"
 msgstr ""
+"Le nom utilisé par Asterisk (ne peut être défini qu'à la création et doit "
+"être unique)"
 
 #: wazo_ui/plugins/moh/form.py:32
 msgid "The label of the MOH class"
-msgstr ""
+msgstr "Le label de la classe MOH"
 
 #: wazo_ui/plugins/moh/form.py:36
 msgid "The play mode of the MOH class"
-msgstr ""
+msgstr "Le mode de jeu de la classe MOH"
 
 #: wazo_ui/plugins/moh/form.py:40
 msgid "The command to run (only used when mode is \"custom\")"
 msgstr ""
+"La commande à exécuter (utilisée uniquement lorsque le mode est \"custom\")"
 
 #: wazo_ui/plugins/moh/form.py:43
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:25
 msgid "Sort"
-msgstr ""
+msgstr "Trier"
 
 #: wazo_ui/plugins/moh/form.py:45
 msgid "The order in which files are played (only used when mode is 'files')"
 msgstr ""
+"L'ordre dans lequel les fichiers sont lus (utilisé uniquement lorsque le "
+"mode est « fichiers »)"
 
 #: wazo_ui/plugins/moh/view.py:29
 msgid "Sounds & Greetings"
-msgstr ""
+msgstr "Sons et Musiques"
 
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:5
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:11
 #: wazo_ui/plugins/moh/view.py:34
 msgid "Musics"
-msgstr ""
+msgstr "Musiques"
 
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:12
 msgid "Music"
-msgstr ""
+msgstr "Musique"
 
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:23
 msgid "Upload File"
-msgstr ""
+msgstr "Téléverser un fichier"
 
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:25
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:60
 msgid "Upload"
-msgstr ""
+msgstr "Télécharger"
 
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:43
 msgid "Download the moh file"
-msgstr ""
+msgstr "Téléchargez le fichier moh"
 
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:50
 msgid "Delete the moh file"
-msgstr ""
+msgstr "Supprimer le fichier moh"
 
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:16
 msgid "Parameters"
-msgstr ""
+msgstr "Paramètres"
 
 #: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:34
 msgid "Add Moh"
-msgstr ""
+msgstr "Ajouter Moh"
 
 #: wazo_ui/plugins/outcall/form.py:35
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:43
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:37
 #: wazo_ui/plugins/user/form.py:140
 msgid "Caller ID"
-msgstr ""
+msgstr "Identification de l'appelant"
 
 #: wazo_ui/plugins/outcall/form.py:36
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:44
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:38
 msgid "External prefix"
-msgstr ""
+msgstr "Préfixe externe"
 
 #: wazo_ui/plugins/outcall/form.py:38
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:46
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:40
 msgid "Strip digits"
-msgstr ""
+msgstr "Suppression d'un numéro"
 
 #: wazo_ui/plugins/outcall/form.py:50
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:11
@@ -2905,514 +2937,514 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:4
 #: wazo_ui/plugins/trunk/view.py:25
 msgid "Trunks"
-msgstr ""
+msgstr "Trunks"
 
 #: wazo_ui/plugins/outcall/form.py:53
 msgid "Internal Caller ID"
-msgstr ""
+msgstr "Identification de l'appelant interne"
 
 #: wazo_ui/plugins/outcall/form.py:54 wazo_ui/plugins/user/form.py:188
 msgid "Ring time"
-msgstr ""
+msgstr "Temps de sonnerie"
 
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:24
 msgid "Add Outcall"
-msgstr ""
+msgstr "Ajouter un appel"
 
 #: wazo_ui/plugins/paging/form.py:31
 msgid "Callers"
-msgstr ""
+msgstr "Appelants"
 
 #: wazo_ui/plugins/paging/form.py:39
 #: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:16
 #: wazo_ui/plugins/voicemail/form.py:31
 #: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:15
 msgid "Number"
-msgstr ""
+msgstr "Nombre"
 
 #: wazo_ui/plugins/paging/form.py:43 wazo_ui/plugins/paging/form.py:49
 msgid "Announce caller"
-msgstr ""
+msgstr "Annoncer l'appelant"
 
 #: wazo_ui/plugins/paging/form.py:44
 msgid "Announce sound"
-msgstr ""
+msgstr "Annoncer le son"
 
 #: wazo_ui/plugins/paging/form.py:45
 msgid "Play notification to caller"
-msgstr ""
+msgstr "Lire la notification à l'appelant"
 
 #: wazo_ui/plugins/paging/form.py:46
 msgid "Duplex audio"
-msgstr ""
+msgstr "Audio Duplex"
 
 #: wazo_ui/plugins/paging/form.py:48 wazo_ui/plugins/queue/form.py:104
 msgid "Ignore forward"
-msgstr ""
+msgstr "Ignorer en avant"
 
 #: wazo_ui/plugins/paging/templates/wazo_engine/paging/edit.html:11
 #: wazo_ui/plugins/paging/view.py:17
 msgid "Pagings"
-msgstr ""
+msgstr "Paginations"
 
 #: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:5
 #: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:12
 msgid "Paging"
-msgstr ""
+msgstr "Pagination"
 
 #: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:25
 msgid "Add Paging"
-msgstr ""
+msgstr "Ajouter une pagination"
 
 #: wazo_ui/plugins/parking_lot/form.py:22
 msgid "Slots Start"
-msgstr ""
+msgstr "Début des machines à sous"
 
 #: wazo_ui/plugins/parking_lot/form.py:25
 msgid "Slots End"
-msgstr ""
+msgstr "Fin des machines à sous"
 
 #: wazo_ui/plugins/parking_lot/form.py:35
 #: wazo_ui/plugins/parking_lot/form.py:42
 #: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/edit.html:11
 msgid "Parking Lot"
-msgstr ""
+msgstr "Parcage d'appel"
 
 #: wazo_ui/plugins/parking_lot/form.py:43
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:142
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #: wazo_ui/plugins/parking_lot/plugin.py:33
 msgid "Parking"
-msgstr ""
+msgstr "Parcage"
 
 #: wazo_ui/plugins/parking_lot/plugin.py:36
 msgid "Parking Position"
-msgstr ""
+msgstr "Position de parcage"
 
 #: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:5
 #: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:11
 #: wazo_ui/plugins/parking_lot/view.py:24
 msgid "Parking Lots"
-msgstr ""
+msgstr "Parking"
 
 #: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:16
 msgid "Slot start"
-msgstr ""
+msgstr "Début des emplacements"
 
 #: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:17
 msgid "Slot end"
-msgstr ""
+msgstr "Fin des emplacements"
 
 #: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:35
 msgid "Add Parking Lot"
-msgstr ""
+msgstr "Ajouter un parcage"
 
 #: wazo_ui/plugins/phonebook/form.py:21
 msgid "Phone"
-msgstr ""
+msgstr "Téléphone"
 
 #: wazo_ui/plugins/phonebook/form.py:22
 msgid "Mobile Phone"
-msgstr ""
+msgstr "Téléphone mobile"
 
 #: wazo_ui/plugins/phonebook/form.py:23
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/list.html:9
 #: wazo_ui/plugins/phonebook/view.py:33
 msgid "Phonebooks"
-msgstr ""
+msgstr "Répertoires"
 
 #: wazo_ui/plugins/phonebook/view.py:36
 msgid "Configuration"
-msgstr ""
+msgstr "Configuration"
 
 #: wazo_ui/plugins/phonebook/view.py:54
 msgid "Contacts"
-msgstr ""
+msgstr "Contacts"
 
 #: wazo_ui/plugins/phonebook/view.py:64
 msgid "Please add phonebook before adding contacts!"
-msgstr ""
+msgstr "Veuillez ajouter le répertoire avant d'ajouter des contacts !"
 
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/edit_contact.html:9
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/list.html:21
 msgid "Add Phonebook"
-msgstr ""
+msgstr "Ajouter un répertoire"
 
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:4
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:18
 msgid "Manage Contacts"
-msgstr ""
+msgstr "Gérer les contacts"
 
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:10
 msgid "Choose your phonebook: "
-msgstr ""
+msgstr "Choisissez votre répertoire :"
 
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:24
 msgid "Phone Number"
-msgstr ""
+msgstr "Numéro de téléphone"
 
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:35
 msgid "Add Contact"
-msgstr ""
+msgstr "Ajouter le contact"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:5
 #: wazo_ui/plugins/plugin/view.py:15
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:21
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:11
 msgid "Plugins"
-msgstr ""
+msgstr "Modules"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:15
 msgid "Installed"
-msgstr ""
+msgstr "installée"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:16
 msgid "Git"
-msgstr ""
+msgstr "Git"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:24
 msgid "Search plugin"
-msgstr ""
+msgstr "Chercher un plugin"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:35
 msgid "Show only official"
-msgstr ""
+msgstr "Afficher uniquement l'officiel"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:46
 msgid "Give your GIT url to install a plugin!"
-msgstr ""
+msgstr "Donnez votre url GIT pour installer un module !"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:51
 msgid "GIT url"
-msgstr ""
+msgstr "URL GIT"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:52
 msgid "Branch or tag (optional)"
-msgstr ""
+msgstr "Branche ou étiquette (facultatif)"
 
 #: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:59
 msgid "Install"
-msgstr ""
+msgstr "Installer"
 
 #: wazo_ui/plugins/provisioning/form.py:24
 msgid "Main registrar host"
-msgstr ""
+msgstr "Hôte d'enregistrement principal"
 
 #: wazo_ui/plugins/provisioning/form.py:26
 msgid "Main registrar port"
-msgstr ""
+msgstr "Port d'enregistrement principal"
 
 #: wazo_ui/plugins/provisioning/form.py:27
 msgid "Backup registrar host"
-msgstr ""
+msgstr "Hôte d'enregistrement de sauvegarde"
 
 #: wazo_ui/plugins/provisioning/form.py:28
 msgid "Backup registrar port"
-msgstr ""
+msgstr "Port du registraire de sauvegarde"
 
 #: wazo_ui/plugins/provisioning/form.py:30
 msgid "Main proxy host"
-msgstr ""
+msgstr "Hôte proxy principal"
 
 #: wazo_ui/plugins/provisioning/form.py:32
 msgid "Main proxy port"
-msgstr ""
+msgstr "Port proxy principal"
 
 #: wazo_ui/plugins/provisioning/form.py:34
 msgid "Backup proxy host"
-msgstr ""
+msgstr "Hôte proxy de sauvegarde"
 
 #: wazo_ui/plugins/provisioning/form.py:36
 msgid "Backup proxy port"
-msgstr ""
+msgstr "Port proxy de sauvegarde"
 
 #: wazo_ui/plugins/provisioning/form.py:60
 msgid "Enabled NTP"
-msgstr ""
+msgstr "NTP activé"
 
 #: wazo_ui/plugins/provisioning/form.py:61
 msgid "NTP server"
-msgstr ""
+msgstr "serveur NTP"
 
 #: wazo_ui/plugins/provisioning/form.py:63
 msgid "SIP DTMF mode"
-msgstr ""
+msgstr "Mode SIP DTMF"
 
 #: wazo_ui/plugins/provisioning/form.py:71
 msgid "Phonebook server"
-msgstr ""
+msgstr "Serveur de répertoire"
 
 #: wazo_ui/plugins/provisioning/form.py:73
 msgid "User username"
-msgstr ""
+msgstr "Nom d'utilisateur"
 
 #: wazo_ui/plugins/provisioning/form.py:76
 msgid "User password"
-msgstr ""
+msgstr "Mot de passe de l'utilisateur"
 
 #: wazo_ui/plugins/provisioning/form.py:79
 msgid "Admin username"
-msgstr ""
+msgstr "Nom d'utilisateur administrateur"
 
 #: wazo_ui/plugins/provisioning/form.py:82
 msgid "Admin password"
-msgstr ""
+msgstr "mot de passe administrateur"
 
 #: wazo_ui/plugins/provisioning/form.py:85
 msgid "Explicit notification of messages"
-msgstr ""
+msgstr "Notification explicite des messages"
 
 #: wazo_ui/plugins/provisioning/form.py:87
 msgid "VLAN Enabled"
-msgstr ""
+msgstr "VLAN activé"
 
 #: wazo_ui/plugins/provisioning/form.py:88
 msgid "VLAN ID"
-msgstr ""
+msgstr "ID de VLAN"
 
 #: wazo_ui/plugins/provisioning/form.py:89
 msgid "VLAN Priority"
-msgstr ""
+msgstr "Priorité VLAN"
 
 #: wazo_ui/plugins/provisioning/form.py:91
 msgid "VLAN PC Port ID"
-msgstr ""
+msgstr "ID du port PC du VLAN"
 
 #: wazo_ui/plugins/provisioning/form.py:98
 msgid "Parent"
-msgstr ""
+msgstr "Parent"
 
 #: wazo_ui/plugins/provisioning/form.py:106
 msgid "Plugin server URL"
-msgstr ""
+msgstr "URL du serveur de module"
 
 #: wazo_ui/plugins/provisioning/form.py:108
 msgid "HTTP Proxy"
-msgstr ""
+msgstr "Http proxy"
 
 #: wazo_ui/plugins/provisioning/form.py:109
 msgid "HTTPS Proxy"
-msgstr ""
+msgstr "Proxy HTTPS"
 
 #: wazo_ui/plugins/provisioning/form.py:110
 msgid "FTP Proxy"
-msgstr ""
+msgstr "Proxy FTP"
 
 #: wazo_ui/plugins/provisioning/form.py:112
 msgid "Locale"
-msgstr ""
+msgstr "Lieu"
 
 #: wazo_ui/plugins/provisioning/form.py:114
 msgid "NAT"
-msgstr ""
+msgstr "NAT"
 
 #: wazo_ui/plugins/provisioning/form.py:118
 msgid "Provisioning host"
-msgstr ""
+msgstr "Hôte de provisionnement"
 
 #: wazo_ui/plugins/provisioning/form.py:120
 msgid "Provisioning port"
-msgstr ""
+msgstr "Port d'approvisionnement"
 
 #: wazo_ui/plugins/provisioning/view.py:35
 msgid "Devices Plugins"
-msgstr ""
+msgstr "Modules de périphériques"
 
 #: wazo_ui/plugins/provisioning/view.py:94
 #, python-format
 msgid "Plugin %(plugin_name)s has been installed"
-msgstr ""
+msgstr "Le plugin %(plugin_name)s a été installé"
 
 #: wazo_ui/plugins/provisioning/view.py:106
 #, python-format
 msgid "Plugin %(plugin_name)s has been uninstalled"
-msgstr ""
+msgstr "Le plugin %(plugin_name)s a été désinstallé"
 
 #: wazo_ui/plugins/provisioning/view.py:140
 #, python-format
 msgid "Package %(package_name)s has been uninstalled"
-msgstr ""
+msgstr "Le package %(package_name)s a été désinstallé"
 
 #: wazo_ui/plugins/provisioning/view.py:170
 msgid "Provisioning Registrars"
-msgstr ""
+msgstr "Approvisionnement d'enregistrement"
 
 #: wazo_ui/plugins/provisioning/view.py:202
 msgid "Provisioning Config device"
-msgstr ""
+msgstr "Configuration de provisionnement des périphériques"
 
 #: wazo_ui/plugins/provisioning/view.py:252
 msgid "Provisioning Configuration"
-msgstr ""
+msgstr "Configuration de l'approvisionnement"
 
 #: wazo_ui/plugins/provisioning/view.py:301
 #, python-format
 msgid "Error during update: %(error)s"
-msgstr ""
+msgstr "Erreur lors de la mise à jour : %(error)s"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/edit.html:13
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/list.html:5
 msgid "Provisioning / Config device"
-msgstr ""
+msgstr "Périphérique d'approvisionnement/configuration"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/list.html:11
 msgid "Config device"
-msgstr ""
+msgstr "Périphérique de configuration"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/list.html:25
 msgid "Add config device"
-msgstr ""
+msgstr "Ajouter un périphérique de configuration"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/edit.html:11
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:112
 msgid "Registrar"
-msgstr ""
+msgstr "Registraire"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:5
 msgid "Provisioning / Registrars"
-msgstr ""
+msgstr "Approvisionnement / Enregistrement"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:11
 msgid "Registrars"
-msgstr ""
+msgstr "Registraires"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:18
 msgid "Registrar main"
-msgstr ""
+msgstr "Enregistrement principal"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:19
 msgid "Proxy main"
-msgstr ""
+msgstr "Proxy principal"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:29
 msgid "Add registrar"
-msgstr ""
+msgstr "Ajouter un registraire"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:27
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:17
 msgid "Size"
-msgstr ""
+msgstr "Taille"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:38
 msgid "Install this package"
-msgstr ""
+msgstr "Installez ce paquet"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:40
 msgid "Are you sure you want to install this package ?"
-msgstr ""
+msgstr "Etes-vous sûr de vouloir installer ce package ?"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:47
 msgid "Uninstall this package"
-msgstr ""
+msgstr "Désinstallez ce package"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:49
 msgid "Are you sure you want to uninstall this package ?"
-msgstr ""
+msgstr "Etes-vous sûr de vouloir désinstaller ce package ?"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:5
 msgid "Provisioning / Plugins"
-msgstr ""
+msgstr "Approvisionnement / Modules"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:28
 msgid "Install this plugin"
-msgstr ""
+msgstr "Installez ce plugin"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:30
 msgid "Are you sure you want to install this plugin ?"
-msgstr ""
+msgstr "Etes-vous sûr de vouloir installer ce module ?"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:36
 msgid "Uninstall this plugin"
-msgstr ""
+msgstr "Désinstallez ce module"
 
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:38
 msgid "Are you sure you want to uninstall this plugin ?"
-msgstr ""
+msgstr "Etes-vous sûr de vouloir désinstaller ce module ?"
 
 #: wazo_ui/plugins/queue/form.py:70
 msgid "Announce hold time on entry"
-msgstr ""
+msgstr "Annoncer le temps d'attente à l'entrée"
 
 #: wazo_ui/plugins/queue/form.py:73
 msgid "Data quality"
-msgstr ""
+msgstr "Qualité des données"
 
 #: wazo_ui/plugins/queue/form.py:86
 msgid "DTMF hangup callee enabled"
-msgstr ""
+msgstr "Appelé raccroché DTMF activé"
 
 #: wazo_ui/plugins/queue/form.py:89
 msgid "DTMF hangup caller enabled"
-msgstr ""
+msgstr "Appelant raccroché DTMF activé"
 
 #: wazo_ui/plugins/queue/form.py:92
 msgid "DTMF record callee enabled"
-msgstr ""
+msgstr "Enregistrement DTMF appelé activé"
 
 #: wazo_ui/plugins/queue/form.py:95
 msgid "DTMF record caller enabled"
-msgstr ""
+msgstr "Appelant d'enregistrement DTMF activé"
 
 #: wazo_ui/plugins/queue/form.py:98
 msgid "DTMF transfer callee enabled"
-msgstr ""
+msgstr "Appelé de transfert DTMF activé"
 
 #: wazo_ui/plugins/queue/form.py:101
 msgid "DTMF transfer caller enabled"
-msgstr ""
+msgstr "Appelant de transfert DTMF activé"
 
 #: wazo_ui/plugins/queue/form.py:106
 msgid "Retry on timeout"
-msgstr ""
+msgstr "Réessayer après expiration du délai"
 
 #: wazo_ui/plugins/queue/form.py:107
 msgid "Ring on hold"
-msgstr ""
+msgstr "Sonnerie en attente"
 
 #: wazo_ui/plugins/queue/form.py:111
 msgid "Wait ratio destination"
-msgstr ""
+msgstr "Destination du taux d'attente"
 
 #: wazo_ui/plugins/queue/form.py:113
 msgid "Wait ratio threshold"
-msgstr ""
+msgstr "Seuil du taux d'attente"
 
 #: wazo_ui/plugins/queue/form.py:115
 msgid "Wait time destination"
-msgstr ""
+msgstr "Destination du temps d'attente"
 
 #: wazo_ui/plugins/queue/form.py:117
 msgid "Wait time threshold"
-msgstr ""
+msgstr "Seuil de temps d'attente"
 
 #: wazo_ui/plugins/queue/form.py:139
 msgid "Skill Rule"
-msgstr ""
+msgstr "Règle de compétence"
 
 #: wazo_ui/plugins/queue/form.py:140
 msgid "Skill Rule Variables"
-msgstr ""
+msgstr "Variables des règles de compétence"
 
 #: wazo_ui/plugins/queue/view.py:22
 msgid "Call Center"
-msgstr ""
+msgstr "Centre d'appel"
 
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:5
 #: wazo_ui/plugins/queue/view.py:23
 msgid "Queues"
-msgstr ""
+msgstr "Files d'attente"
 
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:16
 msgid "Diversions"
-msgstr ""
+msgstr "Détournements"
 
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:19
 #: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:14
@@ -3420,225 +3452,225 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:252
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:15
 msgid "Options"
-msgstr ""
+msgstr "Possibilités"
 
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:34
 msgid "Add Queue"
-msgstr ""
+msgstr "Ajouter une file d'attente"
 
 #: wazo_ui/plugins/rtp/form.py:17
 msgid "RTP Start"
-msgstr ""
+msgstr "Début du RTP"
 
 #: wazo_ui/plugins/rtp/form.py:18
 msgid "RTP End"
-msgstr ""
+msgstr "Fin du RTP"
 
 #: wazo_ui/plugins/rtp/form.py:20
 msgid "RTP Check Sums"
-msgstr ""
+msgstr "Sommes de contrôle RTP"
 
 #: wazo_ui/plugins/rtp/form.py:20 wazo_ui/plugins/rtp/form.py:26
 #: wazo_ui/plugins/rtp/form.py:30
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #: wazo_ui/plugins/rtp/form.py:20 wazo_ui/plugins/rtp/form.py:26
 #: wazo_ui/plugins/rtp/form.py:30
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 #: wazo_ui/plugins/rtp/form.py:22
 msgid "DTMF Timeout"
-msgstr ""
+msgstr "Expiration du délai DTMF"
 
 #: wazo_ui/plugins/rtp/form.py:23
 msgid "RTCP Interval"
-msgstr ""
+msgstr "Intervalle RTCP"
 
 #: wazo_ui/plugins/rtp/form.py:25
 msgid "Strict RTP"
-msgstr ""
+msgstr "RTP strict"
 
 #: wazo_ui/plugins/rtp/form.py:26
 msgid "Seqno"
-msgstr ""
+msgstr "Séqno"
 
 #: wazo_ui/plugins/rtp/form.py:28
 msgid "Probation"
-msgstr ""
+msgstr "Probation"
 
 #: wazo_ui/plugins/rtp/form.py:30
 msgid "Ice Support"
-msgstr ""
+msgstr "Support de ICE"
 
 #: wazo_ui/plugins/rtp/form.py:32
 msgid "STUN Address"
-msgstr ""
+msgstr "Adresse STUN"
 
 #: wazo_ui/plugins/rtp/form.py:33
 msgid "STUN Blacklist"
-msgstr ""
+msgstr "Liste noire STUN"
 
 #: wazo_ui/plugins/rtp/form.py:34
 msgid "TURN Address"
-msgstr ""
+msgstr "Adresse du TURN"
 
 #: wazo_ui/plugins/rtp/form.py:35
 msgid "TURN Username"
-msgstr ""
+msgstr "Nom d'utilisateur TURN"
 
 #: wazo_ui/plugins/rtp/form.py:36
 msgid "TURN Password"
-msgstr ""
+msgstr "Mot de passe de TURN"
 
 #: wazo_ui/plugins/rtp/form.py:37
 msgid "Ice Blacklist"
-msgstr ""
+msgstr "Liste noire ICE"
 
 #: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:5
 #: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:14
 #: wazo_ui/plugins/rtp/view.py:19
 msgid "Rtp"
-msgstr ""
+msgstr "RTP"
 
 #: wazo_ui/plugins/rtp/view.py:45
 msgid "RTP config has been updated"
-msgstr ""
+msgstr "La configuration RTP a été mise à jour"
 
 #: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:16
 msgid "Ice Host Candidates"
-msgstr ""
+msgstr "ICE hôte Candidates"
 
 #: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:47
 msgid "Local Address"
-msgstr ""
+msgstr "Adresse locale"
 
 #: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:48
 msgid "Advertised Address"
-msgstr ""
+msgstr "Adresse annoncée"
 
 #: wazo_ui/plugins/schedule/form.py:19
 msgid "Monday"
-msgstr ""
+msgstr "Lundi"
 
 #: wazo_ui/plugins/schedule/form.py:20
 msgid "Tuesday"
-msgstr ""
+msgstr "Mardi"
 
 #: wazo_ui/plugins/schedule/form.py:21
 msgid "Wednesday"
-msgstr ""
+msgstr "Mercredi"
 
 #: wazo_ui/plugins/schedule/form.py:22
 msgid "Thursday"
-msgstr ""
+msgstr "Jeudi"
 
 #: wazo_ui/plugins/schedule/form.py:23
 msgid "Friday"
-msgstr ""
+msgstr "Vendredi"
 
 #: wazo_ui/plugins/schedule/form.py:24
 msgid "Saturday"
-msgstr ""
+msgstr "Samedi"
 
 #: wazo_ui/plugins/schedule/form.py:25
 msgid "Sunday"
-msgstr ""
+msgstr "Dimanche"
 
 #: wazo_ui/plugins/schedule/form.py:29
 msgid "January"
-msgstr ""
+msgstr "Janvier"
 
 #: wazo_ui/plugins/schedule/form.py:30
 msgid "February"
-msgstr ""
+msgstr "Février"
 
 #: wazo_ui/plugins/schedule/form.py:31
 msgid "March"
-msgstr ""
+msgstr "Mars"
 
 #: wazo_ui/plugins/schedule/form.py:32
 msgid "April"
-msgstr ""
+msgstr "Avril"
 
 #: wazo_ui/plugins/schedule/form.py:33
 msgid "May"
-msgstr ""
+msgstr "Peut"
 
 #: wazo_ui/plugins/schedule/form.py:34
 msgid "June"
-msgstr ""
+msgstr "Juin"
 
 #: wazo_ui/plugins/schedule/form.py:35
 msgid "July"
-msgstr ""
+msgstr "Juillet"
 
 #: wazo_ui/plugins/schedule/form.py:36
 msgid "August"
-msgstr ""
+msgstr "Août"
 
 #: wazo_ui/plugins/schedule/form.py:37
 msgid "September"
-msgstr ""
+msgstr "Septembre"
 
 #: wazo_ui/plugins/schedule/form.py:38
 msgid "October"
-msgstr ""
+msgstr "Octobre"
 
 #: wazo_ui/plugins/schedule/form.py:39
 msgid "November"
-msgstr ""
+msgstr "Novembre"
 
 #: wazo_ui/plugins/schedule/form.py:40
 msgid "December"
-msgstr ""
+msgstr "Décembre"
 
 #: wazo_ui/plugins/schedule/form.py:52
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:98
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:119
 msgid "Hour Start"
-msgstr ""
+msgstr "Heure de début"
 
 #: wazo_ui/plugins/schedule/form.py:53
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:99
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:120
 msgid "Hour End"
-msgstr ""
+msgstr "Fin d'heure"
 
 #: wazo_ui/plugins/schedule/form.py:55
 msgid "Weekdays"
-msgstr ""
+msgstr "Jours de la semaine"
 
 #: wazo_ui/plugins/schedule/form.py:60
 msgid "Monthdays"
-msgstr ""
+msgstr "Jours du mois"
 
 #: wazo_ui/plugins/schedule/form.py:65
 msgid "Months"
-msgstr ""
+msgstr "Mois"
 
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:11
 #: wazo_ui/plugins/schedule/view.py:24
 msgid "Schedules"
-msgstr ""
+msgstr "Horaires"
 
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:16
 msgid "Exceptional periods"
-msgstr ""
+msgstr "Périodes exceptionnelles"
 
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:17
 msgid "Open periods"
-msgstr ""
+msgstr "Périodes ouvertes"
 
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:40
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:66
 msgid "Periods"
-msgstr ""
+msgstr "Périodes"
 
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:24
 msgid "Add Schedule"
-msgstr ""
+msgstr "Ajouter un horaire"
 
 #: wazo_ui/plugins/sip_template/form.py:20
 #: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:12
@@ -3647,192 +3679,192 @@ msgstr ""
 #: wazo_ui/plugins/transport/templates/wazo_engine/transports/edit.html:15
 #: wazo_ui/plugins/transport/templates/wazo_engine/transports/list.html:11
 msgid "Transport"
-msgstr ""
+msgstr "Transport"
 
 #: wazo_ui/plugins/sip_template/form.py:85
 msgid "Parent Templates"
-msgstr ""
+msgstr "Modèles parents"
 
 #: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:4
 #: wazo_ui/plugins/sip_template/view.py:35
 msgid "SIP Template"
-msgstr ""
+msgstr "Modèle SIP"
 
 #: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/list.html:5
 #: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/list.html:11
 #: wazo_ui/plugins/sip_template/view.py:39
 msgid "SIP Templates"
-msgstr ""
+msgstr "Modèles SIP"
 
 #: wazo_ui/plugins/skill/form.py:12
 #: wazo_ui/plugins/skill/templates/wazo_engine/skill/list.html:14
 msgid "Category"
-msgstr ""
+msgstr "Catégorie"
 
 #: wazo_ui/plugins/skill/templates/wazo_engine/skill/list.html:24
 msgid "Add Skill"
-msgstr ""
+msgstr "Ajouter une compétence"
 
 #: wazo_ui/plugins/skillrule/form.py:12
 msgid "Rule"
-msgstr ""
+msgstr "Règle"
 
 #: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/edit.html:13
 #: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/list.html:5
 #: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/list.html:11
 #: wazo_ui/plugins/skillrule/view.py:24
 msgid "Skill Rules"
-msgstr ""
+msgstr "Règles de compétence"
 
 #: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/edit.html:27
 msgid "Rules"
-msgstr ""
+msgstr "Règles"
 
 #: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/list.html:22
 msgid "Add Skill Rules"
-msgstr ""
+msgstr "Ajouter des règles de compétence"
 
 #: wazo_ui/plugins/sound/form.py:20
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:46
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:32
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: wazo_ui/plugins/sound/form.py:22
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:48
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:34
 msgid "Text"
-msgstr ""
+msgstr "Texte"
 
 #: wazo_ui/plugins/sound/form.py:23
 msgid "Path"
-msgstr ""
+msgstr "Chemin"
 
 #: wazo_ui/plugins/sound/form.py:36
 msgid "Filename"
-msgstr ""
+msgstr "Nom de fichier"
 
 #: wazo_ui/plugins/sound/form.py:41
 msgid "Skip"
-msgstr ""
+msgstr "Sauter"
 
 #: wazo_ui/plugins/sound/plugin.py:34
 msgid "Sound"
-msgstr ""
+msgstr "Son"
 
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:5
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:11
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:11
 #: wazo_ui/plugins/sound/view.py:26
 msgid "Sound Files"
-msgstr ""
+msgstr "Fichiers sonores"
 
 #: wazo_ui/plugins/sound/view.py:62
 #, python-format
 msgid "%(resource)s: Resource %(category)s has been deleted"
-msgstr ""
+msgstr "%(resource)s : la ressource %(category)s a été supprimée"
 
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:4
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:10
 #: wazo_ui/plugins/sound/view.py:85
 msgid "Sound Files System"
-msgstr ""
+msgstr "Système de fichiers son"
 
 #: wazo_ui/plugins/sound/view.py:148
 msgid "[upload] Upload attempt with no file"
-msgstr ""
+msgstr "[upload] Tentative de téléchargement sans fichier"
 
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:24
 msgid "Add Sound Directory"
-msgstr ""
+msgstr "Ajouter un répertoire sonore"
 
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:16
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:15
 msgid "Infos"
-msgstr ""
+msgstr "Infos"
 
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:31
 msgid "Delete the sound file"
-msgstr ""
+msgstr "Supprimer le fichier son"
 
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:33
 msgid "Are you sure you want to delete this item ?"
-msgstr ""
+msgstr "Êtes-vous sûr de bien vouloir supprimer cet élément ?"
 
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:42
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:28
 msgid "Listen to the sound file"
-msgstr ""
+msgstr "Écoutez le fichier son"
 
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:57
 msgid "Add Sound file"
-msgstr ""
+msgstr "Ajouter un fichier son"
 
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:58
 msgid "Choose your file"
-msgstr ""
+msgstr "Choisissez votre fichier"
 
 #: wazo_ui/plugins/switchboard/form.py:39
 msgid "Waiting Room Music On Hold"
-msgstr ""
+msgstr "Musique d'attente dans la salle d'attente"
 
 #: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/list.html:11
 #: wazo_ui/plugins/switchboard/view.py:24
 msgid "Switchboards"
-msgstr ""
+msgstr "POPC"
 
 #: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/list.html:36
 msgid "Add Switchboard"
-msgstr ""
+msgstr "Ajouter un standard"
 
 #: wazo_ui/plugins/transport/view.py:28
 msgid "PJSIP Transports"
-msgstr ""
+msgstr "Transports PJSIP"
 
 #: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:4
 #: wazo_ui/plugins/transport/templates/wazo_engine/transports/list.html:5
 msgid "Transports"
-msgstr ""
+msgstr "Transports"
 
 #: wazo_ui/plugins/trunk/form.py:38
 msgid "Peer"
-msgstr ""
+msgstr "Pair"
 
 #: wazo_ui/plugins/trunk/form.py:38
 msgid "Friend"
-msgstr ""
+msgstr "Ami"
 
 #: wazo_ui/plugins/trunk/form.py:43
 msgid "Dynamic"
-msgstr ""
+msgstr "Dynamique"
 
 #: wazo_ui/plugins/trunk/form.py:43
 msgid "Static"
-msgstr ""
+msgstr "Statique"
 
 #: wazo_ui/plugins/trunk/form.py:52
 msgid "Authentication Username"
-msgstr ""
+msgstr "Nom d'utilisateur d'authentification"
 
 #: wazo_ui/plugins/trunk/form.py:54
 msgid "Authentication Password"
-msgstr ""
+msgstr "Mot de passe d'authentification"
 
 #: wazo_ui/plugins/trunk/form.py:56
 msgid "Callback Context"
-msgstr ""
+msgstr "Contexte de rappel"
 
 #: wazo_ui/plugins/trunk/form.py:57
 msgid "Callback Extension"
-msgstr ""
+msgstr "Extension de rappel"
 
 #: wazo_ui/plugins/trunk/form.py:58
 msgid "Remote Host"
-msgstr ""
+msgstr "Hôte distant"
 
 #: wazo_ui/plugins/trunk/form.py:59
 msgid "Remote port"
-msgstr ""
+msgstr "Port distant"
 
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:16
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:17
@@ -3846,423 +3878,422 @@ msgstr ""
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:12
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:13
 msgid "Trunk"
-msgstr ""
+msgstr "Trunk"
 
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:251
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:14
 msgid "Register"
-msgstr ""
+msgstr "Registre"
 
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:263
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:24
 msgid "Set host value"
-msgstr ""
+msgstr "Définir la valeur de l'hôte"
 
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:17
 msgid "Relations"
-msgstr ""
+msgstr "Rapports"
 
 #: wazo_ui/plugins/user/form.py:81
 msgid "Unconditional"
-msgstr ""
+msgstr "Inconditionnel"
 
 #: wazo_ui/plugins/user/form.py:96
 msgid "Incall filtering"
-msgstr ""
+msgstr "Filtrage des appels"
 
 #: wazo_ui/plugins/user/form.py:114
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:145
 msgid "BLF"
-msgstr ""
+msgstr "BLF"
 
 #: wazo_ui/plugins/user/form.py:139
 msgid "Enable authentication"
-msgstr ""
+msgstr "Activer l'authentification"
 
 #: wazo_ui/plugins/user/form.py:141
 msgid "Phone mobile"
-msgstr ""
+msgstr "Téléphone portable"
 
 #: wazo_ui/plugins/user/form.py:142
 msgid "Ring seconds"
-msgstr ""
+msgstr "Secondes de sonnerie"
 
 #: wazo_ui/plugins/user/form.py:145
 msgid "Outgoing caller ID"
-msgstr ""
+msgstr "Identification de l'appelant sortant"
 
 #: wazo_ui/plugins/user/form.py:147
 msgid "Simultaneous calls"
-msgstr ""
+msgstr "Appels simultanés"
 
 #: wazo_ui/plugins/user/form.py:150
 msgid "User Field"
-msgstr ""
+msgstr "Champ de l'utilisateur"
 
 #: wazo_ui/plugins/user/form.py:152
 msgid "Call Permission Password"
-msgstr ""
+msgstr "Mot de passe d'autorisation d'appel"
 
 #: wazo_ui/plugins/user/form.py:154
 msgid "Outgoing external call recording"
-msgstr ""
+msgstr "Enregistrement des appels externes sortants"
 
 #: wazo_ui/plugins/user/form.py:157
 msgid "Outgoing internal call recording"
-msgstr ""
+msgstr "Enregistrement des appels internes sortants"
 
 #: wazo_ui/plugins/user/form.py:160
 msgid "Incoming external call recording"
-msgstr ""
+msgstr "Enregistrement des appels externes entrants"
 
 #: wazo_ui/plugins/user/form.py:163
 msgid "Incoming internal call recording"
-msgstr ""
+msgstr "Enregistrement des appels internes entrants"
 
 #: wazo_ui/plugins/user/form.py:165
 msgid "Enable Transfer by DTMF"
-msgstr ""
+msgstr "Activer le transfert par DTMF"
 
 #: wazo_ui/plugins/user/form.py:166
 msgid "Enable Hangup by DTMF"
-msgstr ""
+msgstr "Activer le raccrochage par DTMF"
 
 #: wazo_ui/plugins/user/form.py:168
 msgid "Enable Live Recording"
-msgstr ""
+msgstr "Activer l'enregistrement en direct"
 
 #: wazo_ui/plugins/user/view.py:27
 msgid "Telephony"
-msgstr ""
+msgstr "Téléphonie"
 
 #: wazo_ui/plugins/user/view.py:30
 msgid "User Management"
-msgstr ""
+msgstr "Gestion des utilisateurs"
 
 #: wazo_ui/plugins/user/view.py:187
 msgid "Default"
-msgstr ""
+msgstr "Défaut"
 
 #: wazo_ui/plugins/user/view.py:187
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonyme"
 
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:21
 msgid "FuncKeys"
-msgstr ""
+msgstr "Touches de fonction"
 
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:82
 msgid "Call Forwards"
-msgstr ""
+msgstr "Renvois d'appels"
 
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:91
 msgid "DTMF Services"
-msgstr ""
+msgstr "Services DTMF"
 
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:106
 msgid "Templates"
-msgstr ""
+msgstr "Modèles"
 
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:111
 msgid "Line (N°)"
-msgstr ""
+msgstr "Ligne (N°)"
 
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:176
 msgid "Choose Voicemail"
-msgstr ""
+msgstr "Choisissez la messagerie vocale"
 
 #: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:16
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:21
 msgid "Add User"
-msgstr ""
+msgstr "Ajouter un utilisateur"
 
 #: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:57
 #: wazo_ui/templates/macro.html:306
 msgid "Import CSV"
-msgstr ""
+msgstr "Importer un fichier CSV"
 
 #: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:59
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: wazo_ui/plugins/voicemail/form.py:57
 msgid "French"
-msgstr ""
+msgstr "Français"
 
 #: wazo_ui/plugins/voicemail/form.py:58
 msgid "French Canadian"
-msgstr ""
+msgstr "français canadien"
 
 #: wazo_ui/plugins/voicemail/form.py:59
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 #: wazo_ui/plugins/voicemail/form.py:64
 msgid "Maximum messages"
-msgstr ""
+msgstr "Messages maximum"
 
 #: wazo_ui/plugins/voicemail/form.py:65
 msgid "Ask for password"
-msgstr ""
+msgstr "Demander un mot de passe"
 
 #: wazo_ui/plugins/voicemail/form.py:66
 msgid "Attach audio"
-msgstr ""
+msgstr "Joindre l'audio"
 
 #: wazo_ui/plugins/voicemail/form.py:68
 msgid "Delete message after notification"
-msgstr ""
+msgstr "Supprimer le message après notification"
 
 #: wazo_ui/plugins/voicemail/form.py:70
 msgid "Activated"
-msgstr ""
+msgstr "Activé"
 
 #: wazo_ui/plugins/voicemail/form.py:79
 msgid "Greeting"
-msgstr ""
+msgstr "Salutation"
 
 #: wazo_ui/plugins/voicemail/form.py:83
 msgid "Unavailable"
-msgstr ""
+msgstr "Indisponible"
 
 #: wazo_ui/plugins/voicemail/form.py:86
 msgid "Skip instructions"
-msgstr ""
+msgstr "Passer les instructions"
 
 #: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:11
 #: wazo_ui/plugins/voicemail/view.py:24
 msgid "Voicemails"
-msgstr ""
+msgstr "Messages vocaux"
 
 #: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:26
 msgid "Add Voicemail"
-msgstr ""
+msgstr "Ajouter une messagerie vocale"
 
 #: wazo_ui/plugins/webhook/form.py:20
 msgid "Display name"
-msgstr ""
+msgstr "Afficher un nom"
 
 #: wazo_ui/plugins/webhook/form.py:22
 msgid "Event Name"
-msgstr ""
+msgstr "Nom de l'événement"
 
 #: wazo_ui/plugins/webhook/form.py:30
 msgid "Target"
-msgstr ""
+msgstr "Cible"
 
 #: wazo_ui/plugins/webhook/form.py:32
 msgid "Method"
-msgstr ""
+msgstr "Méthode"
 
 #: wazo_ui/plugins/webhook/form.py:34
 msgid "POST"
-msgstr ""
+msgstr "POST"
 
 #: wazo_ui/plugins/webhook/form.py:35
 msgid "GET"
-msgstr ""
+msgstr "GET"
 
 #: wazo_ui/plugins/webhook/form.py:36
 msgid "PUT"
-msgstr ""
+msgstr "PUT"
 
 #: wazo_ui/plugins/webhook/form.py:37
 msgid "DELETE"
-msgstr ""
+msgstr "DELETE"
 
 #: wazo_ui/plugins/webhook/form.py:38
 msgid "HEAD"
-msgstr ""
+msgstr "HEAD"
 
 #: wazo_ui/plugins/webhook/form.py:42
 msgid "Content Type"
-msgstr ""
+msgstr "Type de contenu"
 
 #: wazo_ui/plugins/webhook/form.py:44
 msgid "Verify Certificate"
-msgstr ""
+msgstr "Vérifier le certificat"
 
 #: wazo_ui/plugins/webhook/form.py:45
 msgid "Body"
-msgstr ""
+msgstr "Corps"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:11
 #: wazo_ui/plugins/webhook/view.py:22
 msgid "Webhooks"
-msgstr ""
+msgstr "Webhooks"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/edit.html:11
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:5
 msgid "Webhook"
-msgstr ""
+msgstr "Webhook"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:14
 msgid "Display Name"
-msgstr ""
+msgstr "Afficher un nom"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:15
 msgid "Events Name"
-msgstr ""
+msgstr "Nom de l'événement"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:17
 msgid "Logs"
-msgstr ""
+msgstr "Journaux"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:31
 msgid "See logs"
-msgstr ""
+msgstr "Voir les journaux"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:41
 msgid "Add Webhook"
-msgstr ""
+msgstr "Ajouter un webhook"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:11
 msgid "Webhooks logs"
-msgstr ""
+msgstr "Journaux des webhooks"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:15
 msgid "Attempts"
-msgstr ""
+msgstr "Tentatives"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:17
 msgid "Started at"
-msgstr ""
+msgstr "Commencé à"
 
 #: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:18
 msgid "Ended at"
-msgstr ""
+msgstr "Terminé à"
 
 #: wazo_ui/templates/head.html:2
 msgid "Wazo administration"
-msgstr ""
+msgstr "Administration Wazo"
 
 #: wazo_ui/templates/macro.html:310
 msgid "Export CSV"
-msgstr ""
+msgstr "Exporter au format CSV"
 
 #: wazo_ui/templates/macro.html:314
 msgid "Update from CSV"
-msgstr ""
+msgstr "Mise à jour depuis CSV"
 
 #: wazo_ui/templates/macro.html:318
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: wazo_ui/templates/translations.html:3
 msgid "No data available in table"
-msgstr ""
+msgstr "aucune donnée disponible"
 
 #: wazo_ui/templates/translations.html:4
 msgid "Showing _START_ to _END_ of _TOTAL_ entries"
-msgstr ""
+msgstr "Affichage de _START_ à _END_ sur _TOTAL_ entrées"
 
 #: wazo_ui/templates/translations.html:5
 msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
+msgstr "Affichage de 0 à 0 sur 0 entrées"
 
 #: wazo_ui/templates/translations.html:6
 msgid "(filtered from _MAX_ total entries)"
-msgstr ""
+msgstr "(filtré à partir du total de _MAX_ entrées)"
 
 #: wazo_ui/templates/translations.html:9
 msgid "Show _MENU_ entries"
-msgstr ""
+msgstr "Afficher les entrées du _MENU_"
 
 #: wazo_ui/templates/translations.html:10
 msgid "Loading..."
-msgstr ""
+msgstr "Chargement..."
 
 #: wazo_ui/templates/translations.html:11
 msgid "Processing..."
-msgstr ""
+msgstr "Traitement..."
 
 #: wazo_ui/templates/translations.html:12
 msgid "Search:"
-msgstr ""
+msgstr "Recherche:"
 
 #: wazo_ui/templates/translations.html:13
 msgid "No matching records found"
-msgstr ""
+msgstr "Aucun enregistrements correspondants trouvés"
 
 #: wazo_ui/templates/translations.html:15
 msgid "Select all"
-msgstr ""
+msgstr "Tout sélectionner"
 
 #: wazo_ui/templates/translations.html:16
 msgid "Deselect all"
-msgstr ""
+msgstr "Tout déselectionner"
 
 #: wazo_ui/templates/translations.html:17
 msgid "Copy"
-msgstr ""
+msgstr "Copie"
 
 #: wazo_ui/templates/translations.html:18
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Copier dans le presse-papier"
 
 #: wazo_ui/templates/translations.html:20
 #, python-format
 msgid "Copied %%d rows to clipboard"
-msgstr ""
+msgstr "%%d lignes copiées dans le presse-papiers"
 
 #: wazo_ui/templates/translations.html:21
 msgid "Copied 1 row to clipboard"
-msgstr ""
+msgstr "Copié 1 ligne dans le presse-papiers"
 
 #: wazo_ui/templates/translations.html:24
 msgid "Excel"
-msgstr ""
+msgstr "Excel"
 
 #: wazo_ui/templates/translations.html:25
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: wazo_ui/templates/translations.html:26
 msgid "Print"
-msgstr ""
+msgstr "Imprimer"
 
 #: wazo_ui/templates/translations.html:30
 #, python-format
 msgid "%%d rows selected"
-msgstr ""
+msgstr "%%d lignes sélectionnées"
 
 #: wazo_ui/templates/translations.html:32
 #, python-format
 msgid "%%d row selected"
-msgstr ""
+msgstr "%%d ligne sélectionnée"
 
 #: wazo_ui/templates/translations.html:36
 msgid "First"
-msgstr ""
+msgstr "Premier"
 
 #: wazo_ui/templates/translations.html:37
 msgid "Last"
-msgstr ""
+msgstr "Dernier"
 
 #: wazo_ui/templates/translations.html:38
 msgid "Next"
-msgstr ""
+msgstr "Suivant"
 
 #: wazo_ui/templates/translations.html:39
 msgid "Previous"
-msgstr ""
+msgstr "Précédent"
 
 #: wazo_ui/templates/translations.html:42
 msgid ": activate to sort column ascending"
-msgstr ""
+msgstr ": activer pour trier les colonnes par ordre croissant"
 
 #: wazo_ui/templates/translations.html:43
 msgid ": activate to sort column descending"
-msgstr ""
+msgstr ": activer pour trier les colonnes par ordre décroissant"
 
 #: wazo_ui/templates/translations.html:49
 msgid "Does not match"
-msgstr ""
+msgstr "Ne correspond pas"
 
 #: wazo_ui/templates/translations.html:50
 msgid "Not long enough"
-msgstr ""
-
+msgstr "Pas assez long"

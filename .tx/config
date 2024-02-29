@@ -1,0 +1,11 @@
+[main]
+host = https://www.transifex.com
+
+[o:wazo:p:wazo:r:wazo-ui]
+file_filter            = wazo_ui/translations/<lang>/LC_MESSAGES/messages.po
+source_file            = wazo_ui/translations/messages.pot
+source_lang            = en
+type                   = PO
+replace_edited_strings = false
+keep_translations      = false
+

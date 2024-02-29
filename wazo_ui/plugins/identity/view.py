@@ -328,7 +328,7 @@ class LDAPConfigView(BaseIPBXHelperView):
             self.service.delete()
             flash(
                 l_(
-                    '%(resource)s: LDAP configuration %(id)s has been deleted',
+                    '%(resource)s: LDAP configuration has been deleted',
                     resource=self.resource,
                 ),
                 'success',
