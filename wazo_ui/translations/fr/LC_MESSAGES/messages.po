@@ -2474,7 +2474,7 @@ msgstr "Ajouter une identité"
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:13
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:14
 msgid "Policy"
-msgstr "Politique"
+msgstr "Règle de sécurité"
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:15
 msgid "ACL"
