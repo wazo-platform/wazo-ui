@@ -114,7 +114,6 @@ setup(
             'wazo_ui.plugins': [
                 '*/static/**',
                 '*/templates/**',
-                '*/translations/**',
             ],
         }
     ),
