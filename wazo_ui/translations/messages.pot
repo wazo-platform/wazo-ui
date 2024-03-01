@@ -1,14 +1,14 @@
 # Translations template for wazo_ui.
-# Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright (C) 2024 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # wazo_ui project.
-# Wazo Dev Team <dev@wazo.community>, 2018.
+# Wazo Dev Team <dev@wazo.community>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wazo_ui 0.1\n"
 "Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
-"POT-Creation-Date: 2024-02-27 18:10-0500\n"
+"POT-Creation-Date: 2024-03-01 08:07-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Wazo Authors <dev@wazo.community>\n"
 "Language-Team: en <dev@wazo.community>\n"
@@ -2447,7 +2447,7 @@ msgstr ""
 
 #: wazo_ui/plugins/identity/view.py:330
 #, python-format
-msgid "%(resource)s: LDAP configuration %(id)s has been deleted"
+msgid "%(resource)s: LDAP configuration has been deleted"
 msgstr ""
 
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:13
