@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ EMAIL = 'dev@wazo.community'
 
 class build_py(_build_py):
     def run(self):
-        # self.run_command('compile_catalog')
+        self.run_command('compile_catalog')
         _build_py.run(self)
 
 
@@ -114,7 +114,6 @@ setup(
             'wazo_ui.plugins': [
                 '*/static/**',
                 '*/templates/**',
-                '*/translations/**',
             ],
         }
     ),
