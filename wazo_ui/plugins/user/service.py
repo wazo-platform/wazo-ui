@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -442,3 +442,8 @@ class UserService(BaseConfdService):
 
     def get_call_permission(self, id):
         return self._confd.call_permissions.get(id)
+
+    def get_music_on_hold(self, name):
+        results = self._confd.moh.list(name=name)
+        for result in results['items']:
+            return result

@@ -181,7 +181,11 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
     def _build_set_choices_moh(self, user):
         if not user.music_on_hold.data or user.music_on_hold.data == 'None':
             return []
-        return [(user.music_on_hold.data, user.music_on_hold.data)]
+        moh_object = self.service.get_music_on_hold(user.music_on_hold.data)
+        if moh_object is None:
+            return []
+        moh_label = moh_object['label']
+        return [(user.music_on_hold.data, f"{moh_label} ({user.music_on_hold.data})")]
 
     def _build_set_choices_outgoing_caller_id(self, user):
         choices = [('default', l_('Default')), ('anonymous', l_('Anonymous'))]
