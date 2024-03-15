@@ -29,17 +29,21 @@ class ParkingLotView(BaseIPBXHelperView):
         return super().index()
 
     def _populate_form(self, form):
-        form.music_on_hold.choices = self._build_set_choices_moh(form)
+        form.music_on_hold.choices = self._build_set_choices_moh(form.music_on_hold)
         for form_extension in form.extensions:
             form_extension.context.choices = self._build_set_choices_context(
                 form_extension
             )
         return form
 
-    def _build_set_choices_moh(self, form):
-        if not form.music_on_hold.data or form.music_on_hold.data == 'None':
+    def _build_set_choices_moh(self, moh):
+        if not moh.data or moh.data == 'None':
             return []
-        return [(form.music_on_hold.data, form.music_on_hold.data)]
+        moh_object = self.service.get_music_on_hold(moh.data)
+        if moh_object is None:
+            return []
+        moh_label = moh_object['label']
+        return [(moh.data, f"{moh_label} ({moh.data})")]
 
     def _build_set_choices_context(self, form):
         if not form.context.data or form.context.data == 'None':
