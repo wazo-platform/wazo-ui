@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -88,7 +88,11 @@ class GroupView(BaseIPBXHelperView):
     def _build_set_choices_moh(self, moh):
         if not moh.data or moh.data == 'None':
             return []
-        return [(moh.data, moh.data)]
+        moh_object = self.service.get_music_on_hold(moh.data)
+        if moh_object is None:
+            return []
+        moh_label = moh_object['label']
+        return [(moh.data, f"{moh_label} ({moh.data})")]
 
     def _build_set_choices_schedule(self, schedule):
         if not schedule.form.id.data or schedule.form.id.data == 'None':

@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.extension import BaseConfdExtensionService
@@ -93,3 +93,8 @@ class GroupService(BaseConfdExtensionService):
         result = self._confd.contexts.list(name=context)
         for context in result['items']:
             return context
+
+    def get_music_on_hold(self, name):
+        results = self._confd.moh.list(name=name)
+        for result in results['items']:
+            return result
