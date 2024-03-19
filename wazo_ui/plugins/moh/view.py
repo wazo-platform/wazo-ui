@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import cgi
@@ -97,6 +97,7 @@ class MohListingView(LoginRequiredView):
         params = extract_select2_params(request.args)
         musiconhold = self.service.list(**params)
         results = [
-            {'id': moh['name'], 'text': moh['name']} for moh in musiconhold['items']
+            {'id': moh['name'], 'text': f"{moh['label']} ({moh['name']})"}
+            for moh in musiconhold['items']
         ]
         return jsonify(build_select2_response(results, musiconhold['total'], params))
