@@ -1,16 +1,11 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
 import logging
+from typing import Any, Protocol
 
-from flask import (
-    flash,
-    jsonify,
-    redirect,
-    render_template,
-    request,
-    url_for
-)
+from flask import flash, jsonify, redirect, render_template, request, url_for
 from flask_babel import gettext as _
 from flask_classful import FlaskView, route
 from flask_login import login_required
@@ -32,17 +27,19 @@ class LoginRequiredView(FlaskView):
     decorators = [login_required]
 
 
-class IndexAjaxViewMixin():
+class IndexAjaxViewMixin:
     listing_urls = listing_urls
 
     def _index(self, form=None):
         form = form or self.form()
         form = self._populate_form(form)
 
-        return render_template(self._get_template('list'),
-                               form=form,
-                               resource_list=[],
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('list'),
+            form=form,
+            resource_list=[],
+            listing_urls=self.listing_urls,
+        )
 
     def list_json(self):
         # TODO: handle case when flask return 302 because token is expired
@@ -53,19 +50,23 @@ class IndexAjaxViewMixin():
         offset = request.args.get('start')
         direction = request.args.get('order[0][dir]')
         order_column = request.args.get('order[0][column]', 0)
-        order = request.args.get('columns[{}][data]'.format(order_column))
+        order = request.args.get(f'columns[{order_column}][data]')
         search = request.args.get('search[value]')
 
-        result = self.service.list(search=search, order=order, limit=limit, direction=direction, offset=offset)
+        result = self.service.list(
+            search=search, order=order, limit=limit, direction=direction, offset=offset
+        )
 
-        return jsonify({
-            'recordsTotal': result['total'],
-            'recordsFiltered': result.get('filtered', result['total']),
-            'data': result['items']
-        })
+        return jsonify(
+            {
+                'recordsTotal': result['total'],
+                'recordsFiltered': result.get('filtered', result['total']),
+                'data': result['items'],
+            }
+        )
 
 
-class NewViewMixin():
+class NewViewMixin:
     listing_urls = listing_urls
 
     def new(self):
@@ -75,9 +76,9 @@ class NewViewMixin():
         form = form or self.form()
         form = self._populate_form(form)
 
-        return render_template(self._get_template('add'),
-                               form=form,
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('add'), form=form, listing_urls=self.listing_urls
+        )
 
 
 class BaseHelperViewWithoutLogin(FlaskView):
@@ -93,11 +94,13 @@ class BaseHelperViewWithoutLogin(FlaskView):
         icons = request.args.getlist('bc_icons[]')
 
         for idx, name in enumerate(names):
-            breadcrumbs.append({
-                'name': name,
-                'link': self._get_breadcrumb_url(idx, names, urls, icons),
-                'icon': icons[idx]
-            })
+            breadcrumbs.append(
+                {
+                    'name': name,
+                    'link': self._get_breadcrumb_url(idx, names, urls, icons),
+                    'icon': icons[idx],
+                }
+            )
 
         return breadcrumbs
 
@@ -123,7 +126,7 @@ class BaseHelperViewWithoutLogin(FlaskView):
     def _populate_form(self, form):
         return form
 
-    def _map_form_to_resources(self, form, form_id=None):
+    def _map_form_to_resources(self, form, form_id=None) -> dict:
         data = form.to_dict()
         if form_id:
             try:
@@ -138,19 +141,18 @@ class BaseHelperViewWithoutLogin(FlaskView):
             return form
 
     def _get_template(self, type_):
-        return self.templates.get(type_, DEFAULT_TEMPLATE.format(blueprint=request.blueprint,
-                                                                 type_=type_))
+        return self.templates.get(
+            type_, DEFAULT_TEMPLATE.format(blueprint=request.blueprint, type_=type_)
+        )
 
     def _redirect_referrer_or(self, method_view):
         if request.referrer:
             return redirect(request.referrer)
 
-        return redirect(url_for('.{}:{}'.format(self.__class__.__name__,
-                                                method_view)))
+        return redirect(url_for(f'.{self.__class__.__name__}:{method_view}'))
 
     def _redirect_for(self, method_view):
-        return redirect(url_for('.{}:{}'.format(self.__class__.__name__,
-                                                method_view)))
+        return redirect(url_for(f'.{self.__class__.__name__}:{method_view}'))
 
     def _fill_form_error(self, form, error):
         error_resources = self._extract_error_for_form(error)
@@ -161,30 +163,33 @@ class BaseHelperViewWithoutLogin(FlaskView):
     def _flash_http_error(self, error):
         response = error.response.json()
         resource = ErrorExtractor.get_resource_from_error(error)
-        flash('{resource}{delimiter}{generic_error}'.format(
-            resource=resource,
-            delimiter=': ' if resource else '',
-            generic_error=ErrorTranslator.generic_messages.get(response.get('error_id'), ''),
-        ), 'error')
-        flash('{method} {url}: {response}'.format(
-            method=error.request.method,
-            url=error.request.url,
-            response=response,
-        ), 'error_details')
+        generic_error = ErrorTranslator.generic_messages.get(
+            response.get('error_id'), ''
+        )
+        flash(
+            f'{resource}{": " if resource else ""}{generic_error}',
+            'error',
+        )
+        flash(
+            f'{error.request.method} {error.request.url}: {response}',
+            'error_details',
+        )
 
     def _flash_basic_form_errors(self, form):
         for field, errors in form.errors.items():
             for error in errors:
-                flash('{field} - {message}'.format(
-                    field=getattr(form, field).label.text,
-                    message=error
-                ), 'error')
+                flash(
+                    f'{getattr(form, field).label.text} - {error}',
+                    'error',
+                )
 
     def _extract_error_for_form(self, error):
         response = error.response.json()
         if 'error_id' in response:
             if response['error_id'] == 'invalid-data':
-                error_details = ErrorExtractor.extract_error_details(response['details'])
+                error_details = ErrorExtractor.extract_error_details(
+                    response['details']
+                )
                 resource = ErrorExtractor.get_resource_from_error(error)
 
                 return {resource: error_details}
@@ -193,12 +198,7 @@ class BaseHelperViewWithoutLogin(FlaskView):
         errors_msg = []
         for field, errors in form.errors.items():
             for error in errors:
-                errors_msg.append(
-                    '{field} - {message}'.format(
-                        field=getattr(form, field).label.text,
-                        message=error
-                    )
-                )
+                errors_msg.append(f'{getattr(form, field).label.text} - {error}')
         return errors_msg
 
     def _extract_error_message(self, error):
@@ -212,11 +212,7 @@ class BaseHelperViewWithoutLogin(FlaskView):
 
     def _get_full_error(self, error):
         response = error.response.json()
-        return '{method} {url}: {response}'.format(
-            method=error.request.method,
-            url=error.request.url,
-            response=response,
-        )
+        return f'{error.request.method} {error.request.url}: {response}'
 
 
 # TODO implement this in all views that do not require all methods (CRUD)
@@ -224,8 +220,26 @@ class BaseHelperView(BaseHelperViewWithoutLogin, LoginRequiredView):
     pass
 
 
+class Service(Protocol):
+    def list(self, **kwargs) -> list[dict]:
+        ...
+
+    def get(self, id: Any) -> dict:
+        ...
+
+    def delete(self, id: Any) -> None:
+        ...
+
+    def update(self, resource: dict) -> dict:
+        ...
+
+    def create(self, resource: dict) -> dict:
+        ...
+
+
 class BaseView(BaseHelperView):
     listing_urls = listing_urls
+    service: Service
 
     def index(self):
         return self._index()
@@ -240,11 +254,13 @@ class BaseView(BaseHelperView):
         form = form or self.form()
         form = self._populate_form(form)
 
-        return render_template(self._get_template('list'),
-                               form=form,
-                               resource_list=resource_list,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('list'),
+            form=form,
+            resource_list=resource_list,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
 
     def post(self):
         form = self.form()
@@ -261,7 +277,10 @@ class BaseView(BaseHelperView):
             self._flash_http_error(error)
             return self._new(form)
 
-        flash(_('%(resource)s: Resource has been created', resource=self.resource), 'success')
+        flash(
+            _('%(resource)s: Resource has been created', resource=self.resource),
+            'success',
+        )
         return self._redirect_referrer_or('index')
 
     def _new(self, form=None):
@@ -280,11 +299,13 @@ class BaseView(BaseHelperView):
         form = form or self._map_resources_to_form(resource)
         form = self._populate_form(form)
 
-        return render_template(self._get_template('edit'),
-                               form=form,
-                               resource=resource,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('edit'),
+            form=form,
+            resource=resource,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
 
     @route('/put/<id>', methods=['POST'])
     def put(self, id):
@@ -301,8 +322,11 @@ class BaseView(BaseHelperView):
             self._flash_http_error(error)
             return self._get(id, form)
 
-        flash(_('%(resource)s: Resource has been updated', resource=self.resource), 'success')
-        return self._redirect_referrer_or('index')
+        flash(
+            _('%(resource)s: Resource has been updated', resource=self.resource),
+            'success',
+        )
+        return self._redirect_for('index')
 
     def _map_form_to_resources_put(self, form, form_id):
         return self._map_form_to_resources(form, form_id)
@@ -311,11 +335,26 @@ class BaseView(BaseHelperView):
     def delete(self, id):
         try:
             self.service.delete(id)
-            flash(_('%(resource)s: Resource %(id)s has been deleted', resource=self.resource, id=id), 'success')
+            flash(
+                _(
+                    '%(resource)s: Resource %(id)s has been deleted',
+                    resource=self.resource,
+                    id=id,
+                ),
+                'success',
+            )
         except HTTPError as error:
             self._flash_http_error(error)
 
         return self._redirect_referrer_or('index')
+
+    def _convert_empty_string_to_none(self, value):
+        # This behavior is a bug from wtforms and is fixed in newer version
+        if value == 'None':
+            return None
+        if not value:
+            return None
+        return value
 
 
 def extract_select2_params(args, limit=10):
@@ -326,9 +365,7 @@ def extract_select2_params(args, limit=10):
         page = 1
 
     offset = (int(page) - 1) * limit
-    return {'search': search,
-            'offset': offset,
-            'limit': limit}
+    return {'search': search, 'offset': offset, 'limit': limit}
 
 
 def _is_positive_integer(value):
@@ -346,5 +383,7 @@ def _is_positive_integer(value):
 
 
 def build_select2_response(results, total, params):
-    return {'results': results,
-            'pagination': {'more': (params['offset'] + params['limit']) < total}}
+    return {
+        'results': results,
+        'pagination': {'more': (params['offset'] + params['limit']) < total},
+    }

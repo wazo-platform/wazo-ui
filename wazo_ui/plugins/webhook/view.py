@@ -1,18 +1,14 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import pprint
 
-from flask import (
-    redirect,
-    render_template,
-    url_for
-)
+from flask import redirect, render_template, url_for
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
 
-from wazo_ui.helpers.view import BaseIPBXHelperView
 from wazo_ui.helpers.menu import menu_item
+from wazo_ui.helpers.view import BaseIPBXHelperView
 
 from .form import WebhookFormHTTP
 
@@ -22,7 +18,9 @@ class WebhookView(BaseIPBXHelperView):
     resource = 'webhook'
     raw_events = []
 
-    @menu_item('.ipbx.services.webhooks', l_('Webhooks'), icon="globe", multi_tenant=True)
+    @menu_item(
+        '.ipbx.services.webhooks', l_('Webhooks'), icon="globe", multi_tenant=True
+    )
     def index(self):
         return super().index()
 
@@ -35,19 +33,25 @@ class WebhookView(BaseIPBXHelperView):
         for item in resource_list["items"]:
             item["detail"] = pprint.pformat(item["detail"], width=160, indent=2)
             item["event"] = pprint.pformat(item["event"], width=80, indent=2)
-        return render_template(self._get_template('logs'),
-                               resource=self.service.get(id),
-                               resource_list=resource_list,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('logs'),
+            resource=self.service.get(id),
+            resource_list=resource_list,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
 
     def _populate_form(self, form):
-        users_by_id = {user['uuid']: str(user['firstname']) + ' ' + str(user['lastname'])
-                       for user in self.service.list_users()['items']}
+        users_by_id = {
+            user['uuid']: str(user['firstname']) + ' ' + str(user['lastname'])
+            for user in self.service.list_users()['items']
+        }
 
         form.events.choices = [(event, event) for event in self.raw_events]
         form.services.choices = self._build_choices_services()
-        form.user_uuid.choices = self._build_setted_choices_users(form.events_user_uuid, users_by_id)
+        form.user_uuid.choices = self._build_setted_choices_users(
+            form.events_user_uuid, users_by_id
+        )
         return form
 
     def _map_resources_to_form(self, resource):

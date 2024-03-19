@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': _('Contexts'), 'link': url_for('.ContextView:index'), 'icon': 'random' }
   ]) }}
 {% endblock %}
@@ -26,7 +26,6 @@
     {% call build_hidden_add_containers(_('Add Context')) %}
       {% call build_form() %}
         {% call add_default_fields(form=form, submit_value=_('Add')) %}
-          {{ render_field(form.name) }}
           {{ render_field(form.label) }}
           {{ render_field(form.type) }}
           {{ render_field(form.description) }}

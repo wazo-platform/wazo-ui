@@ -1,24 +1,65 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': resource.name, 'link': url_for('.TenantView:get', id=resource.id), 'icon': 'building' }
   ]) }}
 {% endblock %}
 
 {% block content %}
   {% call build_section_row() %}
-    {% call build_form_box(_('Tenant'), resource.name, 'building') %}
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Tenant'), resource.name, 'building') }}
+        {{ add_tab_navigation_item('general', _('General'), active=True) }}
+        {{ add_tab_navigation_item('domains', _('Domains')) }}
+      {% endcall %}
+
       {% call build_form(action=url_for('.TenantView:put', id=resource.uuid)) %}
-        {% call add_default_fields(form=form, submit_value=_('Update')) %}
-          {{ render_field(form.name) }}
-          {{ render_field(form.slug, disabled=True) }}
-          {{ render_field(form.members.user_uuids, data_disable_sort=True, disabled=True) }}
-          {{ render_field(form.members.users, with_label=False) }}
-          {{ render_field(form.members.policy_uuids, data_disable_sort=True, disabled=True) }}
-          {{ render_field(form.members.policies, with_label=False) }}
+        {% call build_tabs_content() %}
+
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.name) }}
+              {{ render_field(form.slug, disabled=True) }}
+              {{ render_field(form.members.user_uuids, data_disable_sort=True, disabled=True) }}
+              {{ render_field(form.members.users, with_label=False) }}
+              {{ render_field(form.members.policy_uuids, data_disable_sort=True, disabled=True) }}
+              {{ render_field(form.members.policies, with_label=False) }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('domains') %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ build_add_row_entry_header() }}
+              {% call build_table() %}
+                {% call build_table_headers() %}
+                  <th>{{ _('Name') }}</th>
+                {% endcall %}
+
+                {% call build_table_body(class_='dynamic-table') %}
+                  {% do form.domains.append_entry() %}
+                    {{ _build_domains_entry(form.domains.pop_entry(), template=True) }}
+                  {% for domain in form.domains %}
+                     {{ _build_domains_entry(domain) }}
+                  {% endfor %}
+                {% endcall %}
+              {% endcall %}
+              {{ build_add_row_entry_header() }}
+            {% endcall %}
+          {% endcall %}
         {% endcall %}
       {% endcall %}
     {% endcall %}
   {% endcall %}
 {% endblock %}
+
+{% macro _build_domains_entry(domain, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(domain['name'], with_label=False) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

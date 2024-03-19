@@ -1,5 +1,5 @@
-# Copyright 2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2020-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
@@ -41,7 +41,7 @@ class IdentifyPJSIPOptionsForm(BasePJSIPOptionsForm):
             ('match_header', 'match_header'),
             ('srv_lookups', 'srv_lookups'),
         ],
-        validators=[InputRequired()]
+        validators=[InputRequired()],
     )
 
 
@@ -64,7 +64,7 @@ class RegistrationPJSIPOptionsForm(BasePJSIPOptionsForm):
             ('support_path', 'support_path'),
             ('transport', 'transport'),
         ],
-        validators=[InputRequired()]
+        validators=[InputRequired()],
     )
 
 
@@ -77,7 +77,9 @@ class EndpointSIPForm(BaseForm):
     endpoint_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     identify_section_options = FieldList(FormField(IdentifyPJSIPOptionsForm))
     registration_section_options = FieldList(FormField(RegistrationPJSIPOptionsForm))
-    registration_outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
+    registration_outbound_auth_section_options = FieldList(
+        FormField(BasePJSIPOptionsForm)
+    )
     outbound_auth_section_options = FieldList(FormField(BasePJSIPOptionsForm))
     transport = FormField(TransportForm)
     template_uuids = SelectMultipleField(l_('Parent Templates'), choices=[])

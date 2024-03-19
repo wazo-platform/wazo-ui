@@ -1,22 +1,19 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 
-from selenium import webdriver
-from selenium.webdriver.remote.remote_connection import LOGGER
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from easyprocess import log as easyprocess_logger
 from pyvirtualdisplay import Display
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.remote.remote_connection import LOGGER
 
 from .login import LoginPage
 
-easyprocess_logger.setLevel(logging.CRITICAL)
 LOGGER.setLevel(logging.CRITICAL)
 
 
-class Browser(object):
-
+class Browser:
     pages = {'login': LoginPage}
 
     def __init__(self, username, password, virtual=True):
@@ -46,14 +43,16 @@ class Browser(object):
 
 
 class RemoteBrowser(Browser):
-
     def __init__(self, remote_url, username, password):
         self.remote_url = remote_url
         self.username = username
         self.password = password
 
     def start(self):
-        self.driver = webdriver.Remote(command_executor=self.remote_url, desired_capabilities=DesiredCapabilities.FIREFOX)
+        self.driver = webdriver.Remote(
+            command_executor=self.remote_url,
+            options=FirefoxOptions(),
+        )
         self.driver.set_window_size(1920, 1080)
         self._login()
 

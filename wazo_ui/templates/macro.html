@@ -10,9 +10,9 @@
           {% else %}
             <li class="nav-item {{ 'menu-open' if item.has_active_child() }} {{ 'multi-tenant' if item.multi_tenant }}">
               {% if item.children %}
-                {{ _build_menu_chidren(item, current_user) }}
+                {{ _build_menu_chidren(item, current_user) }}
               {% else %}
-                {{ _build_menu_link(item, current_user) }}
+                {{ _build_menu_link(item, current_user) }}
               {% endif %}
             </li>
           {% endif %}
@@ -34,11 +34,34 @@
           <i class="right fas fa-angle-left"></i>
         </p>
       </a>
-      {{ _build_chidren(item, false, current_user) }}
+      {{ _build_chidren(item, false, current_user) }}
     </li>
   {% endif %}
 {% endmacro %}
 
+{% macro _build_ipbx_menu(item, current_user) %}
+  {% set tenants = current_user.get_current_tenants() %}
+  {% if tenants|length > 0 %}
+    <form class="navbar-form navbar-left" id="working-tenant" action="{{ url_for('index.WorkingTenantView:set_working_tenant') }}">
+      <div class="form-group">
+        <select name="tenant_uuid" class="selectfield">
+          {% for tenant in tenants %}
+            {% set selected = 'selected' if session['working_tenant_uuid'] == tenant.uuid else '' %}
+            <option value="{{ tenant.uuid }}" {{ selected }}>{{ tenant.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </form>
+	{% if session['working_tenant_uuid'] == current_user.get_user_tenant_uuid() %}
+	  <div class="alert alert-error alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	    <i>Don't use <strong>master</strong> tenant for configuration!</i>
+          </div>
+	{% endif %}
+  {% endif %}
+
+  {{ _build_chidren(item, true, current_user) }}
+{% endmacro %}
 
 {% macro _build_chidren(item, root, current_user) %}
     {% for i in item.children %}
@@ -262,15 +285,22 @@
 {% endmacro %}
 
 
-{% macro add_default_fields(form, submit_value) %}
+{% macro add_default_fields(form, submit_value, delete_action=None) %}
   {% from "macro_render_field.html" import render_field %}
   <div class="box-body">
     {{ form.csrf_token }}
     {{ caller() }}
   </div>
-  {% if submit_value %}
+  {% if submit_value or delete_action %}
     <div class="box-footer text-center">
-      {{ render_field(form.submit, class_="btn btn-primary", value=submit_value, with_label=False) }}
+      <div class="col-sm-5"></div>
+      {{ render_field(form.submit, class_="btn btn-primary", value=submit_value, with_label=False, divclass='col-sm-1') }}
+      {% if delete_action %}
+      <div class="col-sm-1">
+        <a href="{{ delete_action }}" class="btn btn-danger">Delete</a>
+      </div>
+      <div class="col-sm-5"></div>
+      {% endif %}
     </div>
   {% endif %}
 {% endmacro %}

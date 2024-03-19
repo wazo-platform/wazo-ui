@@ -1,15 +1,14 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
-from flask import Flask
-from wtforms.fields import FieldList, FormField, StringField, SubmitField
 
+from flask import Flask
 from hamcrest import (
     assert_that,
     contains,
-    equal_to,
     empty,
+    equal_to,
     has_entries,
     has_key,
     has_properties,
@@ -17,15 +16,14 @@ from hamcrest import (
     instance_of,
     not_,
 )
+from wtforms.fields import FieldList, FormField, StringField, SubmitField
 
 from ..form import BaseForm, SelectField
-
 
 app = Flask('test_wazo_ui')
 
 
 class TestBaseForm(unittest.TestCase):
-
     def setUp(self):
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
@@ -35,8 +33,9 @@ class TestBaseForm(unittest.TestCase):
             attribute1 = StringField()
             csrf_token = StringField()
 
-        with app.test_request_context(method='POST', data={'attribute1': 'value',
-                                                           'csrf_token': '123-abcd'}):
+        with app.test_request_context(
+            method='POST', data={'attribute1': 'value', 'csrf_token': '123-abcd'}
+        ):
             form = MyForm()
         result = form.to_dict()
 
@@ -47,8 +46,9 @@ class TestBaseForm(unittest.TestCase):
             attribute1 = StringField()
             submit = SubmitField()
 
-        with app.test_request_context(method='POST', data={'attribute1': 'value',
-                                                           'submit': 'true'}):
+        with app.test_request_context(
+            method='POST', data={'attribute1': 'value', 'submit': 'true'}
+        ):
             form = MyForm()
         result = form.to_dict()
 
@@ -121,7 +121,9 @@ class TestBaseForm(unittest.TestCase):
         class MyForm(BaseForm):
             attribute = FormField(SubMyForm)
 
-        with app.test_request_context(method='POST', data={'attribute-subattribute': 'subvalue'}):
+        with app.test_request_context(
+            method='POST', data={'attribute-subattribute': 'subvalue'}
+        ):
             form = MyForm()
         result = form.to_dict()
 
@@ -134,11 +136,16 @@ class TestBaseForm(unittest.TestCase):
         class MyForm(BaseForm):
             attribute = FieldList(FormField(SubMyForm))
 
-        with app.test_request_context(method='POST', data={'attribute-0-subattribute': 'subvalue'}):
+        with app.test_request_context(
+            method='POST', data={'attribute-0-subattribute': 'subvalue'}
+        ):
             form = MyForm()
         result = form.to_dict()
 
-        assert_that(result, has_entries(attribute=contains(has_entries(subattribute='subvalue'))))
+        assert_that(
+            result,
+            has_entries(attribute=contains(has_entries(subattribute='subvalue'))),
+        )
 
     def test_to_dict_with_default_empty_data(self):
         class MyForm(BaseForm):
@@ -155,17 +162,19 @@ class TestBaseForm(unittest.TestCase):
             attribute1 = StringField()
             attribute2 = StringField()
 
-        errors = {'attribute1': 'error1',
-                  'attribute2': 'error2'}
+        errors = {'attribute1': 'error1', 'attribute2': 'error2'}
 
         with app.test_request_context():
             form = MyForm()
         form.populate_errors(errors)
 
-        assert_that(form, has_properties(
-            attribute1=has_properties(errors=contains('error1')),
-            attribute2=has_properties(errors=contains('error2')),
-        ))
+        assert_that(
+            form,
+            has_properties(
+                attribute1=has_properties(errors=contains('error1')),
+                attribute2=has_properties(errors=contains('error2')),
+            ),
+        )
 
     def test_populate_errors_when_error_not_match_field(self):
         class MyForm(BaseForm):
@@ -193,11 +202,16 @@ class TestBaseForm(unittest.TestCase):
             form = MyForm()
         form.populate_errors(errors)
 
-        assert_that(form, has_properties(
-            attribute1=has_properties(form=has_properties(
-                subattribute1=has_properties(errors=contains('suberror1'))
-            ))
-        ))
+        assert_that(
+            form,
+            has_properties(
+                attribute1=has_properties(
+                    form=has_properties(
+                        subattribute1=has_properties(errors=contains('suberror1'))
+                    )
+                )
+            ),
+        )
 
     def test_populate_errors_when_fieldlist_of_formfield(self):
         class SubMyForm(BaseForm):
@@ -212,15 +226,23 @@ class TestBaseForm(unittest.TestCase):
             form = MyForm()
         form.populate_errors(errors)
 
-        assert_that(form, has_properties(
-            attribute1=contains(
-                has_properties(form=has_properties(
-                    subattribute1=has_properties(errors=empty())
-                )),
-                has_properties(form=has_properties(
-                    subattribute1=has_properties(errors=contains('suberror1'))
-                )))
-        ))
+        assert_that(
+            form,
+            has_properties(
+                attribute1=contains(
+                    has_properties(
+                        form=has_properties(
+                            subattribute1=has_properties(errors=empty())
+                        )
+                    ),
+                    has_properties(
+                        form=has_properties(
+                            subattribute1=has_properties(errors=contains('suberror1'))
+                        )
+                    ),
+                )
+            ),
+        )
 
     def test_populate_errors_when_errors_is_initialize_with_tuple(self):
         class MyForm(BaseForm):
@@ -234,13 +256,12 @@ class TestBaseForm(unittest.TestCase):
         errors = {'attribute1': 'error1'}
         form.populate_errors(errors)
 
-        assert_that(form, has_properties(
-            attribute1=has_properties(errors=instance_of(list))
-        ))
+        assert_that(
+            form, has_properties(attribute1=has_properties(errors=instance_of(list)))
+        )
 
 
 class TestSelectField(unittest.TestCase):
-
     def setUp(self):
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False

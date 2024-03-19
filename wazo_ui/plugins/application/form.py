@@ -1,11 +1,5 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
-
-from wazo_ui.helpers.destination import (
-    BaseDestinationForm,
-    DestinationHiddenField,
-)
-from wtforms.utils import unset_value
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
@@ -15,10 +9,11 @@ from wtforms.fields import (
     StringField,
     SubmitField,
 )
-from wtforms.validators import Length, InputRequired
+from wtforms.utils import unset_value
+from wtforms.validators import InputRequired, Length
 
+from wazo_ui.helpers.destination import BaseDestinationForm, DestinationHiddenField
 from wazo_ui.helpers.form import BaseForm
-
 
 _application_destination_choices = []
 
@@ -48,10 +43,11 @@ class ApplicationDestinationForm(BaseDestinationForm):
 
 
 class ApplicationDestinationField(FormField):
-
     def __init__(self, *args, **kwargs):
         self.destination_label = kwargs.pop('destination_label', None)
-        self.destination_form = kwargs.pop('destination_form', ApplicationDestinationForm)
+        self.destination_form = kwargs.pop(
+            'destination_form', ApplicationDestinationForm
+        )
         super().__init__(self.destination_form, *args, **kwargs)
 
     def process(self, formdata, data=unset_value):
@@ -68,9 +64,12 @@ class ApplicationForm(BaseForm):
 
 
 class NodeDestinationForm(BaseForm):
-    type = SelectField(l_('Type'), choices=[
-        ('holding', l_('Holding')),
-    ])
+    type = SelectField(
+        l_('Type'),
+        choices=[
+            ('holding', l_('Holding')),
+        ],
+    )
     music_on_hold = StringField(l_('Music On Hold'))
     answer = BooleanField(l_('Answer'), default=False)
 

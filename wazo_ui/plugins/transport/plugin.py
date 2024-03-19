@@ -1,5 +1,5 @@
-# Copyright 2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2020-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_menu.classy import register_flaskview
 
@@ -7,13 +7,12 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import TransportService
-from .view import TransportView, TransportDestinationView
+from .view import TransportDestinationView, TransportView
 
 transport = create_blueprint('transports', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
@@ -25,6 +24,8 @@ class Plugin(object):
         TransportDestinationView.service = TransportService(clients['wazo_confd'])
         TransportDestinationView.register(transport, route_base='/transports_listing')
 
-        register_listing_url('transport', 'transports.TransportDestinationView:list_json')
+        register_listing_url(
+            'transport', 'transports.TransportDestinationView:list_json'
+        )
 
         core.register_blueprint(transport)

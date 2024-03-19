@@ -1,9 +1,9 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import ast
-import re
 import logging
+import re
 
 from flask_babel import lazy_gettext as l_
 
@@ -39,13 +39,13 @@ SPECIFIC_MESSAGE_ERRORS = {
     'oneof': l_('Not a valid choice'),
     'range': l_('Invalid range'),
     'regexp': l_('String does not match expected pattern'),
-    'regex': l_('String does not match expected pattern')
+    'regex': l_('String does not match expected pattern'),
 }
 
 logger = logging.getLogger(__name__)
 
 
-class ErrorTranslator():
+class ErrorTranslator:
     generic_messages = {}
     specific_messages = {}
     resources = {}
@@ -75,7 +75,7 @@ class ErrorTranslator():
 RESOURCE_REGEX = r'^/[^/]+/([^/]+)(?:/[^/]+)?$'
 
 
-class ErrorExtractor():
+class ErrorExtractor:
     url_to_name_resources = {}
 
     @classmethod
@@ -113,11 +113,10 @@ class ErrorExtractor():
         if 'constraint_id' not in error or 'constraint' not in error:
             logger.debug('Unable to extract error from: %s', error)
         else:
-            constraint_message = ErrorTranslator.translate_constraint(error['constraint_id'])
-            return '{constraint_message} ({constraint})'.format(
-                constraint_message=constraint_message,
-                constraint=error['constraint']
+            constraint_message = ErrorTranslator.translate_constraint(
+                error['constraint_id']
             )
+            return f'{constraint_message} ({error["constraint"]})'
 
     @classmethod
     def get_resource_from_error(cls, error):
@@ -209,7 +208,6 @@ RESOURCES = {
 
 
 class ConfdErrorTranslator(ErrorTranslator):
-
     # Maybe should be in a manager?
     @classmethod
     def translate_specific_error_id_from_fields(cls, fields):

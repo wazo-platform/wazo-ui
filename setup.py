@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
+from __future__ import annotations
 
+from collections import defaultdict
 from distutils.cmd import Command as _Command
-from setuptools import find_packages
-from setuptools import setup
+from glob import glob
+from pathlib import Path
+
+from setuptools import find_packages, setup
 from setuptools.command.build_py import build_py as _build_py
 
 PROJECT = 'wazo_ui'
@@ -14,18 +18,18 @@ EMAIL = 'dev@wazo.community'
 
 class build_py(_build_py):
     def run(self):
-        # self.run_command('compile_catalog')
+        self.run_command('compile_catalog')
         _build_py.run(self)
 
 
-class BabelWrapper(object):
-    DEFAULT_HEADER = u"""\
+class BabelWrapper:
+    DEFAULT_HEADER = f"""\
 # Translations template for {PROJECT}.
 # Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # {PROJECT} project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
-#""".format(PROJECT=PROJECT)
+#"""
 
     class Command(_Command):
         user_options = []
@@ -52,22 +56,45 @@ class BabelWrapper(object):
         from babel.messages.catalog import Catalog as _Catalog
 
         class Catalog(_Catalog):
-            def __init__(self,
-                         project=PROJECT,
-                         copyright_holder='The Wazo Authors  (see the AUTHORS file)',
-                         msgid_bugs_address=EMAIL,
-                         last_translator='{author} <{email}>'.format(author=AUTHOR, email=EMAIL),
-                         language_team='en <{email}>'.format(email=EMAIL), **kwargs):
-                super().__init__(header_comment=BabelWrapper.DEFAULT_HEADER,
-                                 project=project, copyright_holder=copyright_holder,
-                                 msgid_bugs_address=msgid_bugs_address, last_translator=last_translator,
-                                 language_team=language_team, fuzzy=False, **kwargs)
+            def __init__(
+                self,
+                project=PROJECT,
+                copyright_holder='The Wazo Authors  (see the AUTHORS file)',
+                msgid_bugs_address=EMAIL,
+                last_translator=f'{AUTHOR} <{EMAIL}>',
+                language_team=f'en <{EMAIL}>',
+                **kwargs,
+            ):
+                kwargs['header_comment'] = BabelWrapper.DEFAULT_HEADER
+                super().__init__(
+                    project=project,
+                    copyright_holder=copyright_holder,
+                    msgid_bugs_address=msgid_bugs_address,
+                    last_translator=last_translator,
+                    language_team=language_team,
+                    fuzzy=False,
+                    **kwargs,
+                )
 
         babel.Catalog = Catalog
         return babel
 
 
 babel_wrapper = BabelWrapper()
+
+
+def get_package_data_recursive(data: dict[str, list[str]]) -> dict[str, list[str]]:
+    """
+    The option `package_data` does not resolve `**` recursive globs.
+    """
+    matches = defaultdict(list)
+    root_dir = Path(__file__).parent.resolve()
+    for module, glob_patterns in data.items():
+        module_dir = root_dir / module.replace('.', '/')
+        for glob_pattern in glob_patterns:
+            matches[module].extend(glob(str(module_dir / glob_pattern), recursive=True))
+    return matches
+
 
 setup(
     name=PROJECT,
@@ -77,11 +104,22 @@ setup(
     author_email='dev@wazo.community',
     url='https://github.com/wazo-platform/wazo-ui',
     packages=find_packages(),
-    include_package_data=True,
+    package_data=get_package_data_recursive(
+        {
+            'wazo_ui': [
+                'static/**',
+                'templates/**',
+                'translations/**',
+            ],
+            'wazo_ui.plugins': [
+                '*/static/**',
+                '*/templates/**',
+            ],
+        }
+    ),
     setup_requires=['babel'],
     install_requires=['babel'],
     zip_safe=False,
-
     cmdclass={
         'build_py': build_py,
         'compile_catalog': babel_wrapper.compile_catalog,
@@ -89,10 +127,9 @@ setup(
         'init_catalog': babel_wrapper.init_catalog,
         'update_catalog': babel_wrapper.update_catalog,
     },
-
     entry_points={
         'console_scripts': [
-            'wazo-ui=wazo_ui.bin.daemon:main',
+            'wazo-ui = wazo_ui.bin.daemon:main',
         ],
         'wazo_ui.plugins': [
             'access_feature = wazo_ui.plugins.access_feature.plugin:Plugin',
@@ -144,5 +181,5 @@ setup(
             'voicemail = wazo_ui.plugins.voicemail.plugin:Plugin',
             'webhook = wazo_ui.plugins.webhook.plugin:Plugin',
         ],
-    }
+    },
 )

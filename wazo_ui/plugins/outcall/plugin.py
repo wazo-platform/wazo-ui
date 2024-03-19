@@ -1,5 +1,5 @@
-# Copyright 2017 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_menu.classy import register_flaskview
 
@@ -7,13 +7,12 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import OutcallService
-from .view import OutcallView, OutcallDestinationView
+from .view import OutcallDestinationView, OutcallView
 
 outcall = create_blueprint('outcall', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']

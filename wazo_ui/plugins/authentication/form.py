@@ -1,18 +1,17 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import requests
 import logging
 
-from requests.exceptions import HTTPError
-
+import requests
 from flask import session
 from flask_babel import lazy_gettext as l_
 from flask_wtf import FlaskForm
-from wtforms.fields import PasswordField, StringField, SubmitField, SelectField
+from requests.exceptions import HTTPError
+from wazo_auth_client import Client as AuthClient
+from wtforms.fields import PasswordField, SelectField, StringField, SubmitField
 from wtforms.validators import InputRequired, ValidationError
 
-from wazo_auth_client import Client as AuthClient
 from wazo_ui.http_server import app
 from wazo_ui.user import UserUI
 
@@ -26,11 +25,15 @@ def unauthorized(error):
 
 
 class LoginForm(FlaskForm):
-
     username = StringField(l_('Username'), validators=[InputRequired()])
     password = PasswordField(l_('Password'), validators=[InputRequired()])
     language = SelectField(l_('Language'))
-    submit = SubmitField(l_('Login'), render_kw={'data-loading-text': "<i class='fa fa-circle-o-notch fa-spin'></i> Processing..."})
+    submit = SubmitField(
+        l_('Login'),
+        render_kw={
+            'data-loading-text': "<i class='fa fa-circle-o-notch fa-spin'></i> Processing..."
+        },
+    )
 
     def validate(self):
         super().validate()
@@ -50,7 +53,9 @@ class LoginForm(FlaskForm):
                 self.username.errors.append(USERNAME_PASSWORD_ERROR)
                 self.password.errors.append(USERNAME_PASSWORD_ERROR)
                 return False
-            raise ValidationError(l_('Error with Wazo authentication server: %(error)s', error=e.message))
+            raise ValidationError(
+                l_('Error with Wazo authentication server: %(error)s', error=e.message)
+            )
         except requests.ConnectionError:
             raise ValidationError(l_('Wazo authentication server connection error'))
 

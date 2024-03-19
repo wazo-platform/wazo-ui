@@ -1,10 +1,10 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 
-from wazo_ui.helpers.view import BaseIPBXHelperView
 from wazo_ui.helpers.menu import menu_item
+from wazo_ui.helpers.view import BaseIPBXHelperView
 
 from .form import IncallForm
 
@@ -13,15 +13,33 @@ class IncallView(BaseIPBXHelperView):
     form = IncallForm
     resource = 'incall'
 
-    @menu_item('.ipbx.call_management', l_('Call Management'), order=2, icon="phone", multi_tenant=True)
-    @menu_item('.ipbx.call_management.incalls', l_('Incalls'), order=1, icon="arrow-right", multi_tenant=True)
+    @menu_item(
+        '.ipbx.call_management',
+        l_('Call Management'),
+        order=2,
+        icon="phone",
+        multi_tenant=True,
+    )
+    @menu_item(
+        '.ipbx.call_management.incalls',
+        l_('Incalls'),
+        order=1,
+        icon="arrow-right",
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
     def _populate_form(self, form):
-        form.extensions[0].exten.choices = self._build_set_choices_exten(form.extensions[0])
-        form.extensions[0].context.choices = self._build_set_choices_context(form.extensions[0])
-        form.schedules[0].form.id.choices = self._build_set_choices_schedule(form.schedules[0])
+        form.extensions[0].exten.choices = self._build_set_choices_exten(
+            form.extensions[0]
+        )
+        form.extensions[0].context.choices = self._build_set_choices_context(
+            form.extensions[0]
+        )
+        form.schedules[0].form.id.choices = self._build_set_choices_schedule(
+            form.schedules[0]
+        )
         sounds = self.service.list_sound()
         form.greeting_sound.choices = self._build_set_choices_sound(sounds)
         return form
@@ -52,17 +70,17 @@ class IncallView(BaseIPBXHelperView):
         for sound in sounds['items']:
             for file_ in sound['files']:
                 for format_ in file_['formats']:
-                    name = format_['path'] if sound['name'] != 'system' else file_['name']
+                    name = (
+                        format_['path'] if sound['name'] != 'system' else file_['name']
+                    )
                     label = self._prepare_sound_filename_label(file_, format_)
                     results.append((name, label))
         return results
 
     def _prepare_sound_filename_label(self, file_, format_):
-        return '{}{}{}'.format(
-            file_['name'],
-            ' [{}]'.format(format_['format']) if format_['format'] else '',
-            ' ({})'.format(format_['language']) if format_['language'] else '',
-        )
+        format_label = f' [{format_["format"]}]' if format_['format'] else ''
+        language_label = f' ({format_["language"]})' if format_['language'] else ''
+        return f'{file_["name"]}{format_label}{language_label}'
 
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('incall', {}))

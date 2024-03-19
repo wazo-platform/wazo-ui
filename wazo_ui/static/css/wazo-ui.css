@@ -32,6 +32,107 @@ img.logo-full-svg {
 
 .brand-link.navbar-brand {
   background-color: #98c451!important;
+  border-color: #98c451!important;
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: #98c451!important;
+  border-color: #98c451!important;
+}
+
+.card-primary.card-outline {
+  border-top: 3px solid #98c451!important;
+}
+
+a {
+  color: #98c451!important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: #98c451!important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff!important;
+}
+
+.select2-container--bootstrap .select2-results__option--highlighted {
+  background-color: #98c451!important;
+}
+
+.dynamic-table td .form-group {
+  margin-bottom: 0;
+}
+
+.progress-bar.indeterminate {
+  position: relative;
+  animation: progress-indeterminate 2s linear infinite;
+}
+
+@keyframes progress-indeterminate {
+   from { left: -25%; width: 25%; }
+   to { left: 100%; width: 25%;}
+}
+
+table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
+  background-color: rgb(232, 234, 246) !important;
+}
+
+table td button.delete-row-entry {
+  margin: 6px 0 0 8px;
+}
+
+div.box-header {
+  height: 40px;
+}
+
+.todo-list>li .tools a {
+  margin-right: 7px;
+}
+
+/* Side menu */
+.main-sidebar {
+  box-shadow: rgba(0, 0, 0, 0.12) 2px 0 3px;
+  background-color: rgb(245, 244, 245) !important;
+}
+
+.main-sidebar li a {
+  color: black !important;
+  transition: background-color 200ms linear;
+}
+
+.main-sidebar li a:hover, .main-sidebar li.active a, .sidebar-menu>li>.treeview-menu a, .sidebar-menu>li>.treeview-menu a:hover {
+  background-color: #e8e8e8 !important;
+  padding-left: 18px;
+  border-left: none !important;
+}
+
+.skin-blue .sidebar-menu>li>.treeview-menu, li.menu-open:hover, .skin-blue .sidebar-menu>li:hover>a {
+  background-color: #e8e8e8 !important;
+  border-left-color: transparent;
+}
+
+.box.box-solid.box-primary>.box-header {
+  background: #98c451 !important;
+  background-color: #98c451 !important;
+}
+
+.box.box-solid.box-primary {
+  border: 1px solid #98c451 !important;
+}
+
+.main-sidebar form {
+  float: none!important;
+}
+
+.main-sidebar .label {
+  font-size: 9px;
+  text-align: center;
+}
+
+.main-sidebar form .form-group, .main-sidebar form .select2 {
   width: 100%;
 }
 

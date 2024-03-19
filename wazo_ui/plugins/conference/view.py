@@ -1,13 +1,13 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
 from flask_babel import lazy_gettext as l_
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
+    build_select2_response,
     extract_select2_params,
-    build_select2_response
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -16,18 +16,26 @@ from .form import ConferenceForm
 
 
 class ConferenceView(BaseIPBXHelperView):
-
     form = ConferenceForm
     resource = l_('conference')
 
     @menu_item('.ipbx.services', l_('Services'), icon="star", multi_tenant=True)
-    @menu_item('.ipbx.services.conferences', l_('Conferences'), icon="compress", multi_tenant=True)
+    @menu_item(
+        '.ipbx.services.conferences',
+        l_('Conferences'),
+        icon="compress",
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
     def _populate_form(self, form):
-        form.extensions[0].exten.choices = self._build_set_choices_exten(form.extensions[0])
-        form.extensions[0].context.choices = self._build_set_choices_context(form.extensions[0])
+        form.extensions[0].exten.choices = self._build_set_choices_exten(
+            form.extensions[0]
+        )
+        form.extensions[0].context.choices = self._build_set_choices_context(
+            form.extensions[0]
+        )
         form.music_on_hold.choices = self._build_set_choices_moh(form.music_on_hold)
         return form
 
@@ -50,14 +58,20 @@ class ConferenceView(BaseIPBXHelperView):
     def _build_set_choices_moh(self, moh):
         if not moh.data or moh.data == 'None':
             return []
-        return [(moh.data, moh.data)]
+        moh_object = self.service.get_music_on_hold(moh.data)
+        if moh_object is None:
+            return []
+        moh_label = moh_object['label']
+        return [(moh.data, f"{moh_label} ({moh.data})")]
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = form.to_dict()
         if form_id:
             resource['uuid'] = form_id
 
-        resource['music_on_hold'] = form.music_on_hold.data or None
+        resource['music_on_hold'] = self._convert_empty_string_to_none(
+            form.music_on_hold.data
+        )
 
         return resource
 
@@ -68,7 +82,6 @@ class ConferenceView(BaseIPBXHelperView):
 
 
 class ConferenceDestinationView(LoginRequiredView):
-
     def list_json(self):
         return self._list_json('id')
 
@@ -78,9 +91,8 @@ class ConferenceDestinationView(LoginRequiredView):
     def _list_json(self, field_id):
         params = extract_select2_params(request.args)
         conferences = self.service.list(**params)
-        results = []
-        for conference in conferences['items']:
-            text = '{}'.format(conference['name'])
-            results.append({'id': conference[field_id], 'text': text})
-
+        results = [
+            {'id': conference[field_id], 'text': f'{conference["name"]}'}
+            for conference in conferences['items']
+        ]
         return jsonify(build_select2_response(results, conferences['total'], params))

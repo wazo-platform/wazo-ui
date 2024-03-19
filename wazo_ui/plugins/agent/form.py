@@ -1,16 +1,17 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
-    SubmitField,
     FieldList,
     FormField,
-    StringField,
+    HiddenField,
     SelectField,
-    HiddenField
+    StringField,
+    SubmitField,
 )
 from wtforms.validators import InputRequired, Length
+
 from wazo_ui.helpers.form import BaseForm
 
 
@@ -26,7 +27,7 @@ class AgentForm(BaseForm):
     lastname = StringField(l_('Lastname'), [Length(max=128)])
     number = StringField(l_('Agent Number'), [InputRequired(), Length(max=128)])
     description = StringField(l_('Description'), [Length(max=128)])
-    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=128)])
+    preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=79)])
     password = StringField(l_('Password'), [Length(max=128)])
     language = StringField(l_('Language'), [Length(max=128)])
     skills = FieldList(FormField(SkillListForm))

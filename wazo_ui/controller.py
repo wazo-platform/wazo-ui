@@ -1,29 +1,19 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
+import signal
+import threading
 
 from flask_babel import lazy_gettext as l_
-
 from xivo import plugin_helpers
-from .http_server import Server
-from wazo_ui.helpers.destination import register_destination_form
-from wazo_ui.helpers.error import (
-    ErrorExtractor,
-    ErrorTranslator,
-    ConfdErrorExtractor,
-    URL_TO_NAME_RESOURCES,
-    RESOURCES,
-    GENERIC_PATTERN_ERRORS,
-    SPECIFIC_PATTERN_ERRORS
-)
 
 from wazo_ui.core.client import engine_clients
 from wazo_ui.core.form import (
-    ApplicationDestination,
     ApplicationCallBackDISADestination,
-    ApplicationDISADestination,
+    ApplicationDestination,
     ApplicationDirectoryDestination,
+    ApplicationDISADestination,
     ApplicationFaxToMailDestination,
     ApplicationVoicemailDestination,
     CustomDestination,
@@ -31,22 +21,34 @@ from wazo_ui.core.form import (
     NoneDestination,
     register_destination_form_application,
 )
+from wazo_ui.helpers.destination import register_destination_form
+from wazo_ui.helpers.error import (
+    GENERIC_PATTERN_ERRORS,
+    RESOURCES,
+    SPECIFIC_PATTERN_ERRORS,
+    URL_TO_NAME_RESOURCES,
+    ConfdErrorExtractor,
+    ErrorExtractor,
+    ErrorTranslator,
+)
+
+from .http_server import Server
 
 logger = logging.getLogger(__name__)
 
 
-class Controller():
-
+class Controller:
     def __init__(self, config):
         self.server = Server(config)
+        self._stopping_thread = None
         plugin_helpers.load(
             namespace='wazo_ui.plugins',
             names=config['enabled_plugins'],
             dependencies={
                 'config': config,
                 'flask': self.server.get_app(),
-                'clients': engine_clients
-            }
+                'clients': engine_clients,
+            },
         )
 
         ErrorExtractor.register_url_to_name_resources(URL_TO_NAME_RESOURCES)
@@ -55,29 +57,36 @@ class Controller():
         ConfdErrorExtractor.register_generic_patterns(GENERIC_PATTERN_ERRORS)
         ConfdErrorExtractor.register_specific_patterns(SPECIFIC_PATTERN_ERRORS)
 
-        register_destination_form('application', l_('Application'), ApplicationDestination)
+        register_destination_form(
+            'application', l_('Application'), ApplicationDestination
+        )
         register_destination_form('hangup', l_('Hangup'), HangupDestination)
         register_destination_form('custom', l_('Custom'), CustomDestination)
         register_destination_form('none', l_('None'), NoneDestination, position=0)
 
         register_destination_form_application(
-            'callback_disa', l_('CallBack DISA'),
+            'callback_disa',
+            l_('CallBack DISA'),
             ApplicationCallBackDISADestination,
         )
         register_destination_form_application(
-            'directory', l_('Directory'),
+            'directory',
+            l_('Directory'),
             ApplicationDirectoryDestination,
         )
         register_destination_form_application(
-            'disa', l_('DISA'),
+            'disa',
+            l_('DISA'),
             ApplicationDISADestination,
         )
         register_destination_form_application(
-            'fax_to_mail', l_('Fax to Mail'),
+            'fax_to_mail',
+            l_('Fax to Mail'),
             ApplicationFaxToMailDestination,
         )
         register_destination_form_application(
-            'voicemail', l_('Voicemail'),
+            'voicemail',
+            l_('Voicemail'),
             ApplicationVoicemailDestination,
         )
 
@@ -87,3 +96,14 @@ class Controller():
             self.server.run()
         finally:
             logger.info('wazo-ui stopping...')
+            if self._stopping_thread:
+                self._stopping_thread.join()
+
+    def stop(self, reason):
+        logger.warning('Stopping wazo-ui: %s', reason)
+        self._stopping_thread = threading.Thread(target=self.server.stop, name=reason)
+        self._stopping_thread.start()
+
+
+def _signal_handler(controller, signum, frame):
+    controller.stop(reason=signal.Signals(signum).name)

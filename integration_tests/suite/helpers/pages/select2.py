@@ -1,4 +1,4 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Based from https://gist.github.com/rafaelugolini/d2067a8c8c54026ac029
@@ -6,30 +6,36 @@
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
-class Select2(object):
-
+class Select2:
     TIMEOUT = 4
 
     def __init__(self, element, root):
         self.browser = root
-        self.element = self.browser.find_element_by_id(
-            'select2-{0}-container'.format(element.get_attribute('id')))
+        self.element = self.browser.find_element(
+            By.ID,
+            f'select2-{element.get_attribute("id")}-container',
+        )
 
     def click(self, element=None):
         if element is None:
             element = self.element
-        click_element = ActionChains(self.browser).click_and_hold(element).release(element)
+        click_element = (
+            ActionChains(self.browser).click_and_hold(element).release(element)
+        )
         click_element.perform()
 
     def open(self):
         if not self.is_open:
             self.click()
             WebDriverWait(self.browser, self.TIMEOUT).until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, 'span.select2-dropdown')))
+                EC.visibility_of_element_located(
+                    (By.CSS_SELECTOR, 'span.select2-dropdown')
+                )
+            )
 
     def close(self):
         if self.is_open:
@@ -43,7 +49,7 @@ class Select2(object):
 
     def ajax_complete(self, driver):
         try:
-            return driver.execute_script("return jQuery.active == 0")
+            return driver.execute_script('return jQuery.active == 0')
         except WebDriverException:
             return False
 
@@ -57,11 +63,15 @@ class Select2(object):
 
     @property
     def dropdown(self):
-        return self.browser.find_element_by_css_selector('span.select2-dropdown')
+        return self.browser.find_element(By.CSS_SELECTOR, 'span.select2-dropdown')
 
     @property
     def items(self):
         self.open()
-        WebDriverWait(self.browser, self.TIMEOUT).until(self.ajax_complete, "Timeout waiting for page to load")
-        return self.dropdown.find_elements_by_css_selector(
-            'ul.select2-results__options li.select2-results__option')
+        WebDriverWait(self.browser, self.TIMEOUT).until(
+            self.ajax_complete, 'Timeout waiting for page to load'
+        )
+        return self.dropdown.find_elements(
+            By.CSS_SELECTOR,
+            'ul.select2-results__options li.select2-results__option',
+        )

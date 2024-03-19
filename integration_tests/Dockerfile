@@ -6,4 +6,4 @@ WORKDIR /usr/src/wazo-ui
 ENV PYTHONDONTWRITEBYTECODE='true'
 
 RUN pybabel compile --directory=wazo_ui/translations
-RUN python setup.py develop
+RUN python3 -m pip install -e .

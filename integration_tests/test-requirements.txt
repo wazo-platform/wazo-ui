@@ -1,5 +1,4 @@
-https://github.com/wazo-platform/xivo-test-helpers/archive/master.zip
-docker-compose
+https://github.com/wazo-platform/wazo-test-helpers/archive/master.zip
 pyhamcrest
 pytest
 pyvirtualdisplay

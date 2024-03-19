@@ -1,17 +1,16 @@
-# Copyright 2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2020-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
 from flask_babel import lazy_gettext as l_
 
-from wazo_ui.helpers.menu import menu_item
-from wazo_ui.helpers.view import BaseIPBXHelperView, NewHelperViewMixin
-
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
+    build_select2_response,
     extract_select2_params,
-    build_select2_response
 )
+from wazo_ui.helpers.menu import menu_item
+from wazo_ui.helpers.view import BaseIPBXHelperView, NewHelperViewMixin
 
 from .form import EndpointSIPForm
 
@@ -32,11 +31,15 @@ EXCLUDE_CHOICE_SECTIONS = [
 
 
 class EndpointSIPTemplateView(NewHelperViewMixin, BaseIPBXHelperView):
-
     form = EndpointSIPForm
     resource = l_('SIP Template')
 
-    @menu_item('.ipbx.advanced.sip_templates', l_('SIP Templates'), icon="compress", multi_tenant=True)
+    @menu_item(
+        '.ipbx.advanced.sip_templates',
+        l_('SIP Templates'),
+        icon="compress",
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
@@ -67,7 +70,9 @@ class EndpointSIPTemplateView(NewHelperViewMixin, BaseIPBXHelperView):
 
             resource[section] = self._build_options(resource[section])
 
-        resource['template_uuids'] = [template['uuid'] for template in resource['templates']]
+        resource['template_uuids'] = [
+            template['uuid'] for template in resource['templates']
+        ]
 
         form = self.form(data=resource)
 
@@ -94,7 +99,9 @@ class EndpointSIPTemplateView(NewHelperViewMixin, BaseIPBXHelperView):
         if not resource['transport'].get('uuid'):
             resource['transport'] = None
 
-        resource['templates'] = [{'uuid': template_uuid} for template_uuid in form.template_uuids.data]
+        resource['templates'] = [
+            {'uuid': template_uuid} for template_uuid in form.template_uuids.data
+        ]
 
         return resource
 
@@ -103,7 +110,6 @@ class EndpointSIPTemplateView(NewHelperViewMixin, BaseIPBXHelperView):
 
 
 class SIPTemplateDestinationView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         templates = self.service.list(**params)

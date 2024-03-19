@@ -1,18 +1,18 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
     BooleanField,
+    FileField,
     SelectField,
     StringField,
     SubmitField,
-    FileField
 )
 from wtforms.validators import InputRequired, Length
 
-from wazo_ui.helpers.form import BaseForm
 from wazo_ui.helpers.destination import DestinationHiddenField
+from wazo_ui.helpers.form import BaseForm
 
 
 class SoundFilenameForm(BaseForm):
@@ -32,7 +32,9 @@ class SoundForm(BaseForm):
 class SoundDestinationForm(BaseForm):
     set_value_template = '{name} [{format}] ({language})'
 
-    filename = SelectField(l_('Filename'), choices=[], validators=[InputRequired(), Length(max=255)])
+    filename = SelectField(
+        l_('Filename'), choices=[], validators=[InputRequired(), Length(max=255)]
+    )
     name = DestinationHiddenField()
     language = DestinationHiddenField()
     format = DestinationHiddenField()

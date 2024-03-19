@@ -1,11 +1,10 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.service import BaseConfdService
 
 
 class VoicemailService(BaseConfdService):
-
     resource_confd = 'voicemails'
 
     def __init__(self, confd_client):

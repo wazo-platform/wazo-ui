@@ -1,5 +1,5 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.extension import BaseConfdExtensionService
 
@@ -42,14 +42,18 @@ class QueueService(BaseConfdExtensionService):
 
     def _update_users_to_queue(self, existing_queue, user_ids):
         for existing_user in existing_queue['members']['users']:
-            self._confd.queues.relations(existing_queue).remove_user_member(existing_user['uuid'])
+            self._confd.queues.relations(existing_queue).remove_user_member(
+                existing_user['uuid']
+            )
 
         for user_id in user_ids:
             self._confd.queues.relations(existing_queue).add_user_member(user_id)
 
     def _update_agents_to_queue(self, existing_queue, agent_ids):
         for existing_agent in existing_queue['members']['agents']:
-            self._confd.queues.relations(existing_queue).remove_agent_member(existing_agent['id'])
+            self._confd.queues.relations(existing_queue).remove_agent_member(
+                existing_agent['id']
+            )
 
         for agent_id in agent_ids:
             self._confd.queues.relations(existing_queue).add_agent_member(agent_id)
@@ -62,7 +66,9 @@ class QueueService(BaseConfdExtensionService):
             self._confd.queues(queue).add_schedule(schedules[0])
 
     def get_first_internal_context(self):
-        result = self._confd.contexts.list(type='internal', limit=1, direction='asc', order='id')
+        result = self._confd.contexts.list(
+            type='internal', limit=1, direction='asc', order='id'
+        )
         for context in result['items']:
             return context
 
@@ -73,3 +79,8 @@ class QueueService(BaseConfdExtensionService):
 
     def get_fallbacks(self, queue_id):
         return self._confd.queues(queue_id).list_fallbacks()
+
+    def get_music_on_hold(self, name):
+        results = self._confd.moh.list(name=name)
+        for result in results['items']:
+            return result

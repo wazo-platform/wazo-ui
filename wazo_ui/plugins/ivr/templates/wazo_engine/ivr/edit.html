@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': resource.name, 'link': url_for('.IvrView:get', id=resource.id), 'icon': 'navicon' }
   ]) }}
 {% endblock %}
@@ -74,4 +74,3 @@
 {% block additional_js %}
   <script src="{{ url_for('.static', filename='js/ivr.js') }}"></script>
 {% endblock %}
-

@@ -1,20 +1,14 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import (
-    jsonify,
-    redirect,
-    render_template,
-    request,
-    url_for,
-)
+from flask import jsonify, redirect, render_template, request, url_for
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
+    build_select2_response,
     extract_select2_params,
-    build_select2_response
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView, NewHelperViewMixin
@@ -26,7 +20,12 @@ class CallPermissionView(NewHelperViewMixin, BaseIPBXHelperView):
     form = CallPermissionForm
     resource = 'call_permission'
 
-    @menu_item('.ipbx.call_management.callpermissions', l_('Call Permissions'), icon='ban', multi_tenant=True)
+    @menu_item(
+        '.ipbx.call_management.callpermissions',
+        l_('Call Permissions'),
+        icon='ban',
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
@@ -40,12 +39,14 @@ class CallPermissionView(NewHelperViewMixin, BaseIPBXHelperView):
         form = form or self.form()
         form = self._populate_form(form)
 
-        return render_template(self._get_template('list'),
-                               form=form,
-                               resource_list=resource_list,
-                               listing_urls=self.listing_urls,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               mode_map=mode_map)
+        return render_template(
+            self._get_template('list'),
+            form=form,
+            resource_list=resource_list,
+            listing_urls=self.listing_urls,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            mode_map=mode_map,
+        )
 
     def _map_resources_to_form(self, resource):
         resource['user_uuids'] = [user['uuid'] for user in resource['users']]
@@ -65,7 +66,7 @@ class CallPermissionView(NewHelperViewMixin, BaseIPBXHelperView):
         results = []
         for user in users:
             if user.form.lastname.data:
-                text = '{} {}'.format(user.form.firstname.data, user.form.lastname.data)
+                text = f'{user.form.firstname.data} {user.form.lastname.data}'
             else:
                 text = user.form.firstname.data
             results.append((user.form.uuid.data, text))
@@ -87,10 +88,13 @@ class CallPermissionView(NewHelperViewMixin, BaseIPBXHelperView):
 
 
 class CallPermissionListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         callpermissions = self.service.list(**params)
-        results = [{'id': callpermission['id'], 'text': callpermission['name']}
-                   for callpermission in callpermissions['items']]
-        return jsonify(build_select2_response(results, callpermissions['total'], params))
+        results = [
+            {'id': callpermission['id'], 'text': callpermission['name']}
+            for callpermission in callpermissions['items']
+        ]
+        return jsonify(
+            build_select2_response(results, callpermissions['total'], params)
+        )

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs([
+  {{ build_breadcrumbs([
     { 'name': resource.number, 'link': url_for('.AgentView:get', id=resource.uuid), 'icon': 'users' }
   ]) }}
 {% endblock %}

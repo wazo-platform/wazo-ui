@@ -1,15 +1,15 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
-    SubmitField,
-    StringField,
-    SelectField,
     BooleanField,
     FieldList,
     FormField,
-    HiddenField
+    HiddenField,
+    SelectField,
+    StringField,
+    SubmitField,
 )
 from wtforms.validators import InputRequired
 
@@ -23,7 +23,7 @@ class ExtensionForm(BaseForm):
 
 
 class FeaturesForm(BaseForm):
-    id = HiddenField()
+    uuid = HiddenField()
     enabled = BooleanField(l_('Enabled'), default=False)
     feature = StringField(l_('Feature'), validators=[InputRequired()])
     exten = StringField(l_('Extension'), validators=[InputRequired()])

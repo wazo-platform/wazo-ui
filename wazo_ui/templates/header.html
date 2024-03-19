@@ -8,7 +8,9 @@
   </ul>
   <ul class="navbar-nav ml-auto">
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link fas fa-user disabled">&nbsp;{{ current_user.get_displayname() }}{% if tenant_ns.name %} ({{ tenant_ns.name }}) {% endif %}</a>
+      <a href="#" class="nav-link fas fa-user disabled">
+        &nbsp;&nbsp;{{ current_user.get_displayname() }}{% if tenant_ns.name %} ({{ tenant_ns.name }}) {% endif %}
+      </a>
     </li>
     <li class="nav-item d-none d-sm-inline-block logout">
       <a href="{{ url_for('logout.Logout:get') }}" class="nav-link fas fa-sign-out-alt" id="logout"></a>

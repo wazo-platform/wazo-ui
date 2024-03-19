@@ -1,12 +1,11 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
-from wtforms.utils import unset_value
 from wtforms.fields import FormField, SelectField
+from wtforms.utils import unset_value
 
 from wazo_ui.helpers.destination import BaseDestinationForm, listing_urls
-
 
 _funckey_destination_choices = []
 
@@ -16,7 +15,11 @@ def register_funckey_destination_form(type_id, type_label, form, position=-1):
         _funckey_destination_choices.insert(position, (type_id, type_label))
 
     if getattr(form, 'select_field', False):
-        setattr(FuncKeyDestinationForm, type_id, FuncKeyDestinationField(destination_form=form))
+        setattr(
+            FuncKeyDestinationForm,
+            type_id,
+            FuncKeyDestinationField(destination_form=form),
+        )
     else:
         setattr(FuncKeyDestinationForm, type_id, FormField(form))
 
@@ -33,7 +36,6 @@ class FuncKeyDestinationForm(BaseDestinationForm):
 
 
 class FuncKeyDestinationField(FormField):
-
     def __init__(self, *args, **kwargs):
         self.destination_label = kwargs.pop('destination_label', None)
         self.destination_form = kwargs.pop('destination_form', FuncKeyDestinationForm)

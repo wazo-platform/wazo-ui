@@ -1,9 +1,9 @@
-# Copyright 2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from werkzeug.datastructures import ImmutableMultiDict
-from wtforms.fields import SelectField, FormField, HiddenField, StringField
+from wtforms.fields import FormField, HiddenField, SelectField, StringField
 from wtforms.utils import unset_value
 
 from wazo_ui.helpers.form import BaseForm
@@ -61,11 +61,14 @@ class BaseDestinationForm(BaseForm):
         if wrapped_formdata and isinstance(wrapped_formdata, ImmutableMultiDict):
             selected_value = wrapped_formdata.get(self._prefix + self.select_field, '')
             key_prefix = self._prefix + selected_value + '-'
-            selected_args = {k[len(key_prefix):]: v for k, v in wrapped_formdata.items() if key_prefix in k}
+            selected_args = {
+                k[len(key_prefix) :]: v
+                for k, v in wrapped_formdata.items()
+                if key_prefix in k
+            }
 
         if selected_value:
-            kwargs = {self.select_field: selected_value,
-                      selected_value: selected_args}
+            kwargs = {self.select_field: selected_value, selected_value: selected_args}
             if not getattr(self, selected_value, False):
                 self._create_dynamic_destination_form(kwargs)
 
@@ -78,12 +81,17 @@ class BaseDestinationForm(BaseForm):
         for key in destination[destination[self.select_field]]:
             setattr(DynamicForm, key, StringField())
 
-        options = dict(name=destination[self.select_field],
-                       prefix=self._prefix,
-                       translations=self.meta.get_translations(self))
+        options = dict(
+            name=destination[self.select_field],
+            prefix=self._prefix,
+            translations=self.meta.get_translations(self),
+        )
         field = self.meta.bind_field(self, FormField(DynamicForm), options)
         self._fields[destination[self.select_field]] = field
-        self.added_dynamic_choice = (destination[self.select_field], destination[self.select_field])
+        self.added_dynamic_choice = (
+            destination[self.select_field],
+            destination[self.select_field],
+        )
 
 
 class DestinationForm(BaseDestinationForm):
@@ -98,7 +106,6 @@ class DestinationForm(BaseDestinationForm):
 
 
 class DestinationField(FormField):
-
     def __init__(self, *args, **kwargs):
         self.destination_label = kwargs.pop('destination_label', None)
         self.destination_form = kwargs.pop('destination_form', DestinationForm)
@@ -126,8 +133,8 @@ class FallbacksForm(BaseForm):
 
 
 class DestinationHiddenField(HiddenField):
-
     def __init__(self, *args, **kwargs):
         def remove_none(value):
             return value or ''
+
         super().__init__(filters=[remove_none], *args, **kwargs)

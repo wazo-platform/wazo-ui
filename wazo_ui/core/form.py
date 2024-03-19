@@ -1,14 +1,13 @@
-# Copyright 2018 The Wazo Authors (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
-from wtforms.fields import StringField, SelectField, FormField
-from wtforms.fields.html5 import IntegerField, EmailField
+from wtforms.fields import FormField, SelectField, StringField
+from wtforms.fields.html5 import EmailField, IntegerField
 from wtforms.validators import InputRequired, Length, NumberRange, Regexp
 
-from wazo_ui.helpers.form import BaseForm
 from wazo_ui.helpers.destination import BaseDestinationForm
-
+from wazo_ui.helpers.form import BaseForm
 from wazo_ui.helpers.view import listing_urls
 
 _application_destination_choices = []
@@ -21,12 +20,10 @@ def register_destination_form_application(type_id, type_label, form, position=-1
 
 
 class HangupCongestionDestination(BaseForm):
-
     timeout = IntegerField(l_('Timeout'), [NumberRange(min=0)])
 
 
 class HangupBusyDestination(BaseForm):
-
     timeout = IntegerField(l_('Timeout'), [NumberRange(min=0)])
 
 
@@ -37,24 +34,28 @@ class HangupNormalDestination(BaseForm):
 class HangupDestination(BaseDestinationForm):
     select_field = 'cause'
 
-    cause = SelectField(l_('Cause'), choices=[
-        ('normal', l_('Normal')),
-        ('busy', l_('Busy')),
-        ('congestion', l_('Congestion'))
-    ])
+    cause = SelectField(
+        l_('Cause'),
+        choices=[
+            ('normal', l_('Normal')),
+            ('busy', l_('Busy')),
+            ('congestion', l_('Congestion')),
+        ],
+    )
     busy = FormField(HangupBusyDestination)
     congestion = FormField(HangupBusyDestination)
     normal = FormField(HangupNormalDestination)
 
 
 class ApplicationCallBackDISADestination(BaseForm):
-
     pin = StringField(
         l_('PIN'),
         [Length(max=40), Regexp(r'^[0-9]+$')],
         render_kw={'type': 'password'},
     )
-    context = StringField(l_('Context'), [InputRequired(), Length(max=39), Regexp(r'^[a-zA-Z0-9_-]+$')])
+    context = StringField(
+        l_('Context'), [InputRequired(), Length(max=79), Regexp(r'^[a-zA-Z0-9_-]+$')]
+    )
 
 
 class ApplicationDISADestination(ApplicationCallBackDISADestination):
@@ -62,18 +63,19 @@ class ApplicationDISADestination(ApplicationCallBackDISADestination):
 
 
 class ApplicationDirectoryDestination(BaseForm):
-
-    context = StringField(l_('Context'), [InputRequired(), Length(max=39), Regexp(r'^[a-zA-Z0-9_-]+$')])
+    context = StringField(
+        l_('Context'), [InputRequired(), Length(max=79), Regexp(r'^[a-zA-Z0-9_-]+$')]
+    )
 
 
 class ApplicationFaxToMailDestination(BaseForm):
-
     email = EmailField(l_('Email'), [InputRequired(), Length(max=80)])
 
 
 class ApplicationVoicemailDestination(BaseForm):
-
-    context = StringField(l_('Context'), [InputRequired(), Length(max=39), Regexp(r'^[a-zA-Z0-9_-]+$')])
+    context = StringField(
+        l_('Context'), [InputRequired(), Length(max=79), Regexp(r'^[a-zA-Z0-9_-]+$')]
+    )
 
 
 class ApplicationDestination(BaseDestinationForm):
@@ -88,7 +90,6 @@ class ApplicationDestination(BaseDestinationForm):
 
 
 class CustomDestination(BaseForm):
-
     command = StringField(validators=[InputRequired(), Length(max=255)])
 
 

@@ -1,5 +1,5 @@
-# Copyright 2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2019-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_menu.classy import register_flaskview
 
@@ -11,8 +11,7 @@ from .view import DhcpView
 dhcp = create_blueprint('dhcp', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']

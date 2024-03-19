@@ -1,5 +1,5 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from flask_menu.classy import register_flaskview
@@ -10,13 +10,12 @@ from wazo_ui.helpers.view import register_listing_url
 
 from .form import CallFilterFuncKeyDestinationForm
 from .service import CallFilterService
-from .view import CallFilterView, CallFilterMemberListingView
+from .view import CallFilterMemberListingView, CallFilterView
 
 call_filter = create_blueprint('call_filter', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
@@ -26,9 +25,15 @@ class Plugin(object):
         register_flaskview(call_filter, CallFilterView)
 
         CallFilterMemberListingView.service = CallFilterService(clients['wazo_confd'])
-        CallFilterMemberListingView.register(call_filter, route_base='/callfilters_listing')
+        CallFilterMemberListingView.register(
+            call_filter, route_base='/callfilters_listing'
+        )
 
-        register_funckey_destination_form('bsfilter', l_('Call Filter'), CallFilterFuncKeyDestinationForm)
-        register_listing_url('bsfilter', 'call_filter.CallFilterMemberListingView:list_json')
+        register_funckey_destination_form(
+            'bsfilter', l_('Call Filter'), CallFilterFuncKeyDestinationForm
+        )
+        register_listing_url(
+            'bsfilter', 'call_filter.CallFilterMemberListingView:list_json'
+        )
 
         core.register_blueprint(call_filter)

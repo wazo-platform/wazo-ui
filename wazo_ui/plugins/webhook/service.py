@@ -1,9 +1,8 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 
-class WebhookService(object):
-
+class WebhookService:
     def __init__(self, webhookd, confd_client):
         self.webhookd = webhookd
         self._confd = confd_client
@@ -25,7 +24,9 @@ class WebhookService(object):
 
     def update(self, resource):
         webhook_id = resource.get('uuid')
-        return self.webhookd.subscriptions.update(webhook_id, self._create_resource(resource))
+        return self.webhookd.subscriptions.update(
+            webhook_id, self._create_resource(resource)
+        )
 
     def list_services(self):
         return self.webhookd.subscriptions.list_services()
@@ -44,6 +45,8 @@ class WebhookService(object):
                 'content_type': resource.get('content_type'),
                 'method': resource.get('method'),
                 'body': resource.get('body', ''),
-                'verify_certificate': str(resource.get('verify_certificate', 'false')).lower()
-            }
+                'verify_certificate': str(
+                    resource.get('verify_certificate', 'false')
+                ).lower(),
+            },
         }

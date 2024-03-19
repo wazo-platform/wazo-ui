@@ -1,10 +1,7 @@
-# Copyright 2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2019-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import (
-    render_template,
-    flash
-)
+from flask import flash, render_template
 from flask_babel import gettext as _
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
@@ -19,7 +16,7 @@ class DhcpView(BaseIPBXHelperView):
     form = DhcpForm
     resource = 'dhcp'
 
-    @menu_item('.ipbx.global_settings.dhcp', l_('Dhcp'), order=1, icon="gear")
+    @menu_item('.ipbx.global_settings.dhcp', l_('Dhcp'), order=1, icon="network-wired")
     def index(self):
         try:
             resource = self.service.get()
@@ -29,8 +26,9 @@ class DhcpView(BaseIPBXHelperView):
 
         resource['network_interfaces'] = ','.join(resource['network_interfaces'])
 
-        return render_template(self._get_template('index'),
-                               form=self.form(data=resource))
+        return render_template(
+            self._get_template('index'), form=self.form(data=resource)
+        )
 
     def post(self):
         form = self.form()

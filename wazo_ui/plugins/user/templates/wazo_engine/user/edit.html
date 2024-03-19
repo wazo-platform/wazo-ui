@@ -2,7 +2,7 @@
 {% set name = resource.firstname ~ (' ' ~ resource.lastname if resource.lastname else '') %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [
+  {{ build_breadcrumbs(current_breadcrumbs + [
     { 'name': name, 'link': url_for('.UserView:get', id=resource.uuid), 'icon': 'user' }
   ]) }}
 {% endblock %}
@@ -27,7 +27,6 @@
 
             {% call build_tab_content_item('user', active=True) %}
               {% call add_default_fields(form=form, submit_value=_('Update')) %}
-                {{ render_field(form.subscription_type) }}
                 {{ render_field(form.firstname) }}
                 {{ render_field(form.lastname) }}
                 {{ render_field(form.caller_id) }}

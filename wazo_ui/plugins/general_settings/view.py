@@ -1,36 +1,29 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 
+from flask import flash, jsonify, redirect, render_template, request, url_for
 from flask_babel import gettext as _
 from flask_babel import lazy_gettext as l_
-from flask import (
-    flash,
-    redirect,
-    request,
-    render_template,
-    url_for,
-    jsonify,
-)
 from flask_classful import route
 from requests.exceptions import HTTPError
 
-from wazo_ui.helpers.menu import menu_item
-from wazo_ui.helpers.view import BaseIPBXHelperView
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     build_select2_response,
     extract_select2_params,
 )
+from wazo_ui.helpers.menu import menu_item
+from wazo_ui.helpers.view import BaseIPBXHelperView
 
 from .form import (
     ConfBridgeGeneralSettingsForm,
     FeaturesGeneralSettingsForm,
     IaxGeneralSettingsForm,
-    SCCPGeneralSettingsForm,
     PJSIPGlobalSettingsForm,
     PJSIPSystemSettingsForm,
+    SCCPGeneralSettingsForm,
     VoicemailGeneralSettingsForm,
 )
 
@@ -70,7 +63,10 @@ class BaseGeneralSettingsView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self.index(form)
 
-        flash(_('%(resource)s: Resource has been updated', resource=self.resource), 'success')
+        flash(
+            _('%(resource)s: Resource has been updated', resource=self.resource),
+            'success',
+        )
         return self._redirect_for('index')
 
     def _map_resources_to_form(self, resource):
@@ -79,8 +75,10 @@ class BaseGeneralSettingsView(BaseIPBXHelperView):
         return form
 
     def _build_options(self, options):
-        return [{'option_key': option_key, 'option_value': option_value} for option_key, option_value in
-                options.items()]
+        return [
+            {'option_key': option_key, 'option_value': option_value}
+            for option_key, option_value in options.items()
+        ]
 
     def _map_form_to_resources(self, form, form_id=None):
         data = form.to_dict()
@@ -92,7 +90,6 @@ class BaseGeneralSettingsView(BaseIPBXHelperView):
 
 
 class BasePJSIPSettingsView(BaseGeneralSettingsView):
-
     def _map_form_to_resources(self, form, form_id=None):
         raw = form.to_dict()['options']
         return {
@@ -100,7 +97,10 @@ class BasePJSIPSettingsView(BaseGeneralSettingsView):
         }
 
     def _map_resources_to_form(self, resource):
-        options = [{'option_key': key, 'option_value': value} for key, value in resource['options'].items()]
+        options = [
+            {'option_key': key, 'option_value': value}
+            for key, value in resource['options'].items()
+        ]
         choices = [(key, key) for key in resource['options'].keys()]
         form = self.form(data={'options': options})
 
@@ -154,13 +154,17 @@ class IaxGeneralSettingsView(BaseGeneralSettingsView):
         return super().index(form)
 
     def _map_resources_to_form(self, resource):
-        resource['general']['options'] = self._build_options(resource['general']['options'])
+        resource['general']['options'] = self._build_options(
+            resource['general']['options']
+        )
         form = self.form(data=resource)
         return form
 
     def _map_form_to_resources(self, form, form_id=None):
         data = form.to_dict()
-        data['general']['options'] = self._map_options_to_resource(data['general']['options'])
+        data['general']['options'] = self._map_options_to_resource(
+            data['general']['options']
+        )
         return data
 
 
@@ -194,13 +198,17 @@ class VoicemailGeneralSettingsView(BaseGeneralSettingsView):
         return super().index(form)
 
     def _map_resources_to_form(self, resource):
-        resource['general']['options'] = self._build_options(resource['general']['options'])
+        resource['general']['options'] = self._build_options(
+            resource['general']['options']
+        )
         form = self.form(data=resource)
         return form
 
     def _populate_form(self, form):
         for zonemessage in form.zonemessages:
-            zonemessage.timezone.choices = self._build_set_choices_timezones(zonemessage)
+            zonemessage.timezone.choices = self._build_set_choices_timezones(
+                zonemessage
+            )
         return form
 
     def _build_set_choices_timezones(self, zonemessage):
@@ -210,7 +218,9 @@ class VoicemailGeneralSettingsView(BaseGeneralSettingsView):
 
     def _map_form_to_resources(self, form, form_id=None):
         data = form.to_dict()
-        data['general']['options'] = self._map_options_to_resource(data['general']['options'])
+        data['general']['options'] = self._map_options_to_resource(
+            data['general']['options']
+        )
         return data
 
 
@@ -229,17 +239,29 @@ class FeaturesGeneralSettingsView(BaseGeneralSettingsView):
         return super().index(form)
 
     def _map_resources_to_form(self, resource):
-        resource['general']['options'] = self._build_options(resource['general']['options'])
-        resource['featuremap']['options'] = self._build_options(resource['featuremap']['options'])
-        resource['applicationmap']['options'] = self._build_options(resource['applicationmap']['options'])
+        resource['general']['options'] = self._build_options(
+            resource['general']['options']
+        )
+        resource['featuremap']['options'] = self._build_options(
+            resource['featuremap']['options']
+        )
+        resource['applicationmap']['options'] = self._build_options(
+            resource['applicationmap']['options']
+        )
         form = self.form(data=resource)
         return form
 
     def _map_form_to_resources(self, form, form_id=None):
         data = form.to_dict()
-        data['general']['options'] = self._map_options_to_resource(data['general']['options'])
-        data['featuremap']['options'] = self._map_options_to_resource(data['featuremap']['options'])
-        data['applicationmap']['options'] = self._map_options_to_resource(data['applicationmap']['options'])
+        data['general']['options'] = self._map_options_to_resource(
+            data['general']['options']
+        )
+        data['featuremap']['options'] = self._map_options_to_resource(
+            data['featuremap']['options']
+        )
+        data['applicationmap']['options'] = self._map_options_to_resource(
+            data['applicationmap']['options']
+        )
         return data
 
 
@@ -258,20 +280,27 @@ class ConfBridgeGeneralSettingsView(BaseGeneralSettingsView):
         return super().index(form)
 
     def _map_resources_to_form(self, resource):
-        resource['wazo_default_user']['options'] = self._build_options(resource['wazo_default_user']['options'])
-        resource['wazo_default_bridge']['options'] = self._build_options(resource['wazo_default_bridge']['options'])
+        resource['wazo_default_user']['options'] = self._build_options(
+            resource['wazo_default_user']['options']
+        )
+        resource['wazo_default_bridge']['options'] = self._build_options(
+            resource['wazo_default_bridge']['options']
+        )
         form = self.form(data=resource)
         return form
 
     def _map_form_to_resources(self, form, form_id=None):
         data = form.to_dict()
-        data['wazo_default_user']['options'] = self._map_options_to_resource(data['wazo_default_user']['options'])
-        data['wazo_default_bridge']['options'] = self._map_options_to_resource(data['wazo_default_bridge']['options'])
+        data['wazo_default_user']['options'] = self._map_options_to_resource(
+            data['wazo_default_user']['options']
+        )
+        data['wazo_default_bridge']['options'] = self._map_options_to_resource(
+            data['wazo_default_bridge']['options']
+        )
         return data
 
 
 class SCCPDocListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         doc = self.service.get()
@@ -282,7 +311,6 @@ class SCCPDocListingView(LoginRequiredView):
 
 
 class PJSIPDocListingView(LoginRequiredView):
-
     def list_json_by_section(self, section):
         params = extract_select2_params(request.args)
         doc = self.service.get().get(section, {}).keys()
@@ -293,7 +321,6 @@ class PJSIPDocListingView(LoginRequiredView):
 
 
 class TimezoneListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         timezones = self.service.list_timezones()['items']

@@ -1,12 +1,8 @@
-# Copyright 2021 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2021-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
-from wtforms.fields import (
-    SubmitField,
-    StringField,
-    HiddenField
-)
+from wtforms.fields import HiddenField, StringField, SubmitField
 from wtforms.validators import InputRequired, Length
 
 from wazo_ui.helpers.form import BaseForm
@@ -25,5 +21,5 @@ class ManagePhonebookForm(BaseForm):
     phone = StringField(l_('Phone'), [InputRequired(), Length(max=80)])
     mobile_phone = StringField(l_('Mobile Phone'), [Length(max=80)])
     fax = StringField(l_('Fax'), [Length(max=80)])
-    phonebook_id = HiddenField()
+    phonebook_uuid = HiddenField()
     submit = SubmitField(l_('Submit'))

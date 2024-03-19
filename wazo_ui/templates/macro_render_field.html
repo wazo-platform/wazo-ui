@@ -110,7 +110,7 @@
 {% macro _wrap_input_with_div(field, divclass, with_icon) %}
   {% if with_icon %}
     <div class="form-group has-feedback" id="form-group-input-{{ field.name }}">
-      <span class="form-control-feedback glyphicon glyphicon-{{ with_icon }}"></span>
+      <span class="form-control-feedback glyphicon glyphicon-{{ with_icon }}"></span>
       {{ caller() }}
     </div>
 

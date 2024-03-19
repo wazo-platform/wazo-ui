@@ -1,22 +1,22 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from random import randint
 
-from flask import Response, request, jsonify, render_template, redirect, url_for, flash
+from flask import Response, flash, jsonify, redirect, render_template, request, url_for
 from flask_babel import lazy_gettext as l_
-from requests.exceptions import HTTPError
 from flask_classful import route
+from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
+    build_select2_response,
     extract_select2_params,
-    build_select2_response
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView, IndexAjaxHelperViewMixin
 
-from .form import UserForm, ImportCSVForm
+from .form import ImportCSVForm, UserForm
 
 
 class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
@@ -25,8 +25,20 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
     resource = 'user'
 
     @menu_item('.ipbx', l_('Telephony'), multi_tenant=True)
-    @menu_item('.ipbx.user_management', l_('User Management'), order=1, icon="users", multi_tenant=True)
-    @menu_item('.ipbx.user_management.users', l_('Users'), order=1, icon="user", multi_tenant=True)
+    @menu_item(
+        '.ipbx.user_management',
+        l_('User Management'),
+        order=1,
+        icon="users",
+        multi_tenant=True,
+    )
+    @menu_item(
+        '.ipbx.user_management.users',
+        l_('Users'),
+        order=1,
+        icon="user",
+        multi_tenant=True,
+    )
     def index(self):
         return super().index()
 
@@ -41,11 +53,13 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         form = self._populate_form(form)
         import_csv_form = self.import_csv_form()
 
-        return render_template(self._get_template('list'),
-                               form=form,
-                               resource_list=resource_list,
-                               import_csv_form=import_csv_form,
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('list'),
+            form=form,
+            resource_list=resource_list,
+            import_csv_form=import_csv_form,
+            listing_urls=self.listing_urls,
+        )
 
     @route('/import_csv', methods=['POST'])
     def import_csv(self):
@@ -61,7 +75,8 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         return Response(
             content,
             mimetype="text/csv",
-            headers={"Content-disposition": "attachment; filename=users.csv"})
+            headers={"Content-disposition": "attachment; filename=users.csv"},
+        )
 
     def update_csv(self):
         form = self.import_csv_form()
@@ -70,19 +85,20 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         flash('Resources have been updated', 'success')
         return self._redirect_for('index')
 
-    @route('/put/<id>', methods=['POST'])
-    def put(self, id):
-        super().put(id)
-        return self._redirect_for('index')
-
     def _map_resources_to_form(self, resource):
-        resource_lines = [self.service.get_line(line['id']) for line in resource['lines']]
+        resource_lines = [
+            self.service.get_line(line['id']) for line in resource['lines']
+        ]
         lines = self._build_lines(resource_lines)
         groups = [group['id'] for group in resource['groups']]
         resource_funckeys = self.service.list_funckeys(resource['uuid'])
         funckeys = self._build_funckeys(resource_funckeys)
-        resource['call_permission_ids'] = [call_permission['id'] for call_permission in resource['call_permissions']]
-        form = self.form(data=resource, lines=lines, group_ids=groups, funckeys=funckeys)
+        resource['call_permission_ids'] = [
+            call_permission['id'] for call_permission in resource['call_permissions']
+        ]
+        form = self.form(
+            data=resource, lines=lines, group_ids=groups, funckeys=funckeys
+        )
         return form
 
     def _build_funckeys(self, funckeys):
@@ -92,19 +108,31 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
 
     def _populate_form(self, form):
         form.music_on_hold.choices = self._build_set_choices_moh(form)
-        form.outgoing_caller_id.choices = self._build_set_choices_outgoing_caller_id(form)
+        form.outgoing_caller_id.choices = self._build_set_choices_outgoing_caller_id(
+            form
+        )
         for form_line in form.lines:
-            form_line.template_uuids.choices = self._build_set_choices_templates(form_line)
-            form_line.application.form.uuid.choices = self._build_set_choices_application(form_line)
+            form_line.template_uuids.choices = self._build_set_choices_templates(
+                form_line
+            )
+            form_line.application.form.uuid.choices = (
+                self._build_set_choices_application(form_line)
+            )
             form_line.registrar.choices = self._build_set_choices_registrar(form_line)
             form_line.device.choices = self._build_set_choices_device(form_line)
             form_line.context.choices = self._build_set_choices_context(form_line)
             for form_extension in form_line.extensions:
-                form_extension.exten.choices = self._build_set_choices_extension(form_extension)
+                form_extension.exten.choices = self._build_set_choices_extension(
+                    form_extension
+                )
         form.group_ids.choices = self._build_set_choices_groups(form.groups)
-        form.schedules[0].form.id.choices = self._build_set_choices_schedule(form.schedules[0])
+        form.schedules[0].form.id.choices = self._build_set_choices_schedule(
+            form.schedules[0]
+        )
         form.voicemail.form.id.choices = self._build_set_choices_voicemail(form)
-        form.call_permission_ids.choices = self._build_set_choices_callpermissions(form.call_permissions)
+        form.call_permission_ids.choices = self._build_set_choices_callpermissions(
+            form.call_permissions
+        )
         return form
 
     def _build_set_choices_templates(self, line):
@@ -153,13 +181,14 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
     def _build_set_choices_moh(self, user):
         if not user.music_on_hold.data or user.music_on_hold.data == 'None':
             return []
-        return [(user.music_on_hold.data, user.music_on_hold.data)]
+        moh_object = self.service.get_music_on_hold(user.music_on_hold.data)
+        if moh_object is None:
+            return []
+        moh_label = moh_object['label']
+        return [(user.music_on_hold.data, f"{moh_label} ({user.music_on_hold.data})")]
 
     def _build_set_choices_outgoing_caller_id(self, user):
-        choices = [
-            ('default', l_('Default')),
-            ('anonymous', l_('Anonymous'))
-        ]
+        choices = [('default', l_('Default')), ('anonymous', l_('Anonymous'))]
         caller_id = user.outgoing_caller_id.data
         if not caller_id or caller_id == 'None':
             return choices
@@ -187,7 +216,10 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         return [(user.voicemail.form.id.data, user.voicemail.form.name.data)]
 
     def _build_set_choices_callpermissions(self, call_permissions):
-        return [(call_permission.form.id.data, call_permission.form.name.data) for call_permission in call_permissions]
+        return [
+            (call_permission.form.id.data, call_permission.form.name.data)
+            for call_permission in call_permissions
+        ]
 
     def _build_lines(self, lines):
         results = []
@@ -197,9 +229,13 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
             template_uuids = []
             if line.get('endpoint_sip'):
                 protocol = 'sip'
-                endpoint_sip = self.service.get_endpoint_sip(line['endpoint_sip']['uuid'])
+                endpoint_sip = self.service.get_endpoint_sip(
+                    line['endpoint_sip']['uuid']
+                )
                 name = endpoint_sip['name']
-                template_uuids = [template['uuid'] for template in endpoint_sip['templates']]
+                template_uuids = [
+                    template['uuid'] for template in endpoint_sip['templates']
+                ]
                 endpoint_sip_uuid = line['endpoint_sip']['uuid']
             elif line.get('endpoint_sccp'):
                 protocol = 'sccp'
@@ -211,19 +247,23 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
                 endpoint_custom_id = line['endpoint_custom']['id']
 
             device = line['device_id'] if line['device_id'] else ''
-            results.append({'protocol': protocol,
-                            'template_uuids': template_uuids,
-                            'name': name,
-                            'device': device,
-                            'position': line['position'],
-                            'context': line['context'],
-                            'id': line['id'],
-                            'application': line.get('application'),
-                            'registrar': line.get('registrar'),
-                            'extensions': line['extensions'],
-                            'endpoint_sip_uuid': endpoint_sip_uuid,
-                            'endpoint_sccp_id': endpoint_sccp_id,
-                            'endpoint_custom_id': endpoint_custom_id})
+            results.append(
+                {
+                    'protocol': protocol,
+                    'template_uuids': template_uuids,
+                    'name': name,
+                    'device': device,
+                    'position': line['position'],
+                    'context': line['context'],
+                    'id': line['id'],
+                    'application': line.get('application'),
+                    'registrar': line.get('registrar'),
+                    'extensions': line['extensions'],
+                    'endpoint_sip_uuid': endpoint_sip_uuid,
+                    'endpoint_sccp_id': endpoint_sccp_id,
+                    'endpoint_custom_id': endpoint_custom_id,
+                }
+            )
         return results
 
     def _map_form_to_resources_post(self, form):
@@ -238,16 +278,18 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         resource['groups'] = self._map_form_to_resource_group(form)
         resource['lines'] = self._map_form_to_resource_line(form)
         resource['funckeys'] = self._map_form_to_resource_funckey(form)
-        resource['call_permissions'] = [{'id': call_permission_id} for call_permission_id in
-                                        form.call_permission_ids.data]
-        resource['music_on_hold'] = form.music_on_hold.data or None
+        resource['call_permissions'] = [
+            {'id': call_permission_id}
+            for call_permission_id in form.call_permission_ids.data
+        ]
+        resource['music_on_hold'] = self._convert_empty_string_to_none(
+            form.music_on_hold.data
+        )
 
         return resource
 
     def _map_form_to_resource_funckey(self, form):
-        funckeys = {
-            'keys': {}
-        }
+        funckeys = {'keys': {}}
         for funckey in form.funckeys:
             funckey = funckey.to_dict()
             funckeys['keys'][funckey.pop('digit')] = funckey
@@ -263,24 +305,35 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
             line = line.to_dict()
             if request.method == 'POST' and not line.get('context'):
                 continue
-            result = {'id': int(line['id']) if line['id'] else None,
-                      'context': line.get('context'),
-                      'position': line['position'],
-                      'device_id': line.get('device')}
+            result = {
+                'id': int(line['id']) if line['id'] else None,
+                'context': line.get('context'),
+                'position': line['position'],
+                'device_id': line.get('device'),
+            }
 
             if line['protocol'] == 'sip':
                 templates = [{'uuid': uuid} for uuid in line.get('template_uuids', [])]
-                result['endpoint_sip'] = {'uuid': line['endpoint_sip_uuid'], 'templates': templates}
+                result['endpoint_sip'] = {
+                    'uuid': line['endpoint_sip_uuid'],
+                    'templates': templates,
+                }
             elif line['protocol'] == 'sccp':
                 result['endpoint_sccp'] = {'id': line['endpoint_sccp_id']}
             elif line['protocol'] == 'custom':
-                result['endpoint_custom'] = {'id': line['endpoint_custom_id'],
-                                             'interface': str(randint(0, 99999999))}  # TODO: to improve ...
+                result['endpoint_custom'] = {
+                    'id': line['endpoint_custom_id'],
+                    'interface': str(randint(0, 99999999)),
+                }  # TODO: to improve ...
 
             if line['extensions'][0].get('exten') and line.get('context'):
-                result['extensions'] = [{'id': line['extensions'][0]['id'],
-                                         'exten': line['extensions'][0]['exten'],
-                                         'context': line['context']}]
+                result['extensions'] = [
+                    {
+                        'id': line['extensions'][0]['id'],
+                        'exten': line['extensions'][0]['exten'],
+                        'context': line['context'],
+                    }
+                ]
 
             if line['application'].get('uuid'):
                 result['application'] = line['application']
@@ -298,7 +351,6 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
 
 
 class UserDestinationView(LoginRequiredView):
-
     def list_json(self):
         return self._list_json('id')
 
@@ -310,8 +362,8 @@ class UserDestinationView(LoginRequiredView):
         users = self.service.list(**params)
         results = []
         for user in users['items']:
-            if user.get('lastname'):
-                text = '{} {}'.format(user['firstname'], user['lastname'])
+            if last_name := user.get('lastname'):
+                text = f'{user["firstname"]} {last_name}'
             else:
                 text = user['firstname']
 

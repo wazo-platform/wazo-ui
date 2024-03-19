@@ -1,13 +1,13 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import request, jsonify
+from flask import jsonify, request
 from flask_babel import lazy_gettext as l_
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
+    build_select2_response,
     extract_select2_params,
-    build_select2_response
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -40,9 +40,10 @@ class AgentView(BaseIPBXHelperView):
 
 
 class AgentListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         agents = self.service.list(**params)
-        results = [{'id': agent['id'], 'text': agent['number']} for agent in agents['items']]
+        results = [
+            {'id': agent['id'], 'text': agent['number']} for agent in agents['items']
+        ]
         return jsonify(build_select2_response(results, agents['total'], params))

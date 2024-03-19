@@ -1,5 +1,5 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from flask_menu.classy import register_flaskview
@@ -10,13 +10,12 @@ from wazo_ui.helpers.view import register_listing_url
 
 from .form import SoundDestinationForm
 from .service import SoundService
-from .view import SoundView, SoundListingView, SoundFileView
+from .view import SoundFileView, SoundListingView, SoundView
 
 sound = create_blueprint('sound', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']

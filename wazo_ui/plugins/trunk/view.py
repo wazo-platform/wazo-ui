@@ -1,19 +1,18 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import jsonify, request, render_template, flash
+from flask import flash, jsonify, render_template, request
 from flask_babel import lazy_gettext as l_
 from requests.exceptions import HTTPError
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
+    build_select2_response,
     extract_select2_params,
-    build_select2_response
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
-
-from wazo_ui.plugins.sip_template.view import SECTIONS, EXCLUDE_CHOICE_SECTIONS
+from wazo_ui.plugins.sip_template.view import EXCLUDE_CHOICE_SECTIONS, SECTIONS
 
 from .form import TrunkForm
 
@@ -22,7 +21,9 @@ class TrunkView(BaseIPBXHelperView):
     form = TrunkForm
     resource = 'trunk'
 
-    @menu_item('.ipbx.call_management.trunks', l_('Trunks'), icon="server", multi_tenant=True)
+    @menu_item(
+        '.ipbx.call_management.trunks', l_('Trunks'), icon="server", multi_tenant=True
+    )
     def index(self):
         return super().index()
 
@@ -30,9 +31,11 @@ class TrunkView(BaseIPBXHelperView):
         if protocol not in ['sip', 'iax', 'custom']:
             return self._index()
 
-        return render_template(self._get_template('protocol_{}'.format(protocol)),
-                               form=self.form(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template(f'protocol_{protocol}'),
+            form=self.form(),
+            listing_urls=self.listing_urls,
+        )
 
     def post(self):
         form = self.form()
@@ -49,19 +52,26 @@ class TrunkView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self._new(form)
 
-        flash(l_('%(resource)s: Resource has been created', resource=self.resource), 'success')
+        flash(
+            l_('%(resource)s: Resource has been created', resource=self.resource),
+            'success',
+        )
         return self._redirect_for('index')
 
     def _map_resources_to_form(self, resource):
         if resource['endpoint_sip']:
             resource['protocol'] = 'sip'
-            endpoint_sip = self.service.get_endpoint_sip(resource['endpoint_sip']['uuid'])
+            endpoint_sip = self.service.get_endpoint_sip(
+                resource['endpoint_sip']['uuid']
+            )
             choices = []
             for section in SECTIONS:
                 for key, _ in endpoint_sip[section]:
                     choices.append((key, key))
                 endpoint_sip[section] = self._build_options(endpoint_sip[section])
-            endpoint_sip['template_uuids'] = [template['uuid'] for template in endpoint_sip['templates']]
+            endpoint_sip['template_uuids'] = [
+                template['uuid'] for template in endpoint_sip['templates']
+            ]
             resource['endpoint_sip'] = endpoint_sip
         elif resource['endpoint_iax']:
             resource['protocol'] = 'iax'
@@ -69,11 +79,15 @@ class TrunkView(BaseIPBXHelperView):
             self._build_host_for_endpoint(endpoint_iax)
             endpoint_iax['options'] = self._build_options(endpoint_iax['options'])
             if resource['register_iax']:
-                resource['register_iax'] = self.service.get_register_iax(resource['register_iax']['id'])
+                resource['register_iax'] = self.service.get_register_iax(
+                    resource['register_iax']['id']
+                )
             resource['endpoint_iax'] = endpoint_iax
         elif resource['endpoint_custom']:
             resource['protocol'] = 'custom'
-            endpoint_custom = self.service.get_endpoint_custom(resource['endpoint_custom']['id'])
+            endpoint_custom = self.service.get_endpoint_custom(
+                resource['endpoint_custom']['id']
+            )
             resource['endpoint_custom'] = endpoint_custom
 
         form = self.form(data=resource)
@@ -99,8 +113,12 @@ class TrunkView(BaseIPBXHelperView):
 
     def _populate_form(self, form):
         form.context.choices = self._build_set_choices_context(form.context)
-        form.endpoint_sip.transport.form.uuid.choices = self._build_set_choices_transport(form.endpoint_sip)
-        form.endpoint_sip.template_uuids.choices = self._build_set_choices_templates(form.endpoint_sip.templates)
+        form.endpoint_sip.transport.form.uuid.choices = (
+            self._build_set_choices_transport(form.endpoint_sip)
+        )
+        form.endpoint_sip.template_uuids.choices = self._build_set_choices_templates(
+            form.endpoint_sip.templates
+        )
         return form
 
     def _build_set_choices_context(self, context_form):
@@ -141,18 +159,32 @@ class TrunkView(BaseIPBXHelperView):
                 sip['transport'] = None
 
             template_uuids = form.endpoint_sip.template_uuids.data
-            sip['templates'] = [{'uuid': template_uuid} for template_uuid in template_uuids]
+            sip['templates'] = [
+                {'uuid': template_uuid} for template_uuid in template_uuids
+            ]
 
-            del resource['endpoint_custom'], resource['endpoint_iax'], resource['register_iax']
+            del (
+                resource['endpoint_custom'],
+                resource['endpoint_iax'],
+                resource['register_iax'],
+            )
         elif not self._iax_is_empty(resource['endpoint_iax']):
-            resource['endpoint_iax'] = self._map_form_to_resource_endpoint(resource['endpoint_iax'])
+            resource['endpoint_iax'] = self._map_form_to_resource_endpoint(
+                resource['endpoint_iax']
+            )
             del resource['endpoint_custom'], resource['endpoint_sip']
-            if (not resource['register_iax']['enabled']
-                    and not resource['register_iax']['remote_host']):
+            if (
+                not resource['register_iax']['enabled']
+                and not resource['register_iax']['remote_host']
+            ):
                 resource['register_iax'] = None
 
         elif resource['endpoint_custom'] is not None:
-            del resource['endpoint_sip'], resource['endpoint_iax'], resource['register_iax']
+            del (
+                resource['endpoint_sip'],
+                resource['endpoint_iax'],
+                resource['register_iax'],
+            )
 
         return resource
 
@@ -163,7 +195,10 @@ class TrunkView(BaseIPBXHelperView):
         if endpoint['host'] == 'static':
             endpoint['host'] = endpoint.pop('host_value')
 
-        endpoint['options'] = [[option['option_key'], option['option_value']] for option in endpoint['options']]
+        endpoint['options'] = [
+            [option['option_key'], option['option_value']]
+            for option in endpoint['options']
+        ]
         return endpoint
 
     def _sip_is_empty(self, sip):
@@ -180,7 +215,6 @@ class TrunkView(BaseIPBXHelperView):
 
 
 class TrunkListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         trunks = self.service.list(**params)
@@ -191,10 +225,10 @@ class TrunkListingView(LoginRequiredView):
         results = []
         for trunk in trunks:
             if trunk.get('endpoint_custom'):
-                text = '{} ({})'.format(trunk['endpoint_custom']['interface'], 'custom')
+                text = f'{trunk["endpoint_custom"]["interface"]} ({"custom"})'
             if trunk.get('endpoint_sip'):
-                text = '{} ({})'.format(trunk['endpoint_sip']['label'], 'sip')
+                text = f'{trunk["endpoint_sip"]["label"]} ({"sip"})'
             if trunk.get('endpoint_iax'):
-                text = '{} ({})'.format(trunk['endpoint_iax']['name'], 'iax')
+                text = f'{trunk["endpoint_iax"]["name"]} ({"iax"})'
             results.append({'id': trunk['id'], 'text': text})
         return results

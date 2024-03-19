@@ -1,19 +1,24 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask import request, jsonify, redirect, url_for, render_template, flash
-from flask_classful import route
+import logging
+
+from flask import flash, jsonify, redirect, render_template, request, url_for
 from flask_babel import lazy_gettext as l_
+from flask_classful import route
 from requests.exceptions import HTTPError
-from wazo_ui.helpers.menu import menu_item
-from wazo_ui.helpers.view import BaseIPBXHelperView
+
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
     build_select2_response,
-    extract_select2_params
+    extract_select2_params,
 )
+from wazo_ui.helpers.menu import menu_item
+from wazo_ui.helpers.view import BaseIPBXHelperView
 
 from .form import DirdSourceForm
+
+logger = logging.getLogger(__name__)
 
 
 class DirdSourceView(BaseIPBXHelperView):
@@ -28,7 +33,7 @@ class DirdSourceView(BaseIPBXHelperView):
         try:
             resource_list = {"items": []}
             for source in self.service.list()['items']:
-                source['get_url'] = "{}/".format(source['backend'])
+                source['get_url'] = f"{source['backend']}/"
                 resource_list['items'].append(source)
             backend_list = self.service.list_backends()
         except HTTPError as error:
@@ -38,12 +43,14 @@ class DirdSourceView(BaseIPBXHelperView):
         form = form or self.form()
         form = self._populate_form(form)
 
-        return render_template(self._get_template('list'),
-                               form=form,
-                               resource_list=resource_list,
-                               backend_list=backend_list,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template('list'),
+            form=form,
+            resource_list=resource_list,
+            backend_list=backend_list,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
 
     @route('/new/<backend>', methods=['GET'])
     def new(self, backend):
@@ -92,7 +99,7 @@ class DirdSourceView(BaseIPBXHelperView):
                 'searched_columns': [
                     {'value': 'givenName'},
                     {'value': 'sn'},
-                ]
+                ],
             },
             'csv_ws_office': {
                 'timeout': 10,
@@ -120,7 +127,6 @@ class DirdSourceView(BaseIPBXHelperView):
                     {'key': 'phone', 'value': '{numbers[0]}'},
                     {'key': 'phone_mobile', 'value': '{numbers_by_label[mobile]}'},
                 ],
-
             },
             'phonebook_config': {
                 'searched_columns': [
@@ -144,7 +150,7 @@ class DirdSourceView(BaseIPBXHelperView):
             'wazo_config': {
                 'auth': dict(
                     key_file='/var/lib/wazo-auth-keys/wazo-dird-wazo-backend-key.yml',
-                    **default_auth_config
+                    **default_auth_config,
                 ),
                 'confd': default_confd_config,
                 'searched_columns': [
@@ -161,14 +167,17 @@ class DirdSourceView(BaseIPBXHelperView):
                     {'key': 'phone', 'value': '{exten}'},
                     {'key': 'reverse', 'value': '{firstname} {lastname}'},
                 ],
-            }
+            },
         }
         form = self.form(backend=backend, data=default)
 
-        return render_template(self._get_template(backend=backend),
-                               form_mode='add',
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               form=form)
+        return render_template(
+            self._get_template(backend=backend),
+            form_mode='add',
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            form=form,
+            listing_urls=self.listing_urls,
+        )
 
     @route('/get/<backend>/<id>')
     def get(self, backend, id):
@@ -184,11 +193,13 @@ class DirdSourceView(BaseIPBXHelperView):
         form = form or self._map_resources_to_form(resource)
         form = self._populate_form(form)
 
-        return render_template(self._get_template(backend=backend),
-                               form=form,
-                               resource=resource,
-                               current_breadcrumbs=self._get_current_breadcrumbs(),
-                               listing_urls=self.listing_urls)
+        return render_template(
+            self._get_template(backend=backend),
+            form=form,
+            resource=resource,
+            current_breadcrumbs=self._get_current_breadcrumbs(),
+            listing_urls=self.listing_urls,
+        )
 
     def post(self):
         form = self.form()
@@ -223,21 +234,50 @@ class DirdSourceView(BaseIPBXHelperView):
             self._flash_http_error(error)
             return self._get(backend, id, form)
 
-        flash(l_('%(resource)s: Resource has been updated', resource=self.resource), 'success')
+        flash(
+            l_('%(resource)s: Resource has been updated', resource=self.resource),
+            'success',
+        )
         return self._redirect_referrer_or('index')
 
     @route('/delete/<backend>/<id>', methods=['GET'])
     def delete(self, backend, id):
         try:
             self.service.delete(backend, id)
-            flash(l_('%(resource)s: Resource %(id)s has been deleted', resource=self.resource, id=id), 'success')
+            flash(
+                l_(
+                    '%(resource)s: Resource %(id)s has been deleted',
+                    resource=self.resource,
+                    id=id,
+                ),
+                'success',
+            )
         except HTTPError as error:
             self._flash_http_error(error)
 
         return self._redirect_referrer_or('index')
 
+    def _populate_form(self, form):
+        if form.backend.data == 'phonebook':
+            choices = self._build_set_choices_phonebook(form)
+            form.phonebook_config.phonebook_uuid.choices = choices
+        return form
+
+    def _build_set_choices_phonebook(self, source):
+        phonebook_uuid = source.phonebook_config.phonebook_uuid.data
+        if not phonebook_uuid or phonebook_uuid == 'None':
+            return []
+        phonebook_name = source.phonebook_config.phonebook_name.data
+        logger.debug(
+            'phonebook selected: uuid=%s, name=%s',
+            phonebook_uuid,
+            phonebook_name,
+        )
+        return [(phonebook_uuid, phonebook_name)]
+
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
+        logger.debug('resource: %s', resource)
         backend = resource['backend']
         config_name = backend + '_config'
 
@@ -245,30 +285,43 @@ class DirdSourceView(BaseIPBXHelperView):
             if not resource[config_name]['confd']['timeout']:
                 del resource[config_name]['confd']['timeout']
 
-        if 'auth' in resource[config_name] and backend != 'office365' and backend != 'google':
+        if (
+            'auth' in resource[config_name]
+            and backend != 'office365'
+            and backend != 'google'
+        ):
             if not resource[config_name]['auth']['timeout']:
                 del resource[config_name]['auth']['timeout']
 
         if 'format_columns' in resource[config_name]:
-            resource[config_name]['format_columns'] = {option['key']: option['value'] for option in
-                                                       resource[config_name]['format_columns']}
+            resource[config_name]['format_columns'] = {
+                option['key']: option['value']
+                for option in resource[config_name]['format_columns']
+            }
 
         if 'searched_columns' in resource[config_name]:
-            resource[config_name]['searched_columns'] = [option['value'] for option in
-                                                         resource[config_name]['searched_columns']]
+            resource[config_name]['searched_columns'] = [
+                option['value'] for option in resource[config_name]['searched_columns']
+            ]
 
         if 'first_matched_columns' in resource[config_name]:
-            resource[config_name]['first_matched_columns'] = [option['value'] for option in
-                                                              resource[config_name]['first_matched_columns']]
+            resource[config_name]['first_matched_columns'] = [
+                option['value']
+                for option in resource[config_name]['first_matched_columns']
+            ]
 
         if 'delimiter' in resource[config_name]:
             resource[config_name]['separator'] = resource[config_name]['delimiter']
 
         if 'prefix_' in resource[config_name].get('auth', {}):
-            resource[config_name]['auth']['prefix'] = resource[config_name]['auth'].pop('prefix_')
+            resource[config_name]['auth']['prefix'] = resource[config_name]['auth'].pop(
+                'prefix_'
+            )
 
         if 'prefix_' in resource[config_name].get('confd', {}):
-            resource[config_name]['confd']['prefix'] = resource[config_name]['confd'].pop('prefix_')
+            resource[config_name]['confd']['prefix'] = resource[config_name][
+                'confd'
+            ].pop('prefix_')
 
         # Handle `verify_certificate` for office 365 or google that can be True, False or the value of certificate_path
         if backend in ('office365', 'google', 'conference', 'wazo'):
@@ -306,22 +359,30 @@ class DirdSourceView(BaseIPBXHelperView):
         resource[config_name] = resource
 
         if 'format_columns' in resource[config_name]:
-            resource[config_name]['format_columns'] = [{'key': key, 'value': val} for (key, val) in
-                                                       resource[config_name]['format_columns'].items()]
+            resource[config_name]['format_columns'] = [
+                {'key': key, 'value': val}
+                for (key, val) in resource[config_name]['format_columns'].items()
+            ]
 
         if 'searched_columns' in resource[config_name]:
-            resource[config_name]['searched_columns'] = [{'value': option} for option in
-                                                         resource[config_name]['searched_columns']]
+            resource[config_name]['searched_columns'] = [
+                {'value': option}
+                for option in resource[config_name]['searched_columns']
+            ]
 
         if 'first_matched_columns' in resource[config_name]:
-            resource[config_name]['first_matched_columns'] = [{'value': option} for option in
-                                                              resource[config_name]['first_matched_columns']]
+            resource[config_name]['first_matched_columns'] = [
+                {'value': option}
+                for option in resource[config_name]['first_matched_columns']
+            ]
 
         if 'prefix' in resource[config_name].get('auth', {}):
-            resource[config_name]['auth']['prefix_'] = resource[config_name]['auth'].pop('prefix')
+            prefix = resource[config_name]['auth'].pop('prefix')
+            resource[config_name]['auth']['prefix_'] = prefix
 
         if 'prefix' in resource[config_name].get('confd', {}):
-            resource[config_name]['confd']['prefix_'] = resource[config_name]['confd'].pop('prefix')
+            prefix = resource[config_name]['confd'].pop('prefix')
+            resource[config_name]['confd']['prefix_'] = prefix
 
         # Handle `verify_certificate` for office 365 or google that can be True, False or the value of certificate_path
         if backend in ('office365', 'google', 'conference', 'wazo'):
@@ -335,7 +396,9 @@ class DirdSourceView(BaseIPBXHelperView):
             resource[config_name]['auth']['verify_certificate'] = verify
 
         if backend in ('conference', 'wazo'):
-            verify_certificate = resource[config_name]['confd'].get('verify_certificate')
+            verify_certificate = resource[config_name]['confd'].get(
+                'verify_certificate'
+            )
             if verify_certificate in (True, False):
                 verify = verify_certificate
             else:
@@ -351,21 +414,17 @@ class DirdSourceView(BaseIPBXHelperView):
         blueprint = request.blueprint.replace('.', '/')
 
         if not type_:
-            return '{blueprint}/form/form_{backend}.html'.format(
-                blueprint=blueprint,
-                backend=backend
-            )
+            return f'{blueprint}/form/form_{backend}.html'
         else:
-            return '{blueprint}/{type_}.html'.format(
-                blueprint=blueprint,
-                type_=type_
-            )
+            return f'{blueprint}/{type_}.html'
 
 
 class DirdSourceListingView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         sources = self.service.list()
-        results = [{'id': source['uuid'], 'text': source['name']} for source in sources['items']]
+        results = [
+            {'id': source['uuid'], 'text': source['name']}
+            for source in sources['items']
+        ]
         return jsonify(build_select2_response(results, sources['total'], params))

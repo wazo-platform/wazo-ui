@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs([
+  {{ build_breadcrumbs([
     { 'name': _('Rtp'), 'link': url_for('.RtpView:index'), 'icon': 'volume-off' }
   ]) }}
 {% endblock %}

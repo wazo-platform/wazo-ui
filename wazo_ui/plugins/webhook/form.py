@@ -1,15 +1,15 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
-    SubmitField,
-    StringField,
-    TextAreaField,
-    HiddenField,
     BooleanField,
+    HiddenField,
+    SelectField,
     SelectMultipleField,
-    SelectField
+    StringField,
+    SubmitField,
+    TextAreaField,
 )
 from wtforms.validators import InputRequired, Length
 
@@ -18,7 +18,9 @@ from wazo_ui.helpers.form import BaseForm
 
 class WebhookForm(BaseForm):
     name = StringField(l_('Display name'), [Length(max=100)])
-    events = SelectMultipleField(l_('Event Name'), [InputRequired(), Length(max=128)], choices=[])
+    events = SelectMultipleField(
+        l_('Event Name'), [InputRequired(), Length(max=128)], choices=[]
+    )
     services = SelectField(l_('Services'), choices=[])
     events_user_uuid = HiddenField()
     user_uuid = SelectField(l_('User'), choices=[])
@@ -33,10 +35,12 @@ class WebhookFormHTTP(WebhookForm):
             ('get', l_('GET')),
             ('put', l_('PUT')),
             ('delete', l_('DELETE')),
-            ('head', l_('HEAD'))
-        ]
+            ('head', l_('HEAD')),
+        ],
     )
-    content_type = StringField(l_('Content Type'), [Length(max=100)], default='application/json')
+    content_type = StringField(
+        l_('Content Type'), [Length(max=100)], default='application/json'
+    )
     verify_certificate = BooleanField(l_('Verify Certificate'), default=False)
     body = TextAreaField(l_('Body'))
     submit = SubmitField(l_('Submit'))

@@ -1,28 +1,24 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 import os
-
 from datetime import timedelta
 
 import requests
-from requests.exceptions import HTTPError
-
 from cheroot import wsgi
-from flask import Flask
-from flask import request, session, url_for
+from flask import Flask, request, session, url_for
 from flask_babel import Babel
+from flask_login import LoginManager
 from flask_menu import Menu
 from flask_session import Session
-from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from pkg_resources import iter_entry_points, resource_filename, resource_isdir
-from werkzeug.contrib.fixers import ProxyFix
-
+from requests.exceptions import HTTPError
+from wazo_auth_client import Client as AuthClient
+from werkzeug.middleware.proxy_fix import ProxyFix
 from xivo import http_helpers
 from xivo.http_helpers import ReverseProxied
-from wazo_auth_client import Client as AuthClient
 
 from .errors import configure_error_handlers
 from .user import UserUI
@@ -35,8 +31,7 @@ logger = logging.getLogger(__name__)
 app = Flask('wazo_ui')
 
 
-class Server():
-
+class Server:
     def __init__(self, global_config):
         self.config = global_config['http']
         http_helpers.add_logger(app, logger)
@@ -44,7 +39,9 @@ class Server():
         app.after_request(http_helpers.log_request_hide_token)
 
         app.secret_key = os.urandom(24)
-        app.permanent_session_lifetime = timedelta(seconds=global_config['session_lifetime'])
+        app.permanent_session_lifetime = timedelta(
+            seconds=global_config['session_lifetime']
+        )
         app.config['amid'] = global_config.get('amid', {})
         app.config['auth'] = global_config.get('auth', {})
         app.config['call-logd'] = global_config.get('call-logd', {})
@@ -75,8 +72,7 @@ class Server():
         bind_addr = (self.config['listen'], self.config['port'])
 
         wsgi_app = ReverseProxied(ProxyFix(wsgi.WSGIPathInfoDispatcher({'/': app})))
-        self.server = wsgi.WSGIServer(bind_addr=bind_addr,
-                                      wsgi_app=wsgi_app)
+        self.server = wsgi.WSGIServer(bind_addr=bind_addr, wsgi_app=wsgi_app)
         if self.config['certificate'] and self.config['private_key']:
             logger.warning(
                 'Using service SSL configuration is deprecated. Please use NGINX instead.'
@@ -88,15 +84,12 @@ class Server():
             'WSGIServer starting... uid: %s, listen: %s:%s',
             os.getuid(),
             bind_addr[0],
-            bind_addr[1]
+            bind_addr[1],
         )
         for route in http_helpers.list_routes(app):
             logger.debug(route)
 
-        try:
-            self.server.start()
-        except KeyboardInterrupt:
-            self.server.stop()
+        self.server.start()
 
     def stop(self):
         if self.server:
@@ -142,7 +135,9 @@ class Server():
         babel = Babel()
         babel.init_app(app)
         app.config['BABEL_DEFAULT_LOCALE'] = BABEL_DEFAULT_LOCALE
-        app.config['BABEL_TRANSLATION_DIRECTORIES'] = ';'.join(self._get_translation_directories(enabled_plugins))
+        app.config['BABEL_TRANSLATION_DIRECTORIES'] = ';'.join(
+            self._get_translation_directories(enabled_plugins)
+        )
 
         @babel.localeselector
         def get_locale():
@@ -157,8 +152,11 @@ class Server():
     def _get_translation_directories(self, enabled_plugins):
         main_translation_directory = 'translations'
         result = [main_translation_directory]
-        entry_points = (e for e in iter_entry_points(group='wazo_ui.plugins')
-                        if e.name in enabled_plugins)
+        entry_points = (
+            e
+            for e in iter_entry_points(group='wazo_ui.plugins')
+            if e.name in enabled_plugins
+        )
         for ep in entry_points:
             if resource_isdir(ep.module_name, TRANSLATION_DIRECTORY):
                 result.append(resource_filename(ep.module_name, TRANSLATION_DIRECTORY))
@@ -166,7 +164,7 @@ class Server():
 
     def _configure_session(self):
         app.config['SESSION_TYPE'] = 'sqlalchemy'
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{home}/sessions.db'.format(home=HOME)
+        app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{HOME}/sessions.db'
         db = SQLAlchemy(app)
         app.config['SESSION_SQLALCHEMY'] = db
         flask_session = Session()

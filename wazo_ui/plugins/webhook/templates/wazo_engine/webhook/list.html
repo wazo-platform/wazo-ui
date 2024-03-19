@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs([
+  {{ build_breadcrumbs([
     { 'name': _('Webhook'), 'link': url_for('.WebhookView:index'), 'icon': 'globe' }
   ]) }}
 {% endblock %}

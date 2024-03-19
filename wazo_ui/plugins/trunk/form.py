@@ -1,5 +1,5 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
@@ -33,9 +33,15 @@ class OptionsForm(BaseForm):
 class EndpointIaxForm(BaseForm):
     id = HiddenField()
     name = StringField(l_('Name'), validators=[InputRequired(), Length(max=40)])
-    type = SelectField(l_('Type'), choices=[('user', l_('User')), ('peer', l_('Peer')), ('friend', l_('Friend'))])
-    host = SelectField(l_('Host'), validators=[InputRequired(), Length(max=255)],
-                       choices=[('dynamic', l_('Dynamic')), ('static', l_('Static'))])
+    type = SelectField(
+        l_('Type'),
+        choices=[('user', l_('User')), ('peer', l_('Peer')), ('friend', l_('Friend'))],
+    )
+    host = SelectField(
+        l_('Host'),
+        validators=[InputRequired(), Length(max=255)],
+        choices=[('dynamic', l_('Dynamic')), ('static', l_('Static'))],
+    )
     host_value = StringField('', validators=[Length(max=255)])
     options = FieldList(FormField(OptionsForm))
 
@@ -44,7 +50,9 @@ class RegisterIAXForm(BaseForm):
     id = HiddenField()
     enabled = BooleanField(l_('Enabled'), default=False)
     auth_username = StringField(l_('Authentication Username'))
-    auth_password = StringField(l_('Authentication Password'), widget=PasswordInput(hide_value=False))
+    auth_password = StringField(
+        l_('Authentication Password'), widget=PasswordInput(hide_value=False)
+    )
     callback_context = StringField(l_('Callback Context'))
     callback_extension = StringField(l_('Callback Extension'))
     remote_host = StringField(l_('Remote Host'), validators=[InputRequired()])
@@ -53,7 +61,9 @@ class RegisterIAXForm(BaseForm):
 
 class TrunkForm(BaseForm):
     context = SelectField(l_('Context'), choices=[])
-    protocol = SelectField(choices=[('sip', l_('SIP')), ('iax', l_('IAX')), ('custom', l_('CUSTOM'))])
+    protocol = SelectField(
+        choices=[('sip', l_('SIP')), ('iax', l_('IAX')), ('custom', l_('CUSTOM'))]
+    )
     endpoint_sip = FormField(EndpointSIPForm)
     endpoint_iax = FormField(EndpointIaxForm)
     endpoint_custom = FormField(EndpointCustomForm)

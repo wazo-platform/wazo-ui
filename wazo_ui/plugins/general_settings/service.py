@@ -1,9 +1,8 @@
-# Copyright 2018-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 
-class PJSIPDocService(object):
-
+class PJSIPDocService:
     def __init__(self, confd_client):
         self._confd = confd_client
         self._cached_doc = None
@@ -15,8 +14,7 @@ class PJSIPDocService(object):
         return self._cached_doc
 
 
-class PJSIPGlobalSettingsService(object):
-
+class PJSIPGlobalSettingsService:
     def __init__(self, confd_client):
         self._confd = confd_client
 
@@ -27,8 +25,7 @@ class PJSIPGlobalSettingsService(object):
         self._confd.pjsip_global.update(pjsip_global)
 
 
-class PJSIPSystemSettingsService(object):
-
+class PJSIPSystemSettingsService:
     def __init__(self, confd_client):
         self._confd = confd_client
 
@@ -39,26 +36,26 @@ class PJSIPSystemSettingsService(object):
         self._confd.pjsip_system.update(pjsip_system)
 
 
-class IaxGeneralSettingsService(object):
-
+class IaxGeneralSettingsService:
     def __init__(self, confd_client):
         self._confd = confd_client
 
     def get(self):
         resource = {
             'general': self._confd.iax_general.get(),
-            'callnumberlimits': self._confd.iax_callnumberlimits.get()['items']
+            'callnumberlimits': self._confd.iax_callnumberlimits.get()['items'],
         }
         return resource
 
     def update(self, resource):
         self._confd.iax_callnumberlimits.update({'items': resource['callnumberlimits']})
-        resource['general']['ordered_options'] = self._confd.iax_general.get()['ordered_options']
+        resource['general']['ordered_options'] = self._confd.iax_general.get()[
+            'ordered_options'
+        ]
         self._confd.iax_general.update(resource['general'])
 
 
-class SCCPDocService(object):
-
+class SCCPDocService:
     def get(self):
         return [
             {'id': 'cid_name', 'text': 'cid_name'},
@@ -68,8 +65,7 @@ class SCCPDocService(object):
         ]
 
 
-class SCCPGeneralSettingsService(object):
-
+class SCCPGeneralSettingsService:
     def __init__(self, confd_client):
         self._confd = confd_client
 
@@ -80,15 +76,14 @@ class SCCPGeneralSettingsService(object):
         self._confd.sccp_general.update(sccp_general)
 
 
-class VoicemailGeneralSettingsService(object):
-
+class VoicemailGeneralSettingsService:
     def __init__(self, confd_client):
         self._confd = confd_client
 
     def get(self):
         resource = {
             'general': self._confd.voicemail_general.get(),
-            'zonemessages': self._confd.voicemail_zonemessages.get()['items']
+            'zonemessages': self._confd.voicemail_zonemessages.get()['items'],
         }
         return resource
 
@@ -97,8 +92,7 @@ class VoicemailGeneralSettingsService(object):
         self._confd.voicemail_general.update(resource['general'])
 
 
-class TimezoneService(object):
-
+class TimezoneService:
     def __init__(self, confd_client):
         self._confd = confd_client
 
@@ -106,8 +100,7 @@ class TimezoneService(object):
         return self._confd.timezones.list()
 
 
-class FeaturesGeneralSettingsService(object):
-
+class FeaturesGeneralSettingsService:
     def __init__(self, confd_client):
         self._confd = confd_client
 
@@ -115,7 +108,7 @@ class FeaturesGeneralSettingsService(object):
         resource = {
             'general': self._confd.features_general.get(),
             'featuremap': self._confd.features_featuremap.get(),
-            'applicationmap': self._confd.features_applicationmap.get()
+            'applicationmap': self._confd.features_applicationmap.get(),
         }
         return resource
 
@@ -125,18 +118,19 @@ class FeaturesGeneralSettingsService(object):
         self._confd.features_general.update(resource['general'])
 
 
-class ConfBridgeGeneralSettingsService(object):
-
+class ConfBridgeGeneralSettingsService:
     def __init__(self, confd_client):
         self._confd = confd_client
 
     def get(self):
         resource = {
             'wazo_default_user': self._confd.confbridge_wazo_default_user.get(),
-            'wazo_default_bridge': self._confd.confbridge_wazo_default_bridge.get()
+            'wazo_default_bridge': self._confd.confbridge_wazo_default_bridge.get(),
         }
         return resource
 
     def update(self, resource):
         self._confd.confbridge_wazo_default_user.update(resource['wazo_default_user'])
-        self._confd.confbridge_wazo_default_bridge.update(resource['wazo_default_bridge'])
+        self._confd.confbridge_wazo_default_bridge.update(
+            resource['wazo_default_bridge']
+        )

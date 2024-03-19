@@ -1,6 +1,7 @@
 # Wazo UI
 
-Wazo-ui is an open source project for helping people to use easily the API of wazo-platform. This project is not up to date with all API in the engine, but you can do lot of features.
+Wazo-ui is an open source UI to help people easily interact with the wazo-platform APIs.
+This project is not always up-to-date with the entire API engine, but you can still do a lot.
 
 ![Login screenshot](/contribs/screenshots/login.png?raw=true "Login")
 ![Main screenshot](/contribs/screenshots/main.png?raw=true "Main")
@@ -32,7 +33,7 @@ From the source
 # How to configure to use the engine remotely
 
 If you want to use the UI in another VM or in a container.
-You need to add a config file in /etc/wazo-ui/conf.d/ for exemple engine.yml.
+You need to add a config file in /etc/wazo-ui/conf.d/ for example engine.yml.
 
 ```
 amid:
@@ -95,7 +96,7 @@ websocketd:
 
 To extract new translations:
 
-    % python setup.py extract_messages
+    % python3 setup.py extract_messages
 
 To create new translation catalog:
 
@@ -104,12 +105,21 @@ To create new translation catalog:
 
 To update existing translations catalog:
 
-    % python setup.py update_catalog
+    % python3 setup.py update_catalog
 
 Edit file `wazo_ui/translations/<locale>/LC_MESSAGES/messages.po` and compile
 using:
 
-    % python setup.py compile_catalog
+    % python3 setup.py compile_catalog
+
+# Transifex
+
+To use with transifex. The configuration is set in .tx directory.
+
+    tx pull -t -l <lang> (eg. fr)
+    python3 setup.py compile_catalog
+    wdk mount wazo-ui
+    wdk restart wazo-ui
 
 # Debugging bootstrap
 

@@ -1,11 +1,10 @@
-# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.extension import BaseConfdExtensionService
 
 
 class ConferenceService(BaseConfdExtensionService):
-
     resource_confd = 'conferences'
 
     def __init__(self, confd_client):
@@ -15,7 +14,9 @@ class ConferenceService(BaseConfdExtensionService):
         return super().list(*args, **kwargs)
 
     def get_first_internal_context(self):
-        result = self._confd.contexts.list(type='internal', limit=1, direction='asc', order='id')
+        result = self._confd.contexts.list(
+            type='internal', limit=1, direction='asc', order='id'
+        )
         for context in result['items']:
             return context
 
@@ -23,3 +24,8 @@ class ConferenceService(BaseConfdExtensionService):
         result = self._confd.contexts.list(name=context)
         for context in result['items']:
             return context
+
+    def get_music_on_hold(self, name):
+        results = self._confd.moh.list(name=name)
+        for result in results['items']:
+            return result

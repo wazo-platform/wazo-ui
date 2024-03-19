@@ -1,0 +1,37 @@
+# See https://pre-commit.com for more information
+exclude: '^wazo_ui/static/(?!.*wazo).*|\.svg$|^wazo_ui/translations/.*'
+repos:
+  - repo: https://github.com/PyCQA/flake8
+    rev: '6.1.0'
+    hooks:
+      - id: flake8
+        # Required to make flake8 read fdrom pyproject.toml for now :(
+        additional_dependencies: ["flake8-pyproject"]
+  - repo: https://github.com/psf/black
+    rev: 23.10.1
+    hooks:
+      - id: black
+# Automatically update to modern python (as modern as allowed by your Python version)
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.0
+    hooks:
+      - id: pyupgrade
+        args: [--py39-plus]
+# Automatically sort and format imports (in black compatible way)
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        args: [--filter-files]
+# See https://pre-commit.com for more information
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+  - repo: https://github.com/wazo-platform/wazo-git-hooks
+    rev: 1.1.1
+    hooks:
+      - id: wazo-copyright-check

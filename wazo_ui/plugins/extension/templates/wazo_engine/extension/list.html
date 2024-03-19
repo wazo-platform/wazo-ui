@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs([
+  {{ build_breadcrumbs([
     { 'name': _('Extensions'), 'link': url_for('.ExtensionView:index'), 'icon': 'tty' }
   ]) }}
 {% endblock %}
@@ -24,10 +24,10 @@
           <td>{{ extension.exten }}</td>
           <td>{{ extension.context }}</td>
           <td>
-            {{ extension.parking_lot.id  if extension.parking_lot else '-' }}
+            {{ extension.conference.id  if extension.conference else '-' }}
           </td>
           <td>
-            {{ extension.conference.id  if extension.conference else '-' }}
+            {{ extension.parking_lot.id  if extension.parking_lot else '-' }}
           </td>
           <td>
             {{ extension.group.id  if extension.group else '-' }}

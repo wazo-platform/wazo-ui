@@ -1,19 +1,19 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
-    SubmitField,
-    StringField,
+    FieldList,
+    FormField,
     SelectField,
     SelectMultipleField,
-    FieldList,
-    FormField
+    StringField,
+    SubmitField,
 )
 from wtforms.validators import InputRequired
 
-from wazo_ui.helpers.form import BaseForm
 from wazo_ui.helpers.destination import DestinationField
+from wazo_ui.helpers.form import BaseForm
 
 week_days = [
     l_('Monday'),
@@ -22,7 +22,7 @@ week_days = [
     l_('Thursday'),
     l_('Friday'),
     l_('Saturday'),
-    l_('Sunday')
+    l_('Sunday'),
 ]
 month_days = range(1, 32)
 months = [
@@ -37,7 +37,7 @@ months = [
     l_('September'),
     l_('October'),
     l_('November'),
-    l_('December')
+    l_('December'),
 ]
 
 
@@ -51,9 +51,21 @@ def convert_list_to_choices(list_):
 class PeriodForm(BaseForm):
     hours_start = StringField(l_('Hour Start'), validators=[InputRequired()])
     hours_end = StringField(l_('Hour End'), validators=[InputRequired()])
-    week_days = SelectMultipleField(l_('Weekdays'), choices=convert_list_to_choices(week_days), validators=[InputRequired()])
-    month_days = SelectMultipleField(l_('Monthdays'), choices=convert_list_to_choices(month_days), validators=[InputRequired()])
-    months = SelectMultipleField(l_('Months'), choices=convert_list_to_choices(months), validators=[InputRequired()])
+    week_days = SelectMultipleField(
+        l_('Weekdays'),
+        choices=convert_list_to_choices(week_days),
+        validators=[InputRequired()],
+    )
+    month_days = SelectMultipleField(
+        l_('Monthdays'),
+        choices=convert_list_to_choices(month_days),
+        validators=[InputRequired()],
+    )
+    months = SelectMultipleField(
+        l_('Months'),
+        choices=convert_list_to_choices(months),
+        validators=[InputRequired()],
+    )
 
 
 class ScheduleExceptionalPeriodForm(PeriodForm):

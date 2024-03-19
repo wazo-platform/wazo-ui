@@ -1,5 +1,5 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_menu.classy import register_flaskview
 
@@ -7,13 +7,12 @@ from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import register_listing_url
 
 from .service import DeviceService
-from .view import DeviceView, DeviceListingView
+from .view import DeviceListingView, DeviceView
 
 device = create_blueprint('device', __name__)
 
 
-class Plugin(object):
-
+class Plugin:
     def load(self, dependencies):
         core = dependencies['flask']
         clients = dependencies['clients']
@@ -22,7 +21,9 @@ class Plugin(object):
         DeviceView.register(device, route_base='/devices')
         register_flaskview(device, DeviceView)
 
-        DeviceListingView.service = DeviceService(clients['wazo_confd'], clients['wazo_provd'])
+        DeviceListingView.service = DeviceService(
+            clients['wazo_confd'], clients['wazo_provd']
+        )
         DeviceListingView.register(device, route_base='/devices_listing')
 
         register_listing_url('device', 'device.DeviceListingView:list_json')

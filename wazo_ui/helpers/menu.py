@@ -1,4 +1,4 @@
-# Copyright 2018-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_menu.classy import classy_menu_item
@@ -12,11 +12,11 @@ def menu_item_aux(path, text, **kwargs):
     if isinstance(order, int):
         # Ugly hack to set order higher than items without order
         if order > 100 and order < 1000:
-            kwargs['order'] = 'yyy{}'.format(order)
+            kwargs['order'] = f'yyy{order}'
         elif order > 999:
-            kwargs['order'] = 'zzz{}'.format(order)
+            kwargs['order'] = f'zzz{order}'
         else:
-            kwargs['order'] = '{0:03}'.format(order)
+            kwargs['order'] = f'{order:03}'
 
     return classy_menu_item(path, text, **kwargs)
 

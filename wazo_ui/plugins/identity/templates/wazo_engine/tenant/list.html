@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumbs([
+  {{ build_breadcrumbs([
     { 'name': _('Tenants'), 'link': url_for('.TenantView:index'), 'icon': 'building' }
   ]) }}
 {% endblock %}
@@ -13,10 +13,12 @@
         {% call build_list_table_headers(get=url_for('.TenantView:get', id=''), delete=url_for('.TenantView:delete', id='')) %}
           <th>{{ _('Name') }}</th>
           <th>{{ _('Identifier') }}</th>
+          <th>{{ _('Domains') }}</th>
         {% endcall %}
         {% call(tenant) build_list_table_rows(resource_list['items']) %}
           <td>{{ tenant.name }}</td>
           <td>{{ tenant.slug }}</td>
+          <td>{{ tenant.domain_names | join(', ') }}</td>
         {% endcall %}
       {% endcall %}
     {% endcall %}
@@ -26,8 +28,31 @@
         {% call add_default_fields(form=form, submit_value=_('Add')) %}
           {{ render_field(form.name) }}
           {{ render_field(form.slug) }}
+          <label class="col-sm-4 control-label">
+            {{  _('Domain Names') }}
+          </label>
+          {% call build_table() %}
+            {% call build_table_body(class_='dynamic-table') %}
+              {% do form.domains.append_entry() %}
+                {{ _build_domains_entry(form.domains.pop_entry(), template=True) }}
+              {% for domain in form.domains %}
+                 {{ _build_domains_entry(domain) }}
+              {% endfor %}
+            {% endcall %}
+          {% endcall %}
+          {{ build_add_row_entry_header() }}
         {% endcall %}
       {% endcall %}
     {% endcall %}
   </section>
 {% endblock %}
+
+{% macro _build_domains_entry(domain, template=False) %}
+  {% if template %}
+    {% set tr_class = "row-template hidden" %}
+  {% endif %}
+  <tr class="{{ tr_class }}">
+    <td>{{ render_field(domain['name']) }}</td>
+    <td>{{ add_delete_entry_button() }}</td>
+  </tr>
+{% endmacro %}

@@ -1,11 +1,10 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_ui.helpers.service import BaseConfdService
 
 
 class LineService(BaseConfdService):
-
     resource_confd = 'lines'
 
     def __init__(self, confd_client):
@@ -44,7 +43,9 @@ class LineService(BaseConfdService):
             endpoint_sccp = self._confd.endpoints_sccp.create(resource['endpoint_sccp'])
             self._confd.lines(resource['id']).add_endpoint_sccp(endpoint_sccp['id'])
         if resource.get('endpoint_custom'):
-            endpoint_custom = self._confd.endpoints_custom.create(resource['endpoint_custom'])
+            endpoint_custom = self._confd.endpoints_custom.create(
+                resource['endpoint_custom']
+            )
             self._confd.lines(resource['id']).add_endpoint_custom(endpoint_custom['id'])
 
     def update(self, resource):

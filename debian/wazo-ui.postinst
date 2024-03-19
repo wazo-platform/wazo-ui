@@ -31,14 +31,6 @@ case "$1" in
 			ln -sf \
 				/etc/nginx/locations/https-available/$DAEMONNAME \
 				/etc/nginx/locations/https-enabled/$DAEMONNAME
-		elif dpkg --compare-versions "${previous_version}" lt '20.10'; then
-			if getent group www-data | grep -q $USER; then
-				deluser --quiet $USER www-data
-			fi
-		elif dpkg --compare-versions "${previous_version}" le '21.01'; then
-			ln -sf \
-				/etc/nginx/locations/http-available/$DAEMONNAME \
-				/etc/nginx/locations/http-enabled/$DAEMONNAME
 		fi
 	;;
 

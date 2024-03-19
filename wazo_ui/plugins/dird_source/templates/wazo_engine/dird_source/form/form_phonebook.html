@@ -13,7 +13,7 @@
 {% endif %}
 
 {% block content_header %}
-  {{ build_breadcrumbs(current_breadcrumbs + [breadcrumb]) }}
+  {{ build_breadcrumbs(current_breadcrumbs + [breadcrumb]) }}
 {% endblock %}
 
 {% block content %}
@@ -34,6 +34,10 @@
             {% call add_default_fields(form=form, submit_value=submit_value) %}
               {{ render_field(form.backend) }}
               {{ render_field(form.name) }}
+              {{ render_field(form.phonebook_config.phonebook_uuid,
+                              data_listing_href=url_for(listing_urls['phonebook']),
+                              data_placeholder=_('Choose Phonebook')) }}
+              {{ render_field(form.phonebook_config.phonebook_name) }}
             {% endcall %}
           {% endcall %}
 

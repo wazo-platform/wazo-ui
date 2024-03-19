@@ -1,13 +1,13 @@
-# Copyright 2017-2019 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
 from flask_babel import lazy_gettext as l_
 
 from wazo_ui.helpers.classful import (
     LoginRequiredView,
+    build_select2_response,
     extract_select2_params,
-    build_select2_response
 )
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -25,12 +25,22 @@ class QueueView(BaseIPBXHelperView):
         return super().index()
 
     def _populate_form(self, form):
-        form.extensions[0].exten.choices = self._build_set_choices_exten(form.extensions[0])
-        form.extensions[0].context.choices = self._build_set_choices_context(form.extensions[0])
+        form.extensions[0].exten.choices = self._build_set_choices_exten(
+            form.extensions[0]
+        )
+        form.extensions[0].context.choices = self._build_set_choices_context(
+            form.extensions[0]
+        )
         form.music_on_hold.choices = self._build_set_choices_moh(form.music_on_hold)
-        form.schedules[0].form.id.choices = self._build_set_choices_schedule(form.schedules[0])
-        form.members.agent_ids.choices = self._build_set_choices_agents(form.members.agents)
-        form.members.user_ids.choices = self._build_set_choices_users(form.members.users)
+        form.schedules[0].form.id.choices = self._build_set_choices_schedule(
+            form.schedules[0]
+        )
+        form.members.agent_ids.choices = self._build_set_choices_agents(
+            form.members.agents
+        )
+        form.members.user_ids.choices = self._build_set_choices_users(
+            form.members.users
+        )
         return form
 
     def _build_set_choices_agents(self, agents):
@@ -40,7 +50,7 @@ class QueueView(BaseIPBXHelperView):
         results = []
         for user in users:
             if user.lastname.data:
-                text = '{} {}'.format(user.firstname.data, user.lastname.data)
+                text = f'{user.firstname.data} {user.lastname.data}'
             else:
                 text = user.firstname.data
             results.append((user.uuid.data, text))
@@ -65,7 +75,11 @@ class QueueView(BaseIPBXHelperView):
     def _build_set_choices_moh(self, moh):
         if not moh.data or moh.data == 'None':
             return []
-        return [(moh.data, moh.data)]
+        moh_object = self.service.get_music_on_hold(moh.data)
+        if moh_object is None:
+            return []
+        moh_label = moh_object['label']
+        return [(moh.data, f"{moh_label} ({moh.data})")]
 
     def _build_set_choices_schedule(self, schedule):
         if not schedule.form.id.data or schedule.form.id.data == 'None':
@@ -74,8 +88,12 @@ class QueueView(BaseIPBXHelperView):
 
     def _map_resources_to_form(self, resource):
         resource['options'] = self._build_options(resource['options'])
-        resource['members']['agent_ids'] = [agent['id'] for agent in resource['members']['agents']]
-        resource['members']['user_ids'] = [user['uuid'] for user in resource['members']['users']]
+        resource['members']['agent_ids'] = [
+            agent['id'] for agent in resource['members']['agents']
+        ]
+        resource['members']['user_ids'] = [
+            user['uuid'] for user in resource['members']['users']
+        ]
         resource['fallbacks'] = self.service.get_fallbacks(resource['id'])
         form = self.form(data=resource)
         return form
@@ -83,17 +101,22 @@ class QueueView(BaseIPBXHelperView):
     def _build_options(self, options):
         result = []
         for option in options:
-            result.append({'option_key': option[0],
-                           'option_value': option[1]})
+            result.append({'option_key': option[0], 'option_value': option[1]})
 
         return result
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
         resource['options'] = self._map_form_to_resource_options(form, resource)
-        resource['agents'] = [{'id': agent_id} for agent_id in resource['members']['agent_ids']]
-        resource['users'] = [{'id': user_id} for user_id in resource['members']['user_ids']]
-        resource['music_on_hold'] = form.music_on_hold.data or None
+        resource['agents'] = [
+            {'id': agent_id} for agent_id in resource['members']['agent_ids']
+        ]
+        resource['users'] = [
+            {'id': user_id} for user_id in resource['members']['user_ids']
+        ]
+        resource['music_on_hold'] = self._convert_empty_string_to_none(
+            form.music_on_hold.data
+        )
 
         return resource
 
@@ -111,9 +134,10 @@ class QueueView(BaseIPBXHelperView):
 
 
 class QueueDestinationView(LoginRequiredView):
-
     def list_json(self):
         params = extract_select2_params(request.args)
         queues = self.service.list(**params)
-        results = [{'id': queue['id'], 'text': queue['name']} for queue in queues['items']]
+        results = [
+            {'id': queue['id'], 'text': queue['name']} for queue in queues['items']
+        ]
         return jsonify(build_select2_response(results, queues['total'], params))

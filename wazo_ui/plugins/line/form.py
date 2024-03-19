@@ -1,14 +1,14 @@
-# Copyright 2017-2020 The Wazo Authors  (see the AUTHORS file)
-# SPDX-License-Identifier: GPL-3.0+
+# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
 from wtforms.fields import (
+    FieldList,
     FormField,
     HiddenField,
     SelectField,
     StringField,
     SubmitField,
-    FieldList,
 )
 from wtforms.validators import InputRequired, Length
 
@@ -34,7 +34,9 @@ class EndpointCustomForm(BaseForm):
 
 class LineForm(BaseForm):
     context = SelectField(l_('Context'), validators=[InputRequired()], choices=[])
-    protocol = SelectField(choices=[('sip', l_('SIP')), ('sccp', l_('SCCP')), ('custom', l_('CUSTOM'))])
+    protocol = SelectField(
+        choices=[('sip', l_('SIP')), ('sccp', l_('SCCP')), ('custom', l_('CUSTOM'))]
+    )
     endpoint_sip = FormField(EndpointSIPForm)
     endpoint_sccp = FormField(EndpointSCCPForm)
     endpoint_custom = FormField(EndpointCustomForm)
