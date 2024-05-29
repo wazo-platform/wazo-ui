@@ -66,6 +66,15 @@ class IdentityForm(BaseForm):
         l_('Purpose'),
         choices=[('user', l_('User')), ('external_api', l_('External API'))],
     )
+    authentication_method = SelectField(
+        l_('Authentication Method'),
+        choices=[
+            ('default', l_('Default')),
+            ('native', l_('Native')),
+            ('saml', l_('SAML')),
+            ('ldap', l_('LDAP')),
+        ],
+    )
     submit = SubmitField()
 
 
