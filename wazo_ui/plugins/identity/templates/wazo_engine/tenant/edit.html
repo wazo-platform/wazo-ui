@@ -22,6 +22,7 @@
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
               {{ render_field(form.name) }}
               {{ render_field(form.slug, disabled=True) }}
+              {{ render_field(form.default_authentication_method) }}
               {{ render_field(form.members.user_uuids, data_disable_sort=True, disabled=True) }}
               {{ render_field(form.members.users, with_label=False) }}
               {{ render_field(form.members.policy_uuids, data_disable_sort=True, disabled=True) }}

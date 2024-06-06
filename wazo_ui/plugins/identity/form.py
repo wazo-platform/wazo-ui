@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -66,6 +66,15 @@ class IdentityForm(BaseForm):
         l_('Purpose'),
         choices=[('user', l_('User')), ('external_api', l_('External API'))],
     )
+    authentication_method = SelectField(
+        l_('Authentication Method'),
+        choices=[
+            ('default', l_('Default')),
+            ('native', l_('Native')),
+            ('saml', l_('SAML')),
+            ('ldap', l_('LDAP')),
+        ],
+    )
     submit = SubmitField()
 
 
@@ -84,6 +93,14 @@ class DomainNameForm(BaseForm):
 class TenantForm(BaseForm):
     name = StringField(l_('Name'), validators=[InputRequired()])
     slug = StringField(l_('Identifier'))
+    default_authentication_method = SelectField(
+        l_('Default Authentication Method'),
+        choices=[
+            ('native', l_('Native')),
+            ('saml', l_('SAML')),
+            ('ldap', l_('LDAP')),
+        ],
+    )
     domains = FieldList(FormField(DomainNameForm))
     domain_names = FieldList(StringField(l_('Domain Names')))  # Read-Only
     members = FormField(MembersForm)
