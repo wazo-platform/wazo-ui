@@ -26,7 +26,8 @@
 
           {% call build_tab_content_item('general', active=True) %}
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
-              {{ render_field(form.name) }}
+              {{ render_field(form.name, readonly='readonly') }}
+              {{ render_field(form.label) }}
               {{ render_field(form.extensions[0].context,
                               label='Exten',
                               inputclass='ui-helper-clearfix',

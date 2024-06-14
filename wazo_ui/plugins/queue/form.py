@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -64,7 +64,7 @@ class MembersForm(BaseForm):
 
 class QueueForm(BaseForm):
     name = StringField(l_('Name'), [InputRequired(), Length(max=128)])
-    label = StringField(l_('Label'), [InputRequired(), Length(max=128)])
+    label = StringField(l_('Label'), [Length(max=128)])
 
     announce_hold_time_on_entry = BooleanField(
         l_('Announce hold time on entry'), default=False
