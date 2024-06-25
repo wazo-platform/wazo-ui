@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -16,12 +16,17 @@ from wazo_ui.http_server import app
 from wazo_ui.user import UserUI
 
 USERNAME_PASSWORD_ERROR = l_('Wrong username and/or password')
+TOO_MANY_SESSIONS_ERROR = l_('Too many active sessions')
 
 logger = logging.getLogger(__name__)
 
 
 def unauthorized(error):
     return error.response is not None and error.response.status_code == 401
+
+
+def limit_reached(error):
+    return error.response is not None and error.response.status_code == 429
 
 
 class LoginForm(FlaskForm):
@@ -53,8 +58,9 @@ class LoginForm(FlaskForm):
                 self.username.errors.append(USERNAME_PASSWORD_ERROR)
                 self.password.errors.append(USERNAME_PASSWORD_ERROR)
                 return False
+            message = TOO_MANY_SESSIONS_ERROR if limit_reached(e) else e.message
             raise ValidationError(
-                l_('Error with Wazo authentication server: %(error)s', error=e.message)
+                l_('Error with Wazo authentication server: %(error)s', error=message)
             )
         except requests.ConnectionError:
             raise ValidationError(l_('Wazo authentication server connection error'))

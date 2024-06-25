@@ -1,34 +1,34 @@
-# Translations template for wazo_ui.
+# French translations for wazo_ui.
 # Copyright (C) 2024 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # wazo_ui project.
 # Wazo Dev Team <dev@wazo.community>, 2024.
-# 
+#
 # Translators:
 # Sylvain Boily <sylvainboilydroid@gmail.com>, 2024
-# 
 msgid ""
 msgstr ""
 "Project-Id-Version: wazo_ui 0.1\n"
 "Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
-"POT-Creation-Date: 2024-03-01 08:07-0500\n"
+"POT-Creation-Date: 2024-06-25 11:57-0400\n"
 "PO-Revision-Date: 2024-03-01 08:07-0500\n"
 "Last-Translator: Sylvain Boily <sylvainboilydroid@gmail.com>, 2024\n"
+"Language: fr\n"
 "Language-Team: French (https://app.transifex.com/wazo/teams/69545/fr/)\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
+"1000000 == 0 ? 1 : 2\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
-"Language: fr\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: wazo_ui/controller.py:61 wazo_ui/core/form.py:84 wazo_ui/core/plugin.py:49
 #: wazo_ui/plugins/application/form.py:84
 #: wazo_ui/plugins/application/templates/wazo_engine/application/edit.html:14
 #: wazo_ui/plugins/application/templates/wazo_engine/application/edit.html:15
 #: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:5
-#: wazo_ui/plugins/moh/form.py:39
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:23
+#: wazo_ui/plugins/moh/form.py:37
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:25
 #: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:113
 msgid "Application"
 msgstr "Application"
@@ -47,7 +47,7 @@ msgstr "Personnalisée"
 #: wazo_ui/plugins/application/plugin.py:41
 #: wazo_ui/plugins/call_filter/form.py:65
 #: wazo_ui/plugins/call_filter/view.py:138 wazo_ui/plugins/group/form.py:61
-#: wazo_ui/plugins/identity/form.py:117 wazo_ui/plugins/incall/form.py:40
+#: wazo_ui/plugins/identity/form.py:134 wazo_ui/plugins/incall/form.py:40
 #: wazo_ui/plugins/incall/view.py:69 wazo_ui/plugins/ivr/view.py:52
 #: wazo_ui/plugins/moh/form.py:13 wazo_ui/plugins/provisioning/form.py:45
 #: wazo_ui/plugins/provisioning/form.py:58
@@ -137,7 +137,7 @@ msgid "Context"
 msgstr "Contexte"
 
 #: wazo_ui/core/form.py:72 wazo_ui/plugins/identity/form.py:60
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:40
+#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:41
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:17
 #: wazo_ui/plugins/phonebook/form.py:20
 #: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:25
@@ -198,8 +198,7 @@ msgstr "Erreur d'entrée"
 
 #: wazo_ui/helpers/error.py:16
 msgid "One or more of the choices you made was not acceptable"
-msgstr ""
-"Un ou plusieurs des choix que vous avez faits n'étaient pas acceptables"
+msgstr "Un ou plusieurs des choix que vous avez faits n'étaient pas acceptables"
 
 #: wazo_ui/helpers/error.py:17 wazo_ui/helpers/error.py:36
 msgid "Invalid value"
@@ -398,8 +397,8 @@ msgstr "Annuaire"
 #: wazo_ui/plugins/dird_source/form.py:76
 #: wazo_ui/plugins/dird_source/form.py:94
 #: wazo_ui/plugins/dird_source/form.py:125
-#: wazo_ui/plugins/dird_source/form.py:139
-#: wazo_ui/plugins/identity/form.py:107 wazo_ui/plugins/trunk/form.py:41
+#: wazo_ui/plugins/dird_source/form.py:139 wazo_ui/plugins/identity/form.py:124
+#: wazo_ui/plugins/trunk/form.py:41
 msgid "Host"
 msgstr "Hôte"
 
@@ -420,7 +419,7 @@ msgstr "Hôte"
 #: wazo_ui/plugins/group/form.py:95 wazo_ui/plugins/ha/form.py:22
 #: wazo_ui/plugins/hep/form.py:22 wazo_ui/plugins/incall/form.py:48
 #: wazo_ui/plugins/ivr/form.py:91 wazo_ui/plugins/line/form.py:43
-#: wazo_ui/plugins/moh/form.py:50 wazo_ui/plugins/outcall/form.py:58
+#: wazo_ui/plugins/moh/form.py:48 wazo_ui/plugins/outcall/form.py:58
 #: wazo_ui/plugins/paging/form.py:50 wazo_ui/plugins/parking_lot/form.py:29
 #: wazo_ui/plugins/phonebook/form.py:14 wazo_ui/plugins/phonebook/form.py:25
 #: wazo_ui/plugins/provisioning/form.py:37
@@ -489,17 +488,17 @@ msgstr "Fonctionnalité d'accès"
 #: wazo_ui/plugins/ha/templates/wazo_engine/ha/index.html:12
 #: wazo_ui/plugins/hep/templates/wazo_engine/hep/index.html:22
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:25
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:36
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:61
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:68
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:74
+#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:37
+#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:62
+#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:69
+#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:75
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/edit.html:13
 #: wazo_ui/plugins/identity/templates/wazo_engine/ldap/index.html:4
 #: wazo_ui/plugins/identity/templates/wazo_engine/ldap/index.html:12
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:22
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:29
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:22
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:33
+#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:34
 #: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:23
 #: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:46
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/edit.html:14
@@ -522,13 +521,13 @@ msgstr "Fonctionnalité d'accès"
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/configuration/edit.html:21
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/configuration/edit.html:32
 #: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:28
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:58
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:75
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:84
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:93
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:103
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:129
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:135
+#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:59
+#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:76
+#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:85
+#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:94
+#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:104
+#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:130
+#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:136
 #: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:23
 #: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:42
 #: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:24
@@ -635,7 +634,7 @@ msgstr "Ajouter un accès aux fonctionnalités"
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sccp.html:12
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:26
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:62
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:36
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:38
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:26
 #: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:27
 #: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:37
@@ -695,7 +694,7 @@ msgstr "Numéro d'agent"
 #: wazo_ui/plugins/call_pickup/form.py:48
 #: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/list.html:17
 #: wazo_ui/plugins/context/form.py:48 wazo_ui/plugins/device/form.py:38
-#: wazo_ui/plugins/identity/form.py:99 wazo_ui/plugins/ivr/form.py:37
+#: wazo_ui/plugins/identity/form.py:116 wazo_ui/plugins/ivr/form.py:37
 #: wazo_ui/plugins/outcall/form.py:48
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:15
 #: wazo_ui/plugins/phonebook/form.py:13
@@ -713,7 +712,7 @@ msgstr "Description"
 msgid "Subroutine"
 msgstr "Sous-routine"
 
-#: wazo_ui/plugins/agent/form.py:31 wazo_ui/plugins/authentication/form.py:29
+#: wazo_ui/plugins/agent/form.py:31 wazo_ui/plugins/authentication/form.py:34
 #: wazo_ui/plugins/authentication/templates/authentication/login.html:21
 #: wazo_ui/plugins/call_permission/form.py:43
 #: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/list.html:18
@@ -723,7 +722,7 @@ msgstr "Sous-routine"
 msgid "Password"
 msgstr "Mot de passe"
 
-#: wazo_ui/plugins/agent/form.py:32 wazo_ui/plugins/authentication/form.py:30
+#: wazo_ui/plugins/agent/form.py:32 wazo_ui/plugins/authentication/form.py:35
 #: wazo_ui/plugins/authentication/templates/authentication/login.html:22
 #: wazo_ui/plugins/provisioning/form.py:43 wazo_ui/plugins/sound/form.py:21
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:47
@@ -818,18 +817,18 @@ msgstr "Ajouter un agent"
 #: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:52
 #: wazo_ui/plugins/group/form.py:55
 #: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:15
-#: wazo_ui/plugins/identity/form.py:33 wazo_ui/plugins/identity/form.py:73
-#: wazo_ui/plugins/identity/form.py:85 wazo_ui/plugins/identity/form.py:98
+#: wazo_ui/plugins/identity/form.py:33 wazo_ui/plugins/identity/form.py:82
+#: wazo_ui/plugins/identity/form.py:94 wazo_ui/plugins/identity/form.py:115
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/list.html:14
 #: wazo_ui/plugins/identity/templates/wazo_engine/policy/list.html:14
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:37
+#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:38
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:14
 #: wazo_ui/plugins/ivr/form.py:19
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:14
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:15
 #: wazo_ui/plugins/moh/form.py:21 wazo_ui/plugins/moh/form.py:26
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:35
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:14
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:36
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:15
 #: wazo_ui/plugins/outcall/form.py:47
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:14
 #: wazo_ui/plugins/paging/form.py:36
@@ -907,7 +906,11 @@ msgstr "Ajouter une application"
 msgid "Wrong username and/or password"
 msgstr "Mauvais nom d'utilisateur et / ou mot de passe"
 
-#: wazo_ui/plugins/authentication/form.py:28
+#: wazo_ui/plugins/authentication/form.py:19
+msgid "Too many active sessions"
+msgstr "Trop de sessions actives"
+
+#: wazo_ui/plugins/authentication/form.py:33
 #: wazo_ui/plugins/authentication/templates/authentication/login.html:20
 #: wazo_ui/plugins/dird_source/form.py:66
 #: wazo_ui/plugins/dird_source/form.py:133 wazo_ui/plugins/identity/form.py:56
@@ -916,16 +919,16 @@ msgstr "Mauvais nom d'utilisateur et / ou mot de passe"
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: wazo_ui/plugins/authentication/form.py:32
+#: wazo_ui/plugins/authentication/form.py:37
 msgid "Login"
 msgstr "Se connecter"
 
-#: wazo_ui/plugins/authentication/form.py:57
+#: wazo_ui/plugins/authentication/form.py:63
 #, python-format
 msgid "Error with Wazo authentication server: %(error)s"
 msgstr "Erreur avec le serveur d'authentification Wazo : %(error)s"
 
-#: wazo_ui/plugins/authentication/form.py:60
+#: wazo_ui/plugins/authentication/form.py:66
 msgid "Wazo authentication server connection error"
 msgstr "Erreur de connexion au serveur d'authentification Wazo"
 
@@ -1062,8 +1065,8 @@ msgstr "Refuser"
 
 #: wazo_ui/plugins/call_permission/form.py:45
 #: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/list.html:19
-#: wazo_ui/plugins/moh/form.py:34
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:15
+#: wazo_ui/plugins/moh/form.py:32
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:16
 msgid "Mode"
 msgstr "Mode"
 
@@ -1290,7 +1293,9 @@ msgstr "Longueur du SDA"
 #: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:15
 #: wazo_ui/plugins/group/form.py:56
 #: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:14
-#: wazo_ui/plugins/moh/form.py:32 wazo_ui/plugins/provisioning/form.py:100
+#: wazo_ui/plugins/moh/form.py:30
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:14
+#: wazo_ui/plugins/provisioning/form.py:100
 #: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/list.html:17
 #: wazo_ui/plugins/queue/form.py:67 wazo_ui/plugins/sip_template/form.py:73
 #: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/list.html:14
@@ -1599,8 +1604,7 @@ msgstr "Uri"
 #: wazo_ui/plugins/dird_source/form.py:77
 #: wazo_ui/plugins/dird_source/form.py:95
 #: wazo_ui/plugins/dird_source/form.py:126
-#: wazo_ui/plugins/dird_source/form.py:140
-#: wazo_ui/plugins/identity/form.py:108
+#: wazo_ui/plugins/dird_source/form.py:140 wazo_ui/plugins/identity/form.py:125
 msgid "Port"
 msgstr "Port"
 
@@ -1732,6 +1736,7 @@ msgid "Add LDAP source"
 msgstr "Ajouter une source LDAP"
 
 #: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:24
+#: wazo_ui/plugins/identity/form.py:75 wazo_ui/plugins/identity/form.py:101
 #: wazo_ui/plugins/identity/templates/wazo_engine/ldap/index.html:4
 #: wazo_ui/plugins/identity/view.py:293
 msgid "LDAP"
@@ -1999,8 +2004,7 @@ msgstr "Paramètres du système PJSIP"
 msgid "IAX"
 msgstr "IAX"
 
-#: wazo_ui/plugins/general_settings/view.py:178
-#: wazo_ui/plugins/line/form.py:38
+#: wazo_ui/plugins/general_settings/view.py:178 wazo_ui/plugins/line/form.py:38
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:25
 #: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:53
 #: wazo_ui/plugins/user/form.py:55
@@ -2033,7 +2037,7 @@ msgstr "Utilisateur par défaut"
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:134
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sccp.html:22
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:68
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:108
+#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:109
 #: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:45
 #: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:72
 #: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:99
@@ -2083,7 +2087,7 @@ msgstr "Clé d'option"
 #: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:135
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sccp.html:23
 #: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:69
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:109
+#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:110
 #: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:46
 #: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:73
 #: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:100
@@ -2273,7 +2277,7 @@ msgstr "Ajouter un groupe"
 #: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:70
 #: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/edit.html:25
 #: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:48
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:42
+#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:43
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:47
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:268
 #: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:325
@@ -2359,7 +2363,7 @@ msgid "Policies"
 msgstr "Règles de sécurité"
 
 #: wazo_ui/plugins/identity/form.py:51
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:41
+#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:42
 msgid "Main"
 msgstr "Principal"
 
@@ -2367,8 +2371,8 @@ msgstr "Principal"
 msgid "Address"
 msgstr "Adresse"
 
-#: wazo_ui/plugins/identity/form.py:63 wazo_ui/plugins/identity/form.py:75
-#: wazo_ui/plugins/identity/form.py:101
+#: wazo_ui/plugins/identity/form.py:63 wazo_ui/plugins/identity/form.py:84
+#: wazo_ui/plugins/identity/form.py:118
 #: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:17
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:13
 msgid "Tenant"
@@ -2383,53 +2387,76 @@ msgstr "Type"
 msgid "External API"
 msgstr "API externe"
 
-#: wazo_ui/plugins/identity/form.py:86
+#: wazo_ui/plugins/identity/form.py:70
+#, fuzzy
+msgid "Authentication Method"
+msgstr "Authentification"
+
+#: wazo_ui/plugins/identity/form.py:72 wazo_ui/plugins/user/view.py:191
+msgid "Default"
+msgstr "Défaut"
+
+#: wazo_ui/plugins/identity/form.py:73 wazo_ui/plugins/identity/form.py:99
+#, fuzzy
+msgid "Native"
+msgstr "Date"
+
+#: wazo_ui/plugins/identity/form.py:74 wazo_ui/plugins/identity/form.py:100
+msgid "SAML"
+msgstr ""
+
+#: wazo_ui/plugins/identity/form.py:95
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:15
 msgid "Identifier"
 msgstr "Identifiant"
 
-#: wazo_ui/plugins/identity/form.py:88
+#: wazo_ui/plugins/identity/form.py:97
+#, fuzzy
+msgid "Default Authentication Method"
+msgstr "Activer l'authentification"
+
+#: wazo_ui/plugins/identity/form.py:105
 #: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:32
 msgid "Domain Names"
 msgstr "Noms de domaine"
 
-#: wazo_ui/plugins/identity/form.py:110
+#: wazo_ui/plugins/identity/form.py:127
 msgid "Protocol version"
 msgstr "Version du protocole"
 
-#: wazo_ui/plugins/identity/form.py:116
+#: wazo_ui/plugins/identity/form.py:133
 msgid "Protocol security"
 msgstr "Sécurité du protocole"
 
-#: wazo_ui/plugins/identity/form.py:117
+#: wazo_ui/plugins/identity/form.py:134
 msgid "TLS"
 msgstr "TLS"
 
-#: wazo_ui/plugins/identity/form.py:117
+#: wazo_ui/plugins/identity/form.py:134
 msgid "LDAPS"
 msgstr "LDAPS"
 
-#: wazo_ui/plugins/identity/form.py:119
+#: wazo_ui/plugins/identity/form.py:136
 msgid "Bind DN"
 msgstr "Lier le nom distinctif"
 
-#: wazo_ui/plugins/identity/form.py:120
+#: wazo_ui/plugins/identity/form.py:137
 msgid "Bind password"
 msgstr "Lier le mot de passe"
 
-#: wazo_ui/plugins/identity/form.py:122
+#: wazo_ui/plugins/identity/form.py:139
 msgid "User base DN"
 msgstr "DN de la base d'utilisateurs"
 
-#: wazo_ui/plugins/identity/form.py:125
+#: wazo_ui/plugins/identity/form.py:142
 msgid "User login attribute"
 msgstr "Attribut de connexion utilisateur"
 
-#: wazo_ui/plugins/identity/form.py:128
+#: wazo_ui/plugins/identity/form.py:145
 msgid "User email attribute"
 msgstr "Attribut de courrier électronique de l'utilisateur"
 
-#: wazo_ui/plugins/identity/form.py:130
+#: wazo_ui/plugins/identity/form.py:147
 msgid "Search filters"
 msgstr "Filtres de recherche"
 
@@ -2539,13 +2566,13 @@ msgstr "Abandonner la destination"
 
 #: wazo_ui/plugins/ivr/form.py:22
 msgid ""
-"The destination to redirect the caller to when the maximum number of tries "
-"is reached.                        If not set, the call will be hanged up "
-"after playing the abort sound (if set)"
+"The destination to redirect the caller to when the maximum number of "
+"tries is reached.                        If not set, the call will be "
+"hanged up after playing the abort sound (if set)"
 msgstr ""
 "Destination vers laquelle rediriger l'appelant lorsque le nombre maximum "
-"d'essais est atteint. S'il n'est pas défini, l'appel sera raccroché après "
-"avoir émis le son d'abandon (si défini)"
+"d'essais est atteint. S'il n'est pas défini, l'appel sera raccroché après"
+" avoir émis le son d'abandon (si défini)"
 
 #: wazo_ui/plugins/ivr/form.py:28
 msgid "Abort sound"
@@ -2569,8 +2596,8 @@ msgstr "Destination invalide"
 
 #: wazo_ui/plugins/ivr/form.py:46
 msgid ""
-"The destination to redirect the caller to when he choose an invalid option."
-"                        If not set, the menu will be replayed"
+"The destination to redirect the caller to when he choose an invalid "
+"option.                        If not set, the menu will be replayed"
 msgstr ""
 "La destination vers laquelle rediriger l'appelant lorsqu'il choisit une "
 "option non valide. S’il n’est pas défini, le menu sera relu"
@@ -2584,8 +2611,8 @@ msgid ""
 "The sound played when the caller choose an invalid option."
 "                        Not used if an invalid destination is set"
 msgstr ""
-"Le son émis lorsque l'appelant choisit une option non valide. Non utilisé si"
-" une destination non valide est définie"
+"Le son émis lorsque l'appelant choisit une option non valide. Non utilisé"
+" si une destination non valide est définie"
 
 #: wazo_ui/plugins/ivr/form.py:61
 msgid "Max tries"
@@ -2594,12 +2621,12 @@ msgstr "Essaies max"
 #: wazo_ui/plugins/ivr/form.py:64
 msgid ""
 "The maximum number of tries before aborting the call."
-"                        Both a timeout and an invalid choice counts toward "
-"the number of tries integer Default:3"
+"                        Both a timeout and an invalid choice counts "
+"toward the number of tries integer Default:3"
 msgstr ""
-"Nombre maximum d'essais avant d'abandonner l'appel. Un délai d'attente et un"
-" choix non valide sont pris en compte dans le nombre d'essais. Nombre entier"
-" Par défaut : 3"
+"Nombre maximum d'essais avant d'abandonner l'appel. Un délai d'attente et"
+" un choix non valide sont pris en compte dans le nombre d'essais. Nombre "
+"entier Par défaut : 3"
 
 #: wazo_ui/plugins/ivr/form.py:70
 msgid "Menu Sound"
@@ -2613,13 +2640,13 @@ msgstr "Le son émis pour inviter l'appelant à entrer une entrée"
 msgid ""
 "Number of seconds to wait after the menu sound is played before either "
 "replaying the menu,                        redirecting the call to the "
-"timeout destination (if set) or aborting the call                        (if"
-" the maximum number of tries has been reached) integer Default:5"
+"timeout destination (if set) or aborting the call                        "
+"(if the maximum number of tries has been reached) integer Default:5"
 msgstr ""
 "Nombre de secondes à attendre après la lecture du son du menu avant de "
-"relire le menu, de rediriger l'appel vers la destination du délai d'attente "
-"(si défini) ou d'abandonner l'appel (si le nombre maximum d'essais a été "
-"atteint) entier Par défaut : 5"
+"relire le menu, de rediriger l'appel vers la destination du délai "
+"d'attente (si défini) ou d'abandonner l'appel (si le nombre maximum "
+"d'essais a été atteint) entier Par défaut : 5"
 
 #: wazo_ui/plugins/ivr/form.py:86
 msgid "Timeout destination"
@@ -2627,11 +2654,11 @@ msgstr "Destination d'expiration"
 
 #: wazo_ui/plugins/ivr/form.py:87
 msgid ""
-"The destination to redirect the caller to on timeout. If not set, the menu "
-"will be replayed"
+"The destination to redirect the caller to on timeout. If not set, the "
+"menu will be replayed"
 msgstr ""
-"Destination vers laquelle rediriger l'appelant en cas d'expiration du délai."
-" S’il n’est pas défini, le menu sera relu"
+"Destination vers laquelle rediriger l'appelant en cas d'expiration du "
+"délai. S’il n’est pas défini, le menu sera relu"
 
 #: wazo_ui/plugins/ivr/form.py:109
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:4
@@ -2670,7 +2697,7 @@ msgid "Digit"
 msgstr "Chiffre"
 
 #: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:35
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:36
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:37
 msgid "Actions"
 msgstr "Actions"
 
@@ -2824,7 +2851,7 @@ msgid "Choose your protocol"
 msgstr "Choisissez votre protocole"
 
 #: wazo_ui/plugins/moh/form.py:10
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:32
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:33
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:15
 msgid "Files"
 msgstr "Fichiers"
@@ -2842,31 +2869,32 @@ msgid "Random start"
 msgstr "Démarrage aléatoire"
 
 #: wazo_ui/plugins/moh/form.py:28
-msgid ""
-"The name used by Asterisk (can only by set on create and must be unique)"
+#, fuzzy
+msgid "The name used by Asterisk (autogenerated)"
 msgstr ""
-"Le nom utilisé par Asterisk (ne peut être défini qu'à la création et doit "
-"être unique)"
+"Le nom utilisé par Asterisk (ne peut être défini qu'à la création et doit"
+" être unique)"
 
-#: wazo_ui/plugins/moh/form.py:32
+#: wazo_ui/plugins/moh/form.py:30
 msgid "The label of the MOH class"
 msgstr "Le label de la classe MOH"
 
-#: wazo_ui/plugins/moh/form.py:36
+#: wazo_ui/plugins/moh/form.py:34
 msgid "The play mode of the MOH class"
 msgstr "Le mode de jeu de la classe MOH"
 
-#: wazo_ui/plugins/moh/form.py:40
+#: wazo_ui/plugins/moh/form.py:38
 msgid "The command to run (only used when mode is \"custom\")"
 msgstr ""
-"La commande à exécuter (utilisée uniquement lorsque le mode est \"custom\")"
+"La commande à exécuter (utilisée uniquement lorsque le mode est "
+"\"custom\")"
 
-#: wazo_ui/plugins/moh/form.py:43
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:25
+#: wazo_ui/plugins/moh/form.py:41
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:27
 msgid "Sort"
 msgstr "Trier"
 
-#: wazo_ui/plugins/moh/form.py:45
+#: wazo_ui/plugins/moh/form.py:43
 msgid "The order in which files are played (only used when mode is 'files')"
 msgstr ""
 "L'ordre dans lequel les fichiers sont lus (utilisé uniquement lorsque le "
@@ -2886,28 +2914,28 @@ msgstr "Musiques"
 msgid "Music"
 msgstr "Musique"
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:23
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:24
 msgid "Upload File"
 msgstr "Téléverser un fichier"
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:25
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:26
 #: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:60
 msgid "Upload"
 msgstr "Télécharger"
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:43
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:44
 msgid "Download the moh file"
 msgstr "Téléchargez le fichier moh"
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:50
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:51
 msgid "Delete the moh file"
 msgstr "Supprimer le fichier moh"
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:16
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:17
 msgid "Parameters"
 msgstr "Paramètres"
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:34
+#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:36
 msgid "Add Moh"
 msgstr "Ajouter Moh"
 
@@ -3971,11 +3999,7 @@ msgstr "Téléphonie"
 msgid "User Management"
 msgstr "Gestion des utilisateurs"
 
-#: wazo_ui/plugins/user/view.py:187
-msgid "Default"
-msgstr "Défaut"
-
-#: wazo_ui/plugins/user/view.py:187
+#: wazo_ui/plugins/user/view.py:191
 msgid "Anonymous"
 msgstr "Anonyme"
 
@@ -4297,3 +4321,4 @@ msgstr "Ne correspond pas"
 #: wazo_ui/templates/translations.html:50
 msgid "Not long enough"
 msgstr "Pas assez long"
+
