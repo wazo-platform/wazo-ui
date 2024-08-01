@@ -8,6 +8,7 @@ StartLimitIntervalSec=150
 ExecStart=/usr/bin/wazo-ui
 Restart=on-failure
 RestartSec=5
+SyslogIdentifier=wazo-ui
 
 [Install]
 WantedBy=multi-user.target
