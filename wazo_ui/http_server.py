@@ -6,7 +6,6 @@ import os
 from datetime import timedelta
 
 import requests
-from cheroot import wsgi
 from flask import Flask, request, session, url_for
 from flask_babel import Babel
 from flask_login import LoginManager
@@ -17,7 +16,7 @@ from pkg_resources import iter_entry_points, resource_filename, resource_isdir
 from requests.exceptions import HTTPError
 from wazo_auth_client import Client as AuthClient
 from werkzeug.middleware.proxy_fix import ProxyFix
-from xivo import http_helpers
+from xivo import http_helpers, wsgi
 from xivo.http_helpers import ReverseProxied
 
 from .errors import configure_error_handlers
