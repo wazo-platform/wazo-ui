@@ -53,6 +53,7 @@
               {{ render_field(form.timeout) }}
               {{ render_field(form.user_timeout) }}
               {{ render_field(form.mark_answered_elsewhere) }}
+              {{ render_field(form.max_calls) }}
             {% endcall %}
           {% endcall %}
 
@@ -90,6 +91,7 @@
           {% call build_tab_content_item('fallbacks') %}
             {% call add_default_fields(form=form, submit_value=_('Update')) %}
               {{ render_field(form.fallbacks.noanswer_destination) }}
+              {{ render_field(form.fallbacks.congestion_destination) }}
             {% endcall %}
           {% endcall %}
 
