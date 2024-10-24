@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -63,6 +63,13 @@ class TrunkForm(BaseForm):
     context = SelectField(l_('Context'), choices=[])
     protocol = SelectField(
         choices=[('sip', l_('SIP')), ('iax', l_('IAX')), ('custom', l_('CUSTOM'))]
+    )
+    outgoing_caller_id_format = SelectField(
+        choices=[
+            ('+E164', l_('+E164')),
+            ('E164', l_('E164')),
+            ('national', l_('National')),
+        ]
     )
     endpoint_sip = FormField(EndpointSIPForm)
     endpoint_iax = FormField(EndpointIaxForm)
