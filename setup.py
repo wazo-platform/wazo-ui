@@ -166,6 +166,7 @@ setup(
             'paging = wazo_ui.plugins.paging.plugin:Plugin',
             'parking_lot = wazo_ui.plugins.parking_lot.plugin:Plugin',
             'phonebook = wazo_ui.plugins.phonebook.plugin:Plugin',
+            'phone_number = wazo_ui.plugins.phone_number.plugin:Plugin',
             'plugin = wazo_ui.plugins.plugin.plugin:Plugin',
             'provisioning = wazo_ui.plugins.provisioning.plugin:Plugin',
             'queue = wazo_ui.plugins.queue.plugin:Plugin',

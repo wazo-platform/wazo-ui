@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -22,8 +22,8 @@ class OutcallView(BaseIPBXHelperView):
     @menu_item(
         '.ipbx.call_management.outcalls',
         l_('Outcalls'),
-        order=2,
         icon="long-arrow-left",
+        order=3,
         multi_tenant=True,
     )
     def index(self):
