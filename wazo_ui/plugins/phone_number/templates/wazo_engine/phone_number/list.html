@@ -24,9 +24,9 @@
           <td><div class="radio">
             <input
               type="radio"
-              name="main-phone-number-{{ phone_number.uuid }}"
+              name="main-phone-number"
               onclick="selectMainPhoneNumber(this.value)"
-              id="main-{{ phone_number.uuid }}"
+              id="main-phone-number-{{ phone_number.uuid }}"
               value="{{ phone_number.uuid }}" {% if phone_number.main %}checked{% endif %}
             >
           </div></td>
