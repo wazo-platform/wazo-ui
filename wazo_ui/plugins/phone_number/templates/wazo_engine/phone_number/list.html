@@ -21,7 +21,15 @@
           <td>{{ phone_number.number }}</td>
           <td>{{ phone_number.caller_id_name }}</td>
           <td>{{ phone_number.shared }}</td>
-          <td>{{ phone_number.main }}</td>
+          <td><div class="radio">
+            <input
+              type="radio"
+              name="main-phone-number-{{ phone_number.uuid }}"
+              onclick="selectMainPhoneNumber(this.value)"
+              id="main-{{ phone_number.uuid }}"
+              value="{{ phone_number.uuid }}" {% if phone_number.main %}checked{% endif %}
+            >
+          </div></td>
         {% endcall %}
       {% endcall %}
     {% endcall %}
@@ -36,4 +44,7 @@
       {% endcall %}
     {% endcall %}
   </section>
+{% endblock %}
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/phone_number.js') }}"></script>
 {% endblock %}

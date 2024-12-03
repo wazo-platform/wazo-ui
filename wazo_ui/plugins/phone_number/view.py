@@ -1,7 +1,9 @@
 # Copyright 2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+from flask import jsonify, request
 from flask_babel import lazy_gettext as l_
+from flask_classful import route
 
 from wazo_ui.helpers.menu import menu_item
 from wazo_ui.helpers.view import BaseIPBXHelperView
@@ -29,3 +31,9 @@ class PhoneNumberView(BaseIPBXHelperView):
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('phone_number', {}))
         return form
+
+    @route('/select_main_number/', methods=['POST'])
+    def select_main_number(self):
+        body = request.get_json()
+        self.service.select_main_number(body['number_uuid'])
+        return jsonify(body)
