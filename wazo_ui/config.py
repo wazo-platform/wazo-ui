@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2024 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import argparse
@@ -109,6 +109,7 @@ _DEFAULT_CONFIG = {
         'paging': True,
         'parking_lot': True,
         'phonebook': True,
+        'phone_number': True,
         'plugin': True,
         'provisioning': True,
         'queue': True,

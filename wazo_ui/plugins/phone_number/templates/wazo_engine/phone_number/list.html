@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Phone Number'), 'link': url_for('.PhoneNumberView:index'), 'icon': 'bullhorn' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+
+  <section class="content">
+    {% call build_list_containers(_('Phone Number'), 'bullhorn') %}
+      {% call build_list_table() %}
+        {% call build_list_table_headers(get=url_for('.PhoneNumberView:get', id=''), delete=url_for('.PhoneNumberView:delete', id='')) %}
+          <th>{{ _('Number') }}</th>
+          <th>{{ _('Caller ID name') }}</th>
+          <th>{{ _('Shared') }}</th>
+          <th>{{ _('Main') }}</th>
+        {% endcall %}
+        {% call(phone_number) build_list_table_rows(resource_list['items']) %}
+          <td>{{ phone_number.number }}</td>
+          <td>{{ phone_number.caller_id_name }}</td>
+          <td>{{ phone_number.shared }}</td>
+          <td><div class="radio">
+            <input
+              type="radio"
+              name="main-phone-number"
+              onclick="selectMainPhoneNumber(this.value)"
+              id="main-phone-number-{{ phone_number.uuid }}"
+              value="{{ phone_number.uuid }}" {% if phone_number.main %}checked{% endif %}
+            >
+          </div></td>
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+    {% call build_hidden_add_containers(_('Add Phone Number')) %}
+      {% call build_form() %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
+          {{ render_field(form.number) }}
+          {{ render_field(form.caller_id_name) }}
+          {{ render_field(form.shared) }}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+  </section>
+{% endblock %}
+{% block additional_js %}
+  <script src="{{ url_for('.static', filename='js/phone_number.js') }}"></script>
+{% endblock %}
