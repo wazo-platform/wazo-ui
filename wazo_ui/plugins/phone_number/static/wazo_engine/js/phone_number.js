@@ -7,6 +7,9 @@ function selectMainPhoneNumber(uuid) {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(body),
+        success: function(data) {
+            location.reload();
+        },
         error: function(data) {
             setTimeout(function() {
                 console.log('There is some error, please reload');
