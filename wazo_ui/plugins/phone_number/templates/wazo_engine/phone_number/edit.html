@@ -15,6 +15,7 @@
           {{ render_field(form.caller_id_name) }}
           {{ render_field(form.shared, disabled=form.main.data) }}
           {{ render_field(form.main, disabled=True) }}
+          {{ render_field(form.hidden_main)}}
         {% endcall %}
       {% endcall %}
     {% endcall %}

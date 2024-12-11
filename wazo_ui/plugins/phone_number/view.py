@@ -28,6 +28,22 @@ class PhoneNumberView(BaseIPBXHelperView):
     def _populate_form(self, form):
         return form
 
+    def _map_form_to_resources(self, form, form_id=None):
+        data = form.to_dict()
+        if data.get('hidden_main') != 'False':
+            data['shared'] = True
+        if form_id:
+            try:
+                data['id'] = int(form_id)
+            except ValueError:
+                data['uuid'] = form_id
+        return data
+
+    def _map_resources_to_form(self, resource):
+        resource['hidden_main'] = resource['main']
+        form = self.form(data=resource)
+        return form
+
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('phone_number', {}))
         return form
