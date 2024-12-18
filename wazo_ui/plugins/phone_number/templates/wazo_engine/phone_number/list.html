@@ -28,6 +28,7 @@
               onclick="selectMainPhoneNumber(this.value)"
               id="main-phone-number-{{ phone_number.uuid }}"
               value="{{ phone_number.uuid }}" {% if phone_number.main %}checked{% endif %}
+              autocomplete="off"
             >
           </div></td>
         {% endcall %}
