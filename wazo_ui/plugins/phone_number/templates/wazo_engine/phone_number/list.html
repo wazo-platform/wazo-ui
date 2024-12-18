@@ -11,11 +11,7 @@
   <section class="content">
     {% call build_list_containers(_('Phone Number'), 'bullhorn') %}
       {% call build_list_table() %}
-        {% call build_list_table_headers(
-          add=url_for('.PhoneNumberView:new'),
-          get=url_for('.PhoneNumberView:get', id=''),
-          delete=url_for('.PhoneNumberView:delete', id=''),
-          ) %}
+        {% call build_list_table_headers(get=url_for('.PhoneNumberView:get', id=''), delete=url_for('.PhoneNumberView:delete', id='')) %}
           <th>{{ _('Number') }}</th>
           <th>{{ _('Caller ID name') }}</th>
           <th>{{ _('Shared') }}</th>
@@ -32,6 +28,7 @@
               onclick="selectMainPhoneNumber(this.value)"
               id="main-phone-number-{{ phone_number.uuid }}"
               value="{{ phone_number.uuid }}" {% if phone_number.main %}checked{% endif %}
+              autocomplete="off"
             >
           </div></td>
         {% endcall %}
