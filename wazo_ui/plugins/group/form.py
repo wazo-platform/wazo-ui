@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -93,6 +93,7 @@ class GroupForm(BaseForm):
         l_('Mark all calls as answered elsewhere when cancelled'), default=False
     )
     max_calls = IntegerField(l_('Maximum calls'), [NumberRange(min=0)])
+    dtmf_record_toggle = BooleanField(l_('DTMF record enabled'), default=False)
     submit = SubmitField(l_('Submit'))
 
 
