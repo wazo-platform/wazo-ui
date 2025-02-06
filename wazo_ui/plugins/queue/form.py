@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -94,6 +94,7 @@ class QueueForm(BaseForm):
     dtmf_record_caller_enabled = BooleanField(
         l_('DTMF record caller enabled'), default=False
     )
+    dtmf_record_toggle = BooleanField(l_('DTMF record enabled'), default=False)
     dtmf_transfer_callee_enabled = BooleanField(
         l_('DTMF transfer callee enabled'), default=False
     )
