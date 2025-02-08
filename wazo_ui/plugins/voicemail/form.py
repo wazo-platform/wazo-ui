@@ -30,7 +30,7 @@ class VoicemailForm(BaseForm):
     number = StringField(
         l_('Number'), [InputRequired(), Length(max=40), Regexp(r'^[0-9]+$')]
     )
-    email = EmailField(l_('Email'), validators=[Length(max=80)])
+    email = StringField(l_('Email'))
     password = StringField(
         l_('Password'),
         [Length(max=80), Regexp(r'^[0-9]+$')],
