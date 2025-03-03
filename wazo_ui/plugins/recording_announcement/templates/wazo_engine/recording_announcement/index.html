@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content_header %}
+  {{ build_breadcrumbs([
+    { 'name': _('Recording Announcement'), 'link': url_for('.RecordingAnnouncementView:index'), 'icon': 'volume-off' }
+  ]) }}
+{% endblock %}
+
+{% block content %}
+  {% call build_section_row() %}
+
+    {% call build_form_tabs_box() %}
+      {% call build_tabs_navigation() %}
+        {{ add_tab_navigation_header(_('Recording Announcement'), '', 'volume-off') }}
+        {{ add_tab_navigation_item('general', _('General'), active=True) }}
+      {% endcall %}
+
+      {% call build_form(action=url_for('.RecordingAnnouncementView:post')) %}
+        {% call build_tabs_content() %}
+          {% call build_tab_content_item('general', active=True) %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
+              {{ render_field(form.recording_start) }}
+              {{ render_field(form.recording_stop) }}
+            {% endcall %}
+          {% endcall %}
+        {% endcall %}
+      {% endcall %}
+    {% endcall %}
+
+  {% endcall %}
+{% endblock %}
