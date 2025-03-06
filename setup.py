@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright 2018-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -170,6 +170,7 @@ setup(
             'plugin = wazo_ui.plugins.plugin.plugin:Plugin',
             'provisioning = wazo_ui.plugins.provisioning.plugin:Plugin',
             'queue = wazo_ui.plugins.queue.plugin:Plugin',
+            'recording_announcement = wazo_ui.plugins.recording_announcement.plugin:Plugin',
             'rtp = wazo_ui.plugins.rtp.plugin:Plugin',
             'schedule = wazo_ui.plugins.schedule.plugin:Plugin',
             'sip_template = wazo_ui.plugins.sip_template.plugin:Plugin',
