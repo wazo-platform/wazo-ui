@@ -70,6 +70,7 @@ class GroupForm(BaseForm):
     preprocess_subroutine = StringField(l_('Subroutine'), [Length(max=79)])
     retry_delay = IntegerField('Retry delay', [NumberRange(min=0)])
     ring_in_use = BooleanField('Ring in use', default=False)
+    ignore_forward = BooleanField('Ignore forward', default=False)
     ring_strategy = SelectField(
         'Ring strategy',
         choices=[
