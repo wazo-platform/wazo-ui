@@ -1,4 +1,4 @@
-# Copyright 2018-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_login import current_user
@@ -139,11 +139,17 @@ class TenantService(BaseAuthService):
     def __init__(self, auth_client):
         self._auth = auth_client
 
-    def list(self):
+    def list(self, search=None, order=None, direction=None, limit=None, offset=None):
         tenant_uuid = current_user.get_tenant_uuid()
-        tenants = self._auth.tenants.list(tenant_uuid=tenant_uuid, recurse=True)[
-            'items'
-        ]
+        tenants = self._auth.tenants.list(
+            tenant_uuid=tenant_uuid,
+            recurse=True,
+            search=search,
+            order=order,
+            direction=direction,
+            limit=limit,
+            offset=offset,
+        )['items']
         tenants = [tenant for tenant in tenants if tenant['name'] != 'master']
         resources = {
             'items': tenants,
