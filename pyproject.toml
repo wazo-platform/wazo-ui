@@ -17,4 +17,4 @@ exclude = [
 
 [tool.isort]
 profile = "black"
-py_version = 39
+py_version = 311
