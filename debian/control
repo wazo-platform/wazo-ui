@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Wazo Maintainers <dev+pkg@wazo.community>
 Build-Depends: debhelper (>= 12), dh-python, python3-all, python3-setuptools, python3-babel
 Standards-Version: 3.9.6
-X-Python3-Version: >= 3.9
+X-Python3-Version: >= 3.11
 
 Package: wazo-ui
 Architecture: all
