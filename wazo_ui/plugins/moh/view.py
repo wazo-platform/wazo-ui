@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import cgi
@@ -66,7 +66,7 @@ class MohView(BaseIPBXHelperView):
 
         return send_file(
             BytesIO(response.content),
-            attachment_filename=moh_filename,
+            download_name=moh_filename,
             as_attachment=True,
             mimetype=response.headers.get('content-type'),
         )
