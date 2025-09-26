@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -6,12 +6,12 @@ from wtforms.fields import (
     BooleanField,
     FormField,
     HiddenField,
+    IntegerField,
     SelectField,
     SelectMultipleField,
     StringField,
     SubmitField,
 )
-from wtforms.fields.html5 import IntegerField
 from wtforms.validators import URL, InputRequired, IPAddress, Length, Regexp
 
 from wazo_ui.helpers.form import BaseForm
