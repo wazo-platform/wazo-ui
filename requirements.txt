@@ -11,7 +11,7 @@ https://github.com/wazo-platform/xivo-lib-python/archive/master.zip
 babel==2.10.3
 cheroot==9.0.0
 flask-babel==2.0.0
-flask-classful==0.15.0b1
+flask-classful==0.16.0
 flask-login==0.6.2
 flask-menu==0.7.2
 flask-session==0.4.1
