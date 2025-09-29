@@ -22,7 +22,7 @@
                 <div class="col-md-2 pull-right">
                   <div class="input-group">
                     <input class="form-control" placeholder="{{ _('Search plugin') }}" type="text" id="search_plugin"
-                      data-search-url="{{ url_for('wazo_engine.plugin.PluginView:search_plugin') }}">
+                      data-search-url="{{ url_for('plugin.PluginView:search_plugin') }}">
                     <span class="input-group-addon">
                       <i class="fa fa-search"></i>
                     </span>
@@ -53,7 +53,7 @@
                       <span class="input-group-btn">
                         <button type="button"
                           class="ladda-button btn btn-primary btn-flat btn-git-install-plugin"
-                          data-install-url="{{ url_for('wazo_engine.plugin.PluginView:install_plugin') }}"
+                          data-install-url="{{ url_for('plugin.PluginView:install_plugin') }}"
                           data-style="slide-left"
                         >
                           <span class="ladda-label">{{ _('Install') }}</span>

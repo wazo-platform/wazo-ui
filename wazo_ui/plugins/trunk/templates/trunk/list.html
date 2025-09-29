@@ -44,7 +44,7 @@
           </td>
           <td>
             {% for outcall in trunk.outcalls %}
-              <strong>{{ _('outcall') }}:</strong> <a href="{{ url_for('wazo_engine.outcall.OutcallView:get', id=outcall.id) }}">{{ outcall.name }}</a>
+              <strong>{{ _('outcall') }}:</strong> <a href="{{ url_for('outcall.OutcallView:get', id=outcall.id) }}">{{ outcall.name }}</a>
             {% endfor %}
             {{ '-' if not trunk.outcalls }}
           </td>

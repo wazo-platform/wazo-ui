@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -34,7 +34,7 @@ class CorePlugin:
         enabled_plugins = dependencies['config_plugins']['enabled_plugins']
         app = dependencies['flask']
         plugin_helpers.load(
-            namespace='wazo_engine.plugins',
+            namespace='wazo_ui.plugins',
             names=enabled_plugins,
             dependencies={'flask': app, 'clients': engine_clients},
         )

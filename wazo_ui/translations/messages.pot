@@ -1,5 +1,5 @@
 # Translations template for wazo_ui.
-# Copyright 2018-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
 # wazo_ui project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wazo_ui 0.1\n"
 "Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
-"POT-Creation-Date: 2024-06-25 11:57-0400\n"
+"POT-Creation-Date: 2025-09-29 08:25-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Wazo Authors <dev@wazo.community>\n"
 "Language-Team: en <dev@wazo.community>\n"
@@ -19,12 +19,12 @@ msgstr ""
 
 #: wazo_ui/controller.py:61 wazo_ui/core/form.py:84 wazo_ui/core/plugin.py:49
 #: wazo_ui/plugins/application/form.py:84
-#: wazo_ui/plugins/application/templates/wazo_engine/application/edit.html:14
-#: wazo_ui/plugins/application/templates/wazo_engine/application/edit.html:15
-#: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:5
+#: wazo_ui/plugins/application/templates/application/edit.html:14
+#: wazo_ui/plugins/application/templates/application/edit.html:15
+#: wazo_ui/plugins/application/templates/application/list.html:5
 #: wazo_ui/plugins/moh/form.py:37
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:25
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:113
+#: wazo_ui/plugins/moh/templates/moh/list.html:25
+#: wazo_ui/plugins/user/templates/user/edit.html:113
 msgid "Application"
 msgstr ""
 
@@ -56,10 +56,10 @@ msgid "CallBack DISA"
 msgstr ""
 
 #: wazo_ui/controller.py:74 wazo_ui/core/plugin.py:62
-#: wazo_ui/plugins/dird_profile/templates/wazo_engine/dird_profile/list.html:11
+#: wazo_ui/plugins/dird_profile/templates/dird_profile/list.html:11
 #: wazo_ui/plugins/dird_profile/view.py:20
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/list.html:5
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/list.html:11
+#: wazo_ui/plugins/dird_source/templates/dird_source/list.html:5
+#: wazo_ui/plugins/dird_source/templates/dird_source/list.html:11
 msgid "Directory"
 msgstr ""
 
@@ -72,22 +72,22 @@ msgid "Fax to Mail"
 msgstr ""
 
 #: wazo_ui/controller.py:89 wazo_ui/core/plugin.py:77
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:4
 #: wazo_ui/plugins/general_settings/view.py:193
 #: wazo_ui/plugins/user/form.py:124
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:23
+#: wazo_ui/plugins/user/templates/user/edit.html:23
 #: wazo_ui/plugins/voicemail/form.py:77 wazo_ui/plugins/voicemail/plugin.py:31
-#: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/edit.html:11
-#: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:5
+#: wazo_ui/plugins/voicemail/templates/voicemail/edit.html:11
+#: wazo_ui/plugins/voicemail/templates/voicemail/list.html:5
 msgid "Voicemail"
 msgstr ""
 
 #: wazo_ui/core/form.py:23 wazo_ui/core/form.py:27
 #: wazo_ui/plugins/dird_source/form.py:50
 #: wazo_ui/plugins/dird_source/form.py:131
-#: wazo_ui/plugins/dird_source/form.py:144 wazo_ui/plugins/group/form.py:84
+#: wazo_ui/plugins/dird_source/form.py:144 wazo_ui/plugins/group/form.py:85
 #: wazo_ui/plugins/ivr/form.py:76 wazo_ui/plugins/parking_lot/form.py:28
-#: wazo_ui/plugins/queue/form.py:108 wazo_ui/plugins/switchboard/form.py:42
+#: wazo_ui/plugins/queue/form.py:109 wazo_ui/plugins/switchboard/form.py:42
 msgid "Timeout"
 msgstr ""
 
@@ -109,69 +109,69 @@ msgid "Congestion"
 msgstr ""
 
 #: wazo_ui/core/form.py:52 wazo_ui/plugins/conference/form.py:32
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:16
+#: wazo_ui/plugins/conference/templates/conference/list.html:16
 msgid "PIN"
 msgstr ""
 
 #: wazo_ui/core/form.py:57 wazo_ui/core/form.py:67 wazo_ui/core/form.py:77
 #: wazo_ui/plugins/conference/form.py:21
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:13
+#: wazo_ui/plugins/context/templates/context/edit.html:13
 #: wazo_ui/plugins/extension/form.py:21 wazo_ui/plugins/extension/form.py:39
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:15
+#: wazo_ui/plugins/extension/templates/extension/list.html:15
 #: wazo_ui/plugins/group/form.py:24 wazo_ui/plugins/group/form.py:29
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:72
+#: wazo_ui/plugins/group/templates/group/edit.html:75
 #: wazo_ui/plugins/incall/form.py:22 wazo_ui/plugins/line/form.py:36
 #: wazo_ui/plugins/outcall/form.py:33
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:41
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:35
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:41
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:35
 #: wazo_ui/plugins/parking_lot/form.py:15 wazo_ui/plugins/queue/form.py:34
 #: wazo_ui/plugins/trunk/form.py:63
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:108
+#: wazo_ui/plugins/user/templates/user/edit.html:108
 #: wazo_ui/plugins/voicemail/form.py:29
 msgid "Context"
 msgstr ""
 
 #: wazo_ui/core/form.py:72 wazo_ui/plugins/identity/form.py:60
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:41
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:17
+#: wazo_ui/plugins/identity/templates/identity/edit.html:41
+#: wazo_ui/plugins/identity/templates/identity/list.html:17
 #: wazo_ui/plugins/phonebook/form.py:20
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:25
+#: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:25
 #: wazo_ui/plugins/user/form.py:138
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:14
+#: wazo_ui/plugins/user/templates/user/list.html:14
 #: wazo_ui/plugins/voicemail/form.py:33
-#: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:16
+#: wazo_ui/plugins/voicemail/templates/voicemail/list.html:16
 msgid "Email"
 msgstr ""
 
-#: wazo_ui/helpers/classful.py:281 wazo_ui/plugins/line/view.py:60
-#: wazo_ui/plugins/phonebook/view.py:102 wazo_ui/plugins/trunk/view.py:56
+#: wazo_ui/helpers/classful.py:282 wazo_ui/plugins/line/view.py:60
+#: wazo_ui/plugins/phonebook/view.py:103 wazo_ui/plugins/trunk/view.py:56
 #, python-format
 msgid "%(resource)s: Resource has been created"
 msgstr ""
 
-#: wazo_ui/helpers/classful.py:326 wazo_ui/plugins/dird_source/view.py:238
+#: wazo_ui/helpers/classful.py:327 wazo_ui/plugins/dird_source/view.py:238
 #: wazo_ui/plugins/general_settings/view.py:67
 #: wazo_ui/plugins/provisioning/view.py:305
 #, python-format
 msgid "%(resource)s: Resource has been updated"
 msgstr ""
 
-#: wazo_ui/helpers/classful.py:339 wazo_ui/plugins/dird_source/view.py:248
-#: wazo_ui/plugins/phonebook/view.py:114
+#: wazo_ui/helpers/classful.py:340 wazo_ui/plugins/dird_source/view.py:248
+#: wazo_ui/plugins/phonebook/view.py:115
 #, python-format
 msgid "%(resource)s: Resource %(id)s has been deleted"
 msgstr ""
 
 #: wazo_ui/helpers/destination.py:100 wazo_ui/helpers/funckey.py:30
 #: wazo_ui/plugins/application/form.py:31
-#: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:17
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:15
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:34
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/edit.html:36
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:41
+#: wazo_ui/plugins/cdr/templates/cdr/list.html:17
+#: wazo_ui/plugins/incall/templates/incall/list.html:15
+#: wazo_ui/plugins/ivr/templates/ivr/add.html:34
+#: wazo_ui/plugins/ivr/templates/ivr/edit.html:36
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:41
 #: wazo_ui/plugins/user/form.py:72 wazo_ui/plugins/user/form.py:77
 #: wazo_ui/plugins/user/form.py:82
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:144
+#: wazo_ui/plugins/user/templates/user/edit.html:144
 msgid "Destination"
 msgstr ""
 
@@ -324,10 +324,10 @@ msgid "group"
 msgstr ""
 
 #: wazo_ui/helpers/error.py:196
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:26
-#: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:27
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:24
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:25
+#: wazo_ui/plugins/conference/templates/conference/list.html:26
+#: wazo_ui/plugins/group/templates/group/list.html:27
+#: wazo_ui/plugins/ivr/templates/ivr/list.html:24
+#: wazo_ui/plugins/queue/templates/queue/list.html:25
 msgid "incall"
 msgstr ""
 
@@ -344,7 +344,7 @@ msgid "music on hold"
 msgstr ""
 
 #: wazo_ui/helpers/error.py:200
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:47
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:47
 msgid "outcall"
 msgstr ""
 
@@ -373,22 +373,22 @@ msgid "voicemail"
 msgstr ""
 
 #: wazo_ui/plugins/access_feature/form.py:13
-#: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:15
+#: wazo_ui/plugins/access_feature/templates/access_features/list.html:15
 #: wazo_ui/plugins/extension/form.py:28
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/edit_features.html:19
+#: wazo_ui/plugins/extension/templates/extension/edit_features.html:19
 msgid "Feature"
 msgstr ""
 
 #: wazo_ui/plugins/access_feature/form.py:14
 #: wazo_ui/plugins/dird_source/form.py:120
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:24
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/edit.html:9
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/list.html:4
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_phonebook.html:24
+#: wazo_ui/plugins/phonebook/templates/phonebook/edit.html:9
+#: wazo_ui/plugins/phonebook/templates/phonebook/list.html:4
 msgid "Phonebook"
 msgstr ""
 
 #: wazo_ui/plugins/access_feature/form.py:17
-#: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:14
+#: wazo_ui/plugins/access_feature/templates/access_features/list.html:14
 #: wazo_ui/plugins/dird_source/form.py:76
 #: wazo_ui/plugins/dird_source/form.py:94
 #: wazo_ui/plugins/dird_source/form.py:125
@@ -411,20 +411,21 @@ msgstr ""
 #: wazo_ui/plugins/general_settings/form.py:90
 #: wazo_ui/plugins/general_settings/form.py:97
 #: wazo_ui/plugins/general_settings/form.py:103
-#: wazo_ui/plugins/group/form.py:95 wazo_ui/plugins/ha/form.py:22
+#: wazo_ui/plugins/group/form.py:98 wazo_ui/plugins/ha/form.py:22
 #: wazo_ui/plugins/hep/form.py:22 wazo_ui/plugins/incall/form.py:48
 #: wazo_ui/plugins/ivr/form.py:91 wazo_ui/plugins/line/form.py:43
 #: wazo_ui/plugins/moh/form.py:48 wazo_ui/plugins/outcall/form.py:58
 #: wazo_ui/plugins/paging/form.py:50 wazo_ui/plugins/parking_lot/form.py:29
-#: wazo_ui/plugins/phonebook/form.py:14 wazo_ui/plugins/phonebook/form.py:25
-#: wazo_ui/plugins/provisioning/form.py:37
+#: wazo_ui/plugins/phone_number/form.py:19 wazo_ui/plugins/phonebook/form.py:14
+#: wazo_ui/plugins/phonebook/form.py:25 wazo_ui/plugins/provisioning/form.py:37
 #: wazo_ui/plugins/provisioning/form.py:101
-#: wazo_ui/plugins/provisioning/form.py:127 wazo_ui/plugins/queue/form.py:130
+#: wazo_ui/plugins/provisioning/form.py:127 wazo_ui/plugins/queue/form.py:131
+#: wazo_ui/plugins/recording_announcement/form.py:13
 #: wazo_ui/plugins/rtp/form.py:39 wazo_ui/plugins/schedule/form.py:85
 #: wazo_ui/plugins/skill/form.py:15 wazo_ui/plugins/skillrule/form.py:18
 #: wazo_ui/plugins/sound/form.py:24 wazo_ui/plugins/sound/form.py:29
 #: wazo_ui/plugins/switchboard/form.py:43 wazo_ui/plugins/transport/form.py:33
-#: wazo_ui/plugins/trunk/form.py:71 wazo_ui/plugins/user/form.py:181
+#: wazo_ui/plugins/trunk/form.py:78 wazo_ui/plugins/user/form.py:181
 #: wazo_ui/plugins/voicemail/form.py:71 wazo_ui/plugins/webhook/form.py:46
 msgid "Submit"
 msgstr ""
@@ -433,276 +434,279 @@ msgstr ""
 msgid "Features access"
 msgstr ""
 
-#: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/edit.html:11
+#: wazo_ui/plugins/access_feature/templates/access_features/edit.html:11
 msgid "Access Feature"
 msgstr ""
 
-#: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/edit.html:13
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:23
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:33
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:41
-#: wazo_ui/plugins/application/templates/wazo_engine/application/edit.html:22
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/edit.html:23
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/edit.html:38
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:26
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:35
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:61
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:67
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:73
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/edit.html:24
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/edit.html:31
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/edit.html:38
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/edit.html:13
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:29
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:42
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:48
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:54
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:60
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:68
-#: wazo_ui/plugins/device/templates/wazo_engine/device/edit.html:13
-#: wazo_ui/plugins/dhcp/templates/wazo_engine/dhcp/index.html:12
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/edit.html:13
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/edit_features.html:14
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:20
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:46
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:21
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:48
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:75
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:20
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:46
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_global.html:19
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_system.html:19
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/sccp_general.html:19
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:20
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:46
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:25
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:60
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:91
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:97
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:107
-#: wazo_ui/plugins/ha/templates/wazo_engine/ha/index.html:12
-#: wazo_ui/plugins/hep/templates/wazo_engine/hep/index.html:22
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:25
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:37
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:62
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:69
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:75
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/edit.html:13
-#: wazo_ui/plugins/identity/templates/wazo_engine/ldap/index.html:4
-#: wazo_ui/plugins/identity/templates/wazo_engine/ldap/index.html:12
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:22
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:29
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:22
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:34
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:23
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:46
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/edit.html:14
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:37
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:74
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:108
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:128
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:14
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:25
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:36
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:66
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:76
-#: wazo_ui/plugins/paging/templates/wazo_engine/paging/edit.html:13
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/edit.html:13
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/edit.html:11
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/edit_contact.html:11
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/edit.html:21
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/edit.html:42
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/edit.html:13
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/configuration/edit.html:21
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/configuration/edit.html:32
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:28
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:59
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:76
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:85
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:94
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:104
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:130
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:136
-#: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:23
-#: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:42
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:24
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:36
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:61
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:24
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:39
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:66
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:93
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:120
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:147
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:174
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:201
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:26
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:41
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:68
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:95
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:122
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:149
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:176
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:203
-#: wazo_ui/plugins/skill/templates/wazo_engine/skill/edit.html:21
-#: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/edit.html:21
-#: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/edit.html:13
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/edit.html:23
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/edit.html:29
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:31
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:53
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:80
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:107
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:134
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:161
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:188
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:215
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:259
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:274
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:287
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:318
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:46
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:73
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:100
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:127
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:154
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:181
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:208
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:30
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:48
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:64
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:73
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:101
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:131
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:138
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:162
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:172
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:181
-#: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/edit.html:13
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/edit.html:13
+#: wazo_ui/plugins/access_feature/templates/access_features/edit.html:13
+#: wazo_ui/plugins/agent/templates/agent/edit.html:23
+#: wazo_ui/plugins/agent/templates/agent/edit.html:33
+#: wazo_ui/plugins/agent/templates/agent/edit.html:41
+#: wazo_ui/plugins/application/templates/application/edit.html:22
+#: wazo_ui/plugins/call_filter/templates/call_filter/edit.html:23
+#: wazo_ui/plugins/call_filter/templates/call_filter/edit.html:38
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:26
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:35
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:61
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:67
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:73
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/edit.html:24
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/edit.html:31
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/edit.html:38
+#: wazo_ui/plugins/conference/templates/conference/edit.html:13
+#: wazo_ui/plugins/context/templates/context/edit.html:29
+#: wazo_ui/plugins/context/templates/context/edit.html:42
+#: wazo_ui/plugins/context/templates/context/edit.html:48
+#: wazo_ui/plugins/context/templates/context/edit.html:54
+#: wazo_ui/plugins/context/templates/context/edit.html:60
+#: wazo_ui/plugins/context/templates/context/edit.html:68
+#: wazo_ui/plugins/device/templates/device/edit.html:13
+#: wazo_ui/plugins/dhcp/templates/dhcp/index.html:12
+#: wazo_ui/plugins/extension/templates/extension/edit.html:13
+#: wazo_ui/plugins/extension/templates/extension/edit_features.html:14
+#: wazo_ui/plugins/general_settings/templates/general_settings/confbridge_general.html:20
+#: wazo_ui/plugins/general_settings/templates/general_settings/confbridge_general.html:46
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:21
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:48
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:75
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:20
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:46
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_global.html:19
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_system.html:19
+#: wazo_ui/plugins/general_settings/templates/general_settings/sccp_general.html:19
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:20
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:46
+#: wazo_ui/plugins/group/templates/group/edit.html:25
+#: wazo_ui/plugins/group/templates/group/edit.html:63
+#: wazo_ui/plugins/group/templates/group/edit.html:94
+#: wazo_ui/plugins/group/templates/group/edit.html:101
+#: wazo_ui/plugins/group/templates/group/edit.html:111
+#: wazo_ui/plugins/ha/templates/ha/index.html:12
+#: wazo_ui/plugins/hep/templates/hep/index.html:22
+#: wazo_ui/plugins/identity/templates/identity/edit.html:25
+#: wazo_ui/plugins/identity/templates/identity/edit.html:37
+#: wazo_ui/plugins/identity/templates/identity/edit.html:62
+#: wazo_ui/plugins/identity/templates/identity/edit.html:69
+#: wazo_ui/plugins/identity/templates/identity/edit.html:75
+#: wazo_ui/plugins/identity/templates/identity_group/edit.html:13
+#: wazo_ui/plugins/identity/templates/ldap/index.html:4
+#: wazo_ui/plugins/identity/templates/ldap/index.html:12
+#: wazo_ui/plugins/identity/templates/policy/edit.html:22
+#: wazo_ui/plugins/identity/templates/policy/edit.html:29
+#: wazo_ui/plugins/identity/templates/tenant/edit.html:22
+#: wazo_ui/plugins/identity/templates/tenant/edit.html:34
+#: wazo_ui/plugins/incall/templates/incall/edit.html:23
+#: wazo_ui/plugins/incall/templates/incall/edit.html:46
+#: wazo_ui/plugins/ivr/templates/ivr/edit.html:14
+#: wazo_ui/plugins/line/templates/line/edit.html:37
+#: wazo_ui/plugins/line/templates/line/edit.html:74
+#: wazo_ui/plugins/line/templates/line/edit.html:108
+#: wazo_ui/plugins/line/templates/line/edit.html:128
+#: wazo_ui/plugins/moh/templates/moh/edit.html:14
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:25
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:36
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:66
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:76
+#: wazo_ui/plugins/paging/templates/paging/edit.html:13
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/edit.html:13
+#: wazo_ui/plugins/phone_number/templates/phone_number/edit.html:13
+#: wazo_ui/plugins/phonebook/templates/phonebook/edit.html:11
+#: wazo_ui/plugins/phonebook/templates/phonebook/edit_contact.html:11
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/edit.html:21
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/edit.html:42
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_registrar/edit.html:13
+#: wazo_ui/plugins/provisioning/templates/provisioning/configuration/edit.html:21
+#: wazo_ui/plugins/provisioning/templates/provisioning/configuration/edit.html:32
+#: wazo_ui/plugins/queue/templates/queue/edit.html:28
+#: wazo_ui/plugins/queue/templates/queue/edit.html:59
+#: wazo_ui/plugins/queue/templates/queue/edit.html:77
+#: wazo_ui/plugins/queue/templates/queue/edit.html:86
+#: wazo_ui/plugins/queue/templates/queue/edit.html:95
+#: wazo_ui/plugins/queue/templates/queue/edit.html:105
+#: wazo_ui/plugins/queue/templates/queue/edit.html:131
+#: wazo_ui/plugins/queue/templates/queue/edit.html:137
+#: wazo_ui/plugins/recording_announcement/templates/recording_announcement/index.html:21
+#: wazo_ui/plugins/rtp/templates/rtp/index.html:23
+#: wazo_ui/plugins/rtp/templates/rtp/index.html:42
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:24
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:36
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:61
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:24
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:39
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:66
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:93
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:120
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:147
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:174
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:201
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:26
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:41
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:68
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:95
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:122
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:149
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:176
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:203
+#: wazo_ui/plugins/skill/templates/skill/edit.html:21
+#: wazo_ui/plugins/skillrule/templates/skillrule/edit.html:21
+#: wazo_ui/plugins/switchboard/templates/switchboard/edit.html:13
+#: wazo_ui/plugins/transport/templates/transports/edit.html:23
+#: wazo_ui/plugins/transport/templates/transports/edit.html:29
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:31
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:54
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:81
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:108
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:135
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:162
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:189
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:216
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:260
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:275
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:288
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:319
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:47
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:74
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:101
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:128
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:155
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:182
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:209
+#: wazo_ui/plugins/user/templates/user/edit.html:30
+#: wazo_ui/plugins/user/templates/user/edit.html:48
+#: wazo_ui/plugins/user/templates/user/edit.html:64
+#: wazo_ui/plugins/user/templates/user/edit.html:73
+#: wazo_ui/plugins/user/templates/user/edit.html:101
+#: wazo_ui/plugins/user/templates/user/edit.html:131
+#: wazo_ui/plugins/user/templates/user/edit.html:138
+#: wazo_ui/plugins/user/templates/user/edit.html:162
+#: wazo_ui/plugins/user/templates/user/edit.html:172
+#: wazo_ui/plugins/user/templates/user/edit.html:181
+#: wazo_ui/plugins/voicemail/templates/voicemail/edit.html:13
+#: wazo_ui/plugins/webhook/templates/webhook/edit.html:13
 msgid "Update"
 msgstr ""
 
-#: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:5
-#: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:11
+#: wazo_ui/plugins/access_feature/templates/access_features/list.html:5
+#: wazo_ui/plugins/access_feature/templates/access_features/list.html:11
 msgid "Features Access"
 msgstr ""
 
-#: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:24
+#: wazo_ui/plugins/access_feature/templates/access_features/list.html:24
 msgid "Add feature access"
 msgstr ""
 
-#: wazo_ui/plugins/access_feature/templates/wazo_engine/access_features/list.html:26
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:28
-#: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:26
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:38
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:26
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:35
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:61
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:67
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:73
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/list.html:29
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:38
-#: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:28
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:126
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:7
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:7
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv_ws.html:7
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_google.html:7
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:7
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_office365.html:7
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_personal.html:7
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:7
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:7
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:53
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_google.html:7
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_microsoft.html:7
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_mobile.html:7
-#: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:38
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:38
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/list.html:24
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/list.html:24
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:28
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:52
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:12
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_custom.html:12
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sccp.html:12
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:26
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:62
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:38
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:26
-#: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:27
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:37
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/list.html:23
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:37
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/list.html:27
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:31
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:36
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:26
-#: wazo_ui/plugins/skill/templates/wazo_engine/skill/list.html:26
-#: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/list.html:24
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:26
-#: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/list.html:38
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:21
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:27
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_custom.html:12
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:21
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:35
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:48
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:26
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:23
-#: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:28
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:43
+#: wazo_ui/plugins/access_feature/templates/access_features/list.html:26
+#: wazo_ui/plugins/agent/templates/agent/list.html:28
+#: wazo_ui/plugins/application/templates/application/list.html:26
+#: wazo_ui/plugins/call_filter/templates/call_filter/list.html:38
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:26
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:35
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:61
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:67
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:73
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/list.html:29
+#: wazo_ui/plugins/conference/templates/conference/list.html:38
+#: wazo_ui/plugins/context/templates/context/list.html:28
+#: wazo_ui/plugins/device/templates/device/list.html:126
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_conference.html:7
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv.html:7
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv_ws.html:7
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_google.html:7
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_ldap.html:7
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_office365.html:7
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_personal.html:7
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_phonebook.html:7
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_wazo.html:7
+#: wazo_ui/plugins/extension/templates/extension/list.html:53
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_google.html:7
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_microsoft.html:7
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_mobile.html:7
+#: wazo_ui/plugins/group/templates/group/list.html:38
+#: wazo_ui/plugins/identity/templates/identity/list.html:38
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:24
+#: wazo_ui/plugins/identity/templates/policy/list.html:24
+#: wazo_ui/plugins/identity/templates/tenant/list.html:28
+#: wazo_ui/plugins/incall/templates/incall/list.html:52
+#: wazo_ui/plugins/ivr/templates/ivr/add.html:12
+#: wazo_ui/plugins/line/templates/line/protocol_custom.html:12
+#: wazo_ui/plugins/line/templates/line/protocol_sccp.html:12
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:26
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:62
+#: wazo_ui/plugins/moh/templates/moh/list.html:38
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:26
+#: wazo_ui/plugins/paging/templates/paging/list.html:27
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:37
+#: wazo_ui/plugins/phone_number/templates/phone_number/list.html:40
+#: wazo_ui/plugins/phonebook/templates/phonebook/list.html:23
+#: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:37
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/list.html:27
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_registrar/list.html:31
+#: wazo_ui/plugins/queue/templates/queue/list.html:36
+#: wazo_ui/plugins/schedule/templates/schedule/list.html:26
+#: wazo_ui/plugins/skill/templates/skill/list.html:26
+#: wazo_ui/plugins/skillrule/templates/skillrule/list.html:24
+#: wazo_ui/plugins/sound/templates/sound/list.html:26
+#: wazo_ui/plugins/switchboard/templates/switchboard/list.html:38
+#: wazo_ui/plugins/transport/templates/transports/add.html:21
+#: wazo_ui/plugins/transport/templates/transports/add.html:27
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_custom.html:12
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:21
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:35
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:48
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:26
+#: wazo_ui/plugins/user/templates/user/list.html:23
+#: wazo_ui/plugins/voicemail/templates/voicemail/list.html:28
+#: wazo_ui/plugins/webhook/templates/webhook/list.html:43
 #: wazo_ui/templates/macro.html:298
 msgid "Add"
 msgstr ""
 
 #: wazo_ui/plugins/agent/form.py:26
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:15
+#: wazo_ui/plugins/agent/templates/agent/list.html:15
 #: wazo_ui/plugins/call_filter/form.py:35 wazo_ui/plugins/identity/form.py:58
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:15
+#: wazo_ui/plugins/identity/templates/identity/list.html:15
 #: wazo_ui/plugins/phonebook/form.py:18
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:22
+#: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:22
 #: wazo_ui/plugins/user/form.py:134
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:12
+#: wazo_ui/plugins/user/templates/user/list.html:12
 msgid "Firstname"
 msgstr ""
 
 #: wazo_ui/plugins/agent/form.py:27
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:16
+#: wazo_ui/plugins/agent/templates/agent/list.html:16
 #: wazo_ui/plugins/call_filter/form.py:36 wazo_ui/plugins/identity/form.py:59
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:16
+#: wazo_ui/plugins/identity/templates/identity/list.html:16
 #: wazo_ui/plugins/phonebook/form.py:19
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:23
+#: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:23
 #: wazo_ui/plugins/user/form.py:135
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:13
+#: wazo_ui/plugins/user/templates/user/list.html:13
 msgid "Lastname"
 msgstr ""
 
 #: wazo_ui/plugins/agent/form.py:28
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:14
+#: wazo_ui/plugins/agent/templates/agent/list.html:14
 msgid "Agent Number"
 msgstr ""
 
 #: wazo_ui/plugins/agent/form.py:29 wazo_ui/plugins/call_filter/form.py:84
 #: wazo_ui/plugins/call_permission/form.py:52
 #: wazo_ui/plugins/call_pickup/form.py:48
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/list.html:17
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/list.html:17
 #: wazo_ui/plugins/context/form.py:48 wazo_ui/plugins/device/form.py:38
 #: wazo_ui/plugins/identity/form.py:116 wazo_ui/plugins/ivr/form.py:37
 #: wazo_ui/plugins/outcall/form.py:48
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:15
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:15
 #: wazo_ui/plugins/phonebook/form.py:13
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/list.html:13
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:15
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:25
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:15
+#: wazo_ui/plugins/phonebook/templates/phonebook/list.html:13
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:15
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:25
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:15
 #: wazo_ui/plugins/skill/form.py:14 wazo_ui/plugins/user/form.py:151
 msgid "Description"
 msgstr ""
 
 #: wazo_ui/plugins/agent/form.py:30 wazo_ui/plugins/conference/form.py:41
-#: wazo_ui/plugins/group/form.py:70 wazo_ui/plugins/queue/form.py:105
+#: wazo_ui/plugins/group/form.py:70 wazo_ui/plugins/queue/form.py:106
 #: wazo_ui/plugins/user/form.py:144
 msgid "Subroutine"
 msgstr ""
@@ -710,7 +714,7 @@ msgstr ""
 #: wazo_ui/plugins/agent/form.py:31 wazo_ui/plugins/authentication/form.py:34
 #: wazo_ui/plugins/authentication/templates/authentication/login.html:21
 #: wazo_ui/plugins/call_permission/form.py:43
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/list.html:18
+#: wazo_ui/plugins/call_permission/templates/call_permission/list.html:18
 #: wazo_ui/plugins/dird_source/form.py:63
 #: wazo_ui/plugins/dird_source/form.py:134 wazo_ui/plugins/identity/form.py:57
 #: wazo_ui/plugins/user/form.py:137 wazo_ui/plugins/voicemail/form.py:35
@@ -720,147 +724,148 @@ msgstr ""
 #: wazo_ui/plugins/agent/form.py:32 wazo_ui/plugins/authentication/form.py:35
 #: wazo_ui/plugins/authentication/templates/authentication/login.html:22
 #: wazo_ui/plugins/provisioning/form.py:43 wazo_ui/plugins/sound/form.py:21
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:47
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:33
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:47
+#: wazo_ui/plugins/sound/templates/sound/list_system_files.html:33
 #: wazo_ui/plugins/voicemail/form.py:54
 msgid "Language"
 msgstr ""
 
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:5
+#: wazo_ui/plugins/agent/templates/agent/list.html:5
 #: wazo_ui/plugins/agent/view.py:23 wazo_ui/plugins/queue/form.py:59
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:20
+#: wazo_ui/plugins/queue/templates/queue/edit.html:20
 msgid "Agents"
 msgstr ""
 
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:13
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:11
+#: wazo_ui/plugins/agent/templates/agent/edit.html:13
+#: wazo_ui/plugins/agent/templates/agent/list.html:11
 msgid "Agent"
 msgstr ""
 
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:14
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/edit.html:15
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:15
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:15
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/edit.html:15
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:14
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:12
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:12
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_global.html:12
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_system.html:12
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/sccp_general.html:12
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:12
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:14
-#: wazo_ui/plugins/hep/templates/wazo_engine/hep/index.html:15
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:14
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/edit.html:14
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/configuration/edit.html:13
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:14
-#: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:15
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:15
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:11
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:13
-#: wazo_ui/plugins/skill/templates/wazo_engine/skill/edit.html:14
-#: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/edit.html:14
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:16
+#: wazo_ui/plugins/agent/templates/agent/edit.html:14
+#: wazo_ui/plugins/call_filter/templates/call_filter/edit.html:15
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:15
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:15
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/edit.html:15
+#: wazo_ui/plugins/context/templates/context/edit.html:14
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:12
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:12
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_global.html:12
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_system.html:12
+#: wazo_ui/plugins/general_settings/templates/general_settings/sccp_general.html:12
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:12
+#: wazo_ui/plugins/group/templates/group/edit.html:14
+#: wazo_ui/plugins/hep/templates/hep/index.html:15
+#: wazo_ui/plugins/identity/templates/tenant/edit.html:14
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/edit.html:14
+#: wazo_ui/plugins/provisioning/templates/provisioning/configuration/edit.html:13
+#: wazo_ui/plugins/queue/templates/queue/edit.html:14
+#: wazo_ui/plugins/recording_announcement/templates/recording_announcement/index.html:15
+#: wazo_ui/plugins/rtp/templates/rtp/index.html:15
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:15
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:11
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:13
+#: wazo_ui/plugins/skill/templates/skill/edit.html:14
+#: wazo_ui/plugins/skillrule/templates/skillrule/edit.html:14
+#: wazo_ui/plugins/user/templates/user/edit.html:16
 msgid "General"
 msgstr ""
 
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:15
+#: wazo_ui/plugins/agent/templates/agent/edit.html:15
 #: wazo_ui/plugins/extension/view.py:24
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/edit.html:15
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/configuration/edit.html:14
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:15
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/edit.html:15
+#: wazo_ui/plugins/provisioning/templates/provisioning/configuration/edit.html:14
+#: wazo_ui/plugins/queue/templates/queue/edit.html:15
 msgid "Advanced"
 msgstr ""
 
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:16
-#: wazo_ui/plugins/skill/templates/wazo_engine/skill/list.html:5
+#: wazo_ui/plugins/agent/templates/agent/edit.html:16
+#: wazo_ui/plugins/skill/templates/skill/list.html:5
 #: wazo_ui/plugins/skill/view.py:23
 msgid "Skills"
 msgstr ""
 
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:46
-#: wazo_ui/plugins/skill/templates/wazo_engine/skill/edit.html:13
-#: wazo_ui/plugins/skill/templates/wazo_engine/skill/list.html:11
+#: wazo_ui/plugins/agent/templates/agent/edit.html:46
+#: wazo_ui/plugins/skill/templates/skill/edit.html:13
+#: wazo_ui/plugins/skill/templates/skill/list.html:11
 msgid "Skill"
 msgstr ""
 
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/edit.html:47
+#: wazo_ui/plugins/agent/templates/agent/edit.html:47
 msgid "Weight"
 msgstr ""
 
-#: wazo_ui/plugins/agent/templates/wazo_engine/agent/list.html:26
+#: wazo_ui/plugins/agent/templates/agent/list.html:26
 msgid "Add Agent"
 msgstr ""
 
 #: wazo_ui/plugins/application/form.py:60
-#: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:15
+#: wazo_ui/plugins/application/templates/application/list.html:15
 #: wazo_ui/plugins/call_filter/form.py:58
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:14
+#: wazo_ui/plugins/call_filter/templates/call_filter/list.html:14
 #: wazo_ui/plugins/call_permission/form.py:42
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/list.html:17
+#: wazo_ui/plugins/call_permission/templates/call_permission/list.html:17
 #: wazo_ui/plugins/call_pickup/form.py:45
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/list.html:16
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/list.html:16
 #: wazo_ui/plugins/conference/form.py:25
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:14
+#: wazo_ui/plugins/conference/templates/conference/list.html:14
 #: wazo_ui/plugins/context/form.py:35
-#: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:14
-#: wazo_ui/plugins/dird_profile/templates/wazo_engine/dird_profile/list.html:14
+#: wazo_ui/plugins/context/templates/context/list.html:14
+#: wazo_ui/plugins/dird_profile/templates/dird_profile/list.html:14
 #: wazo_ui/plugins/dird_source/form.py:168
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/list.html:14
+#: wazo_ui/plugins/dird_source/templates/dird_source/list.html:14
 #: wazo_ui/plugins/general_settings/form.py:78
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:52
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:52
 #: wazo_ui/plugins/group/form.py:55
-#: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:15
+#: wazo_ui/plugins/group/templates/group/list.html:15
 #: wazo_ui/plugins/identity/form.py:33 wazo_ui/plugins/identity/form.py:82
 #: wazo_ui/plugins/identity/form.py:94 wazo_ui/plugins/identity/form.py:115
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/list.html:14
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/list.html:14
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:38
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:14
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:14
+#: wazo_ui/plugins/identity/templates/policy/list.html:14
+#: wazo_ui/plugins/identity/templates/tenant/edit.html:38
+#: wazo_ui/plugins/identity/templates/tenant/list.html:14
 #: wazo_ui/plugins/ivr/form.py:19
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:14
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:15
+#: wazo_ui/plugins/ivr/templates/ivr/list.html:14
+#: wazo_ui/plugins/line/templates/line/list.html:15
 #: wazo_ui/plugins/moh/form.py:21 wazo_ui/plugins/moh/form.py:26
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:36
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:15
+#: wazo_ui/plugins/moh/templates/moh/edit.html:36
+#: wazo_ui/plugins/moh/templates/moh/list.html:15
 #: wazo_ui/plugins/outcall/form.py:47
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:14
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:14
 #: wazo_ui/plugins/paging/form.py:36
-#: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:15
+#: wazo_ui/plugins/paging/templates/paging/list.html:15
 #: wazo_ui/plugins/parking_lot/form.py:19
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:14
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:14
 #: wazo_ui/plugins/phonebook/form.py:12
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/list.html:12
+#: wazo_ui/plugins/phonebook/templates/phonebook/list.html:12
 #: wazo_ui/plugins/provisioning/form.py:22
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:17
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:24
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:14
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_registrar/list.html:17
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:24
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:14
 #: wazo_ui/plugins/queue/form.py:66
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:14
+#: wazo_ui/plugins/queue/templates/queue/list.html:14
 #: wazo_ui/plugins/schedule/form.py:80
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:14
+#: wazo_ui/plugins/schedule/templates/schedule/list.html:14
 #: wazo_ui/plugins/sip_template/form.py:74 wazo_ui/plugins/skill/form.py:13
-#: wazo_ui/plugins/skill/templates/wazo_engine/skill/list.html:15
+#: wazo_ui/plugins/skill/templates/skill/list.html:15
 #: wazo_ui/plugins/skillrule/form.py:16
-#: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/list.html:14
+#: wazo_ui/plugins/skillrule/templates/skillrule/list.html:14
 #: wazo_ui/plugins/sound/form.py:19 wazo_ui/plugins/sound/form.py:28
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:14
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:15
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:14
+#: wazo_ui/plugins/sound/templates/sound/list.html:14
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:15
+#: wazo_ui/plugins/sound/templates/sound/list_system_files.html:14
 #: wazo_ui/plugins/switchboard/form.py:33 wazo_ui/plugins/transport/form.py:31
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/list.html:14
+#: wazo_ui/plugins/transport/templates/transports/list.html:14
 #: wazo_ui/plugins/trunk/form.py:35
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:16
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:107
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:16
+#: wazo_ui/plugins/user/templates/user/edit.html:107
 #: wazo_ui/plugins/voicemail/form.py:28
-#: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:14
+#: wazo_ui/plugins/voicemail/templates/voicemail/list.html:14
 msgid "Name"
 msgstr ""
 
 #: wazo_ui/plugins/application/form.py:68 wazo_ui/plugins/context/form.py:38
-#: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:16
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/list.html:14
+#: wazo_ui/plugins/context/templates/context/list.html:16
+#: wazo_ui/plugins/external_auth/templates/external_auth/list.html:14
 #: wazo_ui/plugins/trunk/form.py:37
 msgid "Type"
 msgstr ""
@@ -883,17 +888,17 @@ msgstr ""
 msgid "Node"
 msgstr ""
 
-#: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:11
+#: wazo_ui/plugins/application/templates/application/list.html:11
 #: wazo_ui/plugins/application/view.py:24
 msgid "Applications"
 msgstr ""
 
-#: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:14
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:14
+#: wazo_ui/plugins/application/templates/application/list.html:14
+#: wazo_ui/plugins/webhook/templates/webhook/logs.html:14
 msgid "UUID"
 msgstr ""
 
-#: wazo_ui/plugins/application/templates/wazo_engine/application/list.html:24
+#: wazo_ui/plugins/application/templates/application/list.html:24
 msgid "Add Application"
 msgstr ""
 
@@ -909,7 +914,7 @@ msgstr ""
 #: wazo_ui/plugins/authentication/templates/authentication/login.html:20
 #: wazo_ui/plugins/dird_source/form.py:66
 #: wazo_ui/plugins/dird_source/form.py:133 wazo_ui/plugins/identity/form.py:56
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:14
+#: wazo_ui/plugins/identity/templates/identity/list.html:14
 #: wazo_ui/plugins/user/form.py:136
 msgid "Username"
 msgstr ""
@@ -948,7 +953,7 @@ msgid "Boss and all secretaries"
 msgstr ""
 
 #: wazo_ui/plugins/call_filter/form.py:40
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:16
+#: wazo_ui/plugins/call_filter/templates/call_filter/list.html:16
 msgid "Boss"
 msgstr ""
 
@@ -957,12 +962,12 @@ msgid "Boss Timeout"
 msgstr ""
 
 #: wazo_ui/plugins/call_filter/form.py:52
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:17
+#: wazo_ui/plugins/call_filter/templates/call_filter/list.html:17
 msgid "Secretaries"
 msgstr ""
 
 #: wazo_ui/plugins/call_filter/form.py:60
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:15
+#: wazo_ui/plugins/call_filter/templates/call_filter/list.html:15
 msgid "Ring Strategy"
 msgstr ""
 
@@ -987,6 +992,8 @@ msgid "Append"
 msgstr ""
 
 #: wazo_ui/plugins/call_filter/form.py:71 wazo_ui/plugins/incall/form.py:46
+#: wazo_ui/plugins/phone_number/form.py:15
+#: wazo_ui/plugins/phone_number/templates/phone_number/list.html:16
 #: wazo_ui/plugins/queue/form.py:83
 msgid "Caller ID name"
 msgstr ""
@@ -1004,8 +1011,8 @@ msgid "External"
 msgstr ""
 
 #: wazo_ui/plugins/call_filter/form.py:77
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:14
-#: wazo_ui/plugins/group/form.py:76
+#: wazo_ui/plugins/device/templates/device/list.html:14
+#: wazo_ui/plugins/group/form.py:77
 msgid "All"
 msgstr ""
 
@@ -1017,9 +1024,9 @@ msgstr ""
 #: wazo_ui/plugins/call_permission/form.py:53
 #: wazo_ui/plugins/call_pickup/form.py:49 wazo_ui/plugins/dhcp/form.py:12
 #: wazo_ui/plugins/extension/form.py:27
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/edit_features.html:18
+#: wazo_ui/plugins/extension/templates/extension/edit_features.html:18
 #: wazo_ui/plugins/group/form.py:68 wazo_ui/plugins/hep/form.py:12
-#: wazo_ui/plugins/paging/form.py:47 wazo_ui/plugins/queue/form.py:124
+#: wazo_ui/plugins/paging/form.py:47 wazo_ui/plugins/queue/form.py:125
 #: wazo_ui/plugins/trunk/form.py:51
 msgid "Enabled"
 msgstr ""
@@ -1036,17 +1043,17 @@ msgstr ""
 msgid "BS Filters"
 msgstr ""
 
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/edit.html:16
+#: wazo_ui/plugins/call_filter/templates/call_filter/edit.html:16
 #: wazo_ui/plugins/sound/form.py:42
 msgid "No Answer"
 msgstr ""
 
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:5
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:11
+#: wazo_ui/plugins/call_filter/templates/call_filter/list.html:5
+#: wazo_ui/plugins/call_filter/templates/call_filter/list.html:11
 msgid "Boss Secretaries Filters"
 msgstr ""
 
-#: wazo_ui/plugins/call_filter/templates/wazo_engine/call_filter/list.html:36
+#: wazo_ui/plugins/call_filter/templates/call_filter/list.html:36
 msgid "Add BS Filter"
 msgstr ""
 
@@ -1059,65 +1066,65 @@ msgid "Deny"
 msgstr ""
 
 #: wazo_ui/plugins/call_permission/form.py:45
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/list.html:19
+#: wazo_ui/plugins/call_permission/templates/call_permission/list.html:19
 #: wazo_ui/plugins/moh/form.py:32
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:16
+#: wazo_ui/plugins/moh/templates/moh/list.html:16
 msgid "Mode"
 msgstr ""
 
 #: wazo_ui/plugins/call_permission/form.py:46
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:17
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:17
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:17
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:17
 #: wazo_ui/plugins/queue/form.py:61
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:21
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:4
+#: wazo_ui/plugins/queue/templates/queue/edit.html:21
+#: wazo_ui/plugins/user/templates/user/list.html:4
 #: wazo_ui/plugins/user/view.py:37 wazo_ui/plugins/voicemail/form.py:63
 msgid "Users"
 msgstr ""
 
 #: wazo_ui/plugins/call_permission/form.py:48
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:18
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:18
-#: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:5
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:18
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:18
+#: wazo_ui/plugins/group/templates/group/list.html:5
 #: wazo_ui/plugins/identity/form.py:44
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:16
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/list.html:5
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/list.html:11
+#: wazo_ui/plugins/identity/templates/identity/edit.html:16
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:5
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:11
 #: wazo_ui/plugins/identity/view.py:98 wazo_ui/plugins/user/form.py:174
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:20
+#: wazo_ui/plugins/user/templates/user/edit.html:20
 msgid "Groups"
 msgstr ""
 
 #: wazo_ui/plugins/call_permission/form.py:50
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:19
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:19
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:11
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:19
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:19
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:11
 #: wazo_ui/plugins/outcall/view.py:24
 msgid "Outcalls"
 msgstr ""
 
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:5
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:14
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:14
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/list.html:5
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/list.html:11
-#: wazo_ui/plugins/call_permission/view.py:25 wazo_ui/plugins/group/form.py:90
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:18
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:5
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:14
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:14
+#: wazo_ui/plugins/call_permission/templates/call_permission/list.html:5
+#: wazo_ui/plugins/call_permission/templates/call_permission/list.html:11
+#: wazo_ui/plugins/call_permission/view.py:25 wazo_ui/plugins/group/form.py:91
+#: wazo_ui/plugins/group/templates/group/edit.html:18
 #: wazo_ui/plugins/outcall/form.py:56
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:18
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:18
 #: wazo_ui/plugins/user/form.py:179
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:24
+#: wazo_ui/plugins/user/templates/user/edit.html:24
 msgid "Call Permissions"
 msgstr ""
 
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:16
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/add.html:41
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:16
-#: wazo_ui/plugins/call_permission/templates/wazo_engine/call_permission/edit.html:41
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:5
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:16
+#: wazo_ui/plugins/call_permission/templates/call_permission/add.html:41
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:16
+#: wazo_ui/plugins/call_permission/templates/call_permission/edit.html:41
+#: wazo_ui/plugins/extension/templates/extension/list.html:5
 #: wazo_ui/plugins/extension/view.py:28
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:15
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:16
+#: wazo_ui/plugins/ivr/templates/ivr/list.html:15
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:16
 msgid "Extensions"
 msgstr ""
 
@@ -1137,22 +1144,22 @@ msgstr ""
 msgid "Target Groups"
 msgstr ""
 
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/edit.html:14
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/list.html:5
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/list.html:11
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/edit.html:14
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/list.html:5
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/list.html:11
 #: wazo_ui/plugins/call_pickup/view.py:18
 msgid "Call Pickups"
 msgstr ""
 
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/edit.html:16
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/edit.html:16
 msgid "Interceptors"
 msgstr ""
 
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/edit.html:17
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/edit.html:17
 msgid "Targets"
 msgstr ""
 
-#: wazo_ui/plugins/call_pickup/templates/wazo_engine/call_pickup/list.html:27
+#: wazo_ui/plugins/call_pickup/templates/call_pickup/list.html:27
 msgid "Add Call Pickup"
 msgstr ""
 
@@ -1164,54 +1171,54 @@ msgstr ""
 msgid "CDR"
 msgstr ""
 
-#: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:5
-#: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:11
+#: wazo_ui/plugins/cdr/templates/cdr/list.html:5
+#: wazo_ui/plugins/cdr/templates/cdr/list.html:11
 msgid "Cdr"
 msgstr ""
 
-#: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:14
+#: wazo_ui/plugins/cdr/templates/cdr/list.html:14
 msgid "Date"
 msgstr ""
 
-#: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:15
+#: wazo_ui/plugins/cdr/templates/cdr/list.html:15
 msgid "Source"
 msgstr ""
 
-#: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:16
+#: wazo_ui/plugins/cdr/templates/cdr/list.html:16
 msgid "Source name"
 msgstr ""
 
-#: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:18
+#: wazo_ui/plugins/cdr/templates/cdr/list.html:18
 msgid "Destination name"
 msgstr ""
 
-#: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:19
+#: wazo_ui/plugins/cdr/templates/cdr/list.html:19
 msgid "Duration"
 msgstr ""
 
-#: wazo_ui/plugins/cdr/templates/wazo_engine/cdr/list.html:20
+#: wazo_ui/plugins/cdr/templates/cdr/list.html:20
 msgid "Answered"
 msgstr ""
 
 #: wazo_ui/plugins/conference/form.py:20
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:15
+#: wazo_ui/plugins/conference/templates/conference/list.html:15
 #: wazo_ui/plugins/extension/form.py:20 wazo_ui/plugins/extension/form.py:29
 #: wazo_ui/plugins/extension/form.py:38 wazo_ui/plugins/extension/plugin.py:35
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/edit.html:11
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/edit_features.html:20
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:11
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:14
+#: wazo_ui/plugins/extension/templates/extension/edit.html:11
+#: wazo_ui/plugins/extension/templates/extension/edit_features.html:20
+#: wazo_ui/plugins/extension/templates/extension/list.html:11
+#: wazo_ui/plugins/extension/templates/extension/list.html:14
 #: wazo_ui/plugins/group/form.py:28
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:71
-#: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:16
+#: wazo_ui/plugins/group/templates/group/edit.html:74
+#: wazo_ui/plugins/group/templates/group/list.html:16
 #: wazo_ui/plugins/outcall/form.py:34
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:42
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:36
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:42
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:36
 #: wazo_ui/plugins/parking_lot/form.py:14
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:15
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:15
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:109
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:15
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:15
+#: wazo_ui/plugins/queue/templates/queue/list.html:15
+#: wazo_ui/plugins/user/templates/user/edit.html:109
+#: wazo_ui/plugins/user/templates/user/list.html:15
 msgid "Extension"
 msgstr ""
 
@@ -1238,45 +1245,45 @@ msgstr ""
 #: wazo_ui/plugins/conference/form.py:56
 #: wazo_ui/plugins/conference/plugin.py:34
 #: wazo_ui/plugins/conference/plugin.py:37
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/edit.html:11
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:19
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:61
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:24
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:4
+#: wazo_ui/plugins/conference/templates/conference/edit.html:11
+#: wazo_ui/plugins/context/templates/context/edit.html:19
+#: wazo_ui/plugins/context/templates/context/edit.html:61
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_conference.html:24
+#: wazo_ui/plugins/general_settings/templates/general_settings/confbridge_general.html:4
 #: wazo_ui/plugins/general_settings/view.py:275
 msgid "Conference"
 msgstr ""
 
 #: wazo_ui/plugins/conference/view.py:22 wazo_ui/plugins/context/form.py:43
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:18
+#: wazo_ui/plugins/user/templates/user/edit.html:18
 #: wazo_ui/plugins/webhook/form.py:24
 msgid "Services"
 msgstr ""
 
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:5
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:11
+#: wazo_ui/plugins/conference/templates/conference/list.html:5
+#: wazo_ui/plugins/conference/templates/conference/list.html:11
 #: wazo_ui/plugins/conference/view.py:25
 msgid "Conferences"
 msgstr ""
 
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:22
-#: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:23
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:23
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:21
+#: wazo_ui/plugins/conference/templates/conference/list.html:22
+#: wazo_ui/plugins/group/templates/group/list.html:23
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:23
+#: wazo_ui/plugins/queue/templates/queue/list.html:21
 msgid "internal"
 msgstr ""
 
-#: wazo_ui/plugins/conference/templates/wazo_engine/conference/list.html:36
+#: wazo_ui/plugins/conference/templates/conference/list.html:36
 msgid "Add Conference"
 msgstr ""
 
 #: wazo_ui/plugins/context/form.py:26
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:86
+#: wazo_ui/plugins/context/templates/context/edit.html:86
 msgid "Start"
 msgstr ""
 
 #: wazo_ui/plugins/context/form.py:27
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:87
+#: wazo_ui/plugins/context/templates/context/edit.html:87
 msgid "End"
 msgstr ""
 
@@ -1285,34 +1292,34 @@ msgid "DID length"
 msgstr ""
 
 #: wazo_ui/plugins/context/form.py:36
-#: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:15
+#: wazo_ui/plugins/context/templates/context/list.html:15
 #: wazo_ui/plugins/group/form.py:56
-#: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:14
+#: wazo_ui/plugins/group/templates/group/list.html:14
 #: wazo_ui/plugins/moh/form.py:30
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:14
+#: wazo_ui/plugins/moh/templates/moh/list.html:14
 #: wazo_ui/plugins/provisioning/form.py:100
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/list.html:17
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/list.html:17
 #: wazo_ui/plugins/queue/form.py:67 wazo_ui/plugins/sip_template/form.py:73
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/list.html:14
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:15
+#: wazo_ui/plugins/sip_template/templates/sip_template/list.html:14
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:15
 #: wazo_ui/plugins/user/form.py:111
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:143
+#: wazo_ui/plugins/user/templates/user/edit.html:143
 msgid "Label"
 msgstr ""
 
 #: wazo_ui/plugins/context/form.py:41
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:21
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:69
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:14
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:15
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:5
+#: wazo_ui/plugins/context/templates/context/edit.html:21
+#: wazo_ui/plugins/context/templates/context/edit.html:69
+#: wazo_ui/plugins/incall/templates/incall/edit.html:14
+#: wazo_ui/plugins/incall/templates/incall/edit.html:15
+#: wazo_ui/plugins/incall/templates/incall/list.html:5
 msgid "Incall"
 msgstr ""
 
 #: wazo_ui/plugins/context/form.py:42
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:14
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:15
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:5
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:14
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:15
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:5
 msgid "Outcall"
 msgstr ""
 
@@ -1324,57 +1331,57 @@ msgstr ""
 msgid "Contexts included"
 msgstr ""
 
-#: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:5
-#: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:11
+#: wazo_ui/plugins/context/templates/context/list.html:5
+#: wazo_ui/plugins/context/templates/context/list.html:11
 #: wazo_ui/plugins/context/view.py:23
 msgid "Contexts"
 msgstr ""
 
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:16
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:43
+#: wazo_ui/plugins/context/templates/context/edit.html:16
+#: wazo_ui/plugins/context/templates/context/edit.html:43
 #: wazo_ui/plugins/identity/form.py:67
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:14
+#: wazo_ui/plugins/identity/templates/identity/edit.html:14
 #: wazo_ui/plugins/trunk/form.py:38 wazo_ui/plugins/user/form.py:187
 #: wazo_ui/plugins/user/form.py:196 wazo_ui/plugins/user/plugin.py:33
 #: wazo_ui/plugins/user/plugin.py:35
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:14
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:15
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:9
+#: wazo_ui/plugins/user/templates/user/edit.html:14
+#: wazo_ui/plugins/user/templates/user/edit.html:15
+#: wazo_ui/plugins/user/templates/user/list.html:9
 #: wazo_ui/plugins/webhook/form.py:26
 msgid "User"
 msgstr ""
 
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:17
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:49
-#: wazo_ui/plugins/group/form.py:101 wazo_ui/plugins/group/form.py:109
-#: wazo_ui/plugins/group/form.py:126 wazo_ui/plugins/group/plugin.py:37
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:13
-#: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:11
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/edit.html:11
+#: wazo_ui/plugins/context/templates/context/edit.html:17
+#: wazo_ui/plugins/context/templates/context/edit.html:49
+#: wazo_ui/plugins/group/form.py:104 wazo_ui/plugins/group/form.py:112
+#: wazo_ui/plugins/group/form.py:129 wazo_ui/plugins/group/plugin.py:37
+#: wazo_ui/plugins/group/templates/group/edit.html:13
+#: wazo_ui/plugins/group/templates/group/list.html:11
+#: wazo_ui/plugins/identity/templates/identity_group/edit.html:11
 msgid "Group"
 msgstr ""
 
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:18
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:55
-#: wazo_ui/plugins/queue/form.py:136 wazo_ui/plugins/queue/form.py:146
+#: wazo_ui/plugins/context/templates/context/edit.html:18
+#: wazo_ui/plugins/context/templates/context/edit.html:55
+#: wazo_ui/plugins/queue/form.py:137 wazo_ui/plugins/queue/form.py:147
 #: wazo_ui/plugins/queue/plugin.py:33
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:13
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:11
+#: wazo_ui/plugins/queue/templates/queue/edit.html:13
+#: wazo_ui/plugins/queue/templates/queue/list.html:11
 msgid "Queue"
 msgstr ""
 
-#: wazo_ui/plugins/context/templates/wazo_engine/context/edit.html:89
+#: wazo_ui/plugins/context/templates/context/edit.html:89
 msgid "DID Length"
 msgstr ""
 
-#: wazo_ui/plugins/context/templates/wazo_engine/context/list.html:26
+#: wazo_ui/plugins/context/templates/context/list.html:26
 msgid "Add Context"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:18 wazo_ui/plugins/switchboard/form.py:49
 #: wazo_ui/plugins/switchboard/plugin.py:33
-#: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/edit.html:11
-#: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/list.html:5
+#: wazo_ui/plugins/switchboard/templates/switchboard/edit.html:11
+#: wazo_ui/plugins/switchboard/templates/switchboard/list.html:5
 msgid "Switchboard"
 msgstr ""
 
@@ -1383,70 +1390,70 @@ msgid "Template"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:23
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:23
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:75
+#: wazo_ui/plugins/device/templates/device/list.html:23
+#: wazo_ui/plugins/device/templates/device/list.html:75
 msgid "IP"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:24
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:24
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:76
+#: wazo_ui/plugins/device/templates/device/list.html:24
+#: wazo_ui/plugins/device/templates/device/list.html:76
 msgid "MAC"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:25
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:25
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:77
+#: wazo_ui/plugins/device/templates/device/list.html:25
+#: wazo_ui/plugins/device/templates/device/list.html:77
 msgid "Model"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:26
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:26
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:78
+#: wazo_ui/plugins/device/templates/device/list.html:26
+#: wazo_ui/plugins/device/templates/device/list.html:78
 msgid "Plugin"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:27
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:27
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:79
+#: wazo_ui/plugins/device/templates/device/list.html:27
+#: wazo_ui/plugins/device/templates/device/list.html:79
 msgid "Vendor"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:28
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:28
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:80
+#: wazo_ui/plugins/device/templates/device/list.html:28
+#: wazo_ui/plugins/device/templates/device/list.html:80
 #: wazo_ui/plugins/dird_source/form.py:82
 #: wazo_ui/plugins/dird_source/form.py:100
 #: wazo_ui/plugins/dird_source/form.py:135
 #: wazo_ui/plugins/dird_source/form.py:146
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:26
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:16
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:26
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:16
 msgid "Version"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:30
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:115
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:16
+#: wazo_ui/plugins/device/templates/device/list.html:115
+#: wazo_ui/plugins/webhook/templates/webhook/logs.html:16
 msgid "Status"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:32
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:117
+#: wazo_ui/plugins/device/templates/device/list.html:117
 msgid "Autoprov"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:33
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:116
+#: wazo_ui/plugins/device/templates/device/list.html:116
 msgid "Configured"
 msgstr ""
 
 #: wazo_ui/plugins/device/form.py:34
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:118
+#: wazo_ui/plugins/device/templates/device/list.html:118
 msgid "Not configured"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:5
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:11
+#: wazo_ui/plugins/device/templates/device/list.html:5
+#: wazo_ui/plugins/device/templates/device/list.html:11
 #: wazo_ui/plugins/device/view.py:26
 msgid "Devices"
 msgstr ""
@@ -1466,44 +1473,44 @@ msgstr ""
 msgid "%(resource)s: Device has been assigned to tenant"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/edit.html:11
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:110
+#: wazo_ui/plugins/device/templates/device/edit.html:11
+#: wazo_ui/plugins/user/templates/user/edit.html:110
 msgid "Device"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:15
+#: wazo_ui/plugins/device/templates/device/list.html:15
 msgid "Unallocated"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:52
+#: wazo_ui/plugins/device/templates/device/list.html:52
 msgid "Synchronize device"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:54
+#: wazo_ui/plugins/device/templates/device/list.html:54
 msgid "Are you sure you want to synchronize this device ?"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:60
+#: wazo_ui/plugins/device/templates/device/list.html:60
 msgid "Reset device to autoprov mode"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:62
+#: wazo_ui/plugins/device/templates/device/list.html:62
 msgid "Are you sure you want to reset this device ?"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:104
+#: wazo_ui/plugins/device/templates/device/list.html:104
 msgid "Assign device to current tenant"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:106
+#: wazo_ui/plugins/device/templates/device/list.html:106
 msgid "Are you sure you want to assign this device to the current tenant?"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:108
+#: wazo_ui/plugins/device/templates/device/list.html:108
 msgid "Take"
 msgstr ""
 
-#: wazo_ui/plugins/device/templates/wazo_engine/device/list.html:124
+#: wazo_ui/plugins/device/templates/device/list.html:124
 msgid "Add Device"
 msgstr ""
 
@@ -1519,7 +1526,7 @@ msgstr ""
 msgid "Pool end"
 msgstr ""
 
-#: wazo_ui/plugins/dhcp/templates/wazo_engine/dhcp/index.html:4
+#: wazo_ui/plugins/dhcp/templates/dhcp/index.html:4
 #: wazo_ui/plugins/dhcp/view.py:19
 msgid "Dhcp"
 msgstr ""
@@ -1528,27 +1535,27 @@ msgstr ""
 msgid "Dhcp config has been updated"
 msgstr ""
 
-#: wazo_ui/plugins/dhcp/templates/wazo_engine/dhcp/index.html:4
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:11
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:11
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv_ws.html:11
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_google.html:11
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:11
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_office365.html:11
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_personal.html:11
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:11
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:11
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_google.html:11
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_microsoft.html:11
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_mobile.html:11
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:4
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:4
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:4
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_global.html:4
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_system.html:4
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/sccp_general.html:4
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:4
-#: wazo_ui/plugins/ha/templates/wazo_engine/ha/index.html:4
+#: wazo_ui/plugins/dhcp/templates/dhcp/index.html:4
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_conference.html:11
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv.html:11
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv_ws.html:11
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_google.html:11
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_ldap.html:11
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_office365.html:11
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_personal.html:11
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_phonebook.html:11
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_wazo.html:11
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_google.html:11
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_microsoft.html:11
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_mobile.html:11
+#: wazo_ui/plugins/general_settings/templates/general_settings/confbridge_general.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_global.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_system.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/sccp_general.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:4
+#: wazo_ui/plugins/ha/templates/ha/index.html:4
 #: wazo_ui/templates/macro.html:302
 msgid "Edit"
 msgstr ""
@@ -1557,7 +1564,7 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: wazo_ui/plugins/dird_profile/templates/wazo_engine/dird_profile/list.html:5
+#: wazo_ui/plugins/dird_profile/templates/dird_profile/list.html:5
 msgid "Directory profile"
 msgstr ""
 
@@ -1607,8 +1614,8 @@ msgstr ""
 #: wazo_ui/plugins/dird_source/form.py:96
 #: wazo_ui/plugins/dird_source/form.py:127
 #: wazo_ui/plugins/dird_source/form.py:141 wazo_ui/plugins/outcall/form.py:37
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:45
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:39
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:45
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:39
 msgid "Prefix"
 msgstr ""
 
@@ -1633,12 +1640,12 @@ msgid "Certificate path"
 msgstr ""
 
 #: wazo_ui/plugins/dird_source/form.py:90
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:26
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:16
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:14
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:16
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:20
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:16
+#: wazo_ui/plugins/line/templates/line/edit.html:26
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:16
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:14
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:16
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:20
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:16
 msgid "Endpoint"
 msgstr ""
 
@@ -1654,122 +1661,122 @@ msgstr ""
 msgid "Sources"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/list.html:15
+#: wazo_ui/plugins/dird_source/templates/dird_source/list.html:15
 msgid "Backend"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/list.html:24
+#: wazo_ui/plugins/dird_source/templates/dird_source/list.html:24
 msgid "Add Directory Source"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:8
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_conference.html:8
 msgid "Add Conference source"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:25
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:25
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv_ws.html:25
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_google.html:25
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:25
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_office365.html:25
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_personal.html:25
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:25
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:25
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_conference.html:25
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv.html:25
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv_ws.html:25
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_google.html:25
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_ldap.html:25
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_office365.html:25
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_personal.html:25
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_phonebook.html:25
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_wazo.html:25
 msgid "First matched columns"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:26
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:26
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv_ws.html:26
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_google.html:26
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_office365.html:26
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_personal.html:26
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:26
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:26
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_conference.html:26
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv.html:26
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv_ws.html:26
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_google.html:26
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_office365.html:26
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_personal.html:26
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_phonebook.html:26
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_wazo.html:26
 msgid "Format columns"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_conference.html:27
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:27
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv_ws.html:27
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_google.html:27
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:27
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_office365.html:27
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_personal.html:27
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:27
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:27
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_conference.html:27
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv.html:27
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv_ws.html:27
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_google.html:27
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_ldap.html:27
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_office365.html:27
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_personal.html:27
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_phonebook.html:27
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_wazo.html:27
 msgid "Search columns"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:8
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv.html:8
 msgid "Add CSV source"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv.html:24
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv.html:24
 #: wazo_ui/templates/translations.html:23
 msgid "CSV"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv_ws.html:8
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv_ws.html:8
 msgid "Add CSV WS source"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_csv_ws.html:24
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_csv_ws.html:24
 msgid "CSV WS"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_google.html:8
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_google.html:8
 msgid "Add Google source"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_google.html:24
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_google.html:24
 msgid "Google"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:8
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_ldap.html:8
 msgid "Add LDAP source"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:24
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_ldap.html:24
 #: wazo_ui/plugins/identity/form.py:75 wazo_ui/plugins/identity/form.py:101
-#: wazo_ui/plugins/identity/templates/wazo_engine/ldap/index.html:4
+#: wazo_ui/plugins/identity/templates/ldap/index.html:4
 #: wazo_ui/plugins/identity/view.py:293
 msgid "LDAP"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_ldap.html:26
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_ldap.html:26
 msgid "Columns"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_office365.html:8
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_office365.html:8
 msgid "Add Office 365 source"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_office365.html:24
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_office365.html:24
 msgid "Office 365"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_personal.html:8
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_personal.html:8
 msgid "Add a Personal source"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_personal.html:24
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_personal.html:24
 msgid "Personal"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:8
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_phonebook.html:8
 msgid "Add Phonebook source"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_phonebook.html:39
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_phonebook.html:39
 msgid "Choose Phonebook"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:8
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_wazo.html:8
 msgid "Add Wazo source"
 msgstr ""
 
-#: wazo_ui/plugins/dird_source/templates/wazo_engine/dird_source/form/form_wazo.html:24
+#: wazo_ui/plugins/dird_source/templates/dird_source/form/form_wazo.html:24
 msgid "Wazo"
 msgstr ""
 
@@ -1781,31 +1788,31 @@ msgstr ""
 msgid "Extensions features has been updated"
 msgstr ""
 
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:16
+#: wazo_ui/plugins/extension/templates/extension/list.html:16
 msgid "Conference ID"
 msgstr ""
 
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:17
+#: wazo_ui/plugins/extension/templates/extension/list.html:17
 msgid "Parking Lot ID"
 msgstr ""
 
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:18
+#: wazo_ui/plugins/extension/templates/extension/list.html:18
 msgid "Group ID"
 msgstr ""
 
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:19
+#: wazo_ui/plugins/extension/templates/extension/list.html:19
 msgid "Incall ID"
 msgstr ""
 
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:20
+#: wazo_ui/plugins/extension/templates/extension/list.html:20
 msgid "Lines ID"
 msgstr ""
 
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:21
+#: wazo_ui/plugins/extension/templates/extension/list.html:21
 msgid "Outcall ID"
 msgstr ""
 
-#: wazo_ui/plugins/extension/templates/wazo_engine/extension/list.html:51
+#: wazo_ui/plugins/extension/templates/extension/list.html:51
 msgid "Add Extension"
 msgstr ""
 
@@ -1839,36 +1846,36 @@ msgstr ""
 msgid "Use sandbox"
 msgstr ""
 
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/list.html:5
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/list.html:11
+#: wazo_ui/plugins/external_auth/templates/external_auth/list.html:5
+#: wazo_ui/plugins/external_auth/templates/external_auth/list.html:11
 #: wazo_ui/plugins/external_auth/view.py:21
 msgid "External Auth"
 msgstr ""
 
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/list.html:23
+#: wazo_ui/plugins/external_auth/templates/external_auth/list.html:23
 msgid "Add External Authentication"
 msgstr ""
 
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_google.html:8
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_google.html:8
 msgid "Add Google external auth"
 msgstr ""
 
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_google.html:21
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_microsoft.html:21
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_mobile.html:21
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_google.html:21
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_microsoft.html:21
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_mobile.html:21
 msgid "External auth"
 msgstr ""
 
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_microsoft.html:8
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_microsoft.html:8
 msgid "Add Microsoft external auth"
 msgstr ""
 
-#: wazo_ui/plugins/external_auth/templates/wazo_engine/external_auth/form/form_mobile.html:8
+#: wazo_ui/plugins/external_auth/templates/external_auth/form/form_mobile.html:8
 msgid "Add Mobile external auth"
 msgstr ""
 
 #: wazo_ui/plugins/funckey/form.py:19 wazo_ui/plugins/funckey/plugin.py:26
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:16
+#: wazo_ui/plugins/webhook/templates/webhook/list.html:16
 msgid "Service"
 msgstr ""
 
@@ -1961,47 +1968,47 @@ msgid "IP Address"
 msgstr ""
 
 #: wazo_ui/plugins/general_settings/form.py:63
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:53
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:53
 msgid "Netmask"
 msgstr ""
 
 #: wazo_ui/plugins/general_settings/form.py:64
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:54
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:54
 msgid "Limit"
 msgstr ""
 
 #: wazo_ui/plugins/general_settings/form.py:80
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:53
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:53
 #: wazo_ui/plugins/provisioning/form.py:56 wazo_ui/plugins/schedule/form.py:81
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:15
+#: wazo_ui/plugins/schedule/templates/schedule/list.html:15
 #: wazo_ui/plugins/user/form.py:149 wazo_ui/plugins/voicemail/form.py:40
 msgid "Timezone"
 msgstr ""
 
 #: wazo_ui/plugins/general_settings/form.py:84
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:54
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:54
 msgid "Message"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_global.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_global.html:4
 #: wazo_ui/plugins/general_settings/view.py:121
 msgid "PJSIP Global Settings"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_system.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_system.html:4
 #: wazo_ui/plugins/general_settings/view.py:135
 msgid "PJSIP System Settings"
 msgstr ""
 
 #: wazo_ui/plugins/general_settings/view.py:149
 #: wazo_ui/plugins/trunk/form.py:65
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:58
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:58
 msgid "IAX"
 msgstr ""
 
 #: wazo_ui/plugins/general_settings/view.py:178 wazo_ui/plugins/line/form.py:38
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:25
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:53
+#: wazo_ui/plugins/line/templates/line/list.html:25
+#: wazo_ui/plugins/line/templates/line/list.html:53
 #: wazo_ui/plugins/user/form.py:55
 msgid "SCCP"
 msgstr ""
@@ -2010,179 +2017,179 @@ msgstr ""
 msgid "Features Code"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:12
+#: wazo_ui/plugins/general_settings/templates/general_settings/confbridge_general.html:12
 msgid "Default Bridge"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:13
+#: wazo_ui/plugins/general_settings/templates/general_settings/confbridge_general.html:13
 msgid "Default User"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:26
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:52
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:27
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:54
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:81
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:26
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_global.html:25
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_system.html:25
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/sccp_general.html:25
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:26
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:85
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:134
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sccp.html:22
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:68
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:109
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:45
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:72
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:99
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:126
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:153
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:180
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:207
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:47
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:74
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:101
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:128
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:155
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:182
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:209
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:32
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/edit.html:34
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:59
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:86
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:113
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:140
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:167
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:194
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:221
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:292
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:53
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:52
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:79
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:106
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:133
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:160
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:187
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:214
+#: wazo_ui/plugins/general_settings/templates/general_settings/confbridge_general.html:26
+#: wazo_ui/plugins/general_settings/templates/general_settings/confbridge_general.html:52
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:27
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:54
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:81
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:26
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_global.html:25
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_system.html:25
+#: wazo_ui/plugins/general_settings/templates/general_settings/sccp_general.html:25
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:26
+#: wazo_ui/plugins/line/templates/line/edit.html:85
+#: wazo_ui/plugins/line/templates/line/edit.html:134
+#: wazo_ui/plugins/line/templates/line/protocol_sccp.html:22
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:68
+#: wazo_ui/plugins/queue/templates/queue/edit.html:110
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:45
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:72
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:99
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:126
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:153
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:180
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:207
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:47
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:74
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:101
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:128
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:155
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:182
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:209
+#: wazo_ui/plugins/transport/templates/transports/add.html:32
+#: wazo_ui/plugins/transport/templates/transports/edit.html:34
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:60
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:87
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:114
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:141
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:168
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:195
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:222
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:293
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:53
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:53
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:80
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:107
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:134
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:161
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:188
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:215
 msgid "Option Key"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:27
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/confbridge_general.html:53
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:28
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:55
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:82
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:27
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_global.html:26
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/pjsip_system.html:26
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/sccp_general.html:26
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:27
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:86
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:135
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sccp.html:23
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:69
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:110
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:46
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:73
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:100
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:127
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:154
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:181
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:208
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:48
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:75
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:102
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:129
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:156
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:183
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:210
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:33
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/edit.html:35
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:60
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:87
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:114
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:141
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:168
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:195
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:222
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:293
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:54
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:53
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:80
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:107
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:134
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:161
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:188
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:215
+#: wazo_ui/plugins/general_settings/templates/general_settings/confbridge_general.html:27
+#: wazo_ui/plugins/general_settings/templates/general_settings/confbridge_general.html:53
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:28
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:55
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:82
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:27
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_global.html:26
+#: wazo_ui/plugins/general_settings/templates/general_settings/pjsip_system.html:26
+#: wazo_ui/plugins/general_settings/templates/general_settings/sccp_general.html:26
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:27
+#: wazo_ui/plugins/line/templates/line/edit.html:86
+#: wazo_ui/plugins/line/templates/line/edit.html:135
+#: wazo_ui/plugins/line/templates/line/protocol_sccp.html:23
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:69
+#: wazo_ui/plugins/queue/templates/queue/edit.html:111
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:46
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:73
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:100
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:127
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:154
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:181
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:208
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:48
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:75
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:102
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:129
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:156
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:183
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:210
+#: wazo_ui/plugins/transport/templates/transports/add.html:33
+#: wazo_ui/plugins/transport/templates/transports/edit.html:35
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:61
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:88
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:115
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:142
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:169
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:196
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:223
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:294
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:54
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:54
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:81
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:108
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:135
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:162
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:189
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:216
 msgid "Option Value"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:4
 msgid "Features General Settings"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:13
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:13
 msgid "Featuremap"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/features_general.html:14
+#: wazo_ui/plugins/general_settings/templates/general_settings/features_general.html:14
 msgid "Applicationmap"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:4
 msgid "IAX General Settings"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:13
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:13
 msgid "Call Number Limits"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/iax_general.html:52
+#: wazo_ui/plugins/general_settings/templates/general_settings/iax_general.html:52
 msgid "Ip Address"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/sccp_general.html:4
+#: wazo_ui/plugins/general_settings/templates/general_settings/sccp_general.html:4
 msgid "SCCP General Settings"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:13
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:13
 msgid "Timezones"
 msgstr ""
 
-#: wazo_ui/plugins/general_settings/templates/wazo_engine/general_settings/voicemail_general.html:106
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/edit.html:28
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/list.html:33
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:29
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:31
+#: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:106
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/edit.html:28
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/list.html:33
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:29
+#: wazo_ui/plugins/schedule/templates/schedule/list.html:31
 msgid "Choose Timezone"
 msgstr ""
 
-#: wazo_ui/plugins/global_settings/templates/wazo_engine/global_settings/index.html:5
-#: wazo_ui/plugins/global_settings/templates/wazo_engine/global_settings/index.html:14
+#: wazo_ui/plugins/global_settings/templates/global_settings/index.html:5
+#: wazo_ui/plugins/global_settings/templates/global_settings/index.html:14
 #: wazo_ui/plugins/global_settings/view.py:14
 msgid "Global Settings"
 msgstr ""
 
 #: wazo_ui/plugins/group/form.py:40
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:15
+#: wazo_ui/plugins/group/templates/group/edit.html:15
 #: wazo_ui/plugins/identity/form.py:42 wazo_ui/plugins/paging/form.py:26
 #: wazo_ui/plugins/switchboard/form.py:28
 msgid "Members"
 msgstr ""
 
 #: wazo_ui/plugins/group/form.py:45
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:17
+#: wazo_ui/plugins/group/templates/group/edit.html:17
 #: wazo_ui/plugins/incall/form.py:26
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:16
+#: wazo_ui/plugins/incall/templates/incall/edit.html:16
 #: wazo_ui/plugins/outcall/form.py:22
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:17
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:17
 #: wazo_ui/plugins/queue/form.py:38
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:18
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:14
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:5
+#: wazo_ui/plugins/queue/templates/queue/edit.html:18
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:14
+#: wazo_ui/plugins/schedule/templates/schedule/list.html:5
 #: wazo_ui/plugins/user/form.py:119
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:22
+#: wazo_ui/plugins/user/templates/user/edit.html:22
 msgid "Schedule"
 msgstr ""
 
@@ -2190,51 +2197,59 @@ msgstr ""
 msgid "Callerid mode"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:77 wazo_ui/plugins/moh/form.py:15
+#: wazo_ui/plugins/group/form.py:78 wazo_ui/plugins/moh/form.py:15
 msgid "Random"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:78
+#: wazo_ui/plugins/group/form.py:79
 msgid "Least recent"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:79
+#: wazo_ui/plugins/group/form.py:80
 msgid "Linear"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:80
+#: wazo_ui/plugins/group/form.py:81
 msgid "Fewest calls"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:81
+#: wazo_ui/plugins/group/form.py:82
 msgid "Memorized round robin"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:85
+#: wazo_ui/plugins/group/form.py:86
 msgid "User timeout"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:93 wazo_ui/plugins/queue/form.py:127
+#: wazo_ui/plugins/group/form.py:94 wazo_ui/plugins/queue/form.py:128
 msgid "Mark all calls as answered elsewhere when cancelled"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:102 wazo_ui/plugins/queue/form.py:137
+#: wazo_ui/plugins/group/form.py:96
+msgid "Maximum calls"
+msgstr ""
+
+#: wazo_ui/plugins/group/form.py:97 wazo_ui/plugins/queue/form.py:97
+msgid "DTMF record enabled"
+msgstr ""
+
+#: wazo_ui/plugins/group/form.py:105 wazo_ui/plugins/queue/form.py:138
 msgid "Ring Time"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:117
+#: wazo_ui/plugins/group/form.py:120
 msgid "Action"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:120
+#: wazo_ui/plugins/group/form.py:123
 msgid "Join group"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:121
+#: wazo_ui/plugins/group/form.py:124
 msgid "Leave group"
 msgstr ""
 
-#: wazo_ui/plugins/group/form.py:122
+#: wazo_ui/plugins/group/form.py:125
 msgid "Join or leave group"
 msgstr ""
 
@@ -2246,40 +2261,40 @@ msgstr ""
 msgid "Ring Groups"
 msgstr ""
 
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:16
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:17
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:17
+#: wazo_ui/plugins/group/templates/group/edit.html:16
+#: wazo_ui/plugins/queue/templates/queue/edit.html:17
+#: wazo_ui/plugins/user/templates/user/edit.html:17
 msgid "Fallbacks"
 msgstr ""
 
-#: wazo_ui/plugins/group/templates/wazo_engine/group/edit.html:111
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:80
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:185
+#: wazo_ui/plugins/group/templates/group/edit.html:115
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:80
+#: wazo_ui/plugins/user/templates/user/edit.html:185
 msgid "Choose Call Permissions"
 msgstr ""
 
-#: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:36
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity_group/list.html:22
+#: wazo_ui/plugins/group/templates/group/list.html:36
+#: wazo_ui/plugins/identity/templates/identity_group/list.html:22
 msgid "Add Group"
 msgstr ""
 
-#: wazo_ui/plugins/group/templates/wazo_engine/group/list.html:45
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:53
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:79
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:115
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:40
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:103
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:70
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/edit.html:25
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:48
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:43
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:47
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:268
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:325
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_custom.html:18
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:29
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:40
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:38
+#: wazo_ui/plugins/group/templates/group/list.html:45
+#: wazo_ui/plugins/line/templates/line/edit.html:53
+#: wazo_ui/plugins/line/templates/line/edit.html:79
+#: wazo_ui/plugins/line/templates/line/edit.html:115
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:40
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:103
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:70
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/edit.html:25
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:48
+#: wazo_ui/plugins/queue/templates/queue/list.html:43
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:48
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:269
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:326
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_custom.html:18
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:29
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:40
+#: wazo_ui/plugins/user/templates/user/list.html:38
 msgid "Choose Context"
 msgstr ""
 
@@ -2311,7 +2326,7 @@ msgstr ""
 msgid "High Availabitity config has been updated"
 msgstr ""
 
-#: wazo_ui/plugins/ha/templates/wazo_engine/ha/index.html:4
+#: wazo_ui/plugins/ha/templates/ha/index.html:4
 msgid "Ha"
 msgstr ""
 
@@ -2339,8 +2354,8 @@ msgstr ""
 msgid "Channel"
 msgstr ""
 
-#: wazo_ui/plugins/hep/templates/wazo_engine/hep/index.html:5
-#: wazo_ui/plugins/hep/templates/wazo_engine/hep/index.html:14
+#: wazo_ui/plugins/hep/templates/hep/index.html:5
+#: wazo_ui/plugins/hep/templates/hep/index.html:14
 #: wazo_ui/plugins/hep/view.py:19
 msgid "Hep"
 msgstr ""
@@ -2350,15 +2365,17 @@ msgid "HEP config has been updated"
 msgstr ""
 
 #: wazo_ui/plugins/identity/form.py:46
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:18
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/list.html:5
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/list.html:11
+#: wazo_ui/plugins/identity/templates/identity/edit.html:18
+#: wazo_ui/plugins/identity/templates/policy/list.html:5
+#: wazo_ui/plugins/identity/templates/policy/list.html:11
 #: wazo_ui/plugins/identity/view.py:259
 msgid "Policies"
 msgstr ""
 
 #: wazo_ui/plugins/identity/form.py:51
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:42
+#: wazo_ui/plugins/identity/templates/identity/edit.html:42
+#: wazo_ui/plugins/phone_number/form.py:17
+#: wazo_ui/plugins/phone_number/templates/phone_number/list.html:18
 msgid "Main"
 msgstr ""
 
@@ -2368,13 +2385,13 @@ msgstr ""
 
 #: wazo_ui/plugins/identity/form.py:63 wazo_ui/plugins/identity/form.py:84
 #: wazo_ui/plugins/identity/form.py:118
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:17
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:13
+#: wazo_ui/plugins/identity/templates/identity/edit.html:17
+#: wazo_ui/plugins/identity/templates/tenant/edit.html:13
 msgid "Tenant"
 msgstr ""
 
 #: wazo_ui/plugins/identity/form.py:66
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:18
+#: wazo_ui/plugins/identity/templates/identity/list.html:18
 msgid "Purpose"
 msgstr ""
 
@@ -2399,7 +2416,7 @@ msgid "SAML"
 msgstr ""
 
 #: wazo_ui/plugins/identity/form.py:95
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:15
+#: wazo_ui/plugins/identity/templates/tenant/list.html:15
 msgid "Identifier"
 msgstr ""
 
@@ -2408,7 +2425,7 @@ msgid "Default Authentication Method"
 msgstr ""
 
 #: wazo_ui/plugins/identity/form.py:105
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:32
+#: wazo_ui/plugins/identity/templates/tenant/list.html:32
 msgid "Domain Names"
 msgstr ""
 
@@ -2456,14 +2473,14 @@ msgstr ""
 msgid "Credentials"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:5
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:11
+#: wazo_ui/plugins/identity/templates/identity/list.html:5
+#: wazo_ui/plugins/identity/templates/identity/list.html:11
 #: wazo_ui/plugins/identity/view.py:30
 msgid "Identities"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:5
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:11
+#: wazo_ui/plugins/identity/templates/tenant/list.html:5
+#: wazo_ui/plugins/identity/templates/tenant/list.html:11
 #: wazo_ui/plugins/identity/view.py:159
 msgid "Tenants"
 msgstr ""
@@ -2477,47 +2494,47 @@ msgstr ""
 msgid "%(resource)s: LDAP configuration has been deleted"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:13
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:16
+#: wazo_ui/plugins/identity/templates/identity/edit.html:13
+#: wazo_ui/plugins/incall/templates/incall/list.html:16
 msgid "Identity"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/edit.html:15
+#: wazo_ui/plugins/identity/templates/identity/edit.html:15
 msgid "Emails"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/identity/list.html:36
+#: wazo_ui/plugins/identity/templates/identity/list.html:36
 msgid "Add Identity"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:13
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:14
+#: wazo_ui/plugins/identity/templates/policy/edit.html:13
+#: wazo_ui/plugins/identity/templates/policy/edit.html:14
 msgid "Policy"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:15
+#: wazo_ui/plugins/identity/templates/policy/edit.html:15
 msgid "ACL"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/edit.html:33
+#: wazo_ui/plugins/identity/templates/policy/edit.html:33
 msgid "acl"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/policy/list.html:22
+#: wazo_ui/plugins/identity/templates/policy/list.html:22
 msgid "Add Policy"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/edit.html:15
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:16
+#: wazo_ui/plugins/identity/templates/tenant/edit.html:15
+#: wazo_ui/plugins/identity/templates/tenant/list.html:16
 msgid "Domains"
 msgstr ""
 
-#: wazo_ui/plugins/identity/templates/wazo_engine/tenant/list.html:26
+#: wazo_ui/plugins/identity/templates/tenant/list.html:26
 msgid "Add Tenant"
 msgstr ""
 
 #: wazo_ui/plugins/incall/form.py:21
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:14
+#: wazo_ui/plugins/incall/templates/incall/list.html:14
 msgid "Did"
 msgstr ""
 
@@ -2533,22 +2550,22 @@ msgstr ""
 msgid "Call Management"
 msgstr ""
 
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:11
+#: wazo_ui/plugins/incall/templates/incall/list.html:11
 #: wazo_ui/plugins/incall/view.py:25
 msgid "Incalls"
 msgstr ""
 
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:29
+#: wazo_ui/plugins/incall/templates/incall/edit.html:29
 msgid "Choose Incall Context"
 msgstr ""
 
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/edit.html:51
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:71
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:167
+#: wazo_ui/plugins/incall/templates/incall/edit.html:51
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:71
+#: wazo_ui/plugins/user/templates/user/edit.html:167
 msgid "Choose Schedules"
 msgstr ""
 
-#: wazo_ui/plugins/incall/templates/wazo_engine/incall/list.html:50
+#: wazo_ui/plugins/incall/templates/incall/list.html:50
 msgid "Add Incall"
 msgstr ""
 
@@ -2634,48 +2651,47 @@ msgid ""
 "menu will be replayed"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:109
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:4
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/edit.html:13
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:5
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:11
+#: wazo_ui/plugins/ivr/form.py:109 wazo_ui/plugins/ivr/templates/ivr/add.html:4
+#: wazo_ui/plugins/ivr/templates/ivr/edit.html:13
+#: wazo_ui/plugins/ivr/templates/ivr/list.html:5
+#: wazo_ui/plugins/ivr/templates/ivr/list.html:11
 #: wazo_ui/plugins/ivr/view.py:22
 msgid "IVR"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:4
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_custom.html:4
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sccp.html:4
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:4
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:4
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:4
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:4
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_custom.html:4
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:4
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:4
+#: wazo_ui/plugins/ivr/templates/ivr/add.html:4
+#: wazo_ui/plugins/line/templates/line/protocol_custom.html:4
+#: wazo_ui/plugins/line/templates/line/protocol_sccp.html:4
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:4
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:4
+#: wazo_ui/plugins/sound/templates/sound/list_system_files.html:4
+#: wazo_ui/plugins/transport/templates/transports/add.html:4
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_custom.html:4
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:4
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:4
 msgid "List"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:11
+#: wazo_ui/plugins/ivr/templates/ivr/add.html:11
 msgid "Add IVR"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:27
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/edit.html:29
+#: wazo_ui/plugins/ivr/templates/ivr/add.html:27
+#: wazo_ui/plugins/ivr/templates/ivr/edit.html:29
 msgid "Add choices"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:33
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/edit.html:35
+#: wazo_ui/plugins/ivr/templates/ivr/add.html:33
+#: wazo_ui/plugins/ivr/templates/ivr/edit.html:35
 msgid "Digit"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/add.html:35
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:37
+#: wazo_ui/plugins/ivr/templates/ivr/add.html:35
+#: wazo_ui/plugins/moh/templates/moh/edit.html:37
 msgid "Actions"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/templates/wazo_engine/ivr/list.html:16
+#: wazo_ui/plugins/ivr/templates/ivr/list.html:16
 msgid "Menu sound"
 msgstr ""
 
@@ -2688,145 +2704,145 @@ msgid "Interface Suffix"
 msgstr ""
 
 #: wazo_ui/plugins/line/form.py:38
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:23
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:51
+#: wazo_ui/plugins/line/templates/line/list.html:23
+#: wazo_ui/plugins/line/templates/line/list.html:51
 #: wazo_ui/plugins/trunk/form.py:65
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:57
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:57
 #: wazo_ui/plugins/user/form.py:54
 msgid "SIP"
 msgstr ""
 
 #: wazo_ui/plugins/line/form.py:38
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:27
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:55
+#: wazo_ui/plugins/line/templates/line/list.html:27
+#: wazo_ui/plugins/line/templates/line/list.html:55
 #: wazo_ui/plugins/trunk/form.py:65
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:59
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:59
 #: wazo_ui/plugins/user/form.py:58
 msgid "CUSTOM"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:11
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_custom.html:4
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sccp.html:4
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:4
+#: wazo_ui/plugins/line/templates/line/list.html:11
+#: wazo_ui/plugins/line/templates/line/protocol_custom.html:4
+#: wazo_ui/plugins/line/templates/line/protocol_sccp.html:4
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:4
 #: wazo_ui/plugins/line/view.py:26
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:19
+#: wazo_ui/plugins/user/templates/user/edit.html:19
 msgid "Lines"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:22
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:23
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:72
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:106
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:5
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_custom.html:10
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sccp.html:10
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:12
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:13
+#: wazo_ui/plugins/line/templates/line/edit.html:22
+#: wazo_ui/plugins/line/templates/line/edit.html:23
+#: wazo_ui/plugins/line/templates/line/edit.html:72
+#: wazo_ui/plugins/line/templates/line/edit.html:106
+#: wazo_ui/plugins/line/templates/line/list.html:5
+#: wazo_ui/plugins/line/templates/line/protocol_custom.html:10
+#: wazo_ui/plugins/line/templates/line/protocol_sccp.html:10
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:12
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:13
 msgid "Line"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:24
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:14
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:12
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:14
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:18
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:14
+#: wazo_ui/plugins/line/templates/line/edit.html:24
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:14
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:12
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:14
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:18
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:14
 msgid "AOR"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:25
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:15
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:13
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:15
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:19
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:15
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:39
+#: wazo_ui/plugins/line/templates/line/edit.html:25
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:15
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:13
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:15
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:19
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:15
+#: wazo_ui/plugins/user/templates/user/edit.html:39
 msgid "Authentication"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:27
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:17
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:15
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:17
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:21
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:17
+#: wazo_ui/plugins/line/templates/line/edit.html:27
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:17
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:15
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:17
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:21
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:17
 msgid "Identify"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:28
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:18
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:16
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:18
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:22
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:18
+#: wazo_ui/plugins/line/templates/line/edit.html:28
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:18
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:16
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:18
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:22
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:18
 msgid "Registration"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:29
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:19
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:17
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:19
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:23
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:19
+#: wazo_ui/plugins/line/templates/line/edit.html:29
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:19
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:17
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:19
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:23
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:19
 msgid "Registration Outbound Auth"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:30
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:20
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:18
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:20
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:24
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:20
+#: wazo_ui/plugins/line/templates/line/edit.html:30
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:20
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:18
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:20
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:24
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:20
 msgid "Outbound Auth"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:44
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:31
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:29
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:31
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:38
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:31
+#: wazo_ui/plugins/line/templates/line/edit.html:44
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:31
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:29
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:31
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:38
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:31
 msgid "Choose Transport"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/edit.html:48
-#: wazo_ui/plugins/line/templates/wazo_engine/line/protocol_sip.html:35
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:33
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/edit.html:35
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:42
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:35
+#: wazo_ui/plugins/line/templates/line/edit.html:48
+#: wazo_ui/plugins/line/templates/line/protocol_sip.html:35
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:33
+#: wazo_ui/plugins/sip_template/templates/sip_template/edit.html:35
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:43
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:35
 msgid "Choose Templates"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:14
+#: wazo_ui/plugins/line/templates/line/list.html:14
 #: wazo_ui/plugins/provisioning/form.py:58
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/list.html:15
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:14
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:105
+#: wazo_ui/plugins/transport/templates/transports/list.html:15
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:14
+#: wazo_ui/plugins/user/templates/user/edit.html:105
 msgid "Protocol"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:16
+#: wazo_ui/plugins/line/templates/line/list.html:16
 msgid "Provisioning Extension"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:17
+#: wazo_ui/plugins/line/templates/line/list.html:17
 msgid "Caller Id Name"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:18
+#: wazo_ui/plugins/line/templates/line/list.html:18
 msgid "Caller Id Number"
 msgstr ""
 
-#: wazo_ui/plugins/line/templates/wazo_engine/line/list.html:49
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:56
+#: wazo_ui/plugins/line/templates/line/list.html:49
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:56
 msgid "Choose your protocol"
 msgstr ""
 
 #: wazo_ui/plugins/moh/form.py:10
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:33
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:15
+#: wazo_ui/plugins/moh/templates/moh/edit.html:33
+#: wazo_ui/plugins/sound/templates/sound/list.html:15
 msgid "Files"
 msgstr ""
 
@@ -2859,7 +2875,7 @@ msgid "The command to run (only used when mode is \"custom\")"
 msgstr ""
 
 #: wazo_ui/plugins/moh/form.py:41
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:27
+#: wazo_ui/plugins/moh/templates/moh/list.html:27
 msgid "Sort"
 msgstr ""
 
@@ -2871,65 +2887,65 @@ msgstr ""
 msgid "Sounds & Greetings"
 msgstr ""
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:5
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:11
+#: wazo_ui/plugins/moh/templates/moh/list.html:5
+#: wazo_ui/plugins/moh/templates/moh/list.html:11
 #: wazo_ui/plugins/moh/view.py:34
 msgid "Musics"
 msgstr ""
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:12
+#: wazo_ui/plugins/moh/templates/moh/edit.html:12
 msgid "Music"
 msgstr ""
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:24
+#: wazo_ui/plugins/moh/templates/moh/edit.html:24
 msgid "Upload File"
 msgstr ""
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:26
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:60
+#: wazo_ui/plugins/moh/templates/moh/edit.html:26
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:60
 msgid "Upload"
 msgstr ""
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:44
+#: wazo_ui/plugins/moh/templates/moh/edit.html:44
 msgid "Download the moh file"
 msgstr ""
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/edit.html:51
+#: wazo_ui/plugins/moh/templates/moh/edit.html:51
 msgid "Delete the moh file"
 msgstr ""
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:17
+#: wazo_ui/plugins/moh/templates/moh/list.html:17
 msgid "Parameters"
 msgstr ""
 
-#: wazo_ui/plugins/moh/templates/wazo_engine/moh/list.html:36
+#: wazo_ui/plugins/moh/templates/moh/list.html:36
 msgid "Add Moh"
 msgstr ""
 
 #: wazo_ui/plugins/outcall/form.py:35
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:43
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:37
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:43
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:37
 #: wazo_ui/plugins/user/form.py:140
 msgid "Caller ID"
 msgstr ""
 
 #: wazo_ui/plugins/outcall/form.py:36
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:44
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:38
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:44
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:38
 msgid "External prefix"
 msgstr ""
 
 #: wazo_ui/plugins/outcall/form.py:38
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/edit.html:46
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:40
+#: wazo_ui/plugins/outcall/templates/outcall/edit.html:46
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:40
 msgid "Strip digits"
 msgstr ""
 
 #: wazo_ui/plugins/outcall/form.py:50
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:11
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_custom.html:4
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:4
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:4
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:11
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_custom.html:4
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:4
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:4
 #: wazo_ui/plugins/trunk/view.py:25
 msgid "Trunks"
 msgstr ""
@@ -2942,7 +2958,7 @@ msgstr ""
 msgid "Ring time"
 msgstr ""
 
-#: wazo_ui/plugins/outcall/templates/wazo_engine/outcall/list.html:24
+#: wazo_ui/plugins/outcall/templates/outcall/list.html:24
 msgid "Add Outcall"
 msgstr ""
 
@@ -2951,9 +2967,11 @@ msgid "Callers"
 msgstr ""
 
 #: wazo_ui/plugins/paging/form.py:39
-#: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:16
+#: wazo_ui/plugins/paging/templates/paging/list.html:16
+#: wazo_ui/plugins/phone_number/form.py:13
+#: wazo_ui/plugins/phone_number/templates/phone_number/list.html:15
 #: wazo_ui/plugins/voicemail/form.py:31
-#: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:15
+#: wazo_ui/plugins/voicemail/templates/voicemail/list.html:15
 msgid "Number"
 msgstr ""
 
@@ -2973,21 +2991,21 @@ msgstr ""
 msgid "Duplex audio"
 msgstr ""
 
-#: wazo_ui/plugins/paging/form.py:48 wazo_ui/plugins/queue/form.py:104
+#: wazo_ui/plugins/paging/form.py:48 wazo_ui/plugins/queue/form.py:105
 msgid "Ignore forward"
 msgstr ""
 
-#: wazo_ui/plugins/paging/templates/wazo_engine/paging/edit.html:11
+#: wazo_ui/plugins/paging/templates/paging/edit.html:11
 #: wazo_ui/plugins/paging/view.py:17
 msgid "Pagings"
 msgstr ""
 
-#: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:5
-#: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:12
+#: wazo_ui/plugins/paging/templates/paging/list.html:5
+#: wazo_ui/plugins/paging/templates/paging/list.html:12
 msgid "Paging"
 msgstr ""
 
-#: wazo_ui/plugins/paging/templates/wazo_engine/paging/list.html:25
+#: wazo_ui/plugins/paging/templates/paging/list.html:25
 msgid "Add Paging"
 msgstr ""
 
@@ -3001,12 +3019,12 @@ msgstr ""
 
 #: wazo_ui/plugins/parking_lot/form.py:35
 #: wazo_ui/plugins/parking_lot/form.py:42
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/edit.html:11
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/edit.html:11
 msgid "Parking Lot"
 msgstr ""
 
 #: wazo_ui/plugins/parking_lot/form.py:43
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:142
+#: wazo_ui/plugins/user/templates/user/edit.html:142
 msgid "Position"
 msgstr ""
 
@@ -3018,22 +3036,42 @@ msgstr ""
 msgid "Parking Position"
 msgstr ""
 
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:5
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:11
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:5
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:11
 #: wazo_ui/plugins/parking_lot/view.py:24
 msgid "Parking Lots"
 msgstr ""
 
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:16
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:16
 msgid "Slot start"
 msgstr ""
 
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:17
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:17
 msgid "Slot end"
 msgstr ""
 
-#: wazo_ui/plugins/parking_lot/templates/wazo_engine/parking_lot/list.html:35
+#: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:35
 msgid "Add Parking Lot"
+msgstr ""
+
+#: wazo_ui/plugins/phone_number/form.py:16
+#: wazo_ui/plugins/phone_number/templates/phone_number/list.html:17
+msgid "Shared"
+msgstr ""
+
+#: wazo_ui/plugins/phone_number/templates/phone_number/edit.html:11
+#: wazo_ui/plugins/phone_number/view.py:20
+msgid "Phone Numbers"
+msgstr ""
+
+#: wazo_ui/plugins/phone_number/templates/phone_number/list.html:5
+#: wazo_ui/plugins/phone_number/templates/phone_number/list.html:12
+#: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:24
+msgid "Phone Number"
+msgstr ""
+
+#: wazo_ui/plugins/phone_number/templates/phone_number/list.html:38
+msgid "Add Phone Number"
 msgstr ""
 
 #: wazo_ui/plugins/phonebook/form.py:21
@@ -3048,84 +3086,80 @@ msgstr ""
 msgid "Fax"
 msgstr ""
 
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/list.html:9
-#: wazo_ui/plugins/phonebook/view.py:33
+#: wazo_ui/plugins/phonebook/templates/phonebook/list.html:9
+#: wazo_ui/plugins/phonebook/view.py:34
 msgid "Phonebooks"
 msgstr ""
 
-#: wazo_ui/plugins/phonebook/view.py:36
+#: wazo_ui/plugins/phonebook/view.py:37
 msgid "Configuration"
 msgstr ""
 
-#: wazo_ui/plugins/phonebook/view.py:54
+#: wazo_ui/plugins/phonebook/view.py:55
 msgid "Contacts"
 msgstr ""
 
-#: wazo_ui/plugins/phonebook/view.py:64
+#: wazo_ui/plugins/phonebook/view.py:65
 msgid "Please add phonebook before adding contacts!"
 msgstr ""
 
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/edit_contact.html:9
+#: wazo_ui/plugins/phonebook/templates/phonebook/edit_contact.html:9
 msgid "Contact"
 msgstr ""
 
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/list.html:21
+#: wazo_ui/plugins/phonebook/templates/phonebook/list.html:21
 msgid "Add Phonebook"
 msgstr ""
 
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:4
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:18
+#: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:4
+#: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:18
 msgid "Manage Contacts"
 msgstr ""
 
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:10
+#: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:10
 msgid "Choose your phonebook: "
 msgstr ""
 
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:24
-msgid "Phone Number"
-msgstr ""
-
-#: wazo_ui/plugins/phonebook/templates/wazo_engine/phonebook/manage_phonebook.html:35
+#: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:35
 msgid "Add Contact"
 msgstr ""
 
-#: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:5
+#: wazo_ui/plugins/plugin/templates/plugin/list.html:5
 #: wazo_ui/plugins/plugin/view.py:15
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:21
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:11
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:21
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:11
 msgid "Plugins"
 msgstr ""
 
-#: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:15
+#: wazo_ui/plugins/plugin/templates/plugin/list.html:15
 msgid "Installed"
 msgstr ""
 
-#: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:16
+#: wazo_ui/plugins/plugin/templates/plugin/list.html:16
 msgid "Git"
 msgstr ""
 
-#: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:24
+#: wazo_ui/plugins/plugin/templates/plugin/list.html:24
 msgid "Search plugin"
 msgstr ""
 
-#: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:35
+#: wazo_ui/plugins/plugin/templates/plugin/list.html:35
 msgid "Show only official"
 msgstr ""
 
-#: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:46
+#: wazo_ui/plugins/plugin/templates/plugin/list.html:46
 msgid "Give your GIT url to install a plugin!"
 msgstr ""
 
-#: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:51
+#: wazo_ui/plugins/plugin/templates/plugin/list.html:51
 msgid "GIT url"
 msgstr ""
 
-#: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:52
+#: wazo_ui/plugins/plugin/templates/plugin/list.html:52
 msgid "Branch or tag (optional)"
 msgstr ""
 
-#: wazo_ui/plugins/plugin/templates/wazo_engine/plugin/list.html:59
+#: wazo_ui/plugins/plugin/templates/plugin/list.html:59
 msgid "Install"
 msgstr ""
 
@@ -3285,82 +3319,82 @@ msgstr ""
 msgid "Error during update: %(error)s"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/edit.html:13
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/list.html:5
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/edit.html:13
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/list.html:5
 msgid "Provisioning / Config device"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/list.html:11
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/list.html:11
 msgid "Config device"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_device/list.html:25
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_device/list.html:25
 msgid "Add config device"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/edit.html:11
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:112
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_registrar/edit.html:11
+#: wazo_ui/plugins/user/templates/user/edit.html:112
 msgid "Registrar"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:5
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_registrar/list.html:5
 msgid "Provisioning / Registrars"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:11
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_registrar/list.html:11
 msgid "Registrars"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:18
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_registrar/list.html:18
 msgid "Registrar main"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:19
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_registrar/list.html:19
 msgid "Proxy main"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/config_registrar/list.html:29
+#: wazo_ui/plugins/provisioning/templates/provisioning/config_registrar/list.html:29
 msgid "Add registrar"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:27
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:17
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:27
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:17
 msgid "Size"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:38
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:38
 msgid "Install this package"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:40
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:40
 msgid "Are you sure you want to install this package ?"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:47
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:47
 msgid "Uninstall this package"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/edit.html:49
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:49
 msgid "Are you sure you want to uninstall this package ?"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:5
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:5
 msgid "Provisioning / Plugins"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:28
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:28
 msgid "Install this plugin"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:30
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:30
 msgid "Are you sure you want to install this plugin ?"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:36
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:36
 msgid "Uninstall this plugin"
 msgstr ""
 
-#: wazo_ui/plugins/provisioning/templates/wazo_engine/provisioning/plugin/list.html:38
+#: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:38
 msgid "Are you sure you want to uninstall this plugin ?"
 msgstr ""
 
@@ -3388,43 +3422,43 @@ msgstr ""
 msgid "DTMF record caller enabled"
 msgstr ""
 
-#: wazo_ui/plugins/queue/form.py:98
+#: wazo_ui/plugins/queue/form.py:99
 msgid "DTMF transfer callee enabled"
 msgstr ""
 
-#: wazo_ui/plugins/queue/form.py:101
+#: wazo_ui/plugins/queue/form.py:102
 msgid "DTMF transfer caller enabled"
 msgstr ""
 
-#: wazo_ui/plugins/queue/form.py:106
+#: wazo_ui/plugins/queue/form.py:107
 msgid "Retry on timeout"
 msgstr ""
 
-#: wazo_ui/plugins/queue/form.py:107
+#: wazo_ui/plugins/queue/form.py:108
 msgid "Ring on hold"
 msgstr ""
 
-#: wazo_ui/plugins/queue/form.py:111
+#: wazo_ui/plugins/queue/form.py:112
 msgid "Wait ratio destination"
 msgstr ""
 
-#: wazo_ui/plugins/queue/form.py:113
+#: wazo_ui/plugins/queue/form.py:114
 msgid "Wait ratio threshold"
 msgstr ""
 
-#: wazo_ui/plugins/queue/form.py:115
+#: wazo_ui/plugins/queue/form.py:116
 msgid "Wait time destination"
 msgstr ""
 
-#: wazo_ui/plugins/queue/form.py:117
+#: wazo_ui/plugins/queue/form.py:118
 msgid "Wait time threshold"
 msgstr ""
 
-#: wazo_ui/plugins/queue/form.py:139
+#: wazo_ui/plugins/queue/form.py:140
 msgid "Skill Rule"
 msgstr ""
 
-#: wazo_ui/plugins/queue/form.py:140
+#: wazo_ui/plugins/queue/form.py:141
 msgid "Skill Rule Variables"
 msgstr ""
 
@@ -3432,25 +3466,43 @@ msgstr ""
 msgid "Call Center"
 msgstr ""
 
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:5
+#: wazo_ui/plugins/queue/templates/queue/list.html:5
 #: wazo_ui/plugins/queue/view.py:23
 msgid "Queues"
 msgstr ""
 
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:16
+#: wazo_ui/plugins/queue/templates/queue/edit.html:16
 msgid "Diversions"
 msgstr ""
 
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/edit.html:19
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:14
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/edit.html:16
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:252
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:15
+#: wazo_ui/plugins/queue/templates/queue/edit.html:19
+#: wazo_ui/plugins/transport/templates/transports/add.html:14
+#: wazo_ui/plugins/transport/templates/transports/edit.html:16
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:253
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:15
 msgid "Options"
 msgstr ""
 
-#: wazo_ui/plugins/queue/templates/wazo_engine/queue/list.html:34
+#: wazo_ui/plugins/queue/templates/queue/list.html:34
 msgid "Add Queue"
+msgstr ""
+
+#: wazo_ui/plugins/recording_announcement/form.py:11
+msgid "Start Announcement"
+msgstr ""
+
+#: wazo_ui/plugins/recording_announcement/form.py:12
+msgid "Stop Announcement"
+msgstr ""
+
+#: wazo_ui/plugins/recording_announcement/templates/recording_announcement/index.html:5
+#: wazo_ui/plugins/recording_announcement/templates/recording_announcement/index.html:14
+#: wazo_ui/plugins/recording_announcement/view.py:21
+msgid "Recording Announcement"
+msgstr ""
+
+#: wazo_ui/plugins/recording_announcement/view.py:55
+msgid "Recording announcement config has been updated"
 msgstr ""
 
 #: wazo_ui/plugins/rtp/form.py:17
@@ -3523,8 +3575,8 @@ msgstr ""
 msgid "Ice Blacklist"
 msgstr ""
 
-#: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:5
-#: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:14
+#: wazo_ui/plugins/rtp/templates/rtp/index.html:5
+#: wazo_ui/plugins/rtp/templates/rtp/index.html:14
 #: wazo_ui/plugins/rtp/view.py:19
 msgid "Rtp"
 msgstr ""
@@ -3533,15 +3585,15 @@ msgstr ""
 msgid "RTP config has been updated"
 msgstr ""
 
-#: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:16
+#: wazo_ui/plugins/rtp/templates/rtp/index.html:16
 msgid "Ice Host Candidates"
 msgstr ""
 
-#: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:47
+#: wazo_ui/plugins/rtp/templates/rtp/index.html:47
 msgid "Local Address"
 msgstr ""
 
-#: wazo_ui/plugins/rtp/templates/wazo_engine/rtp/index.html:48
+#: wazo_ui/plugins/rtp/templates/rtp/index.html:48
 msgid "Advertised Address"
 msgstr ""
 
@@ -3622,14 +3674,14 @@ msgid "December"
 msgstr ""
 
 #: wazo_ui/plugins/schedule/form.py:52
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:98
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:119
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:98
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:119
 msgid "Hour Start"
 msgstr ""
 
 #: wazo_ui/plugins/schedule/form.py:53
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:99
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:120
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:99
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:120
 msgid "Hour End"
 msgstr ""
 
@@ -3645,34 +3697,34 @@ msgstr ""
 msgid "Months"
 msgstr ""
 
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:11
+#: wazo_ui/plugins/schedule/templates/schedule/list.html:11
 #: wazo_ui/plugins/schedule/view.py:24
 msgid "Schedules"
 msgstr ""
 
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:16
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:16
 msgid "Exceptional periods"
 msgstr ""
 
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:17
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:17
 msgid "Open periods"
 msgstr ""
 
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:40
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/edit.html:66
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:40
+#: wazo_ui/plugins/schedule/templates/schedule/edit.html:66
 msgid "Periods"
 msgstr ""
 
-#: wazo_ui/plugins/schedule/templates/wazo_engine/schedule/list.html:24
+#: wazo_ui/plugins/schedule/templates/schedule/list.html:24
 msgid "Add Schedule"
 msgstr ""
 
 #: wazo_ui/plugins/sip_template/form.py:20
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:12
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:13
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/edit.html:14
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/edit.html:15
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/list.html:11
+#: wazo_ui/plugins/transport/templates/transports/add.html:12
+#: wazo_ui/plugins/transport/templates/transports/add.html:13
+#: wazo_ui/plugins/transport/templates/transports/edit.html:14
+#: wazo_ui/plugins/transport/templates/transports/edit.html:15
+#: wazo_ui/plugins/transport/templates/transports/list.html:11
 msgid "Transport"
 msgstr ""
 
@@ -3680,23 +3732,23 @@ msgstr ""
 msgid "Parent Templates"
 msgstr ""
 
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/add.html:4
+#: wazo_ui/plugins/sip_template/templates/sip_template/add.html:4
 #: wazo_ui/plugins/sip_template/view.py:35
 msgid "SIP Template"
 msgstr ""
 
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/list.html:5
-#: wazo_ui/plugins/sip_template/templates/wazo_engine/sip_template/list.html:11
+#: wazo_ui/plugins/sip_template/templates/sip_template/list.html:5
+#: wazo_ui/plugins/sip_template/templates/sip_template/list.html:11
 #: wazo_ui/plugins/sip_template/view.py:39
 msgid "SIP Templates"
 msgstr ""
 
 #: wazo_ui/plugins/skill/form.py:12
-#: wazo_ui/plugins/skill/templates/wazo_engine/skill/list.html:14
+#: wazo_ui/plugins/skill/templates/skill/list.html:14
 msgid "Category"
 msgstr ""
 
-#: wazo_ui/plugins/skill/templates/wazo_engine/skill/list.html:24
+#: wazo_ui/plugins/skill/templates/skill/list.html:24
 msgid "Add Skill"
 msgstr ""
 
@@ -3704,30 +3756,30 @@ msgstr ""
 msgid "Rule"
 msgstr ""
 
-#: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/edit.html:13
-#: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/list.html:5
-#: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/list.html:11
+#: wazo_ui/plugins/skillrule/templates/skillrule/edit.html:13
+#: wazo_ui/plugins/skillrule/templates/skillrule/list.html:5
+#: wazo_ui/plugins/skillrule/templates/skillrule/list.html:11
 #: wazo_ui/plugins/skillrule/view.py:24
 msgid "Skill Rules"
 msgstr ""
 
-#: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/edit.html:27
+#: wazo_ui/plugins/skillrule/templates/skillrule/edit.html:27
 msgid "Rules"
 msgstr ""
 
-#: wazo_ui/plugins/skillrule/templates/wazo_engine/skillrule/list.html:22
+#: wazo_ui/plugins/skillrule/templates/skillrule/list.html:22
 msgid "Add Skill Rules"
 msgstr ""
 
 #: wazo_ui/plugins/sound/form.py:20
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:46
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:32
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:46
+#: wazo_ui/plugins/sound/templates/sound/list_system_files.html:32
 msgid "Format"
 msgstr ""
 
 #: wazo_ui/plugins/sound/form.py:22
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:48
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:34
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:48
+#: wazo_ui/plugins/sound/templates/sound/list_system_files.html:34
 msgid "Text"
 msgstr ""
 
@@ -3747,9 +3799,9 @@ msgstr ""
 msgid "Sound"
 msgstr ""
 
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:5
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:11
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:11
+#: wazo_ui/plugins/sound/templates/sound/list.html:5
+#: wazo_ui/plugins/sound/templates/sound/list.html:11
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:11
 #: wazo_ui/plugins/sound/view.py:26
 msgid "Sound Files"
 msgstr ""
@@ -3759,8 +3811,8 @@ msgstr ""
 msgid "%(resource)s: Resource %(category)s has been deleted"
 msgstr ""
 
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:4
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:10
+#: wazo_ui/plugins/sound/templates/sound/list_system_files.html:4
+#: wazo_ui/plugins/sound/templates/sound/list_system_files.html:10
 #: wazo_ui/plugins/sound/view.py:85
 msgid "Sound Files System"
 msgstr ""
@@ -3769,33 +3821,33 @@ msgstr ""
 msgid "[upload] Upload attempt with no file"
 msgstr ""
 
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list.html:24
+#: wazo_ui/plugins/sound/templates/sound/list.html:24
 msgid "Add Sound Directory"
 msgstr ""
 
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:16
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:15
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:16
+#: wazo_ui/plugins/sound/templates/sound/list_system_files.html:15
 msgid "Infos"
 msgstr ""
 
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:31
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:31
 msgid "Delete the sound file"
 msgstr ""
 
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:33
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:33
 msgid "Are you sure you want to delete this item ?"
 msgstr ""
 
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:42
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_system_files.html:28
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:42
+#: wazo_ui/plugins/sound/templates/sound/list_system_files.html:28
 msgid "Listen to the sound file"
 msgstr ""
 
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:57
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:57
 msgid "Add Sound file"
 msgstr ""
 
-#: wazo_ui/plugins/sound/templates/wazo_engine/sound/list_files.html:58
+#: wazo_ui/plugins/sound/templates/sound/list_files.html:58
 msgid "Choose your file"
 msgstr ""
 
@@ -3803,12 +3855,12 @@ msgstr ""
 msgid "Waiting Room Music On Hold"
 msgstr ""
 
-#: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/list.html:11
+#: wazo_ui/plugins/switchboard/templates/switchboard/list.html:11
 #: wazo_ui/plugins/switchboard/view.py:24
 msgid "Switchboards"
 msgstr ""
 
-#: wazo_ui/plugins/switchboard/templates/wazo_engine/switchboard/list.html:36
+#: wazo_ui/plugins/switchboard/templates/switchboard/list.html:36
 msgid "Add Switchboard"
 msgstr ""
 
@@ -3816,8 +3868,8 @@ msgstr ""
 msgid "PJSIP Transports"
 msgstr ""
 
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/add.html:4
-#: wazo_ui/plugins/transport/templates/wazo_engine/transports/list.html:5
+#: wazo_ui/plugins/transport/templates/transports/add.html:4
+#: wazo_ui/plugins/transport/templates/transports/list.html:5
 msgid "Transports"
 msgstr ""
 
@@ -3861,31 +3913,43 @@ msgstr ""
 msgid "Remote port"
 msgstr ""
 
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:16
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:17
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:249
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:250
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:316
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:5
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_custom.html:10
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:12
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:13
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:12
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_sip.html:13
+#: wazo_ui/plugins/trunk/form.py:69
+msgid "+E164"
+msgstr ""
+
+#: wazo_ui/plugins/trunk/form.py:70
+msgid "E164"
+msgstr ""
+
+#: wazo_ui/plugins/trunk/form.py:71
+msgid "National"
+msgstr ""
+
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:16
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:17
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:250
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:251
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:317
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:5
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_custom.html:10
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:12
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:13
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:12
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_sip.html:13
 msgid "Trunk"
 msgstr ""
 
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:251
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:14
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:252
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:14
 msgid "Register"
 msgstr ""
 
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/edit.html:263
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/protocol_iax.html:24
+#: wazo_ui/plugins/trunk/templates/trunk/edit.html:264
+#: wazo_ui/plugins/trunk/templates/trunk/protocol_iax.html:24
 msgid "Set host value"
 msgstr ""
 
-#: wazo_ui/plugins/trunk/templates/wazo_engine/trunk/list.html:17
+#: wazo_ui/plugins/trunk/templates/trunk/list.html:17
 msgid "Relations"
 msgstr ""
 
@@ -3898,7 +3962,7 @@ msgid "Incall filtering"
 msgstr ""
 
 #: wazo_ui/plugins/user/form.py:114
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:145
+#: wazo_ui/plugins/user/templates/user/edit.html:145
 msgid "BLF"
 msgstr ""
 
@@ -3970,44 +4034,44 @@ msgstr ""
 msgid "Anonymous"
 msgstr ""
 
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:21
+#: wazo_ui/plugins/user/templates/user/edit.html:21
 msgid "FuncKeys"
 msgstr ""
 
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:82
+#: wazo_ui/plugins/user/templates/user/edit.html:82
 msgid "Call Forwards"
 msgstr ""
 
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:91
+#: wazo_ui/plugins/user/templates/user/edit.html:91
 msgid "DTMF Services"
 msgstr ""
 
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:106
+#: wazo_ui/plugins/user/templates/user/edit.html:106
 msgid "Templates"
 msgstr ""
 
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:111
+#: wazo_ui/plugins/user/templates/user/edit.html:111
 msgid "Line (N°)"
 msgstr ""
 
-#: wazo_ui/plugins/user/templates/wazo_engine/user/edit.html:176
+#: wazo_ui/plugins/user/templates/user/edit.html:176
 msgid "Choose Voicemail"
 msgstr ""
 
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:16
+#: wazo_ui/plugins/user/templates/user/list.html:16
 msgid "Code"
 msgstr ""
 
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:21
+#: wazo_ui/plugins/user/templates/user/list.html:21
 msgid "Add User"
 msgstr ""
 
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:57
+#: wazo_ui/plugins/user/templates/user/list.html:57
 #: wazo_ui/templates/macro.html:306
 msgid "Import CSV"
 msgstr ""
 
-#: wazo_ui/plugins/user/templates/wazo_engine/user/list.html:59
+#: wazo_ui/plugins/user/templates/user/list.html:59
 msgid "Import"
 msgstr ""
 
@@ -4055,12 +4119,12 @@ msgstr ""
 msgid "Skip instructions"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:11
+#: wazo_ui/plugins/voicemail/templates/voicemail/list.html:11
 #: wazo_ui/plugins/voicemail/view.py:24
 msgid "Voicemails"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/templates/wazo_engine/voicemail/list.html:26
+#: wazo_ui/plugins/voicemail/templates/voicemail/list.html:26
 msgid "Add Voicemail"
 msgstr ""
 
@@ -4112,49 +4176,49 @@ msgstr ""
 msgid "Body"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:11
+#: wazo_ui/plugins/webhook/templates/webhook/list.html:11
 #: wazo_ui/plugins/webhook/view.py:22
 msgid "Webhooks"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/edit.html:11
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:5
+#: wazo_ui/plugins/webhook/templates/webhook/edit.html:11
+#: wazo_ui/plugins/webhook/templates/webhook/list.html:5
 msgid "Webhook"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:14
+#: wazo_ui/plugins/webhook/templates/webhook/list.html:14
 msgid "Display Name"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:15
+#: wazo_ui/plugins/webhook/templates/webhook/list.html:15
 msgid "Events Name"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:17
+#: wazo_ui/plugins/webhook/templates/webhook/list.html:17
 msgid "Logs"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:31
+#: wazo_ui/plugins/webhook/templates/webhook/list.html:31
 msgid "See logs"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/list.html:41
+#: wazo_ui/plugins/webhook/templates/webhook/list.html:41
 msgid "Add Webhook"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:11
+#: wazo_ui/plugins/webhook/templates/webhook/logs.html:11
 msgid "Webhooks logs"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:15
+#: wazo_ui/plugins/webhook/templates/webhook/logs.html:15
 msgid "Attempts"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:17
+#: wazo_ui/plugins/webhook/templates/webhook/logs.html:17
 msgid "Started at"
 msgstr ""
 
-#: wazo_ui/plugins/webhook/templates/wazo_engine/webhook/logs.html:18
+#: wazo_ui/plugins/webhook/templates/webhook/logs.html:18
 msgid "Ended at"
 msgstr ""
 

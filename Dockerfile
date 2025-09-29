@@ -5,9 +5,11 @@ RUN python -m venv /opt/venv
 # Activate virtual env
 ENV PATH="/opt/venv/bin:$PATH"
 
-COPY . /usr/src/wazo-ui
+COPY requirements.txt /usr/src/wazo-ui/requirements.txt
 WORKDIR /usr/src/wazo-ui
 RUN pip install -r requirements.txt
+
+COPY . /usr/src/wazo-ui
 RUN python setup.py install
 
 FROM python:3.9-slim-bullseye AS build-image

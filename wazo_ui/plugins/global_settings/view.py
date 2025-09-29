@@ -1,4 +1,4 @@
-# Copyright 2020-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2020-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import render_template
@@ -17,4 +17,4 @@ class GlobalSettingsView(LoginRequiredView):
         multi_tenant=False,
     )
     def index(self):
-        return render_template('wazo_engine/global_settings/index.html')
+        return render_template('global_settings/index.html')

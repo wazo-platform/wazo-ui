@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import flash, jsonify, render_template, request
@@ -15,7 +15,7 @@ class PluginView(LoginRequiredView):
         '.ipbx.global_settings.plugins', l_('Plugins'), icon="cubes", multi_tenant=False
     )
     def index(self):
-        return render_template('wazo_engine/plugin/list.html')
+        return render_template('plugin/list.html')
 
     @route('/install_plugin/', methods=['POST'])
     def install_plugin(self):
@@ -39,9 +39,7 @@ class PluginView(LoginRequiredView):
             installed_plugins = self.service.list(
                 search=search, namespace=namespace, installed=installed
             )['items']
-            return render_template(
-                'wazo_engine/plugin/list_plugins.html', market=installed_plugins
-            )
+            return render_template('plugin/list_plugins.html', market=installed_plugins)
         except HTTPError as error:
             flash(error, category='error')
             return render_template('flashed_messages.html')
