@@ -13,7 +13,7 @@ cheroot==9.0.0
 # Bullseye actually uses a patched version of flask-babel 0.12.2,
 # But this is the closest functional version we can install from pip.
 flask-babel==1.0.0
-flask-classful==0.15.0
+flask-classful==0.15.0b1
 flask-login==0.5.0
 flask-menu==0.7.2
 flask-session==0.4.1
