@@ -1,7 +1,7 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from wazo_ui.helpers.plugin import create_blueprint_core as create_blueprint
+from wazo_ui.helpers.plugin import create_blueprint
 
 from .view import Login, Logout
 
@@ -15,9 +15,9 @@ class Plugin:
         clients = dependencies['clients']
 
         Login.babel = core.babel_instance
-        Login.register(login, route_base='/login', route_prefix='')
+        Login.register(login, route_base='/login')
         core.register_blueprint(login)
 
         Logout.auth_client = clients['wazo_auth']
-        Logout.register(logout, route_base='/logout', route_prefix='')
+        Logout.register(logout, route_base='/logout')
         core.register_blueprint(logout)
