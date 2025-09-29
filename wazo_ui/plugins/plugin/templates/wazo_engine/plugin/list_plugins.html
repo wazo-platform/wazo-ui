@@ -35,7 +35,7 @@
     style="z-index:1;position:relative;"
     data-namespace="{{ namespace }}"
     data-name="{{ name }}"
-    data-remove-url="{{ url_for('wazo_engine.plugin.PluginView:remove_plugin') }}"
+    data-remove-url="{{ url_for('plugin.PluginView:remove_plugin') }}"
   >
     <i class="fa fa-trash"></i>
   </button>
@@ -47,7 +47,7 @@
     data-namespace="{{ namespace }}"
     data-name="{{ name }}"
     data-version="{{ version }}"
-    data-upgrade-url="{{ url_for('wazo_engine.plugin.PluginView:install_plugin') }}"
+    data-upgrade-url="{{ url_for('plugin.PluginView:install_plugin') }}"
   >
     <i class="fa fa-download"></i>
   </button>

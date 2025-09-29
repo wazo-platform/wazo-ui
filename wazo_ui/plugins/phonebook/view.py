@@ -1,4 +1,4 @@
-# Copyright 2021-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2021-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from __future__ import annotations
@@ -63,13 +63,13 @@ class ManagePhonebookView(BaseIPBXHelperView):
             phonebook_list = self.service.list_phonebook()
             if len(phonebook_list) < 1:
                 flash(l_('Please add phonebook before adding contacts!'), 'error')
-                return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
+                return redirect(url_for('phonebook.PhonebookView:index'))
             default_phonebook = phonebook_list[0]
             phonebook_uuid = phonebook_uuid or default_phonebook.get('uuid')
             resource_list = self.service.list(phonebook_uuid=phonebook_uuid)
         except HTTPError as error:
             self._flash_http_error(error)
-            return redirect(url_for('wazo_engine.phonebook.PhonebookView:index'))
+            return redirect(url_for('phonebook.PhonebookView:index'))
 
         form = form or self._map_resources_to_form(dict(phonebook_uuid=phonebook_uuid))
         form = self._populate_form(form)
