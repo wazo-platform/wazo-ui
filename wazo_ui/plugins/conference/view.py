@@ -40,12 +40,12 @@ class ConferenceView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_exten(self, extension):
-        if not extension.exten.data or extension.exten.data == 'None':
+        if not extension.exten.data:
             return []
         return [(extension.exten.data, extension.exten.data)]
 
     def _build_set_choices_context(self, extension):
-        if not extension.context.data or extension.context.data == 'None':
+        if not extension.context.data:
             context = self.service.get_first_internal_context()
         else:
             context = self.service.get_context(extension.context.data)
@@ -56,10 +56,10 @@ class ConferenceView(BaseIPBXHelperView):
         return [(extension.context.data, extension.context.data)]
 
     def _build_set_choices_moh(self, moh):
-        if not moh.data or moh.data == 'None':
+        if not moh.data:
             return []
         moh_object = self.service.get_music_on_hold(moh.data)
-        if moh_object is None:
+        if not moh_object:
             return []
         moh_label = moh_object['label']
         return [(moh.data, f"{moh_label} ({moh.data})")]

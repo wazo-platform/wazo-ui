@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -55,7 +55,7 @@ class OutcallView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_context(self, extension):
-        if not extension.context.data or extension.context.data == 'None':
+        if not extension.context.data:
             context = self.service.get_first_outcall_context()
         else:
             context = self.service.get_context(extension.context.data)
@@ -68,7 +68,7 @@ class OutcallView(BaseIPBXHelperView):
     def _build_set_choices_trunks(self, trunks):
         results = []
         for trunk in trunks:
-            if not trunk.form.id.data or trunk.form.name.data == 'None':
+            if not trunk.form.id.data:
                 results.append((trunk.form.id.data, trunk.form.name.data))
             else:
                 trunk_data = self.service.get_trunk(trunk.form.id.data)
@@ -96,7 +96,7 @@ class OutcallView(BaseIPBXHelperView):
         return results
 
     def _build_set_choices_schedule(self, schedule):
-        if not schedule.form.id.data or schedule.form.id.data == 'None':
+        if not schedule.form.id.data:
             return []
         return [(schedule.form.id.data, schedule.form.name.data)]
 

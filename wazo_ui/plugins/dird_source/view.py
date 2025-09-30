@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -265,7 +265,7 @@ class DirdSourceView(BaseIPBXHelperView):
 
     def _build_set_choices_phonebook(self, source):
         phonebook_uuid = source.phonebook_config.phonebook_uuid.data
-        if not phonebook_uuid or phonebook_uuid == 'None':
+        if not phonebook_uuid:
             return []
         phonebook_name = source.phonebook_config.phonebook_name.data
         logger.debug(

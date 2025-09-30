@@ -1,4 +1,4 @@
-# Copyright 2020-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2020-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -50,7 +50,7 @@ class EndpointSIPTemplateView(NewHelperViewMixin, BaseIPBXHelperView):
 
     def _build_set_choices_transport(self, template):
         transport_uuid = template.transport.form.uuid.data
-        if not transport_uuid or transport_uuid == 'None':
+        if not transport_uuid:
             return []
         transport = self.service.get_transport(transport_uuid)
         return [(transport['uuid'], transport['name'])]

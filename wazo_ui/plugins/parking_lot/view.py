@@ -37,7 +37,7 @@ class ParkingLotView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_moh(self, moh):
-        if not moh.data or moh.data == 'None':
+        if not moh.data:
             return []
         moh_object = self.service.get_music_on_hold(moh.data)
         if moh_object is None:
@@ -46,7 +46,7 @@ class ParkingLotView(BaseIPBXHelperView):
         return [(moh.data, f"{moh_label} ({moh.data})")]
 
     def _build_set_choices_context(self, form):
-        if not form.context.data or form.context.data == 'None':
+        if not form.context.data:
             return []
         return [(form.context.data, form.context.data)]
 
