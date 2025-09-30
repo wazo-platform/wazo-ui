@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -127,8 +127,7 @@ class Server:
             return UserUI(token, response.get('auth_id'))
 
     def _configure_menu(self):
-        menu = Menu()
-        menu.init_app(app)
+        Menu(app=app)
 
     def _configure_babel(self, enabled_plugins):
         babel = Babel()

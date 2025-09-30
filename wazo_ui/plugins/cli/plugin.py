@@ -1,14 +1,13 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
 from flask import render_template
-from flask_menu.classy import register_flaskview
 from wtforms.fields import StringField, SubmitField
 from wtforms.validators import InputRequired, Length
 
 from wazo_ui.helpers.form import BaseForm
-from wazo_ui.helpers.menu import menu_item
+from wazo_ui.helpers.menu import menu_item, register_flaskview
 from wazo_ui.helpers.plugin import create_blueprint
 from wazo_ui.helpers.view import BaseIPBXHelperView
 

@@ -1,10 +1,10 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from flask_menu.classy import classy_menu_item
+from ..http_server import app
 
 
-def menu_item_aux(path, text, **kwargs):
+def menu_item(path, text, **kwargs):
     kwargs['visible_when'] = lambda: True
 
     # Item without order use their label as order
@@ -18,8 +18,27 @@ def menu_item_aux(path, text, **kwargs):
         else:
             kwargs['order'] = f'{order:03}'
 
-    return classy_menu_item(path, text, **kwargs)
+    def func_wrap(func):
+        item = dict(path=path, text=text, **kwargs)
+
+        if hasattr(func, "_menu_items"):
+            func._menu_items.append(item)
+        else:
+            func._menu_items = [item]
+
+        return func
+
+    return func_wrap
 
 
-def menu_item(path, *args, **kwargs):
-    return menu_item_aux(path, *args, **kwargs)
+def register_flaskview(blueprint, classful_view):
+    for method_str in dir(classful_view):
+        method = getattr(classful_view, method_str)
+        if hasattr(method, "_menu_items"):
+            for menu_item in method._menu_items:
+                endpoint = (
+                    f'{blueprint.name}.{classful_view.__name__}:{method.__name__}'
+                )
+                path = menu_item.pop('path')
+                item = app.extensions['menu'].root_node.submenu(path)
+                item.register(endpoint, **menu_item)

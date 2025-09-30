@@ -13,7 +13,7 @@ cheroot==9.0.0
 flask-babel==2.0.0
 flask-classful==0.16.0
 flask-login==0.6.2
-flask-menu==0.7.2
+flask-menu==2.0.0
 flask-session==0.4.1
 flask-sqlalchemy==3.0.3
 flask-wtf==1.1.1
