@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -70,13 +70,8 @@ class SwitchboardView(BaseIPBXHelperView):
         resource['members']['users'] = [
             {'uuid': user_uuid} for user_uuid in form.members.user_uuids.data
         ]
-        resource['queue_music_on_hold'] = self._convert_empty_string_to_none(
-            form.queue_music_on_hold.data
-        )
-        resource['waiting_room_music_on_hold'] = self._convert_empty_string_to_none(
-            form.waiting_room_music_on_hold.data
-        )
-
+        resource['queue_music_on_hold'] = form.queue_music_on_hold.data
+        resource['waiting_room_music_on_hold'] = form.waiting_room_music_on_hold.data
         return resource
 
     def _map_resources_to_form_errors(self, form, resources):

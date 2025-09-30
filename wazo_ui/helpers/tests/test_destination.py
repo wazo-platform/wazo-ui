@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import unittest
@@ -96,7 +96,7 @@ class TestBaseDestinationForm(unittest.TestCase):
         with app.test_request_context(method='POST', data=data):
             form = TemplateDestinationForm()
 
-        assert_that(form.data, has_entries(template='None'))
+        assert_that(form.data, has_entries(template=None))
 
     def test_process_with_kwargs(self):
         data = {'template': 'user', 'user_id': 1, 'timeout': '2'}

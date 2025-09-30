@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from random import randint
@@ -282,10 +282,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
             {'id': call_permission_id}
             for call_permission_id in form.call_permission_ids.data
         ]
-        resource['music_on_hold'] = self._convert_empty_string_to_none(
-            form.music_on_hold.data
-        )
-
+        resource['music_on_hold'] = form.music_on_hold.data
         return resource
 
     def _map_form_to_resource_funckey(self, form):
