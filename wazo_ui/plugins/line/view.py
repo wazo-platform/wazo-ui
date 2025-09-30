@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import flash, jsonify, render_template, request
@@ -136,7 +136,7 @@ class LineView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_context(self, context_form):
-        if not context_form.data or context_form.data == 'None':
+        if not context_form.data:
             return []
 
         context = self.service.get_context(context_form.data)
@@ -147,7 +147,7 @@ class LineView(BaseIPBXHelperView):
 
     def _build_set_choices_transport(self, sip):
         transport_uuid = sip.transport.form.uuid.data
-        if not transport_uuid or transport_uuid == 'None':
+        if not transport_uuid:
             return []
         transport = self.service.get_transport(transport_uuid)
         return [(transport['uuid'], transport['name'])]

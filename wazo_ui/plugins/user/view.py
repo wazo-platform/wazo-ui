@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from random import randint
@@ -144,26 +144,26 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
 
     def _build_set_choices_application(self, line):
         application = line.application.form
-        if not application.uuid.data or application.uuid.data == 'None':
+        if not application.uuid.data:
             return []
         return [(application.uuid.data, application.name.data)]
 
     def _build_set_choices_registrar(self, line):
-        if not line.registrar.data or line.registrar.data == 'None':
+        if not line.registrar.data:
             return []
         registrar_name = self.service.get_registrar(line.registrar.data)['name']
         text = registrar_name if registrar_name else line.registrar.data
         return [(line.registrar.data, text)]
 
     def _build_set_choices_device(self, line):
-        if not line.device.data or line.device.data == 'None':
+        if not line.device.data:
             return []
         device_mac = self.service.get_device(line.device.data)['mac']
         text = device_mac if device_mac else line.device.data
         return [(line.device.data, text)]
 
     def _build_set_choices_context(self, line):
-        if not line.context.data or line.context.data == 'None':
+        if not line.context.data:
             context = self.service.get_first_internal_context()
         else:
             context = self.service.get_context(line.context.data)
@@ -174,12 +174,12 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         return [(line.context.data, line.context.data)]
 
     def _build_set_choices_extension(self, extension):
-        if not extension.exten.data or extension.exten.data == 'None':
+        if not extension.exten.data:
             return []
         return [(extension.exten.data, extension.exten.data)]
 
     def _build_set_choices_moh(self, user):
-        if not user.music_on_hold.data or user.music_on_hold.data == 'None':
+        if not user.music_on_hold.data:
             return []
         moh_object = self.service.get_music_on_hold(user.music_on_hold.data)
         if moh_object is None:
@@ -190,7 +190,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
     def _build_set_choices_outgoing_caller_id(self, user):
         choices = [('default', l_('Default')), ('anonymous', l_('Anonymous'))]
         caller_id = user.outgoing_caller_id.data
-        if not caller_id or caller_id == 'None':
+        if not caller_id:
             return choices
         for choice in choices:
             if choice[0] == caller_id:
@@ -206,12 +206,12 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
         return results
 
     def _build_set_choices_schedule(self, schedule):
-        if not schedule.form.id.data or schedule.form.id.data == 'None':
+        if not schedule.form.id.data:
             return []
         return [(schedule.form.id.data, schedule.form.name.data)]
 
     def _build_set_choices_voicemail(self, user):
-        if not user.voicemail.form.id.data or user.voicemail.form.id.data == 'None':
+        if not user.voicemail.form.id.data:
             return []
         return [(user.voicemail.form.id.data, user.voicemail.form.name.data)]
 
@@ -282,10 +282,7 @@ class UserView(IndexAjaxHelperViewMixin, BaseIPBXHelperView):
             {'id': call_permission_id}
             for call_permission_id in form.call_permission_ids.data
         ]
-        resource['music_on_hold'] = self._convert_empty_string_to_none(
-            form.music_on_hold.data
-        )
-
+        resource['music_on_hold'] = form.music_on_hold.data
         return resource
 
     def _map_form_to_resource_funckey(self, form):

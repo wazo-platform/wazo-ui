@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -50,8 +50,8 @@ class ApplicationDestinationField(FormField):
         )
         super().__init__(self.destination_form, *args, **kwargs)
 
-    def process(self, formdata, data=unset_value):
-        super().process(formdata, data)
+    def process(self, formdata, data=unset_value, extra_filters=None):
+        super().process(formdata, data, extra_filters=extra_filters)
         if self.destination_label is not None:
             self.form.destination.label.text = self.destination_label
 

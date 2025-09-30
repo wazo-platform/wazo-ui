@@ -39,7 +39,7 @@
           <i class="fa fa-angle-left pull-right"></i>
         </span>
       </a>
-      {{ _build_chidren(item, false, current_user) }}
+      {{ _build_children(item, false, current_user) }}
     </li>
   {% endif %}
 {% endmacro %}
@@ -57,19 +57,19 @@
         </select>
       </div>
     </form>
-	{% if session['working_tenant_uuid'] == current_user.get_user_tenant_uuid() %}
-	  <div class="alert alert-error alert-dismissible">
+    {% if session['working_tenant_uuid'] == current_user.get_user_tenant_uuid() %}
+      <div class="alert alert-error alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-	    <i>Don't use <strong>master</strong> tenant for configuration!</i>
+        <i>Don't use <strong>master</strong> tenant for configuration!</i>
           </div>
-	{% endif %}
+    {% endif %}
   {% endif %}
 
-  {{ _build_chidren(item, true, current_user) }}
+  {{ _build_children(item, true, current_user) }}
 {% endmacro %}
 
 
-{% macro _build_chidren(item, root, current_user) %}
+{% macro _build_children(item, root, current_user) %}
   <ul class="{% if root %}sidebar-menu tree{% else %}treeview-menu{% endif %}"{% if root %}data-widget="tree"{% endif %}>
     {% for i in item.children %}
       {% if i.children and i.text and i.name != 'global_settings' %}
@@ -113,7 +113,7 @@
 {% macro build_breadcrumbs(crumbs) %}
   <section class="content-header">
     <ol class="breadcrumb">
-      {%  for crumb in crumbs %}
+      {% for crumb in crumbs %}
         <li>
           {% if crumb.link %}<a href="{{ crumb.link }}">{% endif %}
           {% if crumb.icon %}<i class="fa fa-{{ crumb.icon }}"></i> {% endif %}
@@ -288,7 +288,7 @@
 {% endmacro %}
 
 
-{% macro build_list_table_headers(get='', delete='', add='', actions_column=true,  import='', export='', update='') %}
+{% macro build_list_table_headers(get='', delete='', add='', actions_column=true, import='', export='', update='') %}
   <thead>
   {% if actions_column %}
     <tr
@@ -318,7 +318,7 @@
       data-delete-tooltip="{{ _('Delete') }}"
       {% endif %}
     >
-  {%  else %}
+  {% else %}
     <tr>
   {% endif %}
     {{ caller() }}

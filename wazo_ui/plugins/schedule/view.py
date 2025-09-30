@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -49,7 +49,7 @@ class ScheduleView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_timezones(self, form):
-        if not form.timezone.data or form.timezone.data == 'None':
+        if not form.timezone.data:
             return []
         return [(form.timezone.data, form.timezone.data)]
 

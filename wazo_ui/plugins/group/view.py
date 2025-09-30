@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -70,12 +70,12 @@ class GroupView(BaseIPBXHelperView):
         return results
 
     def _build_set_choices_exten(self, extension):
-        if not extension.exten.data or extension.exten.data == 'None':
+        if not extension.exten.data:
             return []
         return [(extension.exten.data, extension.exten.data)]
 
     def _build_set_choices_context(self, extension):
-        if not extension.context.data or extension.context.data == 'None':
+        if not extension.context.data:
             context = self.service.get_first_internal_context()
         else:
             context = self.service.get_context(extension.context.data)
@@ -86,7 +86,7 @@ class GroupView(BaseIPBXHelperView):
         return [(extension.context.data, extension.context.data)]
 
     def _build_set_choices_moh(self, moh):
-        if not moh.data or moh.data == 'None':
+        if not moh.data or moh.data:
             return []
         moh_object = self.service.get_music_on_hold(moh.data)
         if moh_object is None:
@@ -95,7 +95,7 @@ class GroupView(BaseIPBXHelperView):
         return [(moh.data, f"{moh_label} ({moh.data})")]
 
     def _build_set_choices_schedule(self, schedule):
-        if not schedule.form.id.data or schedule.form.id.data == 'None':
+        if not schedule.form.id.data:
             return []
         return [(schedule.form.id.data, schedule.form.name.data)]
 
@@ -114,9 +114,7 @@ class GroupView(BaseIPBXHelperView):
             {'id': call_permission_id}
             for call_permission_id in form.call_permission_ids.data
         ]
-        resource['music_on_hold'] = self._convert_empty_string_to_none(
-            form.music_on_hold.data
-        )
+        resource['music_on_hold'] = form.music_on_hold.data
         return resource
 
     def _map_resources_to_form_errors(self, form, resources):

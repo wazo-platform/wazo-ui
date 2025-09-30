@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -40,12 +40,12 @@ class ConferenceView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_exten(self, extension):
-        if not extension.exten.data or extension.exten.data == 'None':
+        if not extension.exten.data:
             return []
         return [(extension.exten.data, extension.exten.data)]
 
     def _build_set_choices_context(self, extension):
-        if not extension.context.data or extension.context.data == 'None':
+        if not extension.context.data:
             context = self.service.get_first_internal_context()
         else:
             context = self.service.get_context(extension.context.data)
@@ -56,10 +56,10 @@ class ConferenceView(BaseIPBXHelperView):
         return [(extension.context.data, extension.context.data)]
 
     def _build_set_choices_moh(self, moh):
-        if not moh.data or moh.data == 'None':
+        if not moh.data:
             return []
         moh_object = self.service.get_music_on_hold(moh.data)
-        if moh_object is None:
+        if not moh_object:
             return []
         moh_label = moh_object['label']
         return [(moh.data, f"{moh_label} ({moh.data})")]
@@ -68,11 +68,7 @@ class ConferenceView(BaseIPBXHelperView):
         resource = form.to_dict()
         if form_id:
             resource['uuid'] = form_id
-
-        resource['music_on_hold'] = self._convert_empty_string_to_none(
-            form.music_on_hold.data
-        )
-
+        resource['music_on_hold'] = form.music_on_hold.data
         return resource
 
     def _map_resources_to_form_errors(self, form, resources):

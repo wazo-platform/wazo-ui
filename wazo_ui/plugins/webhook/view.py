@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import pprint
@@ -77,6 +77,6 @@ class WebhookView(BaseIPBXHelperView):
         return services_list
 
     def _build_setted_choices_users(self, user_uuid, users_by_id):
-        if not user_uuid.data or user_uuid.data == 'None':
+        if not user_uuid.data:
             return []
         return [(user_uuid.data, users_by_id[user_uuid.data])]

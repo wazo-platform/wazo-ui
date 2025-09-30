@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import flash, jsonify, redirect, render_template, request, url_for
@@ -301,9 +301,7 @@ class LDAPConfigView(BaseIPBXHelperView):
 
     def _map_form_to_resources_post(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
-        resource['protocol_security'] = self._convert_empty_string_to_none(
-            form.protocol_security.data
-        )
+        resource['protocol_security'] = form.protocol_security.data
         return resource
 
     def post(self):
