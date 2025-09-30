@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -114,10 +114,7 @@ class QueueView(BaseIPBXHelperView):
         resource['users'] = [
             {'id': user_id} for user_id in resource['members']['user_ids']
         ]
-        resource['music_on_hold'] = self._convert_empty_string_to_none(
-            form.music_on_hold.data
-        )
-
+        resource['music_on_hold'] = form.music_on_hold.data
         return resource
 
     def _map_form_to_resource_options(self, form, resource):
