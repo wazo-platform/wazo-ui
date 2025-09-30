@@ -57,7 +57,7 @@ class SwitchboardView(BaseIPBXHelperView):
         return results
 
     def _build_set_choices_moh(self, moh):
-        if not moh.data or moh.data == 'None':
+        if not moh.data:
             return []
         moh_object = self.service.get_music_on_hold(moh.data)
         if moh_object is None:

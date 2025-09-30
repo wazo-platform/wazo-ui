@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -212,7 +212,7 @@ class VoicemailGeneralSettingsView(BaseGeneralSettingsView):
         return form
 
     def _build_set_choices_timezones(self, zonemessage):
-        if not zonemessage.timezone.data or zonemessage.timezone.data == 'None':
+        if not zonemessage.timezone.data:
             return []
         return [(zonemessage.timezone.data, zonemessage.timezone.data)]
 

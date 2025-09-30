@@ -57,12 +57,12 @@ class QueueView(BaseIPBXHelperView):
         return results
 
     def _build_set_choices_exten(self, extension):
-        if not extension.exten.data or extension.exten.data == 'None':
+        if not extension.exten.data:
             return []
         return [(extension.exten.data, extension.exten.data)]
 
     def _build_set_choices_context(self, extension):
-        if not extension.context.data or extension.context.data == 'None':
+        if not extension.context.data:
             context = self.service.get_first_internal_context()
         else:
             context = self.service.get_context(extension.context.data)
@@ -73,7 +73,7 @@ class QueueView(BaseIPBXHelperView):
         return [(extension.context.data, extension.context.data)]
 
     def _build_set_choices_moh(self, moh):
-        if not moh.data or moh.data == 'None':
+        if not moh.data:
             return []
         moh_object = self.service.get_music_on_hold(moh.data)
         if moh_object is None:
@@ -82,7 +82,7 @@ class QueueView(BaseIPBXHelperView):
         return [(moh.data, f"{moh_label} ({moh.data})")]
 
     def _build_set_choices_schedule(self, schedule):
-        if not schedule.form.id.data or schedule.form.id.data == 'None':
+        if not schedule.form.id.data:
             return []
         return [(schedule.form.id.data, schedule.form.name.data)]
 

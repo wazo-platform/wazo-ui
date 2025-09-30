@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -45,12 +45,12 @@ class IncallView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_exten(self, extension):
-        if not extension.exten.data or extension.exten.data == 'None':
+        if not extension.exten.data:
             return []
         return [(extension.exten.data, extension.exten.data)]
 
     def _build_set_choices_context(self, extension):
-        if not extension.context.data or extension.context.data == 'None':
+        if not extension.context.data:
             context = self.service.get_first_incall_context()
         else:
             context = self.service.get_context(extension.context.data)
@@ -61,7 +61,7 @@ class IncallView(BaseIPBXHelperView):
         return [(extension.context.data, extension.context.data)]
 
     def _build_set_choices_schedule(self, schedule):
-        if not schedule.form.id.data or schedule.form.id.data == 'None':
+        if not schedule.form.id.data:
             return []
         return [(schedule.form.id.data, schedule.form.name.data)]
 

@@ -228,7 +228,7 @@
           {% set data_listing_href = url_for(listing_urls[field.description]) if listing_urls[field.description] %}
         {% endif %}
 
-        {% if not field.choices and field.data and field.data != 'None' %}  {# issue github wtform #324 #}
+        {% if not field.choices and field.data %}
           {% set text = form.set_value_template.format(**form.data) if form.set_value_template else field.data%}
           {% do field.choices.append((field.data, text)) %}
 

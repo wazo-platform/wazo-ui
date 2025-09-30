@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import flash, jsonify, redirect, render_template, request, url_for
@@ -67,12 +67,12 @@ class DeviceView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_plugin(self, device):
-        if not device.plugin.data or device.plugin.data == 'None':
+        if not device.plugin.data:
             return []
         return [(device.plugin.data, device.plugin.data)]
 
     def _build_set_choices_template_id(self, device):
-        if not device.template_id.data or device.template_id.data == 'None':
+        if not device.template_id.data:
             return []
         template_id = self.service.get_config(device.template_id.data)
         if template_id:
