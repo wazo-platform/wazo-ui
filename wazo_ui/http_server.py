@@ -167,4 +167,5 @@ class Server:
         app.config['SESSION_SQLALCHEMY'] = db
         flask_session = Session()
         flask_session.init_app(app)
-        db.create_all()
+        with app.app_context():
+            db.create_all()
