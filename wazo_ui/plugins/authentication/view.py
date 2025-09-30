@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -31,7 +31,9 @@ class Login(FlaskView):
 
         form = LoginForm()
         form.language.choices = self._build_language_list()
-        if form.validate_on_submit():
+        # NOTE: compatibility issue with bookworm lib versions
+        # Use form.validate_on_submit() on Trixie
+        if form.is_submitted() and form.validate():
             if not form.csrf_token.validate(form):
                 return render_template('authentication/login.html', form=form)
 
