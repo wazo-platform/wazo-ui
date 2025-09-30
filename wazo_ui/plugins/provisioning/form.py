@@ -58,7 +58,7 @@ class RawConfigDeviceForm(BaseForm):
         l_('Protocol'), choices=[('', l_('None')), ('SIP', 'SIP'), ('SCCP', 'SCCP')]
     )
     ntp_enabled = BooleanField(l_('Enabled NTP'), default=False)
-    ntp_ip = StringField(l_('NTP server'), validators=[IPAddress])
+    ntp_ip = StringField(l_('NTP server'), validators=[IPAddress()])
     sip_dtmf_mode = SelectField(
         l_('SIP DTMF mode'),
         choices=[
