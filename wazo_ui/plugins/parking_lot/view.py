@@ -1,4 +1,4 @@
-# Copyright 2017-2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -37,7 +37,7 @@ class ParkingLotView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_moh(self, moh):
-        if not moh.data or moh.data == 'None':
+        if not moh.data:
             return []
         moh_object = self.service.get_music_on_hold(moh.data)
         if moh_object is None:
@@ -46,7 +46,7 @@ class ParkingLotView(BaseIPBXHelperView):
         return [(moh.data, f"{moh_label} ({moh.data})")]
 
     def _build_set_choices_context(self, form):
-        if not form.context.data or form.context.data == 'None':
+        if not form.context.data:
             return []
         return [(form.context.data, form.context.data)]
 
@@ -57,9 +57,7 @@ class ParkingLotView(BaseIPBXHelperView):
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
-        resource['music_on_hold'] = self._convert_empty_string_to_none(
-            form.music_on_hold.data
-        )
+        resource['music_on_hold'] = form.music_on_hold.data
         return resource
 
 

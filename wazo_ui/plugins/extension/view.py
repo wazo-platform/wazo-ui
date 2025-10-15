@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import flash, jsonify, render_template, request
@@ -38,7 +38,7 @@ class ExtensionView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_context(self, extension):
-        if not extension.context.data or extension.context.data == 'None':
+        if not extension.context.data:
             return []
         return [(extension.context.data, extension.context.data)]
 

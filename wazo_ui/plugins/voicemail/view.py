@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -41,7 +41,7 @@ class VoicemailView(BaseIPBXHelperView):
         return form
 
     def _build_set_choices_context(self, context):
-        if not context.data or context.data == 'None':
+        if not context.data:
             return []
         return [(context.data, context.data)]
 
@@ -57,7 +57,7 @@ class VoicemailView(BaseIPBXHelperView):
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
-        if form.user_uuid.data and form.user_uuid.data != 'None':
+        if form.user_uuid.data:
             resource['users'] = [{'uuid': form.user_uuid.data}]
         else:
             resource['users'] = []

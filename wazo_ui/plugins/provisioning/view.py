@@ -1,4 +1,4 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import flash, jsonify, redirect, render_template, request, url_for
@@ -231,7 +231,7 @@ class ConfigDeviceView(ProvisioningBaseView):
         return form
 
     def _build_set_choices_timezones(self, config):
-        if not config.timezone.data or config.timezone.data == 'None':
+        if not config.timezone.data:
             return []
         return [(config.timezone.data, config.timezone.data)]
 
