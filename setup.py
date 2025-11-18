@@ -5,10 +5,10 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from distutils.cmd import Command as _Command
 from glob import glob
 from pathlib import Path
 
+from setuptools import Command as _Command
 from setuptools import find_packages, setup
 from setuptools.command.build_py import build_py as _build_py
 
