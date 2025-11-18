@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wazo_ui 0.1\n"
 "Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
-"POT-Creation-Date: 2025-09-29 08:25-0400\n"
+"POT-Creation-Date: 2025-11-18 13:37-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Wazo Authors <dev@wazo.community>\n"
 "Language-Team: en <dev@wazo.community>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.10.3\n"
 
-#: wazo_ui/controller.py:61 wazo_ui/core/form.py:84 wazo_ui/core/plugin.py:49
+#: wazo_ui/controller.py:61 wazo_ui/core/form.py:83 wazo_ui/core/plugin.py:49
 #: wazo_ui/plugins/application/form.py:84
 #: wazo_ui/plugins/application/templates/application/edit.html:14
 #: wazo_ui/plugins/application/templates/application/edit.html:15
@@ -47,7 +47,7 @@ msgstr ""
 #: wazo_ui/plugins/moh/form.py:13 wazo_ui/plugins/provisioning/form.py:45
 #: wazo_ui/plugins/provisioning/form.py:58
 #: wazo_ui/plugins/provisioning/form.py:65 wazo_ui/plugins/queue/form.py:77
-#: wazo_ui/plugins/voicemail/form.py:81
+#: wazo_ui/plugins/voicemail/form.py:82
 msgid "None"
 msgstr ""
 
@@ -74,46 +74,46 @@ msgstr ""
 #: wazo_ui/controller.py:89 wazo_ui/core/plugin.py:77
 #: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:4
 #: wazo_ui/plugins/general_settings/view.py:193
-#: wazo_ui/plugins/user/form.py:124
+#: wazo_ui/plugins/user/form.py:125
 #: wazo_ui/plugins/user/templates/user/edit.html:23
-#: wazo_ui/plugins/voicemail/form.py:77 wazo_ui/plugins/voicemail/plugin.py:31
+#: wazo_ui/plugins/voicemail/form.py:78 wazo_ui/plugins/voicemail/plugin.py:31
 #: wazo_ui/plugins/voicemail/templates/voicemail/edit.html:11
 #: wazo_ui/plugins/voicemail/templates/voicemail/list.html:5
 msgid "Voicemail"
 msgstr ""
 
-#: wazo_ui/core/form.py:23 wazo_ui/core/form.py:27
+#: wazo_ui/core/form.py:22 wazo_ui/core/form.py:26
 #: wazo_ui/plugins/dird_source/form.py:50
 #: wazo_ui/plugins/dird_source/form.py:131
 #: wazo_ui/plugins/dird_source/form.py:144 wazo_ui/plugins/group/form.py:85
-#: wazo_ui/plugins/ivr/form.py:76 wazo_ui/plugins/parking_lot/form.py:28
+#: wazo_ui/plugins/ivr/form.py:82 wazo_ui/plugins/parking_lot/form.py:34
 #: wazo_ui/plugins/queue/form.py:109 wazo_ui/plugins/switchboard/form.py:42
 msgid "Timeout"
 msgstr ""
 
-#: wazo_ui/core/form.py:38
+#: wazo_ui/core/form.py:37
 msgid "Cause"
 msgstr ""
 
-#: wazo_ui/core/form.py:40
+#: wazo_ui/core/form.py:39
 msgid "Normal"
 msgstr ""
 
-#: wazo_ui/core/form.py:41 wazo_ui/helpers/destination.py:121
-#: wazo_ui/plugins/user/form.py:71 wazo_ui/plugins/voicemail/form.py:82
+#: wazo_ui/core/form.py:40 wazo_ui/helpers/destination.py:121
+#: wazo_ui/plugins/user/form.py:72 wazo_ui/plugins/voicemail/form.py:83
 msgid "Busy"
 msgstr ""
 
-#: wazo_ui/core/form.py:42 wazo_ui/helpers/destination.py:122
+#: wazo_ui/core/form.py:41 wazo_ui/helpers/destination.py:122
 msgid "Congestion"
 msgstr ""
 
-#: wazo_ui/core/form.py:52 wazo_ui/plugins/conference/form.py:32
+#: wazo_ui/core/form.py:51 wazo_ui/plugins/conference/form.py:32
 #: wazo_ui/plugins/conference/templates/conference/list.html:16
 msgid "PIN"
 msgstr ""
 
-#: wazo_ui/core/form.py:57 wazo_ui/core/form.py:67 wazo_ui/core/form.py:77
+#: wazo_ui/core/form.py:56 wazo_ui/core/form.py:66 wazo_ui/core/form.py:76
 #: wazo_ui/plugins/conference/form.py:21
 #: wazo_ui/plugins/context/templates/context/edit.html:13
 #: wazo_ui/plugins/extension/form.py:21 wazo_ui/plugins/extension/form.py:39
@@ -124,21 +124,21 @@ msgstr ""
 #: wazo_ui/plugins/outcall/form.py:33
 #: wazo_ui/plugins/outcall/templates/outcall/edit.html:41
 #: wazo_ui/plugins/outcall/templates/outcall/list.html:35
-#: wazo_ui/plugins/parking_lot/form.py:15 wazo_ui/plugins/queue/form.py:34
+#: wazo_ui/plugins/parking_lot/form.py:21 wazo_ui/plugins/queue/form.py:34
 #: wazo_ui/plugins/trunk/form.py:63
 #: wazo_ui/plugins/user/templates/user/edit.html:108
-#: wazo_ui/plugins/voicemail/form.py:29
+#: wazo_ui/plugins/voicemail/form.py:30
 msgid "Context"
 msgstr ""
 
-#: wazo_ui/core/form.py:72 wazo_ui/plugins/identity/form.py:60
+#: wazo_ui/core/form.py:71 wazo_ui/plugins/identity/form.py:60
 #: wazo_ui/plugins/identity/templates/identity/edit.html:41
 #: wazo_ui/plugins/identity/templates/identity/list.html:17
 #: wazo_ui/plugins/phonebook/form.py:20
 #: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:25
-#: wazo_ui/plugins/user/form.py:138
+#: wazo_ui/plugins/user/form.py:139
 #: wazo_ui/plugins/user/templates/user/list.html:14
-#: wazo_ui/plugins/voicemail/form.py:33
+#: wazo_ui/plugins/voicemail/form.py:34
 #: wazo_ui/plugins/voicemail/templates/voicemail/list.html:16
 msgid "Email"
 msgstr ""
@@ -169,8 +169,8 @@ msgstr ""
 #: wazo_ui/plugins/ivr/templates/ivr/add.html:34
 #: wazo_ui/plugins/ivr/templates/ivr/edit.html:36
 #: wazo_ui/plugins/schedule/templates/schedule/edit.html:41
-#: wazo_ui/plugins/user/form.py:72 wazo_ui/plugins/user/form.py:77
-#: wazo_ui/plugins/user/form.py:82
+#: wazo_ui/plugins/user/form.py:73 wazo_ui/plugins/user/form.py:78
+#: wazo_ui/plugins/user/form.py:83
 #: wazo_ui/plugins/user/templates/user/edit.html:144
 msgid "Destination"
 msgstr ""
@@ -179,7 +179,7 @@ msgstr ""
 msgid "Fail"
 msgstr ""
 
-#: wazo_ui/helpers/destination.py:124 wazo_ui/plugins/user/form.py:76
+#: wazo_ui/helpers/destination.py:124 wazo_ui/plugins/user/form.py:77
 msgid "No answer"
 msgstr ""
 
@@ -413,9 +413,9 @@ msgstr ""
 #: wazo_ui/plugins/general_settings/form.py:103
 #: wazo_ui/plugins/group/form.py:98 wazo_ui/plugins/ha/form.py:22
 #: wazo_ui/plugins/hep/form.py:22 wazo_ui/plugins/incall/form.py:48
-#: wazo_ui/plugins/ivr/form.py:91 wazo_ui/plugins/line/form.py:43
+#: wazo_ui/plugins/ivr/form.py:97 wazo_ui/plugins/line/form.py:43
 #: wazo_ui/plugins/moh/form.py:48 wazo_ui/plugins/outcall/form.py:58
-#: wazo_ui/plugins/paging/form.py:50 wazo_ui/plugins/parking_lot/form.py:29
+#: wazo_ui/plugins/paging/form.py:50 wazo_ui/plugins/parking_lot/form.py:35
 #: wazo_ui/plugins/phone_number/form.py:19 wazo_ui/plugins/phonebook/form.py:14
 #: wazo_ui/plugins/phonebook/form.py:25 wazo_ui/plugins/provisioning/form.py:37
 #: wazo_ui/plugins/provisioning/form.py:101
@@ -425,8 +425,8 @@ msgstr ""
 #: wazo_ui/plugins/skill/form.py:15 wazo_ui/plugins/skillrule/form.py:18
 #: wazo_ui/plugins/sound/form.py:24 wazo_ui/plugins/sound/form.py:29
 #: wazo_ui/plugins/switchboard/form.py:43 wazo_ui/plugins/transport/form.py:33
-#: wazo_ui/plugins/trunk/form.py:78 wazo_ui/plugins/user/form.py:181
-#: wazo_ui/plugins/voicemail/form.py:71 wazo_ui/plugins/webhook/form.py:46
+#: wazo_ui/plugins/trunk/form.py:78 wazo_ui/plugins/user/form.py:182
+#: wazo_ui/plugins/voicemail/form.py:72 wazo_ui/plugins/webhook/form.py:46
 msgid "Submit"
 msgstr ""
 
@@ -667,7 +667,7 @@ msgstr ""
 #: wazo_ui/plugins/identity/templates/identity/list.html:15
 #: wazo_ui/plugins/phonebook/form.py:18
 #: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:22
-#: wazo_ui/plugins/user/form.py:134
+#: wazo_ui/plugins/user/form.py:135
 #: wazo_ui/plugins/user/templates/user/list.html:12
 msgid "Firstname"
 msgstr ""
@@ -678,7 +678,7 @@ msgstr ""
 #: wazo_ui/plugins/identity/templates/identity/list.html:16
 #: wazo_ui/plugins/phonebook/form.py:19
 #: wazo_ui/plugins/phonebook/templates/phonebook/manage_phonebook.html:23
-#: wazo_ui/plugins/user/form.py:135
+#: wazo_ui/plugins/user/form.py:136
 #: wazo_ui/plugins/user/templates/user/list.html:13
 msgid "Lastname"
 msgstr ""
@@ -693,7 +693,7 @@ msgstr ""
 #: wazo_ui/plugins/call_pickup/form.py:48
 #: wazo_ui/plugins/call_pickup/templates/call_pickup/list.html:17
 #: wazo_ui/plugins/context/form.py:48 wazo_ui/plugins/device/form.py:38
-#: wazo_ui/plugins/identity/form.py:116 wazo_ui/plugins/ivr/form.py:37
+#: wazo_ui/plugins/identity/form.py:116 wazo_ui/plugins/ivr/form.py:43
 #: wazo_ui/plugins/outcall/form.py:48
 #: wazo_ui/plugins/outcall/templates/outcall/list.html:15
 #: wazo_ui/plugins/phonebook/form.py:13
@@ -701,13 +701,13 @@ msgstr ""
 #: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:15
 #: wazo_ui/plugins/provisioning/templates/provisioning/plugin/edit.html:25
 #: wazo_ui/plugins/provisioning/templates/provisioning/plugin/list.html:15
-#: wazo_ui/plugins/skill/form.py:14 wazo_ui/plugins/user/form.py:151
+#: wazo_ui/plugins/skill/form.py:14 wazo_ui/plugins/user/form.py:152
 msgid "Description"
 msgstr ""
 
 #: wazo_ui/plugins/agent/form.py:30 wazo_ui/plugins/conference/form.py:41
 #: wazo_ui/plugins/group/form.py:70 wazo_ui/plugins/queue/form.py:106
-#: wazo_ui/plugins/user/form.py:144
+#: wazo_ui/plugins/user/form.py:145
 msgid "Subroutine"
 msgstr ""
 
@@ -717,7 +717,7 @@ msgstr ""
 #: wazo_ui/plugins/call_permission/templates/call_permission/list.html:18
 #: wazo_ui/plugins/dird_source/form.py:63
 #: wazo_ui/plugins/dird_source/form.py:134 wazo_ui/plugins/identity/form.py:57
-#: wazo_ui/plugins/user/form.py:137 wazo_ui/plugins/voicemail/form.py:35
+#: wazo_ui/plugins/user/form.py:138 wazo_ui/plugins/voicemail/form.py:36
 msgid "Password"
 msgstr ""
 
@@ -726,7 +726,7 @@ msgstr ""
 #: wazo_ui/plugins/provisioning/form.py:43 wazo_ui/plugins/sound/form.py:21
 #: wazo_ui/plugins/sound/templates/sound/list_files.html:47
 #: wazo_ui/plugins/sound/templates/sound/list_system_files.html:33
-#: wazo_ui/plugins/voicemail/form.py:54
+#: wazo_ui/plugins/voicemail/form.py:55
 msgid "Language"
 msgstr ""
 
@@ -823,7 +823,7 @@ msgstr ""
 #: wazo_ui/plugins/identity/templates/policy/list.html:14
 #: wazo_ui/plugins/identity/templates/tenant/edit.html:38
 #: wazo_ui/plugins/identity/templates/tenant/list.html:14
-#: wazo_ui/plugins/ivr/form.py:19
+#: wazo_ui/plugins/ivr/form.py:25
 #: wazo_ui/plugins/ivr/templates/ivr/list.html:14
 #: wazo_ui/plugins/line/templates/line/list.html:15
 #: wazo_ui/plugins/moh/form.py:21 wazo_ui/plugins/moh/form.py:26
@@ -833,7 +833,7 @@ msgstr ""
 #: wazo_ui/plugins/outcall/templates/outcall/list.html:14
 #: wazo_ui/plugins/paging/form.py:36
 #: wazo_ui/plugins/paging/templates/paging/list.html:15
-#: wazo_ui/plugins/parking_lot/form.py:19
+#: wazo_ui/plugins/parking_lot/form.py:25
 #: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:14
 #: wazo_ui/plugins/phonebook/form.py:12
 #: wazo_ui/plugins/phonebook/templates/phonebook/list.html:12
@@ -858,7 +858,7 @@ msgstr ""
 #: wazo_ui/plugins/trunk/form.py:35
 #: wazo_ui/plugins/trunk/templates/trunk/list.html:16
 #: wazo_ui/plugins/user/templates/user/edit.html:107
-#: wazo_ui/plugins/voicemail/form.py:28
+#: wazo_ui/plugins/voicemail/form.py:29
 #: wazo_ui/plugins/voicemail/templates/voicemail/list.html:14
 msgid "Name"
 msgstr ""
@@ -875,8 +875,8 @@ msgid "Holding"
 msgstr ""
 
 #: wazo_ui/plugins/application/form.py:73
-#: wazo_ui/plugins/parking_lot/form.py:27 wazo_ui/plugins/queue/form.py:72
-#: wazo_ui/plugins/switchboard/form.py:36 wazo_ui/plugins/user/form.py:143
+#: wazo_ui/plugins/parking_lot/form.py:33 wazo_ui/plugins/queue/form.py:72
+#: wazo_ui/plugins/switchboard/form.py:36 wazo_ui/plugins/user/form.py:144
 msgid "Music On Hold"
 msgstr ""
 
@@ -915,7 +915,7 @@ msgstr ""
 #: wazo_ui/plugins/dird_source/form.py:66
 #: wazo_ui/plugins/dird_source/form.py:133 wazo_ui/plugins/identity/form.py:56
 #: wazo_ui/plugins/identity/templates/identity/list.html:14
-#: wazo_ui/plugins/user/form.py:136
+#: wazo_ui/plugins/user/form.py:137
 msgid "Username"
 msgstr ""
 
@@ -1078,7 +1078,7 @@ msgstr ""
 #: wazo_ui/plugins/queue/form.py:61
 #: wazo_ui/plugins/queue/templates/queue/edit.html:21
 #: wazo_ui/plugins/user/templates/user/list.html:4
-#: wazo_ui/plugins/user/view.py:37 wazo_ui/plugins/voicemail/form.py:63
+#: wazo_ui/plugins/user/view.py:37 wazo_ui/plugins/voicemail/form.py:64
 msgid "Users"
 msgstr ""
 
@@ -1090,7 +1090,7 @@ msgstr ""
 #: wazo_ui/plugins/identity/templates/identity/edit.html:16
 #: wazo_ui/plugins/identity/templates/identity_group/list.html:5
 #: wazo_ui/plugins/identity/templates/identity_group/list.html:11
-#: wazo_ui/plugins/identity/view.py:98 wazo_ui/plugins/user/form.py:174
+#: wazo_ui/plugins/identity/view.py:98 wazo_ui/plugins/user/form.py:175
 #: wazo_ui/plugins/user/templates/user/edit.html:20
 msgid "Groups"
 msgstr ""
@@ -1112,7 +1112,7 @@ msgstr ""
 #: wazo_ui/plugins/group/templates/group/edit.html:18
 #: wazo_ui/plugins/outcall/form.py:56
 #: wazo_ui/plugins/outcall/templates/outcall/edit.html:18
-#: wazo_ui/plugins/user/form.py:179
+#: wazo_ui/plugins/user/form.py:180
 #: wazo_ui/plugins/user/templates/user/edit.html:24
 msgid "Call Permissions"
 msgstr ""
@@ -1214,7 +1214,7 @@ msgstr ""
 #: wazo_ui/plugins/outcall/form.py:34
 #: wazo_ui/plugins/outcall/templates/outcall/edit.html:42
 #: wazo_ui/plugins/outcall/templates/outcall/list.html:36
-#: wazo_ui/plugins/parking_lot/form.py:14
+#: wazo_ui/plugins/parking_lot/form.py:20
 #: wazo_ui/plugins/parking_lot/templates/parking_lot/list.html:15
 #: wazo_ui/plugins/queue/templates/queue/list.html:15
 #: wazo_ui/plugins/user/templates/user/edit.html:109
@@ -1302,7 +1302,7 @@ msgstr ""
 #: wazo_ui/plugins/queue/form.py:67 wazo_ui/plugins/sip_template/form.py:73
 #: wazo_ui/plugins/sip_template/templates/sip_template/list.html:14
 #: wazo_ui/plugins/trunk/templates/trunk/list.html:15
-#: wazo_ui/plugins/user/form.py:111
+#: wazo_ui/plugins/user/form.py:112
 #: wazo_ui/plugins/user/templates/user/edit.html:143
 msgid "Label"
 msgstr ""
@@ -1341,8 +1341,8 @@ msgstr ""
 #: wazo_ui/plugins/context/templates/context/edit.html:43
 #: wazo_ui/plugins/identity/form.py:67
 #: wazo_ui/plugins/identity/templates/identity/edit.html:14
-#: wazo_ui/plugins/trunk/form.py:38 wazo_ui/plugins/user/form.py:187
-#: wazo_ui/plugins/user/form.py:196 wazo_ui/plugins/user/plugin.py:33
+#: wazo_ui/plugins/trunk/form.py:38 wazo_ui/plugins/user/form.py:188
+#: wazo_ui/plugins/user/form.py:197 wazo_ui/plugins/user/plugin.py:33
 #: wazo_ui/plugins/user/plugin.py:35
 #: wazo_ui/plugins/user/templates/user/edit.html:14
 #: wazo_ui/plugins/user/templates/user/edit.html:15
@@ -1923,7 +1923,7 @@ msgstr ""
 msgid "Incoming call filtering"
 msgstr ""
 
-#: wazo_ui/plugins/funckey/form.py:32 wazo_ui/plugins/user/form.py:92
+#: wazo_ui/plugins/funckey/form.py:32 wazo_ui/plugins/user/form.py:93
 msgid "Do not disturb"
 msgstr ""
 
@@ -1981,7 +1981,7 @@ msgstr ""
 #: wazo_ui/plugins/general_settings/templates/general_settings/voicemail_general.html:53
 #: wazo_ui/plugins/provisioning/form.py:56 wazo_ui/plugins/schedule/form.py:81
 #: wazo_ui/plugins/schedule/templates/schedule/list.html:15
-#: wazo_ui/plugins/user/form.py:149 wazo_ui/plugins/voicemail/form.py:40
+#: wazo_ui/plugins/user/form.py:150 wazo_ui/plugins/voicemail/form.py:41
 msgid "Timezone"
 msgstr ""
 
@@ -2009,7 +2009,7 @@ msgstr ""
 #: wazo_ui/plugins/general_settings/view.py:178 wazo_ui/plugins/line/form.py:38
 #: wazo_ui/plugins/line/templates/line/list.html:25
 #: wazo_ui/plugins/line/templates/line/list.html:53
-#: wazo_ui/plugins/user/form.py:55
+#: wazo_ui/plugins/user/form.py:56
 msgid "SCCP"
 msgstr ""
 
@@ -2188,7 +2188,7 @@ msgstr ""
 #: wazo_ui/plugins/queue/templates/queue/edit.html:18
 #: wazo_ui/plugins/schedule/templates/schedule/edit.html:14
 #: wazo_ui/plugins/schedule/templates/schedule/list.html:5
-#: wazo_ui/plugins/user/form.py:119
+#: wazo_ui/plugins/user/form.py:120
 #: wazo_ui/plugins/user/templates/user/edit.html:22
 msgid "Schedule"
 msgstr ""
@@ -2485,11 +2485,11 @@ msgstr ""
 msgid "Tenants"
 msgstr ""
 
-#: wazo_ui/plugins/identity/view.py:322
+#: wazo_ui/plugins/identity/view.py:320
 msgid "LDAP config has been updated"
 msgstr ""
 
-#: wazo_ui/plugins/identity/view.py:330
+#: wazo_ui/plugins/identity/view.py:328
 #, python-format
 msgid "%(resource)s: LDAP configuration has been deleted"
 msgstr ""
@@ -2542,7 +2542,7 @@ msgstr ""
 msgid "Preprocess Subroutine"
 msgstr ""
 
-#: wazo_ui/plugins/incall/form.py:35 wazo_ui/plugins/ivr/form.py:39
+#: wazo_ui/plugins/incall/form.py:35 wazo_ui/plugins/ivr/form.py:45
 msgid "Greeting sound"
 msgstr ""
 
@@ -2569,71 +2569,71 @@ msgstr ""
 msgid "Add Incall"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:21
+#: wazo_ui/plugins/ivr/form.py:27
 msgid "Abort destination"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:22
+#: wazo_ui/plugins/ivr/form.py:28
 msgid ""
 "The destination to redirect the caller to when the maximum number of "
 "tries is reached.                        If not set, the call will be "
 "hanged up after playing the abort sound (if set)"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:28
+#: wazo_ui/plugins/ivr/form.py:34
 msgid "Abort sound"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:31
+#: wazo_ui/plugins/ivr/form.py:37
 msgid ""
 "The sound played when the caller reach the maximum number of tries."
 "                        Not used if an abort destination is set"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:42
+#: wazo_ui/plugins/ivr/form.py:48
 msgid "The sound played to greet the caller"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:45
+#: wazo_ui/plugins/ivr/form.py:51
 msgid "Invalid destination"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:46
+#: wazo_ui/plugins/ivr/form.py:52
 msgid ""
 "The destination to redirect the caller to when he choose an invalid "
 "option.                        If not set, the menu will be replayed"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:52
+#: wazo_ui/plugins/ivr/form.py:58
 msgid "Invalid Sound"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:55
+#: wazo_ui/plugins/ivr/form.py:61
 msgid ""
 "The sound played when the caller choose an invalid option."
 "                        Not used if an invalid destination is set"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:61
+#: wazo_ui/plugins/ivr/form.py:67
 msgid "Max tries"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:64
+#: wazo_ui/plugins/ivr/form.py:70
 msgid ""
 "The maximum number of tries before aborting the call."
 "                        Both a timeout and an invalid choice counts "
 "toward the number of tries integer Default:3"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:70
+#: wazo_ui/plugins/ivr/form.py:76
 msgid "Menu Sound"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:73
+#: wazo_ui/plugins/ivr/form.py:79
 msgid "The sound played to prompt the caller for input"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:79
+#: wazo_ui/plugins/ivr/form.py:85
 msgid ""
 "Number of seconds to wait after the menu sound is played before either "
 "replaying the menu,                        redirecting the call to the "
@@ -2641,17 +2641,17 @@ msgid ""
 "(if the maximum number of tries has been reached) integer Default:5"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:86
+#: wazo_ui/plugins/ivr/form.py:92
 msgid "Timeout destination"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:87
+#: wazo_ui/plugins/ivr/form.py:93
 msgid ""
 "The destination to redirect the caller to on timeout. If not set, the "
 "menu will be replayed"
 msgstr ""
 
-#: wazo_ui/plugins/ivr/form.py:109 wazo_ui/plugins/ivr/templates/ivr/add.html:4
+#: wazo_ui/plugins/ivr/form.py:115 wazo_ui/plugins/ivr/templates/ivr/add.html:4
 #: wazo_ui/plugins/ivr/templates/ivr/edit.html:13
 #: wazo_ui/plugins/ivr/templates/ivr/list.html:5
 #: wazo_ui/plugins/ivr/templates/ivr/list.html:11
@@ -2708,7 +2708,7 @@ msgstr ""
 #: wazo_ui/plugins/line/templates/line/list.html:51
 #: wazo_ui/plugins/trunk/form.py:65
 #: wazo_ui/plugins/trunk/templates/trunk/list.html:57
-#: wazo_ui/plugins/user/form.py:54
+#: wazo_ui/plugins/user/form.py:55
 msgid "SIP"
 msgstr ""
 
@@ -2717,7 +2717,7 @@ msgstr ""
 #: wazo_ui/plugins/line/templates/line/list.html:55
 #: wazo_ui/plugins/trunk/form.py:65
 #: wazo_ui/plugins/trunk/templates/trunk/list.html:59
-#: wazo_ui/plugins/user/form.py:58
+#: wazo_ui/plugins/user/form.py:59
 msgid "CUSTOM"
 msgstr ""
 
@@ -2925,7 +2925,7 @@ msgstr ""
 #: wazo_ui/plugins/outcall/form.py:35
 #: wazo_ui/plugins/outcall/templates/outcall/edit.html:43
 #: wazo_ui/plugins/outcall/templates/outcall/list.html:37
-#: wazo_ui/plugins/user/form.py:140
+#: wazo_ui/plugins/user/form.py:141
 msgid "Caller ID"
 msgstr ""
 
@@ -2954,7 +2954,7 @@ msgstr ""
 msgid "Internal Caller ID"
 msgstr ""
 
-#: wazo_ui/plugins/outcall/form.py:54 wazo_ui/plugins/user/form.py:188
+#: wazo_ui/plugins/outcall/form.py:54 wazo_ui/plugins/user/form.py:189
 msgid "Ring time"
 msgstr ""
 
@@ -2970,7 +2970,7 @@ msgstr ""
 #: wazo_ui/plugins/paging/templates/paging/list.html:16
 #: wazo_ui/plugins/phone_number/form.py:13
 #: wazo_ui/plugins/phone_number/templates/phone_number/list.html:15
-#: wazo_ui/plugins/voicemail/form.py:31
+#: wazo_ui/plugins/voicemail/form.py:32
 #: wazo_ui/plugins/voicemail/templates/voicemail/list.html:15
 msgid "Number"
 msgstr ""
@@ -3009,21 +3009,21 @@ msgstr ""
 msgid "Add Paging"
 msgstr ""
 
-#: wazo_ui/plugins/parking_lot/form.py:22
+#: wazo_ui/plugins/parking_lot/form.py:28
 msgid "Slots Start"
 msgstr ""
 
-#: wazo_ui/plugins/parking_lot/form.py:25
+#: wazo_ui/plugins/parking_lot/form.py:31
 msgid "Slots End"
 msgstr ""
 
-#: wazo_ui/plugins/parking_lot/form.py:35
-#: wazo_ui/plugins/parking_lot/form.py:42
+#: wazo_ui/plugins/parking_lot/form.py:41
+#: wazo_ui/plugins/parking_lot/form.py:48
 #: wazo_ui/plugins/parking_lot/templates/parking_lot/edit.html:11
 msgid "Parking Lot"
 msgstr ""
 
-#: wazo_ui/plugins/parking_lot/form.py:43
+#: wazo_ui/plugins/parking_lot/form.py:49
 #: wazo_ui/plugins/user/templates/user/edit.html:142
 msgid "Position"
 msgstr ""
@@ -3953,72 +3953,72 @@ msgstr ""
 msgid "Relations"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:81
+#: wazo_ui/plugins/user/form.py:82
 msgid "Unconditional"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:96
+#: wazo_ui/plugins/user/form.py:97
 msgid "Incall filtering"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:114
+#: wazo_ui/plugins/user/form.py:115
 #: wazo_ui/plugins/user/templates/user/edit.html:145
 msgid "BLF"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:139
+#: wazo_ui/plugins/user/form.py:140
 msgid "Enable authentication"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:141
+#: wazo_ui/plugins/user/form.py:142
 msgid "Phone mobile"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:142
+#: wazo_ui/plugins/user/form.py:143
 msgid "Ring seconds"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:145
+#: wazo_ui/plugins/user/form.py:146
 msgid "Outgoing caller ID"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:147
+#: wazo_ui/plugins/user/form.py:148
 msgid "Simultaneous calls"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:150
+#: wazo_ui/plugins/user/form.py:151
 msgid "User Field"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:152
+#: wazo_ui/plugins/user/form.py:153
 msgid "Call Permission Password"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:154
+#: wazo_ui/plugins/user/form.py:155
 msgid "Outgoing external call recording"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:157
+#: wazo_ui/plugins/user/form.py:158
 msgid "Outgoing internal call recording"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:160
+#: wazo_ui/plugins/user/form.py:161
 msgid "Incoming external call recording"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:163
+#: wazo_ui/plugins/user/form.py:164
 msgid "Incoming internal call recording"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:165
+#: wazo_ui/plugins/user/form.py:166
 msgid "Enable Transfer by DTMF"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:166
+#: wazo_ui/plugins/user/form.py:167
 msgid "Enable Hangup by DTMF"
 msgstr ""
 
-#: wazo_ui/plugins/user/form.py:168
+#: wazo_ui/plugins/user/form.py:169
 msgid "Enable Live Recording"
 msgstr ""
 
@@ -4075,47 +4075,47 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:57
+#: wazo_ui/plugins/voicemail/form.py:58
 msgid "French"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:58
+#: wazo_ui/plugins/voicemail/form.py:59
 msgid "French Canadian"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:59
+#: wazo_ui/plugins/voicemail/form.py:60
 msgid "English"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:64
+#: wazo_ui/plugins/voicemail/form.py:65
 msgid "Maximum messages"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:65
+#: wazo_ui/plugins/voicemail/form.py:66
 msgid "Ask for password"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:66
+#: wazo_ui/plugins/voicemail/form.py:67
 msgid "Attach audio"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:68
+#: wazo_ui/plugins/voicemail/form.py:69
 msgid "Delete message after notification"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:70
+#: wazo_ui/plugins/voicemail/form.py:71
 msgid "Activated"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:79
+#: wazo_ui/plugins/voicemail/form.py:80
 msgid "Greeting"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:83
+#: wazo_ui/plugins/voicemail/form.py:84
 msgid "Unavailable"
 msgstr ""
 
-#: wazo_ui/plugins/voicemail/form.py:86
+#: wazo_ui/plugins/voicemail/form.py:87
 msgid "Skip instructions"
 msgstr ""
 
