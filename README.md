@@ -98,6 +98,11 @@ To extract new translations:
 
     % python3 setup.py extract_messages
 
+This will create or update the file `wazo_ui/translations/messages.pot`.
+
+Ensure the `#, fuzzy` marker is not left in the header of the file.
+When updating the template, ensure placeholders are removed/rewritten in keeping with previous versions of the file.
+
 To create new translation catalog:
 
     % pybabel init -l <locale> --input-file=wazo_ui/translations/messages.pot --output-dir=wazo_ui/translations/
