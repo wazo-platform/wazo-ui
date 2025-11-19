@@ -8,7 +8,6 @@ from collections import defaultdict
 from glob import glob
 from pathlib import Path
 
-from babel.messages import frontend as babel
 from setuptools import find_packages, setup
 from setuptools.command.build_py import build_py as _build_py
 
@@ -64,10 +63,6 @@ setup(
     zip_safe=False,
     cmdclass={
         'build_py': build_py,
-        'compile_catalog': babel.compile_catalog,
-        'extract_messages': babel.extract_messages,
-        'init_catalog': babel.init_catalog,
-        'update_catalog': babel.update_catalog,
     },
     entry_points={
         'console_scripts': [
