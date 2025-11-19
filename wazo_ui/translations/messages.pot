@@ -1,14 +1,14 @@
-# Translations template for wazo_ui.
-# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
-# This file is distributed under the same license as the
-# wazo_ui project.
+# Translations template for wazo-ui.
+# Copyright (C) 2018-2025 The Wazo Authors  (see the AUTHORS file)
+# This file is distributed under the same license as the wazo-ui project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
-#
+# THIS HEADER SHOULD NOT HAVE THE '#, fuzzy' MARKER
+# AVOID LEAVING PLACEHOLDERS AFTER UPDATING THIS TEMPLATE
 msgid ""
 msgstr ""
-"Project-Id-Version: wazo_ui 0.1\n"
-"Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
-"POT-Creation-Date: 2025-11-18 13:37-0500\n"
+"Project-Id-Version: wazo-ui 0.1\n"
+"Report-Msgid-Bugs-To: dev@wazo.community\n"
+"POT-Creation-Date: 2025-11-19 15:45-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Wazo Authors <dev@wazo.community>\n"
 "Language-Team: en <dev@wazo.community>\n"
