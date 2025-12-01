@@ -1,7 +1,6 @@
 # Copyright 2017-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import cgi
 from io import BytesIO
 
 from flask import flash, jsonify, redirect, render_template, request, send_file, url_for
@@ -9,6 +8,7 @@ from flask_babel import gettext as _
 from flask_babel import lazy_gettext as l_
 from flask_classful import route
 from requests.exceptions import HTTPError
+from xivo.http_helpers import parse_content_disposition_filename
 
 from wazo_ui.helpers.classful import LoginRequiredView
 from wazo_ui.helpers.menu import menu_item
@@ -126,9 +126,9 @@ class SoundFileView(BaseIPBXHelperView):
         )
         content_disposition = response.headers.get('content-disposition')
         if content_disposition:
-            _, params = cgi.parse_header(content_disposition)
-            if params:
-                filename = params['filename']
+            filename = (
+                parse_content_disposition_filename(content_disposition) or filename
+            )
 
         return send_file(
             BytesIO(response.content),
