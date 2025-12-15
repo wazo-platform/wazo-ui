@@ -1,2 +1,2 @@
 pyhamcrest
-pytest
+pytest>=9.0
