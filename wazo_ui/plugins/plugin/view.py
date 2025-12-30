@@ -19,19 +19,19 @@ class PluginView(LoginRequiredView):
 
     @route('/install_plugin/', methods=['POST'])
     def install_plugin(self):
-        body = request.get_json()
+        body = request.get_json(force=True)
         plugin = self.service.install(body)
         return jsonify(plugin)
 
     @route('/remove_plugin/', methods=['POST'])
     def remove_plugin(self):
-        body = request.get_json()
+        body = request.get_json(force=True)
         plugin = self.service.uninstall(body)
         return jsonify(plugin)
 
     @route('/search_plugin/', methods=['POST'])
     def search_plugin(self):
-        payload = request.get_json()
+        payload = request.get_json(force=True)
         search = payload.get('search')
         namespace = payload.get('namespace')
         installed = payload.get('installed')

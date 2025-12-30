@@ -1,4 +1,4 @@
-# Copyright 2024 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2024-2025 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask import jsonify, request
@@ -50,6 +50,6 @@ class PhoneNumberView(BaseIPBXHelperView):
 
     @route('/select_main_number/', methods=['POST'])
     def select_main_number(self):
-        body = request.get_json()
+        body = request.get_json(force=True)
         self.service.select_main_number(body['number_uuid'])
         return jsonify(body)
