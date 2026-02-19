@@ -1,9 +1,11 @@
-# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2026 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 import os
 from datetime import timedelta
+from importlib.metadata import entry_points
+from importlib.resources import files
 
 import requests
 from flask import Flask, request, session, url_for
@@ -12,7 +14,6 @@ from flask_login import LoginManager
 from flask_menu import Menu
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
-from pkg_resources import iter_entry_points, resource_filename, resource_isdir
 from requests.exceptions import HTTPError
 from wazo_auth_client import Client as AuthClient
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -150,14 +151,17 @@ class Server:
     def _get_translation_directories(self, enabled_plugins):
         main_translation_directory = 'translations'
         result = [main_translation_directory]
-        entry_points = (
+        eps = (
             e
-            for e in iter_entry_points(group='wazo_ui.plugins')
+            for e in entry_points(group='wazo_ui.plugins')
             if e.name in enabled_plugins
         )
-        for ep in entry_points:
-            if resource_isdir(ep.module_name, TRANSLATION_DIRECTORY):
-                result.append(resource_filename(ep.module_name, TRANSLATION_DIRECTORY))
+        for ep in eps:
+            # e.g. 'wazo_ui.plugins.user.plugin:Plugin' -> 'wazo_ui.plugins.user'
+            package_name = ep.value.split(':')[0].rsplit('.', 1)[0]
+            translation_path = files(package_name) / TRANSLATION_DIRECTORY
+            if translation_path.is_dir():
+                result.append(str(translation_path))
         return result
 
     def _configure_session(self):
