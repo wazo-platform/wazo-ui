@@ -1,4 +1,4 @@
-# Copyright 2017-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2026 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from flask_babel import lazy_gettext as l_
@@ -24,7 +24,6 @@ class GeneralServicesFuncKeyDestinationForm(BaseForm):
             ('phonestatus', l_('Phone status')),
             ('recsnd', l_('Sound recording')),
             ('fwdundoall', l_('Disable all forwarding')),
-            ('calllistening', l_('Listen to online calls')),
             ('directoryaccess', l_('Directory access')),
             ('pickup', l_('Group Interception')),
             ('callrecord', l_('Call recording')),
