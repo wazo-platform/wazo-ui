@@ -1,4 +1,4 @@
-# Copyright 2018-2025 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2026 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
@@ -56,9 +56,9 @@ class DirdSourceView(BaseIPBXHelperView):
     def new(self, backend):
         default_auth_config = {
             'host': 'localhost',
-            'port': 9497,
+            'port': 80,
             'timeout': '',
-            'prefix_': None,
+            'prefix_': '/api/auth',
             'https': False,
             'verify_certificate': False,
             'certificate_path': '',
@@ -106,7 +106,7 @@ class DirdSourceView(BaseIPBXHelperView):
             },
             'office365_config': {
                 'auth': {
-                    'port': 9497,
+                    'port': 80,
                     'timeout': 0,
                     'verify_certificate': True,
                     'version': '0.1',
