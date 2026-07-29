@@ -16,4 +16,9 @@
       language: $.parseJSON({{ datatable_language()|tojson }})
   });
   $.fn.validator.Constructor.DEFAULTS.errors = $.parseJSON({{ bootstrap_validator_language()|tojson }});
+  // jQuery 3: bootstrap-validator 0.11.9 has a timing race in its submit-button
+  // gating that can leave the button stuck "disabled" after valid input. Disable
+  // the gating; validation error display and submit prevention still apply, and
+  // WTForms validates server-side. See BUG-413.
+  $.fn.validator.Constructor.DEFAULTS.disable = false;
 </script>
