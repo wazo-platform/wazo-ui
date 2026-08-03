@@ -105,12 +105,7 @@ class DirdSourceView(BaseIPBXHelperView):
                 'timeout': 10,
             },
             'office365_config': {
-                'auth': {
-                    'port': 80,
-                    'timeout': 0,
-                    'verify_certificate': True,
-                    'version': '0.1',
-                },
+                'auth': default_auth_config,
                 'endpoint': 'https://graph.microsoft.com/v1.0/me/contacts',
             },
             'google_config': {
