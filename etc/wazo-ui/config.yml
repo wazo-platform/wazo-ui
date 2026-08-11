@@ -24,8 +24,7 @@
 #
 # auth:
 #   host: localhost
-#   port: 9497
-#   prefix: None
+#   port: 80
 #   https: false
 #
 # call-logd:
