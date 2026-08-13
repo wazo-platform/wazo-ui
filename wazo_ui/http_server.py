@@ -3,6 +3,7 @@
 
 import logging
 import os
+import threading
 from datetime import timedelta
 from importlib.metadata import entry_points
 from importlib.resources import files
@@ -34,6 +35,8 @@ app = Flask('wazo_ui')
 class Server:
     def __init__(self, global_config):
         self.config = global_config['http']
+        self.server = None
+        self._stopped = threading.Event()
         http_helpers.add_logger(app, logger)
 
         app.after_request(http_helpers.log_request_hide_token)
@@ -89,9 +92,14 @@ class Server:
         for route in http_helpers.list_routes(app):
             logger.debug(route)
 
+        if self._stopped.is_set():
+            logger.warning('stop requested during startup: not starting the server')
+            return
+
         self.server.start()
 
     def stop(self):
+        self._stopped.set()
         if self.server:
             self.server.stop()
 
