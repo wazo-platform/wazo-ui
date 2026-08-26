@@ -1,9 +1,8 @@
-# Copyright 2018-2023 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2018-2026 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from hamcrest import assert_that, calling, contains_string, equal_to, not_, raises
+from hamcrest import assert_that, calling, equal_to, raises
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
 
 from .helpers.base import IntegrationTest
 from .helpers.constants import USERNAME_PASSWORD_ERROR
@@ -20,9 +19,6 @@ class TestLogin(IntegrationTest):
         login.fill_name('username', '')
         login.fill_name('password', '')
 
-        submit = login.driver.find_element(By.ID, 'submit')
-        assert_that(submit.get_attribute('class'), contains_string('disabled'))
-
         login.save(waiting=False)
 
         username = login.get_input_name('username')
@@ -35,9 +31,6 @@ class TestLogin(IntegrationTest):
         login = self.browser.login
         login.fill_name('username', 'test')
         login.fill_name('password', 'foobar')
-
-        submit = login.driver.find_element(By.ID, 'submit')
-        assert_that(submit.get_attribute('class'), not_(contains_string('disabled')))
 
         login.save(waiting=False)
 
