@@ -39,7 +39,7 @@ class Server:
         self._stopped = threading.Event()
         http_helpers.add_logger(app, logger)
 
-        app.after_request(http_helpers.log_request_hide_token)
+        app.after_request(http_helpers.log_request)
 
         app.secret_key = os.urandom(24)
         app.permanent_session_lifetime = timedelta(
